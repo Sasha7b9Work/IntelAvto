@@ -2,7 +2,7 @@
 
 set _COMPILER_=c:\Keil_v5\UV4\UV4
 set _PROJECT_PANEL_=..\..\Panel\Panel.uvprojx
-set _PROJECT_LOADER_=..\..\Loader\Loader.uvprojx
+set _PROJECT_LOADER_=..\..\PLoader\Loader.uvprojx
 
 rem 1, если требуется очистка
 set isClean=0
@@ -60,7 +60,7 @@ echo Building Loader ...
 %_COMPILER_% -b %_PROJECT_LOADER_% -j0 -o Loader.out
 if %ERRORLEVEL%==0 goto BUILDING_PANEL
 echo ERROR!!! Build failed !!!
-type ..\..\Loader\Loader.out
+type ..\..\PLoader\Loader.out
 :BUILDING_PANEL
 if %need_panel%==0 goto LOADING
 echo Building Panel ...
@@ -84,7 +84,7 @@ echo Loading Loader ...
 %_COMPILER_% -f %_PROJECT_LOADER_% -j0 -o Loader.out
 if %ERRORLEVEL%==0 goto LOADING_PANEL
 echo Error loading firmware to Loader
-type ..\..\Loader\Loader.out
+type ..\..\PLoader\Loader.out
 :LOADING_PANEL
 if %need_panel%==0 goto EXIT
 echo Loading Panel ...

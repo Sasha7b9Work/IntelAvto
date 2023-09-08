@@ -1,0 +1,14 @@
+*.bin
+
+sources/PLoader/Objects/*
+sources/PLoader/Objects-Debug/*
+sources/PLoader/DebugConfig/*
+sources/PLoader/Listings/*
+sources/PLoader/Listings-Debug/*
+
+
+sources/Panel/Objects/*
+sources/Panel/Objects-Debug/*
+sources/Panel/DebugConfig/*
+sources/Panel/Listings/*
+sources/Panel/Listings-Debug/*

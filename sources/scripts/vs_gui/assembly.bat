@@ -21,7 +21,7 @@ cmake ../../VS/CMakeLists.txt -B../../generated/GUI  -G "Visual Studio 17 2022" 
 :BUILDING
 if %isBuild%==0 goto EXIT
 @echo on
-MSBuild.exe ../../generated/GUI/CH3-96-2_GUI.sln -clp:ErrorsOnly;WarningsOnly -nologo /m
+MSBuild.exe ../../generated/GUI/IntelAvto-GUI.sln -clp:ErrorsOnly;WarningsOnly -nologo /m
 @echo off
 goto EXIT
 
