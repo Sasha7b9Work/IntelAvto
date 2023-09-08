@@ -12,3 +12,6 @@ sources/Panel/Objects-Debug/*
 sources/Panel/DebugConfig/*
 sources/Panel/Listings/*
 sources/Panel/Listings-Debug/*
+
+
+sources/generated/*

@@ -1,6 +1,6 @@
 # (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 
-project (Loader)
+project (PLoader)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
