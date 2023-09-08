@@ -2,6 +2,8 @@
 #define WIN32_LEAN_AND_MEAN
 #include "Application_win.h"
 #include "GUI/ComPort.h"
+#include <ctime>
+
 
 #undef main
 
@@ -119,16 +121,16 @@ void Frame::DrawFPS()
 
     count++;
 
-    if (TIME_MS - prevTime > 1000)
+    if (std::clock() - prevTime > 1000)
     {
-        float fps = (float)count / (float)(TIME_MS - prevTime) * 1000.0F;
+        float fps = (float)count / (float)(std::clock() - prevTime) * 1000.0F;
 
         char buffer[100];
         sprintf(buffer, "fps %f", fps);
 
         SetStatusText(buffer);
 
-        prevTime = TIME_MS;
+        prevTime = (uint)std::clock();
         count = 0;
     }
 }

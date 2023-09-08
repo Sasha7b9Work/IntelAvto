@@ -4,17 +4,23 @@
 #include "Application_win.h"
 
 
-// Очередь сообщений - здесь все события органов управления
+namespace Keyboard
+{
+    // Очередь сообщений - здесь все события органов управления
 #define MAX_ACTIONS 100
-static Control actions[MAX_ACTIONS];
-// Количество уже имеющихся сообщений
-static int numActions = 0;
+    static Control actions[MAX_ACTIONS];
+    // Количество уже имеющихся сообщений
+    static int numActions = 0;
 
-static bool needStartTimerLong = false;
+    static bool needStartTimerLong = false;
 
-static bool needStopTimerLong = false;
-// Здесь имя нажатой кнопки
-static Control::E pressedKey = Control::None;
+    static bool needStopTimerLong = false;
+
+    // Здесь имя нажатой кнопки
+    static Control::E pressedKey = Control::None;
+
+    static void AddAction(Control control, Control::Action::E action);
+}
 
 
 bool Keyboard::Init()
@@ -23,7 +29,7 @@ bool Keyboard::Init()
 }
 
 
-static void AddAction(Control control, Control::Action::E action)
+void Keyboard::AddAction(Control control, Control::Action::E action)
 {
     if (action != Control::Action::Press)
     {
@@ -42,11 +48,11 @@ void Frame::OnDown(wxCommandEvent &event)
     //std::cout << "down " << Control(key).Name() << std::endl;
     event.Skip();
 
-    AddAction(key, Control::Action::Press);
+    Keyboard::AddAction(key, Control::Action::Press);
 
-    needStartTimerLong = true;
+    Keyboard::needStartTimerLong = true;
 
-    pressedKey = key;
+    Keyboard::pressedKey = key;
 }
 
 
@@ -57,11 +63,11 @@ void Frame::OnUp(wxCommandEvent &event)
     //std::cout << "up   " << Control(key).Name() << std::endl;
     event.Skip();
 
-    AddAction(key, Control::Action::Release);
+    Keyboard::AddAction(key, Control::Action::Release);
 
-    needStopTimerLong = true;
+    Keyboard::needStopTimerLong = true;
 
-    pressedKey = Control::None;
+    Keyboard::pressedKey = Control::None;
 }
 
 

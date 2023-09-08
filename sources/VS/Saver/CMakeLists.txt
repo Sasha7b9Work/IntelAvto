@@ -1,4 +1,9 @@
+# 2023/09/08 21:15:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 project (Saver)
+
+#set(CMAKE_UNITY_BUILD OFF)
+
+set(CMAKE_UNITY_BUILD_BATCH_SIZE 4)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -86,6 +91,11 @@ file(GLOB UTILS               ../../Panel/src/Utils/Buffer.*
                               ../../Panel/src/Utils/Stack.*
                               ../../Panel/src/Utils/String.*
                               ../../Panel/src/Utils/StringUtils.*)
+
+
+set_source_files_properties(../../Panel/src/Utils/String.cpp
+                            ../../Panel/src/Utils/StringUtils.cpp
+                            PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 
 source_group(src               FILES ${SRC})
 source_group(Display           FILES ${DISPLAY})
