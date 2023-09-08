@@ -24,7 +24,7 @@ void HAL_TIM::Init()
 uint HAL_TIM::TimeMS()
 {
 #ifdef WIN32
-    return (uint)clock();
+    return (uint)std::clock();
 #else
     return HAL_GetTick();
 #endif

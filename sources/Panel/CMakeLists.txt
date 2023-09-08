@@ -1,4 +1,4 @@
-# (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+# 2023/09/08 21:46:51 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 
 project (Panel)
 
@@ -51,10 +51,7 @@ file(GLOB HARDWARE_USBD       src/Hardware/USBD/*.*
 file(GLOB KEYBOARD            src/Keyboard/*.*)
 file(GLOB MENU                src/Menu/*.*)
 file(GLOB MENU_PAGES          src/Menu/Pages/*.*)
-file(GLOB SCPI                src/SCPI/*.*)
-file(GLOB SCPI_PROCESS        src/SCPI/Process/*.*)
 file(GLOB UTILS               src/Utils/*.*)
-file(GLOB TESTS               tests/*.*)
 
 
 source_group(HAL                   FILES ${HAL})
@@ -68,10 +65,7 @@ source_group(Hardware/USBD         FILES ${HARDWARE_USBD})
 source_group(Keyboard              FILES ${KEYBOARD})
 source_group(Menu                  FILES ${MENU})
 source_group(Menu/Pages/           FILES ${MENU_PAGES})
-source_group(SCPI                  FILES ${SCPI})
-source_group(SCPI/Process          FILES ${SCPI_PROCESS})
 source_group(Utils                 FILES ${UTILS})
-source_group(Tests                 FILES ${TESTS})
 
 set_source_files_properties(${HARDWARE_CMSIS} ${HAL}
                             ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
@@ -80,4 +74,4 @@ set_source_files_properties(${HARDWARE_CMSIS} ${HAL}
                             PROPERTIES HEADER_FILE_ONLY TRUE)
 
 add_library(${PROJECT_NAME} ${HAL} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
-                  ${HARDWARE_USBD} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${SCPI} ${SCPI_PROCESS} ${UTILS} ${TESTS})
+                  ${HARDWARE_USBD} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${UTILS})
