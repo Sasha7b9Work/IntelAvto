@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "Hardware/HAL/HAL.h"
 #include <stm32f4xx_hal.h>
+#include <ctime>
 
 
 void HAL_TIM::Init()
@@ -22,7 +23,11 @@ void HAL_TIM::Init()
 
 uint HAL_TIM::TimeMS()
 {
+#ifdef WIN32
+    return (uint)clock();
+#else
     return HAL_GetTick();
+#endif
 }
 
 

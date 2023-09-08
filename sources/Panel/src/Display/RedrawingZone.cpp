@@ -1,7 +1,6 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 20:56:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Settings.h"
-#include "Calculate/ValueFPGA.h"
 #include "Display/Display.h"
 #include "Display/Indicator.h"
 #include "Display/RedrawingZone.h"
@@ -10,11 +9,10 @@
 #include "Display/Font/Font.h"
 #include "Menu/Menu.h"
 #include "Menu/Pages/PageIndication.h"
-#include "Menu/Pages/Channels/Channels.h"
 #include "Utils/Math.h"
 #include "Utils/String.h"
 #include "Utils/StringUtils.h"
-#include "Menu/Pages/Pages.h"
+#include "Hardware/HAL/HAL.h"
 #include <cctype>
 #include <cstdlib>
 #include <cstring>
@@ -73,14 +71,7 @@ void RedrawingZone::Refresh()
         return;
     }
 
-    if (Menu::OpenedPage() == PageStatistics::self)
-    {
-        if (this == Display::zoneProgressBarTimeMeasure)
-        {
-            return;
-        }
-    }
-    else if (Menu::OpenedPage()->IsAddition())
+    if (Menu::OpenedPage()->IsAddition())
     {
         return;
     }
@@ -95,81 +86,18 @@ void RedrawingZone::FillBackground()
 }
 
 
-static bool ConditionSplit(char *text)
-{
-    if (ValueFPGA::IsEmpty())
-    {
-        return false;
-    }
-
-    return !(SU::ExistSymbol(text, '.') || SU::ExistSymbol(text, ','));
-}
-
-
 #define RIGHT_DIGITS 360
 #define LEFT_UNTIS   380
 
 
 bool DataZone::Draw()
 {
-    String data = ValueFPGA::GiveDigits();
-
-    Color::FILL.SetAsCurrent();
-
-    if (data[0] != 0)
-    {
-        if (ValueFPGA::IsData())
-        {
-            if (glob_set.styleGUI.IsModern())
-            {
-                FontBig::WriteAboutRight(data.c_str(), x0 + RIGHT_DIGITS, y0, ConditionSplit(data.c_str()));
-            }
-            else
-            {
-                Indicator::DrawDataAboutRight(data.c_str(), x0 + RIGHT_DIGITS, y0 + 1, Color::FILL, Color::EMPTY);
-            }
-        }
-        else
-        {
-            int x = x0;
-
-            if (ValueFPGA::IsOverlapped())   { x += 40; }   // Переполнение
-            else if (ValueFPGA::IsDivNULL()) { x += 150; }  // Деление на ноль
-
-            if (glob_set.styleGUI.IsModern())
-            {
-                Font::Set(TypeFont::GOSTB28B);
-                Text(data.c_str()).Write(x, y0 + 15);
-                Font::Set(TypeFont::GOSTAU16BOLD);
-            }
-            else
-            {
-                Indicator::DrawDataAboutRight(data.c_str(), RIGHT_DIGITS, y0 + 1, Color::FILL, Color::EMPTY);
-            }
-        }
-    }
-
-    FontMid::Write(ValueFPGA::GiveUnits().c_str(), x0 + LEFT_UNTIS, y0 + 20);
-
     return true;
 }
 
 
 bool ProgressBarTimeMeasureZone::Draw()
 {
-    if (Channel::Current()->mod.ConsistTimeMeasure() && ModesChannel::timeMeasure.value > TimeMeasure::_10ms)
-    {
-        int timeCycle = ModesChannel::timeMeasure.ToMS();
-
-        float part = ((float)(TIME_MS - timeStart) / (float)timeCycle);
-
-        int w = (int)(46.0F * part) + 1;
-
-        LIMITATION(w, 0, Width() - 1);
-
-        Primitives::Rectangle(w, 5).Fill(x0, y0, Color::FILL);
-    }
-
     return true;
 }
 

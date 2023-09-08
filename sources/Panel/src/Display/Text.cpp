@@ -112,11 +112,11 @@ int Text::WriteSymbolsScaled(char *start, int num, int x, int y, int size) const
 }
 
 
-int Text::Write(int x, int y, int width, Color color)
+int Text::Write(int x, int y, int _width, Color color)
 {
     color.SetAsCurrent();
 
-    return Write(x, y, width);
+    return Write(x, y, _width);
 }
 
 

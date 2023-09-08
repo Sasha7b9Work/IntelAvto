@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 21:10:56 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Indicator.h"
 #include "Display/Primitives.h"
@@ -10,8 +10,8 @@ using namespace Primitives;
 
 static const int sizeLine = 26;
 
-static const int width = sizeLine + 2;
-static const int height = sizeLine * 2;
+const int Indicator::width = sizeLine + 2;
+const int Indicator::height = sizeLine * 2;
 
 static const int bold = 2;
 

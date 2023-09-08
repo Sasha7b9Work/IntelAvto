@@ -173,9 +173,6 @@ public:
 
     uint8 Value() const { return state->value; }
 
-    // Для управления по SCPI
-    void FuncForSCPI(int i, bool correct);
-
     pchar Title() const;
 
     bool SetValue(uint8 v);
@@ -204,12 +201,6 @@ public:
 
     // Возвращает указатель на выделенный пункт меню
     Item *SelectedItem() { return items[selectedItem]; };
-
-    // Возвращает true, если это страница режимов
-    bool IsPageModes() const;
-
-    // Возвращает true, если это страница настроек
-    bool IsPageSettings() const;
 
     void OnKeyRight();
     void OnKeyLeft();

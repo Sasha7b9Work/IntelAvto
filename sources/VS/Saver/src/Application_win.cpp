@@ -6,9 +6,6 @@
 #undef main
 
 
-#define TIME_MS (uint)clock()
-
-
 extern void update();
 extern void init();
 

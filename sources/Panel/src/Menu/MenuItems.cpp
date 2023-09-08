@@ -1,17 +1,12 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Settings.h"
-#include "Calculate/ValueFPGA.h"
 #include "Display/Display.h"
 #include "Display/Primitives.h"
 #include "Display/Text.h"
-#include "Hardware/FPGA.h"
-#include "Hardware/FreqMeter.h"
 #include "Menu/Hint.h"
 #include "Menu/MenuItems.h"
-#include "Menu/Pages/Channels/Channels.h"
 #include "Menu/Pages/PageIndication.h"
-#include "SCPI/SCPI.h"
 #include "Utils/Math.h"
 #include <cstring>
 
@@ -205,11 +200,6 @@ int Page::WidthItem(int num) const
         return Display::PHYSICAL_WIDTH / NumItems();
     }
 
-    if (IsPageModes())
-    {
-        return (Display::PHYSICAL_WIDTH / 4);
-    }
-
     int result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 6) : (Display::PHYSICAL_WIDTH / 6);
 
     if (NumItems() == 5)
@@ -233,24 +223,6 @@ int Page::WidthItem(int num) const
     if (num == 5) { result += 3; }
 
     return result;
-}
-
-
-bool Page::IsPageModes() const
-{
-    return (this == Channel::A->pageModes) ||
-        (this == Channel::B->pageModes) ||
-        (this == Channel::C->pageModes) ||
-        (this == Channel::D->pageModes);
-}
-
-
-bool Page::IsPageSettings() const
-{
-    return (this == Channel::A->pageSettings) ||
-        (this == Channel::B->pageSettings) ||
-        (this == Channel::C->pageSettings) ||
-        (this == Channel::D->pageSettings);
 }
 
 
@@ -480,8 +452,6 @@ Item::Item(pchar hintRu, pchar hintEn)
 {
     hint[0] = hintRu;
     hint[1] = hintEn;
-
-    Channel::Create();
 }
 
 
@@ -595,22 +565,6 @@ void PageModes::ResetModeMeasure()
                 mode->state->value = (uint8)i;
                 break;
             }
-        }
-    }
-}
-
-
-void Switch::FuncForSCPI(int i, bool correct)
-{
-    if (!correct)
-    {
-        SCPI::Answer::InvalidParameter();
-    }
-    else
-    {
-        if (!SetValue((uint8)i))
-        {
-            SCPI::Answer::InvalidParameter();
         }
     }
 }

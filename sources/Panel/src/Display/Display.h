@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+п»ї// 2023/09/08 20:57:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Colors.h"
 
@@ -9,10 +9,13 @@ class ProgressBarTimeMeasureZone;
 
 struct Display
 {
-	static const int PHYSICAL_WIDTH = 480;
-	static const int PHYSICAL_HEIGHT = 272;
+    static const int PHYSICAL_WIDTH = 480;
+    static const int PHYSICAL_HEIGHT = 272;
 
-    // Число частей, на которые поделен дисплей для отрисовки
+    static int width;
+    static int height;
+
+    // Р§РёСЃР»Рѕ С‡Р°СЃС‚РµР№, РЅР° РєРѕС‚РѕСЂС‹Рµ РїРѕРґРµР»РµРЅ РґРёСЃРїР»РµР№ РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё
     static const int NUM_PARTS = 2;
 
     static int Width();
@@ -21,7 +24,7 @@ struct Display
 
     static void Init();
 
-    // Вызвать, если требуется перерисовка
+    // Р’С‹Р·РІР°С‚СЊ, РµСЃР»Рё С‚СЂРµР±СѓРµС‚СЃСЏ РїРµСЂРµСЂРёСЃРѕРІРєР°
     static void Refresh();
 
     static void Update();
@@ -33,46 +36,46 @@ struct Display
     static void DrawWelcomeScreen();
     static void DrawKeyboardFailScreen();
 
-    // Номер верхней строки в текущей отрисовке.
-    // Отрисовка происходит в два этапа - сначала верхняя часть (TopRow() == 0),
-    // затем нижняя (TopRow() == Display/HEIGHT / 2)
+    // РќРѕРјРµСЂ РІРµСЂС…РЅРµР№ СЃС‚СЂРѕРєРё РІ С‚РµРєСѓС‰РµР№ РѕС‚СЂРёСЃРѕРІРєРµ.
+    // РћС‚СЂРёСЃРѕРІРєР° РїСЂРѕРёСЃС…РѕРґРёС‚ РІ РґРІР° СЌС‚Р°РїР° - СЃРЅР°С‡Р°Р»Р° РІРµСЂС…РЅСЏСЏ С‡Р°СЃС‚СЊ (TopRow() == 0),
+    // Р·Р°С‚РµРј РЅРёР¶РЅСЏСЏ (TopRow() == Display/HEIGHT / 2)
     static int TopRow();
 
-    // Возвращает true, если прямоугльник находится в отрисовываемой в данный момент времени части экрана
+    // Р’РѕР·РІСЂР°С‰Р°РµС‚ true, РµСЃР»Рё РїСЂСЏРјРѕСѓРіР»СЊРЅРёРє РЅР°С…РѕРґРёС‚СЃСЏ РІ РѕС‚СЂРёСЃРѕРІС‹РІР°РµРјРѕР№ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РІСЂРµРјРµРЅРё С‡Р°СЃС‚Рё СЌРєСЂР°РЅР°
     static bool InDrawingPart(int y, int height);
 
-    // Отрисовать очередную часть экрана
+    // РћС‚СЂРёСЃРѕРІР°С‚СЊ РѕС‡РµСЂРµРґРЅСѓСЋ С‡Р°СЃС‚СЊ СЌРєСЂР°РЅР°
     static void DrawPartScreen(int num, bool debugInfo);
 
     static void SendToSCPI();
 
-    // Здесь отрисовка результата измерения
+    // Р—РґРµСЃСЊ РѕС‚СЂРёСЃРѕРІРєР° СЂРµР·СѓР»СЊС‚Р°С‚Р° РёР·РјРµСЂРµРЅРёСЏ
     static DataZone *zoneData;
 
-    // Отрисовка времени отсчёта времени измерения
+    // РћС‚СЂРёСЃРѕРІРєР° РІСЂРµРјРµРЅРё РѕС‚СЃС‡С‘С‚Р° РІСЂРµРјРµРЅРё РёР·РјРµСЂРµРЅРёСЏ
     static ProgressBarTimeMeasureZone *zoneProgressBarTimeMeasure;
 
 
-    // Структура для непосредсвенного рисования в дисплей
+    // РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РЅРµРїРѕСЃСЂРµРґСЃРІРµРЅРЅРѕРіРѕ СЂРёСЃРѕРІР°РЅРёСЏ РІ РґРёСЃРїР»РµР№
     struct Sender
     {
-        // Подготовить дисплей к непосредственному рисованию в аппаратуру
+        // РџРѕРґРіРѕС‚РѕРІРёС‚СЊ РґРёСЃРїР»РµР№ Рє РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕРјСѓ СЂРёСЃРѕРІР°РЅРёСЋ РІ Р°РїРїР°СЂР°С‚СѓСЂСѓ
         static void Prepare(int width, int height);
 
-        // Послать в дисплей область, ограниченную (x0, y0) и ранее засланными (width, height)
+        // РџРѕСЃР»Р°С‚СЊ РІ РґРёСЃРїР»РµР№ РѕР±Р»Р°СЃС‚СЊ, РѕРіСЂР°РЅРёС‡РµРЅРЅСѓСЋ (x0, y0) Рё СЂР°РЅРµРµ Р·Р°СЃР»Р°РЅРЅС‹РјРё (width, height)
         static void SendToFSMC(int x0, int y0);
 
-        // Восстановить к нормальному рисованию.
+        // Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Рє РЅРѕСЂРјР°Р»СЊРЅРѕРјСѓ СЂРёСЃРѕРІР°РЅРёСЋ.
         static void Restore();
     };
 
-    // Эта функция только для win-версии
+    // Р­С‚Р° С„СѓРЅРєС†РёСЏ С‚РѕР»СЊРєРѕ РґР»СЏ win-РІРµСЂСЃРёРё
     static void Draw(const uint *buffer);
 
 private:
-    static bool sendToSCPI;     // Если true, то надо посылать в SCPI
-    static bool drawingScene;   // Если true - находимся в состоянии отрисовки основной части - между BeginScene()
-                                // и EndScene()
+    static bool sendToSCPI;     // Р•СЃР»Рё true, С‚Рѕ РЅР°РґРѕ РїРѕСЃС‹Р»Р°С‚СЊ РІ SCPI
+    static bool drawingScene;   // Р•СЃР»Рё true - РЅР°С…РѕРґРёРјСЃСЏ РІ СЃРѕСЃС‚РѕСЏРЅРёРё РѕС‚СЂРёСЃРѕРІРєРё РѕСЃРЅРѕРІРЅРѕР№ С‡Р°СЃС‚Рё - РјРµР¶РґСѓ BeginScene()
+                                // Рё EndScene()
 
     static void InitHardware();
 

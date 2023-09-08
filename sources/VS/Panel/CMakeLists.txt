@@ -1,4 +1,8 @@
+# 2023/09/08 20:52:34 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+
 project (PanelGUI)
+
+#set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -85,36 +89,29 @@ file(GLOB MENU                ../../Panel/src/Menu/*.*)
 file(GLOB MENU_PAGES          ../../Panel/src/Menu/Pages/*.*)
 file(GLOB MENU_PAGES_CHANNELS ../../Panel/src/Menu/Pages/Channels/*.*)
 file(GLOB MENU_PAGES_OTHER    ../../Panel/src/Menu/Pages/Other/*.*)
-file(GLOB SCPI                ../../Panel/src/SCPI/*.*)
-file(GLOB SCPI_PROCESS        ../../Panel/src/SCPI/Process/*.*)
 file(GLOB UTILS               ../../Panel/src/Utils/*.*)
-file(GLOB TESTS               ../../Panel/tests/*.*)
 
-source_group(_VS\\HAL              FILES ${VS_HAL})
+source_group(_VS/HAL               FILES ${VS_HAL})
 source_group(src                   FILES ${SRC})
 source_group(Calculate             FILES ${CALCULATE})
 source_group(Display               FILES ${DISPLAY})
-source_group(Display\\Font         FILES ${DISPLAY_FONT})
+source_group(Display/Font          FILES ${DISPLAY_FONT})
 source_group(FreqMeter             FILES ${FREQMETER})
 source_group(GUI                   FILES ${GUI})
 source_group(Hardware              FILES ${HARDWARE})
-source_group(Hardware\\HAL         FILES ${HARDWARE_HAL})
+source_group(Hardware/HAL          FILES ${HARDWARE_HAL})
 source_group(Keyboard              FILES ${KEYBOARD})
 source_group(Menu                  FILES ${MENU})
-source_group(Menu\\Pages           FILES ${MENU_PAGES})
-source_group(Menu\\Pages\\Channels FILES ${MENU_PAGES_CHANNELS})
-source_group(Menu\\Pages\\Other    FILES ${MENU_PAGES_OTHER})
-source_group(SCPI                  FILES ${SCPI})
-source_group(SCPI\\Process         FILES ${SCPI_PROCESS})
+source_group(Menu/Pages            FILES ${MENU_PAGES})
+source_group(Menu/Pages/Channels   FILES ${MENU_PAGES_CHANNELS})
+source_group(Menu/Pages/Other      FILES ${MENU_PAGES_OTHER})
 source_group(Utils                 FILES ${UTILS})
-source_group(Tests                 FILES ${TESTS})
 
 add_executable(PanelGUI
                         ${VS_HAL}
                         ${SRC} ${CALCULATE} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${FREQMETER} ${GUI}
                         ${HARDWARE_HAL} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_CHANNELS}
-                        ${MENU_PAGES_OTHER}
-                        ${SCPI} ${SCPI_PROCESS} ${UTILS} ${TESTS})
+                        ${MENU_PAGES_OTHER} ${UTILS})
 
 target_link_libraries(PanelGUI wxbase32ud)
 target_link_libraries(PanelGUI wxmsw32ud_core)

@@ -1,9 +1,7 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 20:54:08 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Primitives.h"
 #include "Display/Text.h"
-#include "Hardware/FPGA.h"
-#include "Hardware/FreqMeter.h"
 #include "Menu/MenuItems.h"
 #include "Menu/Pages/PageIndication.h"
 #include "Menu/MenuItemsDef.h"
@@ -22,7 +20,7 @@ MemoryMode      PageIndication::memoryMode(MemoryMode::On);
 
 static void OnPress_DisplayTime()
 {
-    FreqMeter::LoadDisplayTime();
+
 }
 
 // Выбор времени отображения результата измерения
@@ -37,7 +35,7 @@ DEF_SWITCH_3(sDisplayTime,
 
 static void OnPress_RefGenerator()
 {
-    RefGenerator::LoadToFPGA();
+
 }
 
 // Выбор опорного генератора
@@ -52,7 +50,7 @@ DEF_SWITCH_2(sRefGenerator,
 
 static void OnPress_LaunchSource()
 {
-    LaunchSource::LoadToFPGA();
+
 }
 
 // Выбор источника запуска
@@ -65,12 +63,6 @@ DEF_SWITCH_3(sLaunchSource,
 
 static void OnPress_Calibration()
 {
-    FreqMeter::LoadCalibration();
-
-    if(PageIndication::calibrationMode.IsEnabled())
-    {
-        FPGA::ReadValueCalibrator();
-    }
 }
 
 // Вход в режим калибровки
@@ -85,7 +77,7 @@ DEF_SWITCH_2(sCalibration,
 
 static void OnPress_MemoryMode()
 {
-    MemoryMode::LoadToFPGA();
+
 }
 
 bool PageIndication::OnceLaunch()

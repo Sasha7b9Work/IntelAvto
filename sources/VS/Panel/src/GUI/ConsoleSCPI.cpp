@@ -1,8 +1,7 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 21:00:17 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "GUI/ConsoleSCPI.h"
 #include "GUI/ComPort.h"
-#include "SCPI/SCPI.h"
 #include "Utils/String.h"
 
 #pragma warning(push, 0)
@@ -214,7 +213,7 @@ void ConsoleSCPI::SendToSCPI(const char *txt)
     }
     else
     {
-        SCPI::AppendNewData(message.c_str(), static_cast<int>(std::strlen(message.c_str())));
+
     }
 }
 

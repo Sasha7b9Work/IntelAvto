@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 20:54:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Menu/MenuItems.h"
 
@@ -27,8 +27,6 @@ struct RefGenerator : public Enumeration
 
     explicit RefGenerator(E v) : Enumeration((uint8)v) {};
     bool IsExternal() const { return (value == External); }
-
-    static void LoadToFPGA();
 };
 
 
@@ -44,8 +42,6 @@ struct LaunchSource : public Enumeration
     explicit LaunchSource(E v) : Enumeration((uint8)v) {};
     bool IsExternal() const { return (value == External); }
     bool IsOneTime() const  { return (value == OneTime); }
-
-    static void LoadToFPGA();
 };
 
 
@@ -59,8 +55,6 @@ struct MemoryMode : public Enumeration
 
     explicit MemoryMode(E v) : Enumeration((uint8)v) {};
     bool IsOn() const { return (value == On); }
-
-    static void LoadToFPGA();
 };
 
 

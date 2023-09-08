@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 21:10:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Colors.h"
 
@@ -37,4 +37,7 @@ private:
 
     static Color colorDraw;
     static Color colorBack;
+
+    static const int width;
+    static const int height;
 };

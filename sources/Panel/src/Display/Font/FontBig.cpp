@@ -20,6 +20,7 @@
 #include "Display/Font/FontBig.h"
 #include "Display/Primitives.h"
 #include "Display/Display.h"
+
 using namespace Primitives;
 
 /*!*****************************************************************************
@@ -788,7 +789,7 @@ uint FontBig::WriteSymbol(uint8 symbol, int x, int y, bool mapping)
     {
         if (mapping)
         {
-            Rectangle(BIGSPACE_WIDTH, 7).Fill(x, y + 20);
+            Primitives::Rectangle(BIGSPACE_WIDTH, 7).Fill(x, y + 20);
         }
         return BIGSPACE_WIDTH + BIGGAP_WIDTH;
     }

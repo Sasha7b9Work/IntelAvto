@@ -1,9 +1,11 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 21:07:51 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#define WIN32_LEAN_AND_MEAN
 #include "defines.h"
 #include "Utils/Buffer.h"
 #include "Utils/Stack.h"
-#include "Utils/Values.h"
 #include "Utils/StringUtils.h"
+#pragma warning(push)
+#pragma warning(disable:4668)
 #include <iomanip>
 #include <cstring>
 #include <cctype>
@@ -12,6 +14,7 @@
 #ifdef WIN32
 #include <cstring>
 #endif
+#pragma warning(pop)
 
 #ifndef LANG
 #define LANG 0

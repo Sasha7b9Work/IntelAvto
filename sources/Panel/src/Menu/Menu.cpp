@@ -1,19 +1,15 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2023/09/08 20:52:34 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Settings.h"
-#include "Calculate/ValueFPGA.h"
 #include "Display/Display.h"
 #include "Display/Font/Font.h"
 #include "Keyboard/Keyboard.h"
-#include "Hardware/FPGA.h"
 #include "Menu/Hint.h"
 #include "Menu/MenuItems.h"
 #include "Menu/Menu.h"
 #include "Menu/Pages/PageIndication.h"
-#include "Menu/Pages/Channels/Channels.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
-#include "Menu/Pages/Pages.h"
 #include <cstring>
 
 
@@ -49,40 +45,8 @@ void Menu::Draw()
 }
 
 
-void Menu::Input::OnGovernorRotate(const Control &control)
+void Menu::Input::OnGovernorRotate(const Control &)
 {
-    if (Menu::OpenedPage() == PageTuneColors::self)
-    {
-        return;
-    }
-
-    if (CURRENT_CHANNEL_IS_A_OR_B && control.IsRotateGovernor())
-    {
-        int delta = Channel::Current()->set.typeSynch.IsHoldoff() ? 1 : 2;
-
-        if (control.value == Control::GovLeft)
-        {
-            delta = -delta;
-        }
-
-        if (PageIndication::calibrationMode.IsEnabled())
-        {
-            if (control.value == Control::GovLeft)
-            {
-                FPGA::GovernorData::DecreaseN();
-            }
-            else
-            {
-                FPGA::GovernorData::IncreaseN();
-            }
-            
-            FPGA::GovernorData::Write();
-        }
-        else
-        {
-            LevelSynch::Change(delta);
-        }
-    }
 }
 
 
@@ -102,7 +66,7 @@ bool Menu::Input::OpenPage(const Control &control)
         nullptr,              // Right,
         nullptr,              // Channels,
         nullptr,              // Enter,
-        PageService::self,    // Service,
+        nullptr,              // Service,
         nullptr,              // GovLeft,
         nullptr,              // GovRight,
         nullptr,              // Test,
@@ -142,11 +106,7 @@ bool Menu::Input::OnControl(const Control &control)
         control.value != Control::GovLeft &&
         control.value != Control::GovRight)
     {
-        FPGA::GovernorData::Reset();
-
         PageIndication::calibrationMode.value = CalibrationMode::Disabled;
-
-        FreqMeter::LoadCalibrationNoSave();
         
         return true;
     }
@@ -175,45 +135,16 @@ bool Menu::Input::OnControl(const Control &control)
         break;
 
     case Control::Mode:
-        Channel::Current()->PressSetup();
-        openedPage = (openedPage == Channel::Current()->pageModes) ? Channel::Current()->pageSettings : 
-                                                                     Channel::Current()->pageModes;
         Hint::Hide();
         return true;
 
     case Control::Channels:
-        {
-            bool openSettings = (Menu::OpenedPage() == Channel::Current()->pageSettings);
-            bool openModes = (Menu::OpenedPage() == Channel::Current()->pageModes);
-            Channel::SetCurrentNext();
-            Channel::LoadCurrentToFPGA(openSettings, openModes);
-        }
         return true;
 
     case Control::Test:
-        if ((Channel::A->mod.modeFrequency.IsRatioAC() && CURRENT_CHANNEL_IS_A) ||
-            (Channel::B->mod.modeFrequency.IsRatioBC() && CURRENT_CHANNEL_IS_B))
-        {
-        }
-        else
-        {
-            FreqMeter::modeTest.Switch();
-        }
         break;
 
     case Control::Auto:
-        if ((Channel::A->mod.typeMeasure.IsFrequency() && Channel::A->mod.modeFrequency.IsFrequency() && CURRENT_CHANNEL_IS_A) ||
-            (Channel::B->mod.typeMeasure.IsFrequency() && Channel::B->mod.modeFrequency.IsFrequency() && CURRENT_CHANNEL_IS_B) ||
-            (Channel::A->mod.typeMeasure.IsPeriod() && Channel::A->mod.modePeriod.IsPeriod() && CURRENT_CHANNEL_IS_A) ||
-            (Channel::B->mod.typeMeasure.IsPeriod() && Channel::B->mod.modePeriod.IsPeriod() && CURRENT_CHANNEL_IS_B) ||
-            (Channel::A->mod.typeMeasure.IsDuration() && Channel::A->mod.modeDuration.IsNdt() && CURRENT_CHANNEL_IS_A) ||
-            (Channel::B->mod.typeMeasure.IsDuration() && Channel::B->mod.modeDuration.IsNdt() && CURRENT_CHANNEL_IS_B))
-        {
-            FPGA::Auto::Refresh();
-            FreqMeter::LoadAuto();
-            FPGA::EnableAuto();
-            Keyboard::Lock();
-        }
         break;
 
     case Control::Indication:
@@ -241,16 +172,6 @@ bool Menu::Input::OnGovernorButton(const Control &control)
         if (PageIndication::launchSource == LaunchSource::OneTime)
         {
             PageIndication::OnceLaunchSwitchTrue();
-            FreqMeter::LoadOneTime();
-
-            return true;
-        }
-        else if ((CURRENT_CHANNEL_IS_A && Channel::A->mod.typeMeasure.IsCountPulse() && Channel::A->mod.modeCountPulse.Is_StartStop()) ||
-            (CURRENT_CHANNEL_IS_B && Channel::B->mod.typeMeasure.IsCountPulse() && Channel::B->mod.modeCountPulse.Is_StartStop()))
-        {
-            ModeStartStop::Toggle();
-            ModeStartStop::LoadToFPGA();
-
             return true;
         }
     }
@@ -263,11 +184,7 @@ void Menu::Init()
 {
     Input::SetFuncUpdate(Input::FuncUpdate);
 
-    openedPage = Channel::A->pageModes;
-
     SubscribeToEvents();
-
-    PageTuneColors::Init();
 }
 
 
@@ -312,6 +229,4 @@ void Menu::Input::SetFuncUpdate(void (*_funcUpdate)())
 
 void Menu::SubscribeToEvents()
 {
-    FreqMeter::modeTest.AddObserver(Channel::A->pageModes);
-    FreqMeter::modeTest.AddObserver(Channel::B->pageModes);
 }
