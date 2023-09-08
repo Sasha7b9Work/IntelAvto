@@ -488,19 +488,19 @@ void Page::OnEvent(EventType::E event)
 
 TypeMeasure *PageModes::GetTypeMeasure() const
 {
-    Switch *item = (Switch *)items[0];
+    Switch *it = (Switch *)items[0];
 
-    return (TypeMeasure *)item->state;
+    return (TypeMeasure *)it->state;
 }
 
 
 int PageModes::GetModeMeasure() const
 {
-    Switch *item = (Switch *)items[1];
+    Switch *it = (Switch *)items[1];
 
-    if (item != nullptr)
+    if (it != nullptr)
     {
-        Enumeration *state = item->state;
+        Enumeration *state = it->state;
 
         return state->value;
     }
@@ -511,9 +511,9 @@ int PageModes::GetModeMeasure() const
 
 bool PageModes::ExistTypeMeasure(uint8 type) const
 {
-    Switch *item = (Switch *)items[0];
+    Switch *it = (Switch *)items[0];
 
-    return item->state->correct[type];
+    return it->state->correct[type];
 }
 
 
@@ -543,9 +543,9 @@ void PageModes::ResetTypeAndModeMeasure()
 
 bool PageModes::ExistModeMeasure(int mode) const
 {
-    Switch *item = (Switch *)items[1];
+    Switch *it = (Switch *)items[1];
 
-    return item->state->correct[mode];
+    return it->state->correct[mode];
 }
 
 void PageModes::ResetModeMeasure()

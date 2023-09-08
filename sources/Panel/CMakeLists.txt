@@ -2,7 +2,7 @@
 
 project (Panel)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -28,12 +28,10 @@ add_compile_options(/wd4514)    # 'function' : unreferenced inline function has 
 add_compile_options(/wd4623)    # 'xxx': default constructor was implicitly defined as deleted
 add_compile_options(/wd4626)    # 'derived class' : assignment operator was implicitly defined as deleted because a base
                                 # class assignment operator is inaccessible or deleted
-add_compile_options(/wd4774)    # format string expected in argument N is not a string literal
 add_compile_options(/wd4820)    # 'N' bytes padding added after data member
 add_compile_options(/wd4996)    # This function or variable may be unsafe
 add_compile_options(/wd5027)    # move assignment operator was implicitly defined as deleted
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
-add_compile_options(/wd26812)
 
 
 file(GLOB HAL                 ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h

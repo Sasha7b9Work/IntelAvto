@@ -109,7 +109,7 @@ static int8_t CDC_Itf_Control (uint8 cmd, uint8* pbuf, uint16)
     return (USBD_OK);
 }
 
-static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length) //-V2009 //-V2558
+static int8_t CDC_Itf_Receive(uint8 * /*buffer*/, uint * /*length*/) //-V2009 //-V2558
 {
     USBD_CDC_ReceivePacket((USBD_HandleTypeDef *)HAL_USBD::handle);
 
