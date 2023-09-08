@@ -5,8 +5,6 @@
 #include "Hardware/HAL/HAL.h"
 #include "Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
-#include "SCPI/SCPI.h"
-#include "Tests.h"
 #include "Settings.h"
 
 
@@ -27,14 +25,11 @@ int main(void)
     VCP::Init();
     Menu::Init();
 
-    //    Tests::Run();
-
     Display::DrawWelcomeScreen();
 
     while (1)
     {
         Menu::Input::Update();
-        SCPI::Update();
         Display::Update();
     }
 }

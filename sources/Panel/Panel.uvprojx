@@ -16,8 +16,8 @@
         <TargetCommonOption>
           <Device>STM32F401RETx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.17.0</PackID>
-          <PackURL>https://www.keil.com/pack/</PackURL>
+          <PackID>Keil.STM32F4xx_DFP.2.16.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x18000) IROM(0x08000000,0x80000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -186,6 +186,7 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -541,41 +542,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Calculate</GroupName>
-          <Files>
-            <File>
-              <FileName>ValueFPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Calculate\ValueFPGA.h</FilePath>
-            </File>
-            <File>
-              <FileName>ValueCountPulse.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueCountPulse.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueDuration.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueDuration.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueFrequency.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueFrequency.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValuePeriod.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValuePeriod.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueFPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueFPGA.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Display</GroupName>
           <Files>
             <File>
@@ -723,26 +689,6 @@
         <Group>
           <GroupName>Hardware</GroupName>
           <Files>
-            <File>
-              <FileName>FPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\FPGA.h</FilePath>
-            </File>
-            <File>
-              <FileName>FPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\FPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FreqMeter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\FreqMeter.h</FilePath>
-            </File>
-            <File>
-              <FileName>FreqMeter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\FreqMeter.cpp</FilePath>
-            </File>
             <File>
               <FileName>VCP.h</FileName>
               <FileType>5</FileType>
@@ -929,11 +875,6 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>Pages.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
-            </File>
-            <File>
               <FileName>PageIndication.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\PageIndication.h</FilePath>
@@ -942,196 +883,6 @@
               <FileName>PageIndication.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageIndication.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageService.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageService.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/Channels</GroupName>
-          <Files>
-            <File>
-              <FileName>Channels.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\Channels.h</FilePath>
-            </File>
-            <File>
-              <FileName>Channels.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\Channels.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelB.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelB.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelC.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelC.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelD.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelD.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/Modes</GroupName>
-          <Files>
-            <File>
-              <FileName>Modes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\Modes.h</FilePath>
-            </File>
-            <File>
-              <FileName>Modes.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\Modes.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PagesModes.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PagesModes.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesB.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesB.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesC.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesC.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesD.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesD.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/Other</GroupName>
-          <Files>
-            <File>
-              <FileName>PageColors.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageColors.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageInfo.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageInfo.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageStatistics.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageStatistics.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTuneColors.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageTuneColors.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>SCPI</GroupName>
-          <Files>
-            <File>
-              <FileName>SCPI.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\SCPI.txt</FilePath>
-            </File>
-            <File>
-              <FileName>SCPI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\SCPI.h</FilePath>
-            </File>
-            <File>
-              <FileName>SCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\SCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UtilsSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\UtilsSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UtilsSCPI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\UtilsSCPI.h</FilePath>
-            </File>
-            <File>
-              <FileName>BufferSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\BufferSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>BufferSCPI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\BufferSCPI.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>SCPI/Process</GroupName>
-          <Files>
-            <File>
-              <FileName>DataSender.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\Process\DataSender.h</FilePath>
-            </File>
-            <File>
-              <FileName>DataSender.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\DataSender.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>DataSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\DataSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HeadSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\HeadSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\InputSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MeasureSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\MeasureSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>SetSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\SetSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UpgradeSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\UpgradeSCPI.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1179,26 +930,6 @@
               <FilePath>.\src\Utils\String.cpp</FilePath>
             </File>
             <File>
-              <FileName>Values.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Values.h</FilePath>
-            </File>
-            <File>
-              <FileName>Values.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Values.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueSTRICT.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\ValueSTRICT.h</FilePath>
-            </File>
-            <File>
-              <FileName>ValueSTRICT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\ValueSTRICT.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Debug.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\Debug.cpp</FilePath>
@@ -1220,36 +951,6 @@
             </File>
           </Files>
         </Group>
-        <Group>
-          <GroupName>Tests</GroupName>
-          <Files>
-            <File>
-              <FileName>Tests.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\Tests.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Tests.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\tests\Tests.h</FilePath>
-            </File>
-            <File>
-              <FileName>TestValuesFPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\TestValuesFPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>TestValueSTRICT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\TestValueSTRICT.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Utils.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\Utils.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
       </Groups>
     </Target>
     <Target>
@@ -1262,8 +963,8 @@
         <TargetCommonOption>
           <Device>STM32F401RETx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.17.0</PackID>
-          <PackURL>https://www.keil.com/pack/</PackURL>
+          <PackID>Keil.STM32F4xx_DFP.2.16.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x18000) IROM(0x08000000,0x80000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -1432,6 +1133,7 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
+            <nBranchProt>0</nBranchProt>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -1787,41 +1489,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Calculate</GroupName>
-          <Files>
-            <File>
-              <FileName>ValueFPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Calculate\ValueFPGA.h</FilePath>
-            </File>
-            <File>
-              <FileName>ValueCountPulse.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueCountPulse.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueDuration.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueDuration.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueFrequency.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueFrequency.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValuePeriod.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValuePeriod.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueFPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Calculate\ValueFPGA.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Display</GroupName>
           <Files>
             <File>
@@ -1969,26 +1636,6 @@
         <Group>
           <GroupName>Hardware</GroupName>
           <Files>
-            <File>
-              <FileName>FPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\FPGA.h</FilePath>
-            </File>
-            <File>
-              <FileName>FPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\FPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FreqMeter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\FreqMeter.h</FilePath>
-            </File>
-            <File>
-              <FileName>FreqMeter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\FreqMeter.cpp</FilePath>
-            </File>
             <File>
               <FileName>VCP.h</FileName>
               <FileType>5</FileType>
@@ -2175,11 +1822,6 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>Pages.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
-            </File>
-            <File>
               <FileName>PageIndication.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\PageIndication.h</FilePath>
@@ -2188,196 +1830,6 @@
               <FileName>PageIndication.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageIndication.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageService.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageService.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/Channels</GroupName>
-          <Files>
-            <File>
-              <FileName>Channels.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\Channels.h</FilePath>
-            </File>
-            <File>
-              <FileName>Channels.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\Channels.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelB.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelB.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelC.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelC.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ChannelD.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Channels\ChannelD.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/Modes</GroupName>
-          <Files>
-            <File>
-              <FileName>Modes.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\Modes.h</FilePath>
-            </File>
-            <File>
-              <FileName>Modes.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\Modes.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PagesModes.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PagesModes.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesB.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesB.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesC.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesC.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageModesD.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Modes\PageModesD.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages/Other</GroupName>
-          <Files>
-            <File>
-              <FileName>PageColors.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageColors.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageInfo.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageInfo.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageStatistics.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageStatistics.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageTuneColors.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Other\PageTuneColors.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>SCPI</GroupName>
-          <Files>
-            <File>
-              <FileName>SCPI.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\SCPI.txt</FilePath>
-            </File>
-            <File>
-              <FileName>SCPI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\SCPI.h</FilePath>
-            </File>
-            <File>
-              <FileName>SCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\SCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UtilsSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\UtilsSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UtilsSCPI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\UtilsSCPI.h</FilePath>
-            </File>
-            <File>
-              <FileName>BufferSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\BufferSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>BufferSCPI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\BufferSCPI.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>SCPI/Process</GroupName>
-          <Files>
-            <File>
-              <FileName>DataSender.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\SCPI\Process\DataSender.h</FilePath>
-            </File>
-            <File>
-              <FileName>DataSender.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\DataSender.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>DataSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\DataSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HeadSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\HeadSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\InputSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MeasureSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\MeasureSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>SetSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\SetSCPI.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>UpgradeSCPI.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\SCPI\Process\UpgradeSCPI.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2425,26 +1877,6 @@
               <FilePath>.\src\Utils\String.cpp</FilePath>
             </File>
             <File>
-              <FileName>Values.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Values.h</FilePath>
-            </File>
-            <File>
-              <FileName>Values.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Values.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ValueSTRICT.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\ValueSTRICT.h</FilePath>
-            </File>
-            <File>
-              <FileName>ValueSTRICT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\ValueSTRICT.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Debug.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Utils\Debug.cpp</FilePath>
@@ -2463,36 +1895,6 @@
               <FileName>StringUtils.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\StringUtils.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Tests</GroupName>
-          <Files>
-            <File>
-              <FileName>Tests.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\Tests.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Tests.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\tests\Tests.h</FilePath>
-            </File>
-            <File>
-              <FileName>TestValuesFPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\TestValuesFPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>TestValueSTRICT.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\TestValueSTRICT.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Utils.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\tests\Utils.cpp</FilePath>
             </File>
           </Files>
         </Group>
