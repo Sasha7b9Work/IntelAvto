@@ -764,7 +764,7 @@ int FontBig::Write(char *text, int x, int y, bool mapping, bool splitThrees)
 
         uint space = WriteSymbol(symbol, x, y, mapping);
 
-        x += (symbol >= '0' && symbol <= '9') ? 33 : space;
+        x += (symbol >= '0' && symbol <= '9') ? 33 : space; //-V1026
 
         text++;
 

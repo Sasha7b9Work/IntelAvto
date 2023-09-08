@@ -918,7 +918,7 @@ void FontMid::Write(char *text, int x, int y)
 	while (*text)
 	{
 		uint32_t space = WriteSymbol((uint8)*text, x, y);
-		x += space;
+		x += space; //-V1026
 		text++;
 	}
 }
