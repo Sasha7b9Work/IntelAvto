@@ -1,0 +1,31 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
+
+
+class Page;
+
+
+namespace Menu
+{
+    void Init();
+
+    void Draw();
+
+    Page* OpenedPage();
+
+    void SetOpenedPage(Page *page);
+
+    namespace Input
+    {
+        // Эта функция вызывается главном цикле
+        void Update();
+
+        // Установка функции обработки ввода
+        void SetFuncUpdate(void (*funcUpdate)());
+
+        // Это функция обработки обработки по умолчанию
+        void FuncUpdate();
+
+        void FuncEmptyUpdate();
+    };
+};
