@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Display/Display.h"
 #include "Menu/Menu.h"
-#include "Menu/Pages/Channels/Channels.h"
 #include "Menu/Pages/PageIndication.h"
 #include "SCPI/SCPI.h"
 #include "SCPI/UtilsSCPI.h"

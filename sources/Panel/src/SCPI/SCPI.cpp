@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/VCP.h"
-#include "Menu/Pages/Channels/Channels.h"
 #include "SCPI/SCPI.h"
 #include "SCPI/UtilsSCPI.h"
 #include "Utils/Buffer.h"

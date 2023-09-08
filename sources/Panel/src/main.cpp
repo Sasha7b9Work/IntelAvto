@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "Log.h"
 #include "Display/Display.h"
-#include "Hardware/FPGA.h"
 #include "Hardware/VCP.h"
 #include "Hardware/HAL/HAL.h"
 #include "Keyboard/Keyboard.h"
@@ -17,7 +16,6 @@ int main(void)
 
     glob_set.Load();
 
-    FPGA::Init();
     Display::Init();
 
     if (Keyboard::Init())
@@ -35,7 +33,6 @@ int main(void)
 
     while (1)
     {
-        FPGA::Update();
         Menu::Input::Update();
         SCPI::Update();
         Display::Update();
