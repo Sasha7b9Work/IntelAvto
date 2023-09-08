@@ -18,7 +18,7 @@ namespace Menu
     void SubscribeToEvents();
 
     // Текущая отображаемая страница меню
-    Page *openedPage = nullptr;
+    Page *openedPage = PageIndication::self;
 
     void (*funcUpdate)() = nullptr;
 
