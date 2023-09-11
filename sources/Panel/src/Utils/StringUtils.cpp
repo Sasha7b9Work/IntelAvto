@@ -4,17 +4,19 @@
 #include "Utils/Buffer.h"
 #include "Utils/Stack.h"
 #include "Utils/StringUtils.h"
+#ifdef WIN32
 #pragma warning(push)
 #pragma warning(disable:4668)
+#endif
 #include <iomanip>
 #include <cstring>
 #include <cctype>
 #include <sstream>
 #include <cstdlib>
-#ifdef WIN32
 #include <cstring>
-#endif
+#ifdef WIN32
 #pragma warning(pop)
+#endif
 
 #ifndef LANG
 #define LANG 0
