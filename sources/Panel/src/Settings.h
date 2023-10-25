@@ -1,26 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Menu/MenuItems.h"
+#include "Menu/Pages/PageIndication.h"
 
 
 #define LANG_IS_RU          (gset.language == Language::RU)
-
-
-struct TypeSignal
-{
-    enum E
-    {
-        _1,
-        _2a,
-        _2b,
-        _3a,
-        _3b,
-        _4,
-        _5a,
-        _5b,
-        Count
-    };
-};
 
 
 // Стиль ГУИ - как отображать симолы

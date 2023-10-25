@@ -3,18 +3,22 @@
 #include "Menu/MenuItems.h"
 
 
-struct DisplayTime : public Enumeration
+struct TypeSignal : public Enumeration
 {
     enum E
     {
-        _100ms,             // 0.1s.
-        _1s,                // 1s.
-        _10s                // 10s.
+        _1,
+        _2a,
+        _2b,
+        _3a,
+        _3b,
+        _4,
+        _5a,
+        _5b,
+        Count
     };
 
-    explicit DisplayTime(E v) : Enumeration((uint8)v) {};
-    bool Is_1s() const {  return (value == _1s); }
-    bool Is_10s() const { return (value == _10s); }
+    explicit TypeSignal(E v) : Enumeration((uint8)v) {};
 };
 
 struct RefGenerator : public Enumeration
@@ -76,8 +80,7 @@ class PageIndication
 public:
     static Page *self;
 
-    // Время отображения результата измерения
-    static DisplayTime displayTime;
+    static TypeSignal typeSignal;
 
     // Выбор опорного генератора
     static RefGenerator refGenerator;

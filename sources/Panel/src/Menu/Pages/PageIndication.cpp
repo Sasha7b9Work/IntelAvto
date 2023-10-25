@@ -12,7 +12,7 @@ using namespace Primitives;
 extern Item *items[7];
 static bool onceLaunch = false;
 
-DisplayTime     PageIndication::displayTime(DisplayTime::_100ms);
+TypeSignal      PageIndication::typeSignal(TypeSignal::_1);
 RefGenerator    PageIndication::refGenerator(RefGenerator::Internal);
 LaunchSource    PageIndication::launchSource(LaunchSource::Internal);
 CalibrationMode PageIndication::calibrationMode(CalibrationMode::Disabled);
@@ -21,12 +21,6 @@ MemoryMode      PageIndication::memoryMode(MemoryMode::On);
 
 static void OnPress_TypeSignal()
 {
-    gset.signal = (TypeSignal::E)(gset.signal + 1);
-
-    if (gset.signal == TypeSignal::Count)
-    {
-        gset.signal = TypeSignal::_1;
-    }
 }
 
 // Выбор типа сигнала
@@ -35,7 +29,7 @@ DEF_SWITCH_3(sTypeSignal,
     "Время индикации", "Display time",
     "0.1s.", "1s.", "10s.",
     "0.1s.", "1s.", "10s.",
-    PageIndication::displayTime, OnPress_TypeSignal
+    PageIndication::typeSignal, OnPress_TypeSignal
 );
 
 
