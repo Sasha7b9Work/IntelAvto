@@ -52,19 +52,14 @@ bool Display::sendToSCPI = false;
 bool Display::drawingScene = false;
 
 
-struct Coord
-{
-    int x;
-    int y;
-};
-
-
 static int yString = 110;
 
 static Coord coordMemory = { 15, yString };
 static Coord coordTest = { 40, yString };
 static Coord coordExtGenerator = { 95, yString };
 static Coord coordLaunch = { 130, yString };
+
+static void DrawSignal();
 
 
 void Display::Init()
@@ -74,14 +69,6 @@ void Display::Init()
     Font::Set(TypeFont::GOSTAU16BOLD);
 
     Font::SetSpacing(2);
-}
-
-
-static void DrawValue(pString string, int x, int y)
-{
-    Rectangle(Font::GetLengthText(string) + 5, 20).FillRounded(x - 3, y - 3, 2, Color::BACK, Color::FILL);
-
-    Text(string).Write(x, y, Color::FILL);
 }
 
 
@@ -330,63 +317,8 @@ void Display::DrawScreen()
     Menu::Draw();
 
     Text(String(LANG_IS_RU ? "Тип сигнала : %s" : "Type signal : %s", PageIndication::typeSignal.ToString().c_str())).Write(300, 6, Color::WHITE);
-}
 
-
-static void DrawHint(int x, int y)
-{
-    static bool autoFlag = false;
-
-    if ((TIME_MS < timeAutoHint + 10000) && timeAutoHint != 0 && autoFlag)
-    {
-        Rectangle(360, 30).FillRounded(x, y, 2, Color::BACK, Color::BACK);
-    }
-    else
-    {
-    }
-}
-
-
-static void DrawInfo()
-{
-    if (PageIndication::memoryMode == MemoryMode::On)
-    {
-    }
-
-    if (PageIndication::refGenerator == RefGenerator::External)
-    {
-        DrawValue(LANG_IS_RU ? "ОГ" : "Ref", coordExtGenerator.x, coordExtGenerator.y);
-    }
-
-    if (PageIndication::launchSource.IsExternal())
-    {
-        DrawValue(LANG_IS_RU ? "Зап:внешн" : "Launch:ext", coordLaunch.x, coordLaunch.y);
-    }
-    else if (PageIndication::launchSource.IsOneTime())
-    {
-        DrawValue(LANG_IS_RU ? "Зап:однокр" : "Launch:single", coordLaunch.x, coordLaunch.y);
-    }
-
-    if (PageIndication::launchSource == LaunchSource::OneTime)
-    {
-        if (PageIndication::OnceLaunch() == true)
-        {
-            if (second == 0)
-            {
-                second = (int)TIME_MS;
-            }
-            Text(LANG_IS_RU ? "ПУСК" : "START").Write(430, 110);
-            if ((second + 1000) < (int)TIME_MS)
-            {
-                second = 0;
-                PageIndication::OnceLaunchSwitchFalse();
-            }
-        }
-        else
-        {
-            Text(" ").Write(430, 80);
-        }
-    }
+    DrawSignal();
 }
 
 
@@ -472,4 +404,26 @@ bool Display::InDrawingPart(int y, int height)
 
 #endif
 
+}
+
+
+void DrawSignal()
+{
+    Coord coord = { 120, 50 };
+
+    if (PageIndication::typeSignal == TypeSignal::_1)
+    {
+        VLine(25).Draw(coord.x, coord.y);
+        coord.x = HLine(50).Draw(coord.x, coord.y, Color::WHITE);
+        coord.y = VLine(25).Draw(coord.x, coord.y);
+        coord.x = HLine(20).Draw(coord.x, coord.y);
+        coord = Line().Draw(coord.x, coord.y, coord.x + 20, coord.y + 150);
+        coord = Line().Draw(coord.x, coord.y, coord.x + 30, coord.y - 110);
+        coord = Line().Draw(coord.x, coord.y, coord.x + 50, coord.y - 40);
+        coord.x = HLine(50).Draw(coord.x, coord.y);
+        VLine(25).Draw(coord.x, coord.y - 25);
+        coord.x = HLine(50).Draw(coord.x, coord.y - 25);
+        coord.y = VLine(25).Draw(coord.x, coord.y - 25);
+        coord.x = HLine(20).Draw(coord.x, coord.y);
+    }
 }

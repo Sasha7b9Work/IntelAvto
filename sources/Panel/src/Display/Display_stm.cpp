@@ -268,15 +268,15 @@ void Point::Draw(int x, int y)
 }
 
 
-void HLine::Draw(int x, int y, Color color)
+int HLine::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    Draw(x, y);
+    return Draw(x, y);
 }
 
 
-void HLine::Draw(int x, int y)
+int HLine::Draw(int x, int y)
 {
     y -= Display::TopRow();
 
@@ -296,10 +296,12 @@ void HLine::Draw(int x, int y)
             *pointer++ = current.Index();
         }
     }
+    
+    return x + length;
 }
 
 
-void VLine::Draw(int x, int y)
+int VLine::Draw(int x, int y)
 {
     y -= Display::TopRow();
 
@@ -331,10 +333,12 @@ void VLine::Draw(int x, int y)
             }
         }
     }
+    
+    return y + length;
 }
 
 
-void Line::Draw(int x1, int y1, int x2, int y2)
+Coord Line::Draw(int x1, int y1, int x2, int y2)
 {
     if ((x2 - x1) == 0 && (y2 - y1) == 0)
     {
@@ -383,4 +387,8 @@ void Line::Draw(int x1, int y1, int x2, int y2)
         }
         e = e + 2 * dy;
     }
+
+    Coord result = { x2, y2 };
+    
+    return result;
 }
