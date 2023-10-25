@@ -206,8 +206,6 @@ void Menu::Input::FuncUpdate()
         {
             OpenPage(control);
         }
-
-        Display::Refresh();
     }
 }
 

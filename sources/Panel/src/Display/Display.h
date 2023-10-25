@@ -24,9 +24,6 @@ struct Display
 
     static void Init();
 
-    // Вызвать, если требуется перерисовка
-    static void Refresh();
-
     static void Update();
 
     static void BeginScene(int x = -1, int y = -1);

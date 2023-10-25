@@ -3,7 +3,24 @@
 #include "Menu/MenuItems.h"
 
 
-#define LANG_IS_RU          (glob_set.language == Language::RU)
+#define LANG_IS_RU          (gset.language == Language::RU)
+
+
+struct TypeSignal
+{
+    enum E
+    {
+        _1,
+        _2a,
+        _2b,
+        _3a,
+        _3b,
+        _4,
+        _5a,
+        _5b,
+        Count
+    };
+};
 
 
 // Стиль ГУИ - как отображать симолы
@@ -34,15 +51,16 @@ struct Language
 
 struct Settings
 {
-    uint         size;
-    ColorScheme  schemes[ColorScheme::COUNT];
-    StyleGUI     styleGUI;
-    Language::E  language;
-    uint8        colorScheme;
+    uint          size;
+    ColorScheme   schemes[ColorScheme::COUNT];
+    StyleGUI      styleGUI;
+    Language::E   language;
+    uint8         colorScheme;
+    TypeSignal::E signal;
 
     void Save();
     void Load();
     void Reset();
 };
 
-extern Settings glob_set;
+extern Settings gset;

@@ -17,7 +17,6 @@ void init()
 
 void update()
 {
-    Display::Refresh();
     Menu::Input::Update();
     Display::Update();
 }

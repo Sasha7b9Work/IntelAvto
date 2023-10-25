@@ -82,7 +82,7 @@ void Console::AddString(pchar string)
 
     inProcessAddingString = false;
 
-    Display::Refresh();
+    Display::Update();
 }
 
 

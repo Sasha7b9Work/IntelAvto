@@ -599,16 +599,6 @@
               <FilePath>.\src\Display\Primitives.cpp</FilePath>
             </File>
             <File>
-              <FileName>RedrawingZone.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\RedrawingZone.h</FilePath>
-            </File>
-            <File>
-              <FileName>RedrawingZone.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\RedrawingZone.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Symbols.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Symbols.h</FilePath>
@@ -1543,16 +1533,6 @@
               <FileName>Primitives.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Display\Primitives.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RedrawingZone.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\RedrawingZone.h</FilePath>
-            </File>
-            <File>
-              <FileName>RedrawingZone.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\RedrawingZone.cpp</FilePath>
             </File>
             <File>
               <FileName>Symbols.h</FileName>

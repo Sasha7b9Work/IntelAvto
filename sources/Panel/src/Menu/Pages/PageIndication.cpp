@@ -5,6 +5,7 @@
 #include "Menu/MenuItems.h"
 #include "Menu/Pages/PageIndication.h"
 #include "Menu/MenuItemsDef.h"
+#include "Settings.h"
 
 using namespace Primitives;
 
@@ -20,7 +21,12 @@ MemoryMode      PageIndication::memoryMode(MemoryMode::On);
 
 static void OnPress_TypeSignal()
 {
+    gset.signal = (TypeSignal::E)(gset.signal + 1);
 
+    if (gset.signal == TypeSignal::Count)
+    {
+        gset.signal = TypeSignal::_1;
+    }
 }
 
 // Выбор типа сигнала

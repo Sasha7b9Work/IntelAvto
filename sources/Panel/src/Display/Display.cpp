@@ -13,7 +13,6 @@
 #include "Menu/Pages/PageIndication.h"
 #include "Utils/String.h"
 #include "Utils/StringUtils.h"
-#include "Display/RedrawingZone.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -30,7 +29,6 @@ static void DrawInfo();
 static void SetTopRow(int i);
 
 
-static bool needRedraw = true;      // Если true, требуется перерисовка дисплея
 static uint timeAutoHint = 0;
 static int second = 0;
 static int topRow = 0;
@@ -69,23 +67,6 @@ static Coord coordExtGenerator = { 95, yString };
 static Coord coordLaunch = { 130, yString };
 
 
-static const int MAX_OBJECTS = 10;
-static RedrawingZone *objects[MAX_OBJECTS];
-static int numObjects = 0;
-
-static DataZone sDataZone;
-DataZone *Display::zoneData = &sDataZone;
-
-static ProgressBarTimeMeasureZone sProgressBarTimeMeasureZone;
-ProgressBarTimeMeasureZone *Display::zoneProgressBarTimeMeasure = &sProgressBarTimeMeasureZone;
-
-
-static void AddObject(RedrawingZone *object)
-{
-    objects[numObjects++] = object;
-}
-
-
 void Display::Init()
 {
     InitHardware();
@@ -93,9 +74,6 @@ void Display::Init()
     Font::Set(TypeFont::GOSTAU16BOLD);
 
     Font::SetSpacing(2);
-
-    AddObject(zoneData);
-    AddObject(zoneProgressBarTimeMeasure);
 }
 
 
@@ -311,78 +289,12 @@ static void SetTopRow(int i)
 }
 
 
-void Display::Refresh()
-{
-    needRedraw = true;
-
-    for (int i = 0; i < numObjects; i++)
-    {
-        objects[i]->Refresh();
-    }
-}
-
-
 void Display::Update()
 {
-#ifdef GUI
-
     BeginScene();
     DrawScreen();
     Console::Draw();
     EndScene();
-
-#else 
-
-    static uint currentFramesInSec = 0;         // Столько кадров отрисовано за текущую секунду
-    static uint currentTimePaintInSec = 0;      // Столько времени потрачено на отрисовку за текущую секунду
-    static char prevHint = 0;
-
-    zoneProgressBarTimeMeasure->Refresh();      // Прогресс-бар будем перерисовывать каждый кадр
-
-    if (Hint::Text()[0] != prevHint)            // Если изменилась подсказка - перерисовываем экран
-    {
-        prevHint = Hint::Text()[0];
-
-        Display::Refresh();
-    }
-
-    if (timeAutoHint != 0U && (TIME_MS - timeAutoHint) > 10000)
-    {
-        timeAutoHint = 0U;
-        Display::Refresh();
-    }
-
-    if (needRedraw)
-    {
-        timeStart = TIME_MS;
-
-        for (int i = 0; i < NUM_PARTS; i++)
-        {
-            DrawPartScreen(i, true);
-        }
-
-        timeFrame = TIME_MS - timeStart;
-        currentFramesInSec++;
-        currentTimePaintInSec += timeFrame;
-    }
-
-    for (int i = 0; i < numObjects; i++)
-    {
-        objects[i]->Update(RedrawingZone::ModeDraw::ToHardware);
-    }
-
-    needRedraw = false;
-
-    if (TIME_MS >= beginSecond + 1000)
-    {
-        fps = currentFramesInSec;
-        currentFramesInSec = 0;
-        beginSecond = TIME_MS;
-        timePaint = currentTimePaintInSec;
-        currentTimePaintInSec = 0;
-    }
-
-#endif
 }
 
 
@@ -426,11 +338,6 @@ void Display::DrawScreen()
         DrawHint(10, Display::PHYSICAL_HEIGHT - Item::HEIGHT - 30);
 
         DrawInfo();
-
-        for (int i = 0; i < numObjects; i++)
-        {
-            objects[i]->Update(RedrawingZone::ModeDraw::ToBuffer);
-        }
 
         Menu::Draw();
     }
@@ -504,7 +411,7 @@ void Display::SendToSCPI()
 {
     sendToSCPI = true;
 
-    Refresh();
+    Update();
 }
 
 

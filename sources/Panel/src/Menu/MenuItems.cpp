@@ -575,7 +575,7 @@ bool Switch::SetValue(uint8 v)
     if (state->SetValue(v))
     {
         FuncOnPress();
-        Display::Refresh();
+        Display::Update();
         return true;
     }
 
@@ -586,7 +586,7 @@ bool Switch::SetValue(uint8 v)
 
 pchar Button::GetTitle() const
 {
-    return text[glob_set.language];
+    return text[gset.language];
 }
 
 
@@ -610,11 +610,11 @@ pchar Choice::Title() const
 
 pchar Item::GetHint() const
 {
-    return hint[glob_set.language];
+    return hint[gset.language];
 }
 
 
 pchar Switch::Title() const
 {
-    return text[glob_set.language];
+    return text[gset.language];
 }

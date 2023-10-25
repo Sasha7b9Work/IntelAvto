@@ -12,7 +12,7 @@ int main(void)
 {
     HAL::Init();
 
-    glob_set.Load();
+    gset.Load();
 
     Display::Init();
 

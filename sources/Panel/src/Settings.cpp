@@ -55,11 +55,12 @@ static Settings def_set =
     },
     StyleGUI(StyleGUI::Modern),
     Language::RU,
-    0                                           // colorScheme
+    0,                                          // colorScheme
+    TypeSignal::_1
 };
 
 
-Settings glob_set = def_set;
+Settings gset = def_set;
 
 
 void Settings::Load()
@@ -76,5 +77,5 @@ void Settings::Save()
 
 void Settings::Reset()
 {
-    glob_set.schemes[glob_set.colorScheme] = def_colors[glob_set.colorScheme];
+    gset.schemes[gset.colorScheme] = def_colors[gset.colorScheme];
 }

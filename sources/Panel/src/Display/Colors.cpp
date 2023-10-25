@@ -26,5 +26,5 @@ uint &Color::Value() const
 
 ColorScheme &ColorScheme::Current()
 {
-    return glob_set.schemes[glob_set.colorScheme];
+    return gset.schemes[gset.colorScheme];
 }
