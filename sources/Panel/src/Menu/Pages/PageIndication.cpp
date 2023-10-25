@@ -24,13 +24,14 @@ static void OnPress_TypeSignal()
 }
 
 // Выбор типа сигнала
-DEF_SWITCH_3(sTypeSignal,
+DEF_SWITCH_8(sTypeSignal,
     "Сигнал", "Signal",
     "Время индикации", "Display time",
-    "0.1s.", "1s.", "10s.",
-    "0.1s.", "1s.", "10s.",
+    "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
+    "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
     PageIndication::typeSignal, OnPress_TypeSignal
 );
+
 
 
 static void OnPress_RefGenerator()

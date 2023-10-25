@@ -327,20 +327,9 @@ void Display::DrawPartScreen(int num, bool)
 
 void Display::DrawScreen()
 {
-    if (PageIndication::calibrationMode.IsEnabled())
-    {
-        Text(LANG_IS_RU ? "---Режим Калибровка---" : "---Calibration mode---").Write(140, 10, Color::FILL);
-        Text(LANG_IS_RU ? "Нажмите ЭНК. для сохранения" : "Click ENC. to preserve").Write(125, 40);
-        Text(LANG_IS_RU ? "Нажмите любую кнопку для выхода" : "Press any button to exit").Write(105, 70);
-    }
-    else
-    {
-        DrawHint(10, Display::PHYSICAL_HEIGHT - Item::HEIGHT - 30);
+    Menu::Draw();
 
-        DrawInfo();
-
-        Menu::Draw();
-    }
+    Text(String(LANG_IS_RU ? "Тип сигнала : %s" : "Type signal : %s", PageIndication::typeSignal.ToString().c_str())).Write(300, 6, Color::WHITE);
 }
 
 
