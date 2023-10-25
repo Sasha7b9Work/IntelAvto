@@ -409,10 +409,15 @@ bool Display::InDrawingPart(int y, int height)
 
 void DrawSignal()
 {
-    Coord coord = { 120, 50 };
+    Coord coord = { 130, 50 };
 
     if (PageIndication::typeSignal == TypeSignal::_1)
     {
+        VLine(230).Draw(130, 10, Color::GRAY);
+        HLine(330).Draw(130, 75);
+        ArrowRight().Draw(130 + 330, 75);
+        ArrowUp().Draw(130, 10);
+
         VLine(25).Draw(coord);
         coord.x = HLine(50).Draw(coord, Color::WHITE);
         coord.y = VLine(25).Draw(coord);

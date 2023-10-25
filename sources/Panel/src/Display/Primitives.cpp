@@ -78,3 +78,25 @@ void DLine::Draw(int x, int y)
         y += dy;
     }
 }
+
+
+void ArrowRight::Draw(int x, int y)
+{
+    int d = 3;
+    int width = 15;
+
+    HLine(width).Draw(x, y);
+    Line().Draw(x, y - d, x + width, y);
+    Line().Draw(x, y + d, x + width, y);
+}
+
+
+void ArrowUp::Draw(int x, int y)
+{
+    int d = 3;
+    int height = 15;
+
+    VLine(height).Draw(x, y);
+    Line().Draw(x, y, x - d, y + height);
+    Line().Draw(x, y, x + d, y + height);
+}

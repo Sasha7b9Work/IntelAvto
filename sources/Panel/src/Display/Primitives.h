@@ -47,6 +47,7 @@ namespace Primitives
     {
     public:
         VLine(int l) : length(l) {};
+        int Draw(int x, int y, Color color);
         int Draw(int x, int y);
         int Draw(const Coord &);
     private:
@@ -71,5 +72,17 @@ namespace Primitives
     public:
         Coord Draw(int x1, int y1, int x2, int y2);
         Coord Draw(const Coord &, int x2, int y2);
+    };
+
+    class ArrowRight
+    {
+    public:
+        void Draw(int x, int y);
+    };
+
+    class ArrowUp
+    {
+    public:
+        void Draw(int x, int y);
     };
 }

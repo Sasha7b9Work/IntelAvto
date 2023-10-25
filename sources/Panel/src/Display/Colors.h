@@ -16,6 +16,7 @@ struct Color
     static Color TYPE_BLUE;         // Синий компонент для настройки
     static Color WHITE;             // Белый
     static Color EMPTY;             // Чёрный фон
+    static Color GRAY;
 
     static const int COUNT = 13;
 

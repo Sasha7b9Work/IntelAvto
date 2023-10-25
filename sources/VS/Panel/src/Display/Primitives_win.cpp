@@ -44,6 +44,14 @@ int HLine::Draw(const Coord &coord)
 }
 
 
+int VLine::Draw(int x, int y, Color color)
+{
+    color.SetAsCurrent();
+
+    return Draw(x, y);
+}
+
+
 int VLine::Draw(int x, int y)
 {
     memDC.DrawLine({ x, y }, { x, y + length });
@@ -84,3 +92,4 @@ void Point::Draw(int x, int y)
 {
     memDC.DrawPoint({ x, y });
 }
+

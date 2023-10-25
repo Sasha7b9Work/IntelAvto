@@ -17,6 +17,8 @@ Color Color::TYPE_BLUE(6);
 Color Color::WHITE(7);
 Color Color::EMPTY(8);
 
+Color Color::GRAY(9);
+
 
 uint &Color::Value() const
 {
