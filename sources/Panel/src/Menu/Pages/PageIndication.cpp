@@ -18,18 +18,18 @@ CalibrationMode PageIndication::calibrationMode(CalibrationMode::Disabled);
 MemoryMode      PageIndication::memoryMode(MemoryMode::On);
 
 
-static void OnPress_DisplayTime()
+static void OnPress_TypeSignal()
 {
 
 }
 
-// Выбор времени отображения результата измерения
-DEF_SWITCH_3(sDisplayTime,
-    "Тест", "Test",
+// Выбор типа сигнала
+DEF_SWITCH_3(sTypeSignal,
+    "Сигнал", "Signal",
     "Время индикации", "Display time",
     "0.1s.", "1s.", "10s.",
     "0.1s.", "1s.", "10s.",
-    PageIndication::displayTime, OnPress_DisplayTime
+    PageIndication::displayTime, OnPress_TypeSignal
 );
 
 
@@ -106,7 +106,7 @@ DEF_SWITCH_2(sMemoryMode,
 
 static Item *items[7] =
 {
-    &sDisplayTime,
+    &sTypeSignal,
     &sRefGenerator,
     &sLaunchSource,
     &sCalibration,
