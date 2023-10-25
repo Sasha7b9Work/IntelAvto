@@ -24,11 +24,23 @@ int HLine::Draw(int x, int y, Color color)
 }
 
 
+int HLine::Draw(const Coord &coord, Color color)
+{
+    return Draw(coord.x, coord.y, color);
+}
+
+
 int HLine::Draw(int x, int y)
 {
     memDC.DrawLine({ x, y }, { x + length, y });
 
     return x + length;
+}
+
+
+int HLine::Draw(const Coord &coord)
+{
+    return Draw(coord.x, coord.y);
 }
 
 
@@ -40,11 +52,23 @@ int VLine::Draw(int x, int y)
 }
 
 
+int VLine::Draw(const Coord &coord)
+{
+    return Draw(coord.x, coord.y);
+}
+
+
 Coord Line::Draw(int x1, int y1, int x2, int y2)
 {
     memDC.DrawLine({ x1, y1 }, { x2, y2 });
 
     return { x2, y2 };
+}
+
+
+Coord Line::Draw(const Coord &coord, int x2, int y2)
+{
+    return Draw(coord.x, coord.y, x2, y2);
 }
 
 

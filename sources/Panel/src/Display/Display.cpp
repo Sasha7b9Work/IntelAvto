@@ -413,17 +413,30 @@ void DrawSignal()
 
     if (PageIndication::typeSignal == TypeSignal::_1)
     {
-        VLine(25).Draw(coord.x, coord.y);
-        coord.x = HLine(50).Draw(coord.x, coord.y, Color::WHITE);
-        coord.y = VLine(25).Draw(coord.x, coord.y);
-        coord.x = HLine(20).Draw(coord.x, coord.y);
-        coord = Line().Draw(coord.x, coord.y, coord.x + 20, coord.y + 150);
-        coord = Line().Draw(coord.x, coord.y, coord.x + 30, coord.y - 110);
-        coord = Line().Draw(coord.x, coord.y, coord.x + 50, coord.y - 40);
-        coord.x = HLine(50).Draw(coord.x, coord.y);
+        VLine(25).Draw(coord);
+        coord.x = HLine(50).Draw(coord, Color::WHITE);
+        coord.y = VLine(25).Draw(coord);
+        coord.x = HLine(20).Draw(coord);
+        coord = Line().Draw(coord, coord.x + 20, coord.y + 150);
+        coord = Line().Draw(coord, coord.x + 30, coord.y - 110);
+        coord = Line().Draw(coord, coord.x + 50, coord.y - 40);
+        coord.x = HLine(50).Draw(coord);
         VLine(25).Draw(coord.x, coord.y - 25);
         coord.x = HLine(50).Draw(coord.x, coord.y - 25);
         coord.y = VLine(25).Draw(coord.x, coord.y - 25);
-        coord.x = HLine(20).Draw(coord.x, coord.y);
+        coord.x = HLine(20).Draw(coord);
+    }
+    else if (PageIndication::typeSignal == TypeSignal::_2a)
+    {
+        coord.y += 150;
+
+        coord.x = HLine(50).Draw(coord, Color::WHITE);
+        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
+        coord = Line().Draw(coord, coord.x + 10, coord.y - 10);
+        coord.x = HLine(10).Draw(coord);
+        coord = Line().Draw(coord, coord.x + 10, coord.y + 10);
+        coord = Line().Draw(coord, coord.x + 50, coord.y + 140);
+        coord.x = HLine(100).Draw(coord);
+        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
     }
 }

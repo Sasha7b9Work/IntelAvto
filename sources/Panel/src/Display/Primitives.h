@@ -35,6 +35,8 @@ namespace Primitives
     public:
         HLine(int _length) : length(_length) {};
         int Draw(int x, int y, Color color);
+        int Draw(const Coord &, Color color);
+        int Draw(const Coord &);
         int Draw(int x, int y);
     private:
         const int length;
@@ -46,6 +48,7 @@ namespace Primitives
     public:
         VLine(int l) : length(l) {};
         int Draw(int x, int y);
+        int Draw(const Coord &);
     private:
         const int length;
     };
@@ -67,5 +70,6 @@ namespace Primitives
     {
     public:
         Coord Draw(int x1, int y1, int x2, int y2);
+        Coord Draw(const Coord &, int x2, int y2);
     };
 }

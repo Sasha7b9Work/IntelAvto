@@ -276,6 +276,18 @@ int HLine::Draw(int x, int y, Color color)
 }
 
 
+int HLine::Draw(const Coord &coord)
+{
+    return Draw(coord.x, coord.y);
+}
+
+
+int HLine::Draw(const Coord &coord, Color color)
+{
+    return Draw(coord.x, coord.y, color);
+}
+
+
 int HLine::Draw(int x, int y)
 {
     y -= Display::TopRow();
@@ -298,6 +310,12 @@ int HLine::Draw(int x, int y)
     }
     
     return x + length;
+}
+
+
+int VLine::Draw(const Coord &coord)
+{
+    return Draw(coord.x, coord.y);
 }
 
 
@@ -335,6 +353,12 @@ int VLine::Draw(int x, int y)
     }
     
     return y + length;
+}
+
+
+Coord Line::Draw(const Coord &coord, int x2, int y2)
+{
+    return Draw(coord.x, coord.y, x2, y2);
 }
 
 
