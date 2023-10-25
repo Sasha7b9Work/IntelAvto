@@ -182,7 +182,7 @@ void Page::Draw(int x, int y, int, bool)
 
             items[i]->Draw(x, y + 5, WidthItem(i), selected);
 
-            x += WidthItem(i);
+            y += HEIGHT;
         }
     }
 
@@ -202,25 +202,25 @@ int Page::WidthItem(int num) const
 
     int result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 6) : (Display::PHYSICAL_WIDTH / 6);
 
-    if (NumItems() == 5)
-    {
-        result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 5) : (Display::PHYSICAL_WIDTH / 5);
-
-        if (num == 4) { result += 3; }
-
-        return result;
-    }
-
-    if (NumItems() == 4)
-    {
-        result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 4) : (Display::PHYSICAL_WIDTH / 4);
-
-        if (num == 3) { result += 2; }
-
-        return result;
-    }
-
-    if (num == 5) { result += 3; }
+//    if (NumItems() == 5)
+//    {
+//        result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 5) : (Display::PHYSICAL_WIDTH / 5);
+//
+//        if (num == 4) { result += 3; }
+//
+//        return result;
+//    }
+//
+//    if (NumItems() == 4)
+//    {
+//        result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 4) : (Display::PHYSICAL_WIDTH / 4);
+//
+//        if (num == 3) { result += 2; }
+//
+//        return result;
+//    }
+//
+//    if (num == 5) { result += 3; }
 
     return result;
 }
@@ -321,7 +321,7 @@ void Button::Draw(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
-    Text(Title()).Write(x, y + 7, width);
+    Text(GetTitle()).Write(x, y + 7, width);
 }
 
 
@@ -584,9 +584,16 @@ bool Switch::SetValue(uint8 v)
 
 
 
-pchar Button::Title() const
+pchar Button::GetTitle() const
 {
     return text[glob_set.language];
+}
+
+
+void Button::SetTitle(pchar ru, pchar en)
+{
+    text[0] = ru;
+    text[1] = en;
 }
 
 

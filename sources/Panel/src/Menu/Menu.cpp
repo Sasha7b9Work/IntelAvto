@@ -41,7 +41,7 @@ namespace Menu
 
 void Menu::Draw()
 {
-    openedPage->Draw(0, Display::PHYSICAL_HEIGHT - Item::HEIGHT - 1, 0);
+    openedPage->Draw(0, 0, 0);
 }
 
 

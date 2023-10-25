@@ -80,7 +80,8 @@ public:
     };
     virtual void Draw(int x, int y, int width, bool selected = false);
     virtual void OnEnterKeyGovernor(const Control &);
-    pchar Title() const;
+    pchar GetTitle() const;
+    void SetTitle(pchar ru, pchar en);
 private:
     pchar text[2];
     void (*funcOnPress)();

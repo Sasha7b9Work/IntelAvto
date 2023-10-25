@@ -205,10 +205,10 @@ void ConsoleSCPI::OnTimerTest(wxTimerEvent &)
 
 void ConsoleSCPI::SendToSCPI(const char *txt)
 {
-    String message("%s\x0d", txt);
-
     if (ComPort::IsOpened())
     {
+        String message("%s\x0d", txt);
+
         ComPort::Send(message.c_str());
     }
     else
