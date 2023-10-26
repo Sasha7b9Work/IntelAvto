@@ -25,8 +25,6 @@ int main(void)
     VCP::Init();
     Menu::Init();
 
-    Display::DrawWelcomeScreen();
-
     while (1)
     {
         Menu::Input::Update();
