@@ -278,10 +278,17 @@ static void SetTopRow(int i)
 
 void Display::Update()
 {
+#ifdef WIN32
     BeginScene();
     DrawScreen();
     Console::Draw();
     EndScene();
+#else
+    for (int i = 0; i < NUM_PARTS; i++)
+    {
+        DrawPartScreen(i, true);
+    }
+#endif
 }
 
 

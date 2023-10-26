@@ -319,8 +319,18 @@ int VLine::Draw(const Coord &coord)
 }
 
 
+int VLine::Draw(int x, int y, Color color)
+{
+    color.SetAsCurrent();
+
+    return VLine::Draw(x, y);
+}
+
+
 int VLine::Draw(int x, int y)
 {
+    const int result = y + length;
+
     y -= Display::TopRow();
 
     if (x >= 0 && x < Display::Width())
@@ -352,7 +362,7 @@ int VLine::Draw(int x, int y)
         }
     }
     
-    return y + length;
+    return result;
 }
 
 

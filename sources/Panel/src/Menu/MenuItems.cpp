@@ -170,20 +170,17 @@ int Choice::NumStates() const
 
 void Page::Draw(int x, int y, int, bool)
 {
-    if (Display::InDrawingPart(y, HEIGHT))
+    for (int i = 0; i < NumItems(); i++)
     {
-        for (int i = 0; i < NumItems(); i++)
-        {
-            bool selected = (i == selectedItem);
+        bool selected = (i == selectedItem);
 
-            Color colorBack = items[i]->ColorBackground(selected);
+        Color colorBack = items[i]->ColorBackground(selected);
 
-            Rectangle(WidthItem(i) - 1, HEIGHT - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
+        Rectangle(WidthItem(i) - 1, HEIGHT - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
 
-            items[i]->Draw(x, y + 5, WidthItem(i), selected);
+        items[i]->Draw(x, y + 5, WidthItem(i), selected);
 
-            y += HEIGHT;
-        }
+        y += HEIGHT;
     }
 
     if (additionalDraw)
