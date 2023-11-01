@@ -105,11 +105,19 @@ void ArrowLeft::Draw(int x, int y)
 void ArrowUp::Draw(int x, int y)
 {
     int d = 3;
-    int height = 15;
 
-    VLine(height).Draw(x, y);
-    Line().Draw(x, y, x - d, y + height);
-    Line().Draw(x, y, x + d, y + height);
+//    VLine(HEIGHT).Draw(x, y);
+    Line().Draw(x - d, y, x, y - HEIGHT);
+    Line().Draw(x + d, y, x, y - HEIGHT);
+}
+
+
+void ArrowDown::Draw(int x, int y)
+{
+    int d = 3;
+
+    Line().Draw(x - d, y, x, y + HEIGHT);
+    Line().Draw(x + d, y, x, y + HEIGHT);
 }
 
 
@@ -131,6 +139,19 @@ void HMeasuringLines::Draw(const Coord &delta)
     int length_text = Font::GetLengthText(text);
 
     Text(text).Write((x0 + x1) / 2 - length_text / 2, y1 - Font::GetHeight());
+}
+
+
+void VMeasuringLines::Draw()
+{
+    HLine(m_x2 - m_x0).Draw(m_x0, m_y0);
+    HLine(m_x2 - m_x0).Draw(m_x0, m_y1);
+    VLine(m_y1 - m_y0).Draw(m_x1, m_y0);
+
+    ArrowUp().Draw(m_x1, m_y0 + ArrowUp::HEIGHT);
+    ArrowDown().Draw(m_x1, m_y1 - ArrowDown::HEIGHT);
+
+    Text(text).Write(m_x1 + 5, (m_y1 + m_y0) / 2 - Font::GetHeight() / 2);
 }
 
 

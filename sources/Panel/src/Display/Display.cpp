@@ -425,17 +425,16 @@ void DrawSignal()
         VLine(230).Draw(x, y - 50, Color::GRAY);
         HLine(330).Draw(x, y + 25);
         ArrowRight().Draw(x + 330, y + 25);
-        ArrowUp().Draw(x, y - 50);
+        ArrowUp().Draw(x, y - 35);
 
         Text("U").Write(x - 20, y - 50);
         Text("t").Write(x + 330, y);
 
-//        HMeasuringLines(x + 50, x + 220, y - 50, y - 40, y, "200 ms").Draw();
+        HMeasuringLines(x + 70, x + 290, y - 30, y - 15, y + 25, "t1").Draw();
 
-//        ExHMeasuringLines(x + 30, x + 50, x + 70, x + 170, y - 20, y - 10, y + 35, 20, "< 100 us").Draw();
+        Text("Ua").Write(x - 25, y - 10);
 
-//        Text("0.1Us").Write(x + 5, y + 30);
-//        Text("Ua").Write(x - 20, y);
+        VMeasuringLines(x + 70, x + 200, x + 210, y + 25, y + 175, "Us").Draw();
 
         VLine(25).Draw(coord);
         coord.x = HLine(50).Draw(coord, Color::WHITE);

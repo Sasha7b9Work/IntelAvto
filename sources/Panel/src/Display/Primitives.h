@@ -77,20 +77,36 @@ namespace Primitives
     class ArrowRight
     {
     public:
+
         static const int WIDTH = 15;
+
         void Draw(int x, int y);
     };
 
     class ArrowLeft
     {
     public:
+
         static const int WIDTH = 15;
+
         void Draw(int x, int y);
     };
 
     class ArrowUp
     {
     public:
+
+        static const int HEIGHT = 15;
+
+        void Draw(int x, int y);
+    };
+
+    class ArrowDown
+    {
+    public:
+
+        static const int HEIGHT = 15;
+
         void Draw(int x, int y);
     };
 
@@ -116,6 +132,32 @@ namespace Primitives
         const int m_y0;
         const int m_y1;
         const int m_y2;
+        const pchar text;
+    };
+
+    class VMeasuringLines
+    {
+//     x0          x1          x2
+//      -----------+-----------  y0
+//                /|\
+//                 |
+//                 |
+//                 |
+//                \|/
+//      -----------+----------- y1
+    public:
+
+        VMeasuringLines(int x0, int x1, int x2, int y0, int y1, pchar _text) :
+            m_x0(x0), m_x1(x1), m_x2(x2), m_y0(y0), m_y1(y1), text(_text) { }
+
+        void Draw();
+
+    private:
+        const int m_x0;
+        const int m_x1;
+        const int m_x2;
+        const int m_y0;
+        const int m_y1;
         const pchar text;
     };
 
