@@ -41,7 +41,7 @@ static void OnPress_RefGenerator()
 
 // Выбор опорного генератора
 DEF_SWITCH_2(sRefGenerator,
-    "НП", "НП",
+    "Ua", "Ua",
     "Выбор опорного генератора", "Selecting a reference generator",
     "Внутренний", "Внешний",
     "Internal",   "External",
@@ -56,7 +56,7 @@ static void OnPress_LaunchSource()
 
 // Выбор источника запуска
 DEF_SWITCH_3(sLaunchSource,
-    "Uист", "Uist",
+    "Us", "Us",
     "Выбор источника запуска", "Selecting a trigger source",
     "Внутренний", "Внешний",  "Однократный",
     "Internal",   "External", "Single",
@@ -68,7 +68,7 @@ static void OnPress_Calibration()
 
 // Вход в режим калибровки
 DEF_SWITCH_2(sCalibration,
-    "Длит", "Dlit",
+    "t1", "t1",
     "", "",
     "Не нажата",   "Нажата",
     "Not pressed", "Pressed",
@@ -111,7 +111,7 @@ static Item *items[7] =
     &sRefGenerator,
     &sLaunchSource,
     &sCalibration,
-    &sMemoryMode,
+    nullptr,
     nullptr,
 };
 
