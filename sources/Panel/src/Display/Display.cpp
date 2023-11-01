@@ -417,7 +417,7 @@ bool Display::InDrawingPart(int y, int height)
 void DrawSignal()
 {
     int x = 130;
-    int y = 90;
+    int y = 70;
     Coord coord = { x, y };
 
     if (PageIndication::typeSignal == TypeSignal::_1)
@@ -430,9 +430,12 @@ void DrawSignal()
         Text("U").Write(x - 20, y - 50);
         Text("t").Write(x + 330, y);
 
-        HMeasuringLines(x + 50, x + 220, y - 50, y - 40, y, "200 ms").Draw();
+//        HMeasuringLines(x + 50, x + 220, y - 50, y - 40, y, "200 ms").Draw();
 
-        ExHMeasuringLines(x + 30, x + 50, x + 70, x + 170, y - 20, y - 10, y + 35, 20, "< 100 us").Draw();
+//        ExHMeasuringLines(x + 30, x + 50, x + 70, x + 170, y - 20, y - 10, y + 35, 20, "< 100 us").Draw();
+
+//        Text("0.1Us").Write(x + 5, y + 30);
+//        Text("Ua").Write(x - 20, y);
 
         VLine(25).Draw(coord);
         coord.x = HLine(50).Draw(coord, Color::WHITE);
