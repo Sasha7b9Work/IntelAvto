@@ -7,6 +7,9 @@
 
 using namespace Primitives;
 
+int Point::m_x = 0;
+int Point::m_y = 0;
+
 
 void Rectangle::FillRounded(int x, int y, int round, Color colorFill, Color colorBound)
 {
@@ -185,4 +188,19 @@ void Axis::Draw(const Coord &zero, int up, int right, int down)
 
     Text("U").Write(zero.x - 20, zero.y - up);
     Text("t").Write(zero.x + right - 5, zero.y - 20);
+}
+
+
+void Point::MoveTo(int x, int y)
+{
+    Line().Draw(x, y, m_x, m_y);
+
+    m_x = x;
+    m_y = y;
+}
+
+
+void Point::MoveOn(int dx, int dy)
+{
+    MoveTo(m_x + dx, m_y + dy);
 }

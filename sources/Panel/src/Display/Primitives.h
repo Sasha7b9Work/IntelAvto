@@ -27,6 +27,13 @@ namespace Primitives
         Point() {};
         void Draw(int x, int y, Color color);
         void Draw(int x, int y);
+
+        static void MoveTo(int x, int y);
+        static void MoveOn(int dx, int dy);
+
+    private:
+        static int m_x;
+        static int m_y;
     };
 
 

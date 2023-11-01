@@ -470,21 +470,20 @@ void DrawSignal()
     {
         Axis().Draw({ x, y + 170 }, 210, 330, 10);
 
-        Text("Ua").Write(x - 25, y + 140);
+        Text("Ua").Write(x - 25, y + 10);
 
-        HMeasuringLines(x + 50, x + 245, y - 30, y - 15, y + 151, "t1").Draw();
+        HMeasuringLines(x + 70, x + 270, y - 5, y + 10, y + 170, "td").Draw();
 
-        VMeasuringLines(x + 70, x + 180, x + 200, y, y + 150, "Us").Draw();
+        VMeasuringLines(x + 90, x + 290, x + 310, y + 45, y + 170, "Us").Draw();
 
-        coord.y += 150;
-
-        coord.x = HLine(50).Draw(coord, Color::WHITE);
-        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
-        coord = Line().Draw(coord, coord.x + 10, coord.y - 10);
-        coord.x = HLine(10).Draw(coord);
-        coord = Line().Draw(coord, coord.x + 10, coord.y + 10);
-        coord = Line().Draw(coord, coord.x + 50, coord.y + 140);
-        coord.x = HLine(100).Draw(coord);
-        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
+        Point().Draw(x, y + 20, Color::WHITE);
+        Point::MoveOn(30, 0);
+        Point::MoveOn(30, 150);
+        Point::MoveOn(10, 0);
+        Point::MoveOn(20, -120);
+        Point::MoveOn(5, -5);
+        Point::MoveOn(10, 0);
+        Point::MoveOn(5, 5);
+        Point::MoveOn(160, 120);
     }
 }

@@ -84,12 +84,15 @@ void Point::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
-    memDC.DrawPoint({ x, y });
+    Draw(x, y);
 }
 
 
 void Point::Draw(int x, int y)
 {
+    m_x = x;
+    m_y = y;
+
     memDC.DrawPoint({ x, y });
 }
 
