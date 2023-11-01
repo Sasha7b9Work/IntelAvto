@@ -1,6 +1,8 @@
 // 2023/09/08 21:15:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Primitives.h"
+#include "Display/Font/Font.h"
+#include "Display/Text.h"
 
 
 using namespace Primitives;
@@ -83,11 +85,20 @@ void DLine::Draw(int x, int y)
 void ArrowRight::Draw(int x, int y)
 {
     int d = 3;
-    int width = 15;
 
-    HLine(width).Draw(x, y);
-    Line().Draw(x, y - d, x + width, y);
-    Line().Draw(x, y + d, x + width, y);
+//    HLine(WIDTH).Draw(x, y);
+    Line().Draw(x, y - d, x + WIDTH, y);
+    Line().Draw(x, y + d, x + WIDTH, y);
+}
+
+
+void ArrowLeft::Draw(int x, int y)
+{
+    int d = 3;
+
+//    HLine(WIDTH).Draw(x, y);
+    Line().Draw(x, y, x + WIDTH, y + d);
+    Line().Draw(x, y, x + WIDTH, y - d);
 }
 
 
@@ -99,4 +110,25 @@ void ArrowUp::Draw(int x, int y)
     VLine(height).Draw(x, y);
     Line().Draw(x, y, x - d, y + height);
     Line().Draw(x, y, x + d, y + height);
+}
+
+
+void HMeasuringLines::Draw(const Coord &delta)
+{
+    int x0 = m_x0 + delta.x;
+    int x1 = m_x1 + delta.x;
+    int y0 = m_y0 + delta.y;
+    int y1 = m_y1 + delta.y;
+    int y2 = m_y2 + delta.y;
+
+    VLine(y2 - y0).Draw(x0, y0);
+    VLine(y2 - y0).Draw(x1, y0);
+    HLine(x1 - x0).Draw(x0, y1);
+
+    ArrowRight().Draw(x1 - ArrowRight::WIDTH, y1);
+    ArrowLeft().Draw(x0, y1);
+
+    int length_text = Font::GetLengthText(text);
+
+    Text(text).Write((x0 + x1) / 2 - length_text / 2, y1 - Font::GetHeight());
 }

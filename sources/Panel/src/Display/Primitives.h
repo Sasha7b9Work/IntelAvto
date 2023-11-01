@@ -77,6 +77,14 @@ namespace Primitives
     class ArrowRight
     {
     public:
+        static const int WIDTH = 15;
+        void Draw(int x, int y);
+    };
+
+    class ArrowLeft
+    {
+    public:
+        static const int WIDTH = 15;
         void Draw(int x, int y);
     };
 
@@ -84,5 +92,30 @@ namespace Primitives
     {
     public:
         void Draw(int x, int y);
+    };
+
+    class HMeasuringLines
+    {
+//      x0                    x1  y0
+//       |/       tex        \|   
+//       +--------------------+   y1
+//       |\                  /|
+//       |                    |
+//       |                    |   y2
+
+    public:
+
+        HMeasuringLines(int _x0, int _x1, int _y0, int _y1, int _y2, pchar _text) :
+            m_x0(_x0), m_x1(_x1), m_y0(_y0), m_y1(_y1), m_y2(_y2), text(_text) { }
+
+        void Draw(const Coord &delta = { 0, 0 });
+
+    private:
+        const int m_x0;
+        const int m_x1;
+        const int m_y0;
+        const int m_y1;
+        const int m_y2;
+        pchar text;
     };
 }
