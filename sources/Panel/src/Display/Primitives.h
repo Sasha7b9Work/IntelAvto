@@ -116,17 +116,36 @@ namespace Primitives
         const int m_y0;
         const int m_y1;
         const int m_y2;
-        pchar text;
+        const pchar text;
     };
 
     class ExHMeasuringLines
     {
-//
-//
-//
-//
-//
-//
-//
+//  x0      x1            x2        x3
+//          |             |           y0
+//         \|             |/  text
+//  --------+-------------+---------  y1
+//         /|             |\
+//          |             |
+//          |             |           y2
+
+    public:
+
+        ExHMeasuringLines(int x0, int x1, int x2, int x3, int y0, int y1, int y2, int _d_text, pchar _text) :
+            m_x0(x0), m_x1(x1), m_x2(x2), m_x3(x3), m_y0(y0), m_y1(y1), m_y2(y2), d_text(_d_text), text(_text) { }
+
+        void Draw(const Coord &delta = { 0, 0 });
+
+    private:
+
+        const int m_x0;
+        const int m_x1;
+        const int m_x2;
+        const int m_x3;
+        const int m_y0;
+        const int m_y1;
+        const int m_y2;
+        const int d_text;
+        const pchar text;
     };
 }

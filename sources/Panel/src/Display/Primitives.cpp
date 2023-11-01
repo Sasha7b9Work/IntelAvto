@@ -132,3 +132,24 @@ void HMeasuringLines::Draw(const Coord &delta)
 
     Text(text).Write((x0 + x1) / 2 - length_text / 2, y1 - Font::GetHeight());
 }
+
+
+void ExHMeasuringLines::Draw(const Coord &delta)
+{
+    int x0 = m_x0 + delta.x;
+    int x1 = m_x1 + delta.x;
+    int x2 = m_x2 + delta.x;
+    int x3 = m_x3 + delta.x;
+    int y0 = m_y0 + delta.y;
+    int y1 = m_y1 + delta.y;
+    int y2 = m_y2 + delta.y;
+
+    VLine(y2 - y1).Draw(x1, y0);
+    VLine(y2 - y1).Draw(x2, y0);
+    HLine(x3 - x0).Draw(x0, y1);
+
+    ArrowRight().Draw(x1 - ArrowRight::WIDTH, y1);
+    ArrowLeft().Draw(x2, y1);
+
+    Text(text).Write(x2 + d_text, y1 - Font::GetHeight());
+}
