@@ -118,4 +118,15 @@ namespace Primitives
         const int m_y2;
         pchar text;
     };
+
+    class ExHMeasuringLines
+    {
+//
+//
+//
+//
+//
+//
+//
+    };
 }

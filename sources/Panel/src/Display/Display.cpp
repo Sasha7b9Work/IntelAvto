@@ -435,7 +435,6 @@ void DrawSignal()
         Text("< 100 us").Write(x + 85, y - 30);
 
         HLine(170).Draw(x + 50, y - 40);
-        Text("200 ms").Write(x + 110, y - 60);
         */
 
         HMeasuringLines(x + 50, x + 220, y - 50, y - 40, y, "200 ms").Draw();
