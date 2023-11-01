@@ -420,15 +420,15 @@ void DrawSignal()
     int y = 70;
     Coord coord = { x, y };
 
+    Color::GRAY.SetAsCurrent();
+
     if (PageIndication::typeSignal == TypeSignal::_1)
     {
-        Color::GRAY.SetAsCurrent();
-
         Axis().Draw({ x, y + 25 }, 70, 330, 150);
 
-        HMeasuringLines(x + 70, x + 290, y - 30, y - 15, y + 25, "t1").Draw();
-
         Text("Ua").Write(x - 25, y - 10);
+
+        HMeasuringLines(x + 70, x + 290, y - 30, y - 15, y + 25, "t1").Draw();
 
         VMeasuringLines(x + 70, x + 200, x + 210, y + 25, y + 175, "Us").Draw();
 
@@ -447,6 +447,14 @@ void DrawSignal()
     }
     else if (PageIndication::typeSignal == TypeSignal::_2a)
     {
+        Axis().Draw({ x, y + 170 }, 210, 330, 10);
+
+        Text("Ua").Write(x - 25, y + 140);
+
+        HMeasuringLines(x + 50, x + 245, y - 30, y - 15, y + 151, "t1").Draw();
+
+        VMeasuringLines(x + 70, x + 180, x + 200, y, y + 150, "Us").Draw();
+
         coord.y += 150;
 
         coord.x = HLine(50).Draw(coord, Color::WHITE);
