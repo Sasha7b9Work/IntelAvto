@@ -174,3 +174,15 @@ void ExHMeasuringLines::Draw(const Coord &delta)
 
     Text(text).Write(x2 + d_text, y1 - Font::GetHeight());
 }
+
+
+void Axis::Draw(const Coord &zero, int up, int right, int down)
+{
+    VLine(down + up).Draw(zero.x, zero.y - up);
+    HLine(right).Draw(zero.x, zero.y);
+    ArrowUp().Draw(zero.x, zero.y - up + ArrowUp::HEIGHT);
+    ArrowRight().Draw(zero.x + right - ArrowRight::WIDTH, zero.y);
+
+    Text("U").Write(zero.x - 20, zero.y - up);
+    Text("t").Write(zero.x + right - 5, zero.y - 20);
+}

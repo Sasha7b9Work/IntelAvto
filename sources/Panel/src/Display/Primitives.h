@@ -110,6 +110,13 @@ namespace Primitives
         void Draw(int x, int y);
     };
 
+    class Axis
+    {
+    public:
+
+        void Draw(const Coord &zero, int up, int right, int down);
+    };
+
     class HMeasuringLines
     {
 //      x0                    x1  y0

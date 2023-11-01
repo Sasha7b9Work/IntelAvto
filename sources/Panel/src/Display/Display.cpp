@@ -422,13 +422,9 @@ void DrawSignal()
 
     if (PageIndication::typeSignal == TypeSignal::_1)
     {
-        VLine(230).Draw(x, y - 50, Color::GRAY);
-        HLine(330).Draw(x, y + 25);
-        ArrowRight().Draw(x + 330, y + 25);
-        ArrowUp().Draw(x, y - 35);
+        Color::GRAY.SetAsCurrent();
 
-        Text("U").Write(x - 20, y - 50);
-        Text("t").Write(x + 330, y);
+        Axis().Draw({ x, y + 25 }, 70, 330, 150);
 
         HMeasuringLines(x + 70, x + 290, y - 30, y - 15, y + 25, "t1").Draw();
 
