@@ -246,6 +246,9 @@ static int Ymax()
 
 void Point::Draw(int x, int y, Color color)
 {
+    m_x = x;
+    m_y = y;
+
     current = color;
 
     y -= Display::TopRow();
@@ -259,6 +262,9 @@ void Point::Draw(int x, int y, Color color)
 
 void Point::Draw(int x, int y)
 {
+    m_x = x;
+    m_y = y;
+
     y -= Display::TopRow();
 
     if (x >= 0 && x < Display::Width() && y >= 0 && y < Ymax())
