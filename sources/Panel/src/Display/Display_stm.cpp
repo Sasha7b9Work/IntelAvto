@@ -422,7 +422,7 @@ Coord Line::Draw(int x1, int y1, int x2, int y2)
         e = e + 2 * dy;
     }
 
-    Coord result = { x2, y2 };
+    Coord result(x2, y2);
     
     return result;
 }

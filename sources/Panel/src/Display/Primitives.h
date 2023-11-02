@@ -138,7 +138,7 @@ namespace Primitives
         HMeasuringLines(int _x0, int _x1, int _y0, int _y1, int _y2, pchar _text) :
             m_x0(_x0), m_x1(_x1), m_y0(_y0), m_y1(_y1), m_y2(_y2), text(_text) { }
 
-        void Draw(const Coord &delta = { 0, 0 });
+        void Draw();
 
     private:
         const int m_x0;
@@ -190,7 +190,7 @@ namespace Primitives
         ExHMeasuringLines(int x0, int x1, int x2, int x3, int y0, int y1, int y2, int _d_text, pchar _text) :
             m_x0(x0), m_x1(x1), m_x2(x2), m_x3(x3), m_y0(y0), m_y1(y1), m_y2(y2), d_text(_d_text), text(_text) { }
 
-        void Draw(const Coord &delta = { 0, 0 });
+        void Draw();
 
     private:
 

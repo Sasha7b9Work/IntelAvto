@@ -54,10 +54,10 @@ bool Display::drawingScene = false;
 
 static int yString = 110;
 
-static Coord coordMemory = { 15, yString };
-static Coord coordTest = { 40, yString };
-static Coord coordExtGenerator = { 95, yString };
-static Coord coordLaunch = { 130, yString };
+static Coord coordMemory(15, yString);
+static Coord coordTest(40, yString);
+static Coord coordExtGenerator(95, yString);
+static Coord coordLaunch(130, yString);
 
 static void DrawSignal();
 
@@ -418,13 +418,13 @@ void DrawSignal()
 {
     int x = 130;
     int y = 70;
-    Coord coord = { x, y };
+    Coord coord(x, y);
 
     Color::GRAY.SetAsCurrent();
 
     if (PageIndication::typeSignal == TypeSignal::_1)
     {
-        Axis().Draw({ x, y + 25 }, 70, 330, 150);
+        Axis().Draw(Coord(x, y + 25), 70, 330, 150);
 
         Text("Ua").Write(x - 25, y - 10);
 
@@ -447,7 +447,7 @@ void DrawSignal()
     }
     else if (PageIndication::typeSignal == TypeSignal::_2a)
     {
-        Axis().Draw({ x, y + 170 }, 210, 330, 10);
+        Axis().Draw(Coord(x, y + 170), 210, 330, 10);
 
         Text("Ua").Write(x - 25, y + 140);
 
@@ -468,7 +468,7 @@ void DrawSignal()
     }
     else if (PageIndication::typeSignal == TypeSignal::_2b)
     {
-        Axis().Draw({ x, y + 170 }, 210, 330, 10);
+        Axis().Draw(Coord(x, y + 170), 210, 330, 10);
 
         Text("Ua").Write(x - 25, y + 10);
 

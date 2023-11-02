@@ -124,8 +124,9 @@ void ArrowDown::Draw(int x, int y)
 }
 
 
-void HMeasuringLines::Draw(const Coord &delta)
+void HMeasuringLines::Draw()
 {
+    Coord delta(0, 0);
     int x0 = m_x0 + delta.x;
     int x1 = m_x1 + delta.x;
     int y0 = m_y0 + delta.y;
@@ -158,8 +159,9 @@ void VMeasuringLines::Draw()
 }
 
 
-void ExHMeasuringLines::Draw(const Coord &delta)
+void ExHMeasuringLines::Draw()
 {
+    Coord delta(0, 0);
     int x0 = m_x0 + delta.x;
     int x1 = m_x1 + delta.x;
     int x2 = m_x2 + delta.x;
