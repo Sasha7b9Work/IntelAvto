@@ -591,4 +591,23 @@ void DrawSignal()
         Point::MoveOn(20, -35);
         Point::MoveOn(40, 0);
     }
+    else if (PageIndication::typeSignal == TypeSignal::_5a)
+    {
+        Axis().Draw(Coord(x, y + 150), 170, 330, 00);
+
+        VMeasuringLines(x + 50, x + 150, x + 160, y, y + 150, "Us").Draw();
+
+        HMeasuringLines(x + 10, x + 200, y + 80, y + 110, y + 120, "td").Draw();
+
+        Point().Draw(x, y + 130, Color::WHITE);
+        Point::MoveOn(30, 0);
+        Point::MoveOn(30, -120);
+        Point::MoveOn(10, -10);
+        Point::MoveOn(10, 0);
+        Point::MoveOn(10, 10);
+        Point::MoveOn(80, 100);
+        Point::MoveOn(15, 10);
+        Point::MoveOn(40, 10);
+        Point::MoveOn(50, 0);
+    }
 }
