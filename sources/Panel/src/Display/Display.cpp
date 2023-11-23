@@ -323,7 +323,9 @@ void Display::DrawScreen()
 {
     Menu::Draw();
 
-    Text(String(LANG_IS_RU ? "Тип сигнала : %s" : "Type signal : %s", PageIndication::typeSignal.ToString().c_str())).Write(300, 6, Color::WHITE);
+    Text(String(LANG_IS_RU ? "Тип сигнала %s : %s" : "Type signal %s : %s",
+        PageIndication::typeSignal.ToString().c_str(),
+        TypeSignal::Name((TypeSignal::E)PageIndication::typeSignal.value))).Write(230, 6, Color::WHITE);
 
     DrawSignal();
 }
@@ -595,11 +597,33 @@ void DrawSignal()
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 
-        VMeasuringLines(x + 50, x + 150, x + 160, y, y + 150, "Us").Draw();
+        VMeasuringLines(x + 20, x + 220, x + 230, y, y + 130, "Us").Draw();
 
-        HMeasuringLines(x + 10, x + 200, y + 80, y + 110, y + 120, "td").Draw();
+        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130, "td").Draw();
 
         Point().Draw(x, y + 130, Color::WHITE);
+        Point::MoveOn(30, 0);
+        Point::MoveOn(30, -120);
+        Point::MoveOn(10, -10);
+        Point::MoveOn(10, 0);
+        Point::MoveOn(10, 10);
+        Point::MoveOn(80, 100);
+        Point::MoveOn(15, 10);
+        Point::MoveOn(40, 10);
+        Point::MoveOn(50, 0);
+    }
+    else if (PageIndication::typeSignal == TypeSignal::_5b)
+    {
+        Axis().Draw(Coord(x, y + 150), 170, 330, 00);
+
+        VMeasuringLines(x + 20, x + 280, x + 290, y, y + 130, "Us").Draw();
+
+        VMeasuringLines(x + 48, x + 240, x + 250, y + 60, y + 130, "Us*").Draw();
+
+        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130, "td").Draw();
+
+        Point().Draw(x, y + 130, Color::WHITE);
+        HLine(80).Draw(x + 48, y + 60);
         Point::MoveOn(30, 0);
         Point::MoveOn(30, -120);
         Point::MoveOn(10, -10);

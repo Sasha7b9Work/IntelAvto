@@ -118,3 +118,21 @@ static Item *items[7] =
 static Page pageIndication(items, nullptr, nullptr);
 
 Page *PageIndication::self = &pageIndication;
+
+
+pchar TypeSignal::Name(E v)
+{
+    static const pchar names[Count] =
+    {
+        "1",
+        "2a",
+        "SAEJ1113-11",
+        "3a",
+        "3b",
+        "DIN40839",
+        "16750-1",
+        "16750-1"
+    };
+
+    return names[v];
+}

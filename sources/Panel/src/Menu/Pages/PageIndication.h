@@ -20,7 +20,7 @@ struct TypeSignal : public Enumeration
 
     explicit TypeSignal(E v) : Enumeration((uint8)v) {};
 
-    pchar Name() const;
+    static pchar Name(E);
 };
 
 struct RefGenerator : public Enumeration
