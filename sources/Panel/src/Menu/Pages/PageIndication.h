@@ -7,14 +7,14 @@ struct TypeSignal : public Enumeration
 {
     enum E
     {
-        _1,
-        _2a,
-        _2b,
-        _3a,
-        _3b,
-        _4,
-        _5a,
-        _5b,
+        _1,     //
+        _2a,    //
+        _2b,    //
+        _3a,    //
+        _3b,    //
+        _4,     //
+        _5a,    //
+        _5b,    //
         Count
     };
 

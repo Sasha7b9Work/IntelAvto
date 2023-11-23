@@ -504,19 +504,19 @@ void DrawSignal()
         for (int i = 0; i < 6; i++)
         {
             Point::MoveOn(0, 70);
-            Point::MoveOn(3, -30);
-            Point::MoveOn(8, -25);
-            Point::MoveOn(9, -15);
+            Point::MoveOn(5, 0);
+            Point::MoveOn(0, -70);
+            Point::MoveOn(5, 0);
         }
 
-        Point::MoveOn(70, 0);
+        Point::MoveOn(130, 0);
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             Point::MoveOn(0, 70);
-            Point::MoveOn(3, -30);
-            Point::MoveOn(8, -25);
-            Point::MoveOn(9, -15);
+            Point::MoveOn(5, 0);
+            Point::MoveOn(0, -70);
+            Point::MoveOn(5, 0);
         }
 
         Point().Draw(x + 90, y + 90);
