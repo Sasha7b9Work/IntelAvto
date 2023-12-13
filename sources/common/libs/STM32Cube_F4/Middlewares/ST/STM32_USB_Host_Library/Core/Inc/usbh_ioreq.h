@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2015 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2015 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                      http://www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -22,7 +21,7 @@
 #define __USBH_IOREQ_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -34,8 +33,8 @@
   */
 
 /** @addtogroup USBH_LIB_CORE
-* @{
-*/
+  * @{
+  */
 
 /** @defgroup USBH_IOREQ
   * @brief This file is the header file for usbh_ioreq.c
@@ -86,53 +85,53 @@
 /** @defgroup USBH_IOREQ_Exported_FunctionsPrototype
   * @{
   */
-USBH_StatusTypeDef USBH_CtlSendSetup (USBH_HandleTypeDef *phost,
-                                uint8_t *buff,
-                                uint8_t pipe_num);
+USBH_StatusTypeDef USBH_CtlSendSetup(USBH_HandleTypeDef *phost,
+                                     uint8_t *buff,
+                                     uint8_t pipe_num);
 
-USBH_StatusTypeDef USBH_CtlSendData (USBH_HandleTypeDef *phost,
-                                uint8_t *buff,
-                                uint16_t length,
-                                uint8_t pipe_num,
-                                uint8_t do_ping);
+USBH_StatusTypeDef USBH_CtlSendData(USBH_HandleTypeDef *phost,
+                                    uint8_t *buff,
+                                    uint16_t length,
+                                    uint8_t pipe_num,
+                                    uint8_t do_ping);
 
 USBH_StatusTypeDef USBH_CtlReceiveData(USBH_HandleTypeDef *phost,
-                                uint8_t *buff,
-                                uint16_t length,
-                                uint8_t pipe_num);
+                                       uint8_t *buff,
+                                       uint16_t length,
+                                       uint8_t pipe_num);
 
 USBH_StatusTypeDef USBH_BulkReceiveData(USBH_HandleTypeDef *phost,
-                                uint8_t *buff,
-                                uint16_t length,
-                                uint8_t pipe_num);
+                                        uint8_t *buff,
+                                        uint16_t length,
+                                        uint8_t pipe_num);
 
-USBH_StatusTypeDef USBH_BulkSendData (USBH_HandleTypeDef *phost,
-                                uint8_t *buff,
-                                uint16_t length,
-                                uint8_t pipe_num,
-                                uint8_t do_ping );
+USBH_StatusTypeDef USBH_BulkSendData(USBH_HandleTypeDef *phost,
+                                     uint8_t *buff,
+                                     uint16_t length,
+                                     uint8_t pipe_num,
+                                     uint8_t do_ping);
 
 USBH_StatusTypeDef USBH_InterruptReceiveData(USBH_HandleTypeDef *phost,
-                                       uint8_t             *buff,
-                                       uint8_t             length,
-                                       uint8_t             pipe_num);
+                                             uint8_t             *buff,
+                                             uint8_t             length,
+                                             uint8_t             pipe_num);
 
 USBH_StatusTypeDef USBH_InterruptSendData(USBH_HandleTypeDef *phost,
-                                    uint8_t *buff,
-                                    uint8_t length,
-                                    uint8_t pipe_num);
+                                          uint8_t *buff,
+                                          uint8_t length,
+                                          uint8_t pipe_num);
 
 
 USBH_StatusTypeDef USBH_IsocReceiveData(USBH_HandleTypeDef *phost,
-                                uint8_t *buff,
-                                uint32_t length,
-                                uint8_t pipe_num);
+                                        uint8_t *buff,
+                                        uint32_t length,
+                                        uint8_t pipe_num);
 
 
 USBH_StatusTypeDef USBH_IsocSendData(USBH_HandleTypeDef *phost,
-                                uint8_t *buff,
-                                uint32_t length,
-                                uint8_t pipe_num);
+                                     uint8_t *buff,
+                                     uint32_t length,
+                                     uint8_t pipe_num);
 /**
   * @}
   */
@@ -152,9 +151,7 @@ USBH_StatusTypeDef USBH_IsocSendData(USBH_HandleTypeDef *phost,
   */
 
 /**
-* @}
-*/
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+  * @}
+  */
 
 

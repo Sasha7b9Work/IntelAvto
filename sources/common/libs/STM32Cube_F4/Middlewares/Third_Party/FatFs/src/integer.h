@@ -9,7 +9,7 @@
 
 #include <windows.h>
 #include <tchar.h>
-typedef unsigned __int64 QWORD; //-V677
+typedef unsigned __int64 QWORD;
 
 
 #else			/* Embedded platform */

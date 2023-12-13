@@ -8,17 +8,15 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2017 STMicroelectronics. All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                             www.st.com/SLA0044
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                       opensource.org/licenses/BSD-3-Clause
   *
   ******************************************************************************
-  */
-
+**/
 /* Includes ------------------------------------------------------------------*/
 #include "ff_gen_drv.h"
 #include "usbh_diskio_dma.h"
@@ -106,7 +104,7 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
   MSC_LUNTypeDef info;
   USBH_StatusTypeDef  status = USBH_OK;
 
-  if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)hUSB_Host.pData)->Init.dma_enable))
+  if ((DWORD)buff & 3)
   {
     while ((count--)&&(status == USBH_OK))
     {
@@ -168,7 +166,7 @@ DRESULT USBH_write(BYTE lun, const BYTE *buff, DWORD sector, UINT count)
   MSC_LUNTypeDef info;
   USBH_StatusTypeDef  status = USBH_OK;
 
-  if (((DWORD)buff & 3) && (((HCD_HandleTypeDef *)hUSB_Host.pData)->Init.dma_enable))
+  if ((DWORD)buff & 3)
   {
 
     while (count--)
@@ -256,7 +254,7 @@ DRESULT USBH_ioctl(BYTE lun, BYTE cmd, void *buff)
   case GET_SECTOR_SIZE :
     if(USBH_MSC_GetLUNInfo(&hUSB_Host, lun, &info) == USBH_OK)
     {
-      *(DWORD*)buff = info.capacity.block_size;
+      *(WORD*)buff = info.capacity.block_size;
       res = RES_OK;
     }
     else

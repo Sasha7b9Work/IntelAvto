@@ -6,13 +6,12 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; Copyright (c) 2015 STMicroelectronics.
-  * All rights reserved.</center></h2>
+  * Copyright (c) 2015 STMicroelectronics.
+  * All rights reserved.
   *
-  * This software component is licensed by ST under Ultimate Liberty license
-  * SLA0044, the "License"; You may not use this file except in compliance with
-  * the License. You may obtain a copy of the License at:
-  *                      http://www.st.com/SLA0044
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
   *
   ******************************************************************************
   */
@@ -22,7 +21,7 @@
 #define __USBH_MSC_H
 
 #ifdef __cplusplus
- extern "C" {
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
@@ -86,7 +85,7 @@ typedef enum
 MSC_ReqStateTypeDef;
 
 #ifndef MAX_SUPPORTED_LUN
-    #define MAX_SUPPORTED_LUN       2U
+#define MAX_SUPPORTED_LUN       2U
 #endif
 
 
@@ -107,7 +106,8 @@ MSC_LUNTypeDef;
 /* Structure for MSC process */
 typedef struct _MSC_Process
 {
-  uint32_t             max_lun;
+  uint8_t              max_lun;
+  uint8_t              Reserved[3];
   uint8_t              InPipe;
   uint8_t              OutPipe;
   uint8_t              OutEp;
@@ -171,28 +171,18 @@ extern USBH_ClassTypeDef  USBH_msc;
 /** @defgroup USBH_MSC_CORE_Exported_FunctionsPrototype
   * @{
   */
+uint8_t USBH_MSC_IsReady(USBH_HandleTypeDef *phost);
+uint8_t USBH_MSC_GetMaxLUN(USBH_HandleTypeDef *phost);
+uint8_t USBH_MSC_UnitIsReady(USBH_HandleTypeDef *phost, uint8_t lun);
 
-/* Common APIs */
-uint8_t            USBH_MSC_IsReady (USBH_HandleTypeDef *phost);
+USBH_StatusTypeDef USBH_MSC_GetLUNInfo(USBH_HandleTypeDef *phost, uint8_t lun,
+                                       MSC_LUNTypeDef *info);
 
-/* APIs for LUN */
-uint8_t            USBH_MSC_GetMaxLUN (USBH_HandleTypeDef *phost);
+USBH_StatusTypeDef USBH_MSC_Read(USBH_HandleTypeDef *phost, uint8_t lun,
+                                 uint32_t address, uint8_t *pbuf, uint32_t length);
 
-uint8_t            USBH_MSC_UnitIsReady (USBH_HandleTypeDef *phost, uint8_t lun);
-
-USBH_StatusTypeDef USBH_MSC_GetLUNInfo(USBH_HandleTypeDef *phost, uint8_t lun, MSC_LUNTypeDef *info);
-
-USBH_StatusTypeDef USBH_MSC_Read(USBH_HandleTypeDef *phost,
-                                     uint8_t lun,
-                                     uint32_t address,
-                                     uint8_t *pbuf,
-                                     uint32_t length);
-
-USBH_StatusTypeDef USBH_MSC_Write(USBH_HandleTypeDef *phost,
-                                     uint8_t lun,
-                                     uint32_t address,
-                                     uint8_t *pbuf,
-                                     uint32_t length);
+USBH_StatusTypeDef USBH_MSC_Write(USBH_HandleTypeDef *phost, uint8_t lun,
+                                  uint32_t address, uint8_t *pbuf, uint32_t length);
 /**
   * @}
   */
@@ -219,7 +209,6 @@ USBH_StatusTypeDef USBH_MSC_Write(USBH_HandleTypeDef *phost,
 /**
   * @}
   */
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 
 
 
