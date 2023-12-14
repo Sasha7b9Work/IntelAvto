@@ -1,7 +1,6 @@
 #include "defines.h"
 #include <stm32f4xx_hal.h>
 #include <stm32f4xx_hal_hcd.h>
-#include <stm32f437xx.h>
 #include <usbh_core.h>
 #include "Hardware/FDrive.h"
 
