@@ -247,31 +247,26 @@ int Read_RL(int rl)
 
 static void InitPins()
 {
-    __HAL_RCC_GPIOB_CLK_ENABLE();
-    __HAL_RCC_GPIOD_CLK_ENABLE();
-    __HAL_RCC_GPIOC_CLK_ENABLE();
-    __HAL_RCC_GPIOA_CLK_ENABLE();
-
-    GPIO_InitTypeDef is =
-    {
-        PIN_SL0 | PIN_SL1 | PIN_SL2 | PIN_SL3 | PIN_RL0 | PIN_RL1,
-        GPIO_MODE_OUTPUT_PP,
-        GPIO_PULLUP
-    };
-    _HAL_GPIO_Init(GPIOB, &is);
-
-    is.Pin = PIN_RL0 | PIN_RL1;
-    is.Mode = GPIO_MODE_INPUT;
-    _HAL_GPIO_Init(GPIOB, &is);
-
-    is.Pin = PIN_RL2;
-    _HAL_GPIO_Init(GPIOD, &is);
-
-    is.Pin = PIN_RL3;
-    _HAL_GPIO_Init(GPIOA, &is);
-
-    is.Pin = PIN_ENC1 | PIN_ENC2;
-    _HAL_GPIO_Init(GPIOC, &is);
+//    GPIO_InitTypeDef is =
+//    {
+//        PIN_SL0 | PIN_SL1 | PIN_SL2 | PIN_SL3 | PIN_RL0 | PIN_RL1,
+//        GPIO_MODE_OUTPUT_PP,
+//        GPIO_PULLUP
+//    };
+////    _HAL_GPIO_Init(GPIOB, &is);
+//
+//    is.Pin = PIN_RL0 | PIN_RL1;
+//    is.Mode = GPIO_MODE_INPUT;
+////    _HAL_GPIO_Init(GPIOB, &is);
+//
+//    is.Pin = PIN_RL2;
+////    _HAL_GPIO_Init(GPIOD, &is);
+//
+//    is.Pin = PIN_RL3;
+////    _HAL_GPIO_Init(GPIOA, &is);
+//
+//    is.Pin = PIN_ENC1 | PIN_ENC2;
+////    _HAL_GPIO_Init(GPIOC, &is);
 }
 
 

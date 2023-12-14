@@ -8,99 +8,35 @@
 #include <cstdlib>
 
 
-#define PIN_BL_E  GPIO_PIN_0
-#define PORT_BL_E GPIOB
+#define PIN_BL_E  GPIO_PIN_1
+#define PORT_BL_E GPIOD
 #define BL_E      PORT_BL_E, PIN_BL_E
 
-#define PIN_D_C  GPIO_PIN_1
-#define PORT_D_C GPIOB
+#define PIN_D_C  GPIO_PIN_3
+#define PORT_D_C GPIOD
 #define D_C      PORT_D_C, PIN_D_C
 
-#define PIN_WR  GPIO_PIN_2
-#define PORT_WR GPIOB
+#define PIN_WR  GPIO_PIN_7
+#define PORT_WR GPIOD
 #define WR      PORT_WR, PIN_WR
 
-#define PIN_RD  GPIO_PIN_10
-#define PORT_RD GPIOB
+#define PIN_RD  GPIO_PIN_6
+#define PORT_RD GPIOD
 #define RD      PORT_RD, PIN_RD
 
-#define PIN_CS  GPIO_PIN_13
-#define PORT_CS GPIOC
+#define PIN_CS  GPIO_PIN_5
+#define PORT_CS GPIOD
 #define CS      PORT_CS, PIN_CS
 
-#define PIN_DIP_ON  GPIO_PIN_15
-#define PORT_DIP_ON GPIOC
+#define PIN_DIP_ON  GPIO_PIN_5
+#define PORT_DIP_ON GPIOD
 #define DIP_ON      PORT_DIP_ON, PIN_DIP_ON
 
-#define PIN_RESET   GPIO_PIN_14
-#define PORT_RESET  GPIOC
+#define PIN_RESET   GPIO_PIN_4
+#define PORT_RESET  GPIOD
 #define RESET       PORT_RESET, PIN_RESET
 
-#define PIN_D0  GPIO_PIN_0
-#define PORT_D0 GPIOA
-#define D0      PORT_D0, PIN_D0
-
-#define PIN_D1  GPIO_PIN_1
-#define PORT_D1 GPIOA
-#define D1      PORT_D1, PIN_D1
-
-#define PIN_D2  GPIO_PIN_2
-#define PORT_D2 GPIOA
-#define D2      PORT_D2, PIN_D2
-
-#define PIN_D3  GPIO_PIN_3
-#define PORT_D3 GPIOA
-#define D3      PORT_D3, PIN_D3
-
-#define PIN_D4  GPIO_PIN_4
-#define PORT_D4 GPIOA
-#define D4      PORT_D4, PIN_D4
-
-#define PIN_D5  GPIO_PIN_5
-#define PORT_D5 GPIOA
-#define D5      PORT_D5, PIN_D5
-
-#define PIN_D6  GPIO_PIN_6
-#define PORT_D6 GPIOA
-#define D6      PORT_D6, PIN_D6
-
-#define PIN_D7  GPIO_PIN_7
-#define PORT_D7 GPIOA
-#define D7      PORT_D7, PIN_D7
-
-
-#define PIN_D8  GPIO_PIN_0
-#define PORT_D8 GPIOC
-#define D8      PORT_D8, PIN_D8
-
-#define PIN_D9  GPIO_PIN_1
-#define PORT_D9 GPIOC
-#define D9      PORT_D9, PIN_D9
-
-#define PIN_D10  GPIO_PIN_2
-#define PORT_D10 GPIOC
-#define D10      PORT_D10, PIN_D10
-
-#define PIN_D11  GPIO_PIN_3
-#define PORT_D11 GPIOC
-#define D11      PORT_D11, PIN_D11
-
-#define PIN_D12  GPIO_PIN_4
-#define PORT_D12 GPIOC
-#define D12      PORT_D12, PIN_D12
-
-#define PIN_D13  GPIO_PIN_5
-#define PORT_D13 GPIOC
-#define D13      PORT_D13, PIN_D13
-
-#define PIN_D14  GPIO_PIN_6
-#define PORT_D14 GPIOC
-#define D14      PORT_D14, PIN_D14
-
-#define PIN_D15  GPIO_PIN_7
-#define PORT_D15 GPIOC
-#define D15      PORT_D15, PIN_D15
-
+#define PORT_DATA GPIOE
 
 struct StructPIO
 {
@@ -140,23 +76,22 @@ StructPIO pinCS(CS);
 StructPIO pinDIP_ON(DIP_ON);
 StructPIO pinRESET(RESET);
 
-StructPIO pinD0(D0);
-StructPIO pinD1(D1);
-StructPIO pinD2(D2);
-StructPIO pinD3(D3);
-StructPIO pinD4(D4);
-StructPIO pinD5(D5);
-StructPIO pinD6(D6);
-StructPIO pinD7(D7);
-
-StructPIO pinD8(D8);
-StructPIO pinD9(D9);
-StructPIO pinD10(D10);
-StructPIO pinD11(D11);
-StructPIO pinD12(D12);
-StructPIO pinD13(D13);
-StructPIO pinD14(D14);
-StructPIO pinD15(D15);
+StructPIO pinD0 (PORT_DATA, GPIO_PIN_0);
+StructPIO pinD1 (PORT_DATA, GPIO_PIN_1);
+StructPIO pinD2 (PORT_DATA, GPIO_PIN_2);
+StructPIO pinD3 (PORT_DATA, GPIO_PIN_3);
+StructPIO pinD4 (PORT_DATA, GPIO_PIN_4);
+StructPIO pinD5 (PORT_DATA, GPIO_PIN_5);
+StructPIO pinD6 (PORT_DATA, GPIO_PIN_6);
+StructPIO pinD7 (PORT_DATA, GPIO_PIN_7);
+StructPIO pinD8 (PORT_DATA, GPIO_PIN_8);
+StructPIO pinD9 (PORT_DATA, GPIO_PIN_9);
+StructPIO pinD10(PORT_DATA, GPIO_PIN_10);
+StructPIO pinD11(PORT_DATA, GPIO_PIN_11);
+StructPIO pinD12(PORT_DATA, GPIO_PIN_12);
+StructPIO pinD13(PORT_DATA, GPIO_PIN_13);
+StructPIO pinD14(PORT_DATA, GPIO_PIN_14);
+StructPIO pinD15(PORT_DATA, GPIO_PIN_15);
 
 
 struct DataBus
@@ -196,12 +131,26 @@ void HAL_FSMC::Init(void)
         GPIO_PULLUP
     };
 
+    is.Pin = PIN_CS;
+    HAL_GPIO_Init(PORT_CS, &is);
 
-    is.Pin = PIN_CS | PIN_DIP_ON | PIN_RESET;
-    _HAL_GPIO_Init(GPIOC, &is);
+    is.Pin = PIN_DIP_ON;
+    HAL_GPIO_Init(PORT_DIP_ON, &is);
 
-    is.Pin = PIN_BL_E  | PIN_D_C | PIN_WR | PIN_RD;
-    _HAL_GPIO_Init(GPIOB, &is);
+    is.Pin = PIN_RESET;
+    HAL_GPIO_Init(PORT_RESET, &is);
+
+    is.Pin = PIN_BL_E;
+    HAL_GPIO_Init(PORT_BL_E, &is);
+
+    is.Pin = PIN_D_C;
+    HAL_GPIO_Init(PORT_D_C, &is);
+
+    is.Pin = PIN_WR;
+    HAL_GPIO_Init(PORT_WR, &is);
+
+    is.Pin = PIN_RD;
+    HAL_GPIO_Init(PORT_RD, &is);
 
     pinRESET.Set();
     pinCS.Set();
@@ -422,11 +371,8 @@ void DataBus::InitWrite()
         GPIO_PULLUP
     };
 
-    is.Pin = PIN_D0 | PIN_D1 | PIN_D2 | PIN_D3 | PIN_D4 | PIN_D5 | PIN_D6 | PIN_D7;
-    _HAL_GPIO_Init(GPIOA, &is);
-
-    is.Pin = PIN_D8 | PIN_D9 | PIN_D10 | PIN_D11 | PIN_D12 | PIN_D13 | PIN_D14 | PIN_D15;
-    _HAL_GPIO_Init(GPIOC, &is);
+    is.Pin = GPIO_PIN_All;
+    HAL_GPIO_Init(PORT_DATA, &is);
 
     forWrite = true;
 };
@@ -441,23 +387,8 @@ void DataBus::InitRead()
         GPIO_PULLDOWN
     };
 
-    is.Pin = PIN_D0 | PIN_D1 | PIN_D2 | PIN_D3 | PIN_D4 | PIN_D5 | PIN_D6 | PIN_D7;
-    _HAL_GPIO_Init(GPIOA, &is);
-
-    is.Pin = PIN_D8 | PIN_D9 | PIN_D10 | PIN_D11 | PIN_D12 | PIN_D13 | PIN_D14 | PIN_D15;
-    _HAL_GPIO_Init(GPIOC, &is);
+    is.Pin = GPIO_PIN_All;
+    HAL_GPIO_Init(PORT_DATA, &is);
 
     forWrite = false;
 };
-
-
-
-
-
-StructPIO pinD16(WR);
-StructPIO pinD17(RD);
-StructPIO pinD18(CS);
-StructPIO pinD19(RESET);
-StructPIO pinD20(D_C);
-StructPIO pinD21(DIP_ON);
-StructPIO pinD22(BL_E);

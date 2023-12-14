@@ -35,9 +35,14 @@ void HAL::Init()
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 
-    __GPIOA_CLK_ENABLE();
-    __USB_OTG_FS_CLK_ENABLE();
+//    __USB_OTG_FS_CLK_ENABLE();
     __SYSCFG_CLK_ENABLE();
+
+    __HAL_RCC_GPIOA_CLK_ENABLE();
+    __HAL_RCC_GPIOB_CLK_ENABLE();
+    __HAL_RCC_GPIOC_CLK_ENABLE();
+    __HAL_RCC_GPIOD_CLK_ENABLE();
+    __HAL_RCC_GPIOE_CLK_ENABLE();
 
 //    GPIO_InitTypeDef isGPIO =
 //    {
