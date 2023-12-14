@@ -42,10 +42,10 @@ uint8 lineBackground[Display::PHYSICAL_WIDTH * 2];    // Ёта последовательность 
 
 static void SetLShiftFreq(uint freq)
 {
-    HAL_FSMC::WriteCommand(0xe6);   // set the LSHIFT (pixel clock) frequency
-    HAL_FSMC::WriteData((uint8)(freq >> 16));
-    HAL_FSMC::WriteData((uint8)(freq >> 8));
-    HAL_FSMC::WriteData((uint8)(freq));
+    HAL_BUS_DISPLAY::WriteCommand(0xe6);   // set the LSHIFT (pixel clock) frequency
+    HAL_BUS_DISPLAY::WriteData((uint8)(freq >> 16));
+    HAL_BUS_DISPLAY::WriteData((uint8)(freq >> 8));
+    HAL_BUS_DISPLAY::WriteData((uint8)(freq));
 }
 
 
@@ -56,56 +56,56 @@ static void SetHorizPeriod(uint16 HT,   // Horizontal total period
                            uint16 LPSPP // for serial TFT interfact
 )
 {
-    HAL_FSMC::WriteCommand(0xb4);
-    HAL_FSMC::WriteData((uint8)(HT >> 8));      // 0x020d 525
-    HAL_FSMC::WriteData((uint8)HT);
-    HAL_FSMC::WriteData((uint8)(HPS >> 8));     // 0x0014 20
-    HAL_FSMC::WriteData((uint8)(HPS));
-    HAL_FSMC::WriteData(HPW);                   // 0x05
-    HAL_FSMC::WriteData((uint8)(LPS >> 8));
-    HAL_FSMC::WriteData((uint8)(LPS));
-    HAL_FSMC::WriteData(LPSPP);
+    HAL_BUS_DISPLAY::WriteCommand(0xb4);
+    HAL_BUS_DISPLAY::WriteData((uint8)(HT >> 8));      // 0x020d 525
+    HAL_BUS_DISPLAY::WriteData((uint8)HT);
+    HAL_BUS_DISPLAY::WriteData((uint8)(HPS >> 8));     // 0x0014 20
+    HAL_BUS_DISPLAY::WriteData((uint8)(HPS));
+    HAL_BUS_DISPLAY::WriteData(HPW);                   // 0x05
+    HAL_BUS_DISPLAY::WriteData((uint8)(LPS >> 8));
+    HAL_BUS_DISPLAY::WriteData((uint8)(LPS));
+    HAL_BUS_DISPLAY::WriteData(LPSPP);
 }
 
 
 static void SetModeLCD()
 {
-    HAL_FSMC::WriteCommand(0xb0);
-    HAL_FSMC::WriteData(0x20);
-    HAL_FSMC::WriteData(0x80);
-    HAL_FSMC::WriteData(0x01);
-    HAL_FSMC::WriteData(0xdf);
-    HAL_FSMC::WriteData(0x01);
-    HAL_FSMC::WriteData(0x0f);
-    HAL_FSMC::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteCommand(0xb0);
+    HAL_BUS_DISPLAY::WriteData(0x20);
+    HAL_BUS_DISPLAY::WriteData(0x80);
+    HAL_BUS_DISPLAY::WriteData(0x01);
+    HAL_BUS_DISPLAY::WriteData(0xdf);
+    HAL_BUS_DISPLAY::WriteData(0x01);
+    HAL_BUS_DISPLAY::WriteData(0x0f);
+    HAL_BUS_DISPLAY::WriteData(0x00);
 }
 
 
 
 void Display::InitHardware()
 {
-    HAL_FSMC::Reset();
+    HAL_BUS_DISPLAY::Reset();
     
-    HAL_FSMC::WriteCommand(0x01);                       // soft reset
+    HAL_BUS_DISPLAY::WriteCommand(0x01);                       // soft reset
 
     HAL_TIM::DelayMS(10);
 
-    HAL_FSMC::WriteCommand(0xe0, 0x01);                 // set pll
+    HAL_BUS_DISPLAY::WriteCommand(0xe0, 0x01);                 // set pll
 
     HAL_TIM::DelayMS(10);
     
-    HAL_FSMC::WriteCommand(0xe0, 0x03);                 // set pll
+    HAL_BUS_DISPLAY::WriteCommand(0xe0, 0x03);                 // set pll
     
     HAL_TIM::DelayMS(10);
     
     SetModeLCD();
 
-    HAL_FSMC::WriteCommand(0xf0, 0x02);                 // set pixel data interface 0x03 for 16bit, 0x00 for 8bit
+    HAL_BUS_DISPLAY::WriteCommand(0xf0, 0x02);                 // set pixel data interface 0x03 for 16bit, 0x00 for 8bit
 
-    HAL_FSMC::WriteCommand(0x3a, 0x50);
+    HAL_BUS_DISPLAY::WriteCommand(0x3a, 0x50);
 
     // Set the MN of PLL
-    HAL_FSMC::WriteCommand(0xe2, 0x1d, 0x02, 0x54);     // Set the PLL
+    HAL_BUS_DISPLAY::WriteCommand(0xe2, 0x1d, 0x02, 0x54);     // Set the PLL
 
     HAL_TIM::DelayMS(100);
 
@@ -113,30 +113,30 @@ void Display::InitHardware()
     
     SetHorizPeriod(525, 25, 5, 0, 0);
     
-    HAL_FSMC::WriteCommand(0xb6);   // set vert period
-    HAL_FSMC::WriteData(0x01);
-    HAL_FSMC::WriteData(0x24);
-    HAL_FSMC::WriteData(0x00);
-    HAL_FSMC::WriteData(0x0a);
-    HAL_FSMC::WriteData(0x05);
-    HAL_FSMC::WriteData(0x00);
-    HAL_FSMC::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteCommand(0xb6);   // set vert period
+    HAL_BUS_DISPLAY::WriteData(0x01);
+    HAL_BUS_DISPLAY::WriteData(0x24);
+    HAL_BUS_DISPLAY::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteData(0x0a);
+    HAL_BUS_DISPLAY::WriteData(0x05);
+    HAL_BUS_DISPLAY::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteData(0x00);
 
-    HAL_FSMC::WriteCommand(0x29);   // ¬ключить дисплей
+    HAL_BUS_DISPLAY::WriteCommand(0x29);   // ¬ключить дисплей
     
-    HAL_FSMC::WriteCommand(0x2a);
-    HAL_FSMC::WriteData(0x00);
-    HAL_FSMC::WriteData(0x00);
-    HAL_FSMC::WriteData(0x01);
-    HAL_FSMC::WriteData(0xdf); // 0..479
+    HAL_BUS_DISPLAY::WriteCommand(0x2a);
+    HAL_BUS_DISPLAY::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteData(0x01);
+    HAL_BUS_DISPLAY::WriteData(0xdf); // 0..479
     
-    HAL_FSMC::WriteCommand(0x2b);
-    HAL_FSMC::WriteData(0x00);
-    HAL_FSMC::WriteData(0x00);
-    HAL_FSMC::WriteData(0x01);
-    HAL_FSMC::WriteData(0x0f); //0..271
+    HAL_BUS_DISPLAY::WriteCommand(0x2b);
+    HAL_BUS_DISPLAY::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteData(0x00);
+    HAL_BUS_DISPLAY::WriteData(0x01);
+    HAL_BUS_DISPLAY::WriteData(0x0f); //0..271
     
-    HAL_FSMC::WriteCommand(0x2c);
+    HAL_BUS_DISPLAY::WriteCommand(0x2c);
 
     uint8 *pointer = lineBackground;
 
@@ -188,7 +188,7 @@ void Display::EndScene()
 
 #endif
 
-    HAL_FSMC::SendBuffer(buffer[0], 0, TopRow(), PHYSICAL_WIDTH, PHYSICAL_HEIGHT, 2);
+    HAL_BUS_DISPLAY::SendBuffer(buffer[0], 0, TopRow(), PHYSICAL_WIDTH, PHYSICAL_HEIGHT, 2);
 
     if (sendToSCPI)
     {
@@ -220,7 +220,7 @@ void Display::EndScene()
 
 void Display::Sender::SendToFSMC(int x0, int y0)
 {
-    HAL_FSMC::SendBuffer(buffer[0], x0, y0, Width(), Height(), 1);
+    HAL_BUS_DISPLAY::SendBuffer(buffer[0], x0, y0, Width(), Height(), 1);
 }
 
 

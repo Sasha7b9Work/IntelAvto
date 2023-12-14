@@ -116,7 +116,7 @@ public:
 bool DataBus::forWrite = true;
 
 
-void HAL_FSMC::Init(void)
+void HAL_BUS_DISPLAY::Init(void)
 {
     __HAL_RCC_GPIOA_CLK_ENABLE();
     __HAL_RCC_GPIOB_CLK_ENABLE();
@@ -161,7 +161,7 @@ void HAL_FSMC::Init(void)
 }
 
 
-void HAL_FSMC::Reset()
+void HAL_BUS_DISPLAY::Reset()
 {
     pinRESET.Set();
     HAL_Delay(500);
@@ -172,7 +172,7 @@ void HAL_FSMC::Reset()
 }
 
 
-void HAL_FSMC::WriteCommand(uint16 command)
+void HAL_BUS_DISPLAY::WriteCommand(uint16 command)
 {
     pinCS.Reset();
     pinD_C.Reset();
@@ -186,14 +186,14 @@ void HAL_FSMC::WriteCommand(uint16 command)
 }
 
 
-void HAL_FSMC::WriteCommand(uint16 command, uint data)
+void HAL_BUS_DISPLAY::WriteCommand(uint16 command, uint data)
 {
     WriteCommand(command);
     WriteData(data);
 }
 
 
-void HAL_FSMC::WriteCommand(uint16 command, uint data1, uint data2, uint data3)
+void HAL_BUS_DISPLAY::WriteCommand(uint16 command, uint data1, uint data2, uint data3)
 {
     WriteCommand(command);
     WriteData(data1);
@@ -202,7 +202,7 @@ void HAL_FSMC::WriteCommand(uint16 command, uint data1, uint data2, uint data3)
 }
 
 
-void HAL_FSMC::WriteData(uint data)
+void HAL_BUS_DISPLAY::WriteData(uint data)
 {
     //pinCS.Reset();
     PORT_CS->BSRR = PIN_CS << 16;
@@ -229,23 +229,23 @@ void HAL_FSMC::WriteData(uint data)
 
 static void WindowSet(int s_x, int e_x, int s_y, int e_y)
 {
-    HAL_FSMC::WriteCommand(0x2a);               //SET page address
+    HAL_BUS_DISPLAY::WriteCommand(0x2a);               //SET page address
 
-    HAL_FSMC::WriteData((uint)((s_x) >> 8));    //SET start page address=0
-    HAL_FSMC::WriteData((uint)s_x);
-    HAL_FSMC::WriteData((uint)(e_x) >> 8);      //SET end page address
-    HAL_FSMC::WriteData((uint)e_x);
+    HAL_BUS_DISPLAY::WriteData((uint)((s_x) >> 8));    //SET start page address=0
+    HAL_BUS_DISPLAY::WriteData((uint)s_x);
+    HAL_BUS_DISPLAY::WriteData((uint)(e_x) >> 8);      //SET end page address
+    HAL_BUS_DISPLAY::WriteData((uint)e_x);
 
-    HAL_FSMC::WriteCommand(0x2b);               //SET column address
+    HAL_BUS_DISPLAY::WriteCommand(0x2b);               //SET column address
 
-    HAL_FSMC::WriteData((uint)(s_y) >> 8);      //SET start column address=0
-    HAL_FSMC::WriteData((uint)s_y);
-    HAL_FSMC::WriteData((uint)(e_y) >> 8);      //SET end column address
-    HAL_FSMC::WriteData((uint)e_y);
+    HAL_BUS_DISPLAY::WriteData((uint)(s_y) >> 8);      //SET start column address=0
+    HAL_BUS_DISPLAY::WriteData((uint)s_y);
+    HAL_BUS_DISPLAY::WriteData((uint)(e_y) >> 8);      //SET end column address
+    HAL_BUS_DISPLAY::WriteData((uint)e_y);
 }
 
 
-void HAL_FSMC::SendBuffer(uint8 *buffer, int x, int y, int width, int height, int k)
+void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int height, int k)
 {
     int top = x;
     int right = x + width - 1;
@@ -255,7 +255,7 @@ void HAL_FSMC::SendBuffer(uint8 *buffer, int x, int y, int width, int height, in
 
     WindowSet(top, right, left, bottom);
 
-    HAL_FSMC::WriteCommand(0x2c);   // Write memory start
+    HAL_BUS_DISPLAY::WriteCommand(0x2c);   // Write memory start
 
     DataBus::InitWrite();
 
@@ -295,7 +295,7 @@ void HAL_FSMC::SendBuffer(uint8 *buffer, int x, int y, int width, int height, in
 }
 
 
-uint16 HAL_FSMC::ReadData()
+uint16 HAL_BUS_DISPLAY::ReadData()
 {
     pinCS.Reset();
     pinD_C.Set();
@@ -310,7 +310,7 @@ uint16 HAL_FSMC::ReadData()
 }
 
 
-uint16 HAL_FSMC::GetData(uint16 address)
+uint16 HAL_BUS_DISPLAY::GetData(uint16 address)
 {
     WriteCommand(address);
     return ReadData();

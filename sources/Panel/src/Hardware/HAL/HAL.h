@@ -44,7 +44,7 @@ struct HAL_EEPROM
 };
 
 
-struct HAL_FSMC
+struct HAL_BUS_DISPLAY
 {
     static void Init();
     static void Reset();

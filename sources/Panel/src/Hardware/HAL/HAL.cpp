@@ -68,7 +68,7 @@ void HAL::Init()
     SystemClock_Config();
 
 #ifdef PANEL
-    HAL_FSMC::Init();
+    HAL_BUS_DISPLAY::Init();
 #endif
 
     HAL_TIM::Init();
