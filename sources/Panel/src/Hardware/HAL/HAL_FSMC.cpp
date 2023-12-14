@@ -264,10 +264,14 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
     uint color1 = colors[*buffer++];
     uint color2 = colors[*buffer++];
 
-    for(int i = 0; i < width * height / 2 / k; i++)
+    int count = width * height / 2 / k;
+
+    for(int i = 0; i < count; i++)
     {
         PORT_WR->BSRR = PIN_WR << 16;
-        PORT_DATA->ODR = (uint16)(((uint8)(color1 >> 8)) | ((uint16)(color1 >> 8) & 0xFF00));
+        __asm { nop }
+        __asm { nop }
+        PORT_DATA->ODR = (uint16)(color1 >> 8);
         PORT_WR->BSRR = PIN_WR;
 
         uint16 value = (uint16)((uint16)(color1 << 8) | (uint8)(color2 >> 16));
