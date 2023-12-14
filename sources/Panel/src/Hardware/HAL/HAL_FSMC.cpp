@@ -266,13 +266,11 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
 
     for(int i = 0; i < width * height / 2 / k; i++)
     {
-        uint16 value = (uint8)(color1 >> 8);
-
         PORT_WR->BSRR = PIN_WR << 16;
-        PORT_DATA->ODR = (uint16)(value | ((uint16)(color1 >> 8) & 0xFF00));
+        PORT_DATA->ODR = (uint16)(((uint8)(color1 >> 8)) | ((uint16)(color1 >> 8) & 0xFF00));
         PORT_WR->BSRR = PIN_WR;
 
-        value = (uint16)(color1 << 8);
+        uint16 value = (uint16)(color1 << 8);
         value |= (uint8)(color2 >> 16);
 
         PORT_WR->BSRR = PIN_WR << 16; //-V779
