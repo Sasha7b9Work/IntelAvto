@@ -2,6 +2,10 @@
 #pragma once
 #include "defines.h"
 
+
+#define _HAL_GPIO_Init HAL_GPIO_Init
+
+
 struct Settings;
 
 

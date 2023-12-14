@@ -17,9 +17,10 @@ include_directories( src
                      ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
                      ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
                      ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+                     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc
                     )
 
-add_definitions(-DSTM32F401xE)
+add_definitions(-DSTM32F429xx)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
@@ -34,7 +35,7 @@ add_compile_options(/wd5027)    # move assignment operator was implicitly define
 add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
 
 
-file(GLOB HAL                 ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
+file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 file(GLOB SRC                 src/*.*)
 file(GLOB DISPLAY             src/Display/*.*)
@@ -52,7 +53,7 @@ file(GLOB MENU_PAGES          src/Menu/Pages/*.*)
 file(GLOB UTILS               src/Utils/*.*)
 
 
-source_group(HAL                   FILES ${HAL})
+source_group(libs/HAL              FILES ${LIBS_HAL})
 source_group(src                   FILES ${SRC})
 source_group(Display               FILES ${DISPLAY})
 source_group(Display/Font          FILES ${DISPLAY_FONT})
@@ -65,11 +66,11 @@ source_group(Menu                  FILES ${MENU})
 source_group(Menu/Pages/           FILES ${MENU_PAGES})
 source_group(Utils                 FILES ${UTILS})
 
-set_source_files_properties(${HARDWARE_CMSIS} ${HAL}
+set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
                             ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
                             ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
                             ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
                             PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_library(${PROJECT_NAME} ${HAL} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
+add_library(${PROJECT_NAME} ${LIBS_HAL} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
                   ${HARDWARE_USBD} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${UTILS})
