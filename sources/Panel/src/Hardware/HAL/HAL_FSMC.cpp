@@ -223,10 +223,6 @@ void HAL_BUS_DISPLAY::WriteData(uint data)
 }
 
 
-#define SEND_PIXEL(x)                                           \
-
-
-
 static void WindowSet(int s_x, int e_x, int s_y, int e_y)
 {
     HAL_BUS_DISPLAY::WriteCommand(0x2a);               //SET page address
@@ -271,23 +267,23 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
         uint color2 = colors[*buffer++];
 
         PORT_WR->BSRR = PIN_WR << 16;
-        GPIOC->ODR = (GPIOC->ODR & 0xff00) + (color1 & 0xFF);       // r1
+        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 & 0xFF);       // r1
         color1 >>= 8;
-        GPIOA->ODR = (GPIOA->ODR & 0xff00) + (color1 & 0xFF);       // g1
+        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 & 0xFF);       // g1
         PORT_WR->BSRR = PIN_WR;
 
         __asm { nop }                                                       // \warning NOP вставлен для задержки
 
         PORT_WR->BSRR = PIN_WR << 16; //-V779
-        GPIOA->ODR = (GPIOA->ODR & 0xff00) + (color2 & 0xFF);       // r2
-        GPIOC->ODR = (GPIOC->ODR & 0xff00) + (color1 >> 8);         // b1
+        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 & 0xFF);       // r2
+        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 >> 8);         // b1
         PORT_WR->BSRR = PIN_WR;
 
         color2 >>= 8;                                                       // Здесь обошлись без нопа - потому что нужна операция сдвига
 
         PORT_WR->BSRR = PIN_WR << 16;
-        GPIOC->ODR = (GPIOC->ODR & 0xff00) + (color2 & 0xFF);       // g2
-        GPIOA->ODR = (GPIOA->ODR & 0xff00) + (color2 >> 8);         // b2
+        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 & 0xFF);       // g2
+        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 >> 8);         // b2
         PORT_WR->BSRR = PIN_WR;
     }
 
@@ -330,8 +326,7 @@ void DataBus::Set(uint16 data)
         InitWrite();
     }
 
-    GPIOA->ODR = (GPIOA->ODR & 0xff00) + (uint8)data;
-    GPIOC->ODR = (GPIOC->ODR & 0xff00) + (uint8)(data >> 8);
+    PORT_DATA->ODR = data;
 }
 
 

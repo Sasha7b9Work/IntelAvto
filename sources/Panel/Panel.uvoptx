@@ -152,18 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>324</LineNumber>
+          <LineNumber>256</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134240760</Address>
+          <Address>134236626</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;.\src\Display\Display.cpp</Filename>
+          <Filename>&lt;1&gt;.\src\Hardware\HAL\HAL_FSMC.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Panel\src/Display/Display.cpp\324</Expression>
+          <Expression>\\Panel\src/Hardware/HAL/HAL_FSMC.cpp\256</Expression>
         </Bp>
       </Breakpoint>
       <Tracepoint>
