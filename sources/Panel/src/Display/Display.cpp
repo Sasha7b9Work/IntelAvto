@@ -278,7 +278,7 @@ static void SetTopRow(int i)
 
 void Display::Update()
 {
-#ifdef WIN32
+#ifdef GUI
     BeginScene();
     DrawScreen();
     Console::Draw();
@@ -294,6 +294,8 @@ void Display::Update()
 
 void Display::DrawPartScreen(int num, bool)
 {
+    static int counter = 0;
+
     SetTopRow(num);
 
     if (num == 0)
@@ -308,6 +310,11 @@ void Display::DrawPartScreen(int num, bool)
     if (num == 0)
     {
         Console::Draw();
+    }
+
+    if ((counter++) % 2)
+    {
+        Rectangle(10, 10).Fill(50, 250, Color::WHITE);
     }
 
     Display::EndScene();

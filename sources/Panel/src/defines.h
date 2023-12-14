@@ -23,6 +23,19 @@ typedef const char *           pchar;
 typedef void(*pFuncVII)(int, int);
 
 
+
+union BitSet16
+{
+    BitSet16(uint8 b0, uint8 b1)
+    {
+        byte[0] = b0;
+        byte[1] = b1;
+    }
+    uint16 half_word;
+    uint8  byte[2];
+};
+
+
 #ifndef WIN32
 #define nullptr 0 //-V1059
 #endif

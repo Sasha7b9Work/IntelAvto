@@ -266,35 +266,23 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
         uint color1 = colors[*buffer++];
         uint color2 = colors[*buffer++];
 
+        BitSet16 bs0((uint8)(color1 >> 8), (uint8)(color1 >> 16));
+
         PORT_WR->BSRR = PIN_WR << 16;
-        PORT_DATA->ODR = (uint16)color1;
+        PORT_DATA->ODR = bs0.half_word;
         PORT_WR->BSRR = PIN_WR;
 
-        __asm { nop }                                                       // \warning NOP вставлен для задержки
-        __asm { nop }
-        __asm { nop }
-        __asm { nop }
+        BitSet16 bs1((uint8)(color2 >> 16), (uint8)(color1));
 
         PORT_WR->BSRR = PIN_WR << 16; //-V779
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 & 0xFF);       // r2
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 >> 8);         // b1
+        PORT_DATA->ODR = bs1.half_word;
         PORT_WR->BSRR = PIN_WR;
 
-        color2 >>= 8;                                                       // Здесь обошлись без нопа - потому что нужна операция сдвига
-
-        __asm { nop }
-        __asm { nop }
-        __asm { nop }
-        __asm { nop }
+        BitSet16 bs2((uint8)(color2), (uint8)(color2 >> 8));
 
         PORT_WR->BSRR = PIN_WR << 16;
-        PORT_DATA->ODR = (uint16)color2;
+        PORT_DATA->ODR = bs2.half_word;
         PORT_WR->BSRR = PIN_WR;
-
-        __asm { nop }
-        __asm { nop }
-        __asm { nop }
-        __asm { nop }
     }
 
     PORT_CS->BSRR = PIN_CS;
