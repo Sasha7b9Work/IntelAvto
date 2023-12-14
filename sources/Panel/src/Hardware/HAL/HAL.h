@@ -3,7 +3,7 @@
 #include "defines.h"
 
 
-#define _HAL_GPIO_Init HAL_GPIO_Init
+#define _HAL_GPIO_Init(x, y)    _
 
 
 struct Settings;

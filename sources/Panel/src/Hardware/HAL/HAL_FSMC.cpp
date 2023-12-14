@@ -198,10 +198,10 @@ void HAL_FSMC::Init(void)
 
 
     is.Pin = PIN_CS | PIN_DIP_ON | PIN_RESET;
-    HAL_GPIO_Init(GPIOC, &is);
+    _HAL_GPIO_Init(GPIOC, &is);
 
     is.Pin = PIN_BL_E  | PIN_D_C | PIN_WR | PIN_RD;
-    HAL_GPIO_Init(GPIOB, &is);
+    _HAL_GPIO_Init(GPIOB, &is);
 
     pinRESET.Set();
     pinCS.Set();
@@ -423,10 +423,10 @@ void DataBus::InitWrite()
     };
 
     is.Pin = PIN_D0 | PIN_D1 | PIN_D2 | PIN_D3 | PIN_D4 | PIN_D5 | PIN_D6 | PIN_D7;
-    HAL_GPIO_Init(GPIOA, &is);
+    _HAL_GPIO_Init(GPIOA, &is);
 
     is.Pin = PIN_D8 | PIN_D9 | PIN_D10 | PIN_D11 | PIN_D12 | PIN_D13 | PIN_D14 | PIN_D15;
-    HAL_GPIO_Init(GPIOC, &is);
+    _HAL_GPIO_Init(GPIOC, &is);
 
     forWrite = true;
 };
@@ -442,10 +442,10 @@ void DataBus::InitRead()
     };
 
     is.Pin = PIN_D0 | PIN_D1 | PIN_D2 | PIN_D3 | PIN_D4 | PIN_D5 | PIN_D6 | PIN_D7;
-    HAL_GPIO_Init(GPIOA, &is);
+    _HAL_GPIO_Init(GPIOA, &is);
 
     is.Pin = PIN_D8 | PIN_D9 | PIN_D10 | PIN_D11 | PIN_D12 | PIN_D13 | PIN_D14 | PIN_D15;
-    HAL_GPIO_Init(GPIOC, &is);
+    _HAL_GPIO_Init(GPIOC, &is);
 
     forWrite = false;
 };

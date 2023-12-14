@@ -258,20 +258,20 @@ static void InitPins()
         GPIO_MODE_OUTPUT_PP,
         GPIO_PULLUP
     };
-    HAL_GPIO_Init(GPIOB, &is);
+    _HAL_GPIO_Init(GPIOB, &is);
 
     is.Pin = PIN_RL0 | PIN_RL1;
     is.Mode = GPIO_MODE_INPUT;
-    HAL_GPIO_Init(GPIOB, &is);
+    _HAL_GPIO_Init(GPIOB, &is);
 
     is.Pin = PIN_RL2;
-    HAL_GPIO_Init(GPIOD, &is);
+    _HAL_GPIO_Init(GPIOD, &is);
 
     is.Pin = PIN_RL3;
-    HAL_GPIO_Init(GPIOA, &is);
+    _HAL_GPIO_Init(GPIOA, &is);
 
     is.Pin = PIN_ENC1 | PIN_ENC2;
-    HAL_GPIO_Init(GPIOC, &is);
+    _HAL_GPIO_Init(GPIOC, &is);
 }
 
 
