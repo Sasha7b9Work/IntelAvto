@@ -18,7 +18,7 @@ include_directories(../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4x
                     ../Panel/src
                     )
 
-add_definitions(-DSTM32F401xE -DLOADER)
+add_definitions(-DSTM32F429xx -DLOADER)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
