@@ -178,7 +178,7 @@ void Page::Draw(int x, int y, int, bool)
 
         Rectangle(WidthItem(i) - 1, HEIGHT - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
 
-        items[i]->Draw(x, y + 5, WidthItem(i), selected);
+//        items[i]->Draw(x, y + 5, WidthItem(i), selected);
 
         y += HEIGHT;
     }

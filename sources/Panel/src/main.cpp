@@ -11,21 +11,21 @@ int main(void)
 {
     HAL::Init();
 
-    gset.Load();
+//    gset.Load();
 
     Display::Init();
 
-    if (Keyboard::Init())
-    {
-        Display::DrawKeyboardFailScreen();
-        HAL_TIM::DelayMS(5000);
-    }
+//    if (Keyboard::Init())
+//    {
+//        Display::DrawKeyboardFailScreen();
+//        HAL_TIM::DelayMS(5000);
+//    }
 
     Menu::Init();
 
     while (1)
     {
-        Menu::Input::Update();
+//        Menu::Input::Update();
         Display::Update();
     }
 }
