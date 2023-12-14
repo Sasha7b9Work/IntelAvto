@@ -267,24 +267,44 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
         uint color2 = colors[*buffer++];
 
         PORT_WR->BSRR = PIN_WR << 16;
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 & 0xFF);       // r1
-        color1 >>= 8;
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 & 0xFF);       // g1
+//        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 & 0xFF);       // r1
+//        color1 >>= 8;
+//        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 & 0xFF);       // g1
+
+        PORT_DATA->ODR = (uint16)std::rand();
+
         PORT_WR->BSRR = PIN_WR;
 
         __asm { nop }                                                       // \warning NOP вставлен для задержки
+        __asm { nop }
+        __asm { nop }
+        __asm { nop }
 
         PORT_WR->BSRR = PIN_WR << 16; //-V779
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 & 0xFF);       // r2
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 >> 8);         // b1
+//        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 & 0xFF);       // r2
+//        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color1 >> 8);         // b1
+
+        PORT_DATA->ODR = (uint16)std::rand();
+
         PORT_WR->BSRR = PIN_WR;
 
         color2 >>= 8;                                                       // Здесь обошлись без нопа - потому что нужна операция сдвига
 
+        __asm { nop }
+        __asm { nop }
+        __asm { nop }
+        __asm { nop }
+
         PORT_WR->BSRR = PIN_WR << 16;
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 & 0xFF);       // g2
-        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 >> 8);         // b2
+//        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 & 0xFF);       // g2
+//        PORT_DATA->ODR = (PORT_DATA->ODR & 0xff00) + (color2 >> 8);         // b2
+        PORT_DATA->ODR = (uint16)std::rand();
         PORT_WR->BSRR = PIN_WR;
+
+        __asm { nop }
+        __asm { nop }
+        __asm { nop }
+        __asm { nop }
     }
 
     PORT_CS->BSRR = PIN_CS;
