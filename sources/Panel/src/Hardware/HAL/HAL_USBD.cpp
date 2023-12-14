@@ -1,9 +1,5 @@
 #include "defines.h"
-#include "Hardware/VCP.h"
 #include "Hardware/HAL/HAL.h"
-#include "Hardware/USBD/usbd_cdc_interface.h"
-#include "Hardware/USBD/usbd_conf.h"
-#include "Hardware/USBD/usbd_desc.h"
 #include "Utils/Math.h"
 #include <cstring>
 

@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "Log.h"
 #include "Display/Display.h"
-#include "Hardware/VCP.h"
 #include "Hardware/HAL/HAL.h"
 #include "Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
@@ -22,7 +21,6 @@ int main(void)
         HAL_TIM::DelayMS(5000);
     }
 
-    VCP::Init();
     Menu::Init();
 
     while (1)

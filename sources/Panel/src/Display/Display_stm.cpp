@@ -4,7 +4,6 @@
 #include "Display/Display.h"
 #include "Display/Primitives.h"
 #include "Display/Text.h"
-#include "Hardware/VCP.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
 #include "Utils/String.h"
@@ -204,8 +203,6 @@ void Display::EndScene()
             {
                 data[col] = colors[buffer[row][col]];
             }
-        
-            VCP::SendDataAsynch((const uint8 *)data, WIDTH_BUFFER * 4);
         }
 
         if (numPart == NUM_PARTS - 1)

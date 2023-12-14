@@ -1,12 +1,10 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
-#include "Hardware/VCP.h"
 #include "Hardware/HAL/HAL.h"
 #include <stm32f4xx_hal.h>
 
 
 #ifdef PANEL
     static PCD_HandleTypeDef hPCD;
-    void *HAL_PCD::handle = &hPCD;
 #endif
 
 
