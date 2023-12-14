@@ -312,9 +312,9 @@ void Display::DrawPartScreen(int num, bool)
         Console::Draw();
     }
 
-    if ((counter++) % 2)
+    if ((counter++) % 3)
     {
-        Rectangle(10, 10).Fill(50, 250, Color::WHITE);
+        Rectangle(10, 10).Fill(460, 260, Color::WHITE);
     }
 
     Display::EndScene();

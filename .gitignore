@@ -1,5 +1,6 @@
 *.bin
 *.uvgui*.*
+archive.zip
 
 sources/PLoader/Objects/*
 sources/PLoader/Objects-Debug/*

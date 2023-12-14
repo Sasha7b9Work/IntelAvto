@@ -41,9 +41,7 @@ namespace Menu
 
 void Menu::Draw()
 {
-    static int counter = 0;
-
-    openedPage->Draw((counter++) % 2, 0, 0);
+    openedPage->Draw(0, 0, 0);
 }
 
 
