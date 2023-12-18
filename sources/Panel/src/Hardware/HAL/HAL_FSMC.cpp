@@ -5,7 +5,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Settings.h"
 #include <stm32f4xx_hal.h>
-#include <cstdlib>
+//#include <cstdlib>
 
 
 #define PIN_BL_E  GPIO_PIN_1
@@ -271,7 +271,7 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
         PORT_WR->BSRR = PIN_WR << 16;
         uint16 col3 = (uint16)color2;
         uint16 value = (uint16)(color1 << 8);
-        __asm { nop }
+        __asm ( "nop" );
         PORT_DATA->ODR = value | (uint16)(color1 >> 8);
         PORT_WR->BSRR = PIN_WR;
 
@@ -285,9 +285,9 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
         color2 = colors[*buffer++];
 
         PORT_WR->BSRR = PIN_WR << 16;
-        __asm { nop }
-        __asm { nop }
-        __asm { nop }
+        __asm ( "nop" );
+        __asm ( "nop" );
+        __asm ( "nop" );
         PORT_DATA->ODR = col3;
         PORT_WR->BSRR = PIN_WR;
     }

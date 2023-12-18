@@ -8,10 +8,8 @@
 #pragma warning(push)
 #pragma warning(disable:4668)
 #endif
-#include <iomanip>
 #include <cstring>
 #include <cctype>
-#include <sstream>
 #include <cstdlib>
 #include <cstring>
 #ifdef WIN32
@@ -364,27 +362,27 @@ char *SU::DoubleToString(double)
 
 #else
 
-char *SU::DoubleToString(double value)
+char *SU::DoubleToString(double)
 {
-    static char result[100];
+//    static char result[100];
+//
+//    std::stringstream stream;
+//    stream << std::fixed << std::setprecision(5) << value;
+//
+//    strcpy_s(result, 90, stream.str().c_str());
+//
+//    char *p = result;
+//
+//    while (*p)
+//    {
+//        if (*p == '.')
+//        {
+//            *p = ',';
+//        }
+//        p++;
+//    }
 
-    std::stringstream stream;
-    stream << std::fixed << std::setprecision(5) << value;
-
-    strcpy_s(result, 90, stream.str().c_str());
-
-    char *p = result;
-
-    while (*p)
-    {
-        if (*p == '.')
-        {
-            *p = ',';
-        }
-        p++;
-    }
-
-    return result;
+    return "";
 }
 
 #endif

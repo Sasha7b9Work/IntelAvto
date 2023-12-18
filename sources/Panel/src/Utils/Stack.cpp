@@ -1,14 +1,15 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Stack.h"
+#include "Utils/Stack.h"
 #include <cstdlib>
 #include <cstring>
 
 
-template class Stack<int8>;
-template class Stack<char>;
-template class Stack<double>;
-template class Stack<uint>;
+template Stack<int8>::Stack(int);
+template Stack<int8>::~Stack();
+template int8 Stack<int8>::Pop();
+template void Stack<int8>::Push(int8);
+template int Stack<int8>::Size() const;
 
 
 template <typename T>

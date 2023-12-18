@@ -105,7 +105,7 @@ DEF_SWITCH_2(sMemoryMode,
     PageIndication::memoryMode, OnPress_MemoryMode
 );
 
-static Item *items[7] =
+Item *items[7] =
 {
     &sTypeSignal,
     &sRefGenerator,
