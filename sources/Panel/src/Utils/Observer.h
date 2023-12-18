@@ -30,7 +30,7 @@ public:
         {
             observers[i] = nullptr;
         }
-    };
+    }
 
     void AddObserver(Observer *observer) { observers[numObservers++] = observer; }
 

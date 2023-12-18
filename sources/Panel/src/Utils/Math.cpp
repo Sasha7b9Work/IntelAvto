@@ -47,7 +47,7 @@ float Math::RoundFloat(float value, int numDigits)
 {
     if(value == std::numeric_limits<float>::infinity())
     {
-        value = value;
+        (void)value;
     }
     
     float absValue = std::fabsf(value);

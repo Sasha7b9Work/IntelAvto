@@ -15,7 +15,7 @@ template int Stack<int8>::Size() const;
 template <typename T>
 Stack<T>::Stack(int _size) : buffer(0), size(_size), numElements(0U)
 {
-    buffer = static_cast<T *>(std::malloc(sizeof(T) * _size));
+    buffer = static_cast<T *>(std::malloc(sizeof(T) * (uint)_size));
 }
 
 
@@ -36,7 +36,7 @@ void Stack<T>::Push(T elem)
     }
     else
     {
-        std::memcpy(buffer, buffer + 1, (numElements - 1) * sizeof(T));
+        std::memcpy(buffer, buffer + 1, (uint)(numElements - 1) * sizeof(T));
         buffer[numElements - 1] = elem;
     }
 }

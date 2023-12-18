@@ -14,7 +14,7 @@ void NMI_Handler(void)
 
 }
 
-void HardFault_Handler(void)
+__attribute((noreturn)) void HardFault_Handler(void)
 {
     pchar file = Debug::file[0];
     int line = Debug::line[0];
@@ -24,26 +24,26 @@ void HardFault_Handler(void)
         file = Debug::file[0];
         line = Debug::line[0];
         
-        file = file; //-V570
-        line = line; //-V570
+        file = Debug::file[0]; //-V570
+        line = Debug::line[0]; //-V570
     }
 }
 
-void MemManage_Handler(void)
+__attribute((noreturn)) void MemManage_Handler(void)
 {
     while (1)
     {
     }
 }
 
-void BusFault_Handler(void)
+__attribute((noreturn)) void BusFault_Handler(void)
 {
     while (1)
     {
     }
 }
 
-void UsageFault_Handler(void)
+__attribute((noreturn)) void UsageFault_Handler(void)
 {
     while (1)
     {

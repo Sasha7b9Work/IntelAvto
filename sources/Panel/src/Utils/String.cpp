@@ -101,7 +101,7 @@ void String::Append(pchar str)
 
     Free();
 
-    Allocate(static_cast<int>(old.Size() + std::strlen(str) + 1));
+    Allocate(static_cast<int>((uint)old.Size() + std::strlen(str) + 1));
 
     std::strcpy(buffer, old.c_str());
     std::strcat(buffer, str);

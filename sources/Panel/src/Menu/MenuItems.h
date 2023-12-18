@@ -39,7 +39,7 @@ class Item
     friend class Hint;
 public:
     Item(pchar hintRu, pchar hintEn);
-    virtual ~Item() {};
+    virtual ~Item() {}
 
     static const int HEIGHT = 35;
 
@@ -47,10 +47,10 @@ public:
     virtual void Draw(int x, int y, int width, bool selected = false) = 0;
 
     // Функция обработки нажатия кнопки/ручки
-    virtual void OnEnterKeyGovernor(const Control &) { };
+    virtual void OnEnterKeyGovernor(const Control &) { }
 
     // Обработак поворота ручки
-    virtual void OnRotateGovernor(const Control &) { };
+    virtual void OnRotateGovernor(const Control &) { }
 
     Color ColorBackground(bool selected);
 
@@ -77,15 +77,15 @@ public:
     {
         text[0] = text_ru;
         text[1] = text_en;
-    };
-    virtual void Draw(int x, int y, int width, bool selected = false);
-    virtual void OnEnterKeyGovernor(const Control &);
+    }
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void OnEnterKeyGovernor(const Control &) override;
     pchar GetTitle() const;
     void SetTitle(pchar ru, pchar en);
 private:
     pchar text[2];
     void (*funcOnPress)();
-    virtual void CreateHint(String &hint) const;
+    virtual void CreateHint(String &hint) const override;
 };
 
 
@@ -100,8 +100,8 @@ public:
         namesEn = _namesEn;
     }
 
-    virtual void Draw(int x, int y, int width, bool selected = false);
-    virtual void OnEnterKeyGovernor(const Control &);
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void OnEnterKeyGovernor(const Control &) override;
     pchar Title() const;
     int Value() const { return (int)*state; }
     void SetColorBackground(const Color &color) { colorBack = color; }
@@ -112,7 +112,7 @@ private:
     uint8 *state;
     void (*funcOnPress)();
     int NumStates() const;
-    virtual void CreateHint(String &) const;
+    virtual void CreateHint(String &) const override;
 };
 
 
@@ -132,14 +132,14 @@ public:
         Item(hintRu, hintEn), state(_state), typeColor(type), funcChanged(func)
     {
     }
-    virtual void Draw(int x, int y, int width, bool selected = false);
-    virtual void OnRotateGovernor(const Control &);
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void OnRotateGovernor(const Control &) override;
     int Value() const { return (int)*state; }
     void SetValue(uint8 value);
 private:
     uint8 *state;
     Type typeColor;
-    virtual void CreateHint(String &) const;
+    virtual void CreateHint(String &) const override;
     void (*funcChanged)(uint8);
     Color ColorFill() const;
 };
@@ -166,11 +166,11 @@ public:
         state->ugoEn = _ugoEn;
 
         state->sw = this;
-    };
-    virtual void Draw(int x, int y, int width, bool selected = false);
-    virtual void OnEnterKeyGovernor(const Control &control);
+    }
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void OnEnterKeyGovernor(const Control &control) override;
 
-    void FuncOnPress() const { if (funcOnPress) { funcOnPress(); }; }
+    void FuncOnPress() const { if (funcOnPress) { funcOnPress(); } }
 
     uint8 Value() const { return state->value; }
 
@@ -182,7 +182,7 @@ private:
     pchar       text[2];            // Надпись на переключателе
     void        (*funcOnPress)();   // Эта функция вызывается после изменения состояния переключателя
     Enumeration *state;             // Адрес переменной с состоянием переключателя
-    virtual void CreateHint(String &hint) const;
+    virtual void CreateHint(String &hint) const override;
     // Переключить в следующее состояние
     void  NextChoice();
 };
@@ -196,12 +196,12 @@ public:
     Page(Item **_items, void (*_onEvent)(EventType::E), void (*_additionalDraw)(), bool equalItems = false) :
         Item("", ""),
         selectedItem(0), items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), equal_width_items(equalItems)
-    {};
+    {}
 
-    virtual void Draw(int x, int y, int width, bool selected = false);
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
 
     // Возвращает указатель на выделенный пункт меню
-    Item *SelectedItem() { return items[selectedItem]; };
+    Item *SelectedItem() { return items[selectedItem]; }
 
     void OnKeyRight();
     void OnKeyLeft();
@@ -209,7 +209,7 @@ public:
     // Проверить на корректность номер выделенного итема. Если он больше, чем количество итемов - скорректировать
     void VerifySelectedItem();
 
-    virtual void OnEvent(EventType::E);
+    virtual void OnEvent(EventType::E) override;
 
     // Возвращает true, если страница имеет дополнительную функцию отрисовки
     bool IsAddition() const { return additionalDraw != nullptr; }
@@ -222,7 +222,7 @@ protected:
     // Возвращает количество итемов на странице
     int NumItems() const;
 
-    virtual void CreateHint(String &_hint) const { _hint.Free(); };
+    virtual void CreateHint(String &_hint) const override { _hint.Free(); }
 
     // Возвращает ширину элемента меню с номером num
     int WidthItem(int num) const;
@@ -241,7 +241,7 @@ protected:
 class PageModes : public Page
 {
 public:
-    PageModes(Item **items, void (*onEvent)(EventType::E)) : Page(items, onEvent, nullptr) {}
+    PageModes(Item **_items, void (*_onEvent)(EventType::E)) : Page(_items, _onEvent, nullptr) {}
 
     // Функции действительны для страниц режимов каналов
     TypeMeasure *GetTypeMeasure() const;

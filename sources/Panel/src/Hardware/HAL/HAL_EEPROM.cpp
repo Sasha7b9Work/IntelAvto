@@ -105,7 +105,7 @@ void HAL_EEPROM::EraseSector(uint startAddress)
         return;
     }
 
-    CLEAR_FLASH_FLAGS;
+    CLEAR_FLASH_FLAGS
 
     HAL_FLASH_Unlock();
 
@@ -153,7 +153,7 @@ static uint GetSector(uint address)
 
 void HAL_EEPROM::WriteData(uint address, void *data, uint size)
 {
-    CLEAR_FLASH_FLAGS;
+    CLEAR_FLASH_FLAGS
 
     HAL_FLASH_Unlock();
 

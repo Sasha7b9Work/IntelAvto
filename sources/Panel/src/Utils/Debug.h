@@ -20,15 +20,6 @@
 //#ifdef __cplusplus
 //}
 //#endif
-//
-//
-//#define VERIFY_ON_NULL(x)   \
-//if (x == nullptr)           \
-//{                           \
-//    DEBUG_POINT_0;          \
-//}
-
-//HardFault_Handler();    \
 
 
 namespace Debug

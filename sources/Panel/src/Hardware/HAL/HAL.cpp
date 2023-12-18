@@ -4,7 +4,7 @@
 
 
 #ifdef PANEL
-    static PCD_HandleTypeDef hPCD;
+    PCD_HandleTypeDef hPCD;
 #endif
 
 

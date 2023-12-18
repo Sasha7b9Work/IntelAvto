@@ -1,24 +1,29 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 
-#define WIN32_LEAN_AND_MEAN
+#ifdef WIN32
+    #define __asm(x)
+    #define WIN32_LEAN_AND_MEAN
+    #define __attribute(x)
+#endif
 
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-//    #pragma clang diagnostic ignored "-Wundefined-func-template"
-//    #pragma clang diagnostic ignored "-Wmissing-field-initializers"
-//    #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
-//    #pragma clang diagnostic ignored "-Wold-style-cast"
-//    #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
-//    #pragma clang diagnostic ignored "-Wpadded"
-//    #pragma clang diagnostic ignored "-Wglobal-constructors"
-//    #pragma clang diagnostic ignored "-Wcast-qual"
-//    #pragma clang diagnostic ignored "-Wweak-vtables"
+    #pragma clang diagnostic ignored "-Wundefined-func-template"
+    #pragma clang diagnostic ignored "-Wmissing-field-initializers"
+    #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+    #pragma clang diagnostic ignored "-Wold-style-cast"
+    #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wglobal-constructors"
+    #pragma clang diagnostic ignored "-Wcast-qual"
+    #pragma clang diagnostic ignored "-Wweak-vtables"
     #pragma clang diagnostic ignored "-Winvalid-source-encoding"
-//    #pragma clang diagnostic ignored "-Wfloat-equal"
-//    #pragma clang diagnostic ignored "-Wexit-time-destructors"
-//    #pragma clang diagnostic ignored "-Wformat-nonliteral"
-//    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
-//    #pragma clang diagnostic ignored "-Wmissing-prototypes"
+    #pragma clang diagnostic ignored "-Wfloat-equal"
+    #pragma clang diagnostic ignored "-Wexit-time-destructors"
+    #pragma clang diagnostic ignored "-Wformat-nonliteral"
+    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
+    #pragma clang diagnostic ignored "-Wmissing-prototypes"
+    #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
 #endif
 
 typedef unsigned short         uint16;
@@ -47,10 +52,6 @@ union BitSet16
     uint8  byte[2];
 };
 
-
-#ifndef WIN32
-#define nullptr 0 //-V1059
-#endif
 
 #define _bitset(bits)                               \
   ((uint8)(                                         \

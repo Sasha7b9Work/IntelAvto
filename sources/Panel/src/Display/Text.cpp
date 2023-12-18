@@ -15,7 +15,7 @@ Text::Text(pchar t)
 {
     if (t == nullptr)
     {
-        t = t;
+        (void)t;
     }
 
     Create(t);

@@ -211,7 +211,7 @@ void HAL_NVIC_DisableIRQ(IRQn_Type IRQn)
   * @brief  Initiates a system reset request to reset the MCU.
   * @retval None
   */
-void HAL_NVIC_SystemReset(void)
+__attribute__((noreturn)) void HAL_NVIC_SystemReset(void)
 {
   /* System Reset */
   NVIC_SystemReset();

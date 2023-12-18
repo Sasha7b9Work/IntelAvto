@@ -268,7 +268,7 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase_IT(FLASH_EraseInitTypeDef *pEraseInit)
     pFlash.VoltageForErase = (uint8_t)pEraseInit->VoltageRange;
 
     /*Erase 1st sector and wait for IT*/
-    FLASH_Erase_Sector(pEraseInit->Sector, pEraseInit->VoltageRange);
+    FLASH_Erase_Sector(pEraseInit->Sector, (uint8_t)pEraseInit->VoltageRange);
   }
 
   return status;
@@ -310,7 +310,7 @@ HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit)
   /*Read protection configuration*/
   if ((pOBInit->OptionType & OPTIONBYTE_RDP) == OPTIONBYTE_RDP)
   {
-    status = FLASH_OB_RDP_LevelConfig(pOBInit->RDPLevel);
+    status = FLASH_OB_RDP_LevelConfig((uint8_t)pOBInit->RDPLevel);
   }
 
   /*USER  configuration*/
@@ -324,7 +324,7 @@ HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit)
   /*BOR Level  configuration*/
   if ((pOBInit->OptionType & OPTIONBYTE_BOR) == OPTIONBYTE_BOR)
   {
-    status = FLASH_OB_BOR_LevelConfig(pOBInit->BORLevel);
+    status = FLASH_OB_BOR_LevelConfig((uint8_t)pOBInit->BORLevel);
   }
 
   /* Process Unlocked */

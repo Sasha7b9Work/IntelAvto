@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "log.h"
+#include "Log.h"
 #include "Display/Console.h"
 #include "Utils/String.h"
 

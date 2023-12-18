@@ -887,7 +887,7 @@ uint32_t FontMid::WriteSymbol(uint8_t symbol, int x, int y)
 				uint32_t pixel = rowshift & 0x8000;
 				if (pixel != 0)
 				{
-					Point().Draw((int)(x + i), y);
+					Point().Draw((int)((uint)x + i), y);
 				}
 				if ((pixel != 0) && i > width)
 				{

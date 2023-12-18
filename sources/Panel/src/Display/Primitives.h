@@ -24,7 +24,7 @@ namespace Primitives
     class Point
     {
     public:
-        Point() {};
+        Point() {}
         void Draw(int x, int y, Color color);
         void Draw(int x, int y);
 
@@ -40,7 +40,7 @@ namespace Primitives
     class HLine
     {
     public:
-        HLine(int _length) : length(_length) {};
+        HLine(int _length) : length(_length) {}
         int Draw(int x, int y, Color color);
         int Draw(const Coord &, Color color);
         int Draw(const Coord &);
@@ -53,7 +53,7 @@ namespace Primitives
     class VLine
     {
     public:
-        VLine(int l) : length(l) {};
+        VLine(int l) : length(l) {}
         int Draw(int x, int y, Color color);
         int Draw(int x, int y);
         int Draw(const Coord &);
@@ -66,7 +66,7 @@ namespace Primitives
     class DLine
     {
     public:
-        DLine(int _length, int _dx, int _dy) : length(_length), dx(_dx), dy(_dy) {};
+        DLine(int _length, int _dx, int _dy) : length(_length), dx(_dx), dy(_dy) {}
         void Draw(int x, int y);
     private:
         const int length;

@@ -156,8 +156,6 @@ bool Menu::Input::OnControl(const Control &control)
         Menu::OpenedPage()->SelectedItem()->OnRotateGovernor(control);
         break;
     case Control::None:
-    default:
-        // никаких действий по умолчанию производить не требуется
         break;
     }
 

@@ -864,7 +864,7 @@ uint FontBig::WriteSymbol(uint8 symbol, int x, int y, bool mapping)
                 {
                     if (mapping)
                     {
-                        Point().Draw((int)(x + i), y);
+                        Point().Draw((int)((uint)x + i), y);
                     }
                 }
                 if ((pixel != 0) && i > width)

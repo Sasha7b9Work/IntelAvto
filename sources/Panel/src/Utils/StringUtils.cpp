@@ -477,7 +477,7 @@ String SU::Int2String(int n)
 
     do
     {
-        result[i++] = n % 10 + '0';
+        result[i++] = (char)(n % 10 + '0');
         n -= n % 10;
         n /= 10;
     } while (n > 0);

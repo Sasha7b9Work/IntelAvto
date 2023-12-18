@@ -32,11 +32,11 @@ struct Control
             Release,
             Long
         } value;
-        Action(E v) : value(v) {};
-        bool IsPress() const { return value == Press; };
+        Action(E v) : value(v) {}
+        bool IsPress() const { return value == Press; }
     } action;
 
-    Control(E v = None, Action::E a = Action::Press) : value(v), action(a) {};
+    Control(E v = None, Action::E a = Action::Press) : value(v), action(a) {}
 
     String Name() const;
 

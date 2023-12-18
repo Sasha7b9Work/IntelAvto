@@ -22,23 +22,23 @@ using namespace Primitives;
 
 
 // Нарисовать подсказку
-static void DrawHint(int x, int y);
+void DrawHint(int x, int y);
 
-static void DrawInfo();
+void DrawInfo();
 
 static void SetTopRow(int i);
 
 
-static uint timeAutoHint = 0;
-static int second = 0;
+uint timeAutoHint = 0;
+int second = 0;
 static int topRow = 0;
 
 
 static uint timeStart = 0;
 static uint timeFrame = 0;
-static uint fps = 0;                // Столько кадров отрисовано за последнюю секунду
-static uint beginSecond = 0;        // В это время началась последняя секунда
-static uint timePaint = 0;          // Время отрисовки за секунду
+uint fps = 0;                // Столько кадров отрисовано за последнюю секунду
+uint beginSecond = 0;        // В это время началась последняя секунда
+uint timePaint = 0;          // Время отрисовки за секунду
 
 
 static int topDraw = 0;             // Верхний у отрисовываемой части экрана
@@ -60,7 +60,6 @@ static Coord coordExtGenerator(95, yString);
 static Coord coordLaunch(130, yString);
 
 static void DrawSignal();
-
 
 void Display::Init()
 {
@@ -392,14 +391,14 @@ bool Display::InDrawingPart(int, int)
 
 #else
 
-bool Display::InDrawingPart(int y, int height)
+bool Display::InDrawingPart(int y, int _height)
 {
     if (!drawingScene)
     {
         return true;
     }
 
-    int yBottom = y + height;
+    int yBottom = y + _height;
 
     if (y >= topDraw && y <= bottomhDraw)
     {

@@ -23,7 +23,7 @@ public:
 
     T &operator [](const int index) const { return buffer[index]; }
 
-    void Clear() { numElements = 0; };
+    void Clear() { numElements = 0; }
 
     bool IsFull() const { return numElements == size; }
 

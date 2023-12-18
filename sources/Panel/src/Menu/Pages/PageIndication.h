@@ -18,7 +18,7 @@ struct TypeSignal : public Enumeration
         Count
     };
 
-    explicit TypeSignal(E v) : Enumeration((uint8)v) {};
+    explicit TypeSignal(E v) : Enumeration((uint8)v) {}
 
     static pchar Name(E);
 };
@@ -31,7 +31,7 @@ struct RefGenerator : public Enumeration
         External            // Внешний
     };
 
-    explicit RefGenerator(E v) : Enumeration((uint8)v) {};
+    explicit RefGenerator(E v) : Enumeration((uint8)v) {}
     bool IsExternal() const { return (value == External); }
 };
 
@@ -45,7 +45,7 @@ struct LaunchSource : public Enumeration
         OneTime             // Однократный
     };
 
-    explicit LaunchSource(E v) : Enumeration((uint8)v) {};
+    explicit LaunchSource(E v) : Enumeration((uint8)v) {}
     bool IsExternal() const { return (value == External); }
     bool IsOneTime() const  { return (value == OneTime); }
 };
@@ -59,7 +59,7 @@ struct MemoryMode : public Enumeration
         On                  // Вкл
     };
 
-    explicit MemoryMode(E v) : Enumeration((uint8)v) {};
+    explicit MemoryMode(E v) : Enumeration((uint8)v) {}
     bool IsOn() const { return (value == On); }
 };
 
@@ -72,7 +72,7 @@ struct CalibrationMode : public Enumeration
         Enabled         // Находимся в режиме калибровки - ручка управляет калибровкой
     };
 
-    explicit CalibrationMode(E v) : Enumeration((uint8)v) {};
+    explicit CalibrationMode(E v) : Enumeration((uint8)v) {}
     bool IsEnabled() const { return (value == Enabled); }
 };
 

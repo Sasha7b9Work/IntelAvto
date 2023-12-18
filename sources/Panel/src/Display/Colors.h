@@ -20,7 +20,7 @@ struct Color
 
     static const int COUNT = 13;
 
-    explicit Color(uint8 i) : index(i) {};
+    explicit Color(uint8 i) : index(i) {}
 
     void SetAsCurrent() const;
     static Color GetCurrent();

@@ -52,6 +52,6 @@ void HAL_TIM::DelayUS(uint timeUS)
     uint32_t us_count_tic = timeUS * (SystemCoreClock / 1000000);
     while (delta(t0, DWT->CYCCNT) < us_count_tic) //-V712
     {
-    };
+    }
 #endif
 }
