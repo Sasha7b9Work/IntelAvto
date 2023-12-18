@@ -1043,6 +1043,9 @@ uint16_t          HAL_FLASHEx_OB_GetBank2WRP(void);
   */
 void FLASH_Erase_Sector(uint32_t Sector, uint8_t VoltageRange);
 void FLASH_FlushCaches(void);
+
+extern FLASH_ProcessTypeDef pFlash;
+
 /**
   * @}
   */ 

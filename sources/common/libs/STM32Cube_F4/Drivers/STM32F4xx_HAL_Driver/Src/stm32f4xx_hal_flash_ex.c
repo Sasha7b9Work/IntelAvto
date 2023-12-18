@@ -87,7 +87,6 @@
 /** @addtogroup FLASHEx_Private_Variables
   * @{
   */
-extern FLASH_ProcessTypeDef pFlash;
 /**
   * @}
   */
