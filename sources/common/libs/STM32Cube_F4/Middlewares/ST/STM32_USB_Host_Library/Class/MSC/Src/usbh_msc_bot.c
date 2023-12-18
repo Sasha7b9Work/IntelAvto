@@ -515,9 +515,6 @@ USBH_StatusTypeDef USBH_MSC_BOT_Process(USBH_HandleTypeDef *phost, uint8_t lun)
         MSC_Handle->hbot.state = BOT_SEND_CBW;
       }
       break;
-
-    default:
-      break;
   }
   return status;
 }

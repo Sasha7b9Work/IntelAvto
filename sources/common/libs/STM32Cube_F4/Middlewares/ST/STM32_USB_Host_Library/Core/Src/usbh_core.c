@@ -1170,9 +1170,6 @@ static USBH_StatusTypeDef USBH_HandleEnum(USBH_HandleTypeDef *phost)
         Status = USBH_OK;
       }
       break;
-
-    default:
-      break;
   }
   return Status;
 }

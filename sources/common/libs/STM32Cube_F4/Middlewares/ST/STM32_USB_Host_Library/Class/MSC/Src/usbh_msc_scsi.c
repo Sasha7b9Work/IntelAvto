@@ -214,7 +214,7 @@ USBH_StatusTypeDef USBH_MSC_SCSI_Inquiry(USBH_HandleTypeDef *phost, uint8_t lun,
 
       (void)USBH_memset(MSC_Handle->hbot.cbw.field.CB, 0, CBW_LENGTH);
       MSC_Handle->hbot.cbw.field.CB[0]  = OPCODE_INQUIRY;
-      MSC_Handle->hbot.cbw.field.CB[1]  = (lun << 5);
+      MSC_Handle->hbot.cbw.field.CB[1]  = (uint8_t)(lun << 5);
       MSC_Handle->hbot.cbw.field.CB[2]  = 0U;
       MSC_Handle->hbot.cbw.field.CB[3]  = 0U;
       MSC_Handle->hbot.cbw.field.CB[4]  = 0x24U;
@@ -286,7 +286,7 @@ USBH_StatusTypeDef USBH_MSC_SCSI_RequestSense(USBH_HandleTypeDef *phost,
 
       (void)USBH_memset(MSC_Handle->hbot.cbw.field.CB, 0, CBW_CB_LENGTH);
       MSC_Handle->hbot.cbw.field.CB[0]  = OPCODE_REQUEST_SENSE;
-      MSC_Handle->hbot.cbw.field.CB[1]  = (lun << 5);
+      MSC_Handle->hbot.cbw.field.CB[1]  = (uint8_t)(lun << 5);
       MSC_Handle->hbot.cbw.field.CB[2]  = 0U;
       MSC_Handle->hbot.cbw.field.CB[3]  = 0U;
       MSC_Handle->hbot.cbw.field.CB[4]  = DATA_LEN_REQUEST_SENSE;

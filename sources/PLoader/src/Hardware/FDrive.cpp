@@ -490,7 +490,7 @@ void FDrive::ReadZones(FIL *f_hash, FIL *f_firm, uint address, const int size)
         {
         }
 
-        HAL_EEPROM::WriteData(address + num_zone * 1024, zone, (uint)size_zone);
+        HAL_EEPROM::WriteData(address + (uint)num_zone * 1024U, zone, (uint)size_zone);
 
         num_zone++;
 

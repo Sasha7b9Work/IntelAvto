@@ -32,7 +32,7 @@
 #define USBH_ErrLog(...)  Log_Write(__VA_ARGS__)
 #define USBH_DbgLog(...)  Log_Write(__VA_ARGS__)
 #else
-#define USBH_UsrLog(...) {}
-#define USBH_ErrLog(...) {}
-#define USBH_DbgLog(...) {}
+#define USBH_UsrLog(...)
+#define USBH_ErrLog(...)
+#define USBH_DbgLog(...)
 #endif
