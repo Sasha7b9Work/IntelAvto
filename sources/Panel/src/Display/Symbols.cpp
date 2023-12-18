@@ -3,6 +3,6 @@
 #include "Display/Symbols.h"
 
 
-char *UGO::OVERLAPPED  = "оепеонкмемхе";
-char *UGO::EMPTY_VALUE = "----------";
-char *UGO::DivNULL     = "=X/0";
+pchar UGO::OVERLAPPED  = "оепеонкмемхе";
+pchar UGO::EMPTY_VALUE = "----------";
+pchar UGO::DivNULL     = "=X/0";

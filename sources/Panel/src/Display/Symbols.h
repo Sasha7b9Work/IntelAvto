@@ -14,7 +14,7 @@
 
 struct UGO
 {
-    static char *OVERLAPPED;    // Индикация переполнения
-    static char *EMPTY_VALUE;   // Выводится, когда значение ещё не получено после засылки значения
-    static char *DivNULL;       // Индикация деления на ноль
+    static pchar OVERLAPPED;    // Индикация переполнения
+    static pchar EMPTY_VALUE;   // Выводится, когда значение ещё не получено после засылки значения
+    static pchar DivNULL;       // Индикация деления на ноль
 };

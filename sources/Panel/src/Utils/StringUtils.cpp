@@ -362,7 +362,7 @@ char *SU::DoubleToString(double)
 
 #else
 
-char *SU::DoubleToString(double)
+pchar SU::DoubleToString(double)
 {
 //    static char result[100];
 //

@@ -3,11 +3,23 @@
 
 #define WIN32_LEAN_AND_MEAN
 
-// Нужно раскомментировать, чтобы был доступен предел "1000с"
-//#define USE_1000s
-
-// Нужно раскомментировать, чтобы был доступен предел "1000K"
-//#define USE_1000K
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+//    #pragma clang diagnostic ignored "-Wundefined-func-template"
+//    #pragma clang diagnostic ignored "-Wmissing-field-initializers"
+//    #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
+//    #pragma clang diagnostic ignored "-Wold-style-cast"
+//    #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+//    #pragma clang diagnostic ignored "-Wpadded"
+//    #pragma clang diagnostic ignored "-Wglobal-constructors"
+//    #pragma clang diagnostic ignored "-Wcast-qual"
+//    #pragma clang diagnostic ignored "-Wweak-vtables"
+    #pragma clang diagnostic ignored "-Winvalid-source-encoding"
+//    #pragma clang diagnostic ignored "-Wfloat-equal"
+//    #pragma clang diagnostic ignored "-Wexit-time-destructors"
+//    #pragma clang diagnostic ignored "-Wformat-nonliteral"
+//    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
+//    #pragma clang diagnostic ignored "-Wmissing-prototypes"
+#endif
 
 typedef unsigned short         uint16;
 typedef signed short           int16;

@@ -151,5 +151,6 @@ static void SystemClock_Config()
 
 void HAL::ERROR_HANDLER()
 {
-    *((int *)((void *)0)) = 0;
+    // \todo ַהוסü המכזום בûכ סבנמס
+//    *((int *)((void *)0)) = 0;
 }
