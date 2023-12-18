@@ -538,6 +538,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Settings.cpp</FilePath>
             </File>
+            <File>
+              <FileName>no-warnings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\no-warnings.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -687,6 +692,11 @@
               <FileName>startup_stm32f429xx.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\src\Hardware\CMSIS\startup_stm32f429xx.s</FilePath>
+            </File>
+            <File>
+              <FileName>no-warnings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\no-warnings.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1399,6 +1409,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Settings.cpp</FilePath>
             </File>
+            <File>
+              <FileName>no-warnings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\no-warnings.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1548,6 +1563,11 @@
               <FileName>startup_stm32f429xx.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\src\Hardware\CMSIS\startup_stm32f429xx.s</FilePath>
+            </File>
+            <File>
+              <FileName>no-warnings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\no-warnings.h</FilePath>
             </File>
           </Files>
         </Group>

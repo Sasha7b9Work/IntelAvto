@@ -322,7 +322,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>1</wLevel>
+            <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>1</uSurpInc>
             <uC99>1</uC99>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,LOADER,DEBUG,STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>.\src;..\Panel\src;.\src\Hardware\USBH;..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\src\Hardware\FatFS;.\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include</IncludePath>
+              <IncludePath>.\src;.\src\Hardware\USBH;.\src\Hardware\FatFS;.\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -477,6 +477,16 @@
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\main.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>no-warnings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\no-warnings.h</FilePath>
+            </File>
+            <File>
+              <FileName>defines.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\defines.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1040,7 +1050,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, LOADER, STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>.\src;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;.\src\Hardware\USBH;.\src\Hardware\FatFS;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\Panel\src</IncludePath>
+              <IncludePath>.\src;.\src\Hardware\HAL;.\src\Hardware\USBH;.\src\Hardware\FatFS;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1178,6 +1188,16 @@
               <FileName>main.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\main.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>no-warnings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\no-warnings.h</FilePath>
+            </File>
+            <File>
+              <FileName>defines.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\defines.h</FilePath>
             </File>
           </Files>
         </Group>
