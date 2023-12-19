@@ -3,8 +3,6 @@
 
 extern "C"
 {
-
-    
     void HAL_NVIC_DisableIRQ(IRQn_Type)
     {
 
@@ -31,6 +29,11 @@ extern "C"
 
 
 void HAL_NVIC_SetPriorityGrouping(uint32_t /*PriorityGroup*/)
+{
+
+}
+
+void HAL_SYSTICK_CLKSourceConfig(uint32_t /*CLKSource*/)
 {
 
 }

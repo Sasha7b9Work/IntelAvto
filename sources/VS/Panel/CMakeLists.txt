@@ -2,15 +2,17 @@
 
 project (PanelGUI)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
 include_directories(src
-                    ../../common/_VS_KEIL/CMSIS
-                    ../../common/_VS_KEIL/HAL
+                    ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
+                    ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
                     ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
                     ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+                    ../../common/_VS_KEIL/CMSIS
+                    ../../common/_VS_KEIL/HAL
                     ../../Panel/src
                     ../../Panel/tests
                     ../../Panel/src/Hardware/HAL

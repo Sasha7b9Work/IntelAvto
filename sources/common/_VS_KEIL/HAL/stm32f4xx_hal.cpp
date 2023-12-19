@@ -27,13 +27,13 @@ void HAL_Delay(uint32_t time)
 
 HAL_StatusTypeDef HAL_Init()
 {
-    return HAL_ERROR;
+    return HAL_OK;
 }
 
 
-void HAL_DeInit()
+HAL_StatusTypeDef HAL_DeInit()
 {
-
+    return HAL_OK;
 }
 
 
