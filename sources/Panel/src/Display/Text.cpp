@@ -172,7 +172,7 @@ void Text::WriteInCenterRect(int x, int y, int width, int height)
     }
     else if (numWords == 2)
     {
-        char *start = 0;
+        char *start = nullptr;
         int num = 0;
 
         GetWord(0, start, num);
@@ -280,14 +280,14 @@ void Text::GetWord(int numWord, char *(&start), int &num)
     while (true) //-V2530
     {
         num = 0;
-        start = 0;
+        start = nullptr;
 
         SkipSpaces(&p);
 
         if (*p == 0)
         {
             num = 0;
-            start = 0;
+            start = nullptr;
             break;
         }
 
