@@ -35,7 +35,6 @@ void HAL::Init()
 
 //    __USB_OTG_FS_CLK_ENABLE();
 
-#ifndef WIN32
     __SYSCFG_CLK_ENABLE();
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -43,7 +42,6 @@ void HAL::Init()
     __HAL_RCC_GPIOC_CLK_ENABLE();
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOE_CLK_ENABLE();
-#endif
 
 //    GPIO_InitTypeDef isGPIO =
 //    {
@@ -90,11 +88,10 @@ static void SystemClock_Config()
 
     /**Configure the main internal regulator output voltage
     */
-#ifndef WIN32
+
     __HAL_RCC_PWR_CLK_ENABLE();
 
     __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-#endif
 
     /**Initializes the CPU, AHB and APB busses clocks
     */
