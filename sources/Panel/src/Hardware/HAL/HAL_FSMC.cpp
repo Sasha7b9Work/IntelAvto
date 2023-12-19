@@ -128,7 +128,9 @@ void HAL_BUS_DISPLAY::Init(void)
     {
         0,
         GPIO_MODE_OUTPUT_PP,
-        GPIO_PULLUP
+        GPIO_PULLUP,
+        0,
+        0
     };
 
     is.Pin = PIN_CS;
@@ -368,7 +370,9 @@ void DataBus::InitWrite()
     {
         0,
         GPIO_MODE_OUTPUT_PP,
-        GPIO_PULLUP
+        GPIO_PULLUP,
+        0,
+        0
     };
 
     is.Pin = GPIO_PIN_All;
@@ -384,7 +388,9 @@ void DataBus::InitRead()
     {
         0,
         GPIO_MODE_INPUT,
-        GPIO_PULLDOWN
+        GPIO_PULLDOWN,
+        0,
+        0
     };
 
     is.Pin = GPIO_PIN_All;

@@ -4,7 +4,8 @@
 
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
     #pragma clang diagnostic ignored "-Wundefined-func-template"
-    #pragma clang diagnostic ignored "-Wmissing-field-initializers"
+
+//    #pragma clang diagnostic ignored "-Wmissing-field-initializers"
     #pragma clang diagnostic ignored "-Wzero-as-null-pointer-constant"
     #pragma clang diagnostic ignored "-Wold-style-cast"
     #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
