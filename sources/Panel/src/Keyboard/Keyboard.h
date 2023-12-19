@@ -8,20 +8,28 @@ struct Control
 {
     enum E
     {
-/*  0 */   GovButton,
-/*  1 */   Mode,
-/*  2 */   Indication,
-/*  3 */   Left,
-/*  4 */   Right,
-/*  5 */   Channels,
-/*  6 */   Enter,
-/*  7 */   Service,
-/*  8 */   GovLeft,
-/*  9 */   GovRight,
-/* 10 */   Test,
-/* 11 */   Auto,
-/* 12 */   None,
-/* 13 */   Count
+        None,       //  0
+        _1,         //  1
+        _2,         //  2
+        _3,         //  3
+        _4,         //  4
+        _5,         //  5
+        _6,         //  6
+        _7,         //  7
+        _8,         //  8
+        _9,         //  9
+        _0,         // 10
+        Minus,      // 11
+        Dot,        // 12
+        Start,      // 13
+        Left,       // 14
+        Right,      // 15
+        Back,       // 16
+        OK,         // 17
+        GovButton,  // 18
+        GovLeft,    // 19
+        GovRight,   // 20
+        Count
     } value;
 
     struct Action

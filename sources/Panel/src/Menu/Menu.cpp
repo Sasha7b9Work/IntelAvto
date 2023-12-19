@@ -119,7 +119,6 @@ bool Menu::Input::OnControl(const Control &control)
     switch (control.value)
     {
     case Control::GovButton:
-    case Control::Enter:
         if (openedPage->SelectedItem())
         {
             openedPage->SelectedItem()->OnEnterKeyGovernor(control);
@@ -134,21 +133,6 @@ bool Menu::Input::OnControl(const Control &control)
         openedPage->OnKeyLeft();
         break;
 
-    case Control::Mode:
-        Hint::Hide();
-        return true;
-
-    case Control::Channels:
-        return true;
-
-    case Control::Test:
-        break;
-
-    case Control::Auto:
-        break;
-
-    case Control::Indication:
-    case Control::Service:
     case Control::Count:
         break;
     case Control::GovLeft:
@@ -156,6 +140,20 @@ bool Menu::Input::OnControl(const Control &control)
         Menu::OpenedPage()->SelectedItem()->OnRotateGovernor(control);
         break;
     case Control::None:
+    case Control::_1:
+    case Control::_2:
+    case Control::_3:
+    case Control::_4:
+    case Control::_5:
+    case Control::_6:
+    case Control::_7:
+    case Control::_8:
+    case Control::_9:
+    case Control::_0:
+    case Control::Minus:
+    case Control::Dot:
+    case Control::Start:
+    case Control::Back:
         break;
     }
 
