@@ -188,7 +188,6 @@ static void CreateButtons(Frame *frame)
 
     wxSize size(width, height);
 
-    const int NUM_ROWS = 4;
     const int KEYS_IN_ROW = 4;
 
     Control::E keys1[KEYS_IN_ROW] = { Control::Left, Control::Right, Control::Back, Control::OK };
@@ -196,14 +195,15 @@ static void CreateButtons(Frame *frame)
     Control::E keys3[KEYS_IN_ROW] = { Control::_5,   Control::_6,    Control::_7,   Control::_8 };
     Control::E keys4[KEYS_IN_ROW] = { Control::_9,   Control::Minus, Control::Dot,  Control::Start };
 
-    for (int i = 0; i < NUM_ROWS; i++)
+    for (int col = 0; col < KEYS_IN_ROW; col++)
     {
-        CreateButton(keys1[i], frame, { x0 + (width + dX) * i, y0 }, size);
-        CreateButton(keys2[i], frame, { x0 + (width + dX) * i, y0 + height + dY + 10 }, size);
-        CreateButton(keys3[i], frame, { x0 + (width + dX) * i, y0 + (height + dY) * 2 + 10 }, size);
+        CreateButton(keys1[col], frame, { x0 + (width + dX) * col, y0 }, size);
+        CreateButton(keys2[col], frame, { x0 + (width + dX) * col, y0 + height + dY + 10 }, size);
+        CreateButton(keys3[col], frame, { x0 + (width + dX) * col, y0 + (height + dY) * 2 + 10 }, size);
+        CreateButton(keys4[col], frame, { x0 + (width + dX) * col, y0 + (height + dY) * 3 + 10 }, size);
     }
 
-    governor = new GovernorGUI(frame, { 700, 150 });
+    governor = new GovernorGUI(frame, { 700, 170 });
 }
 
 
