@@ -191,15 +191,12 @@ static void CreateButtons(Frame *frame)
     const int NUM_ROWS = 4;
     const int KEYS_IN_ROW = 4;
 
-    Control::E keys1[KEYS_IN_ROW] = { Control::Left, Control::Right, Control::Back,  Control::OK };
+    Control::E keys1[KEYS_IN_ROW] = { Control::Left, Control::Right, Control::Back, Control::OK };
+    Control::E keys2[KEYS_IN_ROW] = { Control::_1,   Control::_2,    Control::_3,   Control::_4 };
+    Control::E keys3[KEYS_IN_ROW] = { Control::_5,   Control::_6,    Control::_7,   Control::_8 };
+    Control::E keys4[KEYS_IN_ROW] = { Control::_9,   Control::Minus, Control::Dot,  Control::Start };
 
-    Control::E keys2[KEYS_IN_ROW] = { Control::_1, Control::_2, Control::_3, Control::_4 };
-
-    Control::E keys3[KEYS_IN_ROW] = { Control::_5, Control::Left, Control::Right};
-
-    Control::E keys4[KEYS_IN_ROW] = {};
-
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < NUM_ROWS; i++)
     {
         CreateButton(keys1[i], frame, { x0 + (width + dX) * i, y0 }, size);
         CreateButton(keys2[i], frame, { x0 + (width + dX) * i, y0 + height + dY + 10 }, size);
