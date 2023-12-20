@@ -154,6 +154,7 @@ bool Menu::Input::OnControl(const Control &control)
     case Control::Dot:
     case Control::Start:
     case Control::Back:
+    case Control::OK:
         break;
     }
 
