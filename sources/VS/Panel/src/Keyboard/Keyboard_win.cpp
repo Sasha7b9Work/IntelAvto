@@ -15,7 +15,7 @@ static bool needStartTimerLong = false;
 
 static bool needStopTimerLong = false;
 // Здесь имя нажатой кнопки
-static Control::E pressedKey = Control::None;
+static Key::E pressedKey = Key::None;
 
 
 bool Keyboard::Init()
@@ -24,9 +24,9 @@ bool Keyboard::Init()
 }
 
 
-static void AddAction(Control control, Control::Action::E action)
+static void AddAction(Control control, Action::E action)
 {
-    if (action != Control::Action::Press)
+    if (action != Action::Press)
     {
         return;
     }
@@ -38,18 +38,18 @@ static void AddAction(Control control, Control::Action::E action)
 
 void Keyboard::AppendControl(const Control &control)
 {
-    AddAction(control, control.action.value);
+    AddAction(control, control.action);
 }
 
 
 void Frame::OnDown(wxCommandEvent &event)
 {
-    Control::E key = (Control::E)event.GetId();
+    Key::E key = (Key::E)event.GetId();
 
     //std::cout << "down " << Control(key).Name() << std::endl;
     event.Skip();
 
-    AddAction(key, Control::Action::Press);
+    AddAction(key, Action::Press);
 
     needStartTimerLong = true;
 
@@ -59,16 +59,16 @@ void Frame::OnDown(wxCommandEvent &event)
 
 void Frame::OnUp(wxCommandEvent &event)
 {
-    Control::E key = (Control::E)event.GetId();
+    Key::E key = (Key::E)event.GetId();
 
     //std::cout << "up   " << Control(key).Name() << std::endl;
     event.Skip();
 
-    AddAction(key, Control::Action::Release);
+    AddAction(key, Action::Release);
 
     needStopTimerLong = true;
 
-    pressedKey = Control::None;
+    pressedKey = Key::None;
 }
 
 
@@ -98,9 +98,9 @@ Control Keyboard::NextControl()
 }
 
 
-String Control::Name() const
+String Key::Name(E value)
 {
-    static const char *names[Control::E::Count] =
+    static const char *names[Key::Count] =
     {
         "",
         "1",

@@ -52,12 +52,12 @@ void Menu::Input::OnGovernorRotate(const Control &)
 
 bool Menu::Input::OpenPage(const Control &control)
 {
-    if (!control.action.IsPress())
+    if (control.action != Action::Press)
     {
         return false;
     }
-           
-    Page *const pages[Control::Count] =
+
+    Page *const pages[Key::Count] =
     {
         nullptr,              // GovButton,
         nullptr,              // Mode,
@@ -74,7 +74,7 @@ bool Menu::Input::OpenPage(const Control &control)
         nullptr               // None,
     };
 
-    Page *page = pages[control.value];
+    Page *page = pages[control.key];
 
     if (page && page != openedPage)
     {
@@ -87,7 +87,7 @@ bool Menu::Input::OpenPage(const Control &control)
 }
 
 
-Page* Menu::OpenedPage()
+Page *Menu::OpenedPage()
 {
     return openedPage;
 }
@@ -102,12 +102,12 @@ void Menu::SetOpenedPage(Page *page)
 bool Menu::Input::OnControl(const Control &control)
 {
     if (PageIndication::calibrationMode.IsEnabled() &&
-        control.value != Control::GovButton &&
-        control.value != Control::GovLeft &&
-        control.value != Control::GovRight)
+        control.key != Key::GovButton &&
+        control.key != Key::GovLeft &&
+        control.key != Key::GovRight)
     {
         PageIndication::calibrationMode.value = CalibrationMode::Disabled;
-        
+
         return true;
     }
 
@@ -116,45 +116,45 @@ bool Menu::Input::OnControl(const Control &control)
         return true;
     }
 
-    switch (control.value)
+    switch (control.key)
     {
-    case Control::GovButton:
+    case Key::GovButton:
         if (openedPage->SelectedItem())
         {
             openedPage->SelectedItem()->OnEnterKeyGovernor(control);
         }
         break;
 
-    case Control::Right:
+    case Key::Right:
         openedPage->OnKeyRight();
         break;
 
-    case Control::Left:
+    case Key::Left:
         openedPage->OnKeyLeft();
         break;
 
-    case Control::Count:
+    case Key::Count:
         break;
-    case Control::GovLeft:
-    case Control::GovRight:
+    case Key::GovLeft:
+    case Key::GovRight:
         Menu::OpenedPage()->SelectedItem()->OnRotateGovernor(control);
         break;
-    case Control::None:
-    case Control::_1:
-    case Control::_2:
-    case Control::_3:
-    case Control::_4:
-    case Control::_5:
-    case Control::_6:
-    case Control::_7:
-    case Control::_8:
-    case Control::_9:
-    case Control::_0:
-    case Control::Minus:
-    case Control::Dot:
-    case Control::Start:
-    case Control::Back:
-    case Control::OK:
+    case Key::None:
+    case Key::_1:
+    case Key::_2:
+    case Key::_3:
+    case Key::_4:
+    case Key::_5:
+    case Key::_6:
+    case Key::_7:
+    case Key::_8:
+    case Key::_9:
+    case Key::_0:
+    case Key::Minus:
+    case Key::Dot:
+    case Key::Start:
+    case Key::Back:
+    case Key::OK:
         break;
     }
 
@@ -164,7 +164,7 @@ bool Menu::Input::OnControl(const Control &control)
 
 bool Menu::Input::OnGovernorButton(const Control &control)
 {
-    if (control.value == Control::GovButton)
+    if (control.key == Key::GovButton)
     {
         if (PageIndication::launchSource == LaunchSource::OneTime)
         {

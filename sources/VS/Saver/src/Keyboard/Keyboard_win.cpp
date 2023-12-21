@@ -17,9 +17,9 @@ namespace Keyboard
     static bool needStopTimerLong = false;
 
     // Здесь имя нажатой кнопки
-    static Control::E pressedKey = Control::None;
+    static Key::E pressedKey = Key::None;
 
-    static void AddAction(Control control, Control::Action::E action);
+    static void AddAction(Control control, Action::E action);
 }
 
 
@@ -29,9 +29,9 @@ bool Keyboard::Init()
 }
 
 
-void Keyboard::AddAction(Control control, Control::Action::E action)
+void Keyboard::AddAction(Control control, Action::E action)
 {
-    if (action != Control::Action::Press)
+    if (action != Action::Press)
     {
         return;
     }
@@ -43,12 +43,12 @@ void Keyboard::AddAction(Control control, Control::Action::E action)
 
 void Frame::OnDown(wxCommandEvent &event)
 {
-    Control::E key = (Control::E)event.GetId();
+    Key::E key = (Key::E)event.GetId();
 
     //std::cout << "down " << Control(key).Name() << std::endl;
     event.Skip();
 
-    Keyboard::AddAction(key, Control::Action::Press);
+    Keyboard::AddAction(key, Action::Press);
 
     Keyboard::needStartTimerLong = true;
 
@@ -58,16 +58,16 @@ void Frame::OnDown(wxCommandEvent &event)
 
 void Frame::OnUp(wxCommandEvent &event)
 {
-    Control::E key = (Control::E)event.GetId();
+    Key::E key = (Key::E)event.GetId();
 
     //std::cout << "up   " << Control(key).Name() << std::endl;
     event.Skip();
 
-    Keyboard::AddAction(key, Control::Action::Release);
+    Keyboard::AddAction(key, Action::Release);
 
     Keyboard::needStopTimerLong = true;
 
-    Keyboard::pressedKey = Control::None;
+    Keyboard::pressedKey = Key::None;
 }
 
 
@@ -96,9 +96,9 @@ Control Keyboard::NextControl()
     return result;
 }
 
-String Control::Name() const
+String Key::Name(E value)
 {
-    static const char *names[Control::E::Count] =
+    static const char *names[Key::Count] =
     {
         /*  1 */   "Ручка нажать",
         /*  2 */   "РЕЖИМ",

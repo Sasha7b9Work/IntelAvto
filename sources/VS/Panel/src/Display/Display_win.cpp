@@ -37,7 +37,7 @@ using namespace Primitives;
 
 
 // Здесь хранятся указатели на кнопки
-static wxButton *buttons[Control::Count] = { nullptr };
+static wxButton *buttons[Key::Count] = { nullptr };
 
 static GovernorGUI *governor = nullptr;
 
@@ -45,7 +45,7 @@ static bool needStartTimerLong = false;
 static bool needStopTimerLong = false;
 
 // Здесь имя нажатой кнопки
-static Control::E pressedKey = Control::None;
+static Key::E pressedKey = Key::None;
 
 // Контекст рисования
 wxMemoryDC memDC;
@@ -62,7 +62,7 @@ static wxRect GetMaxDisplay();
 // Создаёт все кнопки
 static void CreateButtons(Frame *frame);
 // Создаёт одну кнопку
-static void CreateButton(Control::E key, Frame *frame, const wxPoint &pos, const wxSize &size);
+static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size);
 
 
 class Screen : public wxPanel
@@ -190,10 +190,10 @@ static void CreateButtons(Frame *frame)
 
     const int KEYS_IN_ROW = 4;
 
-    Control::E keys1[KEYS_IN_ROW] = { Control::Left, Control::Right, Control::Back, Control::OK };
-    Control::E keys2[KEYS_IN_ROW] = { Control::_1,   Control::_2,    Control::_3,   Control::_4 };
-    Control::E keys3[KEYS_IN_ROW] = { Control::_5,   Control::_6,    Control::_7,   Control::_8 };
-    Control::E keys4[KEYS_IN_ROW] = { Control::_9,   Control::Minus, Control::Dot,  Control::Start };
+    Key::E keys1[KEYS_IN_ROW] = { Key::Left, Key::Right, Key::Back, Key::OK };
+    Key::E keys2[KEYS_IN_ROW] = { Key::_1,   Key::_2,    Key::_3,   Key::_4 };
+    Key::E keys3[KEYS_IN_ROW] = { Key::_5,   Key::_6,    Key::_7,   Key::_8 };
+    Key::E keys4[KEYS_IN_ROW] = { Key::_9,   Key::Minus, Key::Dot,  Key::Start };
 
     for (int col = 0; col < KEYS_IN_ROW; col++)
     {
@@ -221,14 +221,14 @@ static void SetPositionAndSize(Frame *frame)
 }
 
 
-static void CreateButton(Control::E key, Frame *frame, const wxPoint &pos, const wxSize &size)
+static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size)
 {
-    if (key == Control::None)
+    if (key == Key::None)
     {
         return;
     }
 
-    wxButton *button = new wxButton(frame, (wxWindowID)key, Control(key).Name().c_str(), pos, size);
+    wxButton *button = new wxButton(frame, (wxWindowID)key, Key::Name(key).c_str(), pos, size);
 
     button->Connect((wxWindowID)key, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnDown));
     button->Connect((wxWindowID)key, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnUp));

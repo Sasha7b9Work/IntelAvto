@@ -3,8 +3,7 @@
 #include "defines.h"
 #include "Utils/String.h"
 
-
-struct Control
+struct Key
 {
     enum E
     {
@@ -30,25 +29,31 @@ struct Control
         GovLeft,    // 19
         GovRight,   // 20
         Count
-    } value;
+    };
 
-    struct Action
+    static String Name(E);
+};
+
+
+struct Action
+{
+    enum E
     {
-        enum E
-        {
-            Press,
-            Release,
-            Long
-        } value;
-        Action(E v) : value(v) {}
-        bool IsPress() const { return value == Press; }
-    } action;
+        Press,
+        Release,
+        Long,
+        Count
+    };
+};
 
-    Control(E v = None, Action::E a = Action::Press) : value(v), action(a) {}
+struct Control
+{
+    Key::E key = Key::None;
+    Action::E action = Action::Count;
 
-    String Name() const;
+    Control(Key::E v = Key::None, Action::E a = Action::Press) : key(v), action(a) {}
 
-    bool IsRotateGovernor() const { return (value == GovLeft) || (value == GovRight); }
+    bool IsRotateGovernor() const { return (key == Key::GovLeft) || (key == Key::GovRight); }
 };
 
 namespace Keyboard

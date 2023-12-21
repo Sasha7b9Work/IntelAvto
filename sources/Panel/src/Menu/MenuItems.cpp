@@ -277,14 +277,14 @@ void Switch::NextChoice()
 
 void Switch::OnEnterKeyGovernor(const Control &control)
 {
-    if (!control.action.IsPress())
+    if (control.action != Action::Press)
     {
         return;
     }
 
     if (PageIndication::calibrationMode.IsEnabled())
     {
-        if (control.value == Control::GovButton)
+        if (control.key == Key::GovButton)
         {
             if (Hint::UnderItem() == this)
             {
@@ -400,11 +400,11 @@ void GovernorChannelColor::SetValue(uint8 value)
 
 void GovernorChannelColor::OnRotateGovernor(const Control &control)
 {
-    if (control.value == Control::GovLeft)
+    if (control.key == Key::GovLeft)
     {
         *state = (uint8)(*state - 8);
     }
-    else if (control.value == Control::GovRight)
+    else if (control.key == Key::GovRight)
     {
         *state = (uint8)(*state + 8);
     }

@@ -10,51 +10,54 @@
 #define NUM_RL 4
 #define NUM_SL 4
 
-#define PIN_SL0  GPIO_PIN_9
-#define PORT_SL0 GPIOB
+#define PIN_SL0  GPIO_PIN_10
+#define PORT_SL0 GPIOA
 
 #define PIN_SL1  GPIO_PIN_8
-#define PORT_SL1 GPIOB
+#define PORT_SL1 GPIOA
 
-#define PIN_SL2  GPIO_PIN_7
-#define PORT_SL2 GPIOB
+#define PIN_SL2  GPIO_PIN_9
+#define PORT_SL2 GPIOC
 
-#define PIN_SL3  GPIO_PIN_6
-#define PORT_SL3 GPIOB
+#define PIN_SL3  GPIO_PIN_8
+#define PORT_SL3 GPIOC
 
-#define PIN_RL0  GPIO_PIN_5
-#define PORT_RL0 GPIOB
+#define PIN_RL0  GPIO_PIN_7
+#define PORT_RL0 GPIOC
 
-#define PIN_RL1  GPIO_PIN_4
-#define PORT_RL1 GPIOB
+#define PIN_RL1  GPIO_PIN_6
+#define PORT_RL1 GPIOC
 
-#define PIN_RL2  GPIO_PIN_2
+#define PIN_RL2  GPIO_PIN_15
 #define PORT_RL2 GPIOD
 
-#define PIN_RL3  GPIO_PIN_15
-#define PORT_RL3 GPIOA
+#define PIN_RL3  GPIO_PIN_14
+#define PORT_RL3 GPIOD
 
 #define PIN_ENC1  GPIO_PIN_11
-#define PORT_ENC1 GPIOC
+#define PORT_ENC1 GPIOD
 
-#define PIN_ENC2  GPIO_PIN_10
-#define PORT_ENC2 GPIOC
+#define PIN_ENC2  GPIO_PIN_12
+#define PORT_ENC2 GPIOD
+
+#define PIN_ENCBUT GPIO_PIN_13
+#define PORT_ENCBUT GPIOD
 
 
 static TIM_HandleTypeDef handleTIM4;
 
 
-static Control::E controls[NUM_SL][NUM_RL] =
+static Key::E keys[NUM_SL][NUM_RL] =
 {
-    {Control::Service,      Control::Test,  Control::Auto,          Control::GovButton},
-    {Control::Channels,     Control::Mode,  Control::Indication,    Control::None},
-    {Control::Enter,        Control::Left,  Control::None,          Control::None},
-    {Control::Right,        Control::None,  Control::None,          Control::None},
+    {Key::Left, Key::Right, Key::Back, Key::OK},
+    {Key::_1,   Key::_2,    Key::_3,   Key::_4},
+    {Key::_5,   Key::_6,    Key::_7,   Key::_8},
+    {Key::_9,   Key::Minus, Key::Dot,  Key::Start},
 };
 
 /// Очередь сообщений - здесь все события органов управления
 #define MAX_ACTIONS 100
-static Control actions[MAX_ACTIONS];
+static Control controls[MAX_ACTIONS];
 /// Количество уже имеющихся сообщений
 static int numActions = 0;
 
@@ -82,7 +85,7 @@ static void InitTimer();
 /// Функция, периодически вызываемая по прерыванию таймера
 static void Update();
 /// Добавить действие в буфер
-static void AddAction(Control control, Control::Action::E action);
+static void AddAction(Key::E key, Action::E action);
 /// Обработка ручки
 static void DetectRegulator();
 
@@ -104,9 +107,9 @@ static void Update()
         {
             int state = Read_RL(rl);
 
-            Control control = controls[sl][rl];
+            Key::E key = keys[sl][rl];
 
-            if (control.value != Control::None)
+            if (key != Key::None)
             {
                 if (timePress[sl][rl])                      // Если клавиша находится в нажатом положении
                 {
@@ -117,14 +120,14 @@ static void Update()
                             timePress[sl][rl] = 0;
                             if (!alreadyLong[sl][rl])
                             {
-                                AddAction(controls[sl][rl], Control::Action::Release);
+                                AddAction(key, Action::Release);
                             }
                             alreadyLong[sl][rl] = false;
                             prevRepeat = 0;
                         }
                         else if (time - timePress[sl][rl] > 500 && !alreadyLong[sl][rl])
                         {
-                            AddAction(controls[sl][rl], Control::Action::Long);
+                            AddAction(key, Action::Long);
                             alreadyLong[sl][rl] = true;
                         }
                     }
@@ -132,7 +135,7 @@ static void Update()
                 else if (BUTTON_IS_PRESS(state) && !alreadyLong[sl][rl])
                 {
                     timePress[sl][rl] = time;
-                    AddAction(controls[sl][rl], Control::Action::Press);
+                    AddAction(key, Action::Press);
                     prevRepeat = 0;
                 }
             }
@@ -161,13 +164,13 @@ static void DetectRegulator()
     {
         prevStatesIsOne = false;
 
-        AddAction(Control::GovLeft, Control::Action::Press);
+        AddAction(Key::GovLeft, Action::Press);
     }
     else if (prevStatesIsOne && !stateLeft && stateRight)
     {
         prevStatesIsOne = false;
 
-        AddAction(Control::GovRight, Control::Action::Press);
+        AddAction(Key::GovRight, Action::Press);
     }
 }
 
@@ -185,9 +188,9 @@ static bool KeyboardCheck()
         {
             int state = Read_RL(rl);
 
-            Control control = controls[sl][rl];
+            Key::E key = keys[sl][rl];
 
-            if (control.value != Control::None)
+            if (key != Key::None)
             {
                 if (BUTTON_IS_PRESS(state))
                 {
@@ -299,22 +302,14 @@ static void InitTimer()
 }
 
 
-static void AddAction(Control control, Control::Action::E action)
+static void AddAction(Key::E key, Action::E action)
 {
-    if (action != Control::Action::Press)
+    if (action != Action::Press)
     {
         return;
     }
 
-    control.action = action;
-    actions[numActions++] = control;
-
-}
-
-
-void Keyboard::AppendControl(const Control &control)
-{
-    AddAction(control, control.action.value);
+    controls[numActions++] = Control(key, action);
 }
 
 
@@ -332,11 +327,11 @@ Control Keyboard::NextControl()
         return Control();
     }
 
-    Control result = actions[0];
+    Control result = controls[0];
 
     for (int i = 1; i < numActions; i++)
     {
-        actions[i - 1] = actions[i];
+        controls[i - 1] = controls[i];
     }
 
     --numActions;
@@ -344,7 +339,7 @@ Control Keyboard::NextControl()
 }
 
 
-String Control::Name() const
+String Key::Name(E value)
 {
     static pchar names[] =
     {

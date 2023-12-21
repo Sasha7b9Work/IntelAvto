@@ -3,6 +3,9 @@
 #include "no-warnings.h"
 
 
+#define VERSION 1
+
+
 #ifdef WIN32
     #define __asm(x)
     #define WIN32_LEAN_AND_MEAN
