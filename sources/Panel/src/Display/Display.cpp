@@ -10,7 +10,6 @@
 #include "Menu/Hint.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
-#include "Menu/Pages/PageIndication.h"
 #include "Utils/String.h"
 #include "Utils/StringUtils.h"
 #include <cstdio>
@@ -330,8 +329,8 @@ void Display::DrawScreen()
     Menu::Draw();
 
     Text(String(LANG_IS_RU ? "Тип сигнала %s : %s" : "Type signal %s : %s",
-        PageIndication::typeSignal.ToString().c_str(),
-        TypeSignal::Name((TypeSignal::E)PageIndication::typeSignal.value))).Write(230, 6, Color::WHITE);
+        PageMain::typeSignal.ToString().c_str(),
+        TypeSignal::Name((TypeSignal::E)PageMain::typeSignal.value))).Write(230, 6, Color::WHITE);
 
     DrawSignal();
 }
@@ -430,7 +429,7 @@ void DrawSignal()
 
     Color::GRAY.SetAsCurrent();
 
-    if (PageIndication::typeSignal == TypeSignal::_1)
+    if (PageMain::typeSignal == TypeSignal::_1)
     {
         Axis().Draw(Coord(x, y + 25), 70, 330, 150);
 
@@ -453,7 +452,7 @@ void DrawSignal()
         coord.y = VLine(25).Draw(coord.x, coord.y - 25);
         coord.x = HLine(20).Draw(coord);
     }
-    else if (PageIndication::typeSignal == TypeSignal::_2a)
+    else if (PageMain::typeSignal == TypeSignal::_2a)
     {
         Axis().Draw(Coord(x, y + 170), 210, 330, 10);
 
@@ -474,7 +473,7 @@ void DrawSignal()
         coord.x = HLine(100).Draw(coord);
         coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
     }
-    else if (PageIndication::typeSignal == TypeSignal::_2b)
+    else if (PageMain::typeSignal == TypeSignal::_2b)
     {
         Axis().Draw(Coord(x, y + 170), 210, 330, 10);
 
@@ -494,7 +493,7 @@ void DrawSignal()
         Point::MoveOn(5, 5);
         Point::MoveOn(160, 120);
     }
-    else if (PageIndication::typeSignal == TypeSignal::_3a)
+    else if (PageMain::typeSignal == TypeSignal::_3a)
     {
         Axis().Draw(Coord(x, y + 10), 55, 330, 60);
 
@@ -534,7 +533,7 @@ void DrawSignal()
         Point::MoveOn(15, -80);
         Point::MoveOn(50, 0);
     }
-    else if (PageIndication::typeSignal == TypeSignal::_3b)
+    else if (PageMain::typeSignal == TypeSignal::_3b)
     {
         Axis().Draw(Coord(x, y + 170), 100, 330, 00);
 
@@ -574,7 +573,7 @@ void DrawSignal()
         Point::MoveOn(15, 80);
         Point::MoveOn(50, 0);
     }
-    else if (PageIndication::typeSignal == TypeSignal::_4)
+    else if (PageMain::typeSignal == TypeSignal::_4)
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 
@@ -599,7 +598,7 @@ void DrawSignal()
         Point::MoveOn(20, -35);
         Point::MoveOn(40, 0);
     }
-    else if (PageIndication::typeSignal == TypeSignal::_5a)
+    else if (PageMain::typeSignal == TypeSignal::_5a)
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 
@@ -618,7 +617,7 @@ void DrawSignal()
         Point::MoveOn(40, 10);
         Point::MoveOn(50, 0);
     }
-    else if (PageIndication::typeSignal == TypeSignal::_5b)
+    else if (PageMain::typeSignal == TypeSignal::_5b)
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 

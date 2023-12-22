@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Menu/MenuItems.h"
-#include "Menu/Pages/PageIndication.h"
+#include "Menu/Pages/PageMain.h"
 
 
 #define LANG_IS_RU          (gset.language == Language::RU)

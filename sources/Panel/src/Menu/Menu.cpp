@@ -7,7 +7,6 @@
 #include "Menu/Hint.h"
 #include "Menu/MenuItems.h"
 #include "Menu/Menu.h"
-#include "Menu/Pages/PageIndication.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include <cstring>
@@ -18,7 +17,7 @@ namespace Menu
     void SubscribeToEvents();
 
     // Текущая отображаемая страница меню
-    Page *openedPage = PageIndication::self;
+    Page *openedPage = PageMain::self;
 
     void (*funcUpdate)() = nullptr;
 
@@ -59,19 +58,19 @@ bool Menu::Input::OpenPage(const Control &control)
 
     Page *const pages[Key::Count] =
     {
-        nullptr,              // GovButton,
-        nullptr,              // Mode,
-        PageIndication::self, // Indication,
-        nullptr,              // Left,
-        nullptr,              // Right,
-        nullptr,              // Channels,
-        nullptr,              // Enter,
-        nullptr,              // Service,
-        nullptr,              // GovLeft,
-        nullptr,              // GovRight,
-        nullptr,              // Test,
-        nullptr,              // Auto,
-        nullptr               // None,
+        nullptr,        // GovButton,
+        nullptr,        // Mode,
+        PageMain::self, // Indication,
+        nullptr,        // Left,
+        nullptr,        // Right,
+        nullptr,        // Channels,
+        nullptr,        // Enter,
+        nullptr,        // Service,
+        nullptr,        // GovLeft,
+        nullptr,        // GovRight,
+        nullptr,        // Test,
+        nullptr,        // Auto,
+        nullptr         // None,
     };
 
     Page *page = pages[control.key];
@@ -101,16 +100,6 @@ void Menu::SetOpenedPage(Page *page)
 
 bool Menu::Input::OnControl(const Control &control)
 {
-    if (PageIndication::calibrationMode.IsEnabled() &&
-        control.key != Key::GovButton &&
-        control.key != Key::GovLeft &&
-        control.key != Key::GovRight)
-    {
-        PageIndication::calibrationMode.value = CalibrationMode::Disabled;
-
-        return true;
-    }
-
     if (OnGovernorButton(control))
     {
         return true;
@@ -164,15 +153,6 @@ bool Menu::Input::OnControl(const Control &control)
 
 bool Menu::Input::OnGovernorButton(const Control &control)
 {
-    if (control.key == Key::GovButton)
-    {
-        if (PageIndication::launchSource == LaunchSource::OneTime)
-        {
-            PageIndication::OnceLaunchSwitchTrue();
-            return true;
-        }
-    }
-
     return false;
 }
 

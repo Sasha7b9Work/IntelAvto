@@ -799,14 +799,29 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>PageIndication.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageIndication.h</FilePath>
+              <FileName>PageMain.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageIndication.cpp</FileName>
+              <FileName>PageMain.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Menu/Pages/Signals</GroupName>
+          <Files>
+            <File>
+              <FileName>PageSignals.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageIndication.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\Signals\PageSignals.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageSignals.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\Signals\PageSignals.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1670,14 +1685,29 @@
           <GroupName>Menu/Pages</GroupName>
           <Files>
             <File>
-              <FileName>PageIndication.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageIndication.h</FilePath>
+              <FileName>PageMain.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageIndication.cpp</FileName>
+              <FileName>PageMain.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Menu/Pages/Signals</GroupName>
+          <Files>
+            <File>
+              <FileName>PageSignals.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageIndication.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\Signals\PageSignals.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageSignals.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Menu\Pages\Signals\PageSignals.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1755,5 +1785,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>Panel</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

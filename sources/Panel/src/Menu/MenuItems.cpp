@@ -6,7 +6,6 @@
 #include "Display/Text.h"
 #include "Menu/Hint.h"
 #include "Menu/MenuItems.h"
-#include "Menu/Pages/PageIndication.h"
 #include "Utils/Math.h"
 #include <cstring>
 
@@ -282,27 +281,12 @@ void Switch::OnEnterKeyGovernor(const Control &control)
         return;
     }
 
-    if (PageIndication::calibrationMode.IsEnabled())
+    if (Hint::Shown() && Hint::UnderItem() == this)
     {
-        if (control.key == Key::GovButton)
-        {
-            if (Hint::UnderItem() == this)
-            {
-                NextChoice();
-            }
-
-            Hint::Create(this);
-        }
+        NextChoice();
     }
-    else
-    {
-        if (Hint::Shown() && Hint::UnderItem() == this)
-        {
-            NextChoice();
-        }
 
-        Hint::Create(this);
-    }
+    Hint::Create(this);
 }
 
 
