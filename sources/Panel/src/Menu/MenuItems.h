@@ -4,6 +4,7 @@
 #include "Display/Colors.h"
 #include "Keyboard/Keyboard.h"
 #include "Utils/Observer.h"
+#include "Utils/Value.h"
 
 
 struct TypeMeasure;
@@ -65,6 +66,22 @@ protected:
 private:
     // Создать подсказку для итема
     virtual void CreateHint(String &hint) const = 0;
+};
+
+
+class Parameter : public Item
+{
+public:
+    Parameter(pchar name_ru, pchar name_en, Value &_value) : Item("", ""), value(_value)
+    {
+        names[0] = name_ru;
+        names[1] = name_en;
+    }
+
+private:
+
+    pchar names[2];
+    Value &value;
 };
 
 
