@@ -91,8 +91,7 @@ file(GLOB KEYBOARD            ../../Panel/src/Keyboard/Keyboard.h
                                           src/Keyboard/Keyboard_win.cpp)
 file(GLOB MENU                ../../Panel/src/Menu/*.*)
 file(GLOB MENU_PAGES          ../../Panel/src/Menu/Pages/*.*)
-file(GLOB MENU_PAGES_CHANNELS ../../Panel/src/Menu/Pages/Channels/*.*)
-file(GLOB MENU_PAGES_OTHER    ../../Panel/src/Menu/Pages/Other/*.*)
+file(GLOB MENU_PAGES_SIGNALS  ../../Panel/src/Menu/Pages/Signals/*.*)
 file(GLOB UTILS               ../../Panel/src/Utils/*.*)
 
 source_group(_VS/HAL               FILES ${VS_HAL})
@@ -107,15 +106,24 @@ source_group(Hardware/HAL          FILES ${HARDWARE_HAL})
 source_group(Keyboard              FILES ${KEYBOARD})
 source_group(Menu                  FILES ${MENU})
 source_group(Menu/Pages            FILES ${MENU_PAGES})
-source_group(Menu/Pages/Channels   FILES ${MENU_PAGES_CHANNELS})
-source_group(Menu/Pages/Other      FILES ${MENU_PAGES_OTHER})
+source_group(Menu/Pages/Signals    FILES ${MENU_PAGES_SIGNALS})
 source_group(Utils                 FILES ${UTILS})
 
-add_executable(PanelGUI
-                        ${VS_HAL}
-                        ${SRC} ${CALCULATE} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${FREQMETER} ${GUI}
-                        ${HARDWARE_HAL} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${MENU_PAGES_CHANNELS}
-                        ${MENU_PAGES_OTHER} ${UTILS})
+add_executable(PanelGUI ${VS_HAL}
+                        ${SRC}
+                        ${CALCULATE}
+                        ${DISPLAY}
+                        ${DISPLAY_FONT}
+                        ${HARDWARE}
+                        ${FREQMETER}
+                        ${GUI}
+                        ${HARDWARE_HAL}
+                        ${KEYBOARD}
+                        ${MENU}
+                        ${MENU_PAGES}
+                        ${MENU_PAGES_SIGNALS}
+                        ${UTILS}
+)
 
 target_link_libraries(PanelGUI wxbase32ud)
 target_link_libraries(PanelGUI wxmsw32ud_core)
