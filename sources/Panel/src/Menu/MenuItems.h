@@ -69,22 +69,6 @@ private:
 };
 
 
-class Parameter : public Item
-{
-public:
-    Parameter(pchar name_ru, pchar name_en, Value &_value) : Item("", ""), value(_value)
-    {
-        names[0] = name_ru;
-        names[1] = name_en;
-    }
-
-private:
-
-    pchar names[2];
-    Value &value;
-};
-
-
 // Общего назначения
 class Button : public Item
 {
@@ -159,6 +143,24 @@ private:
     virtual void CreateHint(String &) const override;
     void (*funcChanged)(uint8);
     Color ColorFill() const;
+};
+
+
+class Parameter : public Item
+{
+public:
+    Parameter(pchar name_ru, pchar name_en, Value &_value) : Item("", ""), value(_value)
+    {
+        names[0] = name_ru;
+        names[1] = name_en;
+        
+        (void)value;
+    }
+
+private:
+
+    pchar names[2];
+    Value &value;
 };
 
 

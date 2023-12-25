@@ -24,7 +24,7 @@ struct TypeSignal : public Enumeration
 };
 
 
-class PageMain
+class PageSignals
 {
 public:
     static Page *self;

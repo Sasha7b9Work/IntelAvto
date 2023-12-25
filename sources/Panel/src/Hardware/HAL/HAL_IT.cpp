@@ -18,6 +18,9 @@ __attribute((noreturn)) void HardFault_Handler(void)
 {
     pchar file = Debug::file[0];
     int line = Debug::line[0];
+    
+    (void)file;
+    (void)line;
 
     while (1) //-V776
     {

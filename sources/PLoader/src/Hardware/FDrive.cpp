@@ -72,9 +72,9 @@ void FDrive::Init()
 
     if(FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK)
     {
-        USBH_StatusTypeDef res = USBH_Init(&handleUSBH, USBH_UserProcess, 0);
-        res = USBH_RegisterClass(&handleUSBH, USBH_MSC_CLASS);
-        res = USBH_Start(&handleUSBH);
+        USBH_Init(&handleUSBH, USBH_UserProcess, 0);
+        USBH_RegisterClass(&handleUSBH, USBH_MSC_CLASS);
+        USBH_Start(&handleUSBH);
     }
 }
 

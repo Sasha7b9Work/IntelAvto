@@ -17,7 +17,7 @@ namespace Menu
     void SubscribeToEvents();
 
     // Текущая отображаемая страница меню
-    Page *openedPage = PageMain::self;
+    Page *openedPage = PageSignals::self;
 
     void (*funcUpdate)() = nullptr;
 
@@ -58,19 +58,19 @@ bool Menu::Input::OpenPage(const Control &control)
 
     Page *const pages[Key::Count] =
     {
-        nullptr,        // GovButton,
-        nullptr,        // Mode,
-        PageMain::self, // Indication,
-        nullptr,        // Left,
-        nullptr,        // Right,
-        nullptr,        // Channels,
-        nullptr,        // Enter,
-        nullptr,        // Service,
-        nullptr,        // GovLeft,
-        nullptr,        // GovRight,
-        nullptr,        // Test,
-        nullptr,        // Auto,
-        nullptr         // None,
+        nullptr,            // GovButton,
+        nullptr,            // Mode,
+        PageSignals::self,  // Indication,
+        nullptr,            // Left,
+        nullptr,            // Right,
+        nullptr,            // Channels,
+        nullptr,            // Enter,
+        nullptr,            // Service,
+        nullptr,            // GovLeft,
+        nullptr,            // GovRight,
+        nullptr,            // Test,
+        nullptr,            // Auto,
+        nullptr             // None,
     };
 
     Page *page = pages[control.key];
@@ -151,7 +151,7 @@ bool Menu::Input::OnControl(const Control &control)
 }
 
 
-bool Menu::Input::OnGovernorButton(const Control &control)
+bool Menu::Input::OnGovernorButton(const Control &)
 {
     return false;
 }

@@ -4,11 +4,12 @@
 #include "Menu/MenuItemsDef.h"
 
 
-TypeSignal PageMain::typeSignal(TypeSignal::_1);
+TypeSignal PageSignals::typeSignal(TypeSignal::_1);
 
 
 static void OnPress_TypeSignal()
 {
+
 }
 
 // Выбор типа сигнала
@@ -17,7 +18,7 @@ DEF_SWITCH_8(sTypeSignal,
     "Время индикации", "Display time",
     "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
     "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
-    PageMain::typeSignal, OnPress_TypeSignal
+    PageSignals::typeSignal, OnPress_TypeSignal
 );
 
 
@@ -33,7 +34,7 @@ Item *items[7] =
 
 static Page pageIndication(items, nullptr, nullptr);
 
-Page *PageMain::self = &pageIndication;
+Page *PageSignals::self = &pageIndication;
 
 
 pchar TypeSignal::Name(E v)
