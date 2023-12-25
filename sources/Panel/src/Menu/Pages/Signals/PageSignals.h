@@ -31,9 +31,45 @@ namespace PageSignals
 
     extern TypeSignal typeSignal;
 
+    void Init();
+
     namespace _1
     {
-        extern Parameter param_t1;
-        extern Parameter param_Us;
+        void SetParameters(Item **first);
+    }
+
+    namespace _2a
+    {
+        void SetParameters(Item **first);
+    }
+
+    namespace _2b
+    {
+        void SetParameters(Item **first);
+    }
+
+    namespace _3a
+    {
+        void SetParameters(Item **first);
+    }
+
+    namespace _3b
+    {
+        void SetParameters(Item **first);
+    }
+
+    namespace _4
+    {
+        void SetParameters(Item **first);
+    }
+
+    namespace _5a
+    {
+        void SetParameters(Item **first);
+    }
+
+    namespace _5b
+    {
+        void SetParameters(Item **first);
     }
 };

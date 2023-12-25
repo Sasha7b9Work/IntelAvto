@@ -157,6 +157,8 @@ bool Menu::Input::OnGovernorButton(const Control &)
 
 void Menu::Init()
 {
+    PageSignals::Init();
+
     Input::SetFuncUpdate(Input::FuncUpdate);
 
     SubscribeToEvents();
