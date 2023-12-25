@@ -822,6 +822,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Settings</GroupName>
+          <Files>
+            <File>
+              <FileName>Settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\Settings.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Utils</GroupName>
           <Files>
             <File>
@@ -1700,6 +1710,16 @@
               <FileName>Signal1.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\Signals\Signal1.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Settings</GroupName>
+          <Files>
+            <File>
+              <FileName>Settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Settings\Settings.h</FilePath>
             </File>
           </Files>
         </Group>
