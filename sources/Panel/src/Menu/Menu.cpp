@@ -1,6 +1,5 @@
 // 2023/09/08 20:52:34 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Settings.h"
 #include "Display/Display.h"
 #include "Display/Font/Font.h"
 #include "Keyboard/Keyboard.h"
@@ -8,6 +7,7 @@
 #include "Menu/Menu.h"
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
+#include "Settings/Settings.h"
 #include <cstring>
 
 

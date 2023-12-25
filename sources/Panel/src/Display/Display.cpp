@@ -1,7 +1,6 @@
 // 2023/09/08 20:56:57 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Log.h"
-#include "Settings.h"
 #include "Display/Console.h"
 #include "Display/Display.h"
 #include "Display/Primitives.h"
@@ -11,6 +10,7 @@
 #include "Menu/MenuItems.h"
 #include "Utils/String.h"
 #include "Utils/StringUtils.h"
+#include "Settings/Settings.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

@@ -530,16 +530,6 @@
               <FilePath>.\src\Log.cpp</FilePath>
             </File>
             <File>
-              <FileName>Settings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings.h</FilePath>
-            </File>
-            <File>
-              <FileName>Settings.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Settings.cpp</FilePath>
-            </File>
-            <File>
               <FileName>no-warnings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\no-warnings.h</FilePath>
@@ -828,6 +818,11 @@
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\Settings.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1422,16 +1417,6 @@
               <FilePath>.\src\Log.cpp</FilePath>
             </File>
             <File>
-              <FileName>Settings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings.h</FilePath>
-            </File>
-            <File>
-              <FileName>Settings.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Settings.cpp</FilePath>
-            </File>
-            <File>
               <FileName>no-warnings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\no-warnings.h</FilePath>
@@ -1720,6 +1705,11 @@
               <FileName>Settings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Settings\Settings.h</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Settings\Settings.cpp</FilePath>
             </File>
           </Files>
         </Group>

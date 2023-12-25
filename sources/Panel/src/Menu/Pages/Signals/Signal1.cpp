@@ -8,12 +8,9 @@ namespace PageSignals
 {
     namespace _1
     {
-        static Value value_t1;
-        static Value value_Us;
+        static Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_1].values[0]);
 
-        static Parameter param_t1("t1", "t1", value_t1);
-
-        static Parameter param_Us("Us", "Us", value_Us);
+        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_1].values[1]);
 
         void SetParameters(Item **first)
         {

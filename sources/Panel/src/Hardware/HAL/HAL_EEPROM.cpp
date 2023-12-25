@@ -1,7 +1,7 @@
 // 2022/01/12 10:19:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Settings.h"
+#include "Settings/Settings.h"
 #include <stm32f4xx_hal.h>
 
 

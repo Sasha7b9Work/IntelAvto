@@ -3,7 +3,8 @@
 #include "Colors.h"
 #include "Display/Display.h"
 #include "Display/Primitives.h"
-#include "Settings.h"
+#include "Settings/Settings.h"
+
 
 Color Color::FILL(0);
 Color Color::BACK(1);

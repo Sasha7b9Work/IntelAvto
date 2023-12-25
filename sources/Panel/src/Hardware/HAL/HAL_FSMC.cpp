@@ -3,9 +3,7 @@
 #include "Display/Colors.h"
 #include "Display/Display.h"
 #include "Hardware/HAL/HAL.h"
-#include "Settings.h"
 #include <stm32f4xx_hal.h>
-//#include <cstdlib>
 
 
 #define PIN_BL_E  GPIO_PIN_1

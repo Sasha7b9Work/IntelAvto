@@ -1,6 +1,6 @@
 // 2023/09/08 21:53:49 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Settings.h"
+#include "Settings/Settings.h"
 #include "Display/Display.h"
 #include "Display/Primitives.h"
 #include "Display/Text.h"

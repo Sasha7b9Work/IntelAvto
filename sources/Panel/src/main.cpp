@@ -4,7 +4,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
-#include "Settings.h"
+#include "Settings/Settings.h"
 
 
 int main(void)
