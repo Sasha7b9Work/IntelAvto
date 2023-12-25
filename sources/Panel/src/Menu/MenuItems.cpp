@@ -290,6 +290,14 @@ void Switch::Draw(int x, int y, int width, bool selected)
 }
 
 
+void Parameter::Draw(int x, int y, int width, bool selected)
+{
+    ColorDraw(selected).SetAsCurrent();
+
+    Text(Title()).Write(x, y + 7, width);
+}
+
+
 void Button::Draw(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
@@ -540,9 +548,9 @@ pchar Switch::Title() const
 }
 
 
-void Parameter::Draw(int /*x*/, int /*y*/, int /*width*/, bool /*selected*/)
+pchar Parameter::Title() const
 {
-
+    return title[gset.language];
 }
 
 

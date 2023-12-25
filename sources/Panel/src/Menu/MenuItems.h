@@ -136,10 +136,10 @@ private:
 class Parameter : public Item
 {
 public:
-    Parameter(pchar name_ru, pchar name_en, Value &_value) : Item(), value(_value)
+    Parameter(pchar title_ru, pchar title_en, Value &_value) : Item(), value(_value)
     {
-        names[0] = name_ru;
-        names[1] = name_en;
+        title[0] = title_ru;
+        title[1] = title_en;
         
         (void)value;
     }
@@ -147,9 +147,11 @@ public:
     virtual void Draw(int x, int y, int width, bool selected = false) override;
     virtual void OnRotateGovernor(const Control &) override;
 
+    pchar Title() const;
+
 private:
 
-    pchar names[2];
+    pchar title[2];
     Value &value;
 };
 
