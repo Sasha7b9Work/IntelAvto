@@ -30,4 +30,10 @@ namespace PageSignals
     extern Page *self;
 
     extern TypeSignal typeSignal;
+
+    namespace _1
+    {
+        extern Parameter param_t1;
+        extern Parameter param_Us;
+    }
 };

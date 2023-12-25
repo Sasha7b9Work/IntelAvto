@@ -157,10 +157,15 @@ public:
         (void)value;
     }
 
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void OnRotateGovernor(const Control &) override;
+
 private:
 
     pchar names[2];
     Value &value;
+
+    virtual void CreateHint(String &) const override;
 };
 
 

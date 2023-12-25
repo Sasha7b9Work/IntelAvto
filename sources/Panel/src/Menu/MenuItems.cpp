@@ -599,3 +599,21 @@ pchar Switch::Title() const
 {
     return text[gset.language];
 }
+
+
+void Parameter::Draw(int x, int y, int width, bool selected)
+{
+
+}
+
+
+void Parameter::OnRotateGovernor(const Control &)
+{
+
+}
+
+
+void Parameter::CreateHint(String &) const
+{
+
+}

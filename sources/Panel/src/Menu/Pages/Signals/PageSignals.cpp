@@ -25,8 +25,8 @@ DEF_SWITCH_8(sTypeSignal,
 Item *items[7] =
 {
     &sTypeSignal,
-    nullptr,
-    nullptr,
+    &PageSignals::_1::param_t1,
+    &PageSignals::_1::param_Us,
     nullptr,
     nullptr,
     nullptr,
