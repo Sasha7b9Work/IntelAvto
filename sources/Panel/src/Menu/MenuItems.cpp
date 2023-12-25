@@ -4,7 +4,6 @@
 #include "Display/Display.h"
 #include "Display/Primitives.h"
 #include "Display/Text.h"
-#include "Menu/Hint.h"
 #include "Menu/MenuItems.h"
 #include "Utils/Math.h"
 #include <cstring>
@@ -236,14 +235,12 @@ int Page::NumItems() const
 void Page::OnKeyRight()
 {
     Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
-    Hint::Create(SelectedItem());
 }
 
 
 void Page::OnKeyLeft()
 {
     Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
-    Hint::Create(SelectedItem());
 }
 
 
@@ -281,12 +278,7 @@ void Switch::OnEnterKeyGovernor(const Control &control)
         return;
     }
 
-    if (Hint::Shown() && Hint::UnderItem() == this)
-    {
-        NextChoice();
-    }
-
-    Hint::Create(this);
+    NextChoice();
 }
 
 
@@ -399,55 +391,8 @@ void GovernorChannelColor::OnRotateGovernor(const Control &control)
 }
 
 
-void Switch::CreateHint(String &h) const
-{
-    h.Free();
-    h.Append(GetHint());
-    h.Append(": ");
-    h.Append(state->ToString().c_str());
-}
-
-
-void Button::CreateHint(String &h) const
-{
-    h.Free();
-    h.Append(GetHint());
-}
-
-
-void Choice::CreateHint(String &h) const
-{
-    h.Free();
-    h.Append(GetHint());
-}
-
-
-void GovernorChannelColor::CreateHint(String &h) const
-{
-    h.Free();
-    h.Append(GetHint());
-}
-
-
-Item::Item(pchar hintRu, pchar hintEn)
-{
-    hint[0] = hintRu;
-    hint[1] = hintEn;
-}
-
-
-
 Color Item::ColorBackground(bool selected)
 {
-    if (!selected)
-    {
-        if (std::strcmp("Choosing a custom color", hint[1]) == 0)
-        {
-            Choice *choice = (Choice *)this;
-            return choice->colorBack;
-        }
-
-    }
     return selected ? Color::MENU_SELECT : Color::MENU_UNSELECT;
 }
 
@@ -589,31 +534,19 @@ pchar Choice::Title() const
 }
 
 
-pchar Item::GetHint() const
-{
-    return hint[gset.language];
-}
-
-
 pchar Switch::Title() const
 {
     return text[gset.language];
 }
 
 
-void Parameter::Draw(int x, int y, int width, bool selected)
+void Parameter::Draw(int /*x*/, int /*y*/, int /*width*/, bool /*selected*/)
 {
 
 }
 
 
 void Parameter::OnRotateGovernor(const Control &)
-{
-
-}
-
-
-void Parameter::CreateHint(String &) const
 {
 
 }

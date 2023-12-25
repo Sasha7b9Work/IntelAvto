@@ -110,9 +110,9 @@ static pchar n##name##Ru[] = { nameRu1, nameRu2, nameRu3, nameRu4, nameRu5, name
 static pchar n##name##En[] = { nameEn1, nameEn2, nameEn3, nameEn4, nameEn5, nameEn6, nullptr };                     \
 static Switch name(titleRu, titleEn, hintRu, hintEn, n##name##Ru, n##name##En, nullptr, nullptr, &state, func);
 
-#define DEF_SWITCH_8(name, titleRu, titleEn, hintRu, hintEn,                                                        \
+#define DEF_SWITCH_8(name, titleRu, titleEn,                                                                        \
     nameRu1, nameRu2, nameRu3, nameRu4, nameRu5, nameRu6, nameRu7, nameRu8, nameEn1, nameEn2, nameEn3, nameEn4,     \
     nameEn5, nameEn6, nameEn7, nameEn8, state, func)                                                                \
 static pchar n##name##Ru[] = { nameRu1, nameRu2, nameRu3, nameRu4, nameRu5, nameRu6, nameRu7, nameRu8, nullptr };   \
 static pchar n##name##En[] = { nameEn1, nameEn2, nameEn3, nameEn4, nameEn5, nameEn6, nameEn7, nameEn8, nullptr };   \
-static Switch name(titleRu, titleEn, hintRu, hintEn, n##name##Ru, n##name##En, nullptr, nullptr, &state, func);
+static Switch name(titleRu, titleEn, n##name##Ru, n##name##En, nullptr, nullptr, &state, func);

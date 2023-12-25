@@ -39,7 +39,7 @@ class Item
 {
     friend class Hint;
 public:
-    Item(pchar hintRu, pchar hintEn);
+    Item() {}
     virtual ~Item() {}
 
     static const int HEIGHT = 35;
@@ -56,16 +56,6 @@ public:
     Color ColorBackground(bool selected);
 
     static Color ColorDraw(bool selected);
-
-    pchar GetHint() const;
-
-protected:
-    // Общая часть подсказки для данного итема
-    pchar hint[2];
-
-private:
-    // Создать подсказку для итема
-    virtual void CreateHint(String &hint) const = 0;
 };
 
 
@@ -73,8 +63,8 @@ private:
 class Button : public Item
 {
 public:
-    Button(pchar text_ru, pchar text_en, pchar hintRu, pchar hintEn, void (*funcPress)()) :
-        Item(hintRu, hintEn), funcOnPress(funcPress)
+    Button(pchar text_ru, pchar text_en, void (*funcPress)()) :
+        Item(), funcOnPress(funcPress)
     {
         text[0] = text_ru;
         text[1] = text_en;
@@ -86,7 +76,6 @@ public:
 private:
     pchar text[2];
     void (*funcOnPress)();
-    virtual void CreateHint(String &hint) const override;
 };
 
 
@@ -94,8 +83,8 @@ private:
 class Choice : public Item
 {
 public:
-    Choice(pchar hintRu, pchar hintEn, pchar *_namesRu, pchar *_namesEn, void (*funcPress)(), uint8 *_state) :
-        Item(hintRu, hintEn), colorBack(Color::MENU_UNSELECT), state(_state), funcOnPress(funcPress)
+    Choice(pchar *_namesRu, pchar *_namesEn, void (*funcPress)(), uint8 *_state) :
+        Item(), colorBack(Color::MENU_UNSELECT), state(_state), funcOnPress(funcPress)
     {
         namesRu = _namesRu;
         namesEn = _namesEn;
@@ -113,7 +102,6 @@ private:
     uint8 *state;
     void (*funcOnPress)();
     int NumStates() const;
-    virtual void CreateHint(String &) const override;
 };
 
 
@@ -129,8 +117,8 @@ public:
         Blue
     };
 
-    GovernorChannelColor(Type type, pchar hintRu, pchar hintEn, uint8 *_state, void (*func)(uint8)) :
-        Item(hintRu, hintEn), state(_state), typeColor(type), funcChanged(func)
+    GovernorChannelColor(Type type, uint8 *_state, void (*func)(uint8)) :
+        Item(), state(_state), typeColor(type), funcChanged(func)
     {
     }
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -140,7 +128,6 @@ public:
 private:
     uint8 *state;
     Type typeColor;
-    virtual void CreateHint(String &) const override;
     void (*funcChanged)(uint8);
     Color ColorFill() const;
 };
@@ -149,7 +136,7 @@ private:
 class Parameter : public Item
 {
 public:
-    Parameter(pchar name_ru, pchar name_en, Value &_value) : Item("", ""), value(_value)
+    Parameter(pchar name_ru, pchar name_en, Value &_value) : Item(), value(_value)
     {
         names[0] = name_ru;
         names[1] = name_en;
@@ -164,8 +151,6 @@ private:
 
     pchar names[2];
     Value &value;
-
-    virtual void CreateHint(String &) const override;
 };
 
 
@@ -176,9 +161,9 @@ class Switch : public Item
     friend class PageModes;
 public:
 
-    Switch(pchar textRu, pchar textEn, pchar hintRu, pchar hintEn, pchar *_namesRu, pchar *_namesEn,
+    Switch(pchar textRu, pchar textEn, pchar *_namesRu, pchar *_namesEn,
         pchar *_ugoRu, pchar *_ugoEn, Enumeration *_state, void(*_onClick)()) :
-        Item(hintRu, hintEn), funcOnPress(_onClick), state(_state)
+        Item(), funcOnPress(_onClick), state(_state)
     {
         text[0] = textRu;
         text[1] = textEn;
@@ -206,7 +191,6 @@ private:
     pchar       text[2];            // Надпись на переключателе
     void        (*funcOnPress)();   // Эта функция вызывается после изменения состояния переключателя
     Enumeration *state;             // Адрес переменной с состоянием переключателя
-    virtual void CreateHint(String &hint) const override;
     // Переключить в следующее состояние
     void  NextChoice();
 };
@@ -218,7 +202,7 @@ class Page : public Item, public Observer
 
 public:
     Page(Item **_items, void (*_onEvent)(EventType::E), void (*_additionalDraw)(), bool equalItems = false) :
-        Item("", ""),
+        Item(),
         selectedItem(0), items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), equal_width_items(equalItems)
     {}
 
@@ -245,8 +229,6 @@ protected:
 
     // Возвращает количество итемов на странице
     int NumItems() const;
-
-    virtual void CreateHint(String &_hint) const override { _hint.Free(); }
 
     // Возвращает ширину элемента меню с номером num
     int WidthItem(int num) const;

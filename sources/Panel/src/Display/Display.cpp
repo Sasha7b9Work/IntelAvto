@@ -7,7 +7,6 @@
 #include "Display/Primitives.h"
 #include "Display/Text.h"
 #include "Hardware/HAL/HAL.h"
-#include "Menu/Hint.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
 #include "Utils/String.h"

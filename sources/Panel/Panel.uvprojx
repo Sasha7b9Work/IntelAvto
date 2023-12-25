@@ -784,16 +784,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
             </File>
-            <File>
-              <FileName>Hint.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Hint.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Hint.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Hint.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -823,6 +813,11 @@
               <FileName>PageSignals.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Signals\PageSignals.h</FilePath>
+            </File>
+            <File>
+              <FileName>Signal1.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\Signals\Signal1.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1671,16 +1666,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
             </File>
-            <File>
-              <FileName>Hint.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Hint.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Hint.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Hint.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -1710,6 +1695,11 @@
               <FileName>PageSignals.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Signals\PageSignals.h</FilePath>
+            </File>
+            <File>
+              <FileName>Signal1.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\Signals\Signal1.cpp</FilePath>
             </File>
           </Files>
         </Group>

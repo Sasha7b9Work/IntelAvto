@@ -15,7 +15,6 @@ static void OnPress_TypeSignal()
 // Выбор типа сигнала
 DEF_SWITCH_8(sTypeSignal,
     "Сигнал", "Signal",
-    "Время индикации", "Display time",
     "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
     "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
     PageSignals::typeSignal, OnPress_TypeSignal
