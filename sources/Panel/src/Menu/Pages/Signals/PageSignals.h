@@ -25,10 +25,9 @@ struct TypeSignal : public Enumeration
 };
 
 
-class PageSignals
+namespace PageSignals
 {
-public:
-    static Page *self;
+    extern Page *self;
 
-    static TypeSignal typeSignal;
+    extern TypeSignal typeSignal;
 };
