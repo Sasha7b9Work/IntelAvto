@@ -76,8 +76,13 @@ static Settings def_set =
 //         Us
         { Value() },                            // 3b
 
-//         Us       t7       t9       t11
-        { Value(), Value(), Value(), Value() }, // 4
+        {
+            Value(Range(-6.0f, -7.0f),   Range(-12.0f, -16.0f)),    // 4 : Us
+            Value(Range(-2.5f, -6.0f),   Range(-5.0f, -12.0f)),     // 4 : Ua
+            Value(Range(14e-3f, 40e-3f), Range(50e-3f, 100e-3f)),   // 4 : t7
+            Value(Range(0.5f, 20.0f),    Range(0.5f, 20.0f)),       // 4 : t9
+            Value(Range(5e-3f, 100e-3f), Range(10e-3f, 100e-3f))    // 4 : t11
+        },
 
 //         Us       td
         { Value(), Value() },                   // 5a

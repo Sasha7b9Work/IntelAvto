@@ -74,15 +74,18 @@ namespace PageSignals
     {
         static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_4].values[0]);
 
-        static Parameter param_t7("t7", "t7", gset.signals[TypeSignal::_4].values[1]);
+        static Parameter param_Ua("Ua", "Ua", gset.signals[TypeSignal::_4].values[1]);
 
-        static Parameter param_t9("t9", "t9", gset.signals[TypeSignal::_4].values[2]);
+        static Parameter param_t7("t7", "t7", gset.signals[TypeSignal::_4].values[2]);
 
-        static Parameter param_t11("t11", "t11", gset.signals[TypeSignal::_4].values[3]);
+        static Parameter param_t9("t9", "t9", gset.signals[TypeSignal::_4].values[3]);
+
+        static Parameter param_t11("t11", "t11", gset.signals[TypeSignal::_4].values[4]);
 
         void SetParameters(Item **first)
         {
             *first++ = &param_Us;
+            *first++ = &param_Ua;
             *first++ = &param_t7;
             *first++ = &param_t9;
             *first++ = &param_t11;
