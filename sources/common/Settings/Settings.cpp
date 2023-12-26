@@ -61,14 +61,29 @@ static Settings def_set =
     0,                                          // colorScheme
     TypeSignal::_1,
     {
-        {Value()},
-        {Value()},
-        {Value()},
-        {Value()},
-        {Value()},
-        {Value()},
-        {Value()},
-        {Value()}
+//         Us       t1
+        { Value(), Value() },                   // 1
+
+//         Us       t1
+        { Value(), Value() },                   // 2a
+
+//         Us       td
+        { Value(), Value() },                   // 2b
+
+//         Us
+        { Value() },                            // 3a
+
+//         Us
+        { Value() },                            // 3b
+
+//         Us       t7       t9       t11
+        { Value(), Value(), Value(), Value() }, // 4
+
+//         Us       td
+        { Value(), Value() },                   // 5a
+
+//         Us       Uss      td
+        { Value(), Value(), Value() }           // 5b
     }
 };
 

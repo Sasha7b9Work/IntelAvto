@@ -8,9 +8,9 @@ namespace PageSignals
 {
     namespace _1
     {
-        static Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_1].values[0]);
+        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_1].values[0]);
 
-        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_1].values[1]);
+        static Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_1].values[1]);
 
         void SetParameters(Item **first)
         {
@@ -22,9 +22,9 @@ namespace PageSignals
 
     namespace _2a
     {
-        static Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_2a].values[0]);
+        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_2a].values[0]);
 
-        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_2a].values[1]);
+        static Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_2a].values[1]);
 
         void SetParameters(Item **first)
         {
@@ -36,9 +36,9 @@ namespace PageSignals
 
     namespace _2b
     {
-        static Parameter param_td("td", "td", gset.signals[TypeSignal::_2b].values[0]);
+        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_2b].values[0]);
 
-        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_2b].values[1]);
+        static Parameter param_td("td", "td", gset.signals[TypeSignal::_2b].values[1]);
 
         void SetParameters(Item **first)
         {
