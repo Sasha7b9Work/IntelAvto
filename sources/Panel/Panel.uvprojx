@@ -10,14 +10,14 @@
       <TargetName>Debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
+      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F429VITx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.16.0</PackID>
-          <PackURL>http://www.keil.com/pack/</PackURL>
+          <PackID>Keil.STM32F4xx_DFP.2.17.0</PackID>
+          <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00030000) IRAM2(0x10000000,0x00010000) IROM(0x08000000,0x00200000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -186,7 +186,6 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <nBranchProt>0</nBranchProt>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -540,79 +539,79 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Colors.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Colors.h</FilePath>
-            </File>
-            <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Colors.cpp</FilePath>
+              <FilePath>..\common\Display\Colors.cpp</FilePath>
             </File>
             <File>
-              <FileName>Console.h</FileName>
+              <FileName>Colors.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Console.h</FilePath>
+              <FilePath>..\common\Display\Colors.h</FilePath>
             </File>
             <File>
               <FileName>Console.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Console.cpp</FilePath>
+              <FilePath>..\common\Display\Console.cpp</FilePath>
             </File>
             <File>
-              <FileName>Display.h</FileName>
+              <FileName>Console.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Display.h</FilePath>
+              <FilePath>..\common\Display\Console.h</FilePath>
             </File>
             <File>
               <FileName>Display.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Display.cpp</FilePath>
+              <FilePath>..\common\Display\Display.cpp</FilePath>
             </File>
             <File>
-              <FileName>Indicator.h</FileName>
+              <FileName>Display.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Indicator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Indicator.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Indicator.cpp</FilePath>
+              <FilePath>..\common\Display\Display.h</FilePath>
             </File>
             <File>
               <FileName>Display_stm.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Display_stm.cpp</FilePath>
+              <FilePath>..\common\Display\Display_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>Primitives.h</FileName>
+              <FileName>Indicator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Indicator.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Indicator.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Primitives.h</FilePath>
+              <FilePath>..\common\Display\Indicator.h</FilePath>
             </File>
             <File>
               <FileName>Primitives.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Primitives.cpp</FilePath>
+              <FilePath>..\common\Display\Primitives.cpp</FilePath>
             </File>
             <File>
-              <FileName>Symbols.h</FileName>
+              <FileName>Primitives.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Symbols.h</FilePath>
+              <FilePath>..\common\Display\Primitives.h</FilePath>
             </File>
             <File>
               <FileName>Symbols.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Symbols.cpp</FilePath>
+              <FilePath>..\common\Display\Symbols.cpp</FilePath>
             </File>
             <File>
-              <FileName>Text.h</FileName>
+              <FileName>Symbols.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Text.h</FilePath>
+              <FilePath>..\common\Display\Symbols.h</FilePath>
             </File>
             <File>
               <FileName>Text.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Text.cpp</FilePath>
+              <FilePath>..\common\Display\Text.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Text.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Text.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -620,54 +619,44 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>Font.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\Font.h</FilePath>
-            </File>
-            <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\Font.cpp</FilePath>
+              <FilePath>..\common\Display\Font\Font.cpp</FilePath>
             </File>
             <File>
-              <FileName>FontBig.h</FileName>
+              <FileName>Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\FontBig.h</FilePath>
+              <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
             <File>
               <FileName>FontBig.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\FontBig.cpp</FilePath>
+              <FilePath>..\common\Display\Font\FontBig.cpp</FilePath>
             </File>
             <File>
-              <FileName>FontMid.h</FileName>
+              <FileName>FontBig.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\FontMid.h</FilePath>
-            </File>
-            <File>
-              <FileName>FontMid.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\FontMid.cpp</FilePath>
+              <FilePath>..\common\Display\Font\FontBig.h</FilePath>
             </File>
             <File>
               <FileName>fontGOSTAU16BOLD.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTAU16BOLD.inc</FilePath>
-            </File>
-            <File>
-              <FileName>fontGOSTAU16BOLD.xml</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTAU16BOLD.xml</FilePath>
+              <FilePath>..\common\Display\Font\fontGOSTAU16BOLD.inc</FilePath>
             </File>
             <File>
               <FileName>fontGOSTB28B.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTB28B.inc</FilePath>
+              <FilePath>..\common\Display\Font\fontGOSTB28B.inc</FilePath>
             </File>
             <File>
-              <FileName>fontGOSTB28B.xml</FileName>
+              <FileName>FontMid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Font\FontMid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FontMid.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTB28B.xml</FilePath>
+              <FilePath>..\common\Display\Font\FontMid.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -737,12 +726,12 @@
             <File>
               <FileName>Keyboard.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.cpp</FilePath>
+              <FilePath>..\common\Keyboard\Keyboard.cpp</FilePath>
             </File>
             <File>
               <FileName>Keyboard.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.h</FilePath>
+              <FilePath>..\common\Keyboard\Keyboard.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -752,27 +741,32 @@
             <File>
               <FileName>Menu.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Menu.cpp</FilePath>
+              <FilePath>..\common\Menu\Menu.cpp</FilePath>
             </File>
             <File>
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.h</FilePath>
+              <FilePath>..\common\Menu\Menu.h</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\Menu.txt</FilePath>
             </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+              <FilePath>..\common\Menu\MenuItems.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItems.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItems.h</FilePath>
+              <FilePath>..\common\Menu\MenuItems.h</FilePath>
             </File>
             <File>
               <FileName>MenuItemsDef.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
+              <FilePath>..\common\Menu\MenuItemsDef.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -782,12 +776,12 @@
             <File>
               <FileName>PageMain.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
+              <FilePath>..\common\Menu\Pages\PageMain.cpp</FilePath>
             </File>
             <File>
               <FileName>PageMain.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
+              <FilePath>..\common\Menu\Pages\PageMain.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -797,17 +791,17 @@
             <File>
               <FileName>PageSignals.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Signals\PageSignals.cpp</FilePath>
+              <FilePath>..\common\Menu\Pages\Signals\PageSignals.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignals.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Signals\PageSignals.h</FilePath>
+              <FilePath>..\common\Menu\Pages\Signals\PageSignals.h</FilePath>
             </File>
             <File>
               <FileName>Signal1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Signals\Signal1.cpp</FilePath>
+              <FilePath>..\common\Menu\Pages\Signals\Signal1.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -815,14 +809,14 @@
           <GroupName>Settings</GroupName>
           <Files>
             <File>
-              <FileName>Settings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings\Settings.h</FilePath>
-            </File>
-            <File>
               <FileName>Settings.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Settings\Settings.cpp</FilePath>
+              <FilePath>..\common\Settings\Settings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Settings\Settings.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -830,64 +824,79 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Buffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Buffer.h</FilePath>
-            </File>
-            <File>
               <FileName>Buffer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Buffer.cpp</FilePath>
+              <FilePath>..\common\Utils\Buffer.cpp</FilePath>
             </File>
             <File>
-              <FileName>Math.h</FileName>
+              <FileName>Buffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Stack.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Stack.h</FilePath>
-            </File>
-            <File>
-              <FileName>Stack.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Stack.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>String.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\String.h</FilePath>
-            </File>
-            <File>
-              <FileName>String.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\String.cpp</FilePath>
+              <FilePath>..\common\Utils\Buffer.h</FilePath>
             </File>
             <File>
               <FileName>Debug.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Debug.cpp</FilePath>
+              <FilePath>..\common\Utils\Debug.cpp</FilePath>
             </File>
             <File>
               <FileName>Debug.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Debug.h</FilePath>
+              <FilePath>..\common\Utils\Debug.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>Observer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Observer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Stack.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Stack.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Stack.h</FilePath>
+            </File>
+            <File>
+              <FileName>String.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\String.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>String.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\String.h</FilePath>
             </File>
             <File>
               <FileName>StringUtils.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\StringUtils.cpp</FilePath>
+              <FilePath>..\common\Utils\StringUtils.cpp</FilePath>
             </File>
             <File>
               <FileName>StringUtils.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\StringUtils.h</FilePath>
+              <FilePath>..\common\Utils\StringUtils.h</FilePath>
+            </File>
+            <File>
+              <FileName>Value.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Value.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Value.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -897,14 +906,14 @@
       <TargetName>Release</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6180000::V6.18::ARMCLANG</pCCUsed>
+      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32F429VITx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32F4xx_DFP.2.16.0</PackID>
-          <PackURL>http://www.keil.com/pack/</PackURL>
+          <PackID>Keil.STM32F4xx_DFP.2.17.0</PackID>
+          <PackURL>https://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00030000) IRAM2(0x10000000,0x00010000) IROM(0x08000000,0x00200000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -1073,7 +1082,6 @@
             <RvdsVP>2</RvdsVP>
             <RvdsMve>0</RvdsMve>
             <RvdsCdeCp>0</RvdsCdeCp>
-            <nBranchProt>0</nBranchProt>
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -1427,79 +1435,79 @@
           <GroupName>Display</GroupName>
           <Files>
             <File>
-              <FileName>Colors.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Colors.h</FilePath>
-            </File>
-            <File>
               <FileName>Colors.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Colors.cpp</FilePath>
+              <FilePath>..\common\Display\Colors.cpp</FilePath>
             </File>
             <File>
-              <FileName>Console.h</FileName>
+              <FileName>Colors.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Console.h</FilePath>
+              <FilePath>..\common\Display\Colors.h</FilePath>
             </File>
             <File>
               <FileName>Console.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Console.cpp</FilePath>
+              <FilePath>..\common\Display\Console.cpp</FilePath>
             </File>
             <File>
-              <FileName>Display.h</FileName>
+              <FileName>Console.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Display.h</FilePath>
+              <FilePath>..\common\Display\Console.h</FilePath>
             </File>
             <File>
               <FileName>Display.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Display.cpp</FilePath>
+              <FilePath>..\common\Display\Display.cpp</FilePath>
             </File>
             <File>
-              <FileName>Indicator.h</FileName>
+              <FileName>Display.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Indicator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Indicator.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Indicator.cpp</FilePath>
+              <FilePath>..\common\Display\Display.h</FilePath>
             </File>
             <File>
               <FileName>Display_stm.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Display_stm.cpp</FilePath>
+              <FilePath>..\common\Display\Display_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>Primitives.h</FileName>
+              <FileName>Indicator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Indicator.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Indicator.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Primitives.h</FilePath>
+              <FilePath>..\common\Display\Indicator.h</FilePath>
             </File>
             <File>
               <FileName>Primitives.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Primitives.cpp</FilePath>
+              <FilePath>..\common\Display\Primitives.cpp</FilePath>
             </File>
             <File>
-              <FileName>Symbols.h</FileName>
+              <FileName>Primitives.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Symbols.h</FilePath>
+              <FilePath>..\common\Display\Primitives.h</FilePath>
             </File>
             <File>
               <FileName>Symbols.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Symbols.cpp</FilePath>
+              <FilePath>..\common\Display\Symbols.cpp</FilePath>
             </File>
             <File>
-              <FileName>Text.h</FileName>
+              <FileName>Symbols.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Text.h</FilePath>
+              <FilePath>..\common\Display\Symbols.h</FilePath>
             </File>
             <File>
               <FileName>Text.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Text.cpp</FilePath>
+              <FilePath>..\common\Display\Text.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Text.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Display\Text.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1507,54 +1515,44 @@
           <GroupName>Display/Font</GroupName>
           <Files>
             <File>
-              <FileName>Font.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\Font.h</FilePath>
-            </File>
-            <File>
               <FileName>Font.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\Font.cpp</FilePath>
+              <FilePath>..\common\Display\Font\Font.cpp</FilePath>
             </File>
             <File>
-              <FileName>FontBig.h</FileName>
+              <FileName>Font.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\FontBig.h</FilePath>
+              <FilePath>..\common\Display\Font\Font.h</FilePath>
             </File>
             <File>
               <FileName>FontBig.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\FontBig.cpp</FilePath>
+              <FilePath>..\common\Display\Font\FontBig.cpp</FilePath>
             </File>
             <File>
-              <FileName>FontMid.h</FileName>
+              <FileName>FontBig.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\FontMid.h</FilePath>
-            </File>
-            <File>
-              <FileName>FontMid.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Font\FontMid.cpp</FilePath>
+              <FilePath>..\common\Display\Font\FontBig.h</FilePath>
             </File>
             <File>
               <FileName>fontGOSTAU16BOLD.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTAU16BOLD.inc</FilePath>
-            </File>
-            <File>
-              <FileName>fontGOSTAU16BOLD.xml</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTAU16BOLD.xml</FilePath>
+              <FilePath>..\common\Display\Font\fontGOSTAU16BOLD.inc</FilePath>
             </File>
             <File>
               <FileName>fontGOSTB28B.inc</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTB28B.inc</FilePath>
+              <FilePath>..\common\Display\Font\fontGOSTB28B.inc</FilePath>
             </File>
             <File>
-              <FileName>fontGOSTB28B.xml</FileName>
+              <FileName>FontMid.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Display\Font\FontMid.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FontMid.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Display\Font\fontGOSTB28B.xml</FilePath>
+              <FilePath>..\common\Display\Font\FontMid.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1624,12 +1622,12 @@
             <File>
               <FileName>Keyboard.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.cpp</FilePath>
+              <FilePath>..\common\Keyboard\Keyboard.cpp</FilePath>
             </File>
             <File>
               <FileName>Keyboard.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Keyboard\Keyboard.h</FilePath>
+              <FilePath>..\common\Keyboard\Keyboard.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1639,27 +1637,32 @@
             <File>
               <FileName>Menu.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Menu.cpp</FilePath>
+              <FilePath>..\common\Menu\Menu.cpp</FilePath>
             </File>
             <File>
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.h</FilePath>
+              <FilePath>..\common\Menu\Menu.h</FilePath>
+            </File>
+            <File>
+              <FileName>Menu.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Menu\Menu.txt</FilePath>
             </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
+              <FilePath>..\common\Menu\MenuItems.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItems.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItems.h</FilePath>
+              <FilePath>..\common\Menu\MenuItems.h</FilePath>
             </File>
             <File>
               <FileName>MenuItemsDef.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
+              <FilePath>..\common\Menu\MenuItemsDef.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1669,12 +1672,12 @@
             <File>
               <FileName>PageMain.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
+              <FilePath>..\common\Menu\Pages\PageMain.cpp</FilePath>
             </File>
             <File>
               <FileName>PageMain.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
+              <FilePath>..\common\Menu\Pages\PageMain.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1684,17 +1687,17 @@
             <File>
               <FileName>PageSignals.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Signals\PageSignals.cpp</FilePath>
+              <FilePath>..\common\Menu\Pages\Signals\PageSignals.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignals.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\Signals\PageSignals.h</FilePath>
+              <FilePath>..\common\Menu\Pages\Signals\PageSignals.h</FilePath>
             </File>
             <File>
               <FileName>Signal1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\Signals\Signal1.cpp</FilePath>
+              <FilePath>..\common\Menu\Pages\Signals\Signal1.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1702,14 +1705,14 @@
           <GroupName>Settings</GroupName>
           <Files>
             <File>
-              <FileName>Settings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings\Settings.h</FilePath>
-            </File>
-            <File>
               <FileName>Settings.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Settings\Settings.cpp</FilePath>
+              <FilePath>..\common\Settings\Settings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Settings.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Settings\Settings.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1717,64 +1720,79 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Buffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Buffer.h</FilePath>
-            </File>
-            <File>
               <FileName>Buffer.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Buffer.cpp</FilePath>
+              <FilePath>..\common\Utils\Buffer.cpp</FilePath>
             </File>
             <File>
-              <FileName>Math.h</FileName>
+              <FileName>Buffer.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Stack.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Stack.h</FilePath>
-            </File>
-            <File>
-              <FileName>Stack.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Stack.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>String.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\String.h</FilePath>
-            </File>
-            <File>
-              <FileName>String.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\String.cpp</FilePath>
+              <FilePath>..\common\Utils\Buffer.h</FilePath>
             </File>
             <File>
               <FileName>Debug.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\Debug.cpp</FilePath>
+              <FilePath>..\common\Utils\Debug.cpp</FilePath>
             </File>
             <File>
               <FileName>Debug.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\Debug.h</FilePath>
+              <FilePath>..\common\Utils\Debug.h</FilePath>
+            </File>
+            <File>
+              <FileName>Math.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Math.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Math.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Math.h</FilePath>
+            </File>
+            <File>
+              <FileName>Observer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Observer.h</FilePath>
+            </File>
+            <File>
+              <FileName>Stack.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Stack.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Stack.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Stack.h</FilePath>
+            </File>
+            <File>
+              <FileName>String.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\String.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>String.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\String.h</FilePath>
             </File>
             <File>
               <FileName>StringUtils.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Utils\StringUtils.cpp</FilePath>
+              <FilePath>..\common\Utils\StringUtils.cpp</FilePath>
             </File>
             <File>
               <FileName>StringUtils.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Utils\StringUtils.h</FilePath>
+              <FilePath>..\common\Utils\StringUtils.h</FilePath>
+            </File>
+            <File>
+              <FileName>Value.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Value.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Value.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -149,6 +149,8 @@ public:
 
     pchar Title() const;
 
+    Value GetValue() const { return value; }
+
 private:
 
     pchar title[2];

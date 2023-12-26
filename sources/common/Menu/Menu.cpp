@@ -8,6 +8,7 @@
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
+#include "Menu/Pages/Signals/PageSignals.h"
 #include <cstring>
 
 

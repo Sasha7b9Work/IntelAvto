@@ -13,6 +13,7 @@ include_directories(src
                     ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
                     ../../common/_VS_KEIL/CMSIS
                     ../../common/_VS_KEIL/HAL
+                    ../../common
                     ../../Panel/src
                     ../../Panel/tests
                     ../../Panel/src/Hardware/HAL
@@ -64,20 +65,19 @@ file(GLOB SRC                 ../../Panel/src/defines.h
 file(GLOB CALCULATE           ../../Panel/src/Calculate/*)
 file(GLOB DISPLAY                         src/Display/Display_win.cpp
                                           src/Display/Colors_win.cpp
-                              ../../Panel/src/Display/Colors.*
-                              ../../Panel/src/Display/Console.*
-                              ../../Panel/src/Display/Display.*
-                              ../../Panel/src/Display/Indicator.*
-                              ../../Panel/src/Display/RedrawingZone.*
-                              ../../Panel/src/Display/Primitives.*
+                              ../../common/Display/Colors.*
+                              ../../common/Display/Console.*
+                              ../../common/Display/Display.*
+                              ../../common/Display/Indicator.*
+                              ../../common/Display/RedrawingZone.*
+                              ../../common/Display/Primitives.*
                                           src/Display/Primitives_win.cpp
-                              ../../Panel/src/Display/Symbols.*
-                              ../../Panel/src/Display/Text.*)
-file(GLOB DISPLAY_FONT        ../../Panel/src/Display/Font/*.h
-                              ../../Panel/src/Display/Font/*.cpp
-                              ../../Panel/src/Display/Font/*.inc
-                              ../../Panel/src/Display/Font/*.xml)
-file(GLOB FREQMETER           ../../Panel/src/FreqMeter/*)
+                              ../../common/Display/Symbols.*
+                              ../../common/Display/Text.*)
+file(GLOB DISPLAY_FONT        ../../common/Display/Font/*.h
+                              ../../common/Display/Font/*.cpp
+                              ../../common/Display/Font/*.inc
+                              ../../common/Display/Font/*.xml)
 file(GLOB GUI                             src/GUI/*)
 file(GLOB HARDWARE            ../../Panel/src/Hardware/*FPGA.*
                               ../../Panel/src/Hardware/FreqMeter.*
@@ -89,18 +89,17 @@ file(GLOB HARDWARE_HAL        ../../Panel/src/Hardware/HAL/HAL.*
                                           src/Hardware/HAL/HAL_EEPROM_win.cpp)
 file(GLOB KEYBOARD            ../../Panel/src/Keyboard/Keyboard.h
                                           src/Keyboard/Keyboard_win.cpp)
-file(GLOB MENU                ../../Panel/src/Menu/*.*)
-file(GLOB MENU_PAGES          ../../Panel/src/Menu/Pages/*.*)
-file(GLOB MENU_PAGES_SIGNALS  ../../Panel/src/Menu/Pages/Signals/*.*)
-file(GLOB SETTINGS            ../../Panel/src/Settings/*.*)
-file(GLOB UTILS               ../../Panel/src/Utils/*.*)
+file(GLOB MENU                ../../common/Menu/*.*)
+file(GLOB MENU_PAGES          ../../common/Menu/Pages/*.*)
+file(GLOB MENU_PAGES_SIGNALS  ../../common/Menu/Pages/Signals/*.*)
+file(GLOB SETTINGS            ../../common/Settings/*.*)
+file(GLOB UTILS               ../../common/Utils/*.*)
 
 source_group(_VS/HAL               FILES ${VS_HAL})
 source_group(src                   FILES ${SRC})
 source_group(Calculate             FILES ${CALCULATE})
 source_group(Display               FILES ${DISPLAY})
 source_group(Display/Font          FILES ${DISPLAY_FONT})
-source_group(FreqMeter             FILES ${FREQMETER})
 source_group(GUI                   FILES ${GUI})
 source_group(Hardware              FILES ${HARDWARE})
 source_group(Hardware/HAL          FILES ${HARDWARE_HAL})
@@ -117,7 +116,6 @@ add_executable(PanelGUI ${VS_HAL}
                         ${DISPLAY}
                         ${DISPLAY_FONT}
                         ${HARDWARE}
-                        ${FREQMETER}
                         ${GUI}
                         ${HARDWARE_HAL}
                         ${KEYBOARD}

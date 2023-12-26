@@ -10,6 +10,7 @@ include_directories( src
                      src/Hardware/HAL
                      src/Hardware/USBD
                      tests
+                     ../common
                      ../common/_VS_KEIL/CMSIS
                      ../common/_VS/std_includes
                      ../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
@@ -38,8 +39,8 @@ add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for me
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 file(GLOB SRC                 src/*.*)
-file(GLOB DISPLAY             src/Display/*.*)
-file(GLOB DISPLAY_FONT        src/Display/Font/*.*)
+file(GLOB DISPLAY             ../common/Display/*.*)
+file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
 file(GLOB HARDWARE            src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS      src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL        src/Hardware/HAL/*.*)
@@ -47,10 +48,11 @@ file(GLOB HARDWARE_USBD       src/Hardware/USBD/*.*
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c)
-file(GLOB KEYBOARD            src/Keyboard/*.*)
-file(GLOB MENU                src/Menu/*.*)
-file(GLOB MENU_PAGES          src/Menu/Pages/*.*)
-file(GLOB UTILS               src/Utils/*.*)
+file(GLOB KEYBOARD            ../common/Keyboard/*.*)
+file(GLOB MENU                ../common/Menu/*.*)
+file(GLOB MENU_PAGES          ../common/Menu/Pages/*.*)
+file(GLOB SETTINGS            ../common/Settings/*.*)
+file(GLOB UTILS               ../common/Utils/*.*)
 
 
 source_group(libs/HAL              FILES ${LIBS_HAL})
@@ -64,6 +66,7 @@ source_group(Hardware/USBD         FILES ${HARDWARE_USBD})
 source_group(Keyboard              FILES ${KEYBOARD})
 source_group(Menu                  FILES ${MENU})
 source_group(Menu/Pages/           FILES ${MENU_PAGES})
+source_group(Settings              FILES ${SETTINGS})
 source_group(Utils                 FILES ${UTILS})
 
 set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
@@ -72,5 +75,18 @@ set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
                             ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
                             PROPERTIES HEADER_FILE_ONLY TRUE)
 
-add_library(${PROJECT_NAME} ${LIBS_HAL} ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${HARDWARE} ${HARDWARE_CMSIS} ${HARDWARE_HAL}
-                  ${HARDWARE_USBD} ${KEYBOARD} ${MENU} ${MENU_PAGES} ${UTILS})
+add_library(${PROJECT_NAME}
+                ${LIBS_HAL}
+                ${SRC}
+                ${DISPLAY}
+                ${DISPLAY_FONT}
+                ${HARDWARE}
+                ${HARDWARE_CMSIS}
+                ${HARDWARE_HAL}
+                ${HARDWARE_USBD}
+                ${KEYBOARD}
+                ${MENU}
+                ${MENU_PAGES}
+                ${SETTINGS}
+                ${UTILS}
+)

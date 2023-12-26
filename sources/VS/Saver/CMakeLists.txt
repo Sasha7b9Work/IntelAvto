@@ -1,13 +1,14 @@
 # 2023/09/08 21:15:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 project (Saver)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 4)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
 include_directories(src/
+                    ../../common
                     ../../common/_VS_KEIL/CMSIS/
                     ../../common/_VS_KEIL/HAL/
                     ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/
@@ -77,20 +78,20 @@ add_compile_options(/wd26821)
 add_compile_options(/wd26812)
 
 file(GLOB SRC                 ../../Panel/src/defines.h
-                              ../../Panel/src/Settings.*
                                           src/Application_win.*
                                           src/main_win.cpp
                                           src/functions_win.cpp)
-file(GLOB DISPLAY             ../../Panel/src/Display/Colors.*
+file(GLOB DISPLAY             ../../common/Display/Colors.*
                                           src/Display/Display_win.*)
-file(GLOB DISPLAY_FONT        ../../Panel/src/Display/Font/Font.cpp)
+file(GLOB DISPLAY_FONT        ../../common/Display/Font/Font.cpp)
 file(GLOB KEYBOARD            ../../Panel/src/Keyboard/Keyboard.h
                                           src/Keyboard/Keyboard_win.cpp)
 file(GLOB GUI                             src/GUI/*)
-file(GLOB UTILS               ../../Panel/src/Utils/Buffer.*
-                              ../../Panel/src/Utils/Stack.*
-                              ../../Panel/src/Utils/String.*
-                              ../../Panel/src/Utils/StringUtils.*)
+file(GLOB SETTINGS            ../../common/Settings/*.*)
+file(GLOB UTILS               ../../common/Utils/Buffer.*
+                              ../../common/Utils/Stack.*
+                              ../../common/Utils/String.*
+                              ../../common/Utils/StringUtils.*)
 
 
 set_source_files_properties(../../Panel/src/Utils/String.cpp
@@ -102,10 +103,19 @@ source_group(Display           FILES ${DISPLAY})
 source_group(Display\\Font     FILES ${DISPLAY_FONT})
 source_group(Keyboard          FILES ${KEYBOARD})
 source_group(GUI               FILES ${GUI})
+source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
 
 
-add_executable(Saver ${SRC} ${DISPLAY} ${DISPLAY_FONT} ${GUI} ${KEYBOARD} ${UTILS})
+add_executable(Saver
+                    ${SRC}
+                    ${DISPLAY}
+                    ${DISPLAY_FONT}
+                    ${GUI}
+                    ${KEYBOARD}
+                    ${SETTINGS}
+                    ${UTILS}
+)
 
 target_link_libraries(Saver wxbase32ud)
 target_link_libraries(Saver wxmsw32ud_core)

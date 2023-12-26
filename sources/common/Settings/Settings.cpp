@@ -59,7 +59,17 @@ static Settings def_set =
     StyleGUI(StyleGUI::Modern),
     Language::RU,
     0,                                          // colorScheme
-    TypeSignal::_1
+    TypeSignal::_1,
+    {
+        {Value()},
+        {Value()},
+        {Value()},
+        {Value()},
+        {Value()},
+        {Value()},
+        {Value()},
+        {Value()}
+    }
 };
 
 

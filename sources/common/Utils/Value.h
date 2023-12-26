@@ -4,5 +4,6 @@
 
 struct Value
 {
-
+    Value() {}
+    int value = 0;
 };

@@ -11,6 +11,7 @@
 #include "Utils/String.h"
 #include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
+#include "Menu/Pages/Signals/PageSignals.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
