@@ -11,30 +11,6 @@ struct TypeMeasure;
 class Switch;
 
 
-struct Enumeration
-{
-    uint8  value;           // Текущее состояние перечисления
-    pchar *namesRu;
-    pchar *namesEn;
-    pchar *ugoRu;
-    pchar *ugoEn;
-    const bool *correct;    // Если указатель на этот массив не равен nullptr, то его элементы используются следующим
-                            // образом : value не может значения индексов, соответствующих false
-    explicit Enumeration(uint8 v, const bool *_correct = nullptr, int states = 0);
-    operator int()         { return (int)value; }
-    String ToString() const;
-    pchar UGO() const;
-    int NumStates() const;
-    // Возвращает индекс из массива names, соотвествующий текущему value
-    int IndexName() const;
-    bool Is(uint8 v) const { return value == v; }
-    Switch *sw;
-    bool SetValue(uint8 v);
-    bool ValidValue(uint8 v) const;
-    int numStates;
-};
-
-
 class Item
 {
     friend class Hint;
@@ -158,48 +134,6 @@ private:
 };
 
 
-// Для настроек частотомера
-class Switch : public Item
-{
-    friend class Page;
-    friend class PageModes;
-public:
-
-    Switch(pchar textRu, pchar textEn, pchar *_namesRu, pchar *_namesEn,
-        pchar *_ugoRu, pchar *_ugoEn, Enumeration *_state, void(*_onClick)()) :
-        Item(), funcOnPress(_onClick), state(_state)
-    {
-        text[0] = textRu;
-        text[1] = textEn;
-
-        state->namesRu = _namesRu;
-        state->namesEn = _namesEn;
-
-        state->ugoRu = _ugoRu;
-        state->ugoEn = _ugoEn;
-
-        state->sw = this;
-    }
-    virtual void Draw(int x, int y, int width, bool selected = false) override;
-    virtual void OnEnterKeyGovernor(const Control &control) override;
-
-    void FuncOnPress() const { if (funcOnPress) { funcOnPress(); } }
-
-    uint8 Value() const { return state->value; }
-
-    pchar Title() const;
-
-    bool SetValue(uint8 v);
-
-private:
-    pchar       text[2];            // Надпись на переключателе
-    void        (*funcOnPress)();   // Эта функция вызывается после изменения состояния переключателя
-    Enumeration *state;             // Адрес переменной с состоянием переключателя
-    // Переключить в следующее состояние
-    void  NextChoice();
-};
-
-
 class Page : public Item, public Observer
 {
     friend struct Channel;
@@ -252,12 +186,4 @@ class PageModes : public Page
 {
 public:
     PageModes(Item **_items, void (*_onEvent)(EventType::E)) : Page(_items, _onEvent, nullptr) {}
-
-    // Функции действительны для страниц режимов каналов
-    TypeMeasure *GetTypeMeasure() const;
-    int GetModeMeasure() const;
-    bool ExistTypeMeasure(uint8 type) const;
-    void ResetTypeAndModeMeasure();
-    bool ExistModeMeasure(int mode) const;
-    void ResetModeMeasure();
 };

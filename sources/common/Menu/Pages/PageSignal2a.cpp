@@ -18,7 +18,7 @@ namespace PageSignal2a
 
     DEF_BUTTON(bSignal2a,
         "2a", "2a",
-        FuncPress_Signal,
+        FuncPress_Signal
     );
 
     static Item *items[4] =
