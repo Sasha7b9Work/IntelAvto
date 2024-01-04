@@ -296,3 +296,9 @@ void Parameter::OnRotateGovernor(const Control &)
 {
 
 }
+
+
+void Parameter::OnEnterKeyGovernor(const Control &)
+{
+
+}

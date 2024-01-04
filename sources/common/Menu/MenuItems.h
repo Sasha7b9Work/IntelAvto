@@ -122,6 +122,8 @@ public:
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
     void Draw() const;
+
+    virtual void OnEnterKeyGovernor(const Control &) override;
     virtual void OnRotateGovernor(const Control &) override;
 
     pchar Title() const;
