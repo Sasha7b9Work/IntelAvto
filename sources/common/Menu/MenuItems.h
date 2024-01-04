@@ -24,10 +24,7 @@ public:
     virtual void Draw(int x, int y, int width, bool selected = false) = 0;
 
     // Функция обработки нажатия кнопки/ручки
-    virtual void OnEnterKeyGovernor(const Control &) { }
-
-    // Обработак поворота ручки
-    virtual void OnRotateGovernor(const Control &) { }
+    virtual bool OnEventControl(const Control &) { return false; }
 
     Color ColorBackground(bool selected);
 
@@ -46,7 +43,7 @@ public:
         text[1] = text_en;
     }
     virtual void Draw(int x, int y, int width, bool selected = false) override;
-    virtual void OnEnterKeyGovernor(const Control &) override;
+    virtual bool OnEventControl(const Control &) override;
     pchar GetTitle() const;
     void SetTitle(pchar ru, pchar en);
 private:
@@ -67,7 +64,7 @@ public:
     }
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
-    virtual void OnEnterKeyGovernor(const Control &) override;
+    virtual bool OnEventControl(const Control &) override;
     pchar Title() const;
     int Value() const { return (int)*state; }
     void SetColorBackground(const Color &color) { colorBack = color; }
@@ -98,7 +95,7 @@ public:
     {
     }
     virtual void Draw(int x, int y, int width, bool selected = false) override;
-    virtual void OnRotateGovernor(const Control &) override;
+    virtual bool OnEventControl(const Control &) override;
     int Value() const { return (int)*state; }
     void SetValue(uint8 value);
 private:
@@ -123,8 +120,7 @@ public:
     virtual void Draw(int x, int y, int width, bool selected = false) override;
     void Draw() const;
 
-    virtual void OnEnterKeyGovernor(const Control &) override;
-    virtual void OnRotateGovernor(const Control &) override;
+    virtual bool OnEventControl(const Control &) override;
 
     pchar Title() const;
 
@@ -154,11 +150,10 @@ public:
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
 
+    virtual bool OnEventControl(const Control &) override;
+
     // Возвращает указатель на выделенный пункт меню
     Item *SelectedItem() { return items[selectedItem]; }
-
-    void OnKeyRight();
-    void OnKeyLeft();
 
     // Проверить на корректность номер выделенного итема. Если он больше, чем количество итемов - скорректировать
     void VerifySelectedItem();

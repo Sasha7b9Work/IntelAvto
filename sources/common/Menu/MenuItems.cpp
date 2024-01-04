@@ -12,20 +12,6 @@
 using namespace Primitives;
 
 
-void Button::OnEnterKeyGovernor(const Control &)
-{
-    funcOnPress();
-}
-
-
-void Choice::OnEnterKeyGovernor(const Control &)
-{
-    Math::CircleIncrease<uint8>(state, 0, (uint8)(NumStates() - 1));
-
-    funcOnPress();
-}
-
-
 int Choice::NumStates() const
 {
     int result = 0;
@@ -102,18 +88,6 @@ int Page::NumItems() const
         i++;
     }
     return i;
-}
-
-
-void Page::OnKeyRight()
-{
-    Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
-}
-
-
-void Page::OnKeyLeft()
-{
-    Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
 }
 
 
@@ -224,23 +198,6 @@ void GovernorChannelColor::SetValue(uint8 value)
 }
 
 
-void GovernorChannelColor::OnRotateGovernor(const Control &control)
-{
-    if (control.key == Key::GovLeft)
-    {
-        *state = (uint8)(*state - 8);
-    }
-    else if (control.key == Key::GovRight)
-    {
-        *state = (uint8)(*state + 8);
-    }
-
-    funcChanged(*state);
-
-    SetValue(*state);
-}
-
-
 Color Item::ColorBackground(bool selected)
 {
     return selected ? Color::MENU_SELECT : Color::MENU_UNSELECT;
@@ -292,13 +249,32 @@ pchar Parameter::Title() const
 }
 
 
-void Parameter::OnRotateGovernor(const Control &)
+bool Button::OnEventControl(const Control &)
 {
-
+    return false;
 }
 
 
-void Parameter::OnEnterKeyGovernor(const Control &)
+bool Parameter::OnEventControl(const Control &)
 {
+    return false;
+}
 
+
+bool Page::OnEventControl(const Control &control)
+{
+    if (control.key == Key::Left)
+    {
+        Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
+
+        return true;
+    }
+    else if (control.key == Key::Right)
+    {
+        Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
+
+        return true;
+    }
+
+    return false;
 }
