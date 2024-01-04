@@ -109,12 +109,17 @@ private:
 class Parameter : public Item
 {
 public:
-    Parameter(pchar title_ru, pchar title_en, Value &_value, int _x, int _y) : Item(), value(_value), x(_x), y(_y)
+    Parameter(pchar title_ru, pchar title_en,
+        Value &_value12, Value _min12, Value _max12,
+        Value &_value24, Value _min24, Value _max24,
+        int _x, int _y) :
+        Item(),
+        value12(_value12), min12(_min12), max12(_max12),
+        value24(_value24), min24(_min24), max24(_max24),
+        x(_x), y(_y), in_correct_mode(false)
     {
         title[0] = title_ru;
         title[1] = title_en;
-        
-        (void)value;
     }
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -124,7 +129,7 @@ public:
 
     pchar Title() const;
 
-    Value GetValue() const { return value; }
+    Value &GetValue() const;
 
     int GetX() const { return x; }
     int GetY() const { return y; }
@@ -132,9 +137,18 @@ public:
 private:
 
     pchar title[2];
-    Value &value;
+
+    Value &value12;
+    const Value min12;
+    const Value max12;
+
+    Value &value24;
+    const Value min24;
+    const Value max24;
+
     int x;
     int y;
+    bool in_correct_mode;       // Если true, то находимся в режиме коррекции значения
 };
 
 

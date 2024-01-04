@@ -2,18 +2,9 @@
 #pragma once
 
 
-struct Range
-{
-    Range(float _min = 0.0f, float _max = 0.0f) : min(_min), max(_max), value(0.0f) { }
-    float min;
-    float max;
-    float value;
-};
-
-
 struct Value
 {
-    Value(Range _12V = Range(), Range _24V = Range()) : range12(_12V), range24(_24V) {}
-    Range range12;
-    Range range24;
+    Value(int _munits = 0) : munits(_munits) { }
+
+    int munits;     // Значение в миллиюнитах (например, 1 = 1 мс)
 };

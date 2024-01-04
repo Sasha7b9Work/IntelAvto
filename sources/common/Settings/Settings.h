@@ -1,6 +1,26 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Menu/MenuItems.h"
+#include "Utils/Value.h"
+#include "Display/Colors.h"
+
+
+struct VoltageMode
+{
+    enum E
+    {
+        _12,
+        _24,
+        Count
+    };
+
+    static E Current() { return current; }
+
+    static bool Is12() { return current == _12; }
+
+private:
+
+    static E current;
+};
 
 
 struct TypeSignal
@@ -67,23 +87,24 @@ struct SettingsSignal
 {
     static const int MAX_PARAMS = 5;
 
-    Value values[MAX_PARAMS];
+    Value values12[MAX_PARAMS];
+    Value values24[MAX_PARAMS];
 };
 
 
 struct Settings
 {
-    uint          size;
-    ColorScheme   schemes[ColorScheme::COUNT];
-    StyleGUI      styleGUI;
-    Language::E   language;
-    uint8         colorScheme;
-    TypeSignal::E signal;
+    uint           size;
+    ColorScheme    schemes[ColorScheme::COUNT];
+    StyleGUI       styleGUI;
+    Language::E    language;
+    uint8          colorScheme;
+    TypeSignal::E  signal;
     SettingsSignal signals[TypeSignal::Count];
 
     void Save();
     void Load();
-    void Reset();   
+    void Reset();
 };
 
 extern Settings gset;

@@ -278,3 +278,9 @@ bool Page::OnEventControl(const Control &control)
 
     return false;
 }
+
+
+Value &Parameter::GetValue() const
+{
+    return VoltageMode::Is12() ? value12 : value24;
+}

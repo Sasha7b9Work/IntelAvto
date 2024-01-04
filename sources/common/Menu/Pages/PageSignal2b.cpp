@@ -8,9 +8,15 @@
 
 namespace PageSignal2b
 {
-    Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_2b].values[0], 430, 170);
+    Parameter param_Us("Us", "Us",
+        gset.signals[TypeSignal::_2b].values12[0], Value(0), Value(10000),
+        gset.signals[TypeSignal::_2b].values24[0], Value(0), Value(10000),
+        430, 170);
 
-    Parameter param_td("td", "td", gset.signals[TypeSignal::_2b].values[1], 290, 60);
+    Parameter param_td("td", "td",
+        gset.signals[TypeSignal::_2b].values12[1], Value(0), Value(10000),
+        gset.signals[TypeSignal::_2b].values24[2], Value(0), Value(10000),
+        290, 60);
 
     static void FuncPress_Signal()
     {

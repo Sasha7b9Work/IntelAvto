@@ -8,15 +8,30 @@
 
 namespace PageSignal4
 {
-    Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_4].values[0], 230, 110);
+    Parameter param_Us("Us", "Us",
+        gset.signals[TypeSignal::_4].values12[0], Value(0), Value(10000),
+        gset.signals[TypeSignal::_4].values24[0], Value(0), Value(10000),
+        230, 110);
 
-    Parameter param_Ua("Ua", "Ua", gset.signals[TypeSignal::_4].values[1], 350, 100);
+    Parameter param_Ua("Ua", "Ua",
+        gset.signals[TypeSignal::_4].values12[1], Value(0), Value(10000),
+        gset.signals[TypeSignal::_4].values24[1], Value(0), Value(10000),
+        350, 100);
 
-    Parameter param_t7("t7", "t7", gset.signals[TypeSignal::_4].values[2], 220, 160);
+    Parameter param_t7("t7", "t7",
+        gset.signals[TypeSignal::_4].values12[2], Value(0), Value(10000),
+        gset.signals[TypeSignal::_4].values24[2], Value(0), Value(10000),
+        220, 160);
 
-    Parameter param_t9("t9", "t9", gset.signals[TypeSignal::_4].values[3], 330, 160);
+    Parameter param_t9("t9", "t9",
+        gset.signals[TypeSignal::_4].values12[3], Value(0), Value(10000),
+        gset.signals[TypeSignal::_4].values24[3], Value(0), Value(10000),
+        330, 160);
 
-    Parameter param_t11("t11", "t11", gset.signals[TypeSignal::_4].values[4], 410, 160);
+    Parameter param_t11("t11", "t11",
+        gset.signals[TypeSignal::_4].values12[4], Value(0), Value(10000),
+        gset.signals[TypeSignal::_4].values24[4], Value(0), Value(10000),
+        410, 160);
 
     static void FuncPress_Signal()
     {

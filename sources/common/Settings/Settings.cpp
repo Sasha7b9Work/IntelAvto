@@ -7,6 +7,7 @@
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::_1;
+VoltageMode::E VoltageMode::current = VoltageMode::_12;
 
 static ColorScheme def_colors[3] =
 {
@@ -64,33 +65,43 @@ static Settings def_set =
     TypeSignal::_1,
     {
 //         Us       t1
-        { Value(), Value() },                   // 1
+        { Value(0), Value(0) },                   // 1
 
 //         Us       t1
-        { Value(), Value() },                   // 2a
+        { Value(0), Value(0) },                   // 2a
 
 //         Us       td
-        { Value(), Value() },                   // 2b
+        { Value(0), Value(0) },                   // 2b
 
 //         Us
-        { Value() },                            // 3a
+        { Value(0) },                            // 3a
 
 //         Us
-        { Value() },                            // 3b
+        { Value(0) },                            // 3b
 
         {
-            Value(Range(-6.0f, -7.0f),   Range(-12.0f, -16.0f)),    // 4 : Us
-            Value(Range(-2.5f, -6.0f),   Range(-5.0f, -12.0f)),     // 4 : Ua
-            Value(Range(14e-3f, 40e-3f), Range(50e-3f, 100e-3f)),   // 4 : t7
-            Value(Range(0.5f, 20.0f),    Range(0.5f, 20.0f)),       // 4 : t9
-            Value(Range(5e-3f, 100e-3f), Range(10e-3f, 100e-3f))    // 4 : t11
-        },
-
+            {
+                Value(-6500),   // 4 : Us
+                Value(-4000),   // 4 : Ua
+                Value(20),      // 4 : t7
+                Value(10000),   // 4 : t9
+                Value(50)       // 4 : t11
+            }
+            ,
+            {
+                Value(-6500),   // 4 : Us
+                Value(-4000),   // 4 : Ua
+                Value(20),      // 4 : t7
+                Value(10000),   // 4 : t9
+                Value(50)       // 4 : t11
+            }
+        }
+        ,
 //         Us       td
-        { Value(), Value() },                   // 5a
+        { Value(0), Value(0) },                     // 5a
 
 //         Us       Uss      td
-        { Value(), Value(), Value() }           // 5b
+        { Value(0), Value(0), Value(0) }            // 5b
     }
 };
 

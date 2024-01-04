@@ -3,6 +3,7 @@
 #include "Display/Primitives.h"
 #include "Display/Font/Font.h"
 #include "Display/Text.h"
+#include "Settings/Settings.h"
 
 
 using namespace Primitives;
