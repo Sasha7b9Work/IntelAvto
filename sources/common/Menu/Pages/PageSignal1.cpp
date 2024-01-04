@@ -26,7 +26,7 @@ namespace PageSignal1
     );
 
 
-    static Item *items[4] =
+    static Item *items[] =
     {
         &bSignal1,
         &param_Us,

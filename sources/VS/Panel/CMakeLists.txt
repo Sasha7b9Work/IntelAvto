@@ -91,7 +91,6 @@ file(GLOB KEYBOARD            ../../Panel/src/Keyboard/Keyboard.h
                                           src/Keyboard/Keyboard_win.cpp)
 file(GLOB MENU                ../../common/Menu/*.*)
 file(GLOB MENU_PAGES          ../../common/Menu/Pages/*.*)
-file(GLOB MENU_PAGES_SIGNALS  ../../common/Menu/Pages/Signals/*.*)
 file(GLOB SETTINGS            ../../common/Settings/*.*)
 file(GLOB UTILS               ../../common/Utils/*.*)
 
@@ -106,7 +105,6 @@ source_group(Hardware/HAL          FILES ${HARDWARE_HAL})
 source_group(Keyboard              FILES ${KEYBOARD})
 source_group(Menu                  FILES ${MENU})
 source_group(Menu/Pages            FILES ${MENU_PAGES})
-source_group(Menu/Pages/Signals    FILES ${MENU_PAGES_SIGNALS})
 source_group(Settings              FILES ${SETTINGS})
 source_group(Utils                 FILES ${UTILS})
 
@@ -121,7 +119,6 @@ add_executable(PanelGUI ${VS_HAL}
                         ${KEYBOARD}
                         ${MENU}
                         ${MENU_PAGES}
-                        ${MENU_PAGES_SIGNALS}
                         ${SETTINGS}
                         ${UTILS}
 )

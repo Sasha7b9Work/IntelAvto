@@ -3,6 +3,7 @@
 #include "Menu/Pages/Pages.h"
 #include "Menu/MenuItemsDef.h"
 #include "Settings/Settings.h"
+#include "Menu/Menu.h"
 
 
 namespace PageSignal2a
@@ -13,7 +14,8 @@ namespace PageSignal2a
 
     static void FuncPress_Signal()
     {
-
+        Menu::SetOpenedPage(PageSignal2b::self);
+        TypeSignal::Set(TypeSignal::_2b);
     }
 
     DEF_BUTTON(bSignal2a,
@@ -21,7 +23,7 @@ namespace PageSignal2a
         FuncPress_Signal
     );
 
-    static Item *items[4] =
+    static Item *items[] =
     {
         &bSignal2a,
         &param_Us,

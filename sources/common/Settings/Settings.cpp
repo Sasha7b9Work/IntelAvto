@@ -132,3 +132,21 @@ pchar TypeSignal::ToString()
 
     return values[current];
 }
+
+
+pchar TypeSignal::Name()
+{
+    static const pchar names[Count] =
+    {
+        "1",
+        "2a",
+        "SAEJ1113-11",
+        "3a",
+        "3b",
+        "DIN40839",
+        "16750-1",
+        "16750-1"
+    };
+
+    return names[current];
+}
