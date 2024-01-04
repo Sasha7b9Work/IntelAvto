@@ -112,7 +112,7 @@ private:
 class Parameter : public Item
 {
 public:
-    Parameter(pchar title_ru, pchar title_en, Value &_value) : Item(), value(_value)
+    Parameter(pchar title_ru, pchar title_en, Value &_value, int _x = 0, int _y = 0) : Item(), value(_value), x(_x), y(_y)
     {
         title[0] = title_ru;
         title[1] = title_en;
@@ -127,10 +127,15 @@ public:
 
     Value GetValue() const { return value; }
 
+    int GetX() const { return x; }
+    int GetY() const { return y; }
+
 private:
 
     pchar title[2];
     Value &value;
+    int x;
+    int y;
 };
 
 

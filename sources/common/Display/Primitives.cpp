@@ -139,10 +139,6 @@ void HMeasuringLines::Draw()
 
     ArrowRight().Draw(x1 - ArrowRight::WIDTH, y1);
     ArrowLeft().Draw(x0, y1);
-
-    int length_text = Font::GetLengthText(text);
-
-    Text(text).Write((x0 + x1) / 2 - length_text / 2, y1 - Font::GetHeight());
 }
 
 
@@ -154,8 +150,6 @@ void VMeasuringLines::Draw()
 
     ArrowUp().Draw(m_x1, m_y0 + ArrowUp::HEIGHT);
     ArrowDown().Draw(m_x1, m_y1 - ArrowDown::HEIGHT);
-
-    Text(text).Write(m_x1 + 5, (m_y1 + m_y0) / 2 - Font::GetHeight() / 2);
 }
 
 

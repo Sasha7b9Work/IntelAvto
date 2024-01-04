@@ -8,9 +8,9 @@
 
 namespace PageSignal1
 {
-    Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_1].values[0]);
+    Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_1].values[0], 335, 155);
 
-    Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_1].values[1]);
+    Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_1].values[1], 310, 33);
 
     static void FuncPress_Signal()
     {

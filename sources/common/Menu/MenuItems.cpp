@@ -126,11 +126,11 @@ void Page::VerifySelectedItem()
 }
 
 
-void Parameter::Draw(int x, int y, int width, bool selected)
+void Parameter::Draw(int x0, int y0, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
-    Text(Title()).Write(x, y + 7, width);
+    Text(Title()).Write(x0, y0 + 7, width);
 }
 
 
