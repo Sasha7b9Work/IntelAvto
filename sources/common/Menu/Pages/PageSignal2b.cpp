@@ -19,7 +19,7 @@ namespace PageSignal2b
     }
 
     DEF_BUTTON(bSignal2b,
-        "2b", "2b",
+        "Сигнал", "Signal",
         FuncPress_Signal
     );
 

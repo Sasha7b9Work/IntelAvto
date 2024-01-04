@@ -21,7 +21,7 @@ namespace PageSignal1
 
 
     DEF_BUTTON(bSignal1,
-        "1", "1",
+        "Сигнал", "Signal",
         FuncPress_Signal
     );
 

@@ -17,7 +17,7 @@ namespace PageSignal3a
     }
 
     DEF_BUTTON(bSignal3a,
-        "3a", "3a",
+        "Сигнал", "Signal",
         FuncPress_Signal
     );
 
