@@ -26,14 +26,3 @@ typedef unsigned short uint16_t;
 typedef signed   int   int32_t;
 typedef unsigned int   uint32_t;
 typedef unsigned long  uint64_t;
-
-typedef unsigned int *uintptr_t;
-
-#ifndef __IO
-#define __IO volatile
-#define __I volatile
-#endif
-
-#ifndef NULL
-#define NULL 0
-#endif
