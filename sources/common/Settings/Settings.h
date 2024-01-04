@@ -3,7 +3,7 @@
 #include "Menu/MenuItems.h"
 
 
-struct TypeSignal : public Enumeration
+struct TypeSignal
 {
     enum E
     {
@@ -17,8 +17,6 @@ struct TypeSignal : public Enumeration
         _5b,    // Ext
         Count
     };
-
-    explicit TypeSignal(E v) : Enumeration((uint8)v) {}
 
     static pchar Name(E);
 
