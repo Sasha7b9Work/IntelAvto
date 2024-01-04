@@ -8,16 +8,6 @@ namespace PageSignals
 {
     extern TypeSignal typeSignal;
 
-    namespace _1
-    {
-        void SetParameters(Item **first);
-    }
-
-    namespace _2a
-    {
-        void SetParameters(Item **first);
-    }
-
     namespace _2b
     {
         void SetParameters(Item **first);

@@ -3,6 +3,7 @@
 #include "Menu/MenuItemsDef.h"
 #include "Menu/Pages/Pages.h"
 #include "Settings/Settings.h"
+#include "Menu/Menu.h"
 
 
 namespace PageSignal1
@@ -11,10 +12,9 @@ namespace PageSignal1
 
     Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_1].values[1]);
 
-
     static void FuncPress_Signal()
     {
-
+        Menu::SetOpenedPage(PageSignal2a::self);
     }
 
 

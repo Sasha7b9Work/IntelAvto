@@ -31,15 +31,7 @@ Item *items[7] =
 
 static void OnPress_TypeSignal()
 {
-    if (PageSignals::typeSignal.Is(TypeSignal::_1))
-    {
-        PageSignals::_1::SetParameters(&items[1]);
-    }
-    else if (PageSignals::typeSignal.Is(TypeSignal::_2a))
-    {
-        PageSignals::_2a::SetParameters(&items[1]);
-    }
-    else if (PageSignals::typeSignal.Is(TypeSignal::_2b))
+    if (PageSignals::typeSignal.Is(TypeSignal::_2b))
     {
         PageSignals::_2b::SetParameters(&items[1]);
     }
@@ -89,20 +81,6 @@ pchar TypeSignal::Name(E v)
 
 namespace PageSignals
 {
-    namespace _1
-    {
-        static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_1].values[0]);
-
-        static Parameter param_t1("t1", "t1", gset.signals[TypeSignal::_1].values[1]);
-
-        void SetParameters(Item **first)
-        {
-            *first++ = &param_Us;
-            *first++ = &param_t1;
-            *first++ = nullptr;
-        }
-    }
-
     namespace _2a
     {
         static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_2a].values[0]);
