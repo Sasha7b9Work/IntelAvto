@@ -116,7 +116,7 @@ void Settings::Reset()
 }
 
 
-String TypeSignal::ToString()
+pchar TypeSignal::ToString()
 {
     static const pchar values[Count] =
     {

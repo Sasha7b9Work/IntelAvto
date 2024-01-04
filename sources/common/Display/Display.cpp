@@ -329,8 +329,8 @@ void Display::DrawScreen()
     Menu::Draw();
 
     Text(String(LANG_IS_RU ? "Тип сигнала %s : %s" : "Type signal %s : %s",
-        TypeSignal::ToString().c_str(),
-        TypeSignal::Name(TypeSignal::Current()))).Write(230, 6, Color::WHITE);
+        TypeSignal::ToString(),
+        TypeSignal::Name())).Write(230, 6, Color::WHITE);
 
     DrawSignal();
 }

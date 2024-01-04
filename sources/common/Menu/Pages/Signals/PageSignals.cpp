@@ -59,7 +59,7 @@ void OnPress_TypeSignal()
 static Page pageIndication(items, nullptr, nullptr);
 
 
-pchar TypeSignal::Name(E v)
+pchar TypeSignal::Name()
 {
     static const pchar names[Count] =
     {
@@ -73,7 +73,7 @@ pchar TypeSignal::Name(E v)
         "16750-1"
     };
 
-    return names[v];
+    return names[current];
 }
 
 

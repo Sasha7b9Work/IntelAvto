@@ -18,13 +18,13 @@ struct TypeSignal
         Count
     };
 
-    static pchar Name(E);
+    static pchar Name();
 
     static void Set(E v) { current = v; }
 
     static bool Is(E v) { return current == v; }
 
-    static String ToString();
+    static pchar ToString();
 
     static E Current() { return current; }
 
