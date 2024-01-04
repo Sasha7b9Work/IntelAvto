@@ -3,8 +3,8 @@
 #include "Menu/MenuItems.h"
 
 
-#define DEF_BUTTON(name, titleRu, titleEn, hintRu, hintEn, funcPress)                                               \
-static Button name(titleRu, titleEn, hintRu, hintEn, funcPress)
+#define DEF_BUTTON(name, titleRu, titleEn, funcPress)                                                               \
+static Button name(titleRu, titleEn, funcPress)
 
 #define DEF_CHOICE_2(name, hintRu, hintEn, nameRu1, nameRu2, nameEn1, nameEn2, func)                                \
 static pchar n##name##Ru[] = { nameRu1, nameRu2, nullptr };                                                         \

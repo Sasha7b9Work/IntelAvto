@@ -6,11 +6,7 @@
 
 namespace PageSignals
 {
-    extern Page *self;
-
     extern TypeSignal typeSignal;
-
-    void Init();
 
     namespace _1
     {

@@ -8,7 +8,7 @@
 #include "Utils/Math.h"
 #include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
-#include "Menu/Pages/Signals/PageSignals.h"
+#include "Menu/Pages/Pages.h"
 #include <cstring>
 
 
@@ -17,7 +17,7 @@ namespace Menu
     void SubscribeToEvents();
 
     // Текущая отображаемая страница меню
-    Page *openedPage = PageSignals::self;
+    Page *openedPage = PageSignal1::self;
 
     void (*funcUpdate)() = nullptr;
 
@@ -25,9 +25,6 @@ namespace Menu
     {
         // Обработка события кнопки
         bool OnControl(const Control &);
-
-        // Открывает страницу, соответствующую воздействию control. Возвращает false, если для воздействия нет соответствующей страницы
-        bool OpenPage(const Control &);
 
         // Обработка события ручки
         void OnGovernorRotate(const Control &);
@@ -46,42 +43,6 @@ void Menu::Draw()
 
 void Menu::Input::OnGovernorRotate(const Control &)
 {
-}
-
-
-bool Menu::Input::OpenPage(const Control &control)
-{
-    if (control.action != Action::Press)
-    {
-        return false;
-    }
-
-    Page *const pages[Key::Count] =
-    {
-        nullptr,            // GovButton,
-        nullptr,            // Mode,
-        PageSignals::self,  // Indication,
-        nullptr,            // Left,
-        nullptr,            // Right,
-        nullptr,            // Channels,
-        nullptr,            // Enter,
-        nullptr,            // Service,
-        nullptr,            // GovLeft,
-        nullptr,            // GovRight,
-        nullptr,            // Test,
-        nullptr,            // Auto,
-        nullptr             // None,
-    };
-
-    Page *page = pages[control.key];
-
-    if (page && page != openedPage)
-    {
-        openedPage = page;
-        return true;
-    }
-
-    return false;
 }
 
 
@@ -158,8 +119,6 @@ bool Menu::Input::OnGovernorButton(const Control &)
 
 void Menu::Init()
 {
-    PageSignals::Init();
-
     Input::SetFuncUpdate(Input::FuncUpdate);
 
     SubscribeToEvents();
@@ -180,10 +139,7 @@ void Menu::Input::FuncUpdate()
 
         OnGovernorRotate(control);
 
-        if (!OnControl(control))
-        {
-            OpenPage(control);
-        }
+        OnControl(control);
     }
 }
 
