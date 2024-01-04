@@ -6,8 +6,6 @@
 
 namespace PageSignals
 {
-    extern TypeSignal typeSignal;
-
     namespace _2b
     {
         void SetParameters(Item **first);

@@ -6,6 +6,8 @@
 #include "Hardware/HAL/HAL.h"
 
 
+TypeSignal::E TypeSignal::current = TypeSignal::_1;
+
 static ColorScheme def_colors[3] =
 {
     {
@@ -111,4 +113,22 @@ void Settings::Save()
 void Settings::Reset()
 {
     gset.schemes[gset.colorScheme] = def_colors[gset.colorScheme];
+}
+
+
+String TypeSignal::ToString()
+{
+    static const pchar values[Count] =
+    {
+        "1",
+        "2a",
+        "2b",
+        "3a",
+        "3b",
+        "4",
+        "5a",
+        "5b"
+    };
+
+    return values[current];
 }

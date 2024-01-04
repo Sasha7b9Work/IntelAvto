@@ -21,6 +21,18 @@ struct TypeSignal : public Enumeration
     explicit TypeSignal(E v) : Enumeration((uint8)v) {}
 
     static pchar Name(E);
+
+    static void Set(E v) { current = v; }
+
+    static bool Is(E v) { return current == v; }
+
+    static String ToString();
+
+    static E Current() { return current; }
+
+private:
+
+    static E current;
 };
 
 

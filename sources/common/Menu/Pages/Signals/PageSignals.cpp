@@ -4,23 +4,21 @@
 #include "Menu/MenuItemsDef.h"
 
 
-TypeSignal PageSignals::typeSignal(TypeSignal::_1);
-
-static void OnPress_TypeSignal();
-
-
-// Выбор типа сигнала
-DEF_SWITCH_8(sTypeSignal,
-    "Сигнал", "Signal",
-    "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
-    "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
-    PageSignals::typeSignal, OnPress_TypeSignal
-);
+//static void OnPress_TypeSignal();
+//
+//
+//// Выбор типа сигнала
+//DEF_SWITCH_8(sTypeSignal,
+//    "Сигнал", "Signal",
+//    "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
+//    "1", "2a", "2b", "3a", "3b", "4", "5a", "5b",
+//    PageSignals::typeSignal, OnPress_TypeSignal
+//);
 
 
 Item *items[7] =
 {
-    &sTypeSignal,
+    nullptr,
     nullptr,
     nullptr,
     nullptr,
@@ -29,29 +27,29 @@ Item *items[7] =
 };
 
 
-static void OnPress_TypeSignal()
+void OnPress_TypeSignal()
 {
-    if (PageSignals::typeSignal.Is(TypeSignal::_2b))
+    if (TypeSignal::Is(TypeSignal::_2b))
     {
         PageSignals::_2b::SetParameters(&items[1]);
     }
-    else if (PageSignals::typeSignal.Is(TypeSignal::_3a))
+    else if (TypeSignal::Is(TypeSignal::_3a))
     {
         PageSignals::_3a::SetParameters(&items[1]);
     }
-    else if (PageSignals::typeSignal.Is(TypeSignal::_3b))
+    else if (TypeSignal::Is(TypeSignal::_3b))
     {
         PageSignals::_3b::SetParameters(&items[1]);
     }
-    else if (PageSignals::typeSignal.Is(TypeSignal::_4))
+    else if (TypeSignal::Is(TypeSignal::_4))
     {
         PageSignals::_4::SetParameters(&items[1]);
     }
-    else if (PageSignals::typeSignal.Is(TypeSignal::_5a))
+    else if (TypeSignal::Is(TypeSignal::_5a))
     {
         PageSignals::_5a::SetParameters(&items[1]);
     }
-    else if (PageSignals::typeSignal.Is(TypeSignal::_5b))
+    else if (TypeSignal::Is(TypeSignal::_5b))
     {
         PageSignals::_5b::SetParameters(&items[1]);
     }
