@@ -249,8 +249,18 @@ pchar Parameter::Title() const
 }
 
 
-bool Button::OnEventControl(const Control &)
+bool Button::OnEventControl(const Control &control)
 {
+    if (control.key == Key::OK || control.key == Key::GovButton)
+    {
+        if (funcOnPress)
+        {
+            funcOnPress();
+
+            return true;
+        }
+    }
+
     return false;
 }
 
