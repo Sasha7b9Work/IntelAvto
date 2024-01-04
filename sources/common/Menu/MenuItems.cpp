@@ -263,13 +263,13 @@ bool Parameter::OnEventControl(const Control &)
 
 bool Page::OnEventControl(const Control &control)
 {
-    if (control.key == Key::Left)
+    if (control.key == Key::Left || control.key == Key::GovLeft)
     {
         Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
 
         return true;
     }
-    else if (control.key == Key::Right)
+    else if (control.key == Key::Right || control.key == Key::GovRight)
     {
         Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
 
