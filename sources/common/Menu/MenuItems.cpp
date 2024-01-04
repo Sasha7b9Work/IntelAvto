@@ -134,6 +134,12 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 }
 
 
+void Parameter::Draw() const
+{
+    Text(Title()).Write(x, y);
+}
+
+
 void Button::Draw(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();

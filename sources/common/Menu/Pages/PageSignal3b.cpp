@@ -8,7 +8,7 @@
 
 namespace PageSignal3b
 {
-    static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_3b].values[0]);
+    Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_3b].values[0], 350, 70);
 
     static void FuncPress_Signal()
     {

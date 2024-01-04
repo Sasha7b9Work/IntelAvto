@@ -8,9 +8,9 @@
 
 namespace PageSignal5a
 {
-    static Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_5a].values[0]);
+    Parameter param_Us("Us", "Us", gset.signals[TypeSignal::_5a].values[0], 355, 125);
 
-    static Parameter param_td("td", "td", gset.signals[TypeSignal::_5a].values[1]);
+    Parameter param_td("td", "td", gset.signals[TypeSignal::_5a].values[1], 220, 155);
 
     static void FuncPress_Signal()
     {

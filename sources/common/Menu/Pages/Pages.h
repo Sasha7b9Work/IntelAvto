@@ -36,28 +36,52 @@ namespace PageSignal2b
 namespace PageSignal3a
 {
     extern Page *self;
+
+    extern Parameter param_Us;
 }
 
 
 namespace PageSignal3b
 {
     extern Page *self;
+
+    extern Parameter param_Us;
 }
 
 
 namespace PageSignal4
 {
+    extern Parameter param_Us;
+
+    extern Parameter param_Ua;
+
+    extern Parameter param_t7;
+
+    extern Parameter param_t9;
+
+    extern Parameter param_t11;
+
     extern Page *self;
 }
 
 
 namespace PageSignal5a
 {
+    extern Parameter param_Us;
+
+    extern Parameter param_td;
+
     extern Page *self;
 }
 
 
 namespace PageSignal5b
 {
+    extern Parameter param_Us;
+
+    extern Parameter param_Uss;
+
+    extern Parameter param_td;
+
     extern Page *self;
 }

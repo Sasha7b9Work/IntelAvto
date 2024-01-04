@@ -124,7 +124,7 @@ void ArrowDown::Draw(int x, int y)
 }
 
 
-void HMeasuringLines::Draw()
+void HMeasuringLines::Draw(const Parameter &param)
 {
     Coord delta(0, 0);
     int x0 = m_x0 + delta.x;
@@ -139,10 +139,12 @@ void HMeasuringLines::Draw()
 
     ArrowRight().Draw(x1 - ArrowRight::WIDTH, y1);
     ArrowLeft().Draw(x0, y1);
+
+    param.Draw();
 }
 
 
-void VMeasuringLines::Draw()
+void VMeasuringLines::Draw(const Parameter &param)
 {
     HLine(m_x2 - m_x0).Draw(m_x0, m_y0);
     HLine(m_x2 - m_x0).Draw(m_x0, m_y1);
@@ -150,6 +152,8 @@ void VMeasuringLines::Draw()
 
     ArrowUp().Draw(m_x1, m_y0 + ArrowUp::HEIGHT);
     ArrowDown().Draw(m_x1, m_y1 - ArrowDown::HEIGHT);
+
+    param.Draw();
 }
 
 
