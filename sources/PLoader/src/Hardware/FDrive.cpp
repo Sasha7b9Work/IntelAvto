@@ -4,7 +4,7 @@
 #include "Hardware/HAL/HAL.h"
 #include <usbh_diskio.h>
 #include <cstring>
-#include <ctype.h>
+#include <cctype>
 #include <ffconf.h>
 
 
@@ -179,7 +179,7 @@ static void ToLower(char *str)
 {
     while(*str)
     {
-        *str = static_cast<char>(tolower(*str));
+        *str = static_cast<char>(std::tolower(*str));
         str++;
     }
 }
