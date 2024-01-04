@@ -2,7 +2,8 @@
 
 namespace std
 {
-
-    #include "string.h"
-
+    char   *strcpy(void *dest, pchar src);
+    int     strcmp(const void *, const void *);
+    void    memcpy(void *dest, const void *src, unsigned int);
+    unsigned int  strlen(pchar);
 }

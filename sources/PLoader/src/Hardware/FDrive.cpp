@@ -3,6 +3,7 @@
 #include "Hardware/FDrive.h"
 #include "Hardware/HAL/HAL.h"
 #include <usbh_diskio.h>
+#include <cstring>
 #include <ctype.h>
 #include <ffconf.h>
 
@@ -189,21 +190,21 @@ bool FDrive::FileExist(pchar fileName)
 {
     char nameFile[255];
     char f[255];
-    strcpy(f, fileName);
+    std::strcpy(f, fileName);
     ToLower(f);
     StructForReadDir strd;
 
     if(GetNameFile("\\", 0, nameFile, &strd))
     {
         ToLower(nameFile);
-        if(strcmp(f, nameFile) == 0)
+        if(std::strcmp(f, nameFile) == 0)
         {
             return true;
         }
         while(GetNextNameFile(nameFile, &strd))
         {
             ToLower(nameFile);
-            if(strcmp(f, nameFile) == 0)
+            if(std::strcmp(f, nameFile) == 0)
             {
                 return true;
             }
@@ -217,8 +218,8 @@ bool FDrive::FileExist(pchar fileName)
 
 static bool GetNameFile(pchar fullPath, int numFile, char *nameFileOut, StructForReadDir *s)
 {
-    memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), strlen(fullPath)); //-V2567
-    s->nameDir[strlen(fullPath)] = '\0';
+    std::memcpy(reinterpret_cast<uint8 *>(s->nameDir), const_cast<char *>(fullPath), std::strlen(fullPath)); //-V2567
+    s->nameDir[std::strlen(fullPath)] = '\0';
 
     DIR *pDir = &s->dir;
     FILINFO *pFNO = &s->fno;
@@ -246,7 +247,7 @@ static bool GetNameFile(pchar fullPath, int numFile, char *nameFileOut, StructFo
             }
             if(numFile == numFiles && (pFNO->fattrib & AM_DIR) == 0)
             {
-                strcpy(nameFileOut, pFNO->fname);
+                std::strcpy(nameFileOut, pFNO->fname);
                 return true;
             }
             if((pFNO->fattrib & AM_DIR) == 0 && (pFNO->fname[0] != '.'))
@@ -286,7 +287,7 @@ static bool GetNextNameFile(char *nameFileOut, StructForReadDir *s)
         {
             if((pFNO->fattrib & AM_DIR) == 0 && pFNO->fname[0] != '.')
             {
-                strcpy(nameFileOut, pFNO->fname);
+                std::strcpy(nameFileOut, pFNO->fname);
                 return true;
             }
         }
