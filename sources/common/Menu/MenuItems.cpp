@@ -110,9 +110,7 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 
 void Parameter::Draw() const
 {
-
-
-    Text(Title()).Write(x, y);
+    GetValue().Draw(x, y);
 }
 
 

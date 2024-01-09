@@ -96,8 +96,8 @@ struct Settings
     Language::E    language;
     uint8          colorScheme;
     TypeSignal::E  signal;
-    SettingsSignal signals[TypeSignal::Count];
     VoltageMode::E voltage_mode;
+    SettingsSignal signals[TypeSignal::Count];
 
     void Save();
     void Load();

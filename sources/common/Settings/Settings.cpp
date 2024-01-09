@@ -62,47 +62,60 @@ static Settings def_set =
     Language::RU,
     0,                                          // colorScheme
     TypeSignal::_1,
+    VoltageMode::_12,
     {
-//         Us       t1
-        { Value(0), Value(0) },                   // 1
-
-//         Us       t1
-        { Value(0), Value(0) },                   // 2a
-
-//         Us       td
-        { Value(0), Value(0) },                   // 2b
-
-//         Us
-        { Value(0) },                            // 3a
-
-//         Us
-        { Value(0) },                            // 3b
-
-        {
-            {
-                Value(-6500),   // 4 : Us
-                Value(-4000),   // 4 : Ua
-                Value(20),      // 4 : t7
-                Value(10000),   // 4 : t9
-                Value(50)       // 4 : t11
-            }
+        {   {   Voltage(0),         // 1 : Us 12
+                Time(0)    }        // 1 : t1 12
             ,
-            {
-                Value(-6500),   // 4 : Us
-                Value(-4000),   // 4 : Ua
-                Value(20),      // 4 : t7
-                Value(10000),   // 4 : t9
-                Value(50)       // 4 : t11
-            }
-        }
+            {   Voltage(0),         // 1 : Us 24
+                Time(0)    }}       // 1 : Us 24
         ,
-//         Us       td
-        { Value(0), Value(0) },                     // 5a
-
-//         Us       Uss      td
-        { Value(0), Value(0), Value(0) }            // 5b
-    },
-    VoltageMode::_12
+        {   {   Voltage(0),         // 2a : Us 12
+                Time(0)    }        // 2a : t1 12
+            ,
+            {   Voltage(0),         // 2a : Us 24
+                Time(0)    }}       // 2a : t1 24
+        ,
+        {   {   Voltage(0),         // 2b : Us 12
+                Time(0)   }         // 2b : td 12
+            ,
+            {   Voltage(0),         // 2b : Us 24
+                Time(0)   }}        // 2b : td 24
+        ,
+        {   {   Voltage(0) }        // 3a : Us 12
+            ,
+            {   Voltage(0) }}       // 3a : Us 24
+        ,
+        {   {   Voltage(0) }        // 3b : Us 12
+            ,
+            {   Voltage(0) }}       // 3b : Us 24
+        ,
+        {   {   Voltage(-6500),     // 4 : Us
+                Voltage(-4000),     // 4 : Ua
+                Time(20),           // 4 : t7
+                Time(10000),        // 4 : t9
+                Time(50)        }   // 4 : t11
+            ,
+            {   Voltage(-6500),     // 4 : Us
+                Voltage(-4000),     // 4 : Ua
+                Time(20),           // 4 : t7
+                Time(10000),        // 4 : t9
+                Time(50)        }}  // 4 : t11
+        ,
+        {   {   Voltage(0),         // 5a : Us 12
+                Time(0)     }       // 5a : td 12
+            ,
+            {   Voltage(0),         // 5a : Us 24
+                Time(0)     }}      // 5a : td 24
+        ,
+        {  {    Voltage(0),         // 5b : Us 12
+                Voltage(0),         // 5b : Uss 12
+                Time(0)     }       // 5b : td 12
+            ,
+            {   Voltage(0),         // 5b : Us 24
+                Voltage(0),         // 5b : Uss 24
+                Time(0)    }}       // 5b : td 24
+    }
 };
 
 
