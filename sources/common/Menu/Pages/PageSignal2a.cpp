@@ -9,13 +9,13 @@
 namespace PageSignal2a
 {
     Parameter param_Us("Us", "Us",
-        gset.signals[TypeSignal::_2a].values12[0], Value(0), Value(10000),
-        gset.signals[TypeSignal::_2a].values24[0], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_2a].values12[0], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_2a].values24[0], Value(0), Value(10000),
         320, 140);
 
     Parameter param_t1("t1", "t1",
-        gset.signals[TypeSignal::_2a].values12[1], Value(0), Value(10000),
-        gset.signals[TypeSignal::_2a].values24[1], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_2a].values12[1], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_2a].values24[1], Value(0), Value(10000),
         270, 30);
 
     static void FuncPress_Signal()

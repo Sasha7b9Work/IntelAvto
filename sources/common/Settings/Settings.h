@@ -13,13 +13,9 @@ struct VoltageMode
         Count
     };
 
-    static E Current() { return current; }
+    static E Current();
 
-    static bool Is12() { return current == _12; }
-
-private:
-
-    static E current;
+    static bool Is12() { return Current() == _12; }
 };
 
 
@@ -101,6 +97,7 @@ struct Settings
     uint8          colorScheme;
     TypeSignal::E  signal;
     SettingsSignal signals[TypeSignal::Count];
+    VoltageMode::E voltage_mode;
 
     void Save();
     void Load();

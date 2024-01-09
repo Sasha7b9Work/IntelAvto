@@ -110,6 +110,8 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 
 void Parameter::Draw() const
 {
+
+
     Text(Title()).Write(x, y);
 }
 
@@ -292,5 +294,5 @@ bool Page::OnEventControl(const Control &control)
 
 Value &Parameter::GetValue() const
 {
-    return VoltageMode::Is12() ? value12 : value24;
+    return *value[VoltageMode::Current()];
 }

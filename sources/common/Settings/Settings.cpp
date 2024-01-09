@@ -7,7 +7,6 @@
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::_1;
-VoltageMode::E VoltageMode::current = VoltageMode::_12;
 
 static ColorScheme def_colors[3] =
 {
@@ -102,7 +101,8 @@ static Settings def_set =
 
 //         Us       Uss      td
         { Value(0), Value(0), Value(0) }            // 5b
-    }
+    },
+    VoltageMode::_12
 };
 
 
@@ -160,4 +160,10 @@ pchar TypeSignal::Name()
     };
 
     return names[current];
+}
+
+
+VoltageMode::E VoltageMode::Current()
+{
+    return gset.voltage_mode;
 }

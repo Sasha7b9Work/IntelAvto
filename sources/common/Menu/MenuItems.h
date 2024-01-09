@@ -5,6 +5,7 @@
 #include "Keyboard/Keyboard.h"
 #include "Utils/Observer.h"
 #include "Utils/Value.h"
+#include "Settings/Settings.h"
 
 
 struct TypeMeasure;
@@ -110,14 +111,17 @@ class Parameter : public Item
 {
 public:
     Parameter(pchar title_ru, pchar title_en,
-        Value &_value12, Value _min12, Value _max12,
-        Value &_value24, Value _min24, Value _max24,
+        Value *value12, Value _min12, Value _max12,
+        Value *value24, Value _min24, Value _max24,
         int _x, int _y) :
         Item(),
-        value12(_value12), min12(_min12), max12(_max12),
-        value24(_value24), min24(_min24), max24(_max24),
+        min12(_min12), max12(_max12),
+        min24(_min24), max24(_max24),
         x(_x), y(_y), in_correct_mode(false)
     {
+        value[VoltageMode::_12] = value12;
+        value[VoltageMode::_24] = value24;
+
         title[0] = title_ru;
         title[1] = title_en;
     }
@@ -138,11 +142,11 @@ private:
 
     pchar title[2];
 
-    Value &value12;
+    Value *value[VoltageMode::Count];
+
     const Value min12;
     const Value max12;
 
-    Value &value24;
     const Value min24;
     const Value max24;
 

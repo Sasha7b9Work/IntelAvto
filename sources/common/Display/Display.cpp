@@ -439,8 +439,6 @@ void DrawSignal()
 
         VMeasuringLines(x + 70, x + 200, x + 210, y + 25, y + 175).Draw(PageSignal1::param_Us);
 
-        Text("Us").Write(PageSignal1::param_Us.GetX(), PageSignal1::param_Us.GetY());
-
         VLine(25).Draw(coord);
         coord.x = HLine(50).Draw(coord, Color::WHITE);
         coord.y = VLine(25).Draw(coord);
