@@ -5,7 +5,10 @@
 #include <cstring>
 
 
-static int openedPort = -1;
+namespace ComPort
+{
+    static int openedPort = -1;
+}
 
 
 bool ComPort::Open()
