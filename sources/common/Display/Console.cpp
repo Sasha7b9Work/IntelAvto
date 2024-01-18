@@ -9,22 +9,32 @@
 #include <cstdio>
 
 
+namespace Console
+{
 #define S_DBG_NUM_STRINGS_IN_CONSOLE 1
 
+    static char buffer[10][100];
+    // true означает, что идЄт процесс вывода консоли и добавл€ть в неЄ новые строки нельз€ (это происходит, когда добавление идЄт из прерывани€)
+    static bool inProcessDraw = false;
+    // true, если происходит процесс добавлени€ строки
+    static bool inProcessAddingString = false;
+    //  оличество заполненных строк в консоли
+    static int stringInConsole = 0;
+    // «десь сохран€етс€ предыдущее значение максимального количества строк в консоли
+    static int16 prevMaxStrinsInConsole = -1;
 
-char Console::buffer[10][100];
-bool Console::inProcessDraw = false;
-bool Console::inProcessAddingString = false;
-int Console::stringInConsole = 0;
-int16 Console::prevMaxStrinsInConsole = -1;
+    void Init()
+    {
+        inProcessDraw = false;
+        inProcessAddingString = false;
+        stringInConsole = 0;
+        prevMaxStrinsInConsole = -1;
+    }
 
+    static void DeleteFirstString();
 
-void Console::Init()
-{
-    inProcessDraw = false;
-    inProcessAddingString = false;
-    stringInConsole = 0;
-    prevMaxStrinsInConsole = -1;
+    // ¬озвращает true, если консоль зан€та и с ней нельз€ производить работу
+//    static bool IsBusy();
 }
 
 
@@ -109,7 +119,7 @@ void Console::OnChanged_MaxStringsInConsole()
 }
 
 
-bool Console::IsBusy()
-{
-    return inProcessDraw || inProcessAddingString;
-}
+//bool Console::IsBusy()
+//{
+//    return inProcessDraw || inProcessAddingString;
+//}
