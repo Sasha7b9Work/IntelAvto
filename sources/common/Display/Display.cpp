@@ -20,45 +20,54 @@
 using namespace Primitives;
 
 
-// Нарисовать подсказку
-void DrawHint(int x, int y);
+namespace Display
+{
+    // Нарисовать подсказку
+    void DrawHint(int x, int y);
 
-void DrawInfo();
+    void DrawInfo();
 
-static void SetTopRow(int i);
-
-
-uint timeAutoHint = 0;
-int second = 0;
-static int topRow = 0;
+    static void SetTopRow(int i);
 
 
-static uint timeStart = 0;
-static uint timeFrame = 0;
-uint fps = 0;                // Столько кадров отрисовано за последнюю секунду
-uint beginSecond = 0;        // В это время началась последняя секунда
-uint timePaint = 0;          // Время отрисовки за секунду
+    uint timeAutoHint = 0;
+    int second = 0;
+    static int topRow = 0;
 
 
-static int topDraw = 0;             // Верхний у отрисовываемой части экрана
-static int bottomhDraw = 0;         // Нижний у отрисовываемой части экрана
-
-int Display::width = Display::PHYSICAL_WIDTH;
-int Display::height = Display::PHYSICAL_HEIGHT;
-
-
-bool Display::sendToSCPI = false;
-bool Display::drawingScene = false;
+    static uint timeStart = 0;
+    static uint timeFrame = 0;
+    uint fps = 0;                // Столько кадров отрисовано за последнюю секунду
+    uint beginSecond = 0;        // В это время началась последняя секунда
+    uint timePaint = 0;          // Время отрисовки за секунду
 
 
-static int yString = 110;
+    static int topDraw = 0;             // Верхний у отрисовываемой части экрана
+    static int bottomhDraw = 0;         // Нижний у отрисовываемой части экрана
 
-static Coord coordMemory(15, yString);
-static Coord coordTest(40, yString);
-static Coord coordExtGenerator(95, yString);
-static Coord coordLaunch(130, yString);
+    int width = PHYSICAL_WIDTH;
+    int height = PHYSICAL_HEIGHT;
 
-static void DrawSignal();
+    static int yString = 110;
+
+    static Coord coordMemory(15, yString);
+    static Coord coordTest(40, yString);
+    static Coord coordExtGenerator(95, yString);
+    static Coord coordLaunch(130, yString);
+
+    bool drawingScene = false;  // Если true - находимся в состоянии отрисовки основной части - между BeginScene()
+                                // и EndScene()
+
+    bool sendToSCPI = false;    // Если true, то надо посылать в SCPI
+
+    void DrawSignal();
+
+    static void DrawScreen();
+
+    void DrawRectangle1(int x, int y);
+
+    void InitHardware();
+}
 
 void Display::Init()
 {
@@ -70,7 +79,7 @@ void Display::Init()
 }
 
 
-void DrawRectangle1(int x, int y)
+void Display::DrawRectangle1(int x, int y)
 {
     static uint time_start = TIME_MS;
 
@@ -266,7 +275,7 @@ void Display::DrawKeyboardFailScreen()
     }
 }
 
-static void SetTopRow(int i)
+void Display::SetTopRow(int i)
 {
     topRow = i * (Display::PHYSICAL_HEIGHT / Display::NUM_PARTS);
     topDraw = topRow;
@@ -421,7 +430,7 @@ bool Display::InDrawingPart(int y, int _height)
 }
 
 
-void DrawSignal()
+void Display::DrawSignal()
 {
     int x = 130;
     int y = 70;

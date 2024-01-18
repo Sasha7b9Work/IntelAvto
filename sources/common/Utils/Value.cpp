@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Utils/Value.h"
 #include "Display/Text.h"
-#include <cstdlib>
+#include "Utils/StringUtils.h"
 #include <cstring>
 
 
@@ -23,20 +23,20 @@ void Value::Draw(int x, int y)
 
     if (value < 1000)
     {
-        itoa(value, pointer, 10);
+        std::strcat(pointer, String("%d", value).c_str());
         std::strcat(string, "m");
     }
     else
     {
         int int_value = value / 1000;
 
-        itoa(int_value, pointer, 10);
+        std::strcat(pointer, String("%d", value).c_str());
 
         std::strcat(string, ",");
 
         value = value - int_value * 1000;
 
-        itoa(value, string + std::strlen(string), 10);
+        std::strcat(string, String("%d", value).c_str());
     }
 
     std::strcat(string, (unit == Unit::Volts) ? "V" : "s");

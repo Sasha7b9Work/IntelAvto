@@ -35,6 +35,11 @@
 
 using namespace Primitives;
 
+namespace Display
+{
+    void InitHardware();
+}
+
 
 // Здесь хранятся указатели на кнопки
 static wxButton *buttons[Key::Count] = { nullptr };

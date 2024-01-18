@@ -16,6 +16,8 @@
 using namespace Primitives;
 
 
+namespace Display
+{
 #define CS_OPEN         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET)
 #define CS_CLOSE        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET)
 
@@ -25,58 +27,64 @@ using namespace Primitives;
 #define SET_RES_LOW     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET)
 #define SET_RES_HI      HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET)
 
-using namespace Primitives;
+    using namespace Primitives;
 
-/// В этом буфере будем рисовать. Ширина равна 480 / 2 потому, что в байте хранятся 2 пикселя с 1 из 16-ти возможных градация каждая.
+    /// В этом буфере будем рисовать. Ширина равна 480 / 2 потому, что в байте хранятся 2 пикселя с 1 из 16-ти возможных градация каждая.
 #define WIDTH_BUFFER    (480)
 #define HEIGHT_BUFFER   (272 / Display::NUM_PARTS)
-static uint8 buffer[HEIGHT_BUFFER][WIDTH_BUFFER];
+    static uint8 buffer[HEIGHT_BUFFER][WIDTH_BUFFER];
 
-static const uint8 *startBuffer = &buffer[0][0];
-static const uint8 *endBuffer = startBuffer + WIDTH_BUFFER * HEIGHT_BUFFER;
-
-
-uint8 lineBackground[Display::PHYSICAL_WIDTH * 2];    // Эта последовательность байт используется для отрисовки фона
+    static const uint8 *startBuffer = &buffer[0][0];
+    static const uint8 *endBuffer = startBuffer + WIDTH_BUFFER * HEIGHT_BUFFER;
 
 
-static void SetLShiftFreq(uint freq)
-{
-    HAL_BUS_DISPLAY::WriteCommand(0xe6);   // set the LSHIFT (pixel clock) frequency
-    HAL_BUS_DISPLAY::WriteData((uint8)(freq >> 16));
-    HAL_BUS_DISPLAY::WriteData((uint8)(freq >> 8));
-    HAL_BUS_DISPLAY::WriteData((uint8)(freq));
-}
+    uint8 lineBackground[Display::PHYSICAL_WIDTH * 2];    // Эта последовательность байт используется для отрисовки фона
 
 
-static void SetHorizPeriod(uint16 HT,   // Horizontal total period
-                           uint16 HPS,  // Non-display period between the start of the horizontal sync signal nad the first display data
-                           uint8  HPW,  // Sync pulse width
-                           uint16 LPS,  // Horizontal sync pulse start location
-                           uint16 LPSPP // for serial TFT interfact
-)
-{
-    HAL_BUS_DISPLAY::WriteCommand(0xb4);
-    HAL_BUS_DISPLAY::WriteData((uint8)(HT >> 8));      // 0x020d 525
-    HAL_BUS_DISPLAY::WriteData((uint8)HT);
-    HAL_BUS_DISPLAY::WriteData((uint8)(HPS >> 8));     // 0x0014 20
-    HAL_BUS_DISPLAY::WriteData((uint8)(HPS));
-    HAL_BUS_DISPLAY::WriteData(HPW);                   // 0x05
-    HAL_BUS_DISPLAY::WriteData((uint8)(LPS >> 8));
-    HAL_BUS_DISPLAY::WriteData((uint8)(LPS));
-    HAL_BUS_DISPLAY::WriteData(LPSPP);
-}
+    static void SetLShiftFreq(uint freq)
+    {
+        HAL_BUS_DISPLAY::WriteCommand(0xe6);   // set the LSHIFT (pixel clock) frequency
+        HAL_BUS_DISPLAY::WriteData((uint8)(freq >> 16));
+        HAL_BUS_DISPLAY::WriteData((uint8)(freq >> 8));
+        HAL_BUS_DISPLAY::WriteData((uint8)(freq));
+    }
 
 
-static void SetModeLCD()
-{
-    HAL_BUS_DISPLAY::WriteCommand(0xb0);
-    HAL_BUS_DISPLAY::WriteData(0x20);
-    HAL_BUS_DISPLAY::WriteData(0x80);
-    HAL_BUS_DISPLAY::WriteData(0x01);
-    HAL_BUS_DISPLAY::WriteData(0xdf);
-    HAL_BUS_DISPLAY::WriteData(0x01);
-    HAL_BUS_DISPLAY::WriteData(0x0f);
-    HAL_BUS_DISPLAY::WriteData(0x00);
+    static void SetHorizPeriod(uint16 HT,   // Horizontal total period
+        uint16 HPS,  // Non-display period between the start of the horizontal sync signal nad the first display data
+        uint8  HPW,  // Sync pulse width
+        uint16 LPS,  // Horizontal sync pulse start location
+        uint16 LPSPP // for serial TFT interfact
+    )
+    {
+        HAL_BUS_DISPLAY::WriteCommand(0xb4);
+        HAL_BUS_DISPLAY::WriteData((uint8)(HT >> 8));      // 0x020d 525
+        HAL_BUS_DISPLAY::WriteData((uint8)HT);
+        HAL_BUS_DISPLAY::WriteData((uint8)(HPS >> 8));     // 0x0014 20
+        HAL_BUS_DISPLAY::WriteData((uint8)(HPS));
+        HAL_BUS_DISPLAY::WriteData(HPW);                   // 0x05
+        HAL_BUS_DISPLAY::WriteData((uint8)(LPS >> 8));
+        HAL_BUS_DISPLAY::WriteData((uint8)(LPS));
+        HAL_BUS_DISPLAY::WriteData(LPSPP);
+    }
+
+
+    static void SetModeLCD()
+    {
+        HAL_BUS_DISPLAY::WriteCommand(0xb0);
+        HAL_BUS_DISPLAY::WriteData(0x20);
+        HAL_BUS_DISPLAY::WriteData(0x80);
+        HAL_BUS_DISPLAY::WriteData(0x01);
+        HAL_BUS_DISPLAY::WriteData(0xdf);
+        HAL_BUS_DISPLAY::WriteData(0x01);
+        HAL_BUS_DISPLAY::WriteData(0x0f);
+        HAL_BUS_DISPLAY::WriteData(0x00);
+    }
+
+    void InitHardware();
+
+    extern bool drawingScene;
+    extern bool sendToSCPI;
 }
 
 
@@ -147,7 +155,7 @@ void Display::InitHardware()
 }
 
 
-#define POINTER_BUFFER(x, y) (&buffer[0][0] + ((y) * Display::Width()) + (x))
+#define POINTER_BUFFER(x, y) (&Display::buffer[0][0] + ((y) * Display::Width()) + (x))
 
 
 void Display::BeginScene(int x, int y)
@@ -235,7 +243,7 @@ void Color::SetAsCurrent() const
 }
 
 
-static int Ymax()
+int Display::Ymax()
 {
     return (Display::Height() == Display::PHYSICAL_HEIGHT) ? (Display::Height() / Display::NUM_PARTS) : Display::Height();
 }
@@ -250,7 +258,7 @@ void Point::Draw(int x, int y, Color color)
 
     y -= Display::TopRow();
 
-    if (x >= 0 && x < Display::Width() && y >= 0 && y < Ymax())
+    if (x >= 0 && x < Display::Width() && y >= 0 && y < Display::Ymax())
     {
         *POINTER_BUFFER(x, y) = current.Index();
     }
@@ -264,7 +272,7 @@ void Point::Draw(int x, int y)
 
     y -= Display::TopRow();
 
-    if (x >= 0 && x < Display::Width() && y >= 0 && y < Ymax())
+    if (x >= 0 && x < Display::Width() && y >= 0 && y < Display::Ymax())
     {
         *POINTER_BUFFER(x, y) = current.Index(); 
     }
@@ -295,7 +303,7 @@ int HLine::Draw(int x, int y)
 {
     y -= Display::TopRow();
 
-    if (x >= 0 && x < Display::Width() && y >= 0 && y < Ymax())
+    if (x >= 0 && x < Display::Width() && y >= 0 && y < Display::Ymax())
     {
         int end = x + length;
 
@@ -351,11 +359,11 @@ int VLine::Draw(int x, int y)
 
         if (height > 0)
         {
-            if (y < Ymax())
+            if (y < Display::Ymax())
             {
                 uint8 *pointer = POINTER_BUFFER(x, y);
 
-                while (pointer < endBuffer && height > 0)
+                while (pointer < Display::endBuffer && height > 0)
                 {
                     *pointer = current.Index();
                     pointer += Display::Width();
