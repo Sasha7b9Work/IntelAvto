@@ -21,6 +21,8 @@ void Value::Draw(int x, int y)
         pointer++;
     }
 
+    *pointer = '\0';
+
     if (value < 1000)
     {
         std::strcat(pointer, String("%d", value).c_str());
@@ -30,7 +32,7 @@ void Value::Draw(int x, int y)
     {
         int int_value = value / 1000;
 
-        std::strcat(pointer, String("%d", value).c_str());
+        std::strcat(pointer, String("%d", int_value).c_str());
 
         std::strcat(string, ",");
 
