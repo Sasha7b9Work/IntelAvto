@@ -16,5 +16,7 @@
     #pragma clang diagnostic ignored "-Wformat-nonliteral"
     #pragma clang diagnostic ignored "-Wmissing-prototypes"
     #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+
+    #pragma clang diagnostic ignored "-Wunused-private-field"
 #endif
 
