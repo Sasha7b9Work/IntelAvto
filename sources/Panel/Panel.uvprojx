@@ -519,16 +519,6 @@
               <FilePath>.\src\main.cpp</FilePath>
             </File>
             <File>
-              <FileName>Log.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Log.h</FilePath>
-            </File>
-            <File>
-              <FileName>Log.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Log.cpp</FilePath>
-            </File>
-            <File>
               <FileName>no-warnings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\no-warnings.h</FilePath>
@@ -912,6 +902,16 @@
               <FileName>Value.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Value.h</FilePath>
+            </File>
+            <File>
+              <FileName>Log.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Log.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Log.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Log.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1430,16 +1430,6 @@
               <FilePath>.\src\main.cpp</FilePath>
             </File>
             <File>
-              <FileName>Log.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Log.h</FilePath>
-            </File>
-            <File>
-              <FileName>Log.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Log.cpp</FilePath>
-            </File>
-            <File>
               <FileName>no-warnings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\no-warnings.h</FilePath>
@@ -1823,6 +1813,16 @@
               <FileName>Value.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Value.h</FilePath>
+            </File>
+            <File>
+              <FileName>Log.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Log.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Log.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Log.h</FilePath>
             </File>
           </Files>
         </Group>
