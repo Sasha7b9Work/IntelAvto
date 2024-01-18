@@ -574,16 +574,6 @@
               <FilePath>..\common\Display\Display_stm.cpp</FilePath>
             </File>
             <File>
-              <FileName>Indicator.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Display\Indicator.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Indicator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Indicator.h</FilePath>
-            </File>
-            <File>
               <FileName>Primitives.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Display\Primitives.cpp</FilePath>
@@ -1493,16 +1483,6 @@
               <FileName>Display_stm.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Display\Display_stm.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Indicator.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Display\Indicator.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Indicator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Display\Indicator.h</FilePath>
             </File>
             <File>
               <FileName>Primitives.cpp</FileName>
