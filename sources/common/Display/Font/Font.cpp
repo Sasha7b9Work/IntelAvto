@@ -87,16 +87,17 @@ struct HeaderFont
     static HeaderFont *Sefl();
 };
 
+namespace Font
+{
+    static int spacing = 1;
 
-static int spacing = 1;
-
-
-static const unsigned char *font = nullptr;
+    static const unsigned char *font = nullptr;
+}
 
 
 HeaderFont *HeaderFont::Sefl()
 {
-    return reinterpret_cast<HeaderFont *>(const_cast<uint8 *>(font)); //-V2567
+    return reinterpret_cast<HeaderFont *>(const_cast<uint8 *>(Font::font)); //-V2567
 }
 
 
