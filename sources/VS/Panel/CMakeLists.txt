@@ -6,20 +6,22 @@ set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
-include_directories(src
-                    ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
-                    ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-                    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-                    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-                    ../../common/_VS_KEIL/CMSIS
-                    ../../common/_VS_KEIL/HAL
-                    ../../common
-                    ../../Panel/src
-                    ../../Panel/tests
-                    ../../Panel/src/Hardware/HAL
-                    ../../Panel/src/Hardware
-                    ../ThirdParty/wxWidgets/include
-                    ../../generated/ThirdParty/lib/vc_dll/mswud)
+include_directories(
+    src
+    ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
+    ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+    ../../common/_VS_KEIL/CMSIS
+    ../../common/_VS_KEIL/HAL
+    ../../common
+    ../../Panel/src
+    ../../Panel/tests
+    ../../Panel/src/Hardware/HAL
+    ../../Panel/src/Hardware
+    ../ThirdParty/wxWidgets/include
+    ../../generated/ThirdParty/lib/vc_dll/mswud
+)
 
 link_directories(../../generated/ThirdParty/lib/vc_dll)
 
@@ -108,28 +110,29 @@ source_group(Menu/Pages            FILES ${MENU_PAGES})
 source_group(Settings              FILES ${SETTINGS})
 source_group(Utils                 FILES ${UTILS})
 
-add_executable(PanelGUI ${VS_HAL}
-                        ${SRC}
-                        ${CALCULATE}
-                        ${DISPLAY}
-                        ${DISPLAY_FONT}
-                        ${HARDWARE}
-                        ${GUI}
-                        ${HARDWARE_HAL}
-                        ${KEYBOARD}
-                        ${MENU}
-                        ${MENU_PAGES}
-                        ${SETTINGS}
-                        ${UTILS}
+add_executable(${PROJECT_NAME}
+    ${VS_HAL}
+    ${SRC}
+    ${CALCULATE}
+    ${DISPLAY}
+    ${DISPLAY_FONT}
+    ${HARDWARE}
+    ${GUI}
+    ${HARDWARE_HAL}
+    ${KEYBOARD}
+    ${MENU}
+    ${MENU_PAGES}
+    ${SETTINGS}
+    ${UTILS}
 )
 
-target_link_libraries(PanelGUI wxbase32ud)
-target_link_libraries(PanelGUI wxmsw32ud_core)
+target_link_libraries(${PROJECT_NAME} wxbase32ud)
+target_link_libraries(${PROJECT_NAME} wxmsw32ud_core)
 
-target_link_libraries(PanelGUI WinMM.lib)
-target_link_libraries(PanelGUI version.lib)
-target_link_libraries(PanelGUI Imm32.Lib)
-target_link_libraries(PanelGUI Setupapi.lib)
+target_link_libraries(${PROJECT_NAME} WinMM.lib)
+target_link_libraries(${PROJECT_NAME} version.lib)
+target_link_libraries(${PROJECT_NAME} Imm32.Lib)
+target_link_libraries(${PROJECT_NAME} Setupapi.lib)
 
 
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase32ud_vc_custom.dll $(OutputPath) /Y)
