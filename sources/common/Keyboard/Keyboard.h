@@ -44,12 +44,24 @@ struct Action
         Long,
         Count
     };
+
+    Action(E v) : value(v) { }
+
+    E Get() const { return value; }
+
+    bool IsRelease() const { return value == Release; }
+
+    bool IsPress() const { return value == Press; }
+
+private:
+
+    E value;
 };
 
 struct Control
 {
     Key::E key = Key::None;
-    Action::E action = Action::Count;
+    Action action = Action::Count;
 
     Control(Key::E v = Key::None, Action::E a = Action::Press) : key(v), action(a) {}
 
@@ -59,12 +71,14 @@ struct Control
 namespace Keyboard
 {
     bool Init();
+
     // Возвращает true, если есть событыия
     bool Empty();
+
     // Возвращает следующее событие
     Control NextControl();
 
-    void AppendControl(const Control &control);
+//    void AppendControl(const Control &);
 
     void Lock();
 

@@ -26,20 +26,20 @@ bool Keyboard::Init()
 
 static void AddAction(Control control, Action::E action)
 {
-    if (action != Action::Press)
-    {
-        return;
-    }
+//    if (action != Action::Press)
+//    {
+//        return;
+//    }
 
     control.action = action;
     actions[numActions++] = control;
 }
 
 
-void Keyboard::AppendControl(const Control &control)
-{
-    AddAction(control, control.action);
-}
+//void Keyboard::AppendControl(const Control &control)
+//{
+//    AddAction(control, control.action.Get());
+//}
 
 
 void Frame::OnDown(wxCommandEvent &event)

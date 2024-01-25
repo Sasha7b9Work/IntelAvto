@@ -144,11 +144,14 @@ public:
 
     bool IsSelected() const { return Parameter::current == this; }
 
-
+    bool IsEditable() const { return Parameter::editable == this; }
 
     // "Текущий" параметр - тот, который сейчас выделен в меню. nullptr, если текущций элемент
     // меню - не параметр
     static Parameter *current;
+
+    // Редактируемый в данный момент
+    static Parameter *editable;
 
 private:
 

@@ -13,6 +13,7 @@ using namespace Primitives;
 
 
 Parameter *Parameter::current = nullptr;
+Parameter *Parameter::editable = nullptr;
 
 
 int Choice::NumStates() const
@@ -113,13 +114,25 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 
 void Parameter::Draw() const
 {
+    const int width = 125;
+    const int height = 21;
+
+    if (IsEditable())
+    {
+        Color color = Color::GetCurrent();
+
+        Rect(width - 2, height - 2).Fill(x - 2, y - 2, Color::TYPE_BLUE);
+
+        color.SetAsCurrent();
+    }
+
     GetValue().Draw(x, y);
 
     if (IsSelected())
     {
         Color color = Color::GetCurrent();
 
-        Rect(125, 21).Draw(x - 3, y - 3, Color::WHITE);
+        Rect(width, height).Draw(x - 3, y - 3, Color::WHITE);
 
         color.SetAsCurrent();
     }
@@ -277,30 +290,45 @@ bool Button::OnEventControl(const Control &control)
 }
 
 
-bool Parameter::OnEventControl(const Control &)
+bool Parameter::OnEventControl(const Control &control)
 {
+    if (control.action.IsRelease())
+    {
+        if (control.key == Key::OK || control.key == Key::GovButton)
+        {
+            Parameter::editable = Parameter::IsEditable() ? nullptr : this;
+
+            return true;
+        }
+    }
+
     return false;
 }
 
 
 bool Page::OnEventControl(const Control &control)
 {
-
-    if (control.key == Key::Left || control.key == Key::GovLeft)
+    if ((control.key == Key::Left || control.key == Key::GovLeft) && control.action.IsPress())
     {
-        Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
+        if (!Parameter::editable)
+        {
+            Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
 
-        Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
+            Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
 
-        return true;
+            return true;
+        }
     }
-    else if (control.key == Key::Right || control.key == Key::GovRight)
+    else if ((control.key == Key::Right || control.key == Key::GovRight) && control.action.IsPress())
     {
-        Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
+        if (!Parameter::editable)
+        {
+            Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
 
-        Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
+            Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
 
-        return true;
+            return true;
+        }
     }
 
     return false;
