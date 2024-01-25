@@ -36,7 +36,7 @@ void Page::Draw(int x, int y, int, bool)
 
         Color colorBack = items[i]->ColorBackground(selected);
 
-        Rectangle(WidthItem(i) - 1, HEIGHT - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
+        Rect(WidthItem(i) - 1, HEIGHT - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
 
         items[i]->Draw(x, y + 5, WidthItem(i), selected);
 
@@ -119,7 +119,7 @@ void Parameter::Draw() const
     {
         Color color = Color::GetCurrent();
 
-        Rectangle(125, 21).Draw(x - 3, y - 3, Color::WHITE);
+        Rect(125, 21).Draw(x - 3, y - 3, Color::WHITE);
 
         color.SetAsCurrent();
     }
@@ -151,7 +151,7 @@ void GovernorChannelColor::Draw(int _x, int _y, int _width, bool selected)
         const int width = _width - 8;
         const int height = HEIGHT - 8;
 
-        Rectangle(width, height).Fill(x, y, ColorFill());
+        Rect(width, height).Fill(x, y, ColorFill());
 
         HLine hLine(2);
         Point point;
@@ -175,8 +175,8 @@ void GovernorChannelColor::Draw(int _x, int _y, int _width, bool selected)
         const int width = _width - 3;
         const int height = HEIGHT - 3;
 
-        Rectangle(width - 1, height - 1).Fill(x + 1, y + 1, ColorFill());
-        Rectangle(width, height).DrawRounded(x, y, 1, ColorFill());
+        Rect(width - 1, height - 1).Fill(x + 1, y + 1, ColorFill());
+        Rect(width, height).DrawRounded(x, y, 1, ColorFill());
     }
 
     Text(String("%0.3d", (int)*state)).Write(_x, _y + 6, _width, Color::WHITE);

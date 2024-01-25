@@ -789,7 +789,7 @@ uint FontBig::WriteSymbol(uint8 symbol, int x, int y, bool mapping)
     {
         if (mapping)
         {
-            Primitives::Rectangle(BIGSPACE_WIDTH, 7).Fill(x, y + 20);
+            Primitives::Rect(BIGSPACE_WIDTH, 7).Fill(x, y + 20);
         }
         return BIGSPACE_WIDTH + BIGGAP_WIDTH;
     }

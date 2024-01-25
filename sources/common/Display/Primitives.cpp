@@ -12,10 +12,10 @@ int Point::m_x = 0;
 int Point::m_y = 0;
 
 
-void Rectangle::FillRounded(int x, int y, int round, Color colorFill, Color colorBound)
+void Rect::FillRounded(int x, int y, int round, Color colorFill, Color colorBound)
 {
     DrawRounded(x, y, round, colorBound);
-    Rectangle(width - 3, height - 3).Fill(x + 2, y + 2, colorFill);
+    Rect(width - 3, height - 3).Fill(x + 2, y + 2, colorFill);
     HLine(width - 3).Draw(x + 2, y + 1);
     HLine(width - 3).Draw(x + 2, y + height - 1);
     VLine(height - 3).Draw(x + 1, y + 2);
@@ -23,7 +23,7 @@ void Rectangle::FillRounded(int x, int y, int round, Color colorFill, Color colo
 }
 
 
-void Rectangle::Fill(int x, int y, Color color)
+void Rect::Fill(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
@@ -31,7 +31,7 @@ void Rectangle::Fill(int x, int y, Color color)
 }
 
 
-void Rectangle::DrawRounded(int x, int y, int round, Color color)
+void Rect::DrawRounded(int x, int y, int round, Color color)
 {
     color.SetAsCurrent();
 
@@ -50,14 +50,14 @@ void Rectangle::DrawRounded(int x, int y, int round, Color color)
 }
 
 
-void Rectangle::Draw(int x, int y, Color color)
+void Rect::Draw(int x, int y, Color color)
 {
     color.SetAsCurrent();
 
     Draw(x, y);
 }
 
-void Rectangle::Draw(int x, int y)
+void Rect::Draw(int x, int y)
 {
     HLine(width).Draw(x, y);
     HLine(width).Draw(x, y + height - 1);
@@ -66,7 +66,7 @@ void Rectangle::Draw(int x, int y)
 }
 
 
-void Rectangle::Fill(int x0, int y0)
+void Rect::Fill(int x0, int y0)
 {
     for (int y = y0; y < y0 + height; y++)
     {

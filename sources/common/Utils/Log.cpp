@@ -5,9 +5,6 @@
 #include "Utils/String.h"
 
 
-#define SIZE_BUFFER 100
-
-
 void Log::Message(pchar message)
 {
     Console::AddString(message);

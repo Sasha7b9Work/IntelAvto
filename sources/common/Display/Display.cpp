@@ -91,8 +91,8 @@ void Display::DrawRectangle1(int x, int y)
 
     int cell = 10;
 
-    Rectangle(w, h).Draw(x, y);
-    Rectangle(w - cell * 2, h - cell * 2).Draw(x + cell, y + cell);
+    Rect(w, h).Draw(x, y);
+    Rect(w - cell * 2, h - cell * 2).Draw(x + cell, y + cell);
 
     VLine vline(cell);
     HLine hline(cell);
@@ -135,25 +135,25 @@ void DrawRectangle2(int x, int y)
         int w = Display::PHYSICAL_WIDTH - x * 2;
         int h = Display::PHYSICAL_HEIGHT - y * 2;
 
-        Rectangle(w, h).Draw(x, y);
+        Rect(w, h).Draw(x, y);
 
         x -= cell;
         y -= cell;
     }
 
-    Rectangle(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT).Draw(0, 0);
+    Rect(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT).Draw(0, 0);
 }
 
 
 void DrawRectangle3(int, int)
 {
-    Rectangle(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT).Draw(0, 0);
+    Rect(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT).Draw(0, 0);
 
     static uint time_start = TIME_MS;
 
     int cell = 20;
 
-    Rectangle(Display::PHYSICAL_WIDTH - cell * 2, Display::PHYSICAL_HEIGHT - cell * 2).Draw(cell, cell);
+    Rect(Display::PHYSICAL_WIDTH - cell * 2, Display::PHYSICAL_HEIGHT - cell * 2).Draw(cell, cell);
 
     int delta = ((int)(TIME_MS - time_start) / 20) % cell;
 
@@ -191,13 +191,13 @@ void DrawRectangle3(int, int)
 
 void DrawRectangle(int, int)
 {
-    Rectangle(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT).Draw(0, 0);
+    Rect(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT).Draw(0, 0);
 
     static uint time_start = TIME_MS;
 
     int cell = 18;
 
-    Rectangle(Display::PHYSICAL_WIDTH - cell * 2, Display::PHYSICAL_HEIGHT - cell * 2).Draw(cell, cell);
+    Rect(Display::PHYSICAL_WIDTH - cell * 2, Display::PHYSICAL_HEIGHT - cell * 2).Draw(cell, cell);
 
     const int delta = ((int)(TIME_MS - time_start) / 40) % cell;
 
@@ -320,7 +320,7 @@ void Display::DrawPartScreen(int num, bool)
 
     if ((counter++) % 3)
     {
-        Rectangle(10, 10).Fill(460, 260, Color::WHITE);
+        Rect(10, 10).Fill(460, 260, Color::WHITE);
     }
 
     Display::EndScene();

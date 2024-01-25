@@ -346,7 +346,7 @@ int Text::WriteSymbolScaled(int x, int y, uint8 chr, int size) const
             {
                 if (Font::BitIsExist(chr, row, col))
                 {
-                    Rectangle(size, size).Fill(x + col * size, y + row * size);
+                    Rect(size, size).Fill(x + col * size, y + row * size);
                 }
             }
         }
