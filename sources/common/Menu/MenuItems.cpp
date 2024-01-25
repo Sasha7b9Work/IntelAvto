@@ -285,6 +285,7 @@ bool Parameter::OnEventControl(const Control &)
 
 bool Page::OnEventControl(const Control &control)
 {
+
     if (control.key == Key::Left || control.key == Key::GovLeft)
     {
         Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);

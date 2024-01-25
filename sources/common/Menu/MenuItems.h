@@ -115,12 +115,11 @@ public:
     Parameter(pchar title_ru, pchar title_en,
         Value *value12, Value _min12, Value _max12,
         Value *value24, Value _min24, Value _max24,
-        int _x, int _y, bool _positive = true) :
+        int _x, int _y) :
         Item(),
         min12(_min12), max12(_max12),
         min24(_min24), max24(_max24),
-        x(_x), y(_y), in_correct_mode(false),
-        positive(_positive)
+        x(_x), y(_y), in_correct_mode(false)
     {
         value[VoltageMode::_12] = value12;
         value[VoltageMode::_24] = value24;
@@ -164,8 +163,6 @@ private:
     int x;
     int y;
     bool in_correct_mode;       // Если true, то находимся в режиме коррекции значения
-
-    const bool positive;        // Если true - значение >= 0
 };
 
 
