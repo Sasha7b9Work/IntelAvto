@@ -7,11 +7,14 @@
 #include <cstring>
 
 
+DrawStruct Value::ds;
+
+
 void Value::Draw(const Parameter *param, int x, int y) const
 {
     if (param->IsEditable())
     {
-
+        ds.Draw();
     }
     else
     {
@@ -55,6 +58,18 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
 
 void Value::FromDataStruct()
+{
+
+}
+
+
+void DrawStruct::PressKey(Key::E)
+{
+
+}
+
+
+void DrawStruct::Draw() const
 {
 
 }

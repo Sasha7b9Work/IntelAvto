@@ -300,6 +300,11 @@ bool Parameter::OnEventControl(const Control &control)
 
             return true;
         }
+
+        if (IsEditable())
+        {
+            GetValue().ds.PressKey(control.key);
+        }
     }
 
     return false;

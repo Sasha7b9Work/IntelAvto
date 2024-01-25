@@ -1,5 +1,6 @@
 // 2023/12/22 14:56:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Keyboard/Keyboard.h"
 
 
 class Parameter;
@@ -21,7 +22,8 @@ struct DrawStruct
 {
     DrawStruct()     { Clear();      }
     void Clear()     { position = 0; }
-    void Draw();
+    void PressKey(Key::E);
+    void Draw() const;
     int position;
     static const int SIZE_BUFER = 16;
     char symbols[SIZE_BUFER];
