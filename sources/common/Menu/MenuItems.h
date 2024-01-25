@@ -144,6 +144,8 @@ public:
 
     bool IsSelected() const { return Parameter::current == this; }
 
+
+
     // "Текущий" параметр - тот, который сейчас выделен в меню. nullptr, если текущций элемент
     // меню - не параметр
     static Parameter *current;
