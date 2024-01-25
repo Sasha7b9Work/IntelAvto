@@ -65,15 +65,56 @@ void Value::FromDataStruct()
 
 void DrawStruct::PressKey(Key::E key)
 {
-    if (key >= Key::_1 && key <= Key::_0)
+    if (key == Key::Minus)
+    {
+        if (index == 0)
+        {
+            AppendSymbol('-');
+        }
+    }
+    else if (key == Key::Dot)
+    {
+        if (!ConsistDot())
+        {
+            AppendSymbol('.');
+        }
+    }
+    else if (key >= Key::_1 && key <= Key::_0)
     {
         static const char keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-        if (index < SIZE_BUFER)
+        AppendSymbol(keys[key]);
+    }
+    else if (key == Key::Back)
+    {
+        if (index > 0)
         {
-            symbols[index++] = keys[key];
+            index--;
         }
     }
+}
+
+
+void DrawStruct::AppendSymbol(char symbol)
+{
+    if (index < SIZE_BUFER)
+    {
+        symbols[index++] = symbol;
+    }
+}
+
+
+bool DrawStruct::ConsistDot() const
+{
+    for (int i = 0; i < index; i++)
+    {
+        if (symbols[i] == '.')
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 

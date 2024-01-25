@@ -20,12 +20,15 @@ struct Unit
 
 struct DrawStruct
 {
-    DrawStruct()     { Clear();      }
-    void Clear()     { index = 0; }
+    DrawStruct() { Clear(); }
     void PressKey(Key::E);
     void Draw(int x, int y) const;
+private:
+    void Clear()     { index = 0; }
+    bool ConsistDot() const;
+    void AppendSymbol(char);
     int index;
-    static const int SIZE_BUFER = 6;
+    static const int SIZE_BUFER = 8;
     char symbols[SIZE_BUFER];
 };
 
