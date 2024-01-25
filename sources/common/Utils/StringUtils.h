@@ -44,8 +44,6 @@ public:
 
     static char ToLower(char symbol);
 
-    static pchar DoubleToString(double value);
-
     static bool IsDigit(char symbol);
 
     static bool StringToDouble(double *value, pchar buffer);

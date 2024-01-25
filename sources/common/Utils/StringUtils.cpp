@@ -353,41 +353,6 @@ char SU::ToLower(char symbol)
 }
 
 
-#ifdef VS_KEIL
-
-char *SU::DoubleToString(double)
-{
-    return nullptr;
-}
-
-#else
-
-pchar SU::DoubleToString(double)
-{
-//    static char result[100];
-//
-//    std::stringstream stream;
-//    stream << std::fixed << std::setprecision(5) << value;
-//
-//    strcpy_s(result, 90, stream.str().c_str());
-//
-//    char *p = result;
-//
-//    while (*p)
-//    {
-//        if (*p == '.')
-//        {
-//            *p = ',';
-//        }
-//        p++;
-//    }
-
-    return "";
-}
-
-#endif
-
-
 bool SU::StringToDouble(double *value, pchar str)
 {
     const int SIZE_BUFFER = 100;
