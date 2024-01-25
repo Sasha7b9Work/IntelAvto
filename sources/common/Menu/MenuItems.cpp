@@ -114,6 +114,15 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 void Parameter::Draw() const
 {
     GetValue().Draw(x, y);
+
+    if (IsSelected())
+    {
+        Color color = Color::GetCurrent();
+
+        Rectangle(125, 21).Draw(x - 3, y - 3, Color::WHITE);
+
+        color.SetAsCurrent();
+    }
 }
 
 

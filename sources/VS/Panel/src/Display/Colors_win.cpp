@@ -29,6 +29,8 @@ void Color::SetAsCurrent() const
     wxColour colorDraw = wxColour(r, g, b);
 
     memDC.SetPen(wxPen(colorDraw));
+
+    current = *this;
 }
 
 
