@@ -390,7 +390,7 @@ pchar SU::DoubleToString(double)
 
 bool SU::StringToDouble(double *value, pchar str)
 {
-    static const int SIZE_BUFFER = 100;
+    const int SIZE_BUFFER = 100;
     char buffer[SIZE_BUFFER];
 
     strcpy_s(buffer, SIZE_BUFFER - 1, str);

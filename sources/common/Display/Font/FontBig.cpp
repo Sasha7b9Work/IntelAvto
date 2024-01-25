@@ -806,7 +806,7 @@ uint FontBig::WriteSymbol(uint8 symbol, int x, int y, bool mapping)
 
     if (falsecheck)
     {
-        static const uint32_t ezspace = ' ';
+        const uint32_t ezspace = ' ';
         return ezspace;
     }
     uint16_t offs = BigCharOffs[symbol - ' '];                // offset in BigCharIndx
