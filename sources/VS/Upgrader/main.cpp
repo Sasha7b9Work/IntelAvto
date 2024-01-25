@@ -138,7 +138,7 @@ static bool SendZone(int num, uint hash, void *data, int size)
 {
     char buffer[100];
 
-    sprintf(buffer, ":upgrade:write %d %d %d\x0d", num, hash, size);
+    sprintf(buffer, ":upgrade:write %d %u %d\x0d", num, hash, size);
 
     ComPort::Send(buffer);
 

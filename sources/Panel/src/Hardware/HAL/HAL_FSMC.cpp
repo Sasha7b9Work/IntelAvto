@@ -131,7 +131,7 @@ void HAL_BUS_DISPLAY::Init(void)
         0
     };
 
-    is.Pin = PIN_CS;
+    is.Pin = PIN_CS; //-V760
     HAL_GPIO_Init(PORT_CS, &is);
 
     is.Pin = PIN_DIP_ON;

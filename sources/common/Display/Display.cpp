@@ -587,7 +587,7 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y + 10);
 
-        VMeasuringLines(x + 40, x + 95, x + 105, y + 20, y + 80).Draw(PageSignal4::param_Us);
+        VMeasuringLines(x + 40, x + 95, x + 105, y + 20, y + 80).Draw(PageSignal4::param_Us); //-V525
 
         VMeasuringLines(x + 200, x + 210, x + 300, y + 20, y + 55).Draw(PageSignal4::param_Ua);
 
