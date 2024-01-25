@@ -8,12 +8,10 @@ message("-----------------------------------------------------------------------
 
 include_directories(
     src
+    ../../common/_VS_KEIL/HAL
+    ../../common/_VS_KEIL/CMSIS
     ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
     ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-    ../../common/_VS_KEIL/CMSIS
-    ../../common/_VS_KEIL/HAL
     ../../common
     ../../Panel/src
     ../../Panel/tests
