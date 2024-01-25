@@ -44,28 +44,20 @@ struct Action
         Long,
         Count
     };
-
-    Action(E v) : value(v) { }
-
-    E Get() const { return value; }
-
-    bool IsRelease() const { return value == Release; }
-
-    bool IsPress() const { return value == Press; }
-
-private:
-
-    E value;
 };
 
 struct Control
 {
     Key::E key = Key::None;
-    Action action = Action::Count;
+    Action::E action = Action::Count;
 
     Control(Key::E v = Key::None, Action::E a = Action::Press) : key(v), action(a) {}
 
     bool IsRotateGovernor() const { return (key == Key::GovLeft) || (key == Key::GovRight); }
+
+    bool IsRelease() const { return action == Action::Release; }
+
+    bool IsPress() const { return action == Action::Press; }
 };
 
 namespace Keyboard

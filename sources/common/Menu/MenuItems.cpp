@@ -276,7 +276,7 @@ pchar Parameter::Title() const
 
 bool Button::OnEventControl(const Control &control)
 {
-    if (control.key == Key::OK || control.key == Key::GovButton)
+    if ((control.key == Key::OK || control.key == Key::GovButton) && control.IsPress())
     {
         if (funcOnPress)
         {
@@ -292,7 +292,7 @@ bool Button::OnEventControl(const Control &control)
 
 bool Parameter::OnEventControl(const Control &control)
 {
-    if (control.action.IsRelease())
+    if (control.IsRelease())
     {
         if (control.key == Key::OK || control.key == Key::GovButton)
         {
@@ -308,7 +308,7 @@ bool Parameter::OnEventControl(const Control &control)
 
 bool Page::OnEventControl(const Control &control)
 {
-    if ((control.key == Key::Left || control.key == Key::GovLeft) && control.action.IsPress())
+    if ((control.key == Key::Left || control.key == Key::GovLeft) && control.IsPress())
     {
         if (!Parameter::editable)
         {
@@ -319,7 +319,7 @@ bool Page::OnEventControl(const Control &control)
             return true;
         }
     }
-    else if ((control.key == Key::Right || control.key == Key::GovRight) && control.action.IsPress())
+    else if ((control.key == Key::Right || control.key == Key::GovRight) && control.IsPress())
     {
         if (!Parameter::editable)
         {
