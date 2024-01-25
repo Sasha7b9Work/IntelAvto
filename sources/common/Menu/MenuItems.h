@@ -24,6 +24,8 @@ public:
     // Функция отрисовки
     virtual void Draw(int x, int y, int width, bool selected = false) = 0;
 
+    virtual bool IsParameter() const { return false; }
+
     // Функция обработки нажатия кнопки/ручки
     virtual bool OnEventControl(const Control &) { return false; }
 
@@ -138,6 +140,14 @@ public:
     int GetX() const { return x; }
     int GetY() const { return y; }
 
+    virtual bool IsParameter() const override { return true; }
+
+    bool IsSelected() const { return Parameter::current == this; }
+
+    // "Текущий" параметр - тот, который сейчас выделен в меню. nullptr, если текущций элемент
+    // меню - не параметр
+    static Parameter *current;
+
 private:
 
     pchar title[2];
@@ -163,7 +173,7 @@ class Page : public Item, public Observer
 public:
     Page(Item **_items, void (*_onEvent)(EventType::E), void (*_additionalDraw)(), bool equalItems = false) :
         Item(),
-        selectedItem(0), items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), equal_width_items(equalItems)
+        items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), equal_width_items(equalItems), selectedItem(0)
     {}
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -181,9 +191,6 @@ public:
     // Возвращает true, если страница имеет дополнительную функцию отрисовки
     bool IsAddition() const { return additionalDraw != nullptr; }
 
-    // Номер выбранного итема
-    int selectedItem;
-
 protected:
 
     // Возвращает количество итемов на странице
@@ -200,6 +207,11 @@ protected:
     void (*additionalDraw)();
 
     bool equal_width_items;         // Если true, то ширина итемов при отрисовке одинаковая
+
+private:
+
+    // Номер выбранного итема
+    int selectedItem;
 };
 
 

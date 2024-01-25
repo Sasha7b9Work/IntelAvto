@@ -12,6 +12,9 @@
 using namespace Primitives;
 
 
+Parameter *Parameter::current = nullptr;
+
+
 int Choice::NumStates() const
 {
     int result = 0;
@@ -277,11 +280,15 @@ bool Page::OnEventControl(const Control &control)
     {
         Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
 
+        Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
+
         return true;
     }
     else if (control.key == Key::Right || control.key == Key::GovRight)
     {
         Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
+
+        Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
 
         return true;
     }
