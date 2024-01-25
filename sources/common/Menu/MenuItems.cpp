@@ -126,7 +126,7 @@ void Parameter::Draw() const
         color.SetAsCurrent();
     }
 
-    GetValue().Draw(x, y);
+    GetValue().Draw(this, x, y);
 
     if (IsSelected())
     {

@@ -2,6 +2,9 @@
 #pragma once
 
 
+class Parameter;
+
+
 struct Unit
 {
     enum E
@@ -18,6 +21,7 @@ struct DrawStruct
 {
     DrawStruct()     { Clear();      }
     void Clear()     { position = 0; }
+    void Draw();
     int position;
     static const int SIZE_BUFER = 16;
     char symbols[SIZE_BUFER];
@@ -28,7 +32,9 @@ struct Value
 {
     Value(int _munits = 0, Unit::E u = Unit::Null) : munits(_munits), unit(u)  { }
 
-    void Draw(int x, int y);
+    void Draw(const Parameter *, int x, int y) const;
+
+    void FromDataStruct();
 
     static DrawStruct ds;
 

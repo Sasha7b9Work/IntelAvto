@@ -3,44 +3,58 @@
 #include "Utils/Value.h"
 #include "Display/Text.h"
 #include "Utils/StringUtils.h"
+#include "Menu/MenuItems.h"
 #include <cstring>
 
 
-void Value::Draw(int x, int y)
+void Value::Draw(const Parameter *param, int x, int y) const
 {
-    char string[32];
-
-    char *pointer = string;
-
-    int value = munits;
-
-    if (value < 0)
+    if (param->IsEditable())
     {
-        value = -value;
-        string[0] = '-';
-        pointer++;
-    }
 
-    *pointer = '\0';
-
-    if (value < 1000)
-    {
-        std::strcat(pointer, String("%d", value).c_str());
-        std::strcat(string, "m");
     }
     else
     {
-        int int_value = value / 1000;
+        char string[32];
 
-        std::strcat(pointer, String("%d", int_value).c_str());
+        char *pointer = string;
 
-        std::strcat(string, ",");
+        int value = munits;
 
-        value = value - int_value * 1000;
+        if (value < 0)
+        {
+            value = -value;
+            string[0] = '-';
+            pointer++;
+        }
 
-        std::strcat(string, String("%d", value).c_str());
+        *pointer = '\0';
+
+        if (value < 1000)
+        {
+            std::strcat(pointer, String("%d", value).c_str());
+            std::strcat(string, "m");
+        }
+        else
+        {
+            int int_value = value / 1000;
+
+            std::strcat(pointer, String("%d", int_value).c_str());
+
+            std::strcat(string, ",");
+
+            value = value - int_value * 1000;
+
+            std::strcat(string, String("%d", value).c_str());
+        }
+
+        std::strcat(string, (unit == Unit::Volts) ? "V" : "s");
+        Text(string).Write(x, y);
     }
+}
 
-    std::strcat(string, (unit == Unit::Volts) ? "V" : "s");
-    Text(string).Write(x, y);
+
+void Value::FromDataStruct()
+{
+
 }
