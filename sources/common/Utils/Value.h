@@ -21,11 +21,11 @@ struct Unit
 struct DrawStruct
 {
     DrawStruct()     { Clear();      }
-    void Clear()     { position = 0; }
+    void Clear()     { index = 0; }
     void PressKey(Key::E);
-    void Draw() const;
-    int position;
-    static const int SIZE_BUFER = 16;
+    void Draw(int x, int y) const;
+    int index;
+    static const int SIZE_BUFER = 6;
     char symbols[SIZE_BUFER];
 };
 

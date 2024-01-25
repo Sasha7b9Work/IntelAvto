@@ -14,7 +14,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 {
     if (param->IsEditable())
     {
-        ds.Draw();
+        ds.Draw(x, y);
     }
     else
     {
@@ -63,13 +63,31 @@ void Value::FromDataStruct()
 }
 
 
-void DrawStruct::PressKey(Key::E)
+void DrawStruct::PressKey(Key::E key)
 {
+    if (key >= Key::_1 && key <= Key::_0)
+    {
+        static const char keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
+        if (index < SIZE_BUFER)
+        {
+            symbols[index++] = keys[key];
+        }
+    }
 }
 
 
-void DrawStruct::Draw() const
+void DrawStruct::Draw(int x, int y) const
 {
+    Color color = Color::GetCurrent();
 
+    Color::WHITE.SetAsCurrent();
+
+    for (int i = 0; i < index; i++)
+    {
+        char text[2] = { symbols[i], '\0' };
+        Text(text).Write(x + 10 * i, y);
+    }
+
+    color.SetAsCurrent();
 }
