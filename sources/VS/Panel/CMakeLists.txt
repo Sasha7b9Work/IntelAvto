@@ -54,61 +54,61 @@ add_compile_options(
     /wd26812
 )
 
-file(GLOB VS_HAL              ../../common/_VS_KEIL/HAL/stm32f4xx_hal_gpio.*
-                              ../../common/_VS_KEIL/HAL/stm32f4xx_hal_rcc.*
-                              ../../common/_VS_KEIL/HAL/stm32f4xx_hal_cortex.*
-                              ../../common/_VS_KEIL/HAL/stm32f4xx_hal.*)
-file(GLOB SRC                 ../../Panel/src/defines.h
-                              ../../Panel/src/FreqMeter.*
-                              ../../Panel/src/Log.*
-                              ../../Panel/src/Settings.*
-                                          src/Application_win.*
-                                          src/main_win.cpp)
-file(GLOB CALCULATE           ../../Panel/src/Calculate/*)
-file(GLOB DISPLAY                         src/Display/Display_win.cpp
-                                          src/Display/Colors_win.cpp
-                              ../../common/Display/Colors.*
-                              ../../common/Display/Console.*
-                              ../../common/Display/Display.*
-                              ../../common/Display/Indicator.*
-                              ../../common/Display/RedrawingZone.*
-                              ../../common/Display/Primitives.*
-                                          src/Display/Primitives_win.cpp
-                              ../../common/Display/Symbols.*
-                              ../../common/Display/Text.*)
-file(GLOB DISPLAY_FONT        ../../common/Display/Font/*.h
-                              ../../common/Display/Font/*.cpp
-                              ../../common/Display/Font/*.inc
-                              ../../common/Display/Font/*.xml)
-file(GLOB GUI                             src/GUI/*)
-file(GLOB HARDWARE            ../../Panel/src/Hardware/*FPGA.*
-                              ../../Panel/src/Hardware/FreqMeter.*
-                              ../../Panel/src/Hardware/VCP.h
-                                          src/Hardware/VCP_win.cpp)
-file(GLOB HARDWARE_HAL        ../../Panel/src/Hardware/HAL/HAL.*
-                              ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
-                              ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
-                                          src/Hardware/HAL/HAL_EEPROM_win.cpp)
-file(GLOB KEYBOARD            ../../Panel/src/Keyboard/Keyboard.h
-                                          src/Keyboard/Keyboard_win.cpp)
-file(GLOB MENU                ../../common/Menu/*.*)
-file(GLOB MENU_PAGES          ../../common/Menu/Pages/*.*)
-file(GLOB SETTINGS            ../../common/Settings/*.*)
-file(GLOB UTILS               ../../common/Utils/*.*)
+file(GLOB VS_HAL          ../../common/_VS_KEIL/HAL/stm32f4xx_hal_gpio.*
+                          ../../common/_VS_KEIL/HAL/stm32f4xx_hal_rcc.*
+                          ../../common/_VS_KEIL/HAL/stm32f4xx_hal_cortex.*
+                          ../../common/_VS_KEIL/HAL/stm32f4xx_hal.*)
+file(GLOB SRC             ../../Panel/src/defines.h
+                          ../../Panel/src/FreqMeter.*
+                          ../../Panel/src/Log.*
+                          ../../Panel/src/Settings.*
+                                      src/Application_win.*
+                                      src/main_win.cpp)
+file(GLOB CALCULATE       ../../Panel/src/Calculate/*)
+file(GLOB DISPLAY                     src/Display/Display_win.cpp
+                                      src/Display/Colors_win.cpp
+                          ../../common/Display/Colors.*
+                          ../../common/Display/Console.*
+                          ../../common/Display/Display.*
+                          ../../common/Display/Indicator.*
+                          ../../common/Display/RedrawingZone.*
+                          ../../common/Display/Primitives.*
+                                      src/Display/Primitives_win.cpp
+                          ../../common/Display/Symbols.*
+                          ../../common/Display/Text.*)
+file(GLOB DISPLAY_FONT    ../../common/Display/Font/*.h
+                          ../../common/Display/Font/*.cpp
+                          ../../common/Display/Font/*.inc
+                          ../../common/Display/Font/*.xml)
+file(GLOB GUI                         src/GUI/*)
+file(GLOB HARDWARE        ../../Panel/src/Hardware/*FPGA.*
+                          ../../Panel/src/Hardware/FreqMeter.*
+                          ../../Panel/src/Hardware/VCP.h
+                                      src/Hardware/VCP_win.cpp)
+file(GLOB HARDWARE_HAL    ../../Panel/src/Hardware/HAL/HAL.*
+                          ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
+                          ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
+                                      src/Hardware/HAL/HAL_EEPROM_win.cpp)
+file(GLOB KEYBOARD        ../../Panel/src/Keyboard/Keyboard.h
+                                      src/Keyboard/Keyboard_win.cpp)
+file(GLOB MENU            ../../common/Menu/*.*)
+file(GLOB MENU_PAGES      ../../common/Menu/Pages/*.*)
+file(GLOB SETTINGS        ../../common/Settings/*.*)
+file(GLOB UTILS           ../../common/Utils/*.*)
 
-source_group(_VS/HAL               FILES ${VS_HAL})
-source_group(src                   FILES ${SRC})
-source_group(Calculate             FILES ${CALCULATE})
-source_group(Display               FILES ${DISPLAY})
-source_group(Display/Font          FILES ${DISPLAY_FONT})
-source_group(GUI                   FILES ${GUI})
-source_group(Hardware              FILES ${HARDWARE})
-source_group(Hardware/HAL          FILES ${HARDWARE_HAL})
-source_group(Keyboard              FILES ${KEYBOARD})
-source_group(Menu                  FILES ${MENU})
-source_group(Menu/Pages            FILES ${MENU_PAGES})
-source_group(Settings              FILES ${SETTINGS})
-source_group(Utils                 FILES ${UTILS})
+source_group(_VS/HAL      FILES ${VS_HAL})
+source_group(src          FILES ${SRC})
+source_group(Calculate    FILES ${CALCULATE})
+source_group(Display      FILES ${DISPLAY})
+source_group(Display/Font FILES ${DISPLAY_FONT})
+source_group(GUI          FILES ${GUI})
+source_group(Hardware     FILES ${HARDWARE})
+source_group(Hardware/HAL FILES ${HARDWARE_HAL})
+source_group(Keyboard     FILES ${KEYBOARD})
+source_group(Menu         FILES ${MENU})
+source_group(Menu/Pages   FILES ${MENU_PAGES})
+source_group(Settings     FILES ${SETTINGS})
+source_group(Utils        FILES ${UTILS})
 
 add_executable(${PROJECT_NAME}
     ${VS_HAL}
