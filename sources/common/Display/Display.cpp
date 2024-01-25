@@ -341,6 +341,8 @@ void Display::DrawScreen()
         TypeSignal::Name())).Write(230, 6, Color::WHITE);
 
     DrawSignal();
+
+    VoltageMode::Draw();
 }
 
 
@@ -647,4 +649,18 @@ void Display::DrawSignal()
         Point::MoveOn(40, 10);
         Point::MoveOn(50, 0);
     }
+}
+
+
+void VoltageMode::Draw()
+{
+    static const pchar modes[Count] =
+    {
+        "12V",
+        "24V"
+    };
+
+    Color::WHITE.SetAsCurrent();
+
+    Text(modes[Current()]).Write(440, 250);
 }
