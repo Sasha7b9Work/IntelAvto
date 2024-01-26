@@ -296,7 +296,18 @@ bool Parameter::OnEventControl(const Control &control)
     {
         if (control.key == Key::OK || control.key == Key::GovButton)
         {
-            Parameter::editable = Parameter::IsEditable() ? nullptr : this;
+            if (Parameter::IsEditable())
+            {
+                Parameter::editable = nullptr;
+
+                GetValue().FromDrawStrut(GetMin(), GetMax());
+            }
+            else
+            {
+                Parameter::editable = this;
+
+                GetValue().ds.Clear(this);
+            }
 
             return true;
         }
@@ -343,4 +354,16 @@ bool Page::OnEventControl(const Control &control)
 Value &Parameter::GetValue() const
 {
     return *value[VoltageMode::Current()];
+}
+
+
+const Value &Parameter::GetMin() const
+{
+    return VoltageMode::Is12() ? min12 : min24;
+}
+
+
+const Value &Parameter::GetMax() const
+{
+    return VoltageMode::Is12() ? max12 : max24;
 }

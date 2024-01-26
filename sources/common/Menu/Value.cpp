@@ -56,15 +56,61 @@ void Value::Draw(const Parameter *param, int x, int y) const
 }
 
 
-void Value::FromDataStruct()
+int DrawStruct::ToMicroUnits() const
 {
+    if (index == 0)
+    {
+        return 0;
+    }
 
+    int sign = 1;
+
+    if (symbols[0] == '-')
+    {
+        sign = -1;
+
+        if (index == 1)
+        {
+            return 0;
+        }
+    }
+
+    int pow = 1;
+
+    int result = 0;
+
+    for (int i = ((symbols[0] == '-') ? 1 : 0); i < index; i++)
+    {
+        result += (symbols[i] & 0x0f) * pow;
+
+        pow *= 10;
+    }
+
+    return result * sign;
+}
+
+
+void Value::FromDrawStrut(const Value &min, const Value &max)
+{
+    Value value(ds.ToMicroUnits());
+
+    if (value.ToFloat() < min.ToFloat())
+    {
+        return;
+    }
+
+    if (value.ToFloat() > max.ToFloat())
+    {
+        return;
+    }
+
+    munits = ds.ToMicroUnits();
 }
 
 
 void DrawStruct::PressKey(Key::E key)
 {
-    if (key == Key::Minus)
+    if (key == Key::Minus && parameter->GetMin().ToFloat() < 0.0f)
     {
         if (index == 0)
         {
@@ -130,4 +176,10 @@ void DrawStruct::Draw(int x, int y) const
     }
 
     color.SetAsCurrent();
+}
+
+
+float Value::ToFloat() const
+{
+    return (float)munits / 1000.0f;
 }

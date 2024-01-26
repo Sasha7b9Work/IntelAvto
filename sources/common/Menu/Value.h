@@ -20,13 +20,14 @@ struct Unit
 
 struct DrawStruct
 {
-    DrawStruct() { Clear(); }
     void PressKey(Key::E);
     void Draw(int x, int y) const;
+    void Clear(Parameter *_param) { index = 0; parameter = _param; }
+    int ToMicroUnits() const;
 private:
-    void Clear()     { index = 0; }
     bool ConsistDot() const;
     void AppendSymbol(char);
+    Parameter *parameter;
     int index;
     static const int SIZE_BUFER = 8;
     char symbols[SIZE_BUFER];
@@ -39,9 +40,11 @@ struct Value
 
     void Draw(const Parameter *, int x, int y) const;
 
-    void FromDataStruct();
-
     static DrawStruct ds;
+
+    void FromDrawStrut(const Value &min, const Value &max);
+
+    float ToFloat() const;
 
 private:
 

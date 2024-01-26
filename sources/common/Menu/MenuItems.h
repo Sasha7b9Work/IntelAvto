@@ -136,6 +136,9 @@ public:
 
     Value &GetValue() const;
 
+    const Value &GetMin() const;
+    const Value &GetMax() const;
+
     int GetX() const { return x; }
     int GetY() const { return y; }
 
