@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Utils/Value.h"
 #include "Display/Colors.h"
+#include "Menu/Value.h"
 
 
 struct VoltageMode

@@ -1,6 +1,5 @@
 // 2023/12/22 14:55:58 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Utils/Value.h"
 #include "Display/Text.h"
 #include "Utils/StringUtils.h"
 #include "Menu/MenuItems.h"
@@ -81,9 +80,9 @@ void DrawStruct::PressKey(Key::E key)
     }
     else if (key >= Key::_1 && key <= Key::_0)
     {
-        static const char keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+        static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-        AppendSymbol(keys[key]);
+        AppendSymbol(_keys[key]);
     }
     else if (key == Key::Back)
     {
