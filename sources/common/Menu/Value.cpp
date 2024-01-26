@@ -11,9 +11,15 @@ DrawStruct Value::ds;
 
 void Value::Draw(const Parameter *param, int x, int y) const
 {
-    if (param->IsEditable())
+    if (param && param->IsEditable())
     {
         ds.Draw(x, y);
+
+
+
+        param->GetMin().Draw(nullptr, x, y + 25);
+
+        param->GetMax().Draw(nullptr, x, y - 25);
     }
     else
     {
@@ -58,35 +64,22 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
 int DrawStruct::ToMicroUnits() const
 {
-    if (index == 0)
-    {
-        return 0;
-    }
+    char buffer[128];
 
-    int sign = 1;
+    std::memcpy(buffer, symbols, (uint)index);
 
-    if (symbols[0] == '-')
-    {
-        sign = -1;
-
-        if (index == 1)
-        {
-            return 0;
-        }
-    }
-
-    int pow = 1;
+    buffer[index] = '\0';
 
     int result = 0;
 
-    for (int i = ((symbols[0] == '-') ? 1 : 0); i < index; i++)
-    {
-        result += (symbols[i] & 0x0f) * pow;
+    char *end = nullptr;
 
-        pow *= 10;
+    if (SU::String2Int(buffer, &result, &end))
+    {
+        return result;
     }
 
-    return result * sign;
+    return 0;
 }
 
 
@@ -117,13 +110,13 @@ void DrawStruct::PressKey(Key::E key)
             AppendSymbol('-');
         }
     }
-    else if (key == Key::Dot)
-    {
-        if (!ConsistDot())
-        {
-            AppendSymbol('.');
-        }
-    }
+//    else if (key == Key::Dot)
+//    {
+//        if (!ConsistDot())
+//        {
+//            AppendSymbol('.');
+//        }
+//    }
     else if (key >= Key::_1 && key <= Key::_0)
     {
         static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
