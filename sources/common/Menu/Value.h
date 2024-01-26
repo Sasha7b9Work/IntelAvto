@@ -23,7 +23,7 @@ struct DrawStruct
     void PressKey(Key::E);
     void Draw(int x, int y) const;
     void Clear(Parameter *_param) { index = 0; parameter = _param; }
-    int ToMicroUnits() const;
+    bool ToMicroUnits(int *result) const;
 private:
     bool ConsistDot() const;
     void AppendSymbol(char);

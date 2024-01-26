@@ -15,11 +15,15 @@ void Value::Draw(const Parameter *param, int x, int y) const
     {
         ds.Draw(x, y);
 
+        Color color = Color::GetCurrent();
 
+        Color::TYPE_BLUE.SetAsCurrent();
 
         param->GetMin().Draw(nullptr, x, y + 25);
 
         param->GetMax().Draw(nullptr, x, y - 25);
+
+        color.SetAsCurrent();
     }
     else
     {
@@ -62,7 +66,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 }
 
 
-int DrawStruct::ToMicroUnits() const
+bool DrawStruct::ToMicroUnits(int *result) const
 {
     char buffer[128];
 
@@ -70,44 +74,46 @@ int DrawStruct::ToMicroUnits() const
 
     buffer[index] = '\0';
 
-    int result = 0;
-
     char *end = nullptr;
 
-    if (SU::String2Int(buffer, &result, &end))
-    {
-        return result;
-    }
-
-    return 0;
+    return SU::String2Int(buffer, result, &end);
 }
 
 
 void Value::FromDrawStrut(const Value &min, const Value &max)
 {
-    Value value(ds.ToMicroUnits());
+    int new_microunits = 0;
 
-    if (value.ToFloat() < min.ToFloat())
+    if (ds.ToMicroUnits(&new_microunits))
     {
-        return;
-    }
+        Value value(new_microunits);
 
-    if (value.ToFloat() > max.ToFloat())
-    {
-        return;
-    }
+        if (value.ToFloat() < min.ToFloat())
+        {
+            return;
+        }
 
-    munits = ds.ToMicroUnits();
+        if (value.ToFloat() > max.ToFloat())
+        {
+            return;
+        }
+
+        munits = new_microunits;
+    }
 }
 
 
 void DrawStruct::PressKey(Key::E key)
 {
-    if (key == Key::Minus && parameter->GetMin().ToFloat() < 0.0f)
+    if (key == Key::Minus)
     {
-        if (index == 0)
+        if (parameter->GetMin().ToFloat() < 0.0f && index == 0)
         {
             AppendSymbol('-');
+        }
+        else
+        {
+            AppendSymbol('0');
         }
     }
 //    else if (key == Key::Dot)
