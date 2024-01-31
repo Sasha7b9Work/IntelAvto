@@ -9,14 +9,34 @@
 namespace PageSignal1
 {
     Parameter param_Us("Us", "Us",
-        &gset.signals[TypeSignal::_1].values12[0], Value(-100000), Value(-75000),
-        &gset.signals[TypeSignal::_1].values24[0], Value(-600000), Value(-450000),
+        &gset.signals[TypeSignal::_1].values12[0], Value(-150000), Value(-75000),
+        &gset.signals[TypeSignal::_1].values24[0], Value(-600000), Value(-300000),
         340, 165);
 
     Parameter param_t1("t1", "t1",
         &gset.signals[TypeSignal::_1].values12[1], Value(500), Value(5000),
         &gset.signals[TypeSignal::_1].values24[1], Value(500), Value(5000),
         310, 33);
+
+    Parameter param_N("N", "N",
+        &gset.signals[TypeSignal::_1].values12[2], Value(5000), Value(100000),
+        &gset.signals[TypeSignal::_1].values24[2], Value(5000), Value(100000),
+        300, 150);
+
+    Parameter param_tdel("tdel", "tdel",
+        &gset.signals[TypeSignal::_1].values12[3], Value(0), Value(100),
+        &gset.signals[TypeSignal::_1].values24[3], Value(0), Value(100),
+        300, 150);
+
+    Parameter param_t2("t2", "t2",
+        &gset.signals[TypeSignal::_1].values12[4], Value(100), Value(200),
+        &gset.signals[TypeSignal::_1].values24[4], Value(100), Value(200),
+        300, 150);
+
+    Parameter param_td("td", "td",
+        &gset.signals[TypeSignal::_1].values12[5], Value(1), Value(100),
+        &gset.signals[TypeSignal::_1].values24[5], Value(1), Value(100),
+        300, 150);
 
     static void FuncPress_Signal()
     {
@@ -37,6 +57,10 @@ namespace PageSignal1
         &bSignal1,
         &param_Us,
         &param_t1,
+        &param_N,
+        &param_tdel,
+        &param_t2,
+        &param_td,
         nullptr
     };
 

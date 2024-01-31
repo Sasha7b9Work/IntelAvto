@@ -83,7 +83,7 @@ struct Language
 
 struct SettingsSignal
 {
-    static const int MAX_PARAMS = 5;
+    static const int MAX_PARAMS = 6;
 
     Value values12[MAX_PARAMS];
     Value values24[MAX_PARAMS];

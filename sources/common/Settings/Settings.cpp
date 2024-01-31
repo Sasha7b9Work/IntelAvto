@@ -63,10 +63,12 @@ static Settings def_set =
     VoltageMode::_12,
     {
         {   {   Voltage(-80000),    // 1 : Us 12
-                Time(1000)    }     // 1 : t1 12
+                Time(1000),         // 1 : t1 12
+                Value(5000)   }     // 1 : N  12
             ,
             {   Voltage(-500000),   // 1 : Us 24
-                Time(2000)    }}    // 1 : Us 24
+                Time(2000),         // 1 : Us 24
+                Value(5000)   }}    // 1 : N  24
         ,
         {   {   Voltage(0),         // 2a : Us 12
                 Time(0)    }        // 2a : t1 12

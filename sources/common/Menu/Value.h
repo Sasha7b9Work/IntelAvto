@@ -12,7 +12,7 @@ struct Unit
     {
         Seconds,
         Volts,
-        Null,
+        Raw,
         Count
     };
 };
@@ -36,7 +36,7 @@ private:
 
 struct Value
 {
-    Value(int _munits = 0, Unit::E u = Unit::Null) : munits(_munits), unit(u)  { }
+    Value(int _munits = 0, Unit::E u = Unit::Raw) : munits(_munits), unit(u)  { }
 
     void Draw(const Parameter *, int x, int y) const;
 

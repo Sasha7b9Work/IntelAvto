@@ -18,7 +18,7 @@ public:
     Item() {}
     virtual ~Item() {}
 
-    static const int HEIGHT = 35;
+    static const int HEIGHT = 30;
 
     // Функция отрисовки
     virtual void Draw(int x, int y, int width, bool selected = false) = 0;
@@ -31,6 +31,10 @@ public:
     Color ColorBackground(bool selected);
 
     static Color ColorDraw(bool selected);
+
+protected:
+
+    int DeltaTextt() const { return 3; }
 };
 
 

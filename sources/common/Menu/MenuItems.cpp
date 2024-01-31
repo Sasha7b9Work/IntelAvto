@@ -108,7 +108,7 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
-    Text(Title()).Write(x0, y0 + 7, width);
+    Text(Title()).Write(x0, y0 + DeltaTextt(), width);
 }
 
 
@@ -143,7 +143,7 @@ void Button::Draw(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
-    Text(GetTitle()).Write(x, y + 7, width);
+    Text(GetTitle()).Write(x, y + DeltaTextt(), width);
 }
 
 
@@ -151,7 +151,7 @@ void Choice::Draw(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
-    Text(Title()).Write(x, y + 7, width);
+    Text(Title()).Write(x, y + DeltaTextt(), width);
 }
 
 
