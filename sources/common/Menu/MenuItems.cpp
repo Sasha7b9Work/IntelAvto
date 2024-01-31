@@ -77,7 +77,12 @@ void Page::DrawParameters() const
         {
             Parameter *param = (Parameter *)items[i];
 
-            param->Draw();
+            if (param->IsEditable())
+            {
+                param->Draw();
+
+                return;
+            }
         }
     }
 
@@ -87,10 +92,7 @@ void Page::DrawParameters() const
         {
             Parameter *param = (Parameter *)items[i];
 
-            if (param->IsEditable())
-            {
-                param->Draw();
-            }
+            param->Draw();
         }
     }
 }
