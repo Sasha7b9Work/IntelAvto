@@ -80,6 +80,19 @@ void Page::DrawParameters() const
             param->Draw();
         }
     }
+
+    for (int i = 0; i < NumItems(); i++)
+    {
+        if (items[i]->IsParameter())
+        {
+            Parameter *param = (Parameter *)items[i];
+
+            if (param->IsEditable())
+            {
+                param->Draw();
+            }
+        }
+    }
 }
 
 
