@@ -1,7 +1,7 @@
 // 2023/09/08 21:15:33 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Colors.h"
-#include "Menu/MenuItems.h"
+//#include "Menu/MenuItems.h"
 
 
 namespace Primitives
@@ -139,7 +139,7 @@ namespace Primitives
         HMeasuringLines(int _x0, int _x1, int _y0, int _y1, int _y2) :
             m_x0(_x0), m_x1(_x1), m_y0(_y0), m_y1(_y1), m_y2(_y2) { }
 
-        void Draw(const Parameter &);
+        void Draw();
 
     private:
         const int m_x0;
@@ -164,7 +164,7 @@ namespace Primitives
         VMeasuringLines(int x0, int x1, int x2, int y0, int y1) :
             m_x0(x0), m_x1(x1), m_x2(x2), m_y0(y0), m_y1(y1) { }
 
-        void Draw(const Parameter &);
+        void Draw();
 
     private:
         const int m_x0;

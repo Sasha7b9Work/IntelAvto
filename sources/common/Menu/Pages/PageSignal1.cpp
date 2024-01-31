@@ -21,22 +21,22 @@ namespace PageSignal1
     Parameter param_N("N", "N",
         &gset.signals[TypeSignal::_1].values12[2], Value(5000), Value(100000),
         &gset.signals[TypeSignal::_1].values24[2], Value(5000), Value(100000),
-        300, 150);
+        90, 100);
 
     Parameter param_tdel("tdel", "tdel",
         &gset.signals[TypeSignal::_1].values12[3], Value(0), Value(100),
         &gset.signals[TypeSignal::_1].values24[3], Value(0), Value(100),
-        300, 150);
+        90, 130);
 
     Parameter param_t2("t2", "t2",
         &gset.signals[TypeSignal::_1].values12[4], Value(100), Value(200),
         &gset.signals[TypeSignal::_1].values24[4], Value(100), Value(200),
-        300, 150);
+        90, 160);
 
     Parameter param_td("td", "td",
         &gset.signals[TypeSignal::_1].values12[5], Value(1), Value(100),
         &gset.signals[TypeSignal::_1].values24[5], Value(1), Value(100),
-        300, 150);
+        90, 190);
 
     static void FuncPress_Signal()
     {

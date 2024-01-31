@@ -202,6 +202,10 @@ public:
     // Возвращает true, если страница имеет дополнительную функцию отрисовки
     bool IsAddition() const { return additionalDraw != nullptr; }
 
+    void DrawParameters() const;
+
+    static const Page *ForSignal(TypeSignal::E);
+
 protected:
 
     // Возвращает количество итемов на странице

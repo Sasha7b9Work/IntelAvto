@@ -445,9 +445,9 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y - 10);
 
-        HMeasuringLines(x + 70, x + 290, y - 30, y - 15, y + 25).Draw(PageSignal1::param_t1);
+        HMeasuringLines(x + 70, x + 290, y - 30, y - 15, y + 25).Draw();
 
-        VMeasuringLines(x + 70, x + 200, x + 210, y + 25, y + 175).Draw(PageSignal1::param_Us);
+        VMeasuringLines(x + 70, x + 200, x + 210, y + 25, y + 175).Draw();
 
         VLine(25).Draw(coord);
         coord.x = HLine(50).Draw(coord, Color::WHITE);
@@ -468,9 +468,9 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y + 140);
 
-        HMeasuringLines(x + 50, x + 245, y - 30, y - 15, y + 151).Draw(PageSignal2a::param_t1);
+        HMeasuringLines(x + 50, x + 245, y - 30, y - 15, y + 151).Draw();
 
-        VMeasuringLines(x + 70, x + 180, x + 200, y, y + 150).Draw(PageSignal2a::param_Us);
+        VMeasuringLines(x + 70, x + 180, x + 200, y, y + 150).Draw();
 
         coord.y += 150;
 
@@ -489,9 +489,9 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y + 10);
 
-        HMeasuringLines(x + 70, x + 270, y - 5, y + 10, y + 170).Draw(PageSignal2b::param_td);
+        HMeasuringLines(x + 70, x + 270, y - 5, y + 10, y + 170).Draw();
 
-        VMeasuringLines(x + 90, x + 290, x + 310, y + 45, y + 170).Draw(PageSignal2b::param_Us);
+        VMeasuringLines(x + 90, x + 290, x + 310, y + 45, y + 170).Draw();
 
         Point().Draw(x, y + 20, Color::WHITE);
         Point::MoveOn(30, 0);
@@ -507,7 +507,7 @@ void Display::DrawSignal()
     {
         Axis().Draw(Coord(x, y + 10), 55, 330, 60);
 
-        VMeasuringLines(x + 140, x + 170, x + 220, y - 10, y + 60).Draw(PageSignal3a::param_Us);
+        VMeasuringLines(x + 140, x + 170, x + 220, y - 10, y + 60).Draw();
 
 //        VMeasuringLines(x + 160, x + 250, x + 270, y + 90, y + 176).Draw();
 
@@ -547,7 +547,7 @@ void Display::DrawSignal()
     {
         Axis().Draw(Coord(x, y + 170), 100, 330, 00);
 
-        VMeasuringLines(x + 160, x + 210, x + 220, y - 35, y + 50).Draw(PageSignal3b::param_Us);
+        VMeasuringLines(x + 160, x + 210, x + 220, y - 35, y + 50).Draw();
 
 //        VMeasuringLines(x + 110, x + 160, x + 220, y + 80, y + 150).Draw();
 
@@ -589,15 +589,15 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y + 10);
 
-        VMeasuringLines(x + 40, x + 95, x + 105, y + 20, y + 80).Draw(PageSignal4::param_Us); //-V525
+        VMeasuringLines(x + 40, x + 95, x + 105, y + 20, y + 80).Draw(); //-V525
 
-        VMeasuringLines(x + 200, x + 210, x + 300, y + 20, y + 55).Draw(PageSignal4::param_Ua);
+        VMeasuringLines(x + 200, x + 210, x + 300, y + 20, y + 55).Draw();
 
-        HMeasuringLines(x + 75, x + 115, y + 80, y + 110, y + 120).Draw(PageSignal4::param_t7);
+        HMeasuringLines(x + 75, x + 115, y + 80, y + 110, y + 120).Draw();
 
-        HMeasuringLines(x + 155, x + 255, y + 57, y + 110, y + 120).Draw(PageSignal4::param_t9);
+        HMeasuringLines(x + 155, x + 255, y + 57, y + 110, y + 120).Draw();
 
-        HMeasuringLines(x + 255, x + 275, y + 20, y + 110, y + 130).Draw(PageSignal4::param_t11);
+        HMeasuringLines(x + 255, x + 275, y + 20, y + 110, y + 130).Draw();
 
         Point().Draw(x, y + 20, Color::WHITE);
         Point::MoveOn(40, 0);
@@ -612,9 +612,9 @@ void Display::DrawSignal()
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 
-        VMeasuringLines(x + 20, x + 220, x + 230, y, y + 130).Draw(PageSignal5a::param_Us);
+        VMeasuringLines(x + 20, x + 220, x + 230, y, y + 130).Draw();
 
-        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130).Draw(PageSignal5a::param_td);
+        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130).Draw();
 
         Point().Draw(x, y + 130, Color::WHITE);
         Point::MoveOn(30, 0);
@@ -631,11 +631,11 @@ void Display::DrawSignal()
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 
-        VMeasuringLines(x + 20, x + 280, x + 290, y, y + 130).Draw(PageSignal5b::param_Uss);
+        VMeasuringLines(x + 20, x + 280, x + 290, y, y + 130).Draw();
 
-        VMeasuringLines(x + 48, x + 240, x + 250, y + 60, y + 130).Draw(PageSignal5b::param_Us);
+        VMeasuringLines(x + 48, x + 240, x + 250, y + 60, y + 130).Draw();
 
-        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130).Draw(PageSignal5b::param_td);
+        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130).Draw();
 
         Point().Draw(x, y + 130, Color::WHITE);
         HLine(80).Draw(x + 48, y + 60);
@@ -649,6 +649,8 @@ void Display::DrawSignal()
         Point::MoveOn(40, 10);
         Point::MoveOn(50, 0);
     }
+
+    Page::ForSignal(TypeSignal::Current())->DrawParameters();
 }
 
 

@@ -6,6 +6,7 @@
 #include "Display/Text.h"
 #include "Menu/MenuItems.h"
 #include "Utils/Math.h"
+#include "Menu/Pages/Pages.h"
 #include <cstring>
 
 
@@ -47,6 +48,37 @@ void Page::Draw(int x, int y, int, bool)
     if (additionalDraw)
     {
         additionalDraw();
+    }
+}
+
+
+const Page *Page::ForSignal(TypeSignal::E type)
+{
+    static const Page *pages[TypeSignal::Count] =
+    {
+        PageSignal1::self,
+        PageSignal2a::self,
+        PageSignal2b::self,
+        PageSignal3a::self,
+        PageSignal4::self,
+        PageSignal5a::self,
+        PageSignal5b::self
+    };
+
+    return pages[type];
+}
+
+
+void Page::DrawParameters() const
+{
+    for (int i = 0; i < NumItems(); i++)
+    {
+        if (items[i]->IsParameter())
+        {
+            Parameter *param = (Parameter *)items[i];
+
+            param->Draw();
+        }
     }
 }
 
