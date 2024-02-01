@@ -2,15 +2,34 @@
 #pragma once
 
 
+struct PinMode
+{
+    enum E
+    {
+        OUTPUT,
+        SPI_SCK,
+        SPI_MO,
+        SPI_MI,
+        SPI_CS,
+        Count
+    };
+};
+
+
 struct Pin
 {
-
+    Pin(PinMode::E _mode, void *_port, uint16 _pin) : port(_port), pin(_pin), mode(_mode) { }
+    void Init();
+private:
+    void      *port;
+    uint16     pin;
+    PinMode::E mode;
 };
 
 
 struct PinOut : public Pin
 {
-
+    PinOut(void *port, uint16 pin) : Pin(PinMode::OUTPUT, port, pin) { }
 };
 
 
@@ -19,6 +38,11 @@ struct PinIn : public Pin
 
 };
 
+
+extern Pin pin_SPI_SCK;
+extern Pin pin_SPI_MO;
+extern Pin pin_SPI_MI;
+extern Pin pin_SPI_CS;
 
 extern PinOut pin_A0_RG;    // Выбор адреса внутреннего регистра ПЛИС
 extern PinOut pin_A1_RG;    // Выбор адреса внутреннего регистра ПЛИС
@@ -59,3 +83,27 @@ extern PinOut pin_K2_FOR;   // Сигнал включения реле питания истокового повторит
 extern PinOut pin_K_R1;     // Сигнал включения реле нагрузки для сигнала 1:
                             // "1" - 12В - 10 Ом
                             // "2" - 24В - 50 Ом
+
+extern PinOut pin_SCLK_R;   // Такты последовательного интерефейса для записи данных по последовательному интерфейсу
+                            // в DAC платы источника напряжения
+
+extern PinOut pin_DAT_DAC_R;    // Данные последовательного интерфейса для записи данных по последовательному
+                                // интерфейсу в DAC платы источника напряжения
+
+extern PinOut pin_CS1_R;    // Сигнал выбора DAC напряжения питания ИП платы истончика напряжения, активный "0".
+
+extern PinOut pin_CS2_R;    // Сигнал выбора DAC напряжения высоковольтного модуля платы источника напряжения,
+                            // активный лог "1"
+
+extern PinOut pin_END_R;    // Сигнал завершения теста, вырабатывается ПЛИС по завершению теста
+
+extern PinOut pin_NPULES0;  // Тип формируемого сигнала для ПЛИС
+extern PinOut pin_NPULSE1;  // +--------+------+------+------+
+extern PinOut pin_NPULSE2;  // | Сигнал |PULSE0|PULSE1|PULSE2|
+                            // +--------+------+------+------+
+                            // | OFF    |      |      |      |
+                            // | 1      |  1   |      |      |
+                            // | 2a     |      |  1   |      |
+                            // | 3a,b   |  1   |  1   |      |
+                            // | OFF    |      |      |  1   |
+                            // +--------+------+------+------+

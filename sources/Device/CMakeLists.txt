@@ -8,20 +8,18 @@ project (Device)
 include_directories(../common/_VS_KEIL
                     ../common/_VS_KEIL/CMSIS
                     ../common/_VS_KEIL/std_includes
+                    ../common
+                    ../Hardware/HAL
                     src
                     ..
                     ../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
                     ../common/libs/STM32Cube_F4/Drivers/CMSIS/Include
                     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-                    ../Device/src/Hardware/USBD
                     ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
-                    ../Device/src/Hardware/HAL
                     ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFS/src
                     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
-                    ../Device/src/Hardware/USBH
                     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc
                     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
-                    ../Device/src/Hardware/FatFS
 )
 
 add_definitions(-DSTM32F407xx)
@@ -45,27 +43,31 @@ add_compile_options(
 file(GLOB LIBS_HAL       ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.*
                          ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.*)
 
+file(GLOB SRC            src/*.h src/*.cpp)
+file(GLOB CONNECTOR      ../common/Connector/*.*)
 file(GLOB HARDWARE       src/Hardware/*.h src/Hardware/*.cpp)
 file(GLOB HARDWARE_CMSIS src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL   src/Hardware/HAL/*)
-file(GLOB SRC            src/*.h src/*.cpp)
+file(GLOB UTILS          src/Utils/*.*)
 
 set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL}
     src/Hardware/CMSIS/system_stm32f4xx.c
     PROPERTIES HEADER_FILE_ONLY TRUE)
 
 source_group(libs/HAL        FILES ${LIBS_HAL})
+source_group(src             FILES ${SRC})
+source_group(Connector       FILES ${CONNECTOR})
 source_group(Hardware        FILES ${HARDWARE})
 source_group(Hardware/CMSIS  FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL    FILES ${HARDWARE_HAL})
-source_group(src             FILES ${SRC})
 source_group(Utils           FILES ${UTILS})
 
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
+    ${SRC}
+    ${CONNECTOR}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
-    ${SRC}
     ${UTILS}
 )

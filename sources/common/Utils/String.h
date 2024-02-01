@@ -18,7 +18,7 @@ public:
 
     char *c_str() const;
 
-    static pString _ERROR;
+    static pchar _ERROR;
 
     void Free();
 
