@@ -10,11 +10,14 @@
   <project>
     <PathAndName>.\Panel\Panel.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
     <PathAndName>.\PLoader\PLoader.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\Device\Device.uvprojx</PathAndName>
   </project>
 
 </ProjectWorkspace>
