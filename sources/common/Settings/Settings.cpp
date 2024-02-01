@@ -76,11 +76,11 @@ static Settings def_set =
                 Time(100),          // 1 : t2   24
                 Time(50)  }}        // 1 : td   24
         ,
-        {   {   Voltage(0),         // 2a : Us 12
-                Time(0)    }        // 2a : t1 12
+        {   {   Voltage(80),        // 2a : Us 12
+                Time(1000)    }     // 2a : t1 12
             ,
-            {   Voltage(0),         // 2a : Us 24
-                Time(0)    }}       // 2a : t1 24
+            {   Voltage(80),        // 2a : Us 24
+                Time(1000)    }}    // 2a : t1 24
         ,
         {   {   Voltage(0),         // 2b : Us 12
                 Time(0)   }         // 2b : td 12

@@ -51,7 +51,11 @@ void Value::Draw(const Parameter *param, int x, int y) const
             if (value < 1000)
             {
                 std::strcat(pointer, String("%d", value).c_str());
-                std::strcat(string, "m");
+
+                if (unit == Unit::Seconds)
+                {
+                    std::strcat(string, "m");
+                }
             }
             else
             {
