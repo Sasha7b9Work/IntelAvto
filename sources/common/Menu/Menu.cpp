@@ -9,6 +9,7 @@
 #include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Pages.h"
+#include "Device/Device.h"
 #include <cstring>
 
 
@@ -24,7 +25,7 @@ namespace Menu
     namespace Input
     {
         // Обработка события кнопки
-        bool OnControl(const Control &);
+        void OnControl(const Control &);
 
         // Обработка события ручки
         void OnGovernorRotate(const Control &);
@@ -58,14 +59,18 @@ void Menu::SetOpenedPage(Page *page)
 }
 
 
-bool Menu::Input::OnControl(const Control &control)
+void Menu::Input::OnControl(const Control &control)
 {
-    if (openedPage->OnEventControl(control))
+    if (!openedPage->OnEventControl(control))
     {
-        return true;
+        if (!openedPage->SelectedItem()->OnEventControl(control))
+        {
+            if (control.IsRelease() && control.key == Key::Start)
+            {
+                Device::IsRunning() ? Device::Stop() : Device::Run();
+            }
+        }
     }
-
-    return openedPage->SelectedItem()->OnEventControl(control);
 }
 
 

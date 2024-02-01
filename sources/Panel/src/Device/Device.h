@@ -4,5 +4,9 @@
 
 namespace Device
 {
+    void Run();
 
+    void Stop();
+
+    bool IsRunning();
 }
