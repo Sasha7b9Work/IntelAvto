@@ -3,7 +3,7 @@
 #include "no-warnings.h"
 
 
-#define VERSION 2
+#define VERSION 3
 
 
 #ifdef WIN32

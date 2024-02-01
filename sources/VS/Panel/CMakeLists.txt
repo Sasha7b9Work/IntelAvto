@@ -62,7 +62,7 @@ file(GLOB SRC             ../../Panel/src/defines.h
                           ../../Panel/src/Settings.*
                                       src/Application_win.*
                                       src/main_win.cpp)
-file(GLOB CALCULATE       ../../Panel/src/Calculate/*)
+file(GLOB DEVICE          ../../Panel/src/Device/*)
 file(GLOB DISPLAY                     src/Display/Display_win.cpp
                                       src/Display/Colors_win.cpp
                           ../../common/Display/Colors.*
@@ -96,7 +96,7 @@ file(GLOB UTILS           ../../common/Utils/*.*)
 
 source_group(_VS/HAL      FILES ${VS_HAL})
 source_group(src          FILES ${SRC})
-source_group(Calculate    FILES ${CALCULATE})
+source_group(Device       FILES ${DEVICE})
 source_group(Display      FILES ${DISPLAY})
 source_group(Display/Font FILES ${DISPLAY_FONT})
 source_group(GUI          FILES ${GUI})
@@ -111,7 +111,7 @@ source_group(Utils        FILES ${UTILS})
 add_executable(${PROJECT_NAME}
     ${VS_HAL}
     ${SRC}
-    ${CALCULATE}
+    ${DEVICE}
     ${DISPLAY}
     ${DISPLAY_FONT}
     ${HARDWARE}
