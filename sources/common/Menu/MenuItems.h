@@ -204,7 +204,7 @@ public:
 
     void DrawParameters() const;
 
-    static const Page *ForSignal(TypeSignal::E);
+    static const Page *ForCurrentSignal();
 
 protected:
 

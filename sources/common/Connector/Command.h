@@ -6,7 +6,7 @@ struct Command
 {
     enum E
     {
-        START_1A,
+        START_1,
         START_2A,
         START_2B,
         START_3A,
@@ -14,6 +14,7 @@ struct Command
         START_4,
         START_5A,
         START_5B,
+        STOP,
         Count
     };
 };

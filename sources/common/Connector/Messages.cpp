@@ -2,3 +2,8 @@
 #include "defines.h"
 #include "Connector/Messages.h"
 
+
+void Message::MessageBase::Send()
+{
+
+}

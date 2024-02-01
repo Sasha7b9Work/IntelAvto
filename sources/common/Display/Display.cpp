@@ -650,7 +650,7 @@ void Display::DrawSignal()
         Point::MoveOn(50, 0);
     }
 
-    Page::ForSignal(TypeSignal::Current())->DrawParameters();
+    Page::ForCurrentSignal()->DrawParameters();
 }
 
 

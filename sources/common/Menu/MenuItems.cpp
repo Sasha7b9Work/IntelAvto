@@ -52,7 +52,7 @@ void Page::Draw(int x, int y, int, bool)
 }
 
 
-const Page *Page::ForSignal(TypeSignal::E type)
+const Page *Page::ForCurrentSignal()
 {
     static const Page *pages[TypeSignal::Count] =
     {
@@ -66,7 +66,7 @@ const Page *Page::ForSignal(TypeSignal::E type)
         PageSignal5b::self
     };
 
-    return pages[type];
+    return pages[TypeSignal::Current()];
 }
 
 
