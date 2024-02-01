@@ -1,6 +1,7 @@
 // 2024/02/01 10:54:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Connector/Command.h"
+#include "Menu/Value.h"
 
 
 namespace Message
@@ -25,7 +26,7 @@ namespace Message
 
     struct Start2A : public MessageBase
     {
-        Start2A() : MessageBase(Command::START_2A) { }
+        Start2A(const Value &Us, const Value &t1) : MessageBase(Command::START_2A) { }
     };
 
 
