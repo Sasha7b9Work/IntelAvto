@@ -62,22 +62,23 @@ file(GLOB SRC             ../../Panel/src/defines.h
                           ../../Panel/src/Settings.*
                                       src/Application_win.*
                                       src/main_win.cpp)
+file(GLOB CONNECTOR          ../../common/Connector/*.*)
 file(GLOB DEVICE          ../../Panel/src/Device/*)
 file(GLOB DISPLAY                     src/Display/Display_win.cpp
                                       src/Display/Colors_win.cpp
-                          ../../common/Display/Colors.*
-                          ../../common/Display/Console.*
-                          ../../common/Display/Display.*
-                          ../../common/Display/Indicator.*
-                          ../../common/Display/RedrawingZone.*
-                          ../../common/Display/Primitives.*
+                             ../../common/Display/Colors.*
+                             ../../common/Display/Console.*
+                             ../../common/Display/Display.*
+                             ../../common/Display/Indicator.*
+                             ../../common/Display/RedrawingZone.*
+                             ../../common/Display/Primitives.*
                                       src/Display/Primitives_win.cpp
-                          ../../common/Display/Symbols.*
-                          ../../common/Display/Text.*)
-file(GLOB DISPLAY_FONT    ../../common/Display/Font/*.h
-                          ../../common/Display/Font/*.cpp
-                          ../../common/Display/Font/*.inc
-                          ../../common/Display/Font/*.xml)
+                             ../../common/Display/Symbols.*
+                             ../../common/Display/Text.*)
+file(GLOB DISPLAY_FONT       ../../common/Display/Font/*.h
+                             ../../common/Display/Font/*.cpp
+                             ../../common/Display/Font/*.inc
+                             ../../common/Display/Font/*.xml)
 file(GLOB GUI                         src/GUI/*)
 file(GLOB HARDWARE        ../../Panel/src/Hardware/*FPGA.*
                           ../../Panel/src/Hardware/FreqMeter.*
@@ -89,13 +90,14 @@ file(GLOB HARDWARE_HAL    ../../Panel/src/Hardware/HAL/HAL.*
                                       src/Hardware/HAL/HAL_EEPROM_win.cpp)
 file(GLOB KEYBOARD        ../../Panel/src/Keyboard/Keyboard.h
                                       src/Keyboard/Keyboard_win.cpp)
-file(GLOB MENU            ../../common/Menu/*.*)
-file(GLOB MENU_PAGES      ../../common/Menu/Pages/*.*)
-file(GLOB SETTINGS        ../../common/Settings/*.*)
-file(GLOB UTILS           ../../common/Utils/*.*)
+file(GLOB MENU               ../../common/Menu/*.*)
+file(GLOB MENU_PAGES         ../../common/Menu/Pages/*.*)
+file(GLOB SETTINGS           ../../common/Settings/*.*)
+file(GLOB UTILS              ../../common/Utils/*.*)
 
 source_group(_VS/HAL      FILES ${VS_HAL})
 source_group(src          FILES ${SRC})
+source_group(Connector    FILES ${CONNECTOR})
 source_group(Device       FILES ${DEVICE})
 source_group(Display      FILES ${DISPLAY})
 source_group(Display/Font FILES ${DISPLAY_FONT})
@@ -111,6 +113,7 @@ source_group(Utils        FILES ${UTILS})
 add_executable(${PROJECT_NAME}
     ${VS_HAL}
     ${SRC}
+    ${CONNECTOR}
     ${DEVICE}
     ${DISPLAY}
     ${DISPLAY_FONT}

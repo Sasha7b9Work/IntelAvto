@@ -40,13 +40,15 @@ add_compile_options(
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
-file(GLOB SRC                 src/*.*)
+file(GLOB SRC                       src/*.*)
+file(GLOB CONNECTOR           ../common/Connector/*.*)
+file(GLOB DEVICE                    src/Device/*.*)
 file(GLOB DISPLAY             ../common/Display/*.*)
 file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
-file(GLOB HARDWARE            src/Hardware/*.*)
-file(GLOB HARDWARE_CMSIS      src/Hardware/CMSIS/*.*)
-file(GLOB HARDWARE_HAL        src/Hardware/HAL/*.*)
-file(GLOB HARDWARE_USBD       src/Hardware/USBD/*.*
+file(GLOB HARDWARE                  src/Hardware/*.*)
+file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
+file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*)
+file(GLOB HARDWARE_USBD             src/Hardware/USBD/*.*
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c)
@@ -59,6 +61,8 @@ file(GLOB UTILS               ../common/Utils/*.*)
 
 source_group(libs/HAL         FILES ${LIBS_HAL})
 source_group(src              FILES ${SRC})
+source_group(Connector        FILES ${CONNECTOR})
+source_group(Device           FILES ${DEVICE})
 source_group(Display          FILES ${DISPLAY})
 source_group(Display/Font     FILES ${DISPLAY_FONT})
 source_group(Hardware         FILES ${HARDWARE})
@@ -81,6 +85,8 @@ set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
     ${SRC}
+    ${CONNECTOR}
+    ${DEVICE}
     ${DISPLAY}
     ${DISPLAY_FONT}
     ${HARDWARE}
