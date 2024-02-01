@@ -10,5 +10,5 @@ void Message::Start2A::Execute()
 
     Value t1 = PopValue();
 
-    Generator::Start1A(Us, t1);
+    Generator::Start2A(Us, t1);
 }

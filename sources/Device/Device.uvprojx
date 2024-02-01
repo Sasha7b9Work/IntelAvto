@@ -1027,6 +1027,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Generator\Generator.h</FilePath>
             </File>
+            <File>
+              <FileName>FPGA.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Generator\FPGA.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FPGA.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Generator\FPGA.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
