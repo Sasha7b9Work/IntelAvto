@@ -12,6 +12,10 @@ namespace Message
 
         void Send();
 
+    protected:
+
+        void Push(const Value &);
+
     private:
 
         Command::E command;
@@ -26,7 +30,11 @@ namespace Message
 
     struct Start2A : public MessageBase
     {
-        Start2A(const Value &Us, const Value &t1) : MessageBase(Command::START_2A) { }
+        Start2A(const Value &Us, const Value &t1) : MessageBase(Command::START_2A)
+        {
+            Push(Us);
+            Push(t1);
+        }
     };
 
 

@@ -7,3 +7,9 @@ void Message::MessageBase::Send()
 {
 
 }
+
+
+void Message::MessageBase::Push(const Value &value)
+{
+
+}
