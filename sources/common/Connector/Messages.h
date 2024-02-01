@@ -57,11 +57,9 @@ struct BaseMessage
         buffer.Push(command);
     }
 
-    BaseMessage(Command::E command, const Value &v1, const Value &v2)
+    void Push(const Value &value)
     {
-        buffer.Push(command);
-        buffer.Push(v1);
-        buffer.Push(v2);
+        buffer.Push(value);
     }
 
     void Send() const;
@@ -70,3 +68,16 @@ private:
 
     BufferMessage buffer;
 };
+
+
+namespace Message
+{
+    struct Start2A : public BaseMessage
+    {
+        Start2A(const Value &Us, const Value &t1) : BaseMessage(Command::START_2A)
+        {
+            Push(Us);
+            Push(t1);
+        }
+    };
+}
