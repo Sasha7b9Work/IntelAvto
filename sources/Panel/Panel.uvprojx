@@ -540,11 +540,6 @@
               <FilePath>..\common\Connector\Messages.h</FilePath>
             </File>
             <File>
-              <FileName>Value.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Value.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Value.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Connector\Value.h</FilePath>
@@ -553,6 +548,11 @@
               <FileName>Messages_p.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Connector\Messages_p.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Value_p.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1487,11 +1487,6 @@
               <FilePath>..\common\Connector\Messages.h</FilePath>
             </File>
             <File>
-              <FileName>Value.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Value.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Value.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Connector\Value.h</FilePath>
@@ -1500,6 +1495,11 @@
               <FileName>Messages_p.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Connector\Messages_p.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Value_p.cpp</FilePath>
             </File>
           </Files>
         </Group>

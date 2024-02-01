@@ -5,21 +5,22 @@ project (Device)
 #set(CMAKE_UNITY_BUILD OFF)
 
 
-include_directories(../common/_VS_KEIL
-                    ../common/_VS_KEIL/CMSIS
-                    ../common/_VS_KEIL/std_includes
-                    ../common
-                    ../Hardware/HAL
-                    src
-                    ..
-                    ../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-                    ../common/libs/STM32Cube_F4/Drivers/CMSIS/Include
-                    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
-                    ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
-                    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFS/src
-                    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
-                    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc
-                    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
+include_directories(
+    ../common/_VS_KEIL
+    ../common/_VS_KEIL/CMSIS
+    ../common/_VS_KEIL/std_includes
+    ../common
+    ../Hardware/HAL
+    src
+    ..
+    ../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    ../common/libs/STM32Cube_F4/Drivers/CMSIS/Include
+    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
+    ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
+    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFS/src
+    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
+    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc
+    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
 )
 
 add_definitions(-DSTM32F407xx)
