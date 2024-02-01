@@ -60,6 +60,7 @@ const Page *Page::ForSignal(TypeSignal::E type)
         PageSignal2a::self,
         PageSignal2b::self,
         PageSignal3a::self,
+        PageSignal3b::self,
         PageSignal4::self,
         PageSignal5a::self,
         PageSignal5b::self
