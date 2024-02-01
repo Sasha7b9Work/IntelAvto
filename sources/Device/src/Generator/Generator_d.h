@@ -1,0 +1,114 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
+#include "Generator/AD9952.h"
+#include "Generator/AD5697.h"
+#include "Generator/FPGA/FPGA.h"
+#include "common/Command.h"
+
+
+namespace DGenerator
+{
+    static const int DDS_NUM_POINTS = 8 * 1024;
+
+    void Init();
+
+    void EnableChannel(const Chan &, bool enable);
+
+    void SingleStart();
+
+    // Третий параметр нужен для калибровки - в режиме калибровки нужно иметь возможность управлять фильтром вручную
+    void SetFormWave(const Chan &, TypeForm::E form, bool tuneFiltr);
+
+    void SetOffset(const Chan &, const Value &offset);
+
+    void SetFrequency(const Chan &, const Value &frequency);
+
+    void SetAmplitude(const Chan &, const Value &amplitude);
+
+    void SetDuration(const Chan &, const Value &duration);
+
+    void SetPhase(const Chan &, const Value &phase);
+
+    void SetDelayStartStop(const Chan &, const Value &delay);
+
+    void SetManipulationDuration(const Chan &, const Value &duration);
+
+    void SetManipulationPeriod(const Chan &, const Value &period);
+
+    void SetPacketPeriod(const Chan &, const Value &duration);
+
+    void SetPacketNumber(const Chan &, const Value &number);
+
+    void SetPeriod(const Chan &, const Value &period);
+};
+
+
+struct Attenuation
+{
+    enum E
+    {
+        _0Db,
+        _10Db,
+        _20Db,
+        _30Db,
+        Count
+    } value;
+
+    explicit Attenuation(Attenuation::E v) : value(v) { }
+    float Units() const;
+    cstr Name() const;
+};
+
+
+namespace Amplifier
+{
+    void Init();
+    
+    // Настроить усилитель в соответствии с текущими настройками
+    void Tune(const Chan &);
+
+    void Tune(const Chan &, int range);
+    
+    // Возвращает коэффициент усиления в разах всего тракта, включая аттенюатор и усилитель. Усилитель даёт усиление 10 раз, за каждые 10 Дб нужно разделить на 3.16
+    double GetAmplification(const Chan &);
+
+    // Установить заданные настройки и заблокировать
+    void TuneAndLock(const Chan &, bool enabled, Attenuation::E attenuation);
+
+    void Lock();
+
+    // Разблокировать
+    void Unlock();
+   
+    // Возвращает true, если на данном канале включён усилитель
+    bool IsEnabled(const Chan &);
+
+    // Включить/выключить аппаратный усилитель усилитель
+    void Enable(const Chan &, bool enable);
+};
+
+
+namespace SettingsGenerator
+{
+    // Текущая частота на канале
+    extern Value frequency[Chan::Count];
+
+    // Текущая установленная амплитуда на канале
+    extern Value amplitude[Chan::Count];
+
+    // Текущая установленное смещение на кнаале
+    extern Value offset[Chan::Count];
+
+    // Возвращает установленную на канале амплитуду. Амплитуда возвращается без учёта аттёнюатора
+    inline double Amplitude(const Chan &ch) { return amplitude[ch].ToDouble(); }
+
+    inline Value AmplitudeValue(const Chan &ch) { return amplitude[ch]; }
+
+    // Возвращает установленное на канале смещение
+    inline double Offset(const Chan &ch) { return offset[ch].ToDouble(); }
+
+    inline Value OffsetValue(const Chan &ch) { return offset[ch]; }
+
+    // Возвращает установленную частоту на канале
+    inline double Frequency(const Chan &ch) { return frequency[ch].ToDouble(); }
+};
