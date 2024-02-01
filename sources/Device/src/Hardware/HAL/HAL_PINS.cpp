@@ -40,3 +40,19 @@ PinOut pin_END_R(GPIOD, GPIO_PIN_1);
 PinOut pin_NPULES0(GPIOG, GPIO_PIN_0);
 PinOut pin_NPULSE1(GPIOF, GPIO_PIN_15);
 PinOut pin_NPULSE2(GPIOF, GPIO_PIN_14);
+
+
+void PinOut::ToHi()
+{
+    GPIO_TypeDef *gpio = (GPIO_TypeDef *)port;
+
+    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET);
+}
+
+
+void PinOut::ToLow()
+{
+    GPIO_TypeDef *gpio = (GPIO_TypeDef *)port;
+
+    HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET);
+}

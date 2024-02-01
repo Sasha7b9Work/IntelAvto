@@ -20,7 +20,7 @@ struct Pin
 {
     Pin(PinMode::E _mode, void *_port, uint16 _pin) : port(_port), pin(_pin), mode(_mode) { }
     void Init();
-private:
+protected:
     void      *port;
     uint16     pin;
     PinMode::E mode;
@@ -30,6 +30,8 @@ private:
 struct PinOut : public Pin
 {
     PinOut(void *port, uint16 pin) : Pin(PinMode::OUTPUT, port, pin) { }
+    void ToHi();
+    void ToLow();
 };
 
 
