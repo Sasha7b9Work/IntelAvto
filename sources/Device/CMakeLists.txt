@@ -36,6 +36,7 @@ add_compile_options(
     /wd5027
     /wd5039
     /wd5045
+    /wd5204
     /wd5220    # a non-static data member with a volatile qualified type no longer implies
     /wd5246
 )
@@ -43,12 +44,13 @@ add_compile_options(
 file(GLOB LIBS_HAL       ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.*
                          ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.*)
 
-file(GLOB SRC            src/*.h src/*.cpp)
-file(GLOB CONNECTOR      ../common/Connector/*.*)
-file(GLOB HARDWARE       src/Hardware/*.h src/Hardware/*.cpp)
-file(GLOB HARDWARE_CMSIS src/Hardware/CMSIS/*.*)
-file(GLOB HARDWARE_HAL   src/Hardware/HAL/*)
-file(GLOB UTILS          src/Utils/*.*)
+file(GLOB SRC                  src/*.h src/*.cpp)
+file(GLOB CONNECTOR      ../common/Connector/*.*
+                               src/Connector/*.*)
+file(GLOB HARDWARE             src/Hardware/*.h src/Hardware/*.cpp)
+file(GLOB HARDWARE_CMSIS       src/Hardware/CMSIS/*.*)
+file(GLOB HARDWARE_HAL         src/Hardware/HAL/*)
+file(GLOB UTILS                src/Utils/*.*)
 
 set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL}
     src/Hardware/CMSIS/system_stm32f4xx.c

@@ -549,6 +549,11 @@
               <FileType>5</FileType>
               <FilePath>..\common\Connector\Value.h</FilePath>
             </File>
+            <File>
+              <FileName>Messages_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Device\src\Connector\Messages_d.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1490,6 +1495,11 @@
               <FileName>Value.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Connector\Value.h</FilePath>
+            </File>
+            <File>
+              <FileName>Messages_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Device\src\Connector\Messages_d.cpp</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,8 +1,7 @@
 // 2024/02/01 16:42:26 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL_PINS.h"
-#include <stm32f4xx.h>
-#include <stm32f407xx.h>
+#include <stm32f4xx_hal.h>
 
 
 Pin pin_SPI_SCK(PinMode::SPI_SCK, GPIOA, GPIO_PIN_5);

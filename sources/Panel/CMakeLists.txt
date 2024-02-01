@@ -36,12 +36,14 @@ add_compile_options(
     /wd4996    # This function or variable may be unsafe
     /wd5027    # move assignment operator was implicitly defined as deleted
     /wd5045    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
+    /wd5204
 )
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 file(GLOB SRC                       src/*.*)
-file(GLOB CONNECTOR           ../common/Connector/*.*)
+file(GLOB CONNECTOR           ../common/Connector/*.*
+                                    src/Connector/*.*)
 file(GLOB DEVICE                    src/Device/*.*)
 file(GLOB DISPLAY             ../common/Display/*.*)
 file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)

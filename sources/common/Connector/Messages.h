@@ -64,6 +64,9 @@ struct BaseMessage
 
     void Send() const;
 
+    // Выполняется на приёмной староне
+    virtual void Execute() { }
+
 private:
 
     BufferMessage buffer;
@@ -79,5 +82,7 @@ namespace Message
             Push(Us);
             Push(t1);
         }
+
+        virtual void Execute() override;
     };
 }
