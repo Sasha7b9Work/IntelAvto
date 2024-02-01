@@ -4,7 +4,7 @@
 #include "Generator/FPGA.h"
 
 
-void Generator::Start2A(const Value &Us, const Value &t1)
+void Generator::Start2A(const Value & /*Us*/, const Value & /*t1*/)
 {
     FPGA::SetTypeSignal(TypeSignal::_2a);
 }

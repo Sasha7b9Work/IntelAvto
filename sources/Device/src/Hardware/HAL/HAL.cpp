@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Hardware/HAL/HAL_PIO.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -20,8 +19,6 @@ void HAL::Init()
     EnablePeriphery();
 
     HAL_Init();
-
-    HAL_PIO::Init();
 
     HAL_SPI1::Init();
 }
