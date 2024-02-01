@@ -32,7 +32,7 @@ namespace PageSignal2b
 
     static void FuncStartTest()
     {
-        Message(Command::START_2B).Send();
+        BaseMessage(Command::START_2B).Send();
     }
 
     static Item *items[] =

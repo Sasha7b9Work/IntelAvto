@@ -50,14 +50,14 @@ private:
 };
 
 
-struct Message
+struct BaseMessage
 {
-    Message(Command::E command)
+    BaseMessage(Command::E command)
     {
         buffer.Push(command);
     }
 
-    Message(Command::E command, const Value &v1, const Value &v2)
+    BaseMessage(Command::E command, const Value &v1, const Value &v2)
     {
         buffer.Push(command);
         buffer.Push(v1);

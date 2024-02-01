@@ -26,7 +26,7 @@ void Device::Stop()
 {
     if (is_running)
     {
-        Message(Command::STOP).Send();
+        BaseMessage(Command::STOP).Send();
     }
 
     is_running = false;

@@ -3,7 +3,7 @@
 #include "Connector/Messages.h"
 
 
-void Message::Send() const
+void BaseMessage::Send() const
 {
 
 }
