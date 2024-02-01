@@ -80,7 +80,7 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>1</RunUserProg1>
+            <RunUserProg1>0</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
             <UserProg1Name>c:\Keil_v5\ARM\ARMCC\bin\fromelf.exe --bin Objects\G6-49-D.axf --output G6-49-D.bin</UserProg1Name>
             <UserProg2Name></UserProg2Name>
@@ -383,11 +383,6 @@
         <Group>
           <GroupName>libs/HAL</GroupName>
           <Files>
-            <File>
-              <FileName>stm32f4xx_hal_conf.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\libs\HAL\stm32f4xx_hal_conf.h</FilePath>
-            </File>
             <File>
               <FileName>stm32f4xx_hal.h</FileName>
               <FileType>5</FileType>
@@ -991,16 +986,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\Timer.h</FilePath>
             </File>
-            <File>
-              <FileName>VCP_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\VCP_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>VCP_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Hardware\VCP_d.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -1032,34 +1017,9 @@
               <FilePath>.\src\Hardware\HAL\HAL.cpp</FilePath>
             </File>
             <File>
-              <FileName>HAL_CRC32.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_CRC32.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HAL_EEPROM.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_EEPROM.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HAL_HCD.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_HCD.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HAL_I2C1.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_I2C1.cpp</FilePath>
-            </File>
-            <File>
               <FileName>HAL_IT.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_IT.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>HAL_PCD.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_PCD.cpp</FilePath>
             </File>
             <File>
               <FileName>HAL_PINS.h</FileName>
@@ -1140,301 +1100,6 @@
               <FileName>defines_com.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Common\defines_com.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>common</GroupName>
-          <Files>
-            <File>
-              <FileName>Command.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Common\Command.h</FilePath>
-            </File>
-            <File>
-              <FileName>Command.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Common\Command.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Common.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Common.h</FilePath>
-            </File>
-            <File>
-              <FileName>Common.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Common.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Handlers_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Handlers_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Interface_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Interface_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Interface_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Interface_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Messages.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Messages.h</FilePath>
-            </File>
-            <File>
-              <FileName>Messages.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Messages.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Transceiver.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Transceiver.h</FilePath>
-            </File>
-            <File>
-              <FileName>Transceiver_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Transceiver_d.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FDrive</GroupName>
-          <Files>
-            <File>
-              <FileName>FDrive_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\FDrive\FDrive_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>FDrive_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FDrive\FDrive_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FDrive_d_Handler.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FDrive\FDrive_d_Handler.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreqMeter</GroupName>
-          <Files>
-            <File>
-              <FileName>FreqMeter_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\FreqMeter\FreqMeter_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>FreqMeter_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\FreqMeter\FreqMeter_d.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Generator</GroupName>
-          <Files>
-            <File>
-              <FileName>AD5697.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\AD5697.h</FilePath>
-            </File>
-            <File>
-              <FileName>AD5697.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\AD5697.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>AD9952.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\AD9952.h</FilePath>
-            </File>
-            <File>
-              <FileName>AD9952.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\AD9952.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Generator_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\Generator_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Generator_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\Generator_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Calibrator.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\Calibrator.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Calibrator.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\Calibrator.h</FilePath>
-            </File>
-            <File>
-              <FileName>Filtr.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\Filtr.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Filtr.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\Filtr.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Generator/FPGA</GroupName>
-          <Files>
-            <File>
-              <FileName>FPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\FPGA\FPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>FPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\FPGA\FPGA.h</FilePath>
-            </File>
-            <File>
-              <FileName>RegistersFPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\FPGA\RegistersFPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>RegistersFPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\FPGA\RegistersFPGA.h</FilePath>
-            </File>
-            <File>
-              <FileName>Clock.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\FPGA\Clock.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Clock.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\FPGA\Clock.h</FilePath>
-            </File>
-            <File>
-              <FileName>ParametersFPGA.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\FPGA\ParametersFPGA.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ParametersFPGA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\FPGA\ParametersFPGA.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Interface</GroupName>
-          <Files>
-            <File>
-              <FileName>Handlers_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Interface\Handlers_d.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Settings</GroupName>
-          <Files>
-            <File>
-              <FileName>CalibrationSettings.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Settings\CalibrationSettings.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>CalibrationSettings.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Settings\CalibrationSettings.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Utils</GroupName>
-          <Files>
-            <File>
-              <FileName>Buffer.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Buffer.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Buffer.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Buffer.h</FilePath>
-            </File>
-            <File>
-              <FileName>Debug.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Debug.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Debug.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Debug.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Math.h</FilePath>
-            </File>
-            <File>
-              <FileName>Math.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Math.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Memory.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Memory.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Memory.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Memory.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\Queue.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\Queue.h</FilePath>
-            </File>
-            <File>
-              <FileName>String.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\String.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>String.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\String.h</FilePath>
-            </File>
-            <File>
-              <FileName>StringUtils.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Utils\StringUtils.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>StringUtils.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Utils\StringUtils.h</FilePath>
             </File>
           </Files>
         </Group>

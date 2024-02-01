@@ -1,0 +1,135 @@
+// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+#pragma once
+#include "defines.h"
+#include "CommonTypes.h"
+
+
+struct TypeForm
+{
+    enum E
+    {
+        Sine,           // Синус
+        RampPlus,       // Пила+
+        RampMinus,      // Пила-
+        Triangle,       // Треугольник
+        Meander,        // Меандр
+        Impulse,        // Импульсы
+        Packet,         // Пачка импульсов
+        Free,           // Произвольный сигнал
+        Count
+    };
+
+    static void Set(const Chan &, E);
+
+    static E Current(const Chan &);
+
+private:
+
+    static E current[2];
+};
+
+
+namespace Order
+{
+    enum E
+    {
+        Mega,
+        Kilo,
+        One,
+        Milli,
+        Micro,
+        Nano,
+        Count
+    };
+
+    cstr Suffix(Order::E order);
+
+    // Возвращает степень, соответсвующую порядку
+    int GetPow10(Order::E order);
+
+    // Сохранить order во внутренней памяти
+    void Store(Order::E order);
+
+    // Восстановить значение, ранее сохранённое функцией Store()
+    Order::E Restore();
+};
+
+
+struct Value
+{
+    explicit Value(double v);
+    explicit Value(int v);
+
+    // Берёт значение из строкового представления. При этом первым символом может идти знак ("+" или "-"), дробная часть отделяется от целой точкой ("."),
+    // а order указыват, на сколько нужно умножжить итоговое число (3 - умножить на 1000, -3 - разделить на 1000)
+    explicit Value(pchar const buffer, Order::E order);
+
+    void FromUnits(int units, uint mUnits = 0, uint uUnits = 0, uint nUnits = 0, int sign = 1);
+    void FromDouble(double v);
+    void FromUINT64(uint64 v) { value = v; }
+    void FromINT(int v);
+    void FromString(pchar  const buffer, int pow10);
+    bool FromString(pchar buffer, char **end, int numDigitsAfterComma);
+
+    double ToDouble() const;
+    uint64 ToAbsNS() const;
+    uint64 GetRawValue() const { return value; }
+
+    void Div(uint div);
+    void Mul(uint mul);
+    void Add(Value value);
+    void Sub(Value value);
+
+    // Возвращает разницу между собой и value но не меняет действующее значение
+    Value &TestSub(Value value);
+
+    // Умножить на 10 в степени pow
+    void MulPow10(int pow);
+
+    void SetSign(int sign);
+
+    // Возвращает знак
+    int Sign() const;
+
+    // Возвращает целую часть
+    int Integer() const;
+      
+    // Возвращает количество наночастиц в дробной части
+    int FractNano() const;
+
+    uint64 AbsRawValue() const;
+
+    bool IsZero() const;
+
+    // Возвращает:
+    // Order::Mega  - Value::Integer() >= 1e6
+    // Order::Kilo  - Value::Integer() >= 1e3
+    // Order::One   - Value::Integer() >= 0
+    // Order::Milli - Value::Integer() >= 1e-3
+    // Order::Micro - Value::Integer() >= 1e-6
+    Order::E GetOrder() const;
+
+    // Возращает строку значения
+    cstr ToString(bool sign, Order::E order = Order::Count) const;
+
+    // Возвращает символ в позиции position. Знак не учитывается. Точка находится соответственно order. One - после единиц, Kilo - после тысяч и так далее.
+    // Order::Count - значенине по умолчанию - запятая в позиции относительно размерности числового значения
+    char GetChar(int postition, Order::E order) const;
+
+    int GetPositionFirstDigit(Order::E order) const;
+
+    // Возвращает цифру в позиции position. Точка находится соответственно order. One - после единиц, Kilo - после тысяч и так далее.
+    // Order::Count - значенине по умолчанию - запятая в позиции относительно размерности числового значения
+    int GetDigit(int position, Order::E order = Order::Count) const;
+
+    bool operator<(const Value &) const;
+    bool operator>(const Value &) const;
+    bool operator<=(const Value &) const;
+    bool operator>=(const Value &) const;
+    bool operator==(const Value &) const;
+    bool operator!=(const Value &) const;
+
+private:
+
+    uint64 value;       // Значение параметра в единицах измерения "нано". Установленный в "1" старший бит означает, что число отрицательное
+};

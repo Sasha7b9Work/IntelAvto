@@ -1,9 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "common/Interface_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
-#include "Utils/Debug.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -23,7 +21,6 @@ extern "C" {
         HAL_SYSTICK_IRQHandler();
     }
 
-    
     void HAL_SPI_ErrorCallback(SPI_HandleTypeDef *)
     {
         TRACE_HANDLER;
@@ -31,21 +28,6 @@ extern "C" {
     }
 
 
-    
-    void OTG_FS_IRQHandler()
-    {
-        // Флешка
-        HAL_HCD::IRQHandler();
-    }
-
-    
-    void OTG_HS_IRQHandler()
-    {
-        // VCP
-        HAL_PCD::IRQHandler();
-    }
-    
-    
     void MemManage_Handler()
     {
         TRACE_HANDLER;

@@ -24,8 +24,6 @@ void HAL::Init()
     HAL_PIO::Init();
 
     HAL_SPI1::Init();
-
-    HAL_CRC32::Init();
 }
 
 
