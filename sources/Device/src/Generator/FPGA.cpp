@@ -34,3 +34,9 @@ void FPGA::WritePeriod(const Value &)
 {
 
 }
+
+
+void FPGA::Start()
+{
+
+}

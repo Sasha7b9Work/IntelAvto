@@ -2,11 +2,24 @@
 #include "defines.h"
 #include "Generator/Generator.h"
 #include "Generator/FPGA.h"
+#include "Generator/SwitchingBoard.h"
+#include "Generator/VoltageDAC.h"
+#include "Hardware/Timer.h"
 
 
-void Generator::Start2A(const Value & /*Us*/, const Value &t1)
+void Generator::Start2A(const Value &Us, const Value &t1)
 {
     FPGA::SetTypeSignal(TypeSignal::_2a);
 
     FPGA::WritePeriod(t1);
+
+    SwitchingBoard::SetTypeSignal(TypeSignal::_2a);
+
+    VoltageDAC::SetZero();
+
+    VoltageDAC::SetOutputSource(Us);
+
+    TimeMeterMS().Delay(1000);
+
+    FPGA::Start();
 }

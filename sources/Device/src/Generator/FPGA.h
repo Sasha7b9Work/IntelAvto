@@ -24,6 +24,10 @@ struct TypeSignal
 
 namespace FPGA
 {
+    void Start();
+
+    void Stop();
+
     void SetTypeSignal(TypeSignal::E);
 
     void WritePeriod(const Value &);

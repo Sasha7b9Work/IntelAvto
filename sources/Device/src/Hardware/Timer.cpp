@@ -239,4 +239,14 @@ uint TimeMeterMS::ElapsedTime()
 }
 
 
+void TimeMeterMS::Delay(uint timeMS)
+{
+    Reset();
+
+    while (ElapsedTime() < timeMS)
+    {
+    }
+}
+
+
 #undef TIME_NEXT
