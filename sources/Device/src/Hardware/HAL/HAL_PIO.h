@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Hardware/HAL/HAL_PINS.h"
+#include "Hardware/HAL/_HAL_PINS.h"
 
 
 struct HPort
