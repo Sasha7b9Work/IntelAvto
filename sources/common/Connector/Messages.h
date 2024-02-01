@@ -41,6 +41,10 @@ struct BufferMessage
             buffer[Pointer()++] = (uint)value.GetRaw();
         }
     }
+    Value PopValue()
+    {
+        return Value((int)buffer[Pointer()++]);
+    }
 private:
     // Индексация производится через эту функцию. После погружения всех элементов в
     // буфер в элеенте buffer[0] будет храниться количество слов для передачи
@@ -60,6 +64,11 @@ struct BaseMessage
     void Push(const Value &value)
     {
         buffer.Push(value);
+    }
+
+    Value PopValue()
+    {
+        return buffer.PopValue();
     }
 
     void Send() const;

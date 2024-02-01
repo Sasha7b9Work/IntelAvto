@@ -965,6 +965,71 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>src</GroupName>
+          <Files>
+            <File>
+              <FileName>defines.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\defines.h</FilePath>
+            </File>
+            <File>
+              <FileName>structs.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\structs.h</FilePath>
+            </File>
+            <File>
+              <FileName>main_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\main_d.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Connector</GroupName>
+          <Files>
+            <File>
+              <FileName>Messages.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Messages.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Messages.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Messages.h</FilePath>
+            </File>
+            <File>
+              <FileName>Value.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Value.h</FilePath>
+            </File>
+            <File>
+              <FileName>Messages_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Messages_d.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Value_d.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Generator</GroupName>
+          <Files>
+            <File>
+              <FileName>Generator.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Generator\Generator.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Generator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Generator\Generator.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
@@ -1091,56 +1156,6 @@
               <FileName>Log.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Utils\Log.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>src</GroupName>
-          <Files>
-            <File>
-              <FileName>defines.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\defines.h</FilePath>
-            </File>
-            <File>
-              <FileName>structs.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\structs.h</FilePath>
-            </File>
-            <File>
-              <FileName>main_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\main_d.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Connector</GroupName>
-          <Files>
-            <File>
-              <FileName>Messages.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Messages.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Messages.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Messages.h</FilePath>
-            </File>
-            <File>
-              <FileName>Value.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Value.h</FilePath>
-            </File>
-            <File>
-              <FileName>Messages_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Connector\Messages_d.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Value_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Connector\Value_d.cpp</FilePath>
             </File>
           </Files>
         </Group>
