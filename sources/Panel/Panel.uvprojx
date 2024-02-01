@@ -529,16 +529,6 @@
           <GroupName>Connector</GroupName>
           <Files>
             <File>
-              <FileName>Command.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Command.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Command.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Command.h</FilePath>
-            </File>
-            <File>
               <FileName>Messages.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Connector\Messages.cpp</FilePath>
@@ -1479,16 +1469,6 @@
         <Group>
           <GroupName>Connector</GroupName>
           <Files>
-            <File>
-              <FileName>Command.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Command.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Command.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Command.h</FilePath>
-            </File>
             <File>
               <FileName>Messages.cpp</FileName>
               <FileType>8</FileType>
