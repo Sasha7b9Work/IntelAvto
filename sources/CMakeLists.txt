@@ -10,5 +10,6 @@ if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
     add_definitions(-DDEBUG)
 endif()
 
+add_subdirectory(Device)
 add_subdirectory(Panel)
 add_subdirectory(PLoader)

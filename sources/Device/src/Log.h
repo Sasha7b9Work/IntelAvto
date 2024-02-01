@@ -1,6 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "common/Command.h"
 
 
 //#define LOG_TRACE(...)      ::Log::Trace(__FILE__, __LINE__, __VA_ARGS__)
