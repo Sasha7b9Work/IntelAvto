@@ -28,3 +28,9 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
         pin_NPULSE2.ToHi();
     }
 }
+
+
+void FPGA::WritePeriod(const Value &)
+{
+
+}

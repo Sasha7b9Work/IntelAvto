@@ -1037,6 +1037,26 @@
               <FileType>5</FileType>
               <FilePath>.\src\Generator\FPGA.h</FilePath>
             </File>
+            <File>
+              <FileName>SwitchingBoard.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Generator\SwitchingBoard.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>SwitchingBoard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Generator\SwitchingBoard.h</FilePath>
+            </File>
+            <File>
+              <FileName>VoltageDAC.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Generator\VoltageDAC.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>VoltageDAC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Generator\VoltageDAC.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
