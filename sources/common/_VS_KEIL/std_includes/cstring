@@ -5,5 +5,6 @@ namespace std
     char   *strcpy(void *dest, pchar src);
     int     strcmp(const void *, const void *);
     void    memcpy(void *dest, const void *src, unsigned int);
+    char   *strcat(char *, char *);
     unsigned int  strlen(pchar);
 }
