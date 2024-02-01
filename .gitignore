@@ -18,4 +18,11 @@ sources/Panel/Listings/*
 sources/Panel/Listings-Debug/*
 
 
+sources/Device/Objects/*
+sources/Device/Objects-Debug/*
+sources/Device/DebugConfig/*
+sources/Device/Listings/*
+sources/Device/Listings-Debug/*
+
+
 sources/generated/*
