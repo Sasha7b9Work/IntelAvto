@@ -550,9 +550,9 @@
               <FilePath>..\common\Connector\Value.h</FilePath>
             </File>
             <File>
-              <FileName>Messages_d.cpp</FileName>
+              <FileName>Messages_p.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Device\src\Connector\Messages_d.cpp</FilePath>
+              <FilePath>.\src\Connector\Messages_p.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1497,9 +1497,9 @@
               <FilePath>..\common\Connector\Value.h</FilePath>
             </File>
             <File>
-              <FileName>Messages_d.cpp</FileName>
+              <FileName>Messages_p.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\Device\src\Connector\Messages_d.cpp</FilePath>
+              <FilePath>.\src\Connector\Messages_p.cpp</FilePath>
             </File>
           </Files>
         </Group>

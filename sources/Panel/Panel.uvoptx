@@ -799,8 +799,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\Device\src\Connector\Messages_d.cpp</PathWithFileName>
-      <FilenameWithoutPath>Messages_d.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Connector\Messages_p.cpp</PathWithFileName>
+      <FilenameWithoutPath>Messages_p.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

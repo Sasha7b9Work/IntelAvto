@@ -1114,6 +1114,36 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>Connector</GroupName>
+          <Files>
+            <File>
+              <FileName>Messages.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Messages.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Messages.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Messages.h</FilePath>
+            </File>
+            <File>
+              <FileName>Value.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Value.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Value.h</FilePath>
+            </File>
+            <File>
+              <FileName>Messages_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Messages_d.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>
