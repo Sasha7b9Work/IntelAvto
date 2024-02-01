@@ -548,6 +548,16 @@
               <FileType>5</FileType>
               <FilePath>..\common\Connector\Messages.h</FilePath>
             </File>
+            <File>
+              <FileName>Value.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Value.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Value.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -787,16 +797,6 @@
               <FileName>MenuItemsDef.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Menu\MenuItemsDef.h</FilePath>
-            </File>
-            <File>
-              <FileName>Value.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Menu\Value.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Value.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Menu\Value.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1499,6 +1499,16 @@
               <FileType>5</FileType>
               <FilePath>..\common\Connector\Messages.h</FilePath>
             </File>
+            <File>
+              <FileName>Value.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Value.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Value.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Value.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1738,16 +1748,6 @@
               <FileName>MenuItemsDef.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Menu\MenuItemsDef.h</FilePath>
-            </File>
-            <File>
-              <FileName>Value.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Menu\Value.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Value.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Menu\Value.h</FilePath>
             </File>
           </Files>
         </Group>
