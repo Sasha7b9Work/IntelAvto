@@ -27,7 +27,7 @@ namespace PageSignal3b
 
     static void FuncStartTest()
     {
-        Message::Start3B().Send();
+        Message(Command::START_3B).Send();
     }
 
     static Item *items[] =

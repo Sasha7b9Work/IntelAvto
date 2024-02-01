@@ -32,7 +32,7 @@ namespace PageSignal5a
 
     static void FuncStartTest()
     {
-        Message::Start5A().Send();
+        Message(Command::START_5A).Send();
     }
 
     static Item *items[] =

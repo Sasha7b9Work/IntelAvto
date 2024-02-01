@@ -4,74 +4,52 @@
 #include "Connector/Value.h"
 
 
-namespace Message
+struct BufferMessage
 {
-    struct MessageBase
+    BufferMessage()
     {
-        MessageBase(Command::E c) : command(c) { }
-
-        void Send();
-
-    protected:
-
-        void Push(const Value &);
-
-    private:
-
-        Command::E command;
-    };
-
-
-    struct Start1A : public MessageBase
+        Pointer() = 1;
+    }
+    void Push(Command::E command)
     {
-        Start1A() : MessageBase(Command::START_1) { }
-    };
-
-
-    struct Start2A : public MessageBase
-    {
-        Start2A(const Value &Us, const Value &t1) : MessageBase(Command::START_2A)
+        if (Pointer() < SIZE)
         {
-            Push(Us);
-            Push(t1);
+            buffer[Pointer()++] = command;
         }
-    };
-
-
-    struct Start2B : public MessageBase
+    }
+    void Push(const Value &value)
     {
-        Start2B() : MessageBase(Command::START_2B) { }
-    };
+        if (Pointer() < SIZE)
+        {
+            buffer[Pointer()++] = (uint)value.GetRaw();
+        }
+    }
+private:
+    // Индексация производится через эту функцию. После погружения всех элементов в
+    // буфер в элеенте buffer[0] будет храниться количество слов для передачи
+    uint &Pointer() { return buffer[0]; }
+    static const int SIZE = 16;
+    uint buffer[SIZE];
+};
 
 
-    struct Start3A : public MessageBase
+struct Message
+{
+    Message(Command::E command)
     {
-        Start3A() : MessageBase(Command::START_3A) { }
-    };
+        buffer.Push(command);
+    }
 
-
-    struct Start3B : public MessageBase
+    Message(Command::E command, const Value &v1, const Value &v2)
     {
-        Start3B() : MessageBase(Command::START_3B) { }
-    };
+        buffer.Push(command);
+        buffer.Push(v1);
+        buffer.Push(v2);
+    }
 
-    struct Start4 : public MessageBase
-    {
-        Start4() : MessageBase(Command::START_4) { }
-    };
+    void Send() const;
 
-    struct Start5A : public MessageBase
-    {
-        Start5A() : MessageBase(Command::START_5A) { }
-    };
+private:
 
-    struct Start5B : public MessageBase
-    {
-        Start5B() : MessageBase(Command::START_5B) { }
-    };
-
-    struct Stop : public MessageBase
-    {
-        Stop() : MessageBase(Command::STOP) { }
-    };
-}
+    BufferMessage buffer;
+};

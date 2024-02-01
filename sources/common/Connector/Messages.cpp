@@ -3,13 +3,7 @@
 #include "Connector/Messages.h"
 
 
-void Message::MessageBase::Send()
-{
-
-}
-
-
-void Message::MessageBase::Push(const Value &value)
+void Message::Send() const
 {
 
 }

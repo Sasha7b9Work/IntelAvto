@@ -46,6 +46,8 @@ struct Value
 
     float ToFloat() const;
 
+    int GetRaw() const { return munits; }
+
 private:
 
     int munits;     // Значение в миллиюнитах (например, 1 = 1 мс)
