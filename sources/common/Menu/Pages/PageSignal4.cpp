@@ -4,6 +4,7 @@
 #include "Menu/MenuItemsDef.h"
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
+#include "Connector/Messages.h"
 
 
 namespace PageSignal4
@@ -44,6 +45,11 @@ namespace PageSignal4
         FuncPress_Signal
     );
 
+    static void FuncStartTest()
+    {
+        Message::Start4().Send();
+    }
+
     static Item *items[] =
     {
         &bSignal5a,
@@ -55,7 +61,7 @@ namespace PageSignal4
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr);
+    static Page page(items, nullptr, nullptr, FuncStartTest);
 }
 
 

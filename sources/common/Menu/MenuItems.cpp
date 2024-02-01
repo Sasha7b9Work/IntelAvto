@@ -101,32 +101,7 @@ void Page::DrawParameters() const
 
 int Page::WidthItem(int num) const
 {
-    if (equal_width_items)
-    {
-        return Display::PHYSICAL_WIDTH / NumItems();
-    }
-
     int result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 6) : (Display::PHYSICAL_WIDTH / 6);
-
-//    if (NumItems() == 5)
-//    {
-//        result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 5) : (Display::PHYSICAL_WIDTH / 5);
-//
-//        if (num == 4) { result += 3; }
-//
-//        return result;
-//    }
-//
-//    if (NumItems() == 4)
-//    {
-//        result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 4) : (Display::PHYSICAL_WIDTH / 4);
-//
-//        if (num == 3) { result += 2; }
-//
-//        return result;
-//    }
-//
-//    if (num == 5) { result += 3; }
 
     return result;
 }
@@ -414,4 +389,13 @@ const Value &Parameter::GetMin() const
 const Value &Parameter::GetMax() const
 {
     return VoltageMode::Is12() ? max12 : max24;
+}
+
+
+void Page::StartTest() const
+{
+    if (func_start_test)
+    {
+        func_start_test();
+    }
 }

@@ -182,9 +182,9 @@ class Page : public Item, public Observer
     friend struct Channel;
 
 public:
-    Page(Item **_items, void (*_onEvent)(EventType::E), void (*_additionalDraw)(), bool equalItems = false) :
+    Page(Item **_items, void (*_onEvent)(EventType::E), void (*_additionalDraw)(), void (*_func_start_test)()) :
         Item(),
-        items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), equal_width_items(equalItems), selectedItem(0)
+        items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
     {}
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -206,6 +206,9 @@ public:
 
     static const Page *ForCurrentSignal();
 
+    // Запустить тест
+    void StartTest() const;
+
 protected:
 
     // Возвращает количество итемов на странице
@@ -221,7 +224,7 @@ protected:
 
     void (*additionalDraw)();
 
-    bool equal_width_items;         // Если true, то ширина итемов при отрисовке одинаковая
+    void (*func_start_test)();
 
 private:
 
@@ -233,5 +236,5 @@ private:
 class PageModes : public Page
 {
 public:
-    PageModes(Item **_items, void (*_onEvent)(EventType::E)) : Page(_items, _onEvent, nullptr) {}
+    PageModes(Item **_items, void (*_onEvent)(EventType::E)) : Page(_items, _onEvent, nullptr, nullptr) {}
 };
