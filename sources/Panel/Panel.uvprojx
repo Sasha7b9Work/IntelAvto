@@ -526,6 +526,31 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Connector</GroupName>
+          <Files>
+            <File>
+              <FileName>Command.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Command.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Command.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Command.h</FilePath>
+            </File>
+            <File>
+              <FileName>Messages.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Messages.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Messages.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Messages.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Device</GroupName>
           <Files>
             <File>
@@ -1448,6 +1473,31 @@
               <FileName>no-warnings.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\no-warnings.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Connector</GroupName>
+          <Files>
+            <File>
+              <FileName>Command.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Command.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Command.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Command.h</FilePath>
+            </File>
+            <File>
+              <FileName>Messages.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Messages.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Messages.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Messages.h</FilePath>
             </File>
           </Files>
         </Group>
