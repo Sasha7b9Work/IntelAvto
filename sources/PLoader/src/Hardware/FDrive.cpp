@@ -445,7 +445,7 @@ bool FDrive::Upgrade()
 
         HAL_EEPROM::EraseSector(HAL_EEPROM::ADDR_SECTOR_FIRMWARE);
 
-        HAL_EEPROM::WriteData(HAL_EEPROM::ADDR_SECTOR_FIRMWARE, (void *)HAL_EEPROM::ADDR_SECTOR_UPGRADE, (uint)size);
+        HAL_EEPROM::WriteData(HAL_EEPROM::ADDR_SECTOR_FIRMWARE, (void *)HAL_EEPROM::ADDR_SECTOR_UPGRADE, (uint)size); //-V566
 
         result = true;
     }

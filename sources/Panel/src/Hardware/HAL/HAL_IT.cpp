@@ -27,8 +27,8 @@ __attribute((noreturn)) void HardFault_Handler(void)
         file = Debug::file[0];
         line = Debug::line[0];
         
-        file = Debug::file[0]; //-V570
-        line = Debug::line[0]; //-V570
+        file = Debug::file[0]; //-V570 //-V1048
+        line = Debug::line[0]; //-V570 //-V1048
     }
 }
 
