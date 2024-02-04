@@ -35,6 +35,8 @@ void Generator::Start2A(const Value &Us, const Value &t1)
     pin_K1_FOR.ToHi();
     pin_K2_FOR.ToHi();
 
+    TimeMeterMS().Delay(1000);
+
     SourceFollower::Set(Us);
     VoltageOut::Set(Us);
 
