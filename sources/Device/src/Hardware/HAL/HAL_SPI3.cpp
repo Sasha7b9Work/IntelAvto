@@ -22,10 +22,8 @@ namespace HAL_SPI3
             SPI_TIMODE_DISABLE,
             SPI_CRCCALCULATION_DISABLE,
             10
-        },
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
+        }
     };
-
 }
 
 

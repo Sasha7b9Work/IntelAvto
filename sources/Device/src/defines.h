@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "no-warnings.h"
 
 
 typedef unsigned int       uint;
@@ -51,7 +52,7 @@ inline void EmptyFuncVV() {};
 #ifndef NULL
 #define NULL 0
 #endif
-#define nullptr NULL   //-V1059
+//#define nullptr NULL   //-V1059
 
 #endif
 

@@ -7,13 +7,6 @@
 #include <cstring>
 
 
-namespace CPU
-{
-    // ¬рем€ последней установки состо€ни€ "зан€то"
-    static uint timeBusy = 0;
-}
-
-
 void CPU::Init()
 {
     HAL::Init();

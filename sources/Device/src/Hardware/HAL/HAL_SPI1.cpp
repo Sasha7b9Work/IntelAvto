@@ -22,11 +22,7 @@ namespace HAL_SPI1
             SPI_TIMODE_DISABLED,            // Init.TIMode
             SPI_CRCCALCULATION_DISABLED,    // Init.CRCCalculation
             7                               // InitCRCPolynomial
-        },
-        0, 0, 0, 0, 0, 0,
-        0,
-        0,
-        0, 0, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
+        }
     };
 
 }

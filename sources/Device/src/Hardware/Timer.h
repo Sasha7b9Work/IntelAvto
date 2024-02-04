@@ -34,8 +34,8 @@ namespace Timer
             kTemp,
             Count
         } value;
-        Type(E v) : value(v) {};
-        operator uint8() const { return (uint8)value; };
+        Type(E v) : value(v) {}
+        operator uint8() const { return (uint8)value; }
     };
 
     void Init();

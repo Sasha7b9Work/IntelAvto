@@ -949,6 +949,8 @@ static HAL_StatusTypeDef FLASH_OB_DisablePCROP(uint32_t SectorBank1, uint32_t Se
   */
 static void FLASH_MassErase(uint8_t VoltageRange, uint32_t Banks)
 {
+    (void)Banks;
+    
   /* Check the parameters */
   assert_param(IS_VOLTAGERANGE(VoltageRange));
   assert_param(IS_FLASH_BANK(Banks));
@@ -1028,7 +1030,9 @@ void FLASH_Erase_Sector(uint32_t Sector, uint8_t VoltageRange)
   */
 static HAL_StatusTypeDef FLASH_OB_EnableWRP(uint32_t WRPSector, uint32_t Banks)
 {
-  HAL_StatusTypeDef status = HAL_OK;
+    HAL_StatusTypeDef status = HAL_OK;
+
+    (void)Banks;
 
   /* Check the parameters */
   assert_param(IS_OB_WRP_SECTOR(WRPSector));
@@ -1066,7 +1070,9 @@ static HAL_StatusTypeDef FLASH_OB_DisableWRP(uint32_t WRPSector, uint32_t Banks)
 {
   HAL_StatusTypeDef status = HAL_OK;
 
-  /* Check the parameters */
+    (void)Banks;
+
+    /* Check the parameters */
   assert_param(IS_OB_WRP_SECTOR(WRPSector));
   assert_param(IS_FLASH_BANK(Banks));
 

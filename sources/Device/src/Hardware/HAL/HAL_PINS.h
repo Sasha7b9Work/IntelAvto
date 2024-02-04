@@ -29,7 +29,7 @@ protected:
 
 struct PinOut : public Pin
 {
-    PinOut(void *port, uint16 pin) : Pin(PinMode::OUTPUT, port, pin) { }
+    PinOut(void *_port, uint16 _pin) : Pin(PinMode::OUTPUT, _port, _pin) { }
     void ToHi();
     void ToLow();
 };
