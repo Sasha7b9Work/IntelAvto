@@ -31,6 +31,7 @@ struct PinOut : public Pin
 {
     PinOut(void *_port, uint16 _pin) : Pin(PinMode::OUTPUT, _port, _pin) { }
     void ToHi();
+    void ToHi(uint timeUS);
     void ToLow();
 };
 

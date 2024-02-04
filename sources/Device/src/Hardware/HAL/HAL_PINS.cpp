@@ -1,6 +1,7 @@
 // 2024/02/01 16:42:26 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Hardware/Timer.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -57,6 +58,7 @@ void HAL_PINS::Init()
     pin_CLK_RG.ToLow();
     pin_DAT_RG.Init();
     pin_WR_RG.Init();
+    pin_WR_RG.ToLow();
     pin_ON_OFF.Init();
     pin_ON_OFF.ToLow();
     pin_START.Init();
@@ -90,6 +92,16 @@ void PinOut::ToHi()
     GPIO_TypeDef *gpio = (GPIO_TypeDef *)port;
 
     HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_SET);
+}
+
+
+void PinOut::ToHi(uint timeUS)
+{
+    ToHi();
+
+    TimeMeterUS().WaitFor(timeUS);
+
+    ToLow();
 }
 
 
