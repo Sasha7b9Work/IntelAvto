@@ -63,14 +63,23 @@ void HAL_PINS::Init()
     pin_ON_OFF.ToLow();
     pin_START.Init();
     pin_STOP.Init();
+
     pin_A12.Init();
+    pin_A12.ToLow();
     pin_2A.Init();
+    pin_2A.ToLow();
     pin_3AB.Init();
+    pin_3AB.ToLow();
     pin_K1_COM.Init();
-    pin_K5_COM.Init();
-    pin_K6_COM.Init();
-    pin_K7_COM.Init();
+    pin_K1_COM.ToLow();
     pin_K3_COM.Init();
+    pin_K3_COM.ToLow();
+    pin_K5_COM.Init();
+    pin_K5_COM.ToLow();
+    pin_K6_COM.Init();
+    pin_K6_COM.ToLow();
+    pin_K7_COM.Init();
+    pin_K7_COM.ToLow();
 
     pin_K1_FOR.Init();
     pin_K2_FOR.Init();

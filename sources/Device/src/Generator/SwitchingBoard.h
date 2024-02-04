@@ -5,5 +5,7 @@
 
 namespace SwitchingBoard
 {
+    void SetOff();
+
     void SetTypeSignal();
 }

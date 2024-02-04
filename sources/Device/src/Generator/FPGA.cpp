@@ -147,16 +147,16 @@ uint FPGA::Reg::PeriodMul()
 
 void FPGA::Reg::SetAddress()
 {
-    static PinOut pins[4] =
+    static PinOut *pins[4] =
     {
-        pin_A0_RG, pin_A1_RG, pin_A2_RG, pin_A3_RG
+        &pin_A0_RG, &pin_A1_RG, &pin_A2_RG, &pin_A3_RG
     };
 
     for (int i = 0; i < 4; i++)
     {
         bool bit = (((uint8)address) & (i << 1)) != 0;
 
-        bit ? pins[i].ToHi() : pins[i].ToLow();
+        bit ? pins[i]->ToHi() : pins[i]->ToLow();
     }
 }
 
