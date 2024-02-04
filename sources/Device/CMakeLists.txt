@@ -52,7 +52,7 @@ file(GLOB GENERATOR            src/Generator/*.*)
 file(GLOB HARDWARE             src/Hardware/*.h src/Hardware/*.cpp)
 file(GLOB HARDWARE_CMSIS       src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL         src/Hardware/HAL/*)
-file(GLOB UTILS                src/Utils/*.*)
+#file(GLOB UTILS                src/Utils/*.*)
 
 set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL}
     src/Hardware/CMSIS/system_stm32f4xx.c
@@ -65,7 +65,7 @@ source_group(Generator       FILES ${GENERATOR})
 source_group(Hardware        FILES ${HARDWARE})
 source_group(Hardware/CMSIS  FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL    FILES ${HARDWARE_HAL})
-source_group(Utils           FILES ${UTILS})
+#source_group(Utils           FILES ${UTILS})
 
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
@@ -75,5 +75,5 @@ add_library(${PROJECT_NAME}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
-    ${UTILS}
+#    ${UTILS}
 )

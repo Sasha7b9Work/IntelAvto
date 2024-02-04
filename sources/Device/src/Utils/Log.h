@@ -9,8 +9,8 @@
 //#define LOG_ERROR_FINALIZE(...)
 
 
-namespace Log
-{
-    void Trace(char *file, int line, char *format, ...);
-    void AddString(char *format, ...);
-};
+//namespace Log
+//{
+//    void Trace(char *file, int line, char *format, ...);
+//    void AddString(char *format, ...);
+//};

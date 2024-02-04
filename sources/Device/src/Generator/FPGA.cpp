@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Generator/FPGA.h"
 #include "Hardware/HAL/HAL_PINS.h"
+//#include "Utils/Log.h"
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::Count;
@@ -22,8 +23,20 @@ namespace FPGA
             Period2a    = 0x06,
 
             Duration3ab = 0x07,
-            Period3ab   = 0x08
+            Period3ab   = 0x08,
+
+            Fail = 0xFF
         };
+
+        Reg(E a) : address(a) { }
+
+        static Reg ForPeriod();
+
+        void Write(const Value &);
+
+    private:
+
+        E address;
     };
 }
 
@@ -66,13 +79,41 @@ void FPGA::SetTypeSignal()
 }
 
 
-void FPGA::WritePeriod(const Value &)
+void FPGA::WritePeriod(const Value &period)
 {
-
+    Reg::ForPeriod().Write(period);
 }
 
 
 void FPGA::Start()
 {
 
+}
+
+
+FPGA::Reg FPGA::Reg::ForPeriod()
+{
+    if (TypeSignal::Is1())
+    {
+        return Reg(Reg::Period1);
+    }
+    else if (TypeSignal::Is2a())
+    {
+        return Reg(Reg::Period2a);
+    }
+    else if (TypeSignal::Is3a() || TypeSignal::Is3b())
+    {
+        return Reg(Reg::Period3ab);
+    }
+
+    return Reg(Reg::Fail);
+}
+
+
+void FPGA::Reg::Write(const Value &value)
+{
+    if (address == Reg::Fail)
+    {
+//        LOG_ERROR("Address register fail");
+    }
 }
