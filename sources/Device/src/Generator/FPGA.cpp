@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Generator/FPGA.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Hardware/Timer.h"
 //#include "Utils/Log.h"
 
 
@@ -37,6 +38,13 @@ namespace FPGA
     private:
 
         E address;
+
+        // Ќа какое число нужно умножать период
+        uint PeriodMul();
+
+        void SetAddress();
+
+        void WriteRawValue(uint);
     };
 }
 
@@ -115,5 +123,58 @@ void FPGA::Reg::Write(const Value &value)
     if (address == Reg::Fail)
     {
 //        LOG_ERROR("Address register fail");
+        return;
+    }
+
+    SetAddress();
+
+    WriteRawValue((uint)value.GetRaw() * PeriodMul());
+}
+
+
+uint FPGA::Reg::PeriodMul()
+{
+    if (TypeSignal::Is3a() || TypeSignal::Is3b())
+    {
+        return 10000U;
+    }
+
+    return 1000U;
+}
+
+
+void FPGA::Reg::SetAddress()
+{
+    static PinOut pins[4] =
+    {
+        pin_A0_RG, pin_A1_RG, pin_A2_RG, pin_A3_RG
+    };
+
+    for (int i = 0; i < 4; i++)
+    {
+        bool bit = (((uint8)address) & (i << 1)) != 0;
+
+        bit ? pins[i].ToHi() : pins[i].ToLow();
+    }
+}
+
+
+void FPGA::Reg::WriteRawValue(uint value)
+{
+    for (int i = 31; i >= 0; i--)
+    {
+        bool bit = (value & (1 << i)) != 0;
+
+        bit ? pin_DAT_RG.ToHi() : pin_DAT_DAC_R.ToLow();
+
+        TimeMeterUS().WaitFor(5);
+
+        pin_CLK_RG.ToHi();
+
+        TimeMeterUS().WaitFor(10);
+
+        pin_CLK_RG.ToLow();
+
+        TimeMeterUS().WaitFor(5);
     }
 }

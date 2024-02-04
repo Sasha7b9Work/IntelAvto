@@ -13,6 +13,7 @@ Pin pin_SPI_CS(PinMode::SPI_CS, GPIOA, GPIO_PIN_2);
 PinOut pin_A0_RG(GPIOG, GPIO_PIN_5);
 PinOut pin_A1_RG(GPIOG, GPIO_PIN_6);
 PinOut pin_A2_RG(GPIOG, GPIO_PIN_7);
+PinOut pin_A3_RG(GPIOG, GPIO_PIN_8);
 PinOut pin_CLK_RG(GPIOD, GPIO_PIN_12);
 PinOut pin_DAT_RG(GPIOD, GPIO_PIN_13);
 PinOut pin_WR_RG(GPIOD, GPIO_PIN_11);
@@ -53,6 +54,7 @@ void HAL_PINS::Init()
     pin_A1_RG.Init();
     pin_A2_RG.Init();
     pin_CLK_RG.Init();
+    pin_CLK_RG.ToLow();
     pin_DAT_RG.Init();
     pin_WR_RG.Init();
     pin_ON_OFF.Init();

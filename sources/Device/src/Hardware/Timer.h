@@ -78,3 +78,10 @@ struct TimeMeterMS
 private:
     uint time_reset;
 };
+
+
+struct TimeMeterUS
+{
+    void WaitFor(uint timeUS);
+};
+
