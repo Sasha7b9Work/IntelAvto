@@ -106,6 +106,9 @@ extern PinOut pin_CS2_R;    // Сигнал выбора DAC напряжения высоковольтного моду
 
 extern PinOut pin_END_R;    // Сигнал завершения теста, вырабатывается ПЛИС по завершению теста
 
+extern PinOut pin_ENB_HB;   // Управляющий бит модуля питания HVMP 1K-8K 40W. Должен быть установлен в "0" перед 
+                            // установкой K1_FOR, K2_FOR
+
 extern PinOut pin_NPULES0;  // Тип формируемого сигнала для ПЛИС
 extern PinOut pin_NPULSE1;  // +--------+------+------+------+
 extern PinOut pin_NPULSE2;  // | Сигнал |PULSE0|PULSE1|PULSE2|

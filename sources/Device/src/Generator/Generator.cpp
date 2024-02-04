@@ -3,7 +3,8 @@
 #include "Generator/Generator.h"
 #include "Generator/FPGA.h"
 #include "Generator/SwitchingBoard.h"
-#include "Generator/VoltageDAC.h"
+#include "Generator/VoltageOut.h"
+#include "Generator/SourceFollower.h"
 #include "Hardware/Timer.h"
 
 
@@ -17,9 +18,7 @@ void Generator::Start2A(const Value &Us, const Value &t1)
 
     SwitchingBoard::SetTypeSignal();
 
-    VoltageDAC::SetZero();
-
-    VoltageDAC::SetOutputSource(Us);
+    VoltageOut::Set(Value(0));
 
     TimeMeterMS().Delay(1000);
 

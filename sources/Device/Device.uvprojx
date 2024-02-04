@@ -1053,14 +1053,24 @@
               <FilePath>.\src\Generator\SwitchingBoard.h</FilePath>
             </File>
             <File>
-              <FileName>VoltageDAC.cpp</FileName>
+              <FileName>SourceFollower.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Generator\VoltageDAC.cpp</FilePath>
+              <FilePath>.\src\Generator\SourceFollower.cpp</FilePath>
             </File>
             <File>
-              <FileName>VoltageDAC.h</FileName>
+              <FileName>SourceFollower.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Generator\VoltageDAC.h</FilePath>
+              <FilePath>.\src\Generator\SourceFollower.h</FilePath>
+            </File>
+            <File>
+              <FileName>VoltageOut.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Generator\VoltageOut.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>VoltageOut.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Generator\VoltageOut.h</FilePath>
             </File>
           </Files>
         </Group>
