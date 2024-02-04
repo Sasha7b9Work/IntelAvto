@@ -6,6 +6,18 @@
 #include "Generator/VoltageOut.h"
 #include "Generator/SourceFollower.h"
 #include "Hardware/Timer.h"
+#include "Hardware/HAL/HAL_PINS.h"
+
+
+void Generator::Stop()
+{
+    VoltageOut::Set(Value(0));
+
+    pin_K1_FOR.ToLow();
+    pin_K2_FOR.ToLow();
+
+    FPGA::Stop();
+}
 
 
 void Generator::Start2A(const Value &Us, const Value &t1)
@@ -19,6 +31,12 @@ void Generator::Start2A(const Value &Us, const Value &t1)
     SwitchingBoard::SetTypeSignal();
 
     VoltageOut::Set(Value(0));
+
+    pin_K1_FOR.ToHi();
+    pin_K2_FOR.ToHi();
+
+    SourceFollower::Set(Us);
+    VoltageOut::Set(Us);
 
     TimeMeterMS().Delay(1000);
 

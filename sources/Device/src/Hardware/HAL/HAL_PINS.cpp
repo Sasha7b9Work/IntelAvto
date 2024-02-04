@@ -63,7 +63,9 @@ void HAL_PINS::Init()
     pin_ON_OFF.Init();
     pin_ON_OFF.ToLow();
     pin_START.Init();
+    pin_START.ToLow();
     pin_STOP.Init();
+    pin_STOP.ToLow();
 
     pin_A12.Init();
     pin_A12.ToLow();

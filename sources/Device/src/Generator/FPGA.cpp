@@ -3,7 +3,6 @@
 #include "Generator/FPGA.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
-//#include "Utils/Log.h"
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::Count;
@@ -95,7 +94,21 @@ void FPGA::WritePeriod(const Value &period)
 
 void FPGA::Start()
 {
+    pin_START.ToHi();
 
+    TimeMeterUS().WaitFor(20);
+
+    pin_START.ToLow();
+}
+
+
+void FPGA::Stop()
+{
+    pin_STOP.ToHi();
+
+    TimeMeterUS().WaitFor(20);
+
+    pin_STOP.ToLow();
 }
 
 
