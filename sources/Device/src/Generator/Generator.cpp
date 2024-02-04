@@ -9,11 +9,13 @@
 
 void Generator::Start2A(const Value &Us, const Value &t1)
 {
-    FPGA::SetTypeSignal(TypeSignal::_2a);
+    TypeSignal::Set(TypeSignal::_2a);
+
+    FPGA::SetTypeSignal();
 
     FPGA::WritePeriod(t1);
 
-    SwitchingBoard::SetTypeSignal(TypeSignal::_2a);
+    SwitchingBoard::SetTypeSignal();
 
     VoltageDAC::SetZero();
 

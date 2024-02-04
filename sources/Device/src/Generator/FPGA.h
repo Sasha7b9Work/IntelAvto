@@ -18,6 +18,18 @@ struct TypeSignal
         Off,
         Count
     };
+
+    static void Set(E v) { current = v; }
+
+    static bool Is1()  { return current == _1; }
+    static bool Is2a() { return current == _2a; }
+    static bool Is2b() { return current == _2b; }
+    static bool Is3a() { return current == _3a; }
+    static bool Is3b() { return current == _3b; }
+
+private:
+
+    static E current;
 };
 
 
@@ -28,7 +40,7 @@ namespace FPGA
 
     void Stop();
 
-    void SetTypeSignal(TypeSignal::E);
+    void SetTypeSignal();
 
     void WritePeriod(const Value &);
 }

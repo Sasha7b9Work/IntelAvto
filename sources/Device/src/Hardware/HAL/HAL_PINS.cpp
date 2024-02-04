@@ -42,6 +42,47 @@ PinOut pin_NPULSE1(GPIOF, GPIO_PIN_15);
 PinOut pin_NPULSE2(GPIOF, GPIO_PIN_14);
 
 
+void HAL_PINS::Init()
+{
+    pin_SPI_SCK.Init();
+    pin_SPI_MO.Init();
+    pin_SPI_MI.Init();
+    pin_SPI_CS.Init();
+
+    pin_A0_RG.Init();
+    pin_A1_RG.Init();
+    pin_A2_RG.Init();
+    pin_CLK_RG.Init();
+    pin_DAT_RG.Init();
+    pin_WR_RG.Init();
+    pin_ON_OFF.Init();
+    pin_ON_OFF.ToLow();
+    pin_START.Init();
+    pin_STOP.Init();
+    pin_A12.Init();
+    pin_2A.Init();
+    pin_3AB.Init();
+    pin_K1_COM.Init();
+    pin_K5_COM.Init();
+    pin_K6_COM.Init();
+    pin_K7_COM.Init();
+    pin_K3_COM.Init();
+
+    pin_K1_FOR.Init();
+    pin_K2_FOR.Init();
+    pin_K_R1.Init();
+
+    pin_SCLK_R.Init();
+    pin_DAT_DAC_R.Init();
+    pin_CS1_R.Init();
+    pin_CS2_R.Init();
+    pin_END_R.Init();
+    pin_NPULES0.Init();
+    pin_NPULSE1.Init();
+    pin_NPULSE2.Init();
+}
+
+
 void PinOut::ToHi()
 {
     GPIO_TypeDef *gpio = (GPIO_TypeDef *)port;
@@ -55,4 +96,10 @@ void PinOut::ToLow()
     GPIO_TypeDef *gpio = (GPIO_TypeDef *)port;
 
     HAL_GPIO_WritePin(gpio, pin, GPIO_PIN_RESET);
+}
+
+
+void Pin::Init()
+{
+
 }

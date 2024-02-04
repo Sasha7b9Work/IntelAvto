@@ -41,6 +41,12 @@ struct PinIn : public Pin
 };
 
 
+namespace HAL_PINS
+{
+    void Init();
+}
+
+
 extern Pin pin_SPI_SCK;
 extern Pin pin_SPI_MO;
 extern Pin pin_SPI_MI;

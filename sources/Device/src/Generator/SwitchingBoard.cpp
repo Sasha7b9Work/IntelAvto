@@ -3,7 +3,7 @@
 #include "Generator/SwitchingBoard.h"
 
 
-void SwitchingBoard::SetTypeSignal(TypeSignal::E)
+void SwitchingBoard::SetTypeSignal()
 {
 
 }

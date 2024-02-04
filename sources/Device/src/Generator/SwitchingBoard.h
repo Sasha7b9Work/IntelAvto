@@ -5,5 +5,5 @@
 
 namespace SwitchingBoard
 {
-    void SetTypeSignal(TypeSignal::E);
+    void SetTypeSignal();
 }
