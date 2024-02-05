@@ -60,6 +60,7 @@ struct BaseMessage
     {
         buffer.Push(command);
     }
+    virtual ~BaseMessage() { }
 
     void Push(const Value &value)
     {

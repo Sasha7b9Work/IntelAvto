@@ -503,6 +503,11 @@
               <FileType>5</FileType>
               <FilePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_hal_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -686,6 +691,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>Timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\Timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\Timer.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Hardware/CMSIS</GroupName>
           <Files>
             <File>
@@ -742,6 +762,11 @@
               <FileName>stm32f4xx_hal_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\stm32f4xx_hal_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_SPI1_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Hardware\HAL\HAL_SPI1_p.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1449,6 +1474,11 @@
               <FileType>5</FileType>
               <FilePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma2d.h</FilePath>
             </File>
+            <File>
+              <FileName>stm32f4xx_hal_spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1632,6 +1662,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Hardware</GroupName>
+          <Files>
+            <File>
+              <FileName>Timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\Timer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Hardware\Timer.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Hardware/CMSIS</GroupName>
           <Files>
             <File>
@@ -1688,6 +1733,11 @@
               <FileName>stm32f4xx_hal_conf.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\stm32f4xx_hal_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_SPI1_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Hardware\HAL\HAL_SPI1_p.cpp</FilePath>
             </File>
           </Files>
         </Group>

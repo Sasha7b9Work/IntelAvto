@@ -9,6 +9,7 @@
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
     #pragma clang diagnostic ignored "-Wbad-function-cast"
     #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wcast-align"
 #endif
 
 
@@ -33,11 +34,13 @@
 #define HAL_PWR_MODULE_ENABLED
 #define HAL_CORTEX_MODULE_ENABLED
 #define HAL_PCD_MODULE_ENABLED
+#define HAL_SPI_MODULE_ENABLED
 
 
 #define USE_HAL_LTDC_REGISTER_CALLBACKS 0
 #define USE_HAL_TIM_REGISTER_CALLBACKS  0
 #define USE_HAL_PCD_REGISTER_CALLBACKS  0
+#define USE_HAL_SPI_REGISTER_CALLBACKS  0
 
 
 /* ########################## HSE/HSI Values adaptation ##################### */

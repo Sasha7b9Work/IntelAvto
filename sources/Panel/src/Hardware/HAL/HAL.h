@@ -20,6 +20,18 @@ namespace HAL
 };
 
 
+namespace HAL_TIM
+{
+    void Init();
+
+    uint TimeMS();
+
+    void DelayMS(uint timeMS);
+
+    void DelayUS(uint timeUS);
+};
+
+
 namespace HAL_EEPROM
 {
     const uint ADDR_SECTOR_0 = ((uint)0x08000000);  // 16k  Основная прошивка
@@ -59,13 +71,20 @@ namespace HAL_BUS_DISPLAY
     uint16 GetData(uint16 address);
 };
 
-namespace HAL_TIM
+
+// Используется для связи с основной платой
+namespace HAL_SPI1
 {
     void Init();
 
-    uint TimeMS();
+    bool Transmit(const void *buffer, int size, int timeout);
 
-    void DelayMS(uint timeMS);
+    bool Transmit(int value, int timeout);
 
-    void DelayUS(uint timeUS);
-};
+    bool Receive(void *recv, int size, int timeout);
+
+    uint ReceiveAndCompare(const void *compared, int size);
+
+    bool WaitRelease();
+}
+
