@@ -2,7 +2,7 @@
 #pragma once
 #include "defines.h"
 #include "Display/Colors.h"
-#include "Keyboard/Keyboard.h"
+#include "Hardware/Keyboard/Keyboard.h"
 #include "Utils/Observer.h"
 #include "Settings/Settings.h"
 

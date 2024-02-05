@@ -746,17 +746,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Keyboard</GroupName>
+          <GroupName>Hardware/Keyboard</GroupName>
           <Files>
             <File>
               <FileName>Keyboard.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Keyboard\Keyboard.cpp</FilePath>
+              <FilePath>..\common\Hardware\Keyboard\Keyboard.cpp</FilePath>
             </File>
             <File>
               <FileName>Keyboard.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Keyboard\Keyboard.h</FilePath>
+              <FilePath>..\common\Hardware\Keyboard\Keyboard.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1692,17 +1692,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Keyboard</GroupName>
+          <GroupName>Hardware/Keyboard</GroupName>
           <Files>
             <File>
               <FileName>Keyboard.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Keyboard\Keyboard.cpp</FilePath>
+              <FilePath>..\common\Hardware\Keyboard\Keyboard.cpp</FilePath>
             </File>
             <File>
               <FileName>Keyboard.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Keyboard\Keyboard.h</FilePath>
+              <FilePath>..\common\Hardware\Keyboard\Keyboard.h</FilePath>
             </File>
           </Files>
         </Group>
