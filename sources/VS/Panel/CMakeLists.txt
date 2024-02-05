@@ -62,7 +62,8 @@ file(GLOB SRC             ../../Panel/src/defines.h
                           ../../Panel/src/Settings.*
                                       src/Application_win.*
                                       src/main_win.cpp)
-file(GLOB CONNECTOR          ../../common/Connector/*.*)
+file(GLOB CONNECTOR          ../../common/Connector/*.*
+                          ../../Panel/src/Connector/*.*)
 file(GLOB DEVICE          ../../Panel/src/Device/*)
 file(GLOB DISPLAY                     src/Display/Display_win.cpp
                                       src/Display/Colors_win.cpp
