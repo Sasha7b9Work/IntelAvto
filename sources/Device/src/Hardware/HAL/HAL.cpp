@@ -5,6 +5,12 @@
 #include <stm32f4xx_hal.h>
 
 
+/*
+*   Ресурсы
+*   SP1 - связь с панелью
+*/
+
+
 namespace HAL
 {
     static void SystemClockConfig();

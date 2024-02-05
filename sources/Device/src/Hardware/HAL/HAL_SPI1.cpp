@@ -22,7 +22,8 @@ namespace HAL_SPI1
             SPI_TIMODE_DISABLED,            // Init.TIMode
             SPI_CRCCALCULATION_DISABLED,    // Init.CRCCalculation
             7                               // InitCRCPolynomial
-        }
+        },
+        nullptr, 0, 0, nullptr, 0, 0, nullptr, nullptr, nullptr, nullptr, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
     };
 
 }
@@ -30,18 +31,15 @@ namespace HAL_SPI1
 
 void HAL_SPI1::Init()
 {
-    GPIO_InitTypeDef is =
-    {   //  SCK         MI
-        GPIO_PIN_5 | GPIO_PIN_6,
+    GPIO_InitTypeDef isGPIOA =
+    {   //  SCK         MI           MO
+        GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7,
         GPIO_MODE_AF_PP,
         GPIO_PULLUP,
         GPIO_SPEED_HIGH,
         GPIO_AF5_SPI1
     };
-    HAL_GPIO_Init(GPIOA, &is);
-
-    is.Pin = GPIO_PIN_5;          // MO
-    HAL_GPIO_Init(GPIOB, &is);
+    HAL_GPIO_Init(GPIOA, &isGPIOA);
 
     HAL_SPI_Init(&handle);
 }
