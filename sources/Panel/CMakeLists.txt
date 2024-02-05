@@ -54,28 +54,28 @@ file(GLOB HARDWARE_USBD             src/Hardware/USBD/*.*
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c)
-file(GLOB KEYBOARD            ../common/Hardware/Keyboard/*.*)
+file(GLOB HARDWARE_KEYBOARD   ../common/Hardware/Keyboard/*.*)
 file(GLOB MENU                ../common/Menu/*.*)
 file(GLOB MENU_PAGES          ../common/Menu/Pages/*.*)
 file(GLOB SETTINGS            ../common/Settings/*.*)
 file(GLOB UTILS               ../common/Utils/*.*)
 
 
-source_group(libs/HAL         FILES ${LIBS_HAL})
-source_group(src              FILES ${SRC})
-source_group(Connector        FILES ${CONNECTOR})
-source_group(Device           FILES ${DEVICE})
-source_group(Display          FILES ${DISPLAY})
-source_group(Display/Font     FILES ${DISPLAY_FONT})
-source_group(Hardware         FILES ${HARDWARE})
-source_group(Hardware/CMSIS   FILES ${HARDWARE_CMSIS})
-source_group(Hardware/HAL     FILES ${HARDWARE_HAL})
-source_group(Hardware/USBD    FILES ${HARDWARE_USBD})
-source_group(Keyboard         FILES ${KEYBOARD})
-source_group(Menu             FILES ${MENU})
-source_group(Menu/Pages/      FILES ${MENU_PAGES})
-source_group(Settings         FILES ${SETTINGS})
-source_group(Utils            FILES ${UTILS})
+source_group(libs/HAL          FILES ${LIBS_HAL})
+source_group(src               FILES ${SRC})
+source_group(Connector         FILES ${CONNECTOR})
+source_group(Device            FILES ${DEVICE})
+source_group(Display           FILES ${DISPLAY})
+source_group(Display/Font      FILES ${DISPLAY_FONT})
+source_group(Hardware          FILES ${HARDWARE})
+source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
+source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
+source_group(Hardware/USBD     FILES ${HARDWARE_USBD})
+source_group(Hardware/Keyboard FILES ${HARDWARE_KEYBOARD})
+source_group(Menu              FILES ${MENU})
+source_group(Menu/Pages/       FILES ${MENU_PAGES})
+source_group(Settings          FILES ${SETTINGS})
+source_group(Utils             FILES ${UTILS})
 
 set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
@@ -95,7 +95,7 @@ add_library(${PROJECT_NAME}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
     ${HARDWARE_USBD}
-    ${KEYBOARD}
+    ${HARDWARE_KEYBOARD}
     ${MENU}
     ${MENU_PAGES}
     ${SETTINGS}
