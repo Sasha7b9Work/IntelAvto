@@ -12,61 +12,60 @@ struct Settings;
 #define TIME_MS   HAL_TIM::TimeMS()
 
 
-struct HAL
+namespace HAL
 {
-    static void Init();
-    static void DeInit();
-    static void ERROR_HANDLER();
+    void Init();
+    void DeInit();
+    void ERROR_HANDLER();
 };
 
 
-struct HAL_EEPROM
+namespace HAL_EEPROM
 {
-    static const uint ADDR_SECTOR_0        = ((uint)0x08000000);  // 16k  Основная прошивка
-    static const uint ADDR_SECTOR_1        = ((uint)0x08004000);  // 16k
-    static const uint ADDR_SECTOR_2        = ((uint)0x08008000);  // 16k
-    static const uint ADDR_SECTOR_3        = ((uint)0x0800c000);  // 16k
-    static const uint ADDR_SECTOR_4        = ((uint)0x08010000);  // 64k
-    static const uint ADDR_SECTOR_FIRMWARE = ((uint)0x08020000);  // 128k  Сюда записываем прошивку
-    static const uint ADDR_SECTOR_UPGRADE  = ((uint)0x08040000);  // 128k  Здесь хранится считанная из флешки прошивка
-    static const uint ADDR_SECTOR_SETTINGS = ((uint)0x08060000);  // 128k
-    static const uint SIZE_SECTOR_SETTINGS = (128 * 1024);
+    const uint ADDR_SECTOR_0 = ((uint)0x08000000);  // 16k  Основная прошивка
+    const uint ADDR_SECTOR_1 = ((uint)0x08004000);  // 16k
+    const uint ADDR_SECTOR_2 = ((uint)0x08008000);  // 16k
+    const uint ADDR_SECTOR_3 = ((uint)0x0800c000);  // 16k
+    const uint ADDR_SECTOR_4 = ((uint)0x08010000);  // 64k
+    const uint ADDR_SECTOR_FIRMWARE = ((uint)0x08020000);  // 128k  Сюда записываем прошивку
+    const uint ADDR_SECTOR_UPGRADE = ((uint)0x08040000);  // 128k  Здесь хранится считанная из флешки прошивка
+    const uint ADDR_SECTOR_SETTINGS = ((uint)0x08060000);  // 128k
+    const uint SIZE_SECTOR_SETTINGS = (128 * 1024);
 
-    static void LoadSettings(Settings *settings);
+    void LoadSettings(Settings *settings);
 
-    static void SaveSettings(Settings *settings);
+    void SaveSettings(Settings *settings);
 
     // Стирает сектор с начальным адресом startAddress
-    static void EraseSector(uint address);
+    void EraseSector(uint address);
 
     // Записывает size байт из массива data по адресу address
-    static void WriteData(uint address, void *data, uint size);
+    void WriteData(uint address, void *data, uint size);
 };
 
 
-struct HAL_BUS_DISPLAY
+namespace HAL_BUS_DISPLAY
 {
-    static void Init();
-    static void Reset();
-    static void WriteCommand(uint16 command);
-    static void WriteCommand(uint16 command, uint data);
-    static void WriteCommand(uint16 command, uint data1, uint data2, uint data3);
-    static void WriteData(uint data);
-    static uint16 ReadData();
+    void Init();
+    void Reset();
+    void WriteCommand(uint16 command);
+    void WriteCommand(uint16 command, uint data);
+    void WriteCommand(uint16 command, uint data1, uint data2, uint data3);
+    void WriteData(uint data);
+    uint16 ReadData();
 
-    static void SendBuffer(uint8 *buffer, int x, int y, int width, int height, int k);
-    
-    static uint16 GetData(uint16 address);
+    void SendBuffer(uint8 *buffer, int x, int y, int width, int height, int k);
+
+    uint16 GetData(uint16 address);
 };
 
-
-struct HAL_TIM
+namespace HAL_TIM
 {
-    static void Init();
+    void Init();
 
-    static uint TimeMS();
+    uint TimeMS();
 
-    static void DelayMS(uint timeMS);
+    void DelayMS(uint timeMS);
 
-    static void DelayUS(uint timeUS);
+    void DelayUS(uint timeUS);
 };
