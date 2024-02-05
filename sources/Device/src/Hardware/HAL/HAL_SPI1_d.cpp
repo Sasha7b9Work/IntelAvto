@@ -16,8 +16,8 @@ namespace HAL_SPI1
             SPI_DATASIZE_8BIT,              // Init.DataSize
             SPI_POLARITY_HIGH,              // Init.CLKPolarity
             SPI_PHASE_2EDGE,                // Init.CLKPhase
-            SPI_NSS_SOFT,                   // Init.NSS
-            SPI_BAUDRATEPRESCALER_32,      // Init.BaudRatePrescaler
+            SPI_NSS_HARD_INPUT,             // Init.NSS
+            SPI_BAUDRATEPRESCALER_32,       // Init.BaudRatePrescaler
             SPI_FIRSTBIT_MSB,               // Init.FirstBit
             SPI_TIMODE_DISABLED,            // Init.TIMode
             SPI_CRCCALCULATION_DISABLED,    // Init.CRCCalculation

@@ -17,7 +17,7 @@ namespace HAL_SPI1
             SPI_DATASIZE_8BIT,
             SPI_POLARITY_HIGH,
             SPI_PHASE_2EDGE,
-            SPI_NSS_SOFT,
+            SPI_NSS_HARD_OUTPUT,
             SPI_BAUDRATEPRESCALER_32,
             SPI_FIRSTBIT_MSB,
             SPI_TIMODE_DISABLED,
@@ -29,31 +29,51 @@ namespace HAL_SPI1
 
     // Возвращает true, если прибор готов к обмену
     static bool IsReady();
+
+    namespace CS
+    {
+        static void ToLow()
+        {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
+        }
+        static void Init()
+        {
+            GPIO_InitTypeDef is =
+            {
+                GPIO_PIN_6,
+                GPIO_MODE_AF_PP,
+                GPIO_PULLUP,
+                GPIO_SPEED_HIGH,
+                GPIO_AF5_SPI1
+            };
+
+            HAL_GPIO_Init(GPIOB, &is);
+
+            ToLow();
+        }
+    }
 }
 
 
 
 void HAL_SPI1::Init()
 {
-    GPIO_InitTypeDef isGPIO =
-    {   //  CLK         MI           MO
-        GPIO_PIN_2 | GPIO_PIN_5 | GPIO_PIN_6,
+    CS::Init();
+
+    GPIO_InitTypeDef is =
+    {   //  SCK         MI
+        GPIO_PIN_5 | GPIO_PIN_6,
         GPIO_MODE_AF_PP,
         GPIO_PULLUP,
         GPIO_SPEED_HIGH,
-        GPIO_AF5_SPI4
+        GPIO_AF5_SPI1
     };
+    HAL_GPIO_Init(GPIOA, &is);
 
-    HAL_GPIO_Init(GPIOE, &isGPIO);
+    is.Pin = GPIO_PIN_5;            // MO
+    HAL_GPIO_Init(GPIOB, &is);
 
     HAL_SPI_Init(&handleSPI1);
-
-    // На этом пине будем читать занятость процессора генератора
-    isGPIO.Pin = GPIO_PIN_4;
-    isGPIO.Mode = GPIO_MODE_INPUT;
-    isGPIO.Pull = GPIO_PULLDOWN;
-    isGPIO.Alternate = 0;
-    HAL_GPIO_Init(GPIOE, &isGPIO);
 }
 
 

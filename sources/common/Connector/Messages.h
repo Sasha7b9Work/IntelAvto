@@ -45,6 +45,14 @@ struct BufferMessage
     {
         return Value((int)buffer[Pointer()++]);
     }
+    int Size()
+    {
+        return (int)(sizeof(buffer[0]) * Pointer());
+    }
+    uint8 *TakeData()
+    {
+        return (uint8 *)buffer;
+    }
 private:
     // Индексация производится через эту функцию. После погружения всех элементов в
     // буфер в элеенте buffer[0] будет храниться количество слов для передачи
@@ -73,6 +81,21 @@ struct BaseMessage
     }
 
     void Send() const;
+
+    int Size()
+    {
+        return buffer.Size();
+    }
+
+    uint8 *TakeData()
+    {
+        return buffer.TakeData();
+    }
+
+    bool AllocateMemory(int)
+    {
+        return true;
+    }
 
     // Выполняется на приёмной староне
     virtual void Execute() { }

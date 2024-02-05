@@ -558,6 +558,21 @@
               <FileType>8</FileType>
               <FilePath>.\src\Connector\Value_p.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Interface_p.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Interface_p.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Transceiver.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Transceiver_p.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1528,6 +1543,21 @@
               <FileName>Value_p.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Connector\Value_p.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Interface_p.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Interface_p.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Transceiver.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Transceiver_p.cpp</FilePath>
             </File>
           </Files>
         </Group>

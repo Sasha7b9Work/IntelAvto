@@ -46,7 +46,7 @@ file(GLOB LIBS_HAL       ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Drive
                          ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.*)
 
 file(GLOB SRC                  src/*.h src/*.cpp)
-file(GLOB CONNECTOR      ../common/Connector/*.*
+file(GLOB CONNECTOR      ../common/Connector/Value.*
                                src/Connector/*.*)
 file(GLOB GENERATOR            src/Generator/*.*)
 file(GLOB HARDWARE             src/Hardware/*.h src/Hardware/*.cpp)
