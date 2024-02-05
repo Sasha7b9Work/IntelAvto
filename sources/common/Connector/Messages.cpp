@@ -7,3 +7,13 @@ void BaseMessage::Send() const
 {
 
 }
+
+
+BaseMessage *BaseMessage::Clone()
+{
+    BaseMessage *result = new BaseMessage();
+
+    result->buffer = buffer;
+
+    return result;
+}

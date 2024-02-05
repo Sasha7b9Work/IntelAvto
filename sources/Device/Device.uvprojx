@@ -1132,11 +1132,6 @@
               <FilePath>.\src\Hardware\HAL\HAL_IT.cpp</FilePath>
             </File>
             <File>
-              <FileName>HAL_SPI1.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Hardware\HAL\HAL_SPI1.cpp</FilePath>
-            </File>
-            <File>
               <FileName>HAL_TIM.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_TIM.cpp</FilePath>
@@ -1165,6 +1160,11 @@
               <FileName>HAL_PINS.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Hardware\HAL\HAL_PINS.h</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_SPI1_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Hardware\HAL\HAL_SPI1_d.cpp</FilePath>
             </File>
           </Files>
         </Group>

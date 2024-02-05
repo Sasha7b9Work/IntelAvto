@@ -1,22 +1,13 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "common/Messages.h"
-#include "common/Transceiver.h"
-#include "common/Handlers_d.h"
-#include "common/Interface_d.h"
-#ifdef LOADER
-#include "FDrive/FDrive_dl.h"
-#else
-#include "FDrive/FDrive_d.h"
-#endif
-#include "Generator/Generator_d.h"
-#include "Hardware/CPU.h"
+#include "Connector/Messages.h"
+#include "Connector/Transceiver.h"
+#include "Connector/Handlers_d.h"
+#include "Connector/Interface_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
-#include "Settings/CalibrationSettings.h"
 #include "Utils/Queue.h"
 #include "Utils/StringUtils.h"
-#include "common/Command.h"
 #include "structs.h"
 #include <cstdlib>
 
@@ -45,30 +36,28 @@ void DInterface::ResetFreqForSend()
 
 void DInterface::Update()
 {
-    CPU::SetReady();
-
     int size = 0;
 
-    if (HAL_SPI1::Receive(&size, 4, 10))                                                           // Узнаём размер принимаемого сообщения
+    if (HAL_SPI1::Receive(&size, 4, 10))                                                            // Узнаём размер принимаемого сообщения
     {
-        SimpleMessage first;              // Сюда принимаем первое сообщение
-        SimpleMessage second;             // Сюда принимаем второе сообщение
+        BaseMessage first;              // Сюда принимаем первое сообщение
+        BaseMessage second;             // Сюда принимаем второе сообщение
 
         int timeout = size > 100 ? 200 : 10;
 
         if (first.AllocateMemory(size))
         {
-            if (HAL_SPI1::Receive(first.TakeData(), first.Size(), timeout))                            // Принимаем данные
+            if (HAL_SPI1::Receive(first.TakeData(), first.Size(), timeout))                         // Принимаем данные
             {
-                if (HAL_SPI1::Transmit(&size, 4, timeout))                                         // Передаём его размер
+                if (HAL_SPI1::Transmit(&size, 4, timeout))                                          // Передаём его размер
                 {
-                    if (HAL_SPI1::Transmit(first.TakeData(), first.Size(), timeout))                   // И данные
+                    if (HAL_SPI1::Transmit(first.TakeData(), first.Size(), timeout))                // И данные
                     {
                         if (HAL_SPI1::Receive(&size, 4, 10))
                         {
-                            if (second.AllocateMemory(size))                                    // Второй раз сообщение будем принимать в этот буфер
+                            if (second.AllocateMemory(size))                                        // Второй раз сообщение будем принимать в этот буфер
                             {
-                                if (HAL_SPI1::Receive(second.TakeData(), second.Size(), timeout))      // Что и делаем
+                                if (HAL_SPI1::Receive(second.TakeData(), second.Size(), timeout))   // Что и делаем
                                 {
                                     size = second.Size();
 
@@ -76,7 +65,7 @@ void DInterface::Update()
                                     {
                                         if (HAL_SPI1::Transmit(second.TakeData(), second.Size(), timeout))
                                         {
-                                            if (second.IsEquals(&first))                        // Проверяем, совпали ли оба принятых сообщения
+                                            if (second.IsEquals(&first))                            // Проверяем, совпали ли оба принятых сообщения
                                             {
                                                 DHandlers::Processing(&first);
                                             }
@@ -90,14 +79,12 @@ void DInterface::Update()
             }
         }
     }
-
-    CPU::SetBusy();
 }
 
 
-bool DInterface::AddMessageForTransmit(SimpleMessage *message)
+bool DInterface::AddMessageForTransmit(BaseMessage *message)
 {
-    SimpleMessage *clone = message->Clone();
+    BaseMessage *clone = message->Clone();
 
     if (!outbox.Push(clone))
     {
@@ -111,13 +98,13 @@ bool DInterface::AddMessageForTransmit(SimpleMessage *message)
 }
 
 
-void SimpleMessage::Transmit()
+void BaseMessage::Transmit()
 {
     DInterface::AddMessageForTransmit(this);
 }
 
 
-void SimpleMessage::TransmitAndSend()
+void BaseMessage::TransmitAndSend()
 {
     Transmit();
 

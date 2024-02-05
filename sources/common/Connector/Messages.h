@@ -1,6 +1,7 @@
 // 2024/02/01 10:54:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Connector/Value.h"
+#include <cstring>
 
 
 struct Command
@@ -53,6 +54,17 @@ struct BufferMessage
     {
         return (uint8 *)buffer;
     }
+    bool operator==(BufferMessage &rhs)
+    {
+        int size = Size();
+
+        if (size != rhs.Size())
+        {
+            return false;
+        }
+
+        return std::memcmp(TakeData(), rhs.TakeData(), (uint)size) == 0;
+    }
 private:
     // Индексация производится через эту функцию. После погружения всех элементов в
     // буфер в элеенте buffer[0] будет храниться количество слов для передачи
@@ -64,7 +76,7 @@ private:
 
 struct BaseMessage
 {
-    BaseMessage(Command::E command)
+    BaseMessage(Command::E command = Command::Count)
     {
         buffer.Push(command);
     }
@@ -99,6 +111,17 @@ struct BaseMessage
 
     // Выполняется на приёмной староне
     virtual void Execute() { }
+
+    bool IsEquals(BaseMessage *rhs)
+    {
+        return buffer == rhs->buffer;
+    }
+
+    BaseMessage *Clone();
+
+    void Transmit();
+
+    void TransmitAndSend();
 
 private:
 

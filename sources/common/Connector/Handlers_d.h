@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "common/Messages.h"
+#include "Connector/Messages.h"
 
 
 namespace DHandlers
 {
-    void Processing(SimpleMessage *message);
+    void Processing(BaseMessage *message);
 };
