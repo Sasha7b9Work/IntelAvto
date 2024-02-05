@@ -3,6 +3,12 @@
 #include <stm32f4xx_hal.h>
 
 
+/*
+*   Ресурсы
+*   TIM4 - Клавиатура
+*/
+
+
 #ifdef PANEL
     PCD_HandleTypeDef hPCD;
 #endif

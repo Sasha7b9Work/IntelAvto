@@ -18,7 +18,7 @@ int main(void)
 
     while (1)
     {
-//        Menu::Input::Update();
+        Menu::Input::Update();
         Display::Update();
     }
 }

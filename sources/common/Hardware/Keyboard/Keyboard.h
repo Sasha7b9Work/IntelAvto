@@ -70,8 +70,6 @@ namespace Keyboard
     // Возвращает следующее событие
     Control NextControl();
 
-//    void AppendControl(const Control &);
-
     void Lock();
 
     void Unlock();

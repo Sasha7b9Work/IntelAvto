@@ -6,6 +6,8 @@
 #include <stm32f4xx_hal.h>
 
 
+namespace Keyboard
+{
 #define TIME_UPDATE_KEYBOARD 2   // Время между опросами клавиатуры
 #define NUM_RL 4
 #define NUM_SL 4
@@ -44,56 +46,56 @@
 #define PORT_ENCBUT GPIOD
 
 
-static TIM_HandleTypeDef handleTIM4;
+    static TIM_HandleTypeDef handleTIM4;
 
 
-static Key::E keys[NUM_SL][NUM_RL] =
-{
-    {Key::Left, Key::Right, Key::Back, Key::OK},
-    {Key::_1,   Key::_2,    Key::_3,   Key::_4},
-    {Key::_5,   Key::_6,    Key::_7,   Key::_8},
-    {Key::_9,   Key::Minus, Key::Dot,  Key::Start},
-};
+    static Key::E keys[NUM_SL][NUM_RL] =
+    {
+        {Key::Left, Key::Right, Key::Back, Key::OK},
+        {Key::_1,   Key::_2,    Key::_3,   Key::_4},
+        {Key::_5,   Key::_6,    Key::_7,   Key::_8},
+        {Key::_9,   Key::Minus, Key::Dot,  Key::Start},
+    };
 
-/// Очередь сообщений - здесь все события органов управления
+    /// Очередь сообщений - здесь все события органов управления
 #define MAX_ACTIONS 100
-static Control controls[MAX_ACTIONS];
-/// Количество уже имеющихся сообщений
-static int numActions = 0;
+    static Control controls[MAX_ACTIONS];
+    /// Количество уже имеющихся сообщений
+    static int numActions = 0;
 
-/// Установленное в true значение означает, что сохранять куда-либо информацию о её состоянии нельзя до отпускания (чтобы не было ложных срабатываний типа Long
-static bool alreadyLong[NUM_RL][NUM_SL];
-/// При обнаружении нажатия кнопки сюда записывается время нажатия
-static uint timePress[NUM_SL][NUM_RL];
+    /// Установленное в true значение означает, что сохранять куда-либо информацию о её состоянии нельзя до отпускания (чтобы не было ложных срабатываний типа Long
+    static bool alreadyLong[NUM_RL][NUM_SL];
+    /// При обнаружении нажатия кнопки сюда записывается время нажатия
+    static uint timePress[NUM_SL][NUM_RL];
 
-/// Время последнего автонажатия нопки
-volatile uint prevRepeat = 0;
-volatile uint prevPause = 0;
+    /// Время последнего автонажатия нопки
+    volatile uint prevRepeat = 0;
+    volatile uint prevPause = 0;
 
+    /// Установить состояние пина
+    static void Set_SL(int, int);
+    /// Установить состояние всех пинов в одно положение
+    static void Set_All_SL(int);
+    /// Возвращает состояние пина rl
+    static int Read_RL(int rl);
+    /// Инициализировать пины
+    static void InitPins();
+    /// Инициализировать таймер для периодического опроса клавиатуры
+    static void InitTimer();
+    /// Функция, периодически вызываемая по прерыванию таймера
+    static void Update();
+    /// Добавить действие в буфер
+    static void AddAction(Key::E key, Action::E action);
+    /// Обработка ручки
+    static void DetectRegulator();
 
-
-/// Установить состояние пина
-static void Set_SL(int, int);
-/// Установить состояние всех пинов в одно положение
-static void Set_All_SL(int);
-/// Возвращает состояние пина rl
-static int Read_RL(int rl);
-/// Инициализировать пины
-static void InitPins();
-/// Инициализировать таймер для периодического опроса клавиатуры
-static void InitTimer();
-/// Функция, периодически вызываемая по прерыванию таймера
-static void Update();
-/// Добавить действие в буфер
-static void AddAction(Key::E key, Action::E action);
-/// Обработка ручки
-static void DetectRegulator();
+    static bool KeyboardCheck();
 
 #define BUTTON_IS_PRESS(state) ((state) == 0)
+}
 
 
-
-static void Update()
+void Keyboard::Update()
 {
     uint time = HAL_GetTick();
 
@@ -148,7 +150,7 @@ static void Update()
     Set_All_SL(1);
 }
 
-static void DetectRegulator()
+void Keyboard::DetectRegulator()
 {
     // Детектируем поворот
     static bool prevStatesIsOne = false;
@@ -174,7 +176,7 @@ static void DetectRegulator()
     }
 }
 
-static bool KeyboardCheck()
+bool Keyboard::KeyboardCheck()
 {
     bool keyboardFail = false;
 
@@ -220,7 +222,7 @@ bool Keyboard::Init()
 }
 
 
-void Set_All_SL(int st)
+void Keyboard::Set_All_SL(int st)
 {
     for (int i = 0; i < 4; i++)
     {
@@ -229,7 +231,7 @@ void Set_All_SL(int st)
 }
 
 
-void Set_SL(int bus, int st)
+void Keyboard::Set_SL(int bus, int st)
 {
     static const GPIO_TypeDef *ports[4] = { PORT_SL0, PORT_SL1, PORT_SL2, PORT_SL3 };
     static const uint16 pins[4] = { PIN_SL0,  PIN_SL1,  PIN_SL2,  PIN_SL3 };
@@ -239,7 +241,7 @@ void Set_SL(int bus, int st)
 }
 
 
-int Read_RL(int rl)
+int Keyboard::Read_RL(int rl)
 {
     static const GPIO_TypeDef *ports[4] = { PORT_RL0, PORT_RL1, PORT_RL2, PORT_RL3 };
     static const uint16 pins[4] = { PIN_RL0,  PIN_RL1,  PIN_RL2, PIN_RL3 };
@@ -248,8 +250,10 @@ int Read_RL(int rl)
 }
 
 
-static void InitPins()
+void Keyboard::InitPins()
 {
+
+
 //    GPIO_InitTypeDef is =
 //    {
 //        PIN_SL0 | PIN_SL1 | PIN_SL2 | PIN_SL3 | PIN_RL0 | PIN_RL1,
@@ -273,7 +277,7 @@ static void InitPins()
 }
 
 
-static void InitTimer()
+void Keyboard::InitTimer()
 {
     __HAL_RCC_TIM4_CLK_ENABLE();
 
@@ -302,7 +306,7 @@ static void InitTimer()
 }
 
 
-static void AddAction(Key::E key, Action::E action)
+void Keyboard::AddAction(Key::E key, Action::E action)
 {
     if (action != Action::Press)
     {
@@ -381,7 +385,7 @@ extern "C" {
 
     void TIM4_IRQHandler()
     {
-        HAL_TIM_IRQHandler(&handleTIM4);
+        HAL_TIM_IRQHandler(&Keyboard::handleTIM4);
     }
 
 #ifdef __cplusplus
@@ -391,9 +395,9 @@ extern "C" {
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) //-V2009 //-V2558
 {
-    if (htim == &handleTIM4)
+    if (htim == &Keyboard::handleTIM4)
     {
-        Update();
+        Keyboard::Update();
     }
 }
 
