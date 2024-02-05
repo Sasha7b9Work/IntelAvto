@@ -29,7 +29,7 @@ namespace Display
 
     using namespace Primitives;
 
-    /// В этом буфере будем рисовать. Ширина равна 480 / 2 потому, что в байте хранятся 2 пикселя с 1 из 16-ти возможных градация каждая.
+    // В этом буфере будем рисовать. Ширина равна 480 / 2 потому, что в байте хранятся 2 пикселя с 1 из 16-ти возможных градация каждая.
 #define WIDTH_BUFFER    (480)
 #define HEIGHT_BUFFER   (272 / Display::NUM_PARTS)
     static uint8 buffer[HEIGHT_BUFFER][WIDTH_BUFFER];
