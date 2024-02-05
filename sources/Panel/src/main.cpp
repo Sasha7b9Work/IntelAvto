@@ -10,15 +10,9 @@ int main(void)
 {
     HAL::Init();
 
-//    gset.Load();
-
     Display::Init();
 
-//    if (Keyboard::Init())
-//    {
-//        Display::DrawKeyboardFailScreen();
-//        HAL_TIM::DelayMS(5000);
-//    }
+    Keyboard::Init();
 
     Menu::Init();
 

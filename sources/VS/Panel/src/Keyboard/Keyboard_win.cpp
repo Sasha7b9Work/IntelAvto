@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "GUI/Application.h"
-#include "Keyboard/Keyboard.h"
+#include "Hardware/Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
 
 

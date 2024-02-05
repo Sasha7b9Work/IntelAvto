@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Keyboard/Keyboard.h"
+#include "Hardware/Keyboard/Keyboard.h"
 #include "Application_win.h"
 
 

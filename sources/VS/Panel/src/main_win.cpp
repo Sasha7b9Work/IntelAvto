@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Display/Display.h"
 #include "Hardware/HAL/HAL.h"
-#include "Keyboard/Keyboard.h"
+#include "Hardware/Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
 
 

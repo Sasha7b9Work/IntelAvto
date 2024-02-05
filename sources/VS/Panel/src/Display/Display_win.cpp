@@ -4,7 +4,7 @@
 #include "Display/Primitives.h"
 #include "Display/Font/Font.h"
 #include "GUI/GovernorGUI.h"
-#include "Keyboard/Keyboard.h"
+#include "Hardware/Keyboard/Keyboard.h"
 #include "Utils/Math.h"
 
 #pragma warning(push, 0)
