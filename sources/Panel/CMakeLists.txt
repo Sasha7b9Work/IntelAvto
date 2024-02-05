@@ -42,8 +42,9 @@ add_compile_options(
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 file(GLOB SRC                       src/*.*)
-file(GLOB CONNECTOR           ../common/Connector/Interface_p.h
+file(GLOB CONNECTOR           ../common/Connector/Interface_p.*
                               ../common/Connector/Messages.*
+                              ../common/Connector/Handlers_p.*
                               ../common/Connector/Transceiver.h
                               ../common/Connector/Transceiver_p.cpp
                               ../common/Connector/Value.h

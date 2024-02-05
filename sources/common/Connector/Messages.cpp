@@ -3,12 +3,6 @@
 #include "Connector/Messages.h"
 
 
-void BaseMessage::Send() const
-{
-
-}
-
-
 BaseMessage *BaseMessage::Clone()
 {
     BaseMessage *result = new BaseMessage();

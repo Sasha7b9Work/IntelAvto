@@ -92,8 +92,6 @@ struct BaseMessage
         return buffer.PopValue();
     }
 
-    void Send() const;
-
     int Size()
     {
         return buffer.Size();
@@ -120,8 +118,6 @@ struct BaseMessage
     BaseMessage *Clone();
 
     void Transmit();
-
-    void TransmitAndSend();
 
 private:
 

@@ -102,14 +102,3 @@ void BaseMessage::Transmit()
 {
     DInterface::AddMessageForTransmit(this);
 }
-
-
-void BaseMessage::TransmitAndSend()
-{
-    Transmit();
-
-    while(DInterface::GetOutbox().Size())
-    {
-        DInterface::Update();
-    }
-}

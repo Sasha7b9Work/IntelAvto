@@ -1,32 +1,29 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "common/Messages.h"
-#include "Utils/List.h"
-
-
+#include "Connector/Messages.h"
 
 
 // Структура содержит данные для элементарного задания, передаваемого в Interface
 struct Task
 {
     // Этот конструктор может использоваться только в Interface для сравнения
-    Task(SimpleMessage *msg);
+    Task(BaseMessage *msg);
 
-    Task(SimpleMessage *msg, bool (*process)(SimpleMessage *), bool (*equal)(Task *, Task *));
+    Task(BaseMessage *msg, bool (*process)(BaseMessage *), bool (*equal)(Task *, Task *));
     // Деструктор. В нём нужно удалить сообщение
     ~Task();
     // Функция сравнения
     bool Equals(Task *, Task *);
     // Соообщение для пересылки
-    SimpleMessage *message;
+    BaseMessage *message;
     // Возвращает указатель на готовое к использованию (со сброщенным указателем) сообщение
-    SimpleMessage *GetMessage();
+    BaseMessage *GetMessage();
     // Послать сообщение задания
     void TransmitMessage();
     // Возвращает true, если прошло слишком мало времени после предыдущей засылки сообщения
     bool PassedLittleTimeAfterSend();
     // Функция обработки ответа
-    bool(*funcProcess)(SimpleMessage *);
+    bool(*funcProcess)(BaseMessage *);
 private:
     // Время последней передачи сообщения
     uint timeLast;
@@ -44,5 +41,5 @@ namespace PInterface
     // Добавляеет задание. Если не получилось, возвращает false
     void AddTask(Task *);
 
-    void AddMessageForTransmit(SimpleMessage *);
+    void AddMessageForTransmit(BaseMessage *);
 };
