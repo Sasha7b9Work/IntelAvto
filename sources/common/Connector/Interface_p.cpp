@@ -2,12 +2,12 @@
 #include "defines.h"
 #include "Connector/Interface_p.h"
 #include "Connector/Transceiver.h"
-//#include "structs.h"
 #include "Display/Console.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Debug.h"
 #include "Connector/Handlers_p.h"
+#include "Utils/List.h"
 #include <cstdlib>
 
 
@@ -37,25 +37,9 @@ void PInterface::Update()
 {
     static uint time = 0;
 
-    if (_TIME_MS - time < 100)
+    if (TIME_MS - time < 100)
     {
         return;
-    }
-
-    time = _TIME_MS;
-
-    Message::RequestData message;
-
-    Transceiver::Transmit(&message);
-    
-    if (Transceiver::Receive(&message))
-    {
-        if (ProcessTask(&message) ||            // Обрабатываем сообщение, если запрос на него есть в очереди заданий
-            PHandlers::Processing(&message))    // или просто обрабатываем в обратном случае
-        {
-            time = 0;
-            Update();
-        }
     }
 
     SendTasks();
@@ -75,7 +59,7 @@ void PInterface::AddTask(Task *task)
 void Task::TransmitMessage()
 {
     message->Transmit();    // Посылаем сообщение
-    timeLast = _TIME_MS;     // запоминаем время посылки
+    timeLast = TIME_MS;     // запоминаем время посылки
 }
 
 
@@ -99,7 +83,7 @@ void PInterface::SendTasks()
 
 bool Task::PassedLittleTimeAfterSend()
 {
-    return (_TIME_MS - timeLast) < 1000;
+    return (TIME_MS - timeLast) < 1000;
 }
 
 
