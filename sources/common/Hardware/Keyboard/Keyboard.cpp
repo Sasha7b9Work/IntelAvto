@@ -252,28 +252,46 @@ int Keyboard::Read_RL(int rl)
 
 void Keyboard::InitPins()
 {
+    GPIO_InitTypeDef is =
+    {
+        PIN_SL0,
+        GPIO_MODE_OUTPUT_PP,
+        GPIO_PULLUP
+    };
 
+    HAL_GPIO_Init(PORT_SL0, &is);
 
-//    GPIO_InitTypeDef is =
-//    {
-//        PIN_SL0 | PIN_SL1 | PIN_SL2 | PIN_SL3 | PIN_RL0 | PIN_RL1,
-//        GPIO_MODE_OUTPUT_PP,
-//        GPIO_PULLUP
-//    };
-////    _HAL_GPIO_Init(GPIOB, &is);
-//
-//    is.Pin = PIN_RL0 | PIN_RL1;
-//    is.Mode = GPIO_MODE_INPUT;
-////    _HAL_GPIO_Init(GPIOB, &is);
-//
-//    is.Pin = PIN_RL2;
-////    _HAL_GPIO_Init(GPIOD, &is);
-//
-//    is.Pin = PIN_RL3;
-////    _HAL_GPIO_Init(GPIOA, &is);
-//
-//    is.Pin = PIN_ENC1 | PIN_ENC2;
-////    _HAL_GPIO_Init(GPIOC, &is);
+    is.Pin = PIN_SL1;
+    HAL_GPIO_Init(PORT_SL1, &is);
+
+    is.Pin = PIN_SL2;
+    HAL_GPIO_Init(PORT_SL2, &is);
+
+    is.Pin = PIN_SL3;
+    HAL_GPIO_Init(PORT_SL3, &is);
+
+    is.Mode = GPIO_MODE_INPUT;
+
+    is.Pin = PIN_RL0;
+    HAL_GPIO_Init(PORT_RL0, &is);
+
+    is.Pin = PIN_RL1;
+    HAL_GPIO_Init(PORT_RL1, &is);
+
+    is.Pin = PIN_RL2;
+    HAL_GPIO_Init(PORT_RL2, &is);
+
+    is.Pin = PIN_RL3;
+    HAL_GPIO_Init(PORT_RL3, &is);
+
+    is.Pin = PIN_ENC1;
+    HAL_GPIO_Init(PORT_ENC1, &is);
+
+    is.Pin = PIN_ENC2;
+    HAL_GPIO_Init(PORT_ENC2, &is);
+
+    is.Pin = PIN_ENCBUT;
+    HAL_GPIO_Init(PORT_ENCBUT, &is);
 }
 
 
