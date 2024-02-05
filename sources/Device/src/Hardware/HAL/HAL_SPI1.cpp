@@ -30,15 +30,18 @@ namespace HAL_SPI1
 
 void HAL_SPI1::Init()
 {
-    GPIO_InitTypeDef isGPIOA =
-    {   //  SCK         MI           MO
-        GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7,
+    GPIO_InitTypeDef is =
+    {   //  SCK         MI
+        GPIO_PIN_5 | GPIO_PIN_6,
         GPIO_MODE_AF_PP,
         GPIO_PULLUP,
         GPIO_SPEED_HIGH,
         GPIO_AF5_SPI1
     };
-    HAL_GPIO_Init(GPIOA, &isGPIOA);
+    HAL_GPIO_Init(GPIOA, &is);
+
+    is.Pin = GPIO_PIN_5;          // MO
+    HAL_GPIO_Init(GPIOB, &is);
 
     HAL_SPI_Init(&handle);
 }
