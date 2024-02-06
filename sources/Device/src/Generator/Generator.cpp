@@ -4,7 +4,7 @@
 #include "Generator/FPGA.h"
 #include "Generator/SwitchingBoard.h"
 #include "Generator/MCP4801.h"
-#include "Generator/SourceFollower.h"
+#include "Generator/MAX532.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL_PINS.h"
 
@@ -37,7 +37,7 @@ void Generator::Start2A(const Value &Us, const Value &t1)
 
     TimeMeterMS().Delay(1000);
 
-    SourceFollower::Set(Us);
+    MAX532::Set(Us);
     MCP4801::Set(Us);
 
     TimeMeterMS().Delay(1000);

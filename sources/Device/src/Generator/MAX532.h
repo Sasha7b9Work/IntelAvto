@@ -4,7 +4,7 @@
 
 
 // Источник питания истокового повторителя
-namespace SourceFollower
+namespace MAX532
 {
     void Set(const Value &);
 }
