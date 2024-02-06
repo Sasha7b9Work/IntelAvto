@@ -3,7 +3,7 @@
 #include "Generator/Generator.h"
 #include "Generator/FPGA.h"
 #include "Generator/SwitchingBoard.h"
-#include "Generator/VoltageOut.h"
+#include "Generator/MCP4801.h"
 #include "Generator/SourceFollower.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL_PINS.h"
@@ -11,7 +11,7 @@
 
 void Generator::Stop()
 {
-    VoltageOut::Set(Value(0));
+    MCP4801::Set(Value(0));
 
     pin_K1_FOR.ToLow();
     pin_K2_FOR.ToLow();
@@ -30,7 +30,7 @@ void Generator::Start2A(const Value &Us, const Value &t1)
 
     SwitchingBoard::SetTypeSignal();
 
-    VoltageOut::Set(Value(0));
+    MCP4801::Set(Value(0));
 
     pin_K1_FOR.ToHi();
     pin_K2_FOR.ToHi();
@@ -38,7 +38,7 @@ void Generator::Start2A(const Value &Us, const Value &t1)
     TimeMeterMS().Delay(1000);
 
     SourceFollower::Set(Us);
-    VoltageOut::Set(Us);
+    MCP4801::Set(Us);
 
     TimeMeterMS().Delay(1000);
 

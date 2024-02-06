@@ -1062,14 +1062,14 @@
               <FilePath>.\src\Generator\SourceFollower.h</FilePath>
             </File>
             <File>
-              <FileName>VoltageOut.cpp</FileName>
+              <FileName>MCP4801.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Generator\VoltageOut.cpp</FilePath>
+              <FilePath>.\src\Generator\MCP4801.cpp</FilePath>
             </File>
             <File>
-              <FileName>VoltageOut.h</FileName>
+              <FileName>MCP4801.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Generator\VoltageOut.h</FilePath>
+              <FilePath>.\src\Generator\MCP4801.h</FilePath>
             </File>
           </Files>
         </Group>
