@@ -10,7 +10,7 @@ uint HAL_TIM::TimeMS()
 }
 
 
-void HAL_TIM::Delay(uint timeMS)
+void HAL_TIM::DelayMS(uint timeMS)
 {
     HAL_Delay(timeMS);
 }

@@ -33,7 +33,9 @@ namespace HAL_TIM
 {
     uint TimeMS();
 
-    void Delay(uint timeMS);
+    void DelayMS(uint timeMS);
+
+    void DelayUS(uint timeUS);
 };
 
 

@@ -92,11 +92,14 @@ void HAL_PINS::Init()
     pin_K_R1.Init();
 
     pin_DAC_SCLK_R.Init();
+    pin_DAC_SCLK_R.ToLow();
     pin_DAC_DAT_R.Init();
     pin_DAC_CS1_R.Init();
+    pin_DAC_CS2_R.ToHi();
     pin_DAC_CS2_R.Init();
     pin_DAC_CS2_R.ToHi();
     pin_DAC_END_R.Init();
+    pin_DAC_ENB_HB.Init();
 
     pin_NPULES0.Init();
     pin_NPULSE1.Init();
