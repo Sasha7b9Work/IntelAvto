@@ -12,7 +12,7 @@ friend class List<T>;
 
 public:
 
-    ListElement(T *v) : value(v), next(nullptr), prev(nullptr) {};
+    ListElement(T *v) : value(v), next(nullptr), prev(nullptr) {}
 
     ~ListElement();
 

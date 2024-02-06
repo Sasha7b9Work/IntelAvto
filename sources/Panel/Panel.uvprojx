@@ -573,6 +573,11 @@
               <FileType>8</FileType>
               <FilePath>..\common\Connector\Transceiver_p.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Interface_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Interface_p.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -987,6 +992,16 @@
               <FileName>Log.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Log.h</FilePath>
+            </File>
+            <File>
+              <FileName>List.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\List.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>List.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\List.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1559,6 +1574,11 @@
               <FileType>8</FileType>
               <FilePath>..\common\Connector\Transceiver_p.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Interface_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Interface_p.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1973,6 +1993,16 @@
               <FileName>Log.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Log.h</FilePath>
+            </File>
+            <File>
+              <FileName>List.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\List.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>List.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\List.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -62,7 +62,12 @@ file(GLOB SRC                ../../Panel/src/defines.h
                              ../../Panel/src/Settings.*
                                          src/Application_win.*
                                          src/main_win.cpp)
-file(GLOB CONNECTOR             ../../common/Connector/*.*
+file(GLOB CONNECTOR             ../../common/Connector/Interface_p.*
+                                ../../common/Connector/Messages.*
+                                ../../common/Connector/Handlers_p.*
+                                ../../common/Connector/Transceiver.h
+                                ../../common/Connector/Transceiver_p.cpp
+                                ../../common/Connector/Value.h
                              ../../Panel/src/Connector/*.*)
 file(GLOB DEVICE             ../../Panel/src/Device/*)
 file(GLOB DISPLAY                        src/Display/Display_win.cpp
@@ -88,7 +93,7 @@ file(GLOB HARDWARE           ../../Panel/src/Hardware/*FPGA.*
 file(GLOB HARDWARE_HAL       ../../Panel/src/Hardware/HAL/HAL.*
                              ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
                              ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
-                                         src/Hardware/HAL/HAL_EEPROM_win.cpp)
+                                         src/Hardware/HAL/*.*)
 file(GLOB HARDWARE_KEYBOARD     ../../common/Hardware/Keyboard/Keyboard.h
                                          src/Keyboard/Keyboard_win.cpp)
 file(GLOB MENU                  ../../common/Menu/*.*)

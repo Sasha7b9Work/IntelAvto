@@ -11,19 +11,7 @@ namespace PHandlers
 }
 
 
-static bool E(BaseMessage *)
-{
-    return false;
-}
-
-
 bool PHandlers::Processing(BaseMessage * /*msg*/)
 {
     return true;
-}
-
-
-static bool PHandlers::Request(BaseMessage *)
-{
-    return false;
 }

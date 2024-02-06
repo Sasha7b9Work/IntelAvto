@@ -119,6 +119,11 @@ struct BaseMessage
 
     void Transmit();
 
+    void ResetPointer()
+    {
+
+    }
+
 private:
 
     BufferMessage buffer;

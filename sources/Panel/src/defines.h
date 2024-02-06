@@ -27,6 +27,9 @@ typedef const char *           pchar;
 typedef void(*pFuncVII)(int, int);
 
 
+#define MAX_UINT 0xFFFFFFFF
+
+
 
 union BitSet16
 {
