@@ -180,7 +180,7 @@ void FPGA::Reg::WriteRawValue(uint value)
     {
         bool bit = (value & (1 << i)) != 0;
 
-        bit ? pin_DAT_RG.ToHi() : pin_DAT_DAC_R.ToLow();
+        bit ? pin_DAT_RG.ToHi() : pin_DAC_DAT_R.ToLow();
 
         TimeMeterUS().WaitFor(5);
 
