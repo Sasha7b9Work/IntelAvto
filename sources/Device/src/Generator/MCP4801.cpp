@@ -9,7 +9,7 @@ namespace MCP4801
 {
     struct Converter
     {
-        Converter(const Value &_value) : value(_value) { };
+        Converter(const Value &_value) : value(_value) { }
         uint16 Resolve() const;
     private:
         Value value;

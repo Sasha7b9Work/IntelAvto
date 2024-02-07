@@ -187,9 +187,3 @@ void DrawStruct::Draw(int x, int y) const
 
     color.SetAsCurrent();
 }
-
-
-float Value::ToFloat() const
-{
-    return (float)munits / 1000.0f;
-}

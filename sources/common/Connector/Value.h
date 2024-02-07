@@ -44,7 +44,7 @@ struct Value
 
     void FromDrawStrut(const Value &min, const Value &max);
 
-    float ToFloat() const;
+    float ToFloat() const { return (float)munits / 1000.0f; }
 
     int GetRaw() const { return munits; }
 

@@ -31,6 +31,8 @@ namespace HAL_SPI1
 
 namespace HAL_TIM
 {
+    void Init();
+
     uint TimeMS();
 
     void DelayMS(uint timeMS);

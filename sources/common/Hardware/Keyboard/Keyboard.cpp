@@ -261,7 +261,7 @@ void Keyboard::InitPins()
         0
     };
 
-    HAL_GPIO_Init(PORT_SL0, &is);
+    HAL_GPIO_Init(PORT_SL0, &is); //-V525
 
     is.Pin = PIN_SL1;
     HAL_GPIO_Init(PORT_SL1, &is);
