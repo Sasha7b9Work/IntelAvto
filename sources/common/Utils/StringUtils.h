@@ -13,56 +13,74 @@ struct Word
 };
 
 
-class SU
+namespace SU
 {
-public:
     // Эта команда сразу преобразует к верхенму регистру слово.
-    static bool GetWord(pchar string, Word *word, const int numWord);
+    bool GetWord(pchar string, Word *word, const int numWord);
 
-    static bool WordEqualZeroString(Word *word, pchar string);
+    bool WordEqualZeroString(Word *word, pchar string);
 
     // Сравнивает две строки. Число символов берётся из str1
-    static bool EqualsStrings(pchar str1, pchar str2);
+    bool EqualsStrings(pchar str1, pchar str2);
 
-    static bool EqualsStrings(void *str1, void *str2, int size);
+    bool EqualsStrings(void *str1, void *str2, int size);
 
-    static bool EqualsStrings(uint8 *str1, pchar  const str2, int size);
+    bool EqualsStrings(uint8 *str1, pchar  const str2, int size);
 
-    static bool EqualsZeroStrings(char *str1, char *str2);
+    bool EqualsZeroStrings(char *str1, char *str2);
 
     // Возвращает позицию первого символа, который не является цифрой либо точкой
-    static int FirstNotNumeral(char *buffer);
+    int FirstNotNumeral(char *buffer);
 
     // Преобразует строку в float. Обрабатываются символы до первого нецифрового символа
-    static float StringToFloat(pchar string);
+    float StringToFloat(pchar string);
 
-    static char *ToUpper(char *str, int size);
+    char *ToUpper(char *str, int size);
 
-    static char *ToUpper(char *str);
+    char *ToUpper(char *str);
 
-    static char ToUpper(char symbol);
+    char ToUpper(char symbol);
 
-    static char ToLower(char symbol);
+    char ToLower(char symbol);
 
-    static bool IsDigit(char symbol);
+    bool IsDigit(char symbol);
 
-    static bool StringToDouble(double *value, pchar buffer);
+    bool StringToDouble(double *value, pchar buffer);
 
-    static bool String2Int(pchar buffer, int *value, char **end);
+    bool String2Int(pchar buffer, int *value, char **end);
  
-    static String Int2String(int n);
+    String Int2String(int n);
 
     // Оставляет в строке buffer размером size ровно digits цифр. Первые нули тоже учитываются
-    static void LeaveFewDigits(char *buffer, int size, int digits);
+    void LeaveFewDigits(char *buffer, int size, int digits);
 
     // Оставляет в строке buffer размером size ровно digits значащих цифр. Без учёта первых незначащих нулей
-    static void LeaveFewSignedDigits(char *buffer, int size, int digits);
+    void LeaveFewSignedDigits(char *buffer, int size, int digits);
 
     // Заменить в строке все символы old на new
-    static void ReplaceSymbol(char *string, char oldSymbol, char newSymbol);
+    void ReplaceSymbol(char *string, char oldSymbol, char newSymbol);
 
     // Возвращает true, если в строке существует символ symbol
-    static bool ExistSymbol(char *string, char symbol);
+    bool ExistSymbol(char *string, char symbol);
+    
+    inline uint Hash(uint hash, char byte)
+    {
+        return (uint8)byte + (hash << 6) + (hash << 16) - hash;
+    }
+
+    inline uint CalculateHash(const void *buffer, int size)
+    {
+        uint crc = 0;
+
+        uint8 *data = (uint8 *)buffer;
+
+        for (int i = 0; i < size; i++)
+        {
+            crc = Hash(crc, (char)*data++);
+        }
+
+        return crc;
+    }
 };
 
 

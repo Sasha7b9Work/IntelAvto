@@ -27,15 +27,18 @@ namespace HAL_SPI1
         nullptr, 0, 0, nullptr, 0, 0, nullptr, nullptr, nullptr, nullptr, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
     };
 
-    // Возвращает true, если прибор готов к обмену
-    static bool IsReady();
-
     namespace CS
     {
         static void ToLow()
         {
             HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
         }
+
+        static void ToHi()
+        {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+        }
+
         static void Init()
         {
             GPIO_InitTypeDef is =
@@ -49,7 +52,7 @@ namespace HAL_SPI1
 
             HAL_GPIO_Init(GPIOB, &is);
 
-            ToLow();
+            ToHi();
         }
     }
 }
@@ -79,12 +82,13 @@ void HAL_SPI1::Init()
 
 bool HAL_SPI1::Transmit(const void *buffer, int size)
 {
-    if (HAL_SPI_Transmit(&handleSPI1, (uint8 *)((void *)buffer), (uint16)size, 100) != HAL_OK)
-    {
-        return false;
-    }
+    CS::ToLow();
 
-    return true;
+    bool result = HAL_SPI_Transmit(&handleSPI1, (uint8 *)((void *)buffer), (uint16)size, 100) == HAL_OK;
+
+    CS::ToHi();
+
+    return result;
 }
 
 
@@ -94,63 +98,13 @@ bool HAL_SPI1::Transmit(int value)
 }
 
 
-bool HAL_SPI1::Receive(void *recv, int size)
+bool HAL_SPI1::Receive(void *recv, int size, uint timeout)
 {
-    if (HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, 100) != HAL_OK)
-    {
-        return false;
-    }
+    CS::ToLow();
 
-    return true;
-}
+    bool result = HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, timeout) == HAL_OK;
 
-
-uint HAL_SPI1::ReceiveAndCompare(const void *compared, int size)
-{
-    uint result = 0;
-
-    uint8 byte = 0;
-
-    uint8 *data = (uint8 *)((void *)compared);
-
-    for (int i = 0; i < size; i++)
-    {
-        if (Receive(&byte, 1) && data[i] != byte)
-        {
-            result++;
-        }
-    }
+    CS::ToHi();
 
     return result;
-}
-
-
-bool HAL_SPI1::WaitRelease()
-{
-    TimeMeterMS meter;
-
-    while (IsReady())
-    {
-        if (meter.ElapsedTime() > 100)
-        {
-            return false;
-        }
-
-    }   // Если попали в время сигнала готовности, пропустим его, чтобы транзакция гарантированно начиналась после разрешающего фронта
-
-    while (!IsReady())
-    {
-        if (meter.ElapsedTime() > 100)
-        {
-            return false;
-        }
-    }  // Теперь ожидаем, когда придёт сигнал готовности
-
-    return true;
-}
-
-
-bool HAL_SPI1::IsReady()
-{
-    return HAL_GPIO_ReadPin(GPIOE, GPIO_PIN_4) == GPIO_PIN_SET;
 }

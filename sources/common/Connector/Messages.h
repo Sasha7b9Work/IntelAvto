@@ -1,6 +1,7 @@
 // 2024/02/01 10:54:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Connector/Value.h"
+#include "Utils/StringUtils.h"
 #include <cstring>
 
 
@@ -65,6 +66,10 @@ struct BufferMessage
 
         return std::memcmp(TakeData(), rhs.TakeData(), (uint)size) == 0;
     }
+    uint CalculateCRC()
+    {
+        return SU::CalculateHash(&buffer[0], (int)Pointer() * (int)sizeof(buffer[0]));
+    }
 private:
     // Индексация производится через эту функцию. После погружения всех элементов в
     // буфер в элеенте buffer[0] будет храниться количество слов для передачи
@@ -121,7 +126,11 @@ struct BaseMessage
 
     void ResetPointer()
     {
+    }
 
+    uint CalculateCRC()
+    {
+        return buffer.CalculateCRC();
     }
 
 private:

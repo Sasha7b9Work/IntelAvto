@@ -1,5 +1,7 @@
 #pragma once
 
+int     strcpy_s(char *dest, uint dest_size, const char *src);
+
 namespace std
 {
     char   *strcpy(void *dest, pchar src);

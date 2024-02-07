@@ -57,7 +57,8 @@ file(GLOB GENERATOR            src/Generator/*.*)
 file(GLOB HARDWARE             src/Hardware/*.h src/Hardware/*.cpp)
 file(GLOB HARDWARE_CMSIS       src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL         src/Hardware/HAL/*)
-file(GLOB UTILS          ../common/Utils/Queue.*)
+file(GLOB UTILS          ../common/Utils/Queue.*
+                         ../common/Utils/StringUtils.*)
 
 set_source_files_properties(${LIBS_FATFS} ${LIBS_HAL}
     src/Hardware/CMSIS/system_stm32f4xx.c

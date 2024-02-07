@@ -9,24 +9,21 @@
 
 void Transceiver::Transmit(BaseMessage *message)
 {
-    bool result = false;
-
-    while (!result)
+    while (true)
     {
-        HAL_SPI1::WaitRelease();                                                    // Ожидаем перехода флага готовности прибора в состояние "свободен"
+        HAL_SPI1::Transmit(message->Size());                            // Передаём размер сообщения (4 байта)
 
-        for (int i = 0; i < 2; i++)
+        uint crc = message->CalculateCRC();
+
+        HAL_SPI1::Transmit(message->TakeData(), message->Size());       // Передаём сообщение
+
+        HAL_SPI1::Transmit(&crc, sizeof(crc));                          // Передаём контрольную сумму сообщения
+
+        uint8 byte = 0;
+
+        if (HAL_SPI1::Receive(&byte, 1, 10))                            // И ждём подтверждения приёма в течение 10 мс
         {
-            HAL_SPI1::Transmit(message->Size());                                // Передаём размер передаваемых данных
-
-            HAL_SPI1::Transmit(message->TakeData(), message->Size());      // Передаём непосредственно данные
-
-            uint newSize = 0;
-            HAL_SPI1::Receive(&newSize, 4);                                     // Теперь принимаем размер данных, которые хочет передать нам устройство
-
-            uint trashedBytes = HAL_SPI1::ReceiveAndCompare(message->TakeData(), message->Size());
-
-            result = (trashedBytes == 0);
+            break;
         }
     }
 }

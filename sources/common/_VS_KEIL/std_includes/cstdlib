@@ -1,1 +1,8 @@
 #pragma once
+
+
+namespace std
+{
+    double strtod(const char *start, char **end);
+    long strtol(const char *start, char **end, int radix);
+}

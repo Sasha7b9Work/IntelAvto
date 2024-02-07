@@ -81,10 +81,6 @@ namespace HAL_SPI1
 
     bool Transmit(int value);
 
-    bool Receive(void *recv, int size);
-
-    uint ReceiveAndCompare(const void *compared, int size);
-
-    bool WaitRelease();
+    bool Receive(void *recv, int size, uint timeout);
 }
 
