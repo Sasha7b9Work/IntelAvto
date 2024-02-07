@@ -3,19 +3,19 @@
 #include "Hardware/HAL/HAL.h"
 
 
-bool HAL_SPI1::Transmit(const void * /*buffer*/, int /*size*/, int /*timeout*/)
+bool HAL_SPI1::Transmit(const void * /*buffer*/, int /*size*/)
 {
     return false;
 }
 
 
-bool HAL_SPI1::Transmit(int /*value*/, int /*timeout*/)
+bool HAL_SPI1::Transmit(int /*value*/)
 {
     return false;
 }
 
 
-bool HAL_SPI1::Receive(void * /*recv*/, int /*size*/, int /*timeout*/)
+bool HAL_SPI1::Receive(void * /*recv*/, int /*size*/)
 {
     return false;
 }
