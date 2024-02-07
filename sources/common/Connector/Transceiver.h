@@ -13,6 +13,4 @@
 namespace Transceiver
 {
     void Transmit(BaseMessage *message);
-
-    bool Receive(BaseMessage *message);
 };

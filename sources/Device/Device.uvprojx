@@ -1017,6 +1017,26 @@
               <FileType>8</FileType>
               <FilePath>.\src\Connector\Value_d.cpp</FilePath>
             </File>
+            <File>
+              <FileName>Interface_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Interface_d.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Interface_d.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Interface_d.h</FilePath>
+            </File>
+            <File>
+              <FileName>Handlers_d.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Handlers_d.h</FilePath>
+            </File>
+            <File>
+              <FileName>Handlers_d.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Connector\Handlers_d.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -1176,6 +1196,16 @@
               <FileName>Log.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Log.h</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Queue.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Queue.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Utils\Queue.h</FilePath>
             </File>
           </Files>
         </Group>

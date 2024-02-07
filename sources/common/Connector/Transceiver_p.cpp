@@ -9,8 +9,6 @@
 
 void Transceiver::Transmit(BaseMessage *message)
 {
-    int timeout = 10;
-
     bool result = false;
 
     while (!result)
@@ -19,34 +17,16 @@ void Transceiver::Transmit(BaseMessage *message)
 
         for (int i = 0; i < 2; i++)
         {
-            HAL_SPI1::Transmit(message->Size(), 10);                                // Передаём размер передаваемых данных
+            HAL_SPI1::Transmit(message->Size());                                // Передаём размер передаваемых данных
 
-            HAL_SPI1::Transmit(message->TakeData(), message->Size(), timeout);      // Передаём непосредственно данные
+            HAL_SPI1::Transmit(message->TakeData(), message->Size());      // Передаём непосредственно данные
 
             uint newSize = 0;
-            HAL_SPI1::Receive(&newSize, 4, 10);                                     // Теперь принимаем размер данных, которые хочет передать нам устройство
+            HAL_SPI1::Receive(&newSize, 4);                                     // Теперь принимаем размер данных, которые хочет передать нам устройство
 
             uint trashedBytes = HAL_SPI1::ReceiveAndCompare(message->TakeData(), message->Size());
 
             result = (trashedBytes == 0);
         }
     }
-}
-
-
-bool Transceiver::Receive(BaseMessage *message)
-{
-    HAL_SPI1::WaitRelease();
-
-    int size = 0;
-    HAL_SPI1::Receive(&size, 4, 10);
-
-    if (message->AllocateMemory(size))
-    {
-        HAL_SPI1::Receive(message->TakeData(), message->Size(), 50);
-
-        return true;
-    }
-
-    return message->Size() != 0;
 }

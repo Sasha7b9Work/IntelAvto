@@ -27,7 +27,7 @@ void Queue::Pop()
 
 bool Queue::Push(BaseMessage *message)
 {
-    if (last < SIZE - 1)
+    if ((uint)last < SIZE - 1)
     {
         storage[last] = message;
         last++;

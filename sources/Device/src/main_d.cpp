@@ -3,6 +3,7 @@
 #include "Hardware/CPU.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
+#include "Connector/Interface_d.h"
 
 
 int main()
@@ -12,5 +13,6 @@ int main()
 
     while (1)
     {
+        DInterface::Update();
     }
 }

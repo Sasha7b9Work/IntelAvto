@@ -77,11 +77,11 @@ namespace HAL_SPI1
 {
     void Init();
 
-    bool Transmit(const void *buffer, int size, int timeout);
+    bool Transmit(const void *buffer, int size);
 
-    bool Transmit(int value, int timeout);
+    bool Transmit(int value);
 
-    bool Receive(void *recv, int size, int timeout);
+    bool Receive(void *recv, int size);
 
     uint ReceiveAndCompare(const void *compared, int size);
 

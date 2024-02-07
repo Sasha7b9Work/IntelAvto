@@ -77,9 +77,9 @@ void HAL_SPI1::Init()
 }
 
 
-bool HAL_SPI1::Transmit(const void *buffer, int size, int timeout)
+bool HAL_SPI1::Transmit(const void *buffer, int size)
 {
-    if (HAL_SPI_Transmit(&handleSPI1, (uint8 *)((void *)buffer), (uint16)size, (uint)timeout) != HAL_OK)
+    if (HAL_SPI_Transmit(&handleSPI1, (uint8 *)((void *)buffer), (uint16)size, 100) != HAL_OK)
     {
         return false;
     }
@@ -88,15 +88,15 @@ bool HAL_SPI1::Transmit(const void *buffer, int size, int timeout)
 }
 
 
-bool HAL_SPI1::Transmit(int value, int timeout)
+bool HAL_SPI1::Transmit(int value)
 {
-    return Transmit(&value, 4, timeout);
+    return Transmit(&value, 4);
 }
 
 
-bool HAL_SPI1::Receive(void *recv, int size, int timeout)
+bool HAL_SPI1::Receive(void *recv, int size)
 {
-    if (HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, (uint)timeout) != HAL_OK)
+    if (HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, 100) != HAL_OK)
     {
         return false;
     }
@@ -115,7 +115,7 @@ uint HAL_SPI1::ReceiveAndCompare(const void *compared, int size)
 
     for (int i = 0; i < size; i++)
     {
-        if (Receive(&byte, 1, 10) && data[i] != byte)
+        if (Receive(&byte, 1) && data[i] != byte)
         {
             result++;
         }
