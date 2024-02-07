@@ -37,32 +37,30 @@ void DInterface::Update()
 {
     int size = 0;
 
-    if (HAL_SPI1::Receive(&size, 4, 10))                                                            // Узнаём размер принимаемого сообщения
+    if (HAL_SPI1::Receive(&size, 4))                                                            // Узнаём размер принимаемого сообщения
     {
         BaseMessage first;              // Сюда принимаем первое сообщение
         BaseMessage second;             // Сюда принимаем второе сообщение
 
-        int timeout = size > 100 ? 200 : 10;
-
         if (first.AllocateMemory(size))
         {
-            if (HAL_SPI1::Receive(first.TakeData(), first.Size(), timeout))                         // Принимаем данные
+            if (HAL_SPI1::Receive(first.TakeData(), first.Size()))                         // Принимаем данные
             {
-                if (HAL_SPI1::Transmit(&size, 4, timeout))                                          // Передаём его размер
+                if (HAL_SPI1::Transmit(&size, 4))                                          // Передаём его размер
                 {
-                    if (HAL_SPI1::Transmit(first.TakeData(), first.Size(), timeout))                // И данные
+                    if (HAL_SPI1::Transmit(first.TakeData(), first.Size()))                // И данные
                     {
-                        if (HAL_SPI1::Receive(&size, 4, 10))
+                        if (HAL_SPI1::Receive(&size, 4))
                         {
                             if (second.AllocateMemory(size))                                        // Второй раз сообщение будем принимать в этот буфер
                             {
-                                if (HAL_SPI1::Receive(second.TakeData(), second.Size(), timeout))   // Что и делаем
+                                if (HAL_SPI1::Receive(second.TakeData(), second.Size()))   // Что и делаем
                                 {
                                     size = second.Size();
 
-                                    if (HAL_SPI1::Transmit(&size, 4, timeout))
+                                    if (HAL_SPI1::Transmit(&size, 4))
                                     {
-                                        if (HAL_SPI1::Transmit(second.TakeData(), second.Size(), timeout))
+                                        if (HAL_SPI1::Transmit(second.TakeData(), second.Size()))
                                         {
                                             if (second.IsEquals(&first))                            // Проверяем, совпали ли оба принятых сообщения
                                             {

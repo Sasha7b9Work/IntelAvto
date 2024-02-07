@@ -6,7 +6,7 @@
 
 void Transceiver::Transmit(BaseMessage *message)
 {
-    HAL_SPI1::Transmit(message->Size(), 10);
+    HAL_SPI1::Transmit(message->Size());
 
-    HAL_SPI1::Transmit(message->TakeData(), message->Size(), (message->Size() > 100) ? 200 : 10);
+    HAL_SPI1::Transmit(message->TakeData(), message->Size());
 }
