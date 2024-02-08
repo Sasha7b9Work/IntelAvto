@@ -29,3 +29,23 @@ void PinOut::ToHi()
 {
     HAL_GPIO_WritePin((GPIO_TypeDef *)port, pin, GPIO_PIN_SET);
 }
+
+
+void PinIn::Init()
+{
+    GPIO_InitTypeDef is =
+    {
+        pin,
+        GPIO_MODE_INPUT,
+        GPIO_PULLUP,
+        GPIO_SPEED_FREQ_VERY_HIGH,
+        0
+    };
+    HAL_GPIO_Init((GPIO_TypeDef *)port, &is);
+}
+
+
+bool PinIn::IsHi()
+{
+    return HAL_GPIO_ReadPin((GPIO_TypeDef *)port, pin) != GPIO_PIN_RESET;
+}

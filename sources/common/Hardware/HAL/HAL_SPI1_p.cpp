@@ -25,27 +25,7 @@ namespace HAL_SPI1
     static PinOut pinCS(GPIOD, GPIO_PIN_6);
     static PinOut pinSCK(GPIOA, GPIO_PIN_5);
     static PinOut pinOUT(GPIOB, GPIO_PIN_5);
-
-    namespace PinIN
-    {
-        static void Init()
-        {
-            GPIO_InitTypeDef is =
-            {   //  MI
-                GPIO_PIN_6,
-                GPIO_MODE_INPUT,
-                GPIO_PULLUP,
-                GPIO_SPEED_FREQ_VERY_HIGH,
-                0
-            };
-            HAL_GPIO_Init(GPIOA, &is);
-        }
-
-        static bool IsHi()
-        {
-            return HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6) != GPIO_PIN_RESET;
-        }
-    }
+    static PinIn  pinIN(GPIOA, GPIO_PIN_6);
 
     static void SendByte(uint8);
 
@@ -63,7 +43,7 @@ void HAL_SPI1::Init()
 
     pinOUT.Init();
 
-    PinIN::Init();
+    pinIN.Init();
 }
 
 
@@ -144,7 +124,7 @@ uint8 HAL_SPI1::ReceiveByte()
 
         pinSCK.ToHi();
 
-        if (PinIN::IsHi())
+        if (pinIN.IsHi())
         {
             byte |= (1 << i);
         }

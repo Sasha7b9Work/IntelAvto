@@ -18,3 +18,11 @@ struct PinOut : public Pin
     void ToHi();
     void ToLow();
 };
+
+
+struct PinIn : public Pin
+{
+    PinIn(void *_port, uint16 _pin) : Pin(_port, _pin) { }
+    void Init();
+    bool IsHi();
+};
