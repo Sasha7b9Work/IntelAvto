@@ -20,5 +20,6 @@
     #pragma clang diagnostic ignored "-Wmissing-field-initializers"
     #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
     #pragma clang diagnostic ignored "-Wunused-private-field"
+    #pragma clang diagnostic ignored "-Wcast-align"
 #endif
 

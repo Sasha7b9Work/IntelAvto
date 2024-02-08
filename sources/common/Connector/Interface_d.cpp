@@ -15,6 +15,8 @@ namespace DInterface
 {
     // Очередь сообщений, ожидающих отправки
     static Queue outbox;
+
+    static BaseMessage *CreateMessage(uint8 *data, int size);
 }
 
 
@@ -46,19 +48,52 @@ void DInterface::Update()
 
             if (HAL_SPI1::Receive(&crc, 4))
             {
-                uint new_crc = crc;
+                BaseMessage *message = CreateMessage(buffer, size);
 
-                HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
-
-                if (new_crc == crc)
+                if (message)
                 {
-//                    DHandlers::Processing(*message);
+                    uint new_crc = message->CalculateCRC();
+
+                    HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
+
+                    if (new_crc == crc)
+                    {
+                        DHandlers::Processing(*message);
+                    }
                 }
             }
         }
     }
 }
 
+
+BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
+{
+    BaseMessage *result = nullptr;
+
+    if (size >= 16)
+    {
+        uint *pointer = (uint *)data;
+
+        pointer++;
+
+        Command::E command = (Command::E)*pointer++;
+
+        if (command == Command::START_2A)
+        {
+            Value Us((int)(*pointer++));
+            Value t1((int)(*pointer++));
+
+            result = new Message::Start2A(Us, t1);
+        }
+    }
+
+    return result;
+}
+
+
 void BaseMessage::Transmit()
 {
 }
+
+
