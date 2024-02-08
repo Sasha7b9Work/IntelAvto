@@ -60,6 +60,8 @@ void DInterface::Update()
                     if (new_crc == crc)
                     {
                         DHandlers::Processing(*message);
+                        
+                        HAL_TIM::DelayMS(1000);
                     }
 
                     delete message;

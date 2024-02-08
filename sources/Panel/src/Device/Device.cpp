@@ -18,18 +18,18 @@ void Device::Run()
         Page::ForCurrentSignal()->StartTest();
     }
 
-    is_running = true;
+//    is_running = true;
 }
 
 
 void Device::Stop()
 {
-    if (is_running)
+//    if (is_running)
     {
 //        Message::Stop().Transmit();
     }
 
-    is_running = false;
+//    is_running = false;
 }
 
 
