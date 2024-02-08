@@ -123,7 +123,7 @@ uint8 HAL_SPI1::ReceiveByte()
 {
     uint8 result = 0;
 
-    for (int i = 7; i >= 0; i--)
+    for (int i = 0; i < 8; i++)
     {
         while (SCK::IsLow())
         {
@@ -136,11 +136,6 @@ uint8 HAL_SPI1::ReceiveByte()
 
         while (SCK::IsHi())
         {
-        }
-
-        if (i != 7)
-        {
-            result <<= 1;
         }
     }
 

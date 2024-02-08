@@ -11,7 +11,7 @@ void Transceiver::Transmit(BaseMessage *message)
 {
     while (true)
     {
-        HAL_TIM::DelayMS(1000);                                              // Делаем интервал 500, чтобы приёмное устройство
+        HAL_TIM::DelayMS(500);                                             // Делаем интервал 500, чтобы приёмное устройство
                                                                             // отловило начало посылки
         uint crc = message->CalculateCRC();
 
@@ -31,23 +31,9 @@ void Transceiver::Transmit(BaseMessage *message)
                         {
                             break;
                         }
-                        else
-                        {
-                            HAL_SPI1::Reset();
-                        }
-                    }
-                    else
-                    {
-                        HAL_SPI1::Reset();
                     }
                 }
             }
         }
-        
-//        if(counter++ > 10)
-//        {
-//            HAL_SPI1::Reset();
-//            break;
-//        }
     }
 }

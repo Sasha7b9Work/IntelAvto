@@ -7,26 +7,6 @@
 
 namespace HAL_SPI1
 {
-    // Для связи с основным процессором
-    static SPI_HandleTypeDef handleSPI1 =
-    {
-        SPI1,
-        {
-            SPI_MODE_MASTER,
-            SPI_DIRECTION_2LINES,
-            SPI_DATASIZE_8BIT,
-            SPI_POLARITY_HIGH,
-            SPI_PHASE_2EDGE,
-            SPI_NSS_SOFT,
-            SPI_BAUDRATEPRESCALER_256,
-            SPI_FIRSTBIT_MSB,
-            SPI_TIMODE_DISABLED,
-            SPI_CRCCALCULATION_DISABLED,
-            7
-        },
-        nullptr, 0, 0, nullptr, 0, 0, nullptr, nullptr, nullptr, nullptr, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
-    };
-
     namespace CS
     {
         static void ToLow()
@@ -55,46 +35,93 @@ namespace HAL_SPI1
             ToHi();
         }
     }
+
+    namespace SCK
+    {
+        static void ToHi()
+        {
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+        }
+
+        void ToLow()
+        {
+            HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+        }
+
+        static void Init()
+        {
+            GPIO_InitTypeDef is =
+            {   //  SCK
+                GPIO_PIN_5,
+                GPIO_MODE_OUTPUT_OD,
+                GPIO_PULLUP,
+                GPIO_SPEED_FREQ_VERY_HIGH,
+                0
+            };
+            HAL_GPIO_Init(GPIOA, &is);
+
+            ToHi();
+        }
+    }
+
+    namespace PinOUT
+    {
+        static void ToHi()
+        {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
+        }
+
+        void ToLow()
+        {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
+        }
+
+        static void Init()
+        {
+            GPIO_InitTypeDef is =
+            {   //  MO
+                GPIO_PIN_5,
+                GPIO_MODE_OUTPUT_PP,
+                GPIO_PULLUP,
+                GPIO_SPEED_FREQ_VERY_HIGH,
+                0
+            };
+            HAL_GPIO_Init(GPIOB, &is);
+
+            ToHi();
+        }
+    }
+
+    namespace PinIN
+    {
+        static void Init()
+        {
+            GPIO_InitTypeDef is =
+            {   //  MI
+                GPIO_PIN_6,
+                GPIO_MODE_INPUT,
+                GPIO_PULLUP,
+                GPIO_SPEED_FREQ_VERY_HIGH,
+                0
+            };
+            HAL_GPIO_Init(GPIOB, &is);
+        }
+    }
+
+    static void SendByte(uint8);
 }
 
 
 
 void HAL_SPI1::Init()
 {
-    __HAL_RCC_SPI1_CLK_ENABLE();
-
     CS::Init();
 
-    GPIO_InitTypeDef is =
-    {   //  SCK         MI
-        GPIO_PIN_5 | GPIO_PIN_6,
-        GPIO_MODE_AF_PP,
-        GPIO_PULLUP,
-        GPIO_SPEED_HIGH,
-        GPIO_AF5_SPI1
-    };
-    HAL_GPIO_Init(GPIOA, &is);
+    SCK::Init();
 
-    is.Pin = GPIO_PIN_5;            // MO
-    HAL_GPIO_Init(GPIOB, &is);
+    PinOUT::Init();
 
-    HAL_SPI_Init(&handleSPI1);
-}
-
-
-void HAL_SPI1::Reset()
-{
-    HAL_SPI_Abort(&handleSPI1);
-
-    HAL_SPI_DeInit(&handleSPI1);
-
-    HAL_SPI_Init(&handleSPI1);
-
-    volatile uint dr = SPI1->DR;
-    volatile uint sr = SPI1->SR;
-
-    (void)dr;
-    (void)sr;
+    PinIN::Init();
 }
 
 
@@ -104,13 +131,35 @@ bool HAL_SPI1::Transmit(const void *buffer, int size)
 
     HAL_TIM::DelayUS(500);
 
-    bool result = HAL_SPI_Transmit(&handleSPI1, (uint8 *)((void *)buffer), (uint16)size, 100) == HAL_OK;
+    uint8 *pointer = (uint8 *)buffer;
 
-    CS::ToHi();
+    for (int i = 0; i < size; i++)
+    {
+        SendByte(*pointer++);
+    }
 
     HAL_TIM::DelayUS(500);
 
-    return result;
+    CS::ToHi();
+
+    return true;
+}
+
+
+void HAL_SPI1::SendByte(uint8 byte)
+{
+    for (int i = 0; i < 7; i++)
+    {
+        SCK::ToLow();
+
+        ((byte &= (1 << i)) != 0) ? PinOUT::ToHi() : PinOUT::ToLow();
+
+        HAL_TIM::DelayUS(100);
+
+        SCK::ToHi();
+
+        HAL_TIM::DelayUS(100);
+    }
 }
 
 
@@ -120,17 +169,17 @@ bool HAL_SPI1::Transmit(int value)
 }
 
 
-bool HAL_SPI1::Receive(void *recv, int size, uint timeout)
+bool HAL_SPI1::Receive(void * /*recv*/, int /*size*/, uint /*timeout*/)
 {
     CS::ToLow();
 
     HAL_TIM::DelayUS(500);
 
-    bool result = HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, timeout) == HAL_OK;
+//    bool result = HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, timeout) == HAL_OK;
 
     HAL_TIM::DelayUS(500);
 
     CS::ToHi();
 
-    return result;
+    return false;
 }
