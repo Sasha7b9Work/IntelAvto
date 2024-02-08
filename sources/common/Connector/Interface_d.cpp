@@ -46,15 +46,13 @@ void DInterface::Update()
 
             if (HAL_SPI1::Receive(&crc, 4))
             {
-                BaseMessage message(buffer, size);
-
-                uint new_crc = message.CalculateCRC();
+                uint new_crc = crc;
 
                 HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
 
                 if (new_crc == crc)
                 {
-                    DHandlers::Processing(message);
+//                    DHandlers::Processing(*message);
                 }
             }
         }

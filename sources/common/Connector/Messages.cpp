@@ -12,9 +12,3 @@ BaseMessage *BaseMessage::Clone()
 
     return result;
 }
-
-
-BaseMessage::BaseMessage(uint8 *data, int size)
-{
-    buffer.SetFromRAW(data, size);
-}

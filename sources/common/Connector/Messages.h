@@ -29,10 +29,6 @@ struct BufferMessage
     {
         ResetPointer();
     }
-    void SetFromRAW(uint8 *data, int size)
-    {
-        std::memcpy(buffer, data, (uint)size);
-    }
     void Push(Command::E command)
     {
         if (Pointer() < SIZE)
@@ -98,8 +94,6 @@ struct BaseMessage
     {
         buffer.Push(command);
     }
-
-    BaseMessage(uint8 *data, int size);
 
     virtual ~BaseMessage() { }
 
