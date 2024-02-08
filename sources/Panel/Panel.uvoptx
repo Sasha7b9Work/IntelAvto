@@ -152,9 +152,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>20</LineNumber>
+          <LineNumber>34</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134233750</Address>
+          <Address>134233820</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -163,7 +163,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>&lt;1&gt;..\common\Connector\Transceiver_p.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Panel\../common/Connector/Transceiver_p.cpp\20</Expression>
+          <Expression>\\\../common/Connector/Transceiver_p.cpp\34</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>
@@ -809,7 +809,7 @@
 
   <Group>
     <GroupName>Connector</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

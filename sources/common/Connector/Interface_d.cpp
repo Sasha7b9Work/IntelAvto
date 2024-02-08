@@ -37,11 +37,21 @@ void DInterface::Update()
 {
     HAL_SPI1::WaitInterval(400);                                // ∆дЄм нул€ после единицы продолжительностью не менее 400 (на панели сто»т 500)
 
-    uint size = 0;
+    int size = 0;
+    uint crc = 0;
+
+    uint8 buffer[128];
 
     if (HAL_SPI1::Receive(&size, 4))
     {
-        size = size;
+        if (HAL_SPI1::Receive(buffer, size))
+        {
+            if (HAL_SPI1::Receive(&crc, 4))
+            {
+                uint code = 0x12345678;
+                HAL_SPI1::Transmit(&code, sizeof(code));
+            }
+        }
     }
 }
 

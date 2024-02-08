@@ -86,9 +86,13 @@ bool HAL_SPI1::Transmit(const void *buffer, int size)
 {
     CS::ToLow();
 
+    HAL_TIM::DelayUS(50);
+
     bool result = HAL_SPI_Transmit(&handleSPI1, (uint8 *)((void *)buffer), (uint16)size, 100) == HAL_OK;
 
     CS::ToHi();
+
+    HAL_TIM::DelayUS(50);
 
     return result;
 }
@@ -104,7 +108,11 @@ bool HAL_SPI1::Receive(void *recv, int size, uint timeout)
 {
     CS::ToLow();
 
+    HAL_TIM::DelayUS(50);
+
     bool result = HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, timeout) == HAL_OK;
+
+    HAL_TIM::DelayUS(50);
 
     CS::ToHi();
 
