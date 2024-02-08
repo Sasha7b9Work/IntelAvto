@@ -51,10 +51,10 @@ namespace Keyboard
 
     static Key::E keys[NUM_SL][NUM_RL] =
     {
-        {Key::Left, Key::Right, Key::Back, Key::OK},
-        {Key::_1,   Key::_2,    Key::_3,   Key::_4},
-        {Key::_5,   Key::_6,    Key::_7,   Key::_8},
-        {Key::_9,   Key::Minus, Key::Dot,  Key::Start},
+        {Key::Left,  Key::_1, Key::_5, Key::_9},
+        {Key::Right, Key::_2, Key::_6, Key::Minus},
+        {Key::Back,  Key::_3, Key::_7, Key::Dot},
+        {Key::OK,    Key::_4, Key::_8, Key::Start},
     };
 
     // Очередь сообщений - здесь все события органов управления
@@ -108,6 +108,11 @@ void Keyboard::Update()
         for (int rl = 0; rl < NUM_RL; ++rl)
         {
             int state = Read_RL(rl);
+
+            if (state == 0)
+            {
+                state = state;
+            }
 
             Key::E key = keys[sl][rl];
 
