@@ -17,10 +17,16 @@ void Transceiver::Transmit(BaseMessage *message)
 
         if (HAL_SPI1::Transmit(message->Size()))                            // Передаём размер сообщения (4 байта)
         {
+            HAL_TIM::DelayUS(10);
+
             if (HAL_SPI1::Transmit(message->TakeData(), message->Size()))   // Передаём сообщение
             {
+                HAL_TIM::DelayUS(10);
+
                 if (HAL_SPI1::Transmit(&crc, sizeof(crc)))                  // Передаём контрольную сумму сообщения
                 {
+                    HAL_TIM::DelayUS(10);
+
                     uint8 byte = 0;
 
                     if (HAL_SPI1::Receive(&byte, 1, 10))                    // И ждём подтверждения приёма в течение 10 мс
