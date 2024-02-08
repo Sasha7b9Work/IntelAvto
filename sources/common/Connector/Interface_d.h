@@ -10,9 +10,4 @@ namespace DInterface
 
     // Возвращает ссылку на очередь сообщений, ожидающих отправки
     Queue &GetOutbox();
-
-    void ResetFreqForSend();
-
-    // Добавляет сообщение в очередь отправки. Если очередь заполнена, сообщение удаляется и функция возвращает false
-    bool AddMessageForTransmit(BaseMessage *message);
 };

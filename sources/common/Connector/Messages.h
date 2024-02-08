@@ -27,7 +27,11 @@ struct BufferMessage
 {
     BufferMessage()
     {
-        Pointer() = 1;
+        ResetPointer();
+    }
+    void SetFromRAW(uint8 *data, int size)
+    {
+        std::memcpy(buffer, data, (uint)size);
     }
     void Push(Command::E command)
     {
@@ -46,6 +50,10 @@ struct BufferMessage
     Value PopValue()
     {
         return Value((int)buffer[Pointer()++]);
+    }
+    Command::E PopCommand()
+    {
+        return (Command::E)buffer[Pointer()++];
     }
     int Size()
     {
@@ -70,6 +78,11 @@ struct BufferMessage
     {
         return SU::CalculateHash(&buffer[0], (int)Pointer() * (int)sizeof(buffer[0]));
     }
+    void ResetPointer()
+    {
+        Pointer() = 1;
+    }
+
 private:
     // Индексация производится через эту функцию. После погружения всех элементов в
     // буфер в элеенте buffer[0] будет храниться количество слов для передачи
@@ -85,6 +98,9 @@ struct BaseMessage
     {
         buffer.Push(command);
     }
+
+    BaseMessage(uint8 *data, int size);
+
     virtual ~BaseMessage() { }
 
     void Push(const Value &value)
@@ -95,6 +111,11 @@ struct BaseMessage
     Value PopValue()
     {
         return buffer.PopValue();
+    }
+
+    Command::E PopCommand()
+    {
+        return buffer.PopCommand();
     }
 
     int Size()
@@ -126,6 +147,7 @@ struct BaseMessage
 
     void ResetPointer()
     {
+        buffer.ResetPointer();
     }
 
     uint CalculateCRC()

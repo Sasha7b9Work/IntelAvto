@@ -25,9 +25,9 @@ void Transceiver::Transmit(BaseMessage *message)
                 {
                     uint code = 0;
 
-                    if (HAL_SPI1::Receive(&code, sizeof(code), 10))                    // И ждём подтверждения приёма в течение 10 мс
+                    if (HAL_SPI1::Receive(&code, sizeof(code), 10))         // И ждём подтверждения приёма в течение 10 мс
                     {
-                        if (code == 0x12345678)
+                        if (code == crc)
                         {
                             break;
                         }

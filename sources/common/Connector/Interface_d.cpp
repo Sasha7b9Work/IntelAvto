@@ -15,9 +15,6 @@ namespace DInterface
 {
     // Очередь сообщений, ожидающих отправки
     static Queue outbox;
-
-    // Ненулевое значение означает, что его следует передать в панель как измеренное частотомером значение
-    uint freqForSend = MAX_UINT;
 }
 
 
@@ -27,51 +24,43 @@ Queue &DInterface::GetOutbox()
 }
 
 
-void DInterface::ResetFreqForSend()
-{
-    freqForSend = MAX_UINT;
-}
-
-
 void DInterface::Update()
 {
     HAL_SPI1::WaitInterval(400);                                // Ждём нуля после единицы продолжительностью не менее 400 (на панели стоИт 500)
 
     int size = 0;
-    uint crc = 0;
 
-    uint8 buffer[128];
+    static const int SIZE_BUFFER = 128;
+    uint8 buffer[SIZE_BUFFER];
 
     if (HAL_SPI1::Receive(&size, 4))
     {
+        if (size > SIZE_BUFFER)
+        {
+            size = SIZE_BUFFER;
+        }
+
         if (HAL_SPI1::Receive(buffer, size))
         {
+            uint crc = 0;
+
             if (HAL_SPI1::Receive(&crc, 4))
             {
-                uint code = 0x12345678;
-                HAL_SPI1::Transmit(&code, sizeof(code));
+                BaseMessage message(buffer, size);
+
+                uint new_crc = message.CalculateCRC();
+
+                HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
+
+                if (new_crc == crc)
+                {
+                    DHandlers::Processing(message);
+                }
             }
         }
     }
 }
 
-bool DInterface::AddMessageForTransmit(BaseMessage *message)
-{
-    BaseMessage *clone = message->Clone();
-
-    if (!outbox.Push(clone))
-    {
-        delete clone;
-        // \tood Здесь нужно сообщать об ошибке. Сделать так, чтобы сообщения об ошибках обладали привилегированным статусом - помещать их в очередь даже когда там нет места (освободить)
-        // LOG_ERROR("Очередь переполнена");
-        return false;
-    }
-
-    return true;
-}
-
-
 void BaseMessage::Transmit()
 {
-    DInterface::AddMessageForTransmit(this);
 }
