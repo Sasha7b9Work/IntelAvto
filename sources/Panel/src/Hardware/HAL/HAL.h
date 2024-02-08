@@ -81,6 +81,6 @@ namespace HAL_SPI1
 
     bool Transmit(int value);
 
-    bool Receive(void *recv, int size, uint timeout);
+    bool Receive(void *recv, int size);
 }
 
