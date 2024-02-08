@@ -61,6 +61,8 @@ namespace HAL_SPI1
 
 void HAL_SPI1::Init()
 {
+    __HAL_RCC_SPI1_CLK_ENABLE();
+
     CS::Init();
 
     GPIO_InitTypeDef is =
