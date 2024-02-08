@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
+#include "Hardware/Timer.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -92,4 +93,22 @@ bool HAL_SPI1::Transmit(void *buffer, int size)
 bool HAL_SPI1::Transmit(int value)
 {
     return Transmit(&value, 4);
+}
+
+
+void HAL_SPI1::WaitInterval(uint timeMS)
+{
+    while (true)
+    {
+        while (CS::IsLow())  { }
+
+        uint time_start = TIME_MS;
+
+        while (!CS::IsLow()) { }
+
+        if (TIME_MS - time_start >= timeMS)
+        {
+            return;
+        }
+    }
 }

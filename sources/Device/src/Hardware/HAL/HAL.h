@@ -26,6 +26,9 @@ namespace HAL_SPI1
     bool Transmit(void *buffer, int size);
 
     bool Transmit(int value);
+
+    // ќжидает начала нул€, который идЄт за единицей длительностью не менее timeMS
+    void WaitInterval(uint timeMS);
 }
 
 

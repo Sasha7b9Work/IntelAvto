@@ -35,6 +35,8 @@ void DInterface::ResetFreqForSend()
 
 void DInterface::Update()
 {
+    HAL_SPI1::WaitInterval(400);                                // ∆дЄм нул€ после единицы продолжительностью не менее 400 (на панели сто»т 500)
+
     uint size = 0;
 
     if (HAL_SPI1::Receive(&size, 4))
@@ -42,7 +44,6 @@ void DInterface::Update()
         size = size;
     }
 }
-
 
 bool DInterface::AddMessageForTransmit(BaseMessage *message)
 {
