@@ -60,6 +60,8 @@ void DInterface::Update()
                     {
                         DHandlers::Processing(*message);
                     }
+
+                    delete message;
                 }
             }
         }
