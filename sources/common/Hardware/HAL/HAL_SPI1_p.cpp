@@ -24,34 +24,7 @@ namespace HAL_SPI1
 {
     static PinOut pinCS(GPIOD, GPIO_PIN_6);
     static PinOut pinSCK(GPIOA, GPIO_PIN_5);
-
-    namespace PinOUT
-    {
-        static void ToHi()
-        {
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_SET);
-        }
-
-        void ToLow()
-        {
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_5, GPIO_PIN_RESET);
-        }
-
-        static void Init()
-        {
-            GPIO_InitTypeDef is =
-            {   //  MO
-                GPIO_PIN_5,
-                GPIO_MODE_OUTPUT_PP,
-                GPIO_PULLUP,
-                GPIO_SPEED_FREQ_VERY_HIGH,
-                0
-            };
-            HAL_GPIO_Init(GPIOB, &is);
-
-            ToHi();
-        }
-    }
+    static PinOut pinOUT(GPIOB, GPIO_PIN_5);
 
     namespace PinIN
     {
@@ -88,7 +61,7 @@ void HAL_SPI1::Init()
     pinSCK.Init();
     pinSCK.ToHi();
 
-    PinOUT::Init();
+    pinOUT.Init();
 
     PinIN::Init();
 }
@@ -148,7 +121,7 @@ void HAL_SPI1::SendByte(uint8 byte)
     {
         pinSCK.ToLow();
 
-        ((byte &= (1 << i)) != 0) ? PinOUT::ToHi() : PinOUT::ToLow();
+        ((byte &= (1 << i)) != 0) ? pinOUT.ToHi() : pinOUT.ToLow();
 
         HAL_TIM::DelayUS(100);
 
