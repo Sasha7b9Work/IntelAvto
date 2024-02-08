@@ -157,6 +157,11 @@ private:
 
 namespace Message
 {
+    struct Stop : public BaseMessage
+    {
+        Stop() : BaseMessage(Command::STOP) { }
+    };
+
     struct Start2A : public BaseMessage
     {
         Start2A(const Value &Us, const Value &t1) : BaseMessage(Command::START_2A)

@@ -50,12 +50,12 @@ void DInterface::Update()
             {
                 BaseMessage *message = CreateMessage(buffer, size);
 
+                uint new_crc = message ? message->CalculateCRC() : 0;
+
+                HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
+
                 if (message)
                 {
-                    uint new_crc = message->CalculateCRC();
-
-                    HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
-
                     if (new_crc == crc)
                     {
                         DHandlers::Processing(*message);
@@ -71,9 +71,7 @@ void DInterface::Update()
 
 BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
 {
-    BaseMessage *result = nullptr;
-
-    if (size >= 16)
+    if (size >= 8)
     {
         uint *pointer = (uint *)data;
 
@@ -81,16 +79,20 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
 
         Command::E command = (Command::E)*pointer++;
 
-        if (command == Command::START_2A)
+        if (command == Command::STOP)
+        {
+            return new Message::Stop();
+        }
+        else if (command == Command::START_2A)
         {
             Value Us((int)(*pointer++));
             Value t1((int)(*pointer++));
 
-            result = new Message::Start2A(Us, t1);
+            return new Message::Start2A(Us, t1);
         }
     }
 
-    return result;
+    return nullptr;
 }
 
 
