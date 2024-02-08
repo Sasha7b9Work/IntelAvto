@@ -109,11 +109,6 @@ void Keyboard::Update()
         {
             int state = Read_RL(rl);
 
-            if (state == 0)
-            {
-                state = state;
-            }
-
             Key::E key = keys[sl][rl];
 
             if (key != Key::None)
@@ -333,11 +328,6 @@ void Keyboard::InitTimer()
 
 void Keyboard::AddAction(Key::E key, Action::E action)
 {
-    if (action != Action::Press)
-    {
-        return;
-    }
-
     controls[numActions++] = Control(key, action);
 }
 

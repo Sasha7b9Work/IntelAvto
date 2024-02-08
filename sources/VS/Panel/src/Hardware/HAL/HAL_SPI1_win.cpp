@@ -15,19 +15,7 @@ bool HAL_SPI1::Transmit(int /*value*/)
 }
 
 
-bool HAL_SPI1::Receive(void * /*recv*/, int /*size*/)
-{
-    return false;
-}
-
-
-uint HAL_SPI1::ReceiveAndCompare(const void * /*compared*/, int /*size*/)
-{
-    return 0;
-}
-
-
-bool HAL_SPI1::WaitRelease()
+bool HAL_SPI1::Receive(void * /*recv*/, int /*size*/, uint)
 {
     return false;
 }
