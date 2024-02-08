@@ -35,46 +35,11 @@ void DInterface::ResetFreqForSend()
 
 void DInterface::Update()
 {
-    int size = 0;
+    uint size = 0;
 
-    if (HAL_SPI1::Receive(&size, 4))                                                            // Узнаём размер принимаемого сообщения
+    if (HAL_SPI1::Receive(&size, 4))
     {
-        BaseMessage first;              // Сюда принимаем первое сообщение
-        BaseMessage second;             // Сюда принимаем второе сообщение
-
-        if (first.AllocateMemory(size))
-        {
-            if (HAL_SPI1::Receive(first.TakeData(), first.Size()))                         // Принимаем данные
-            {
-                if (HAL_SPI1::Transmit(&size, 4))                                          // Передаём его размер
-                {
-                    if (HAL_SPI1::Transmit(first.TakeData(), first.Size()))                // И данные
-                    {
-                        if (HAL_SPI1::Receive(&size, 4))
-                        {
-                            if (second.AllocateMemory(size))                                        // Второй раз сообщение будем принимать в этот буфер
-                            {
-                                if (HAL_SPI1::Receive(second.TakeData(), second.Size()))   // Что и делаем
-                                {
-                                    size = second.Size();
-
-                                    if (HAL_SPI1::Transmit(&size, 4))
-                                    {
-                                        if (HAL_SPI1::Transmit(second.TakeData(), second.Size()))
-                                        {
-                                            if (second.IsEquals(&first))                            // Проверяем, совпали ли оба принятых сообщения
-                                            {
-                                                DHandlers::Processing(&first);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        size = size;
     }
 }
 

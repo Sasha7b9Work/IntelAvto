@@ -125,7 +125,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>ST-LINKIII-KEIL_SWO</Key>
-          <Name>-U57FF6D064985515629220387 -O206 -SF4000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8004 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO11 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_2048.FLM -FS08000000 -FL0200000 -FP0($$Device:STM32F429VITx$CMSIS\Flash\STM32F4xx_2048.FLM)</Name>
+          <Name>-U51FF6E066577485613530667 -O206 -SF4000 -C0 -A0 -I0 -HNlocalhost -HP7184 -P1 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO18 -TC10000000 -TP21 -TDS8004 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO11 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_2048.FLM -FS08000000 -FL0200000 -FP0($$Device:STM32F429VITx$CMSIS\Flash\STM32F4xx_2048.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -154,7 +154,7 @@
           <Type>0</Type>
           <LineNumber>330</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134253468</Address>
+          <Address>134243024</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -168,50 +168,34 @@
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>320</LineNumber>
+          <LineNumber>18</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134253388</Address>
+          <Address>134233558</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;..\common\Menu\MenuItems.cpp</Filename>
+          <Filename>&lt;1&gt;..\common\Connector\Transceiver_p.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Panel\../common/Menu/MenuItems.cpp\320</Expression>
+          <Expression>\\Panel\../common/Connector/Transceiver_p.cpp\18</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>105</LineNumber>
+          <LineNumber>786</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134243108</Address>
+          <Address>134227792</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;..\common\Menu\Menu.cpp</Filename>
+          <Filename>&lt;1&gt;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Panel\../common/Menu/Menu.cpp\105</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>130</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134252540</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;1&gt;..\common\Hardware\Keyboard\Keyboard.cpp</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Panel\../common/Hardware/Keyboard/Keyboard.cpp\130</Expression>
+          <Expression>\\Panel\../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c\786</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>
@@ -857,7 +841,7 @@
 
   <Group>
     <GroupName>Connector</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

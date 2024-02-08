@@ -16,7 +16,7 @@ namespace HAL_SPI1
             SPI_DATASIZE_8BIT,              // Init.DataSize
             SPI_POLARITY_HIGH,              // Init.CLKPolarity
             SPI_PHASE_2EDGE,                // Init.CLKPhase
-            SPI_NSS_HARD_INPUT,             // Init.NSS
+            SPI_NSS_SOFT,                   // Init.NSS
             SPI_BAUDRATEPRESCALER_32,       // Init.BaudRatePrescaler
             SPI_FIRSTBIT_MSB,               // Init.FirstBit
             SPI_TIMODE_DISABLED,            // Init.TIMode
@@ -26,11 +26,39 @@ namespace HAL_SPI1
         nullptr, 0, 0, nullptr, 0, 0, nullptr, nullptr, nullptr, nullptr, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
     };
 
+    namespace CS
+    {
+        void Init()
+        {
+            GPIO_InitTypeDef is =
+            {   //  NSS
+                GPIO_PIN_2,
+                GPIO_MODE_INPUT,
+                GPIO_PULLUP
+            };
+            HAL_GPIO_Init(GPIOA, &is);
+
+            HAL_SPI_Init(&handle);
+        }
+
+        bool IsLow()
+        {
+            return HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == GPIO_PIN_RESET;
+        }
+
+        // Вывод находится в "активном" состоянии - панель что-то передаёт.
+        bool IsActive()
+        {
+            return IsLow();
+        }
+    }
 }
 
 
 void HAL_SPI1::Init()
 {
+    CS::Init();
+
     GPIO_InitTypeDef isGPIOA =
     {   //  SCK         MI           MO
         GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7,
@@ -47,6 +75,10 @@ void HAL_SPI1::Init()
 
 bool HAL_SPI1::Receive(void *buffer, int size)
 {
+    while (!CS::IsActive())
+    {
+    }
+
     return HAL_SPI_Receive(&handle, (uint8 *)buffer, (uint16)size, 100) == HAL_OK;
 }
 
