@@ -5,12 +5,6 @@
 #include <stm32f4xx_hal.h>
 
 
-Pin pin_SPI_SCK(PinMode::SPI_SCK, GPIOA, GPIO_PIN_5);
-Pin pin_SPI_MO(PinMode::SPI_MO, GPIOA, GPIO_PIN_7);
-Pin pin_SPI_MI(PinMode::SPI_MI, GPIOA, GPIO_PIN_6);
-Pin pin_SPI_CS(PinMode::SPI_CS, GPIOA, GPIO_PIN_2);
-
-
 PinOut pin_A0_RG(GPIOG, GPIO_PIN_5);
 PinOut pin_A1_RG(GPIOG, GPIO_PIN_6);
 PinOut pin_A2_RG(GPIOG, GPIO_PIN_7);
@@ -48,11 +42,6 @@ PinOut pin_NPULSE2(GPIOF, GPIO_PIN_14);
 
 void HAL_PINS::Init()
 {
-    pin_SPI_SCK.Init();
-    pin_SPI_MO.Init();
-    pin_SPI_MI.Init();
-    pin_SPI_CS.Init();
-
     pin_A0_RG.Init();
     pin_A1_RG.Init();
     pin_A2_RG.Init();
@@ -133,7 +122,39 @@ void PinOut::ToLow()
 }
 
 
+bool PinIn::IsLow() const
+{
+    return HAL_GPIO_ReadPin((GPIO_TypeDef *)port, pin) == GPIO_PIN_RESET;
+}
+
+
+bool PinIn::IsHi() const
+{
+    return !IsLow();
+}
+
+
 void Pin::Init()
 {
+    if (mode == PinMode::OUTPUT)
+    {
+        GPIO_InitTypeDef is =
+        {
+            pin,
+            GPIO_MODE_OUTPUT_PP,
+            GPIO_PULLUP
+        };
+        HAL_GPIO_Init((GPIO_TypeDef *)port, &is);
+    }
+    else if (mode == PinMode::INPUT)
+    {
+        GPIO_InitTypeDef is =
+        {
+            pin,
+            GPIO_MODE_INPUT,
+            GPIO_PULLUP
+        };
 
+        HAL_GPIO_Init((GPIO_TypeDef *)port, &is);
+    }
 }

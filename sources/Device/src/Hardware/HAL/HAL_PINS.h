@@ -7,10 +7,7 @@ struct PinMode
     enum E
     {
         OUTPUT,
-        SPI_SCK,
-        SPI_MO,
-        SPI_MI,
-        SPI_CS,
+        INPUT,
         Count
     };
 };
@@ -38,7 +35,9 @@ struct PinOut : public Pin
 
 struct PinIn : public Pin
 {
-
+    PinIn(void *_port, uint16 _pin) : Pin(PinMode::INPUT, _port, _pin) { }
+    bool IsHi() const;
+    bool IsLow() const;
 };
 
 
@@ -47,11 +46,6 @@ namespace HAL_PINS
     void Init();
 }
 
-
-extern Pin pin_SPI_SCK;
-extern Pin pin_SPI_MO;
-extern Pin pin_SPI_MI;
-extern Pin pin_SPI_CS;
 
 extern PinOut pin_A0_RG;    // Выбор адреса внутреннего регистра ПЛИС
 extern PinOut pin_A1_RG;    // Выбор адреса внутреннего регистра ПЛИС
