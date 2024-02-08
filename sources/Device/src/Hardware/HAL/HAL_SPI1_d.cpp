@@ -14,6 +14,7 @@ namespace HAL_SPI1
     static PinOut pinOUT(GPIOA, GPIO_PIN_6);
 
     static uint8 ReceiveByte();
+    static void SendByte(uint8);
 }
 
 
@@ -67,10 +68,33 @@ uint8 HAL_SPI1::ReceiveByte()
 }
 
 
-bool HAL_SPI1::Transmit(void * /*buffer*/, int /*size*/)
+void HAL_SPI1::SendByte(uint8 byte)
 {
-    return false;
-//    return HAL_SPI_Transmit(&handle, (uint8 *)buffer, (uint16)size, 100) == HAL_OK;
+    for (int i = 0; i < 8; i++)
+    {
+        ((byte & (1 << i)) == 0) ? pinOUT.ToLow() : pinOUT.ToHi();
+
+        while (pinSCK.IsLow())
+        {
+        }
+    }
+}
+
+
+bool HAL_SPI1::Transmit(void *buffer, int size)
+{
+    uint8 *pointer = (uint8 *)buffer;
+
+    while (pinCS.IsHi())
+    {
+    }
+
+    for (int i = 0; i < size; i++)
+    {
+        SendByte(*pointer++);
+    }
+
+    return true;
 }
 
 

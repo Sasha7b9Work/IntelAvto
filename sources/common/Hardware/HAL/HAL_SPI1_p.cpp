@@ -122,12 +122,12 @@ uint8 HAL_SPI1::ReceiveByte()
 
         HAL_TIM::DelayUS(100);
 
-        pinSCK.ToHi();
-
         if (pinIN.IsHi())
         {
             byte |= (1 << i);
         }
+
+        pinSCK.ToHi();
 
         HAL_TIM::DelayUS(100);
     }
