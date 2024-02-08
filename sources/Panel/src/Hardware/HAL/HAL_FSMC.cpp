@@ -244,8 +244,7 @@ static void WindowSet(int s_x, int e_x, int s_y, int e_y)
 static void Delay()
 {
     volatile int i = 0;
-
-    for (; i < 2; i++)
+    for (; i < 0; i++)
     {
     }
 }
@@ -278,13 +277,11 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
 
     for(int i = 0; i < count; i++)
     {
-        Delay();
         PORT_WR->BSRR = PIN_WR << 16;
         uint16 col3 = (uint16)color2;
         uint16 value = (uint16)(color1 << 8);
         Delay();
         PORT_DATA->ODR = (uint)(value | (uint16)(color1 >> 8));
-        Delay();
         PORT_WR->BSRR = PIN_WR;
         Delay();
 
@@ -302,7 +299,6 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
         PORT_WR->BSRR = PIN_WR << 16;
         Delay();
         PORT_DATA->ODR = col3;
-        Delay();
         PORT_WR->BSRR = PIN_WR;
         Delay();
     }
