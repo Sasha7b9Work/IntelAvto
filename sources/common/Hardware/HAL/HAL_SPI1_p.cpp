@@ -17,7 +17,7 @@ namespace HAL_SPI1
             SPI_DATASIZE_8BIT,
             SPI_POLARITY_HIGH,
             SPI_PHASE_2EDGE,
-            SPI_NSS_HARD_OUTPUT,
+            SPI_NSS_SOFT,
             SPI_BAUDRATEPRESCALER_32,
             SPI_FIRSTBIT_MSB,
             SPI_TIMODE_DISABLED,
@@ -44,10 +44,10 @@ namespace HAL_SPI1
             GPIO_InitTypeDef is =
             {
                 GPIO_PIN_6,
-                GPIO_MODE_AF_PP,
+                GPIO_MODE_OUTPUT_PP,
                 GPIO_PULLUP,
-                GPIO_SPEED_HIGH,
-                GPIO_AF5_SPI1
+                GPIO_SPEED_FREQ_VERY_HIGH,
+                0
             };
 
             HAL_GPIO_Init(GPIOB, &is);

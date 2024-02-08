@@ -11,7 +11,7 @@
 
 
 #ifdef PANEL
-    PCD_HandleTypeDef hPCD;
+PCD_HandleTypeDef hPCD;
 #endif
 
 
@@ -40,7 +40,7 @@ void HAL::Init()
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 
-//    __USB_OTG_FS_CLK_ENABLE();
+    //    __USB_OTG_FS_CLK_ENABLE();
 
     __SYSCFG_CLK_ENABLE();
 
@@ -50,22 +50,22 @@ void HAL::Init()
     __HAL_RCC_GPIOD_CLK_ENABLE();
     __HAL_RCC_GPIOE_CLK_ENABLE();
 
-//    GPIO_InitTypeDef isGPIO =
-//    {
-//        GPIO_PIN_11 | GPIO_PIN_12,
-//        GPIO_MODE_AF_PP,
-//        GPIO_NOPULL,
-//        GPIO_SPEED_FREQ_VERY_HIGH,
-//        GPIO_AF10_OTG_FS
-//    };
-//
-//    _HAL_GPIO_Init(GPIOA, &isGPIO);
+    //    GPIO_InitTypeDef isGPIO =
+    //    {
+    //        GPIO_PIN_11 | GPIO_PIN_12,
+    //        GPIO_MODE_AF_PP,
+    //        GPIO_NOPULL,
+    //        GPIO_SPEED_FREQ_VERY_HIGH,
+    //        GPIO_AF10_OTG_FS
+    //    };
+    //
+    //    _HAL_GPIO_Init(GPIOA, &isGPIO);
 
-//    isGPIO.Pin = GPIO_PIN_9;
-//    isGPIO.Mode = GPIO_MODE_INPUT;
-//    isGPIO.Pull = GPIO_NOPULL;
-//
-//    _HAL_GPIO_Init(GPIOA, &isGPIO);
+    //    isGPIO.Pin = GPIO_PIN_9;
+    //    isGPIO.Mode = GPIO_MODE_INPUT;
+    //    isGPIO.Pull = GPIO_NOPULL;
+    //
+    //    _HAL_GPIO_Init(GPIOA, &isGPIO);
 
     HAL_NVIC_SetPriority(OTG_FS_IRQn, 0, 0);
 
@@ -74,6 +74,8 @@ void HAL::Init()
     SystemClock_Config();
 
 #ifdef PANEL
+
+    HAL_SPI1::Init();
     HAL_BUS_DISPLAY::Init();
 #endif
 
@@ -118,13 +120,13 @@ static void SystemClock_Config()
 
     /**Activate the Over-Drive mode
     */
-//    if (HAL_PWREx_EnableOverDrive() != HAL_OK)
-//    {
-//        HAL::ERROR_HANDLER();
-//    }
+    //    if (HAL_PWREx_EnableOverDrive() != HAL_OK)
+    //    {
+    //        HAL::ERROR_HANDLER();
+    //    }
 
-    /**Initializes the CPU, AHB and APB busses clocks
-    */
+        /**Initializes the CPU, AHB and APB busses clocks
+        */
     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
