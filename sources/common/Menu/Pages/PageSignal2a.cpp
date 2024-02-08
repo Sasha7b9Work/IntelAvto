@@ -30,7 +30,7 @@ namespace PageSignal2a
         FuncPress_Signal
     );
 
-    void PageSignal2a::Start()
+    void Start()
     {
         Message::Start2A(param_Us.GetValue(), param_t1.GetValue()).Transmit();
     }
