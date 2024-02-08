@@ -18,5 +18,6 @@
     #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
     #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
     #pragma clang diagnostic ignored "-Wunused-private-field"
+    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
 #endif
 

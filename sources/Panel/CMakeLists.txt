@@ -55,7 +55,8 @@ file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
 file(GLOB HARDWARE                  src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
-                              ../common/Hardware/HAL/HAL_SPI1_p.cpp)
+                              ../common/Hardware/HAL/HAL_SPI1_p.cpp
+                              ../common/Hardware/HAL/HAL_PINS.*)
 file(GLOB HARDWARE_USBD             src/Hardware/USBD/*.*
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c

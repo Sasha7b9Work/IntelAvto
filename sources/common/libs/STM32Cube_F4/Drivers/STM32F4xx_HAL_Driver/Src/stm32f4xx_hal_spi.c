@@ -204,6 +204,7 @@
     #pragma clang diagnostic ignored "-Wpadded"
     #pragma clang diagnostic ignored "-Wcast-align"
     #pragma clang diagnostic ignored "-Wimplicit-int-conversion"
+    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
 #endif
 
 /** @addtogroup STM32F4xx_HAL_Driver
