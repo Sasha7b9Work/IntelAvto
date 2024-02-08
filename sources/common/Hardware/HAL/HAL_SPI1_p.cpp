@@ -76,6 +76,7 @@ bool HAL_SPI1::Transmit(int value)
 
 bool HAL_SPI1::Receive(void *recv, int size)
 {
+    pinSCK.ToLow();
     pinCS.ToLow();
 
     HAL_TIM::DelayUS(500);
