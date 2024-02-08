@@ -4,6 +4,8 @@
 #include "Hardware/Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
+#include "Connector/Messages.h"
+#include "Menu/Pages/Pages.h"
 
 
 int main(void)
@@ -20,5 +22,6 @@ int main(void)
     {
         Menu::Input::Update();
         Display::Update();
+        PageSignal2a::Start();
     }
 }

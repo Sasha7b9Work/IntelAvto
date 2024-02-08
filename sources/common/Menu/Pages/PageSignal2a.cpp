@@ -30,7 +30,7 @@ namespace PageSignal2a
         FuncPress_Signal
     );
 
-    static void FuncStartTest()
+    void PageSignal2a::Start()
     {
         Message::Start2A(param_Us.GetValue(), param_t1.GetValue()).Transmit();
     }
@@ -43,7 +43,7 @@ namespace PageSignal2a
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr, FuncStartTest);
+    static Page page(items, nullptr, nullptr, PageSignal2a::Start);
 }
 
 
