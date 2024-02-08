@@ -18,7 +18,7 @@ namespace HAL_SPI1
             SPI_POLARITY_HIGH,
             SPI_PHASE_2EDGE,
             SPI_NSS_SOFT,
-            SPI_BAUDRATEPRESCALER_128,
+            SPI_BAUDRATEPRESCALER_256,
             SPI_FIRSTBIT_MSB,
             SPI_TIMODE_DISABLED,
             SPI_CRCCALCULATION_DISABLED,

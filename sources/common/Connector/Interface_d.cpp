@@ -28,13 +28,6 @@ Queue &DInterface::GetOutbox()
 
 void DInterface::Update()
 {
-    static uint next_time = 0;
-
-    if (TIME_MS < next_time)
-    {
-        return;
-    }
-
     HAL_SPI1::WaitInterval(400);                                // ∆дЄм нул€ после единицы продолжительностью не менее 400 (на панели сто»т 500)
 
     int size = 0;
@@ -44,10 +37,8 @@ void DInterface::Update()
 
     if (HAL_SPI1::Receive(&size, 4))
     {
-        if (size > SIZE_BUFFER)
+        if (size > 32)
         {
-            HAL_SPI1::Reset();
-            next_time = TIME_MS + 1000;
             return;
         }
 

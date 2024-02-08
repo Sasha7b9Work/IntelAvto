@@ -21,8 +21,6 @@ namespace HAL_SPI1
 {
     void Init();
 
-    void Reset();
-
     bool Receive(void *buffer, int size);
 
     bool Transmit(void *buffer, int size);

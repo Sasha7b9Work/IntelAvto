@@ -7,26 +7,6 @@
 
 namespace HAL_SPI1
 {
-
-    static SPI_HandleTypeDef handle =                                   // Для связи с панелью
-    {
-        SPI1,
-        {
-            SPI_MODE_SLAVE,                 // Init.Mode
-            SPI_DIRECTION_2LINES,           // Init.Direction
-            SPI_DATASIZE_8BIT,              // Init.DataSize
-            SPI_POLARITY_HIGH,              // Init.CLKPolarity
-            SPI_PHASE_2EDGE,                // Init.CLKPhase
-            SPI_NSS_SOFT,                   // Init.NSS
-            SPI_BAUDRATEPRESCALER_128,       // Init.BaudRatePrescaler
-            SPI_FIRSTBIT_MSB,               // Init.FirstBit
-            SPI_TIMODE_DISABLED,            // Init.TIMode
-            SPI_CRCCALCULATION_DISABLED,    // Init.CRCCalculation
-            7                               // InitCRCPolynomial
-        },
-        nullptr, 0, 0, nullptr, 0, 0, nullptr, nullptr, nullptr, nullptr, HAL_UNLOCKED, HAL_SPI_STATE_RESET, 0
-    };
-
     namespace CS
     {
         void Init()
@@ -38,8 +18,6 @@ namespace HAL_SPI1
                 GPIO_PULLUP
             };
             HAL_GPIO_Init(GPIOA, &is);
-
-            HAL_SPI_Init(&handle);
         }
 
         bool IsLow()
@@ -53,40 +31,74 @@ namespace HAL_SPI1
             return IsLow();
         }
     }
+
+    namespace PinIN
+    {
+        void Init()
+        {
+            GPIO_InitTypeDef is =
+            {   //  MO
+                GPIO_PIN_7,
+                GPIO_MODE_INPUT,
+                GPIO_PULLUP
+            };
+            HAL_GPIO_Init(GPIOA, &is);
+        }
+
+        bool IsHi()
+        {
+            return HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7) != GPIO_PIN_RESET;
+        }
+    }
+
+    namespace SCK
+    {
+        static void Init()
+        {
+            GPIO_InitTypeDef is =
+            {   //  SCK
+                GPIO_PIN_5,
+                GPIO_MODE_INPUT,
+                GPIO_PULLUP
+            };
+            HAL_GPIO_Init(GPIOA, &is);
+        }
+
+        static bool IsLow()
+        {
+            return HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_5) == GPIO_PIN_RESET;
+        }
+
+        static bool IsHi()
+        {
+            return !IsLow();
+        }
+    }
+
+    namespace PinOUT
+    {
+        void Init()
+        {
+            GPIO_InitTypeDef isGPIOA =
+            {   //  MI
+                GPIO_PIN_6,
+                GPIO_MODE_OUTPUT_OD,
+                GPIO_PULLUP
+            };
+            HAL_GPIO_Init(GPIOA, &isGPIOA);
+        }
+    }
+
+    static uint8 ReceiveByte();
 }
 
 
 void HAL_SPI1::Init()
 {
     CS::Init();
-
-    GPIO_InitTypeDef isGPIOA =
-    {   //  SCK         MI           MO
-        GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_7,
-        GPIO_MODE_AF_PP,
-        GPIO_PULLUP,
-        GPIO_SPEED_HIGH,
-        GPIO_AF5_SPI1
-    };
-    HAL_GPIO_Init(GPIOA, &isGPIOA);
-
-    HAL_SPI_Init(&handle);
-}
-
-
-void HAL_SPI1::Reset()
-{
-    HAL_SPI_Abort(&handle);
-
-    HAL_SPI_DeInit(&handle);
-
-    HAL_SPI_Init(&handle);
-
-    volatile uint dr = SPI1->DR;
-    volatile uint sr = SPI1->SR;
-
-    (void)dr;
-    (void)sr;
+    PinOUT::Init();
+    PinIN::Init();
+    SCK::Init();
 }
 
 
@@ -96,13 +108,50 @@ bool HAL_SPI1::Receive(void *buffer, int size)
     {
     }
 
-    return HAL_SPI_Receive(&handle, (uint8 *)buffer, (uint16)size, 100) == HAL_OK;
+    uint8 *pointer = (uint8 *)buffer;
+
+    for (int i = 0; i < size; i++)
+    {
+        *pointer++ = ReceiveByte();
+    }
+
+    return true;
 }
 
 
-bool HAL_SPI1::Transmit(void *buffer, int size)
+uint8 HAL_SPI1::ReceiveByte()
 {
-    return HAL_SPI_Transmit(&handle, (uint8 *)buffer, (uint16)size, 100) == HAL_OK;
+    uint8 result = 0;
+
+    for (int i = 7; i >= 0; i--)
+    {
+        while (SCK::IsLow())
+        {
+        }
+
+        if (PinIN::IsHi())
+        {
+            result |= (1 << i);
+        }
+
+        while (SCK::IsHi())
+        {
+        }
+
+        if (i != 7)
+        {
+            result <<= 1;
+        }
+    }
+
+    return result;
+}
+
+
+bool HAL_SPI1::Transmit(void * /*buffer*/, int /*size*/)
+{
+    return false;
+//    return HAL_SPI_Transmit(&handle, (uint8 *)buffer, (uint16)size, 100) == HAL_OK;
 }
 
 
