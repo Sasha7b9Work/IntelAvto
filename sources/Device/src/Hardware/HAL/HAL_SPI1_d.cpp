@@ -18,7 +18,7 @@ namespace HAL_SPI1
             SPI_POLARITY_HIGH,              // Init.CLKPolarity
             SPI_PHASE_2EDGE,                // Init.CLKPhase
             SPI_NSS_SOFT,                   // Init.NSS
-            SPI_BAUDRATEPRESCALER_32,       // Init.BaudRatePrescaler
+            SPI_BAUDRATEPRESCALER_128,       // Init.BaudRatePrescaler
             SPI_FIRSTBIT_MSB,               // Init.FirstBit
             SPI_TIMODE_DISABLED,            // Init.TIMode
             SPI_CRCCALCULATION_DISABLED,    // Init.CRCCalculation
@@ -81,6 +81,12 @@ void HAL_SPI1::Reset()
     HAL_SPI_DeInit(&handle);
 
     HAL_SPI_Init(&handle);
+
+    volatile uint dr = SPI1->DR;
+    volatile uint sr = SPI1->SR;
+
+    (void)dr;
+    (void)sr;
 }
 
 
