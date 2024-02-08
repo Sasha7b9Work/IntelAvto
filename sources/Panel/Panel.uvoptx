@@ -152,9 +152,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>20</LineNumber>
+          <LineNumber>22</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134233746</Address>
+          <Address>134234318</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -163,13 +163,13 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\common\Connector\Transceiver_p.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Panel\../common/Connector/Transceiver_p.cpp\20</Expression>
+          <Expression>\\Panel\../common/Connector/Transceiver_p.cpp\22</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
-          <SubType>264</SubType>
+          <SubType>256</SubType>
           <ItemText>buffer</ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
@@ -196,7 +196,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -1301,7 +1301,7 @@
 
   <Group>
     <GroupName>Hardware/HAL</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

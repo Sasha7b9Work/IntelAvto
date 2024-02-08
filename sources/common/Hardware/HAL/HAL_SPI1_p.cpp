@@ -82,17 +82,27 @@ void HAL_SPI1::Init()
 }
 
 
+void HAL_SPI1::Reset()
+{
+    HAL_SPI_Abort(&handleSPI1);
+
+    HAL_SPI_DeInit(&handleSPI1);
+
+    HAL_SPI_Init(&handleSPI1);
+}
+
+
 bool HAL_SPI1::Transmit(const void *buffer, int size)
 {
     CS::ToLow();
 
-    HAL_TIM::DelayUS(50);
+    HAL_TIM::DelayUS(500);
 
     bool result = HAL_SPI_Transmit(&handleSPI1, (uint8 *)((void *)buffer), (uint16)size, 100) == HAL_OK;
 
     CS::ToHi();
 
-    HAL_TIM::DelayUS(50);
+    HAL_TIM::DelayUS(500);
 
     return result;
 }
@@ -108,11 +118,11 @@ bool HAL_SPI1::Receive(void *recv, int size, uint timeout)
 {
     CS::ToLow();
 
-    HAL_TIM::DelayUS(50);
+    HAL_TIM::DelayUS(500);
 
     bool result = HAL_SPI_Receive(&handleSPI1, (uint8 *)recv, (uint16)size, timeout) == HAL_OK;
 
-    HAL_TIM::DelayUS(50);
+    HAL_TIM::DelayUS(500);
 
     CS::ToHi();
 

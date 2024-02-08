@@ -74,6 +74,16 @@ void HAL_SPI1::Init()
 }
 
 
+void HAL_SPI1::Reset()
+{
+    HAL_SPI_Abort(&handle);
+
+    HAL_SPI_DeInit(&handle);
+
+    HAL_SPI_Init(&handle);
+}
+
+
 bool HAL_SPI1::Receive(void *buffer, int size)
 {
     while (!CS::IsActive())

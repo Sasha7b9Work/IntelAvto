@@ -13,7 +13,7 @@ namespace Device
 
 void Device::Run()
 {
-    if (!is_running)
+//    if (!is_running)
     {
         Page::ForCurrentSignal()->StartTest();
     }
@@ -26,7 +26,7 @@ void Device::Stop()
 {
     if (is_running)
     {
-        Message::Stop().Transmit();
+//        Message::Stop().Transmit();
     }
 
     is_running = false;

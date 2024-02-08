@@ -77,6 +77,8 @@ namespace HAL_SPI1
 {
     void Init();
 
+    void Reset();
+
     bool Transmit(const void *buffer, int size);
 
     bool Transmit(int value);

@@ -39,7 +39,8 @@ void DInterface::Update()
     {
         if (size > SIZE_BUFFER)
         {
-            size = SIZE_BUFFER;
+            HAL_SPI1::Reset();
+            return;
         }
 
         if (HAL_SPI1::Receive(buffer, size))

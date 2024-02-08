@@ -9,6 +9,8 @@
 
 void Transceiver::Transmit(BaseMessage *message)
 {
+    int counter = 0;
+
     while (true)
     {
         HAL_TIM::DelayMS(500);                                              // Делаем интервал 500, чтобы приёмное устройство
@@ -34,6 +36,13 @@ void Transceiver::Transmit(BaseMessage *message)
                     }
                 }
             }
+        }
+
+        if (counter++ > 10)
+        {
+            HAL_SPI1::Reset();
+
+            break;
         }
     }
 }
