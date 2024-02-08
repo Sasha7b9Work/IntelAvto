@@ -82,7 +82,7 @@ namespace HAL_SPI1
             GPIO_InitTypeDef isGPIOA =
             {   //  MI
                 GPIO_PIN_6,
-                GPIO_MODE_OUTPUT_OD,
+                GPIO_MODE_OUTPUT_PP,
                 GPIO_PULLUP
             };
             HAL_GPIO_Init(GPIOA, &isGPIOA);

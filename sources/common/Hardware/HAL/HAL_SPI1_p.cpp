@@ -5,6 +5,20 @@
 #include <stm32f4xx_hal.h>
 
 
+/*
+
+    +-------+---------+--------+
+    | Вывод |  Панель | Device |
+    +-------+---------+--------+
+    | CS    | PB6 O   | PA2 I  |
+    | SCK   | PA5 O   | PA5 I  |
+    | MOSI  | PB5 O   | PA7 I  |
+    | MISO  | PA6 I   | PA6 O  |
+    +-------+---------+--------+
+
+*/
+
+
 namespace HAL_SPI1
 {
     namespace CS
@@ -53,7 +67,7 @@ namespace HAL_SPI1
             GPIO_InitTypeDef is =
             {   //  SCK
                 GPIO_PIN_5,
-                GPIO_MODE_OUTPUT_OD,
+                GPIO_MODE_OUTPUT_PP,
                 GPIO_PULLUP,
                 GPIO_SPEED_FREQ_VERY_HIGH,
                 0
@@ -104,7 +118,7 @@ namespace HAL_SPI1
                 GPIO_SPEED_FREQ_VERY_HIGH,
                 0
             };
-            HAL_GPIO_Init(GPIOB, &is);
+            HAL_GPIO_Init(GPIOA, &is);
         }
     }
 
@@ -148,7 +162,7 @@ bool HAL_SPI1::Transmit(const void *buffer, int size)
 
 void HAL_SPI1::SendByte(uint8 byte)
 {
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 8; i++)
     {
         SCK::ToLow();
 
