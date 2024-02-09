@@ -29,10 +29,6 @@ void HAL_SPI1::Init()
 
 void HAL_SPI1::Receive(void *buffer, int size)
 {
-    while (pinCS.IsHi())
-    {
-    }
-
     uint8 *pointer = (uint8 *)buffer;
 
     for (int i = 0; i < size; i++)
