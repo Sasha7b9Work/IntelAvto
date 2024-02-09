@@ -32,6 +32,11 @@ namespace HAL_SPI1
     static uint8 ReceiveByte();
 
     static void Receive(void *recv, int size);
+
+    static void Delay()
+    {
+        HAL_TIM::DelayUS(50);
+    }
 }
 
 
@@ -57,16 +62,12 @@ void HAL_SPI1::Init()
 
 void HAL_SPI1::Transmit(const void *buffer, int size)
 {
-    HAL_TIM::DelayMS(2);
-
     uint8 *pointer = (uint8 *)buffer;
 
     for (int i = 0; i < size; i++)
     {
         SendByte(*pointer++);
     }
-
-    HAL_TIM::DelayMS(2);
 }
 
 
@@ -78,16 +79,12 @@ void HAL_SPI1::TransmitUInt(uint value)
 
 void HAL_SPI1::Receive(void *recv, int size)
 {
-    HAL_TIM::DelayMS(2);
-
     uint8 *pointer = (uint8 *)recv;
 
     for (int i = 0; i < size; i++)
     {
         *pointer++ = ReceiveByte();
     }
-
-    HAL_TIM::DelayMS(2);
 }
 
 
@@ -97,11 +94,11 @@ void HAL_SPI1::SendByte(uint8 byte)
     {
         ((byte & (1 << i)) == 0) ? pinOUT.ToLow() : pinOUT.ToHi();
 
-        HAL_TIM::DelayMS(2);
+        Delay();
 
         pinSCK.ToHi();
 
-        HAL_TIM::DelayMS(2);
+        Delay();
 
         pinSCK.ToLow();
     }
@@ -114,7 +111,7 @@ uint8 HAL_SPI1::ReceiveByte()
 
     for (int i = 0; i < 8; i++)
     {
-        HAL_TIM::DelayMS(1);
+        Delay();
 
         if (pinIN.IsHi())
         {
@@ -123,7 +120,7 @@ uint8 HAL_SPI1::ReceiveByte()
 
         pinSCK.ToHi();
 
-        HAL_TIM::DelayMS(1);
+        Delay();
 
         pinSCK.ToLow();
     }

@@ -19,7 +19,7 @@ void Transceiver::Transmit(BaseMessage *message)
         HAL_SPI1::TransmitUInt((uint)message->Size());              // Передаём размер сообщения (4 байта)
 
         HAL_TIM::DelayMS(2);
-
+    
         HAL_SPI1::Transmit(message->TakeData(), message->Size());   // Передаём сообщение
 
         HAL_TIM::DelayMS(2);
