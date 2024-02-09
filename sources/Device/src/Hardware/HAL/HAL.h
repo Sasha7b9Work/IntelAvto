@@ -23,9 +23,11 @@ namespace HAL_SPI1
 
     void Receive(void *buffer, int size);
 
+    uint ReceiveUInt();
+
     void Transmit(void *buffer, int size);
 
-    void Transmit(int value);
+    void TransmitUInt(uint);
 
     // ќжидает начала нул€, который идЄт за единицей длительностью не менее timeMS
     void WaitInterval(uint timeMS);

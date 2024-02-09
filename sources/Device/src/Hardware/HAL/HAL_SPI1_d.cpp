@@ -96,9 +96,19 @@ void HAL_SPI1::Transmit(void *buffer, int size)
 }
 
 
-void HAL_SPI1::Transmit(int value)
+void HAL_SPI1::TransmitUInt(uint value)
 {
     Transmit(&value, 4);
+}
+
+
+uint HAL_SPI1::ReceiveUInt()
+{
+    uint value = 0;
+
+    Receive(&value, sizeof(value));
+
+    return value;
 }
 
 

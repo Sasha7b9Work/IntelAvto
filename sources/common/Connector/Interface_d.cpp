@@ -28,37 +28,33 @@ Queue &DInterface::GetOutbox()
 
 void DInterface::Update()
 {
-    HAL_SPI1::WaitInterval(400);                                // ∆дЄм нул€ после единицы продолжительностью не менее 400 (на панели сто»т 500)
-
-    int size = 0;
-
     static const int SIZE_BUFFER = 128;
     uint8 buffer[SIZE_BUFFER];
 
-    HAL_SPI1::Receive(&size, 4);
+    HAL_SPI1::WaitInterval(400);                                // ∆дЄм нул€ после единицы продолжительностью не менее 400 (на панели сто»т 500)
 
-    HAL_SPI1::Receive(buffer, size);
+    int size = (int)HAL_SPI1::ReceiveUInt();
 
-    uint crc = 0;
-
-    HAL_SPI1::Receive(&crc, 4);
-
-    BaseMessage *message = CreateMessage(buffer, size);
-
-    uint new_crc = message ? message->CalculateCRC() : 0;
-
-    HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
-
-    if (message)
+    if (size < SIZE_BUFFER)
     {
-        if (new_crc == crc)
+        HAL_SPI1::Receive(buffer, size);
+
+        uint crc = HAL_SPI1::ReceiveUInt();
+
+        BaseMessage *message = CreateMessage(buffer, size);
+
+        HAL_SPI1::TransmitUInt(message ? message->CalculateCRC() : 0);
+
+        if (message)
         {
-            DHandlers::Processing(*message);
+            if (message->CalculateCRC() == crc)
+            {
+                DHandlers::Processing(*message);
+            }
+
+            delete message;
         }
-
-        delete message;
     }
-
 }
 
 
