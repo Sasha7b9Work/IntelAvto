@@ -22,7 +22,7 @@
 
 namespace HAL_SPI1
 {
-    static PinOut pinCS(GPIOD, GPIO_PIN_6);
+    static PinOut pinCS(GPIOB, GPIO_PIN_6);
     static PinOut pinSCK(GPIOA, GPIO_PIN_5);
     static PinOut pinOUT(GPIOB, GPIO_PIN_5);
     static PinIn  pinIN(GPIOA, GPIO_PIN_6);
@@ -37,9 +37,10 @@ namespace HAL_SPI1
 void HAL_SPI1::Init()
 {
     pinCS.Init();
+    pinCS.ToHi();
 
     pinSCK.Init();
-    pinSCK.ToHi();
+    pinSCK.ToLow();
 
     pinOUT.Init();
 
@@ -51,7 +52,7 @@ bool HAL_SPI1::Transmit(const void *buffer, int size)
 {
     pinCS.ToLow();
 
-    HAL_TIM::DelayUS(500);
+    HAL_TIM::DelayMS(2);
 
     uint8 *pointer = (uint8 *)buffer;
 
@@ -60,7 +61,7 @@ bool HAL_SPI1::Transmit(const void *buffer, int size)
         SendByte(*pointer++);
     }
 
-    HAL_TIM::DelayUS(500);
+    HAL_TIM::DelayMS(2);
 
     pinCS.ToHi();
 
@@ -100,8 +101,6 @@ void HAL_SPI1::SendByte(uint8 byte)
 {
     for (int i = 0; i < 8; i++)
     {
-        pinSCK.ToLow();
-
         ((byte &= (1 << i)) != 0) ? pinOUT.ToHi() : pinOUT.ToLow();
 
         HAL_TIM::DelayUS(100);
@@ -109,6 +108,8 @@ void HAL_SPI1::SendByte(uint8 byte)
         pinSCK.ToHi();
 
         HAL_TIM::DelayUS(100);
+
+        pinSCK.ToLow();
     }
 }
 
