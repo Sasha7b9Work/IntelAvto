@@ -31,7 +31,7 @@ void DInterface::Update()
     static const int SIZE_BUFFER = 128;
     uint8 buffer[SIZE_BUFFER];
 
-    HAL_SPI1::WaitInterval(400);                                // ∆дЄм нул€ после единицы продолжительностью не менее 400 (на панели сто»т 500)
+    HAL_SPI1::WaitCS();
 
     int size = (int)HAL_SPI1::ReceiveUInt();
 

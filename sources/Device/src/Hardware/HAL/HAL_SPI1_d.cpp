@@ -52,8 +52,6 @@ uint8 HAL_SPI1::ReceiveByte()
         {
         }
 
-        HAL_TIM::DelayUS(50);
-
         if (pinIN.IsHi())
         {
             result |= (1 << i);
@@ -116,19 +114,14 @@ uint HAL_SPI1::ReceiveUInt()
 }
 
 
-void HAL_SPI1::WaitInterval(uint timeMS)
+void HAL_SPI1::WaitCS()
 {
-    while (true)
+    while (pinCS.IsLow())
     {
-        while (pinCS.IsLow())  { }
 
-        uint time_start = TIME_MS;
+    }
+    while (pinCS.IsHi())
+    {
 
-        while (pinCS.IsHi()) { }
-
-        if (TIME_MS - time_start >= timeMS)
-        {
-            return;
-        }
     }
 }

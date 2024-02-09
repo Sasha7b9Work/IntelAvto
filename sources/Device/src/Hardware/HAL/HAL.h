@@ -29,8 +29,8 @@ namespace HAL_SPI1
 
     void TransmitUInt(uint);
 
-    // ќжидает начала нул€, который идЄт за единицей длительностью не менее timeMS
-    void WaitInterval(uint timeMS);
+    // ќжидает начала чипселекта
+    void WaitCS();
 }
 
 
