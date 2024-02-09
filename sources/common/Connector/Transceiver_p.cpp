@@ -11,7 +11,7 @@ void Transceiver::Transmit(BaseMessage *message)
 {
     while (true)
     {
-        HAL_TIM::DelayMS(500);                                      // Делаем интервал 500, чтобы приёмное устройство
+        HAL_TIM::DelayMS(50);                                      // Делаем интервал 500, чтобы приёмное устройство
                                                                     // отловило начало посылки
 
         HAL_SPI1::CS(true);

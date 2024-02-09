@@ -83,10 +83,6 @@ void HAL_SPI1::Transmit(void *buffer, int size)
 {
     uint8 *pointer = (uint8 *)buffer;
 
-    while (pinCS.IsHi())
-    {
-    }
-
     for (int i = 0; i < size; i++)
     {
         SendByte(*pointer++);
