@@ -30,7 +30,6 @@ void HAL::Init()
     __HAL_RCC_GPIOG_CLK_ENABLE();
 
     __HAL_RCC_FSMC_CLK_ENABLE();
-    __HAL_RCC_SPI1_CLK_ENABLE();
 
     HAL_Init();
 

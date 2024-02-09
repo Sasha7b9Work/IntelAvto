@@ -54,6 +54,8 @@ uint8 HAL_SPI1::ReceiveByte()
         {
         }
 
+        HAL_TIM::DelayUS(50);
+
         if (pinIN.IsHi())
         {
             result |= (1 << i);
