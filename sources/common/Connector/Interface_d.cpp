@@ -43,7 +43,9 @@ void DInterface::Update()
 
         BaseMessage *message = CreateMessage(buffer, size);
 
-        HAL_SPI1::TransmitUInt(message ? message->CalculateCRC() : 0);
+        uint value = message ? message->CalculateCRC() : 0;
+        
+        HAL_SPI1::TransmitUInt(value);
 
         if (message)
         {

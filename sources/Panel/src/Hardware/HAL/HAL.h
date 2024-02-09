@@ -77,6 +77,9 @@ namespace HAL_SPI1
 {
     void Init();
 
+    // Выбор устройства для передачи
+    void CS(bool);
+
     void Transmit(const void *buffer, int size);
 
     void TransmitUInt(uint);

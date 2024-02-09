@@ -77,6 +77,10 @@ void HAL_SPI1::SendByte(uint8 byte)
         while (pinSCK.IsLow())
         {
         }
+
+        while (pinSCK.IsHi())
+        {
+        }
     }
 }
 
