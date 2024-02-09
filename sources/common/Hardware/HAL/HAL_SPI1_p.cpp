@@ -8,14 +8,14 @@
 
 /*
 
-    +-------+---------+--------+
-    | Вывод |  Панель | Device |
-    +-------+---------+--------+
-    | CS    | PB6 O   | PA2 I  |
-    | SCK   | PA5 O   | PA5 I  |
-    | MOSI  | PB5 O   | PA7 I  |
-    | MISO  | PA6 I   | PA6 O  |
-    +-------+---------+--------+
+    +-------+----------+----------+
+    | Вывод |  Панель  |  Device  |
+    +-------+----------+----------+
+    | CS    | PB6 O 92 | PA2 I 36 |
+    | SCK   | PA5 O 30 | PA5 I 41 |
+    | MOSI  | PB5 O 91 | PA7 I 43 |
+    | MISO  | PA6 I 31 | PA6 O 42 |
+    +-------+----------+----------+
 
 */
 
@@ -97,7 +97,7 @@ void HAL_SPI1::SendByte(uint8 byte)
 {
     for (int i = 0; i < 8; i++)
     {
-        ((byte &= (1 << i)) != 0) ? pinOUT.ToHi() : pinOUT.ToLow();
+        ((byte & (1 << i)) == 0) ? pinOUT.ToLow() : pinOUT.ToHi();
 
         HAL_TIM::DelayMS(2);
 
