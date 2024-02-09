@@ -35,37 +35,30 @@ void DInterface::Update()
     static const int SIZE_BUFFER = 128;
     uint8 buffer[SIZE_BUFFER];
 
-    if (HAL_SPI1::Receive(&size, 4))
+    HAL_SPI1::Receive(&size, 4);
+
+    HAL_SPI1::Receive(buffer, size);
+
+    uint crc = 0;
+
+    HAL_SPI1::Receive(&crc, 4);
+
+    BaseMessage *message = CreateMessage(buffer, size);
+
+    uint new_crc = message ? message->CalculateCRC() : 0;
+
+    HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
+
+    if (message)
     {
-        if (size > 32)
+        if (new_crc == crc)
         {
-            return;
+            DHandlers::Processing(*message);
         }
 
-        if (HAL_SPI1::Receive(buffer, size))
-        {
-            uint crc = 0;
-
-            if (HAL_SPI1::Receive(&crc, 4))
-            {
-                BaseMessage *message = CreateMessage(buffer, size);
-
-                uint new_crc = message ? message->CalculateCRC() : 0;
-
-                HAL_SPI1::Transmit(&new_crc, sizeof(new_crc));
-
-                if (message)
-                {
-                    if (new_crc == crc)
-                    {
-                        DHandlers::Processing(*message);
-                    }
-
-                    delete message;
-                }
-            }
-        }
+        delete message;
     }
+
 }
 
 

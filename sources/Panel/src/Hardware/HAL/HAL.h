@@ -79,8 +79,8 @@ namespace HAL_SPI1
 
     void Transmit(const void *buffer, int size);
 
-    void Transmit(int value);
+    void TransmitUInt(uint);
 
-    void Receive(void *recv, int size);
+    uint ReceiveUInt();
 }
 

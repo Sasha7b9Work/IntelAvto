@@ -21,11 +21,11 @@ namespace HAL_SPI1
 {
     void Init();
 
-    bool Receive(void *buffer, int size);
+    void Receive(void *buffer, int size);
 
-    bool Transmit(void *buffer, int size);
+    void Transmit(void *buffer, int size);
 
-    bool Transmit(int value);
+    void Transmit(int value);
 
     // ќжидает начала нул€, который идЄт за единицей длительностью не менее timeMS
     void WaitInterval(uint timeMS);

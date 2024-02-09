@@ -30,6 +30,8 @@ namespace HAL_SPI1
     static void SendByte(uint8);
 
     static uint8 ReceiveByte();
+
+    static void Receive(void *recv, int size);
 }
 
 
@@ -67,7 +69,7 @@ void HAL_SPI1::Transmit(const void *buffer, int size)
 }
 
 
-void HAL_SPI1::Transmit(int value)
+void HAL_SPI1::TransmitUInt(uint value)
 {
     Transmit(&value, 4);
 }
@@ -131,4 +133,14 @@ uint8 HAL_SPI1::ReceiveByte()
     }
 
     return byte;
+}
+
+
+uint HAL_SPI1::ReceiveUInt()
+{
+    uint value = 0;
+
+    HAL_SPI1::Receive(&value, sizeof(value));
+
+    return value;
 }

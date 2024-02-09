@@ -13,21 +13,13 @@ void Transceiver::Transmit(BaseMessage *message)
     {
         HAL_TIM::DelayMS(500);                                      // Делаем интервал 500, чтобы приёмное устройство
                                                                     // отловило начало посылки
-        uint crc = message->CalculateCRC();
-
-        int size = message->Size();
-
-        HAL_SPI1::Transmit(size);                                   // Передаём размер сообщения (4 байта)
+        HAL_SPI1::TransmitUInt((uint)message->Size());              // Передаём размер сообщения (4 байта)
 
         HAL_SPI1::Transmit(message->TakeData(), message->Size());   // Передаём сообщение
 
-        HAL_SPI1::Transmit(&crc, sizeof(crc));                      // Передаём контрольную сумму сообщения
+        HAL_SPI1::TransmitUInt(message->CalculateCRC());            // Передаём контрольную сумму сообщения
 
-        uint code = 0;
-
-        HAL_SPI1::Receive(&code, sizeof(code));                     // И ждём подтверждения приёма в течение 10 мс
-
-        if (code == crc)
+        if (HAL_SPI1::ReceiveUInt() == message->CalculateCRC())
         {
             break;
         }

@@ -27,7 +27,7 @@ void HAL_SPI1::Init()
 }
 
 
-bool HAL_SPI1::Receive(void *buffer, int size)
+void HAL_SPI1::Receive(void *buffer, int size)
 {
     while (pinCS.IsHi())
     {
@@ -39,8 +39,6 @@ bool HAL_SPI1::Receive(void *buffer, int size)
     {
         *pointer++ = ReceiveByte();
     }
-
-    return true;
 }
 
 
@@ -83,7 +81,7 @@ void HAL_SPI1::SendByte(uint8 byte)
 }
 
 
-bool HAL_SPI1::Transmit(void *buffer, int size)
+void HAL_SPI1::Transmit(void *buffer, int size)
 {
     uint8 *pointer = (uint8 *)buffer;
 
@@ -95,14 +93,12 @@ bool HAL_SPI1::Transmit(void *buffer, int size)
     {
         SendByte(*pointer++);
     }
-
-    return true;
 }
 
 
-bool HAL_SPI1::Transmit(int value)
+void HAL_SPI1::Transmit(int value)
 {
-    return Transmit(&value, 4);
+    Transmit(&value, 4);
 }
 
 
