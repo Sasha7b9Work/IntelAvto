@@ -8,4 +8,7 @@ file(GLOB SRC  *.cpp)
 
 source_group(src   FILES ${SRC})
 
-add_executable(${PROJECT_NAME} ${SRC})
+add_executable(
+    ${PROJECT_NAME}
+    ${SRC}
+)

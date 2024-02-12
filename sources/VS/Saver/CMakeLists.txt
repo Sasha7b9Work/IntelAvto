@@ -7,17 +7,19 @@ set(CMAKE_UNITY_BUILD_BATCH_SIZE 4)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
-include_directories(src/
-                    ../../common
-                    ../../common/_VS_KEIL/CMSIS/
-                    ../../common/_VS_KEIL/HAL/
-                    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/
-                    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/
-                    ../../Panel/src/
-                    ../../Panel/src/Hardware/HAL/
-                    ../../Panel/src/Hardware/
-                    ../ThirdParty/wxWidgets/include
-                    ../../generated/ThirdParty/lib/vc_dll/mswud)
+include_directories(
+    src/
+    ../../common
+    ../../common/_VS_KEIL/CMSIS/
+    ../../common/_VS_KEIL/HAL/
+    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/
+    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/
+    ../../Panel/src/
+    ../../Panel/src/Hardware/HAL/
+    ../../Panel/src/Hardware/
+    ../ThirdParty/wxWidgets/include
+    ../../generated/ThirdParty/lib/vc_dll/mswud
+)
 
 link_directories(../../generated/ThirdParty/lib/vc_dll)
 
@@ -56,26 +58,28 @@ if(BUILD_USE_STATIC_RUNTIME)
     endforeach()
 endif()
 
-add_compile_options(/wd4211)    # nonstandard extension used: redefined extern to static
-add_compile_options(/wd4355)    # 'this': used in base member initializer list
-add_compile_options(/wd4514)    # 'xxx': unreferenced inline function has been removed
-add_compile_options(/wd4571)    # Informational: catch(...) semantics changed since Visual C++ 7.1
-add_compile_options(/wd4623)    # 'xxx': default constructor was implicitly defined as deleted
-add_compile_options(/wd4625)    # 'xxx': copy constructor was implicitly defined as deleted
-add_compile_options(/wd4626)    # 'xxx': assignment operator was implicitly defined as deleted
-add_compile_options(/wd4710)    # function not inlined
-add_compile_options(/wd4711)    # function 'function' selected for inline expansion
-add_compile_options(/wd4774)    # 'xxx' : format string expected in argument Y is not a string literal
-add_compile_options(/wd4820)    # 'xxx': 'y' bytes padding added after data member 'zzz'
-add_compile_options(/wd4996)    # 'xxx': This function or variable may be unsafe. Consider using yyy instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS
-add_compile_options(/wd5026)    # 'xxx': move constructor was implicitly defined as deleted
-add_compile_options(/wd5027)    # 'xxx': move assignment operator was implicitly defined as deleted
-add_compile_options(/wd5039)    # 'xxx': pointer or reference to potentially throwing function passed to extern C function under -EHc.
-add_compile_options(/wd5045)    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
-add_compile_options(/wd5204)    # 'xxx': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly
-add_compile_options(/wd5219)
-add_compile_options(/wd26821)
-add_compile_options(/wd26812)
+add_compile_options(
+    /wd4211    # nonstandard extension used: redefined extern to static
+    /wd4355    # 'this': used in base member initializer list
+    /wd4514    # 'xxx': unreferenced inline function has been removed
+    /wd4571    # Informational: catch(...) semantics changed since Visual C++ 7.1
+    /wd4623    # 'xxx': default constructor was implicitly defined as deleted
+    /wd4625    # 'xxx': copy constructor was implicitly defined as deleted
+    /wd4626    # 'xxx': assignment operator was implicitly defined as deleted
+    /wd4710    # function not inlined
+    /wd4711    # function 'function' selected for inline expansion
+    /wd4774    # 'xxx' : format string expected in argument Y is not a string literal
+    /wd4820    # 'xxx': 'y' bytes padding added after data member 'zzz'
+    /wd4996    # 'xxx': This function or variable may be unsafe. Consider using yyy instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS
+    /wd5026    # 'xxx': move constructor was implicitly defined as deleted
+    /wd5027    # 'xxx': move assignment operator was implicitly defined as deleted
+    /wd5039    # 'xxx': pointer or reference to potentially throwing function passed to extern C function under -EHc.
+    /wd5045    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
+    /wd5204    # 'xxx': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly
+    /wd5219
+    /wd26821
+    /wd26812
+)
 
 file(GLOB SRC                 ../../Panel/src/defines.h
                                           src/Application_win.*
@@ -94,9 +98,11 @@ file(GLOB UTILS               ../../common/Utils/Buffer.*
                               ../../common/Utils/StringUtils.*)
 
 
-set_source_files_properties(../../Panel/src/Utils/String.cpp
-                            ../../Panel/src/Utils/StringUtils.cpp
-                            PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
+set_source_files_properties(
+    ../../Panel/src/Utils/String.cpp
+    ../../Panel/src/Utils/StringUtils.cpp
+    PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
+)
 
 source_group(src               FILES ${SRC})
 source_group(Display           FILES ${DISPLAY})
@@ -107,14 +113,15 @@ source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
 
 
-add_executable(Saver
-                    ${SRC}
-                    ${DISPLAY}
-                    ${DISPLAY_FONT}
-                    ${GUI}
-                    ${KEYBOARD}
-                    ${SETTINGS}
-                    ${UTILS}
+add_executable(
+    ${PROJECT_NAME}
+    ${SRC}
+    ${DISPLAY}
+    ${DISPLAY_FONT}
+    ${GUI}
+    ${KEYBOARD}
+    ${SETTINGS}
+    ${UTILS}
 )
 
 target_link_libraries(Saver wxbase32ud)
