@@ -4,6 +4,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
 #include "Connector/Interface_d.h"
+#include "Generator/Generator.h"
 
 
 int main()
@@ -14,5 +15,14 @@ int main()
     while (1)
     {
         DInterface::Update();
+
+//        static uint time = 0;
+//
+//        if (TIME_MS - time > 1000)
+//        {
+//            time = TIME_MS;
+//
+//            Generator::Start2A(Value(10), Value(100));
+//        }
     }
 }

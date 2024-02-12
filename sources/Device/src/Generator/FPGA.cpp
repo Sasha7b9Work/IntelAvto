@@ -26,6 +26,8 @@ namespace FPGA
             Duration3ab = 0x07,
             Period3ab   = 0x08,
 
+            None = 0,
+
             Fail = 0xFF
         };
 
@@ -37,7 +39,7 @@ namespace FPGA
 
     private:
 
-        E address;
+        const E address;
 
         // Ќа какое число нужно умножать период
         uint PeriodMul();
@@ -146,7 +148,7 @@ void FPGA::Reg::Write(const Value &value)
 
     WriteRawValue((uint)value.GetRaw() * PeriodMul());
 
-    pin_WR_RG.ToHi(50);
+    pin_WR_RG.ToHi(5);
 
     pin_ON_OFF.ToHi();
 }
