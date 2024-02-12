@@ -33,6 +33,8 @@ void HAL::Init()
 
     HAL_Init();
 
+    HAL_TIM::Init();
+
     HAL_PINS::Init();
 
     HAL_SPI1::Init();

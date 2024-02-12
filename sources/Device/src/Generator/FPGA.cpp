@@ -144,7 +144,7 @@ void FPGA::Reg::Write(const Value &value)
 
     WriteRawValue((uint)value.GetRaw() * PeriodMul());
 
-    pin_WR_RG.ToHi(5);
+    pin_WR_RG.ToHi(50);
 }
 
 
@@ -161,7 +161,7 @@ uint FPGA::Reg::PeriodMul()
 
 void FPGA::Reg::SetAddress()
 {
-    static PinOut *pins[4] =
+    static PinOut * const pins[4] =
     {
         &pin_A0_RG, &pin_A1_RG, &pin_A2_RG, &pin_A3_RG
     };
@@ -177,6 +177,8 @@ void FPGA::Reg::SetAddress()
 
 void FPGA::Reg::WriteRawValue(uint value)
 {
+    pin_ON_OFF.ToLow();
+
     for (int i = 31; i >= 0; i--)
     {
         bool bit = (value & (1 << i)) != 0;
@@ -193,4 +195,6 @@ void FPGA::Reg::WriteRawValue(uint value)
 
         HAL_TIM::DelayUS(5);
     }
+
+    pin_ON_OFF.ToHi();
 }

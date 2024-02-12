@@ -52,7 +52,7 @@ void HAL_PINS::Init()
     pin_WR_RG.Init();
     pin_WR_RG.ToLow();
     pin_ON_OFF.Init();
-    pin_ON_OFF.ToLow();
+    pin_ON_OFF.ToHi();
     pin_START.Init();
     pin_START.ToLow();
     pin_STOP.Init();
