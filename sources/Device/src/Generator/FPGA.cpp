@@ -140,11 +140,15 @@ void FPGA::Reg::Write(const Value &value)
         return;
     }
 
+    pin_ON_OFF.ToLow();
+
     SetAddress();
 
     WriteRawValue((uint)value.GetRaw() * PeriodMul());
 
     pin_WR_RG.ToHi(50);
+
+    pin_ON_OFF.ToHi();
 }
 
 
@@ -175,8 +179,6 @@ void FPGA::Reg::SetAddress()
 
 void FPGA::Reg::WriteRawValue(uint value)
 {
-    pin_ON_OFF.ToLow();
-
     for (int i = 31; i >= 0; i--)
     {
         pin_DAT_RG.ToState((value & (1 << i)) != 0);
@@ -191,6 +193,4 @@ void FPGA::Reg::WriteRawValue(uint value)
 
         HAL_TIM::DelayUS(5);
     }
-
-    pin_ON_OFF.ToHi();
 }
