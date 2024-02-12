@@ -20,7 +20,7 @@ void Generator::Stop()
 }
 
 
-void Generator::Start2A(const Value &Us, const Value &t1)
+void Generator::Start2A(const Value & /*Us*/, const Value &t1)
 {
     TypeSignal::Set(TypeSignal::_2a);
 

@@ -48,5 +48,5 @@ void Transceiver::Transmit(BaseMessage *message)
 
 void Transceiver::Delay()
 {
-    HAL_TIM::DelayUS(5);
+    HAL_TIM::DelayUS(4);
 }

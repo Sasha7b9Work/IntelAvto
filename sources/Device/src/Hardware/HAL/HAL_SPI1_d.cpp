@@ -14,13 +14,6 @@ namespace HAL_SPI1
 
     static uint8 ReceiveByte();
     static void SendByte(uint8);
-
-    void UpdateOut()
-    {
-        pinCS.IsHi() ? pin_WR_RG.ToHi() : pin_WR_RG.ToLow();
-        pinIN.IsHi() ? pin_DAT_RG.ToHi() : pin_DAT_RG.ToLow();
-        pinSCK.IsHi() ? pin_CLK_RG.ToHi() : pin_CLK_RG.ToLow();
-    }
 }
 
 
@@ -48,13 +41,10 @@ uint8 HAL_SPI1::ReceiveByte()
 {
     uint8 result = 0;
 
-    UpdateOut();
-
     for (int i = 0; i < 8; i++)
     {
         while (pinSCK.IsLow())
         {
-            UpdateOut();
         }
 
         if (pinIN.IsHi())
@@ -64,11 +54,8 @@ uint8 HAL_SPI1::ReceiveByte()
 
         while (pinSCK.IsHi())
         {
-            UpdateOut();
         }
     }
-
-    UpdateOut();
 
     return result;
 }
@@ -82,12 +69,10 @@ void HAL_SPI1::SendByte(uint8 byte)
 
         while (pinSCK.IsLow())
         {
-            UpdateOut();
         }
 
         while (pinSCK.IsHi())
         {
-            UpdateOut();
         }
     }
 }
@@ -124,10 +109,8 @@ void HAL_SPI1::WaitCS()
 {
     while (pinCS.IsLow())
     {
-        UpdateOut();
     }
     while (pinCS.IsHi())
     {
-        UpdateOut();
     }
 }
