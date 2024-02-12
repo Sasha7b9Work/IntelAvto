@@ -8,6 +8,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Queue.h"
 #include "Utils/StringUtils.h"
+#include "Hardware/HAL/HAL_PINS.h"
 #include <cstdlib>
 
 

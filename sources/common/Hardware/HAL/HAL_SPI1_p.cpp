@@ -35,7 +35,7 @@ namespace HAL_SPI1
 
     static void Delay()
     {
-        HAL_TIM::DelayUS(1);
+        HAL_TIM::DelayUS(5);
     }
 }
 

@@ -21,6 +21,8 @@ namespace HAL_SPI1
 {
     void Init();
 
+    void UpdateOut();
+
     void Receive(void *buffer, int size);
 
     uint ReceiveUInt();
