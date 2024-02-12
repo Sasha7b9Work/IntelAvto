@@ -46,11 +46,13 @@ void HAL_PINS::Init()
     pin_A0_RG.Init();
     pin_A1_RG.Init();
     pin_A2_RG.Init();
+    pin_A3_RG.Init();
     pin_CLK_RG.Init();
     pin_CLK_RG.ToLow();
     pin_DAT_RG.Init();
     pin_WR_RG.Init();
     pin_WR_RG.ToLow();
+
     pin_ON_OFF.Init();
     pin_ON_OFF.ToHi();
     pin_START.Init();

@@ -21,7 +21,7 @@ namespace FPGA
             Period1     = 0x04,
 
             Diration2a  = 0x05,
-            Period2a    = 0x06,
+            Period2a    = 0x02,
 
             Duration3ab = 0x07,
             Period3ab   = 0x08,
