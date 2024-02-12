@@ -167,7 +167,7 @@ void FPGA::Reg::SetAddress()
 
     for (int i = 0; i < 4; i++)
     {
-        bool bit = (((uint8)address) & (i << 1)) != 0;
+        bool bit = (((uint8)address) & (1 << i)) != 0;
 
         bit ? pins[i]->ToHi() : pins[i]->ToLow();
     }
@@ -180,7 +180,7 @@ void FPGA::Reg::WriteRawValue(uint value)
     {
         bool bit = (value & (1 << i)) != 0;
 
-        bit ? pin_DAT_RG.ToHi() : pin_DAC_DAT_R.ToLow();
+        bit ? pin_DAT_RG.ToHi() : pin_DAT_RG.ToLow();
 
         TimeMeterUS().WaitFor(5);
 
