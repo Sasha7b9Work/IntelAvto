@@ -168,9 +168,7 @@ void FPGA::Reg::SetAddress()
 
     for (int i = 0; i < 4; i++)
     {
-        bool bit = (((uint8)address) & (1 << i)) != 0;
-
-        bit ? pins[i]->ToHi() : pins[i]->ToLow();
+        pins[i]->ToState((((uint8)address) & (1 << i)) != 0);
     }
 }
 
@@ -181,9 +179,7 @@ void FPGA::Reg::WriteRawValue(uint value)
 
     for (int i = 31; i >= 0; i--)
     {
-        bool bit = (value & (1 << i)) != 0;
-
-        bit ? pin_DAT_RG.ToHi() : pin_DAT_RG.ToLow();
+        pin_DAT_RG.ToState((value & (1 << i)) != 0);
 
         HAL_TIM::DelayUS(5);
 

@@ -30,6 +30,7 @@ struct PinOut : public Pin
     void ToHi();
     void ToHi(uint timeUS);
     void ToLow();
+    void ToState(bool);
 };
 
 

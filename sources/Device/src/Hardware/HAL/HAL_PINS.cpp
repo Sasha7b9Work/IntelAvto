@@ -123,6 +123,12 @@ void PinOut::ToLow()
 }
 
 
+void PinOut::ToState(bool state)
+{
+    state ? ToHi() : ToLow();
+}
+
+
 bool PinIn::IsLow() const
 {
     return HAL_GPIO_ReadPin((GPIO_TypeDef *)port, pin) == GPIO_PIN_RESET;
