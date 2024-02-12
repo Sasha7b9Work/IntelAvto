@@ -3,6 +3,7 @@
 #include "Generator/FPGA.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
+#include "Hardware/HAL/HAL.h"
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::Count;
@@ -96,7 +97,7 @@ void FPGA::Start()
 {
     pin_START.ToHi();
 
-    TimeMeterUS().WaitFor(20);
+    HAL_TIM::DelayUS(20);
 
     pin_START.ToLow();
 }
@@ -106,7 +107,7 @@ void FPGA::Stop()
 {
     pin_STOP.ToHi();
 
-    TimeMeterUS().WaitFor(20);
+    HAL_TIM::DelayUS(20);
 
     pin_STOP.ToLow();
 }
@@ -182,14 +183,14 @@ void FPGA::Reg::WriteRawValue(uint value)
 
         bit ? pin_DAT_RG.ToHi() : pin_DAT_RG.ToLow();
 
-        TimeMeterUS().WaitFor(5);
+        HAL_TIM::DelayUS(5);
 
         pin_CLK_RG.ToHi();
 
-        TimeMeterUS().WaitFor(10);
+        HAL_TIM::DelayUS(10);
 
         pin_CLK_RG.ToLow();
 
-        TimeMeterUS().WaitFor(5);
+        HAL_TIM::DelayUS(5);
     }
 }

@@ -1,5 +1,6 @@
 // 2024/02/01 16:42:26 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
+#include "Hardware/HAL/HAL.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
 #include <stm32f4xx_hal.h>
@@ -108,7 +109,7 @@ void PinOut::ToHi(uint timeUS)
 {
     ToHi();
 
-    TimeMeterUS().WaitFor(timeUS);
+    HAL_TIM::DelayUS(timeUS);
 
     ToLow();
 }

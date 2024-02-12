@@ -247,11 +247,4 @@ void TimeMeterMS::Delay(uint timeMS)
     }
 }
 
-
-void TimeMeterUS::WaitFor(uint)
-{
-
-}
-
-
 #undef TIME_NEXT
