@@ -17,9 +17,6 @@ void Transceiver::Transmit(BaseMessage *message)
 {
     while (true)
     {
-//        HAL_TIM::DelayMS(50);                                      // Делаем интервал 500, чтобы приёмное устройство
-//                                                                    // отловило начало посылки
-
         HAL_SPI1::CS(true);
 
         HAL_SPI1::TransmitUInt((uint)message->Size());              // Передаём размер сообщения (4 байта)

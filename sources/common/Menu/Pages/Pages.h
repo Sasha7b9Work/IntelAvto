@@ -20,8 +20,6 @@ namespace PageSignal2a
     extern Parameter param_Us;
 
     extern Parameter param_t1;
-
-    void Start();
 }
 
 

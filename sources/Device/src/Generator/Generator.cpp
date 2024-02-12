@@ -24,7 +24,7 @@ void Generator::Start2A(const Value & /*Us*/, const Value &t1)
 {
     TypeSignal::Set(TypeSignal::_2a);
 
-    FPGA::SetTypeSignal();
+//    FPGA::SetTypeSignal();
 
     FPGA::WritePeriod(t1);
 

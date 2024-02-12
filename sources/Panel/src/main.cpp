@@ -22,6 +22,5 @@ int main(void)
     {
         Menu::Input::Update();
         Display::Update();
-        PageSignal2a::Start();
     }
 }
