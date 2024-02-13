@@ -2,7 +2,7 @@
 
 project (PanelGUI)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -115,6 +115,13 @@ source_group(Menu               FILES ${MENU})
 source_group(Menu/Pages         FILES ${MENU_PAGES})
 source_group(Settings           FILES ${SETTINGS})
 source_group(Utils              FILES ${UTILS})
+
+set_source_files_properties(
+    ../../Panel/src/Hardware/HAL/HAL.cpp
+    ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
+    ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
+    PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
+)
 
 add_executable(${PROJECT_NAME}
     ${VS_HAL}

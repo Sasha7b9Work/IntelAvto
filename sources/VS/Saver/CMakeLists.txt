@@ -1,7 +1,7 @@
 # 2023/09/08 21:15:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 project (Saver)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 4)
 
