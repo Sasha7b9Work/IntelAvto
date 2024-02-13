@@ -34,6 +34,13 @@ private:
 };
 
 
+struct UValue
+{
+    uint units : 32;
+    uint orders_units : 2;  // Разрядность юнитов : 0 - единицы (вольты), 1 - милли (секунды), 2 - микро (секунды)
+};
+
+
 struct Value
 {
     Value(int _munits = 0, Unit::E u = Unit::Raw) : munits(_munits), unit(u)  { }
