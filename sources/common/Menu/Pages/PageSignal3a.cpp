@@ -14,6 +14,11 @@ namespace PageSignal3a
         &gset.signals[TypeSignal::_3b].values24[0], Value(0), Value(10000),
         275, 95);
 
+    Parameter param_t4_ts("t4 + ts", "t4 + ts",
+        &gset.signals[TypeSignal::_3a].values12[1], Value(90), Value(100),
+        &gset.signals[TypeSignal::_3a].values24[1], Value(90), Value(100),
+        90, 70);
+
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal3b::self);
@@ -34,6 +39,7 @@ namespace PageSignal3a
     {
         &bSignal3a,
         &param_Us,
+        &param_t4_ts,
         nullptr
     };
 

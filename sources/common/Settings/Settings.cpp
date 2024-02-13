@@ -91,9 +91,11 @@ static Settings def_set =
             {   Voltage(0),         // 2b : Us 24
                 Time(0)   }}        // 2b : td 24
         ,
-        {   {   Voltage(0) }        // 3a : Us 12
+        {   {   Voltage(0),         // 3a : Us 12
+                Time(95)     }      // 3a : t4 + ts
             ,
-            {   Voltage(0) }}       // 3a : Us 24
+            {   Voltage(0),         // 3a : Us 24
+                Time(95)   }}       // 3a : t4 + ts
         ,
         {   {   Voltage(0) }        // 3b : Us 12
             ,
