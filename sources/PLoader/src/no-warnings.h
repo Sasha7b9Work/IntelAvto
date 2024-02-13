@@ -19,5 +19,7 @@
     #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
     #pragma clang diagnostic ignored "-Wmissing-prototypes"
     #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+    #pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
+    #pragma clang diagnostic ignored "-Wnested-anon-types"
 #endif
 

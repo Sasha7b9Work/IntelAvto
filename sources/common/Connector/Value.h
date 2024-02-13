@@ -36,8 +36,15 @@ private:
 
 struct UValue
 {
-    uint units : 32;
-    uint orders_units : 2;  // Разрядность юнитов : 0 - единицы (вольты), 1 - милли (секунды), 2 - микро (секунды)
+    union
+    {
+        uint64 raw;
+        struct
+        {
+            uint units : 32;
+            uint orders_units : 2;  // Разрядность юнитов : 0 - единицы (вольты), 1 - милли (секунды), 2 - микро (секунды)
+        };
+    };
 };
 
 

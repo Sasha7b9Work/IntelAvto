@@ -21,5 +21,7 @@
     #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
     #pragma clang diagnostic ignored "-Wunused-private-field"
     #pragma clang diagnostic ignored "-Wcast-align"
+    #pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
+    #pragma clang diagnostic ignored "-Wnested-anon-types"
 #endif
 
