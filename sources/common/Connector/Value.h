@@ -6,14 +6,13 @@
 class Parameter;
 
 
-struct Unit
+struct Order
 {
     enum E
     {
-        Seconds,
         Volts,
-        Raw,
-        Count
+        MS,
+        US
     };
 };
 
@@ -42,15 +41,39 @@ struct UValue
         struct
         {
             uint units : 32;
+            uint sign : 1;
             uint orders_units : 2;  // Разрядность юнитов : 0 - единицы (вольты), 1 - милли (секунды), 2 - микро (секунды)
         };
     };
+
+    float ToFloat() const
+    {
+        float s = sign == 0 ? 1.0f : -1.0f;
+
+        if (orders_units == Order::Volts)
+        {
+            return units * s;
+        }
+        else if (orders_units == Order::MS)
+        {
+            return units * 1e3f * s;
+        }
+        else if (orders_units == Order::US)
+        {
+            return units * 1e6f * s;
+        }
+    }
 };
 
 
 struct Value
 {
-    Value(int _munits = 0, Unit::E u = Unit::Raw) : munits(_munits), unit(u)  { }
+    Value(uint units, Order::E order = Order::MS, int sign = 1)
+    {
+        raw.units = units;
+        raw.sign = sign ? 1U : 0U;
+        raw.orders_units = (uint)order;
+    }
 
     void Draw(const Parameter *, int x, int y) const;
 
@@ -58,25 +81,23 @@ struct Value
 
     void FromDrawStrut(const Value &min, const Value &max);
 
-    float ToFloat() const { return (float)munits / 1000.0f; }
+    float ToFloat() const { return raw.ToFloat(); }
 
-    int GetRaw() const { return munits; }
+    UValue GetRaw() const { return raw; }
 
 private:
 
-    int munits;     // Значение в миллиюнитах (например, 1 = 1 мс)
-
-    Unit::E unit;
+    UValue raw;
 };
 
 
 struct Voltage : public Value
 {
-    Voltage(int _munits) : Value(_munits, Unit::Volts) {}
+    Voltage(uint units, int sign = 1) : Value(units, Order::Volts, sign) {}
 };
 
 
 struct Time : public Value
 {
-    Time(int _munits) : Value(_munits, Unit::Seconds) {}
+    Time(uint units) : Value(_munits, Unit::Seconds) {}
 };
