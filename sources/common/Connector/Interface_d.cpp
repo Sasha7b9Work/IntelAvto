@@ -79,8 +79,9 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         {
             Value Us((int)(*pointer++));
             Value t1((int)(*pointer++));
+            Value td((int)(*pointer++));
 
-            return new Message::Start2A(Us, t1);
+            return new Message::Start2A(Us, t1, td);
         }
     }
 

@@ -19,6 +19,11 @@ namespace PageSignal2a
         &gset.signals[TypeSignal::_2a].values24[1], Value(200), Value(5000),
         270, 30);
 
+    Parameter param_td("td", "td",
+        &gset.signals[TypeSignal::_2a].values12[2], Value(500), Value(10000),
+        &gset.signals[TypeSignal::_2a].values24[2], Value(500), Value(10000),
+        90, 100);
+
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal2b::self);
@@ -32,7 +37,7 @@ namespace PageSignal2a
 
     void Start()
     {
-        Message::Start2A(param_Us.GetValue(), param_t1.GetValue()).Transmit();
+        Message::Start2A(param_Us.GetValue(), param_t1.GetValue(), param_td.GetValue()).Transmit();
     }
 
     static Item *items[] =
@@ -40,6 +45,7 @@ namespace PageSignal2a
         &bSignal2a,
         &param_Us,
         &param_t1,
+        &param_td,
         nullptr
     };
 
