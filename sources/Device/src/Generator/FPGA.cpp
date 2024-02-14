@@ -15,16 +15,13 @@ namespace FPGA
     {
         enum E
         {
-            Duration1   = 0x01,
-            Delaty1     = 0x02,
-            AccumOff    = 0x03,
-            Period1     = 0x04,
+            Period1   = 0x01,       // Больше 500 мс
+            Duration1 = 0x02,       // 1 - 20 мкс
 
-            Diration2a  = 0x05,
-            Period2a    = 0x02,
+            Period2   = 0x03,       // Больше 500 мс
+            Duration2 = 0x04,       // 1 - 20 мкс
 
-            Duration3ab = 0x07,
-            Period3ab   = 0x08,
+            Duration3 = 0x05,       // 200 - 5000 нс
 
             None = 0,
 
@@ -33,7 +30,37 @@ namespace FPGA
 
         Reg(E a) : address(a) { }
 
-        static Reg ForPeriod();
+        static Reg ForPeriod()
+        {
+            if (TypeSignal::Is1())
+            {
+                return Reg(Reg::Period1);
+            }
+            else if (TypeSignal::Is2a() || TypeSignal::Is2b())
+            {
+                return Reg(Reg::Period2);
+            }
+
+            return Reg(Reg::Fail);
+        }
+
+        static Reg ForDiration()
+        {
+            if (TypeSignal::Is1())
+            {
+                return Reg(Reg::Duration1);
+            }
+            else if (TypeSignal::Is2a() || TypeSignal::Is2b())
+            {
+                return Reg(Reg::Duration2);
+            }
+            else if (TypeSignal::Is3a() || TypeSignal::Is3b())
+            {
+                return Reg(Reg::Duration3);
+            }
+
+            return Reg(Reg::Fail);
+        }
 
         void Write(const Value &);
 
@@ -112,25 +139,6 @@ void FPGA::Stop()
     HAL_TIM::DelayUS(20);
 
     pin_STOP.ToLow();
-}
-
-
-FPGA::Reg FPGA::Reg::ForPeriod()
-{
-    if (TypeSignal::Is1())
-    {
-        return Reg(Reg::Period1);
-    }
-    else if (TypeSignal::Is2a())
-    {
-        return Reg(Reg::Period2a);
-    }
-    else if (TypeSignal::Is3a() || TypeSignal::Is3b())
-    {
-        return Reg(Reg::Period3ab);
-    }
-
-    return Reg(Reg::Fail);
 }
 
 
