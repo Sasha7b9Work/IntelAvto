@@ -15,6 +15,7 @@ namespace FPGA
     {
         enum E
         {
+            None      = 0x00,
             Period1   = 0x01,       // Больше 500 мс
             Duration1 = 0x02,       // 1 - 20 мкс
 
@@ -23,9 +24,9 @@ namespace FPGA
 
             Duration3 = 0x05,       // 200 - 5000 нс
 
-            None = 0,
+            Fail,
 
-            Fail = 0xFF
+            Count,
         };
 
         Reg(E a) : address(a) { }
@@ -128,6 +129,8 @@ void FPGA::WriteDuration(const Value &duration)
 
 void FPGA::Start()
 {
+    pin_ON_OFF.ToHi();
+
     pin_START.ToHi();
 
     HAL_TIM::DelayUS(20);
@@ -143,6 +146,8 @@ void FPGA::Stop()
     HAL_TIM::DelayUS(20);
 
     pin_STOP.ToLow();
+
+    pin_ON_OFF.ToLow();
 }
 
 
@@ -154,8 +159,6 @@ void FPGA::Reg::Write(const Value &value)
         return;
     }
 
-    pin_ON_OFF.ToLow();
-
     SetAddress((uint8)address);
 
     WriteRawValue((uint)value.ToInt() * PeriodMul());
@@ -163,19 +166,22 @@ void FPGA::Reg::Write(const Value &value)
     pin_WR_RG.ToHi(5);
 
     SetAddress(0);
-
-    pin_ON_OFF.ToHi();
 }
 
 
 uint FPGA::Reg::PeriodMul()
 {
-    if (TypeSignal::Is3a() || TypeSignal::Is3b())
+    static const uint muls[] =
     {
-        return 10000U;
-    }
+        1,
+        1000,       // Period1
+        1,          // Duration1
+        1000,       // Period2
+        1,          // Duration2
+        10000       // Duration3
+    };
 
-    return 1000U;
+    return muls[address];
 }
 
 

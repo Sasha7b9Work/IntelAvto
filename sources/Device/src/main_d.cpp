@@ -14,15 +14,15 @@ int main()
 
     while (1)
     {
-        DInterface::Update();
+//        DInterface::Update();
 
-//        static uint time = 0;
-//
-//        if (TIME_MS - time > 1000)
-//        {
-//            time = TIME_MS;
-//
-//            Generator::Start2A(Value(10), Value(100));
-//        }
+        static uint time = 0;
+
+        if (TIME_MS - time > 1000)
+        {
+            time = TIME_MS;
+
+            Generator::Start2A(Value(10), Value(100), Value(10));
+        }
     }
 }
