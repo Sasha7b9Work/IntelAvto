@@ -39,7 +39,7 @@ struct Value
 
         if (value < 0)
         {
-            raw |= (1 << 31);
+            raw |= (uint)(1 << 31);
         }
 
         if (type == TypeValue::MS)
@@ -66,7 +66,7 @@ struct Value
     {
         int value = (int)(raw & 0x3FFFFFFF);
 
-        if (raw & (1 << 31))
+        if (raw & (uint)(1 << 31))
         {
             value = -value;
         }

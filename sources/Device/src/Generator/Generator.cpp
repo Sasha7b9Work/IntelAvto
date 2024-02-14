@@ -34,20 +34,4 @@ void Generator::Start2A(const Value & /*Us*/, const Value &t1)
     FPGA::SetTypeSignal(TypeSignal::_2a);
 
     FPGA::WritePeriod(t1);
-
-    SwitchingBoard::SetTypeSignal();
-
-//    MCP4801::Set(Value(0));
-
-//    pin_K1_FOR.ToHi();
-//    pin_K2_FOR.ToHi();
-
-//    TimeMeterMS().Delay(1000);
-
-//    MAX532::Set(Us);
-//    MCP4801::Set(Us);
-
-//    TimeMeterMS().Delay(1000);
-
-//    FPGA::Start();
 }

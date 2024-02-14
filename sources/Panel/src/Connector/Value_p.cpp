@@ -88,7 +88,7 @@ bool DrawStruct::ToRaw(uint *result, TypeValue type) const
 
         if (value < 0)
         {
-            *result |= (1 << 31);
+            *result |= (uint)(1 << 31);
         }
 
         if (type == TypeValue::MS)

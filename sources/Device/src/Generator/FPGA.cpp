@@ -71,7 +71,7 @@ namespace FPGA
         // Ќа какое число нужно умножать период
         uint PeriodMul();
 
-        void SetAddress();
+        void SetAddress(uint8);
 
         void WriteRawValue(uint);
     };
@@ -120,6 +120,12 @@ void FPGA::WritePeriod(const Value &period)
 }
 
 
+void FPGA::WriteDuration(const Value &duration)
+{
+    Reg::ForDiration().Write(duration);
+}
+
+
 void FPGA::Start()
 {
     pin_START.ToHi();
@@ -150,11 +156,13 @@ void FPGA::Reg::Write(const Value &value)
 
     pin_ON_OFF.ToLow();
 
-    SetAddress();
+    SetAddress((uint8)address);
 
     WriteRawValue((uint)value.GetRaw() * PeriodMul());
 
     pin_WR_RG.ToHi(5);
+
+    SetAddress(0);
 
     pin_ON_OFF.ToHi();
 }
@@ -171,7 +179,7 @@ uint FPGA::Reg::PeriodMul()
 }
 
 
-void FPGA::Reg::SetAddress()
+void FPGA::Reg::SetAddress(uint8 addr)
 {
     static PinOut * const pins[4] =
     {
@@ -180,7 +188,7 @@ void FPGA::Reg::SetAddress()
 
     for (int i = 0; i < 4; i++)
     {
-        pins[i]->ToState((((uint8)address) & (1 << i)) != 0);
+        pins[i]->ToState((((uint8)addr) & (1 << i)) != 0);
     }
 }
 

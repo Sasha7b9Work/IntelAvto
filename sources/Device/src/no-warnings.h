@@ -23,5 +23,6 @@
     #pragma clang diagnostic ignored "-Wcast-align"
     #pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
     #pragma clang diagnostic ignored "-Wnested-anon-types"
+    #pragma clang diagnostic ignored "-Wshift-sign-overflow"
 #endif
 
