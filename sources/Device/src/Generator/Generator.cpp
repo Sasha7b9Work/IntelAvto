@@ -29,9 +29,13 @@ void Generator::Start1(const Value &period, const Value &duration)
 }
 
 
-void Generator::Start2A(const Value & /*Us*/, const Value &t1)
+void Generator::Start2A(const Value & /*Us*/, const Value &period, const Value &duration)
 {
     FPGA::SetTypeSignal(TypeSignal::_2a);
 
-    FPGA::WritePeriod(t1);
+    FPGA::WritePeriod(period);
+
+    FPGA::WriteDuration(duration);
+
+    FPGA::Start();
 }

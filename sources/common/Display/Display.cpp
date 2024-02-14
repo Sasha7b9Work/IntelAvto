@@ -11,6 +11,7 @@
 #include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Pages.h"
+#include "Device/Device.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -323,7 +324,13 @@ void Display::DrawPartScreen(int num, bool)
         Rect(10, 10).Fill(460, 260, Color::WHITE);
     }
 
-    Text("“≈—“»–Œ¬¿Õ»≈").Write(100, 100, Color::WHITE);
+    if (Device::IsRunning())
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Text("“≈—“»–Œ¬¿Õ»≈").Write(120, 100 + 20 * i, Color::WHITE);
+        }
+    }
 
     Display::EndScene();
 

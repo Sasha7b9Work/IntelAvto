@@ -25,8 +25,9 @@ void DHandlers::Processing(BaseMessage &message)
     else if (command == Command::START_2A)
     {
         Value Us = message.PopValue();
-        Value t1 = message.PopValue();
+        Value period = message.PopValue();
+        Value duration = message.PopValue();
 
-        Generator::Start2A(Us, t1);
+        Generator::Start2A(Us, period, duration);
     }
 }
