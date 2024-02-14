@@ -162,6 +162,17 @@ namespace Message
         Stop() : BaseMessage(Command::STOP) { }
     };
 
+    struct Start1 : public BaseMessage
+    {
+        Start1(const Value &period, const Value &duration) : BaseMessage(Command::START_1)
+        {
+            Push(period);
+            Push(duration);
+        }
+
+        virtual void Execute() override;
+    };
+
     struct Start2A : public BaseMessage
     {
         Start2A(const Value &Us, const Value &t1, const Value &td) : BaseMessage(Command::START_2A)

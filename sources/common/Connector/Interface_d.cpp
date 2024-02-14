@@ -75,11 +75,18 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         {
             return new Message::Stop();
         }
+        else if (command == Command::START_1)
+        {
+            Value period(*pointer++);
+            Value duration(*pointer++);
+
+            return new Message::Start1(period, duration);
+        }
         else if (command == Command::START_2A)
         {
-            Value Us((int)(*pointer++));
-            Value t1((int)(*pointer++));
-            Value td((int)(*pointer++));
+            Value Us((uint)(*pointer++));
+            Value t1((uint)(*pointer++));
+            Value td((uint)(*pointer++));
 
             return new Message::Start2A(Us, t1, td);
         }
