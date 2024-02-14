@@ -6,13 +6,10 @@
 class Parameter;
 
 
-struct TypeValue
+enum TypeValue
 {
-    enum E
-    {
-        Volts,
-        MS
-    };
+    Volts,
+    MS
 };
 
 
@@ -21,7 +18,7 @@ struct DrawStruct
     void PressKey(Key::E);
     void Draw(int x, int y) const;
     void Clear(Parameter *_param) { index = 0; parameter = _param; }
-    bool ToRaw(uint *result, TypeValue::E) const;
+    bool ToRaw(uint *result, TypeValue) const;
 private:
     bool ConsistDot() const;
     void AppendSymbol(char);
@@ -36,7 +33,7 @@ struct Value
 {
     Value(uint _raw) : raw(_raw) { }
 
-    Value(int value = 0, TypeValue::E type = TypeValue::Volts)
+    Value(int value = 0, TypeValue type = MS)
     {
         raw = (uint)value;
 
@@ -57,9 +54,9 @@ struct Value
 
     void FromDrawStrut(const Value &min, const Value &max);
 
-    TypeValue::E GetType() const
+    TypeValue GetType() const
     {
-        return ((raw & (1 << 30)) == 0) ? TypeValue::Volts : TypeValue::MS;
+        return ((raw & (1 << 30)) == 0) ? Volts : MS;
     }
 
     uint GetRaw() const { return raw; }

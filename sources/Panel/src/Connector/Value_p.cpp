@@ -70,7 +70,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 }
 
 
-bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
+bool DrawStruct::ToRaw(uint *result, TypeValue type) const
 {
     char buffer[128];
 
