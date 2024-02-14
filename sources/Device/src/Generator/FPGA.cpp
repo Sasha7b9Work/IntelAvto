@@ -158,7 +158,7 @@ void FPGA::Reg::Write(const Value &value)
 
     SetAddress((uint8)address);
 
-    WriteRawValue((uint)value.GetRaw() * PeriodMul());
+    WriteRawValue((uint)value.ToInt() * PeriodMul());
 
     pin_WR_RG.ToHi(5);
 
