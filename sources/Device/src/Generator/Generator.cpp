@@ -11,24 +11,31 @@
 
 void Generator::Stop()
 {
-//    MCP4801::Set(Value(0));
-//
-//    pin_K1_FOR.ToLow();
-//    pin_K2_FOR.ToLow();
+    FPGA::SetTypeSignal(TypeSignal::Off);
 
     FPGA::Stop();
 }
 
 
+void Generator::Start1(const Value &period, const Value &duration)
+{
+    FPGA::SetTypeSignal(TypeSignal::_1);
+
+    FPGA::WritePeriod(period);
+
+    FPGA::WriteDuration(duration);
+
+    FPGA::Start();
+}
+
+
 void Generator::Start2A(const Value & /*Us*/, const Value &t1)
 {
-    TypeSignal::Set(TypeSignal::_2a);
-
-//    FPGA::SetTypeSignal();
+    FPGA::SetTypeSignal(TypeSignal::_2a);
 
     FPGA::WritePeriod(t1);
 
-//    SwitchingBoard::SetTypeSignal();
+    SwitchingBoard::SetTypeSignal();
 
 //    MCP4801::Set(Value(0));
 
@@ -43,16 +50,4 @@ void Generator::Start2A(const Value & /*Us*/, const Value &t1)
 //    TimeMeterMS().Delay(1000);
 
 //    FPGA::Start();
-}
-
-
-void Generator::Start1(const Value &period, const Value &duration)
-{
-    TypeSignal::Set(TypeSignal::_1);
-
-    FPGA::WritePeriod(period);
-
-    FPGA::WriteDuration(duration);
-
-    FPGA::Start();
 }

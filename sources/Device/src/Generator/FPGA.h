@@ -40,7 +40,7 @@ namespace FPGA
 
     void Stop();
 
-    void SetTypeSignal();
+    void SetTypeSignal(TypeSignal::E);
 
     void WritePeriod(const Value &);
 

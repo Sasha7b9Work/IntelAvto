@@ -78,8 +78,10 @@ namespace FPGA
 }
 
 
-void FPGA::SetTypeSignal()
+void FPGA::SetTypeSignal(TypeSignal::E type)
 {
+    TypeSignal::Set(type);
+
     /*
     +--------+------+------+------+
     | Сигнал |PULSE0|PULSE1|PULSE2|
@@ -100,7 +102,7 @@ void FPGA::SetTypeSignal()
     {
         pin_NPULES0.ToHi();
     }
-    else if (TypeSignal::Is2a())
+    else if (TypeSignal::Is2a() || TypeSignal::Is2b())
     {
         pin_NPULSE1.ToHi();
     }
@@ -108,10 +110,6 @@ void FPGA::SetTypeSignal()
     {
         pin_NPULES0.ToHi();
         pin_NPULSE1.ToHi();
-    }
-    else
-    {
-        pin_NPULSE2.ToHi();
     }
 }
 
