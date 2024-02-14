@@ -9,12 +9,8 @@ struct TypeSignal
     {
         _1,     // Int
         _2a,    // Int
-        _2b,    // Ext
         _3a,    // Int
         _3b,    // Int
-        _4,     // Ext
-        _5a,    // Ext
-        _5b,    // Ext
         Off,
         Count
     };
@@ -23,7 +19,6 @@ struct TypeSignal
 
     static bool Is1()  { return current == _1; }
     static bool Is2a() { return current == _2a; }
-    static bool Is2b() { return current == _2b; }
     static bool Is3a() { return current == _3a; }
     static bool Is3b() { return current == _3b; }
 

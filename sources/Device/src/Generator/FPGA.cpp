@@ -36,7 +36,7 @@ namespace FPGA
             {
                 return Reg(Reg::Period1);
             }
-            else if (TypeSignal::Is2a() || TypeSignal::Is2b())
+            else if (TypeSignal::Is2a())
             {
                 return Reg(Reg::Period2);
             }
@@ -50,7 +50,7 @@ namespace FPGA
             {
                 return Reg(Reg::Duration1);
             }
-            else if (TypeSignal::Is2a() || TypeSignal::Is2b())
+            else if (TypeSignal::Is2a())
             {
                 return Reg(Reg::Duration2);
             }
@@ -102,7 +102,7 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
     {
         pin_NPULES0.ToHi();
     }
-    else if (TypeSignal::Is2a() || TypeSignal::Is2b())
+    else if (TypeSignal::Is2a())
     {
         pin_NPULSE1.ToHi();
     }
