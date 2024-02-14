@@ -323,6 +323,8 @@ void Display::DrawPartScreen(int num, bool)
         Rect(10, 10).Fill(460, 260, Color::WHITE);
     }
 
+    Text("“≈—“»–Œ¬¿Õ»≈").Write(100, 100, Color::WHITE);
+
     Display::EndScene();
 
     if (num == Display::NUM_PARTS)

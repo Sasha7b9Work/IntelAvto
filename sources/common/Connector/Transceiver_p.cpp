@@ -9,12 +9,15 @@
 
 namespace Transceiver
 {
-    static void Delay();
+    void Delay();
 }
 
 
 void Transceiver::Transmit(BaseMessage *message)
 {
+    (void)message;
+
+#ifndef GUI
     while (true)
     {
         HAL_SPI1::CS(true);
@@ -40,6 +43,7 @@ void Transceiver::Transmit(BaseMessage *message)
             break;
         }
     }
+#endif
 }
 
 
