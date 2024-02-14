@@ -14,7 +14,7 @@ namespace PageSignal1
         &gset.signals[TypeSignal::_1].values24[0], Value(-600000), Value(-300000),
         340, 165);
 
-    Parameter param_t1("t1", "t1",
+    Parameter param_period("Период", "Period",
         &gset.signals[TypeSignal::_1].values12[1], Value(500), Value(5000),
         &gset.signals[TypeSignal::_1].values24[1], Value(500), Value(5000),
         310, 33);
@@ -24,10 +24,10 @@ namespace PageSignal1
         &gset.signals[TypeSignal::_1].values24[2], Value(5000), Value(100000),
         90, 100);
 
-    Parameter param_tdel("tdel", "tdel",
-        &gset.signals[TypeSignal::_1].values12[3], Value(0), Value(100),
-        &gset.signals[TypeSignal::_1].values24[3], Value(0), Value(100),
-        90, 130);
+    Parameter param_duration("Длит", "Duration",
+        &gset.signals[TypeSignal::_1].values12[3], Value(1), Value(20),
+        &gset.signals[TypeSignal::_1].values24[3], Value(1), Value(20),
+        90, 70);
 
     Parameter param_t2("t2", "t2",
         &gset.signals[TypeSignal::_1].values12[4], Value(100), Value(200),
@@ -61,12 +61,12 @@ namespace PageSignal1
     static Item *items[] =
     {
         &bSignal1,
-        &param_Us,
-        &param_t1,
-        &param_N,
-        &param_tdel,
-        &param_t2,
-        &param_td,
+//        &param_Us,
+        &param_period,
+//        &param_N,
+        &param_duration,
+//        &param_t2,
+//        &param_td,
         nullptr
     };
 
