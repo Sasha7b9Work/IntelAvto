@@ -6,17 +6,6 @@
 class Parameter;
 
 
-struct Order
-{
-    enum E
-    {
-        Volts,
-        MS,
-        US
-    };
-};
-
-
 struct DrawStruct
 {
     void PressKey(Key::E);
@@ -35,40 +24,22 @@ private:
 
 struct UValue
 {
-    union
-    {
-        uint64 raw;
-        struct
-        {
-            uint units : 32;
-            uint sign : 1;
-            uint orders_units : 2;  // Разрядность юнитов : 0 - единицы (вольты), 1 - милли (секунды), 2 - микро (секунды)
-        };
-    };
 
-    float ToFloat() const
-    {
-        float s = sign == 0 ? 1.0f : -1.0f;
+private:
 
-        if (orders_units == Order::Volts)
-        {
-            return units * s;
-        }
-        else if (orders_units == Order::MS)
-        {
-            return units * 1e3f * s;
-        }
-        else if (orders_units == Order::US)
-        {
-            return units * 1e6f * s;
-        }
-    }
+    // В бите 31 хранится знак : 0 - положительное, 1 - отрицательное
+    // Бит 30 - тип : 0 - напряжение (В), 1 - время (мс)
+    // Биты 0-29 - значение
+    uint raw;
 };
+
+
+struct TypeValue
 
 
 struct Value
 {
-    Value(uint units, Order::E order = Order::MS, int sign = 1)
+    Value(int value, Order::E order = Order::MS, int sign = 1)
     {
         raw.units = units;
         raw.sign = sign ? 1U : 0U;
