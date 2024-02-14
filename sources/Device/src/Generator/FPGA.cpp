@@ -6,7 +6,7 @@
 #include "Hardware/HAL/HAL.h"
 
 
-TypeSignal::E TypeSignal::current = TypeSignal::Count;
+TypeSignal::E TypeSignal::current = TypeSignal::Off;
 
 
 namespace FPGA

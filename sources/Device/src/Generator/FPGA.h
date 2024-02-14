@@ -21,6 +21,7 @@ struct TypeSignal
     static bool Is2a() { return current == _2a; }
     static bool Is3a() { return current == _3a; }
     static bool Is3b() { return current == _3b; }
+    static bool IsOff() { return current == Off; }
 
 private:
 

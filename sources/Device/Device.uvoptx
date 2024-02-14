@@ -73,7 +73,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>0</tvExp>
+        <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
@@ -157,18 +157,50 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>202</LineNumber>
+          <LineNumber>16</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134226922</Address>
+          <Address>134229660</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Generator\FPGA.cpp</Filename>
+          <Filename>.\src\Generator\Generator.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Device2\src/Generator/FPGA.cpp\202</Expression>
+          <Expression>\\Device2\src/Generator/Generator.cpp\16</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>22</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134229676</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\src\Generator\Generator.cpp</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Device2\src/Generator/Generator.cpp\22</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>39</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134229726</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>.\src\Generator\Generator.cpp</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Device2\src/Generator/Generator.cpp\39</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -672,7 +704,7 @@
 
   <Group>
     <GroupName>src</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -728,7 +760,7 @@
 
   <Group>
     <GroupName>Connector</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -844,7 +876,7 @@
 
   <Group>
     <GroupName>Generator</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

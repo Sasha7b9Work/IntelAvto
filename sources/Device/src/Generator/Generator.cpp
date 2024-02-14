@@ -19,6 +19,11 @@ void Generator::Stop()
 
 void Generator::Start1(const Value &period, const Value &duration)
 {
+    if (!TypeSignal::IsOff())
+    {
+        return;
+    }
+
     FPGA::SetTypeSignal(TypeSignal::_1);
 
     FPGA::WritePeriod(period);
@@ -31,6 +36,11 @@ void Generator::Start1(const Value &period, const Value &duration)
 
 void Generator::Start2A(const Value & /*Us*/, const Value &period, const Value &duration)
 {
+    if (!TypeSignal::IsOff())
+    {
+        return;
+    }
+
     FPGA::SetTypeSignal(TypeSignal::_2a);
 
     FPGA::WritePeriod(period);
