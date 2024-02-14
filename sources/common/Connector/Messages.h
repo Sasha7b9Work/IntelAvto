@@ -45,7 +45,7 @@ struct BufferMessage
     }
     Value PopValue()
     {
-        return Value((int)buffer[Pointer()++]);
+        return Value(buffer[Pointer()++]);
     }
     Command::E PopCommand()
     {

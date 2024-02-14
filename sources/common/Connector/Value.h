@@ -6,12 +6,22 @@
 class Parameter;
 
 
+struct TypeValue
+{
+    enum E
+    {
+        Volts,
+        MS
+    };
+};
+
+
 struct DrawStruct
 {
     void PressKey(Key::E);
     void Draw(int x, int y) const;
     void Clear(Parameter *_param) { index = 0; parameter = _param; }
-    bool ToMicroUnits(int *result) const;
+    bool ToRaw(uint *result, TypeValue::E) const;
 private:
     bool ConsistDot() const;
     void AppendSymbol(char);
@@ -22,8 +32,63 @@ private:
 };
 
 
-struct UValue
+struct Value
 {
+    Value(uint _raw) : raw(_raw) { }
+
+    Value(int value = 0, TypeValue::E type = TypeValue::Volts)
+    {
+        raw = (uint)value;
+
+        if (value < 0)
+        {
+            raw |= (1 << 31);
+        }
+
+        if (type == TypeValue::MS)
+        {
+            raw |= (1 << 30);
+        }
+    }
+
+    void Draw(const Parameter *, int x, int y) const;
+
+    static DrawStruct ds;
+
+    void FromDrawStrut(const Value &min, const Value &max);
+
+    TypeValue::E GetType() const
+    {
+        return ((raw & (1 << 30)) == 0) ? TypeValue::Volts : TypeValue::MS;
+    }
+
+    uint GetRaw() const { return raw; }
+
+    // Вольты для напряжения, миллисекунды для времени
+    int ToInt() const
+    {
+        int value = (int)(raw & 0x3FFFFFFF);
+
+        if (raw & (1 << 31))
+        {
+            value = -value;
+        }
+
+        return value;
+    }
+
+    // В секунды и в вольты
+    float ToFloat() const
+    {
+        float value = (float)ToInt();
+
+        if (raw & (1 << 30))
+        {
+            value *= 1e-3f;
+        }
+
+        return value;
+    }
 
 private:
 
@@ -34,41 +99,13 @@ private:
 };
 
 
-struct TypeValue
-
-
-struct Value
-{
-    Value(int value, Order::E order = Order::MS, int sign = 1)
-    {
-        raw.units = units;
-        raw.sign = sign ? 1U : 0U;
-        raw.orders_units = (uint)order;
-    }
-
-    void Draw(const Parameter *, int x, int y) const;
-
-    static DrawStruct ds;
-
-    void FromDrawStrut(const Value &min, const Value &max);
-
-    float ToFloat() const { return raw.ToFloat(); }
-
-    UValue GetRaw() const { return raw; }
-
-private:
-
-    UValue raw;
-};
-
-
 struct Voltage : public Value
 {
-    Voltage(uint units, int sign = 1) : Value(units, Order::Volts, sign) {}
+    Voltage(int voltage) : Value(voltage, TypeValue::Volts) {}
 };
 
 
 struct Time : public Value
 {
-    Time(uint units) : Value(_munits, Unit::Seconds) {}
+    Time(int ms) : Value(ms, TypeValue::MS) {}
 };

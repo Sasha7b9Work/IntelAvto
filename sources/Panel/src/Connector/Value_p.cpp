@@ -27,57 +27,50 @@ void Value::Draw(const Parameter *param, int x, int y) const
     }
     else
     {
-        if (unit == Unit::Raw)
+        char string[32];
+
+        char *pointer = string;
+
+        int value = ToInt();
+
+        if (value < 0)
         {
-            Text(String("%d", munits)).Write(x, y);
+            value = -value;
+            string[0] = '-';
+            pointer++;
+        }
+
+        *pointer = '\0';
+
+        if (value < 1000)
+        {
+            std::strcat(pointer, String("%d", value).c_str());
+
+            if (raw & (1 << 30))
+            {
+                std::strcat(string, "m");
+            }
         }
         else
         {
-            char string[32];
+            int int_value = value / 1000;
 
-            char *pointer = string;
+            std::strcat(pointer, String("%d", int_value).c_str());
 
-            int value = munits;
+            std::strcat(string, ",");
 
-            if (value < 0)
-            {
-                value = -value;
-                string[0] = '-';
-                pointer++;
-            }
+            value = value - int_value * 1000;
 
-            *pointer = '\0';
-
-            if (value < 1000)
-            {
-                std::strcat(pointer, String("%d", value).c_str());
-
-                if (unit == Unit::Seconds)
-                {
-                    std::strcat(string, "m");
-                }
-            }
-            else
-            {
-                int int_value = value / 1000;
-
-                std::strcat(pointer, String("%d", int_value).c_str());
-
-                std::strcat(string, ",");
-
-                value = value - int_value * 1000;
-
-                std::strcat(string, String("%d", value).c_str());
-            }
-
-            std::strcat(string, (unit == Unit::Volts) ? "V" : "s");
-            Text(string).Write(x, y);
+            std::strcat(string, String("%d", value).c_str());
         }
+
+        std::strcat(string, (raw & (1 << 30)) ? "s" : "V");
+        Text(string).Write(x, y);
     }
 }
 
 
-bool DrawStruct::ToMicroUnits(int *result) const
+bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
 {
     char buffer[128];
 
@@ -87,17 +80,36 @@ bool DrawStruct::ToMicroUnits(int *result) const
 
     char *end = nullptr;
 
-    return SU::String2Int(buffer, result, &end);
+    int value = 0;
+
+    if (SU::String2Int(buffer, &value, &end))
+    {
+        *result = (value > 0) ? (uint)value : (uint)-value;
+
+        if (value < 0)
+        {
+            *result &= (1 << 31);
+
+            if (type == TypeValue::MS)
+            {
+                *result &= (1 << 30);
+            }
+        }
+
+        return true;
+    }
+
+    return false;
 }
 
 
 void Value::FromDrawStrut(const Value &min, const Value &max)
 {
-    int new_microunits = 0;
+    uint new_raw = 0;
 
-    if (ds.ToMicroUnits(&new_microunits))
+    if (ds.ToRaw(&new_raw, GetType()))
     {
-        Value value(new_microunits);
+        Value value(new_raw);
 
         if (value.ToFloat() < min.ToFloat())
         {
@@ -109,7 +121,7 @@ void Value::FromDrawStrut(const Value &min, const Value &max)
             return;
         }
 
-        munits = new_microunits;
+        raw = new_raw;
     }
 }
 
@@ -127,13 +139,13 @@ void DrawStruct::PressKey(Key::E key)
             AppendSymbol('0');
         }
     }
-//    else if (key == Key::Dot)
-//    {
-//        if (!ConsistDot())
-//        {
-//            AppendSymbol('.');
-//        }
-//    }
+    //    else if (key == Key::Dot)
+    //    {
+    //        if (!ConsistDot())
+    //        {
+    //            AppendSymbol('.');
+    //        }
+    //    }
     else if (key >= Key::_1 && key <= Key::_0)
     {
         static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
