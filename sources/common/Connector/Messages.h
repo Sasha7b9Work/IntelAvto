@@ -169,8 +169,6 @@ namespace Message
             Push(period);
             Push(duration);
         }
-
-        virtual void Execute() override;
     };
 
     struct Start2A : public BaseMessage
@@ -181,7 +179,5 @@ namespace Message
             Push(t1);
             Push(td);
         }
-
-        virtual void Execute() override;
     };
 }

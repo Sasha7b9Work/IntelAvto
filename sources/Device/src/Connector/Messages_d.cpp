@@ -3,12 +3,3 @@
 #include "Connector/Messages.h"
 #include "Generator/Generator.h"
 
-
-void Message::Start2A::Execute()
-{
-    Value Us = PopValue();
-
-    Value t1 = PopValue();
-
-    Generator::Start2A(Us, t1);
-}
