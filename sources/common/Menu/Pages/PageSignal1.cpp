@@ -54,8 +54,6 @@ namespace PageSignal1
 
     static void FuncStartTest()
     {
-        BaseMessage(Command::START_1).Transmit();
-
         Message::Start1(param_period.GetValue(), param_duration.GetValue()).Transmit();
     }
 

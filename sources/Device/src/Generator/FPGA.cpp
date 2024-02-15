@@ -194,7 +194,9 @@ void FPGA::Reg::SetAddress(uint8 addr)
 
     for (int i = 0; i < 4; i++)
     {
-        pins[i]->ToState((((uint8)addr) & (1 << i)) != 0);
+        bool state = (((uint8)addr) & (1 << i)) != 0;
+
+        pins[i]->ToState(state);
     }
 }
 

@@ -77,8 +77,8 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         }
         else if (command == Command::START_1)
         {
-            Value period(*pointer++);
-            Value duration(*pointer++);
+            Value period((uint)(*pointer++));
+            Value duration((uint)(*pointer++));
 
             return new Message::Start1(period, duration);
         }
