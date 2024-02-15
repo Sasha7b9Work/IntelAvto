@@ -11,12 +11,8 @@ struct Command
     {
         START_1,
         START_2A,
-        START_2B,
         START_3A,
         START_3B,
-        START_4,
-        START_5A,
-        START_5B,
         STOP,
         Count
     };
@@ -177,6 +173,24 @@ namespace Message
         {
             Push(Us);
             Push(period);
+            Push(duration);
+        }
+    };
+
+
+    struct Start3A : public BaseMessage
+    {
+        Start3A(const Value &duration) : BaseMessage(Command::START_3A)
+        {
+            Push(duration);
+        }
+    };
+
+
+    struct Start3B : public BaseMessage
+    {
+        Start3B(const Value &duration) : BaseMessage(Command::START_3B)
+        {
             Push(duration);
         }
     };

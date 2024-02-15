@@ -1027,16 +1027,6 @@
               <FileType>5</FileType>
               <FilePath>..\common\Connector\Interface_d.h</FilePath>
             </File>
-            <File>
-              <FileName>Handlers_d.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Handlers_d.h</FilePath>
-            </File>
-            <File>
-              <FileName>Handlers_d.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Handlers_d.cpp</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

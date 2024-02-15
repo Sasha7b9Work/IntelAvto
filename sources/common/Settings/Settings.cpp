@@ -78,12 +78,12 @@ static Settings def_set =
         ,
         {   {   Voltage(80),        // 2a : Us 12
                 Time(1000),         // 2a : t1 12
-                Time(10)          // 2a : td 12
+                Time(10)            // 2a : td 12
             }
             ,
             {   Voltage(80),        // 2a : Us 24
                 Time(1000),         // 2a : t1 24
-                Time(10)  }}      // 2a : td 24
+                Time(10)  }}        // 2a : td 24
         ,
         {   {   Voltage(0),         // 2b : Us 12
                 Time(0)   }         // 2b : td 12
@@ -92,16 +92,16 @@ static Settings def_set =
                 Time(0)   }}        // 2b : td 24
         ,
         {   {   Voltage(0),         // 3a : Us 12
-                Time(95)    }       // 3a : t4 + ts
+                Time(1000)    }     // 3a : duration Us 12
             ,
             {   Voltage(0),         // 3a : Us 24
-                Time(95)   }}       // 3a : t4 + ts
+                Time(1000)   }}     // 3a : duration Us 24
         ,
         {   {   Voltage(0),         // 3b : Us 12
-                Time(95) }          // 3b : t4 + ts Us 12
+                Time(1000) }        // 3b : duration Us 12
             ,
             {   Voltage(0),         // 3b : Us 24
-                Time(95)   }}       // 3b : t4 + ts Us 24
+                Time(1000)   }}     // 3b : duration Us 24
         ,
         {   {   Voltage(-6500),     // 4 : Us
                 Voltage(-4000),     // 4 : Ua

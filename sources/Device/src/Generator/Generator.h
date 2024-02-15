@@ -10,4 +10,8 @@ namespace Generator
     void Start1(const Value &period, const Value &duration);
 
     void Start2A(const Value &Us, const Value &period, const Value &duration);
+
+    void Start3A(const Value &duration);
+
+    void Start3B(const Value &duration);
 }

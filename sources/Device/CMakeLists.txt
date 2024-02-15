@@ -49,7 +49,6 @@ file(GLOB SRC                  src/*.h src/*.cpp)
 file(GLOB CONNECTOR      ../common/Connector/Value.*
                          ../common/Connector/Messages.*
                          ../common/Connector/Interface_d.*
-                         ../common/Connector/Handlers_d.*
                          ../common/Connector/Transceiver.h
                          ../common/Connector/Transceiver_d.cpp
                                src/Connector/*.*)

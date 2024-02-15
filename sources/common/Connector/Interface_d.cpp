@@ -2,13 +2,13 @@
 #include "defines.h"
 #include "Connector/Messages.h"
 #include "Connector/Transceiver.h"
-#include "Connector/Handlers_d.h"
 #include "Connector/Interface_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Queue.h"
 #include "Utils/StringUtils.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Generator/Generator.h"
 #include <cstdlib>
 
 
@@ -52,7 +52,41 @@ void DInterface::Update()
         {
             if (message->CalculateCRC() == crc)
             {
-                DHandlers::Processing(*message);
+                message->ResetPointer();
+
+                Command::E command = message->PopCommand();
+
+                if (command == Command::STOP)
+                {
+                    Generator::Stop();
+                }
+                else if (command == Command::START_1)
+                {
+                    Value period = message->PopValue();
+                    Value duration = message->PopValue();
+
+                    Generator::Start1(period, duration);
+                }
+                else if (command == Command::START_2A)
+                {
+                    Value Us = message->PopValue();
+                    Value period = message->PopValue();
+                    Value duration = message->PopValue();
+
+                    Generator::Start2A(Us, period, duration);
+                }
+                else if (command == Command::START_3A)
+                {
+                    Value duration = message->PopValue();
+
+                    Generator::Start3A(duration);
+                }
+                else if (command == Command::START_3B)
+                {
+                    Value duration = message->PopValue();
+
+                    Generator::Start3B(duration);
+                }
             }
 
             delete message;
@@ -89,6 +123,18 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
             Value td((uint)(*pointer++));
 
             return new Message::Start2A(Us, t1, td);
+        }
+        else if (command == Command::START_3A)
+        {
+            Value duration((uint)(*pointer++));
+
+            return new Message::Start3A(duration);
+        }
+        else if (command == Command::START_3B)
+        {
+            Value duration((uint)(*pointer++));
+
+            return new Message::Start3B(duration);
         }
     }
 

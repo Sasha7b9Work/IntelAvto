@@ -45,3 +45,29 @@ void Generator::Start2A(const Value & /*Us*/, const Value &period, const Value &
         FPGA::Start();
     }
 }
+
+
+void Generator::Start3A(const Value &duration)
+{
+    if (TypeSignal::IsOff())
+    {
+        FPGA::SetTypeSignal(TypeSignal::_3a);
+
+        FPGA::WriteDuration(duration);
+
+        FPGA::Start();
+    }
+}
+
+
+void Generator::Start3B(const Value &duration)
+{
+    if (TypeSignal::IsOff())
+    {
+        FPGA::SetTypeSignal(TypeSignal::_3b);
+
+        FPGA::WriteDuration(duration);
+
+        FPGA::Start();
+    }
+}

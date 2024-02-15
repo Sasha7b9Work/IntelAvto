@@ -47,7 +47,6 @@ namespace PageSignal4
 
     static void FuncStartTest()
     {
-        BaseMessage(Command::START_4).Transmit();
     }
 
     static Item *items[] =

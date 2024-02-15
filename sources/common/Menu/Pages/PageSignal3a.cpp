@@ -14,9 +14,9 @@ namespace PageSignal3a
         &gset.signals[TypeSignal::_3b].values24[0], Value(0), Value(10000),
         275, 95);
 
-    Parameter param_t4_ts("t4 + ts", "t4 + ts",
-        &gset.signals[TypeSignal::_3a].values12[1], Value(90), Value(100),
-        &gset.signals[TypeSignal::_3a].values24[1], Value(90), Value(100),
+    Parameter param_duration("Длит", "Duration",
+        &gset.signals[TypeSignal::_3a].values12[1], Value(200), Value(5000),
+        &gset.signals[TypeSignal::_3a].values24[1], Value(200), Value(5000),
         90, 70);
 
     static void FuncPress_Signal()
@@ -32,14 +32,14 @@ namespace PageSignal3a
 
     static void FuncStartTest()
     {
-        BaseMessage(Command::START_3A).Transmit();
+        Message::Start3A(param_duration.GetValue()).Transmit();
     }
 
     static Item *items[] =
     {
         &bSignal3a,
-        &param_Us,
-        &param_t4_ts,
+//        &param_Us,
+        &param_duration,
         nullptr
     };
 

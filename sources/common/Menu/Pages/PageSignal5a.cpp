@@ -32,7 +32,6 @@ namespace PageSignal5a
 
     static void FuncStartTest()
     {
-        BaseMessage(Command::START_5A).Transmit();
     }
 
     static Item *items[] =
