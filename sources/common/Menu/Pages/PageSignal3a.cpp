@@ -17,7 +17,7 @@ namespace PageSignal3a
     Parameter param_duration("Длит", "Duration",
         &gset.signals[TypeSignal::_3a].values12[1], Value(200), Value(5000),
         &gset.signals[TypeSignal::_3a].values24[1], Value(200), Value(5000),
-        90, 70);
+        90, 50);
 
     static void FuncPress_Signal()
     {
