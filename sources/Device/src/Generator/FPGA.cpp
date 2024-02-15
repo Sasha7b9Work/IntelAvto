@@ -161,7 +161,14 @@ void FPGA::Reg::Write(const Value &value)
 
     SetAddress((uint8)address);
 
-    WriteRawValue((uint)value.ToInt() * PeriodMul());
+    uint duration = (uint)value.ToInt() * PeriodMul();
+
+    if (TypeSignal::Is3a() || TypeSignal::Is3b())
+    {
+        duration /= 100;
+    }
+
+    WriteRawValue(duration);
 
     pin_WR_RG.ToHi(5);
 
@@ -178,7 +185,7 @@ uint FPGA::Reg::PeriodMul()
         1,          // Duration1
         1000,       // Period2
         1,          // Duration2
-        10000       // Duration3
+        1           // Duration3
     };
 
     return muls[address];
