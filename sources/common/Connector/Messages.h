@@ -160,8 +160,9 @@ namespace Message
 
     struct Start1 : public BaseMessage
     {
-        Start1(const Value &period, const Value &duration) : BaseMessage(Command::START_1)
+        Start1(const Value &Us, const Value &period, const Value &duration) : BaseMessage(Command::START_1)
         {
+            Push(Us);
             Push(period);
             Push(duration);
         }
@@ -180,8 +181,9 @@ namespace Message
 
     struct Start3A : public BaseMessage
     {
-        Start3A(const Value &duration) : BaseMessage(Command::START_3A)
+        Start3A(const Value &Us, const Value &duration) : BaseMessage(Command::START_3A)
         {
+            Push(Us);
             Push(duration);
         }
     };
@@ -189,8 +191,9 @@ namespace Message
 
     struct Start3B : public BaseMessage
     {
-        Start3B(const Value &duration) : BaseMessage(Command::START_3B)
+        Start3B(const Value &US, const Value &duration) : BaseMessage(Command::START_3B)
         {
+            Push(US);
             Push(duration);
         }
     };

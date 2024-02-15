@@ -62,10 +62,11 @@ void DInterface::Update()
                 }
                 else if (command == Command::START_1)
                 {
+                    Value Us = message->PopValue();
                     Value period = message->PopValue();
                     Value duration = message->PopValue();
 
-                    Generator::Start1(period, duration);
+                    Generator::Start1(Us, period, duration);
                 }
                 else if (command == Command::START_2A)
                 {
@@ -77,15 +78,17 @@ void DInterface::Update()
                 }
                 else if (command == Command::START_3A)
                 {
+                    Value Us = message->PopValue();
                     Value duration = message->PopValue();
 
-                    Generator::Start3A(duration);
+                    Generator::Start3A(Us, duration);
                 }
                 else if (command == Command::START_3B)
                 {
+                    Value Us = message->PopValue();
                     Value duration = message->PopValue();
 
-                    Generator::Start3B(duration);
+                    Generator::Start3B(Us, duration);
                 }
             }
 
@@ -111,10 +114,11 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         }
         else if (command == Command::START_1)
         {
+            Value Us((uint)(*pointer++));
             Value period((uint)(*pointer++));
             Value duration((uint)(*pointer++));
 
-            return new Message::Start1(period, duration);
+            return new Message::Start1(Us, period, duration);
         }
         else if (command == Command::START_2A)
         {
@@ -126,15 +130,17 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         }
         else if (command == Command::START_3A)
         {
+            Value Us((uint)(*pointer++));
             Value duration((uint)(*pointer++));
 
-            return new Message::Start3A(duration);
+            return new Message::Start3A(Us, duration);
         }
         else if (command == Command::START_3B)
         {
+            Value Us((uint)(*pointer++));
             Value duration((uint)(*pointer++));
 
-            return new Message::Start3B(duration);
+            return new Message::Start3B(Us, duration);
         }
     }
 

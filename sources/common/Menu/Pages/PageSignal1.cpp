@@ -54,14 +54,14 @@ namespace PageSignal1
 
     static void FuncStartTest()
     {
-        Message::Start1(param_period.GetValue(), param_duration.GetValue()).Transmit();
+        Message::Start1(param_Us.GetValue(), param_period.GetValue(), param_duration.GetValue()).Transmit();
     }
 
 
     static Item *items[] =
     {
         &bSignal1,
-//        &param_Us,
+        &param_Us,
         &param_period,
 //        &param_N,
         &param_duration,

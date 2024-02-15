@@ -17,7 +17,7 @@ void Generator::Stop()
 }
 
 
-void Generator::Start1(const Value &period, const Value &duration)
+void Generator::Start1(const Value &Us, const Value &period, const Value &duration)
 {
     if (TypeSignal::IsOff())
     {
@@ -27,12 +27,14 @@ void Generator::Start1(const Value &period, const Value &duration)
 
         FPGA::WriteDuration(duration);
 
+        MCP4801::Set(Us);
+
         FPGA::Start();
     }
 }
 
 
-void Generator::Start2A(const Value & /*Us*/, const Value &period, const Value &duration)
+void Generator::Start2A(const Value &Us, const Value &period, const Value &duration)
 {
     if (TypeSignal::IsOff())
     {
@@ -42,12 +44,14 @@ void Generator::Start2A(const Value & /*Us*/, const Value &period, const Value &
 
         FPGA::WriteDuration(duration);
 
+        MCP4801::Set(Us);
+
         FPGA::Start();
     }
 }
 
 
-void Generator::Start3A(const Value &duration)
+void Generator::Start3A(const Value &Us, const Value &duration)
 {
     if (TypeSignal::IsOff())
     {
@@ -55,18 +59,22 @@ void Generator::Start3A(const Value &duration)
 
         FPGA::WriteDuration(duration);
 
+        MCP4801::Set(Us);
+
         FPGA::Start();
     }
 }
 
 
-void Generator::Start3B(const Value &duration)
+void Generator::Start3B(const Value &Us, const Value &duration)
 {
     if (TypeSignal::IsOff())
     {
         FPGA::SetTypeSignal(TypeSignal::_3b);
 
         FPGA::WriteDuration(duration);
+
+        MCP4801::Set(Us);
 
         FPGA::Start();
     }

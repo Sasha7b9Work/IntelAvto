@@ -32,13 +32,13 @@ namespace PageSignal3b
 
     static void FuncStartTest()
     {
-        Message::Start3B(param_duration.GetValue()).Transmit();
+        Message::Start3B(param_Us.GetValue(), param_duration.GetValue()).Transmit();
     }
 
     static Item *items[] =
     {
         &bSignal3b,
-//        &param_Us,
+        &param_Us,
         &param_duration,
         nullptr
     };
