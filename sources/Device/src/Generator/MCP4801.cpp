@@ -23,6 +23,18 @@ namespace MCP4801
 }
 
 
+void MCP4801::Test()
+{
+    uint16 value = 0;
+
+    while (true)
+    {
+        Gateway::Write(value++);
+        HAL_TIM::DelayUS(10);
+    }
+}
+
+
 void MCP4801::Set(const Value &value)
 {
     Gateway::Write(Converter(value).Resolve());

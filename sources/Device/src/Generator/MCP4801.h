@@ -7,4 +7,6 @@
 namespace MCP4801
 {
     void Set(const Value &);
+
+    void Test();
 }

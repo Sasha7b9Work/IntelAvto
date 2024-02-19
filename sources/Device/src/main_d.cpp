@@ -5,6 +5,7 @@
 #include "Hardware/Timer.h"
 #include "Connector/Interface_d.h"
 #include "Generator/Generator.h"
+#include "Generator/MCP4801.h"
 
 
 int main()
@@ -14,6 +15,8 @@ int main()
 
     while (1)
     {
+        MCP4801::Test();
+
         DInterface::Update();
 
 //        static uint time = 0;
