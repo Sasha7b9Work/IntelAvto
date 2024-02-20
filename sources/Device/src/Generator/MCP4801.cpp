@@ -73,6 +73,8 @@ void MCP4801::Gateway::Write(uint16 value)
     WriteBit(false);
 
     pin_DAC_CS2_R.ToHi();
+
+    WriteBit(false);
 }
 
 
