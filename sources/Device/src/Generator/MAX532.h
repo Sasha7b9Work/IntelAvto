@@ -7,4 +7,6 @@
 namespace MAX532
 {
     void Set(const Value &);
+
+    void Test();
 }

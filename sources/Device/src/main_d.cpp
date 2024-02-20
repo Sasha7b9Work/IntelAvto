@@ -5,7 +5,7 @@
 #include "Hardware/Timer.h"
 #include "Connector/Interface_d.h"
 #include "Generator/Generator.h"
-#include "Generator/MCP4811.h"
+#include "Generator/MAX532.h"
 
 
 int main()
@@ -15,7 +15,7 @@ int main()
 
     while (1)
     {
-        MCP4811::Test();
+        MAX532::Test();
 
         DInterface::Update();
 
