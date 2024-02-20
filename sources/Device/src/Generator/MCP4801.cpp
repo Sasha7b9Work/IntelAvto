@@ -61,7 +61,7 @@ void MCP4801::Gateway::Write(uint16 value)
 
     WriteBit(false);
     WriteBit(false);
-    WriteBit(true);
+    WriteBit(false);
     WriteBit(true);
 
     for (int i = 9; i >= 0; i--)
