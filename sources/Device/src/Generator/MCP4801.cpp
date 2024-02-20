@@ -69,13 +69,16 @@ void MCP4801::Gateway::Write(uint16 value)
         WriteBit((value & (1 << 9)) != 0);
     }
 
+    WriteBit(false);
+    WriteBit(false);
+
     pin_DAC_CS2_R.ToHi();
 }
 
 
 void MCP4801::Gateway::WriteBit(bool bit)
 {
-    bit ? pin_DAC_DAT_R.ToLow() : pin_DAC_DAT_R.ToHi();
+    bit ? pin_DAC_DAT_R.ToHi() : pin_DAC_DAT_R.ToLow();
 
     HAL_TIM::DelayUS(5);
 
