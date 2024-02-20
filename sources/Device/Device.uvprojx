@@ -1063,16 +1063,6 @@
               <FilePath>.\src\Generator\SwitchingBoard.h</FilePath>
             </File>
             <File>
-              <FileName>MCP4801.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Generator\MCP4801.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>MCP4801.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Generator\MCP4801.h</FilePath>
-            </File>
-            <File>
               <FileName>MAX532.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Generator\MAX532.cpp</FilePath>
@@ -1081,6 +1071,16 @@
               <FileName>MAX532.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Generator\MAX532.h</FilePath>
+            </File>
+            <File>
+              <FileName>MCP4811.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Generator\MCP4811.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>MCP4811.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Generator\MCP4811.h</FilePath>
             </File>
           </Files>
         </Group>

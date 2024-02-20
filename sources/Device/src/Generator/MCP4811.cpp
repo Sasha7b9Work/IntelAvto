@@ -1,11 +1,11 @@
 // 2024/02/02 00:21:58 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Generator/MCP4801.h"
+#include "Generator/MCP4811.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/HAL/HAL.h"
 
 
-namespace MCP4801
+namespace MCP4811
 {
     struct Converter
     {
@@ -23,7 +23,7 @@ namespace MCP4801
 }
 
 
-void MCP4801::Test()
+void MCP4811::Test()
 {
     uint16 value = 0;
 
@@ -35,13 +35,13 @@ void MCP4801::Test()
 }
 
 
-void MCP4801::Set(const Value &value)
+void MCP4811::Set(const Value &value)
 {
     Gateway::Write(Converter(value).Resolve());
 }
 
 
-uint16 MCP4801::Converter::Resolve() const
+uint16 MCP4811::Converter::Resolve() const
 {
     /*
     * 
@@ -55,7 +55,7 @@ uint16 MCP4801::Converter::Resolve() const
 }
 
 
-void MCP4801::Gateway::Write(uint16 value)
+void MCP4811::Gateway::Write(uint16 value)
 {
     pin_DAC_CS2_R.ToLow();
 
@@ -78,7 +78,7 @@ void MCP4801::Gateway::Write(uint16 value)
 }
 
 
-void MCP4801::Gateway::WriteBit(bool bit)
+void MCP4811::Gateway::WriteBit(bool bit)
 {
     bit ? pin_DAC_DAT_R.ToHi() : pin_DAC_DAT_R.ToLow();
 

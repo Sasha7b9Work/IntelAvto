@@ -903,8 +903,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Generator\MCP4801.cpp</PathWithFileName>
-      <FilenameWithoutPath>MCP4801.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Generator\MAX532.cpp</PathWithFileName>
+      <FilenameWithoutPath>MAX532.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -915,8 +915,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Generator\MCP4801.h</PathWithFileName>
-      <FilenameWithoutPath>MCP4801.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\Generator\MAX532.h</PathWithFileName>
+      <FilenameWithoutPath>MAX532.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -927,8 +927,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Generator\MAX532.cpp</PathWithFileName>
-      <FilenameWithoutPath>MAX532.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Generator\MCP4811.cpp</PathWithFileName>
+      <FilenameWithoutPath>MCP4811.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -939,8 +939,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Generator\MAX532.h</PathWithFileName>
-      <FilenameWithoutPath>MAX532.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\Generator\MCP4811.h</PathWithFileName>
+      <FilenameWithoutPath>MCP4811.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -4,7 +4,7 @@
 
 
 // Определяет размах выходного напряжения
-namespace MCP4801
+namespace MCP4811
 {
     void Set(const Value &);
 
