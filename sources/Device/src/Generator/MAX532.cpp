@@ -25,6 +25,11 @@ void MAX532::Test()
     while (true)
     {
         WriteChannels(value++);
+
+        if (value > (1 << 9))
+        {
+            value = 0;
+        }
     }
 }
 
