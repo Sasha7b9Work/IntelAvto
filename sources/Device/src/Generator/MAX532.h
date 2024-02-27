@@ -6,7 +6,7 @@
 // Источник питания истокового повторителя
 namespace MAX532
 {
-    void Set(const Value &);
+    void SetVoltage(const Value &);
 
     void Test();
 }

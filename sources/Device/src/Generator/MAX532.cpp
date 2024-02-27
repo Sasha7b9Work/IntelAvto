@@ -12,9 +12,9 @@ namespace MAX532
 }
 
 
-void MAX532::Set(const Value &)
+void MAX532::SetVoltage(const Value &U)
 {
-
+    WriteChannels((uint)(U.ToFloat() * 100));
 }
 
 

@@ -52,7 +52,8 @@ struct Value
 
     static DrawStruct ds;
 
-    void FromDrawStrut(const Value &min, const Value &max);
+    // ¬озвращает true, если значение находитс€ в пределах [min, max]
+    bool FromDrawStrut(const Value &min, const Value &max);
 
     TypeValue GetType() const
     {

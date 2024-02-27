@@ -35,7 +35,7 @@ void MCP4811::Test()
 }
 
 
-void MCP4811::Set(const Value &value)
+void MCP4811::SetVoltage(const Value &value)
 {
     Gateway::Write(Converter(value).Resolve());
 }

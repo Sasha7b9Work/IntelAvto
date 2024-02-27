@@ -7,6 +7,7 @@
 #include "Menu/MenuItems.h"
 #include "Utils/Math.h"
 #include "Menu/Pages/Pages.h"
+#include "Connector/Messages.h"
 #include <cstring>
 
 
@@ -323,7 +324,10 @@ bool Parameter::OnEventControl(const Control &control)
             {
                 Parameter::editable = nullptr;
 
-                GetValue().FromDrawStrut(GetMin(), GetMax());
+                if (GetValue().FromDrawStrut(GetMin(), GetMax()))
+                {
+                    Message::SetVoltage(GetValue()).Transmit();
+                }
             }
             else
             {

@@ -104,26 +104,25 @@ bool DrawStruct::ToRaw(uint *result, TypeValue type) const
 }
 
 
-void Value::FromDrawStrut(const Value &min, const Value &max)
+bool Value::FromDrawStrut(const Value &min, const Value &max)
 {
     uint new_raw = 0;
+
+    bool result = false;
 
     if (ds.ToRaw(&new_raw, GetType()))
     {
         Value value(new_raw);
 
-        if (value.ToFloat() < min.ToFloat())
+        if (value.ToFloat() >= min.ToFloat() && value.ToFloat() <= max.ToFloat())
         {
-            return;
-        }
+            raw = new_raw;
 
-        if (value.ToFloat() > max.ToFloat())
-        {
-            return;
+            result = true;
         }
-
-        raw = new_raw;
     }
+
+    return result;
 }
 
 

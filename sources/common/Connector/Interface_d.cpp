@@ -9,6 +9,8 @@
 #include "Utils/StringUtils.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Generator/Generator.h"
+#include "Generator/MAX532.h"
+#include "Generator/MCP4811.h"
 #include <cstdlib>
 
 
@@ -90,6 +92,12 @@ void DInterface::Update()
 
                     Generator::Start3B(Us, duration);
                 }
+                else if (command == Command::SET_VOLTAGE)
+                {
+                    Value U = message->PopValue();
+
+                    MAX532::SetVoltage(U);
+                }
             }
 
             delete message;
@@ -141,6 +149,12 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
             Value duration((uint)(*pointer++));
 
             return new Message::Start3B(Us, duration);
+        }
+        else if (command == Command::SET_VOLTAGE)
+        {
+            Value U((uint)(*pointer++));
+
+            return new Message::SetVoltage(U);
         }
     }
 

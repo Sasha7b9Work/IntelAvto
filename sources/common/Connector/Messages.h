@@ -14,6 +14,7 @@ struct Command
         START_3A,
         START_3B,
         STOP,
+        SET_VOLTAGE,
         Count
     };
 };
@@ -158,6 +159,16 @@ namespace Message
         Stop() : BaseMessage(Command::STOP) { }
     };
 
+
+    struct SetVoltage : public BaseMessage
+    {
+        SetVoltage(const Value &U) : BaseMessage(Command::SET_VOLTAGE)
+        {
+            Push(U);
+        }
+    };
+
+
     struct Start1 : public BaseMessage
     {
         Start1(const Value &Us, const Value &period, const Value &duration) : BaseMessage(Command::START_1)
@@ -167,6 +178,7 @@ namespace Message
             Push(duration);
         }
     };
+
 
     struct Start2A : public BaseMessage
     {

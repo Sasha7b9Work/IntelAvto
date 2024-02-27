@@ -27,7 +27,7 @@ void Generator::Start1(const Value &Us, const Value &period, const Value &durati
 
         FPGA::WriteDuration(duration);
 
-        MCP4811::Set(Us);
+        MCP4811::SetVoltage(Us);
 
         FPGA::Start();
     }
@@ -44,7 +44,7 @@ void Generator::Start2A(const Value &Us, const Value &period, const Value &durat
 
         FPGA::WriteDuration(duration);
 
-        MCP4811::Set(Us);
+        MCP4811::SetVoltage(Us);
 
         FPGA::Start();
     }
@@ -59,7 +59,7 @@ void Generator::Start3A(const Value &Us, const Value &duration)
 
         FPGA::WriteDuration(duration);
 
-        MCP4811::Set(Us);
+        MCP4811::SetVoltage(Us);
 
         FPGA::Start();
     }
@@ -74,7 +74,7 @@ void Generator::Start3B(const Value &Us, const Value &duration)
 
         FPGA::WriteDuration(duration);
 
-        MCP4811::Set(Us);
+        MCP4811::SetVoltage(Us);
 
         FPGA::Start();
     }

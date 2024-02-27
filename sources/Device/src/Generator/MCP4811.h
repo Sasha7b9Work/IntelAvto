@@ -6,7 +6,7 @@
 // Определяет размах выходного напряжения
 namespace MCP4811
 {
-    void Set(const Value &);
+    void SetVoltage(const Value &);
 
     void Test();
 }
