@@ -80,7 +80,7 @@ struct Value
     {
         float value = (float)ToInt();
 
-        if (raw & (1 << 30))
+        if (GetType() == MS)
         {
             value *= 1e-3f;
         }

@@ -46,7 +46,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
         {
             std::strcat(pointer, String("%d", value).c_str());
 
-            if (raw & (1 << 30))
+            if (GetType() == MS)
             {
                 std::strcat(string, "m");
             }
@@ -64,7 +64,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
             std::strcat(string, String("%d", value).c_str());
         }
 
-        std::strcat(string, (raw & (1 << 30)) ? "s" : "V");
+        std::strcat(string, (GetType() == MS) ? "s" : "V");
         Text(string).Write(x, y);
     }
 }
