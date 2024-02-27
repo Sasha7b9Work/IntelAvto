@@ -14,7 +14,7 @@ namespace MAX532
 
 void MAX532::SetVoltage(const Value &U)
 {
-    WriteChannels((uint)(U.ToFloat() * 100));
+    WriteChannels((uint)(U.ToFloat() * 5));
 }
 
 
