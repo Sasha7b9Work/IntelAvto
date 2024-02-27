@@ -15,8 +15,6 @@ int main()
 
     while (1)
     {
-        MAX532::Test();
-
         DInterface::Update();
 
 //        static uint time = 0;

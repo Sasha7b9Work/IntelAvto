@@ -62,14 +62,14 @@ static Settings def_set =
     TypeSignal::_1,
     VoltageMode::_12,
     {
-        {   {   Voltage(-80000),    // 1 : Us   12
+        {   {   Voltage(80),        // 1 : Us   12
                 Time(1000),         // 1 : t1   12
                 Value(5000),        // 1 : N    12
                 Time(10),           // 1 : tdel 12
                 Time(100),          // 1 : t2   12
                 Time(50)}           // 1 : td   12
             ,
-            {   Voltage(-500000),   // 1 : Us   24
+            {   Voltage(50),        // 1 : Us   24
                 Time(2000),         // 1 : Us   24
                 Value(5000),        // 1 : N    24
                 Time(10),           // 1 : tdel 24
