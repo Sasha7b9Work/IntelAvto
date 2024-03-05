@@ -10,8 +10,8 @@
 namespace PageSignal1
 {
     Parameter param_Us("Us", "Us",
-        &gset.signals[TypeSignal::_1].values12[0], Value(75, Volts), Value(150, Volts),
-        &gset.signals[TypeSignal::_1].values24[0], Value(30, Volts), Value(60, Volts),
+        &gset.signals[TypeSignal::_1].values12[0], Value(0, Volts), Value(800, Volts),
+        &gset.signals[TypeSignal::_1].values24[0], Value(0, Volts), Value(800, Volts),
         340, 165);
 
     Parameter param_period("Период", "Period",

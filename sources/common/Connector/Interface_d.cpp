@@ -97,6 +97,7 @@ void DInterface::Update()
                     Value U = message->PopValue();
 
                     MAX532::SetVoltage(U);
+                    MCP4811::SetVoltage(U);
                 }
             }
 
