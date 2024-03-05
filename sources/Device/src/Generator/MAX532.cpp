@@ -18,7 +18,7 @@ void MAX532::SetVoltage(const Value &U)
 
     voltage = (voltage + 24.0f) / 5.5f;
 
-    WriteChannels((uint)(U.ToFloat() * 5));
+    WriteChannels((uint)voltage);
 }
 
 
