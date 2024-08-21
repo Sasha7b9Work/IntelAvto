@@ -61,6 +61,8 @@ void MCP4811::Gateway::Write(uint16 value)
 {
     pin_DAC_CS2_R.ToLow();
 
+//    HAL_TIM::DelayUS(100);    // \todo    на макете, кажется, без этого не работало
+
     WriteBit(false);
     WriteBit(false);
     WriteBit(false);
