@@ -134,8 +134,6 @@ struct BaseMessage
         return buffer == rhs->buffer;
     }
 
-    BaseMessage *Clone();
-
     void Transmit();
 
     void ResetPointer()

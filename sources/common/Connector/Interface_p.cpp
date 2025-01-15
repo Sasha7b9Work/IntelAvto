@@ -58,7 +58,7 @@ void PInterface::AddTask(Task *task)
 
 void Task::TransmitMessage()
 {
-    message->Transmit();    // Посылаем сообщение
+    message.Transmit();    // Посылаем сообщение
     timeLast = TIME_MS;     // запоминаем время посылки
 }
 
@@ -127,25 +127,24 @@ bool Task::Equals(Task *task1, Task *task2)
 
 Task::Task(BaseMessage *msg) : funcProcess(nullptr), timeLast(0), funcEqual(nullptr)
 {
-    message = msg->Clone();
+    message = *msg;
 }
 
 
 Task::Task(BaseMessage *msg, bool(*process)(BaseMessage *), bool(*equal)(Task *, Task *)) :funcProcess(process), timeLast(0), funcEqual(equal)
 {
-    message = msg->Clone();
+    message = *msg;
 }
 
 
 Task::~Task()
 {
-    delete message;
 }
 
 
-BaseMessage *Task::GetMessage()
+BaseMessage &Task::GetMessage()
 {
-    message->ResetPointer();
+    message.ResetPointer();
     return message;
 }
 

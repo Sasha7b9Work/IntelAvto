@@ -10,23 +10,33 @@ struct Task
     Task(BaseMessage *msg);
 
     Task(BaseMessage *msg, bool (*process)(BaseMessage *), bool (*equal)(Task *, Task *));
+
     // Деструктор. В нём нужно удалить сообщение
     ~Task();
+
     // Функция сравнения
     bool Equals(Task *, Task *);
+
     // Соообщение для пересылки
-    BaseMessage *message;
+    BaseMessage message;
+
     // Возвращает указатель на готовое к использованию (со сброщенным указателем) сообщение
-    BaseMessage *GetMessage();
+    BaseMessage &GetMessage();
+
     // Послать сообщение задания
     void TransmitMessage();
+
     // Возвращает true, если прошло слишком мало времени после предыдущей засылки сообщения
     bool PassedLittleTimeAfterSend();
+
     // Функция обработки ответа
     bool(*funcProcess)(BaseMessage *);
+
 private:
+
     // Время последней передачи сообщения
     uint timeLast;
+
     // Функция сравнения
     bool (*funcEqual)(Task *, Task *);
 };
