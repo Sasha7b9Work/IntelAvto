@@ -12,50 +12,50 @@ namespace Keyboard
 #define NUM_RL 5
 #define NUM_SL 5
 
-#define PIN_SL0  GPIO_PIN_10    // 69
+#define PIN_SL0  GPIO_PIN_10    // 69   PA10
 #define PORT_SL0 GPIOA
 
-#define PIN_SL1  GPIO_PIN_8     // 67
+#define PIN_SL1  GPIO_PIN_8     // 67   PA8
 #define PORT_SL1 GPIOA
 
-#define PIN_SL2  GPIO_PIN_9     // 66
+#define PIN_SL2  GPIO_PIN_9     // 66   PC9
 #define PORT_SL2 GPIOC
 
-#define PIN_SL3  GPIO_PIN_8     // 65
+#define PIN_SL3  GPIO_PIN_8     // 65   PC8
 #define PORT_SL3 GPIOC
 
-#define PIN_SL4  GPIO_PIN       // 80
-#define PORT_SL4 GPIO
+#define PIN_SL4  GPIO_PIN_12    // 80   PC12
+#define PORT_SL4 GPIOC
 
-#define PIN_RL0  GPIO_PIN_7     // 64
+#define PIN_RL0  GPIO_PIN_7     // 64   PC7
 #define PORT_RL0 GPIOC
 
-#define PIN_RL1  GPIO_PIN_6     // 63
+#define PIN_RL1  GPIO_PIN_6     // 63   PC6
 #define PORT_RL1 GPIOC
 
-#define PIN_RL2  GPIO_PIN_15    // 62
+#define PIN_RL2  GPIO_PIN_15    // 62   PD15
 #define PORT_RL2 GPIOD
 
-#define PIN_RL3  GPIO_PIN_14    // 61
+#define PIN_RL3  GPIO_PIN_14    // 61   PD14
 #define PORT_RL3 GPIOD
 
-#define PIN_RL4  GPIO_PIN_      // 79
-#define PORT_RL4 GPIO
+#define PIN_RL4  GPIO_PIN_11    // 79   PC11
+#define PORT_RL4 GPIOD
 
-#define PIN_ENC1  GPIO_PIN_11   // 58
+#define PIN_ENC1  GPIO_PIN_11   // 58   PD11
 #define PORT_ENC1 GPIOD
 
-#define PIN_ENC2  GPIO_PIN_12   // 59
+#define PIN_ENC2  GPIO_PIN_12   // 59   PD12
 #define PORT_ENC2 GPIOD
 
-#define PIN_ENCBUT GPIO_PIN_13  // 60
+#define PIN_ENCBUT GPIO_PIN_13  // 60   PD13
 #define PORT_ENCBUT GPIOD
 
 
     static TIM_HandleTypeDef handleTIM4;
 
 
-    static Key::E keys[NUM_SL][NUM_RL] =
+    static const Key::E keys[NUM_SL][NUM_RL] =
     {//     RL0         RL1         RL2         RL3        RL4
         {Key::_1,    Key::_2,    Key::_3,    Key::_4,   Key::_5},       // SL0
         {Key::_6,    Key::_7,    Key::_8,    Key::_9,   Key::None},     // SL1

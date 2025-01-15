@@ -236,8 +236,6 @@ void Display::DrawWelcomeScreen()
 {
     uint startTime = TIME_MS;
 
-    int counter = 0;
-
     while (TIME_MS - startTime < 3000)
     {
         for (int i = 0; i < NUM_PARTS; i++)
@@ -254,8 +252,6 @@ void Display::DrawWelcomeScreen()
 
             EndScene();
         }
-
-        counter++;
     }
 }
 
