@@ -2,3 +2,13 @@
 #include "defines.h"
 #include "Connector/Messages.h"
 #include <cstring>
+
+
+BaseMessage *BaseMessage::Clone()
+{
+    BaseMessage *result = new BaseMessage();
+
+    result->buffer = buffer;
+
+    return result;
+}

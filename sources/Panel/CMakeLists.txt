@@ -37,7 +37,6 @@ add_compile_options(
     /wd5027    # move assignment operator was implicitly defined as deleted
     /wd5045    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
     /wd5204
-    /wd5267
 )
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h

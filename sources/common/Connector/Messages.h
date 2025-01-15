@@ -89,8 +89,6 @@ struct BaseMessage
 {
     BaseMessage(Command::E command = Command::Count)
     {
-        is_valid = command != Command::Count;
-
         buffer.Push(command);
     }
 
@@ -134,6 +132,8 @@ struct BaseMessage
         return buffer == rhs->buffer;
     }
 
+    BaseMessage *Clone();
+
     void Transmit();
 
     void ResetPointer()
@@ -146,16 +146,9 @@ struct BaseMessage
         return buffer.CalculateCRC();
     }
 
-    bool IsValid() const
-    {
-        return is_valid;
-    }
-
 private:
 
     BufferMessage buffer;
-
-    bool is_valid = false;
 };
 
 
