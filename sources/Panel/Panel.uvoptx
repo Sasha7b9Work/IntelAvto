@@ -75,7 +75,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>1</IsCurrentTarget>
+        <IsCurrentTarget>0</IsCurrentTarget>
       </OPTFL>
       <CpuCode>18</CpuCode>
       <DebugOpt>
@@ -161,7 +161,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\common\Connector\Transceiver_p.cpp</Filename>
+          <Filename>&lt;1&gt;..\common\Connector\Transceiver_p.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Panel\../common/Connector/Transceiver_p.cpp\21</Expression>
         </Bp>
@@ -177,7 +177,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Hardware\CMSIS\startup_stm32f429xx.s</Filename>
+          <Filename>&lt;1&gt;.\src\Hardware\CMSIS\startup_stm32f429xx.s</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Panel\src/Hardware/CMSIS/startup_stm32f429xx.s\182</Expression>
         </Bp>
@@ -312,7 +312,7 @@
       <OPTFL>
         <tvExp>1</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
-        <IsCurrentTarget>0</IsCurrentTarget>
+        <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
       <CpuCode>18</CpuCode>
       <DebugOpt>
@@ -772,7 +772,7 @@
 
   <Group>
     <GroupName>src</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

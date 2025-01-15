@@ -20,5 +20,7 @@
     #pragma clang diagnostic ignored "-Wunused-private-field"
     #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
     #pragma clang diagnostic ignored "-Wshift-sign-overflow"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Winvalid-utf8"
 #endif
 

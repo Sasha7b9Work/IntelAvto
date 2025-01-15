@@ -188,7 +188,7 @@ uint FPGA::Reg::PeriodMul()
         1           // Duration3
     };
 
-    return muls[address];
+    return address < 6 ? muls[address] : 0;
 }
 
 
