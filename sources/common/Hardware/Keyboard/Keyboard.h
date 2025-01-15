@@ -23,11 +23,12 @@ struct Key
         Start,      // 13
         Left,       // 14
         Right,      // 15
-        Back,       // 16
+        Esc,        // 16
         OK,         // 17
         GovButton,  // 18
         GovLeft,    // 19
         GovRight,   // 20
+        Stop,       // 21
         Count
     };
 

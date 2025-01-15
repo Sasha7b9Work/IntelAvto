@@ -139,26 +139,19 @@ void DrawStruct::PressKey(Key::E key)
             AppendSymbol('0');
         }
     }
-    //    else if (key == Key::Dot)
-    //    {
-    //        if (!ConsistDot())
-    //        {
-    //            AppendSymbol('.');
-    //        }
-    //    }
     else if (key >= Key::_1 && key <= Key::_0)
     {
         static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
         AppendSymbol(_keys[key]);
     }
-    else if (key == Key::Back)
-    {
-        if (index > 0)
-        {
-            index--;
-        }
-    }
+//    else if (key == Key::Back)
+//    {
+//        if (index > 0)
+//        {
+//            index--;
+//        }
+//    }
 }
 
 

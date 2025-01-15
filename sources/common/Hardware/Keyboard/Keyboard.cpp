@@ -9,40 +9,46 @@
 namespace Keyboard
 {
 #define TIME_UPDATE_KEYBOARD 2   // ¬рем€ между опросами клавиатуры
-#define NUM_RL 4
-#define NUM_SL 4
+#define NUM_RL 5
+#define NUM_SL 5
 
-#define PIN_SL0  GPIO_PIN_10
+#define PIN_SL0  GPIO_PIN_10    // 69
 #define PORT_SL0 GPIOA
 
-#define PIN_SL1  GPIO_PIN_8
+#define PIN_SL1  GPIO_PIN_8     // 67
 #define PORT_SL1 GPIOA
 
-#define PIN_SL2  GPIO_PIN_9
+#define PIN_SL2  GPIO_PIN_9     // 66
 #define PORT_SL2 GPIOC
 
-#define PIN_SL3  GPIO_PIN_8
+#define PIN_SL3  GPIO_PIN_8     // 65
 #define PORT_SL3 GPIOC
 
-#define PIN_RL0  GPIO_PIN_7
+#define PIN_SL4  GPIO_PIN       // 80
+#define PORT_SL4 GPIO
+
+#define PIN_RL0  GPIO_PIN_7     // 64
 #define PORT_RL0 GPIOC
 
-#define PIN_RL1  GPIO_PIN_6
+#define PIN_RL1  GPIO_PIN_6     // 63
 #define PORT_RL1 GPIOC
 
-#define PIN_RL2  GPIO_PIN_15
+#define PIN_RL2  GPIO_PIN_15    // 62
 #define PORT_RL2 GPIOD
 
-#define PIN_RL3  GPIO_PIN_14
+#define PIN_RL3  GPIO_PIN_14    // 61
 #define PORT_RL3 GPIOD
 
-#define PIN_ENC1  GPIO_PIN_11
+#define PIN_RL4  GPIO_PIN_      // 79
+#define PORT_RL4 GPIO
+
+#define PIN_ENC1  GPIO_PIN_11   // 58
 #define PORT_ENC1 GPIOD
 
-#define PIN_ENC2  GPIO_PIN_12
+#define PIN_ENC2  GPIO_PIN_12   // 59
 #define PORT_ENC2 GPIOD
 
-#define PIN_ENCBUT GPIO_PIN_13
+#define PIN_ENCBUT GPIO_PIN_13  // 60
 #define PORT_ENCBUT GPIOD
 
 
@@ -50,11 +56,12 @@ namespace Keyboard
 
 
     static Key::E keys[NUM_SL][NUM_RL] =
-    {
-        {Key::Left,  Key::_1, Key::_5, Key::_9},
-        {Key::Right, Key::_2, Key::_6, Key::Minus},
-        {Key::Back,  Key::_3, Key::_7, Key::Dot},
-        {Key::OK,    Key::_4, Key::_8, Key::Start},
+    {//     RL0         RL1         RL2         RL3        RL4
+        {Key::_1,    Key::_2,    Key::_3,    Key::_4,   Key::_5},       // SL0
+        {Key::_6,    Key::_7,    Key::_8,    Key::_9,   Key::None},     // SL1
+        {Key::_0,    Key::Dot,   Key::Minus, Key::None, Key::None},     // SL2
+        {Key::Left,  Key::Right, Key::OK,    Key::Esc,  Key::None},     // SL3
+        {Key::Start, Key::Stop,  Key::None,  Key::None, Key::None}      // SL4
     };
 
     // ќчередь сообщений - здесь все событи€ органов управлени€
