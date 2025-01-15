@@ -40,6 +40,7 @@ add_compile_options(
     /wd5204
     /wd5220    # a non-static data member with a volatile qualified type no longer implies
     /wd5246
+    /wd5267
 )
 
 file(GLOB LIBS_HAL       ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.*
