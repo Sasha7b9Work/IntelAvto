@@ -247,7 +247,7 @@ void Display::DrawWelcomeScreen()
 //            Text(String(LANG_IS_RU ? "OAO ÃÕ»œ»" : "OAO MNIPI")).WriteScaled(160, 70, 2);
 //            Text(String(STR_NUM_VERSION)).WriteScaled(140, 152, 2);
 
-            Text(String(LANG_IS_RU ? "OAO ÃÕ»œ»" : "OAO MNIPI")).WriteScaled(110, 60, 3);
+            Text(String("OAO ÃÕ»œ»")).WriteScaled(110, 60, 3);
             Text(String(STR_NUM_VERSION)).WriteScaled(140, 160, 2);
 
             EndScene();
@@ -265,7 +265,7 @@ void Display::DrawKeyboardFailScreen()
         {
             SetTopRow(i);
             BeginScene();
-            Text(LANG_IS_RU ? "Œÿ»¡ ¿  À¿¬»¿“”–€" : "ERROR KEYBOARD").Write(100, 110, Color::FILL);
+            Text("Œÿ»¡ ¿  À¿¬»¿“”–€").Write(100, 110, Color::FILL);
             EndScene();
         }
     }
@@ -341,7 +341,7 @@ void Display::DrawScreen()
 {
     Menu::Draw();
 
-    Text(String(LANG_IS_RU ? "“ËÔ ÒË„Ì‡Î‡ %s : %s" : "Type signal %s : %s",
+    Text(String("“ËÔ ÒË„Ì‡Î‡ %s : %s",
         TypeSignal::ToString(),
         TypeSignal::Name())).Write(230, 6, Color::WHITE);
 

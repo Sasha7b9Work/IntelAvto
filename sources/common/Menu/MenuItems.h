@@ -42,18 +42,17 @@ protected:
 class Button : public Item
 {
 public:
-    Button(pchar text_ru, pchar text_en, void (*funcPress)()) :
+    Button(pchar text_ru, void (*funcPress)()) :
         Item(), funcOnPress(funcPress)
     {
-        text[0] = text_ru;
-        text[1] = text_en;
+        text = text_ru;
     }
     virtual void Draw(int x, int y, int width, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
     pchar GetTitle() const;
-    void SetTitle(pchar ru, pchar en);
+    void SetTitle(pchar);
 private:
-    pchar text[2];
+    pchar text;
     void (*funcOnPress)();
 };
 
@@ -62,11 +61,10 @@ private:
 class Choice : public Item
 {
 public:
-    Choice(pchar *_namesRu, pchar *_namesEn, void (*funcPress)(), uint8 *_state) :
+    Choice(pchar *_namesRu, void (*funcPress)(), uint8 *_state) :
         Item(), colorBack(Color::MENU_UNSELECT), state(_state), funcOnPress(funcPress)
     {
         namesRu = _namesRu;
-        namesEn = _namesEn;
     }
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -77,7 +75,6 @@ public:
     Color colorBack;        // Этим цветом будем отрисовывать фон в случае Choice для выбора цвета
 private:
     pchar *namesRu;
-    pchar *namesEn;
     uint8 *state;
     void (*funcOnPress)();
     int NumStates() const;
@@ -115,7 +112,7 @@ private:
 class Parameter : public Item
 {
 public:
-    Parameter(pchar title_ru, pchar title_en,
+    Parameter(pchar title_ru,
         Value *value12, Value _min12, Value _max12,
         Value *value24, Value _min24, Value _max24,
         int _x, int _y) :
@@ -127,8 +124,7 @@ public:
         value[VoltageMode::_12] = value12;
         value[VoltageMode::_24] = value24;
 
-        title[0] = title_ru;
-        title[1] = title_en;
+        title = title_ru;
     }
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -161,7 +157,7 @@ public:
 
 private:
 
-    pchar title[2];
+    pchar title;
 
     Value *value[VoltageMode::Count];
 

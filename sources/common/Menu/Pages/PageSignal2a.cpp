@@ -9,17 +9,17 @@
 
 namespace PageSignal2a
 {
-    Parameter param_Us("Us", "Us",
+    Parameter param_Us("Us",
         &gset.signals[TypeSignal::_2a].values12[0], Value(37), Value(112),
         &gset.signals[TypeSignal::_2a].values24[0], Value(37), Value(112),
         320, 140);
 
-    Parameter param_period("Период", "Period",
+    Parameter param_period("Период",
         &gset.signals[TypeSignal::_2a].values12[1], Value(200), Value(5000),
         &gset.signals[TypeSignal::_2a].values24[1], Value(200), Value(5000),
         270, 30);
 
-    Parameter param_duration("Длит", "Duration",
+    Parameter param_duration("Длит",
         &gset.signals[TypeSignal::_2a].values12[2], Value(1), Value(20),
         &gset.signals[TypeSignal::_2a].values24[2], Value(1), Value(20),
         90, 70);
@@ -31,7 +31,7 @@ namespace PageSignal2a
     }
 
     DEF_BUTTON(bSignal2a,
-        "Сигнал", "Signal",
+        "Сигнал",
         FuncPress_Signal
     );
 

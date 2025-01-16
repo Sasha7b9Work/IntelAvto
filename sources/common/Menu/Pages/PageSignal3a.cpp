@@ -9,12 +9,12 @@
 
 namespace PageSignal3a
 {
-    Parameter param_Us("Us", "Us",
+    Parameter param_Us("Us",
         &gset.signals[TypeSignal::_3a].values12[0], Value(0), Value(10000),
         &gset.signals[TypeSignal::_3b].values24[0], Value(0), Value(10000),
         275, 95);
 
-    Parameter param_duration("Длит", "Duration",
+    Parameter param_duration("Длит",
         &gset.signals[TypeSignal::_3a].values12[1], Value(200), Value(5000),
         &gset.signals[TypeSignal::_3a].values24[1], Value(200), Value(5000),
         90, 50);
@@ -26,7 +26,7 @@ namespace PageSignal3a
     }
 
     DEF_BUTTON(bSignal3a,
-        "Сигнал", "Signal",
+        "Сигнал",
         FuncPress_Signal
     );
 

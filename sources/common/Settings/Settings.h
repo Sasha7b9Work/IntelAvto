@@ -52,9 +52,6 @@ private:
 };
 
 
-#define LANG_IS_RU          (gset.language == Language::RU)
-
-
 // Стиль ГУИ - как отображать симолы
 struct StyleGUI
 {
@@ -68,16 +65,6 @@ struct StyleGUI
 
     bool IsModern() const { return value == Modern; }
     void Switch() { value = (value == Modern) ? Classic : Modern; }
-};
-
-
-struct Language
-{
-    enum E
-    {
-        RU,
-        EN
-    };
 };
 
 
@@ -95,7 +82,6 @@ struct Settings
     uint           size;
     ColorScheme    schemes[ColorScheme::COUNT];
     StyleGUI       styleGUI;
-    Language::E    language;
     uint8          colorScheme;
     TypeSignal::E  signal;
     VoltageMode::E voltage_mode;

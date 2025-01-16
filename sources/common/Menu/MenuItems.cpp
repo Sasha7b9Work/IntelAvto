@@ -270,31 +270,25 @@ void Page::OnEvent(EventType::E event)
 
 pchar Button::GetTitle() const
 {
-    return text[gset.language];
+    return text;
 }
 
 
-void Button::SetTitle(pchar ru, pchar en)
+void Button::SetTitle(pchar ru)
 {
-    text[0] = ru;
-    text[1] = en;
+    text = ru;
 }
 
 
 pchar Choice::Title() const
 {
-    if (LANG_IS_RU)
-    {
-        return namesRu[*state];
-    }
-
-    return namesEn[*state];
+    return namesRu[*state];
 }
 
 
 pchar Parameter::Title() const
 {
-    return title[gset.language];
+    return title;
 }
 
 

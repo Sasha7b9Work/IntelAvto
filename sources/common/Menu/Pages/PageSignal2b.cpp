@@ -9,12 +9,12 @@
 
 namespace PageSignal2b
 {
-    Parameter param_Us("Us", "Us",
+    Parameter param_Us("Us",
         &gset.signals[TypeSignal::_2b].values12[0], Value(0), Value(10000),
         &gset.signals[TypeSignal::_2b].values24[0], Value(0), Value(10000),
         430, 170);
 
-    Parameter param_td("td", "td",
+    Parameter param_td("td",
         &gset.signals[TypeSignal::_2b].values12[1], Value(0), Value(10000),
         &gset.signals[TypeSignal::_2b].values24[2], Value(0), Value(10000),
         290, 60);
@@ -26,7 +26,7 @@ namespace PageSignal2b
     }
 
     DEF_BUTTON(bSignal2b,
-        "Сигнал", "Signal",
+        "Сигнал",
         FuncPress_Signal
     );
 

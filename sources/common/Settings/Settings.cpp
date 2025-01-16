@@ -57,7 +57,6 @@ static Settings def_set =
         def_colors[0], def_colors[1], def_colors[2]
     },
     StyleGUI(StyleGUI::Modern),
-    Language::RU,
     0,                                          // colorScheme
     TypeSignal::_1,
     VoltageMode::_12,
