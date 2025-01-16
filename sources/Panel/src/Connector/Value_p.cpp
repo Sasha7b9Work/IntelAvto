@@ -11,7 +11,7 @@ DrawStruct Value::ds;
 
 void Value::Draw(const Parameter *param, int x, int y) const
 {
-    if (param && param->IsEditable())
+    if (param && param->IsNowEdited())
     {
         ds.Draw(x, y);
 

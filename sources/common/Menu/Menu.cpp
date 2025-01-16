@@ -38,7 +38,7 @@ namespace Menu
 
 void Menu::Draw()
 {
-    openedPage->Draw(0, 0, 0);
+    openedPage->DrawMenuItem(0, 0, 0);
 }
 
 

@@ -21,7 +21,7 @@ public:
     static const int HEIGHT = 30;
 
     // Функция отрисовки
-    virtual void Draw(int x, int y, int width, bool selected = false) = 0;
+    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) = 0;
 
     virtual bool IsParameter() const { return false; }
 
@@ -47,7 +47,7 @@ public:
     {
         text = text_ru;
     }
-    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
     pchar GetTitle() const;
     void SetTitle(pchar);
@@ -67,7 +67,7 @@ public:
         namesRu = _namesRu;
     }
 
-    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
 //    virtual bool OnEventControl(const Control &) override;
     pchar Title() const;
     int Value() const { return (int)*state; }
@@ -97,8 +97,7 @@ public:
         Item(), state(_state), typeColor(type), funcChanged(func)
     {
     }
-    virtual void Draw(int x, int y, int width, bool selected = false) override;
-//    virtual bool OnEventControl(const Control &) override;
+    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
     int Value() const { return (int)*state; }
     void SetValue(uint8 value);
 private:
@@ -127,7 +126,8 @@ public:
         title = title_ru;
     }
 
-    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
+
     void Draw() const;
 
     virtual bool OnEventControl(const Control &) override;
@@ -144,9 +144,11 @@ public:
 
     virtual bool IsParameter() const override { return true; }
 
-    bool IsSelected() const { return Parameter::current == this; }
+    // Сейчас выделен
+    bool IsNowSelected() const { return Parameter::current == this; }
 
-    bool IsEditable() const { return Parameter::editable == this; }
+    // Сейчас редактируется
+    bool IsNowEdited() const { return Parameter::editable == this; }
 
     // "Текущий" параметр - тот, который сейчас выделен в меню. nullptr, если текущций элемент
     // меню - не параметр
@@ -182,7 +184,7 @@ public:
         items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
     {}
 
-    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
 
     virtual bool OnEventControl(const Control &) override;
 

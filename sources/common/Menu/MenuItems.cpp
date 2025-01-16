@@ -31,7 +31,7 @@ int Choice::NumStates() const
 }
 
 
-void Page::Draw(int x, int y, int, bool)
+void Page::DrawMenuItem(int x, int y, int, bool)
 {
     for (int i = 0; i < NumItems(); i++)
     {
@@ -41,7 +41,7 @@ void Page::Draw(int x, int y, int, bool)
 
         Rect(WidthItem(i) - 1, HEIGHT - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
 
-        items[i]->Draw(x, y + 5, WidthItem(i), selected);
+        items[i]->DrawMenuItem(x, y + 5, WidthItem(i), selected);
 
         y += HEIGHT;
     }
@@ -79,7 +79,7 @@ void Page::DrawParameters() const
         {
             Parameter *param = (Parameter *)items[i];
 
-            if (param->IsEditable())
+            if (param->IsNowEdited())
             {
                 param->Draw();
 
@@ -128,7 +128,7 @@ void Page::VerifySelectedItem()
 }
 
 
-void Parameter::Draw(int x0, int y0, int width, bool selected)
+void Parameter::DrawMenuItem(int x0, int y0, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
@@ -141,7 +141,7 @@ void Parameter::Draw() const
     const int width = 125;
     const int height = 21;
 
-    if (IsEditable())
+    if (IsNowEdited())
     {
         Color color = Color::GetCurrent();
 
@@ -152,7 +152,7 @@ void Parameter::Draw() const
 
     GetValue().Draw(this, x, y);
 
-    if (IsSelected())
+    if (IsNowSelected())
     {
         Color color = Color::GetCurrent();
 
@@ -163,7 +163,7 @@ void Parameter::Draw() const
 }
 
 
-void Button::Draw(int x, int y, int width, bool selected)
+void Button::DrawMenuItem(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
@@ -171,7 +171,7 @@ void Button::Draw(int x, int y, int width, bool selected)
 }
 
 
-void Choice::Draw(int x, int y, int width, bool selected)
+void Choice::DrawMenuItem(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
@@ -179,7 +179,7 @@ void Choice::Draw(int x, int y, int width, bool selected)
 }
 
 
-void GovernorChannelColor::Draw(int _x, int _y, int _width, bool selected)
+void GovernorChannelColor::DrawMenuItem(int _x, int _y, int _width, bool selected)
 {
     if (selected)
     {
@@ -314,9 +314,9 @@ bool Parameter::OnEventControl(const Control &control)
     {
         if (control.key == Key::OK || control.key == Key::GovButton)
         {
-            if (Parameter::IsEditable())
+            if (IsNowEdited())
             {
-                Parameter::editable = nullptr;
+                editable = nullptr;
 
                 if (GetValue().FromDrawStrut(GetMin(), GetMax()))
                 {
@@ -325,7 +325,7 @@ bool Parameter::OnEventControl(const Control &control)
             }
             else
             {
-                Parameter::editable = this;
+                editable = this;
 
                 GetValue().ds.Clear(this);
             }
@@ -333,7 +333,7 @@ bool Parameter::OnEventControl(const Control &control)
             return true;
         }
 
-        if (IsEditable())
+        if (IsNowEdited())
         {
             GetValue().ds.PressKey(control.key);
         }
