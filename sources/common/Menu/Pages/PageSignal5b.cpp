@@ -35,6 +35,12 @@ namespace PageSignal5b
         FuncPress_Signal
     );
 
+    DEF_CHOICE_2(chModeVoltage,
+        "12V", "24V",
+        gset.voltage_mode,
+        FuncVV
+    );
+
     static void FuncStartTest()
     {
     }
@@ -42,6 +48,7 @@ namespace PageSignal5b
     static Item *items[] =
     {
         &bSignal5b,
+        &chModeVoltage,
         &param_Us,
         &param_Uss,
         &param_td,

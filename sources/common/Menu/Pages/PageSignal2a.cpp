@@ -35,6 +35,12 @@ namespace PageSignal2a
         FuncPress_Signal
     );
 
+    DEF_CHOICE_2(chModeVoltage,
+        "12V", "24V",
+        gset.voltage_mode,
+        FuncVV
+    );
+
     void Start()
     {
         Message::Start2A(param_Us.GetValue(), param_period.GetValue(), param_duration.GetValue()).Transmit();
@@ -43,6 +49,7 @@ namespace PageSignal2a
     static Item *items[] =
     {
         &bSignal2a,
+        &chModeVoltage,
         &param_period,
         &param_duration,
         nullptr

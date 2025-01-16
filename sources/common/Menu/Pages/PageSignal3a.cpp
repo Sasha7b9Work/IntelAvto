@@ -30,6 +30,12 @@ namespace PageSignal3a
         FuncPress_Signal
     );
 
+    DEF_CHOICE_2(chModeVoltage,
+        "12V", "24V",
+        gset.voltage_mode,
+        FuncVV
+    );
+
     static void FuncStartTest()
     {
         Message::Start3A(param_Us.GetValue(), param_duration.GetValue()).Transmit();
@@ -38,6 +44,7 @@ namespace PageSignal3a
     static Item *items[] =
     {
         &bSignal3a,
+        &chModeVoltage,
         &param_Us,
         &param_duration,
         nullptr
