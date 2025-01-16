@@ -36,7 +36,7 @@ private:
 
 struct Value
 {
-    Value(uint _raw) : raw(_raw) { }
+    explicit Value(uint _raw) : raw(_raw) { }
 
     Value(int value, TypeValue::E type)
     {

@@ -26,21 +26,6 @@ namespace PageSignal1
         &gset.signals[TypeSignal::_1].values24[2], Value(5000), Value(100000),
         90, 100);
 
-    Parameter param_duration("Длит",
-        &gset.signals[TypeSignal::_1].values12[3], Value(1), Value(20),
-        &gset.signals[TypeSignal::_1].values24[3], Value(1), Value(20),
-        90, 70);
-
-    Parameter param_t2("t2",
-        &gset.signals[TypeSignal::_1].values12[4], Value(100), Value(200),
-        &gset.signals[TypeSignal::_1].values24[4], Value(100), Value(200),
-        90, 160);
-
-    Parameter param_td("td",
-        &gset.signals[TypeSignal::_1].values12[5], Value(1), Value(100),
-        &gset.signals[TypeSignal::_1].values24[5], Value(1), Value(100),
-        90, 190);
-
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal2a::self);
@@ -62,7 +47,7 @@ namespace PageSignal1
 
     static void FuncStartTest()
     {
-        Message::Start1(param_Us.GetValue(), param_period.GetValue(), param_duration.GetValue()).Transmit();
+        Message::Start1(param_Us.GetValue(), param_period.GetValue(), Value(1000U)).Transmit();
     }
 
 
@@ -72,7 +57,7 @@ namespace PageSignal1
         &chModeVoltage,
         &param_Us,
         &param_period,
-        &param_duration,
+        &param_N,
         nullptr
     };
 
