@@ -119,7 +119,7 @@ public:
         Item(),
         min12(_min12), max12(_max12),
         min24(_min24), max24(_max24),
-        x(_x), y(_y), in_correct_mode(false)
+        x(_x), y(_y)
     {
         value[VoltageMode::_12] = value12;
         value[VoltageMode::_24] = value24;
@@ -167,9 +167,8 @@ private:
     const Value min24;
     const Value max24;
 
-    int x;
-    int y;
-    bool in_correct_mode;       // Если true, то находимся в режиме коррекции значения
+    int x = 0;
+    int y = 0;
 };
 
 
