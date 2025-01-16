@@ -16,8 +16,6 @@ struct VoltageMode
     static E Current();
 
     static bool Is12() { return Current() == _12; }
-
-    static void Draw();
 };
 
 
