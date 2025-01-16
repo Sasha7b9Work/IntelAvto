@@ -6,11 +6,11 @@
 
 
 namespace HAL_SPI1
-{
-    static PinIn pinCS(GPIOA, GPIO_PIN_2);
-    static PinIn pinIN(GPIOA, GPIO_PIN_7);
-    static PinIn pinSCK(GPIOA, GPIO_PIN_5);
-    static PinOut pinOUT(GPIOA, GPIO_PIN_6);
+{                                               // DD4 Device XP4 | Panel XP3    DD1
+    static PinIn pinCS(GPIOA, GPIO_PIN_2);      // 36     5       |    5      92    PB6
+    static PinIn pinIN(GPIOA, GPIO_PIN_7);      // 43     3       |    3      91    PB5  MOSI
+    static PinIn pinSCK(GPIOA, GPIO_PIN_5);     // 41     1       |    1      30    PA5
+    static PinOut pinOUT(GPIOA, GPIO_PIN_6);    // 42     7       |    7      31    PA6  MISO
 
     static uint8 ReceiveByte();
     static void SendByte(uint8);
