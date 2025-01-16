@@ -3,25 +3,27 @@
 #include "Menu/MenuItems.h"
 
 
-#define DEF_BUTTON(name, titleRu, funcPress)                                                               \
+inline void FuncVV() { }
+
+
+#define DEF_BUTTON(name, titleRu, funcPress)                                                                        \
 static Button name(titleRu, funcPress)
 
-#define DEF_CHOICE_2(name, hintRu, nameRu1, nameRu2, nameEn1, nameEn2, func)                                \
+#define DEF_CHOICE_2(name, nameRu1, nameRu2, states, func)                                                          \
 static pchar n##name##Ru[] = { nameRu1, nameRu2, nullptr };                                                         \
-static uint8 state##name;                                                                                           \
-static Choice name(hintRu, hintEn, n##name##Ru, n##name##En, func, &state##name);
+static Choice name(n##name##Ru, func, ((uint8 *)&states));
 
-#define DEF_CHOICE_3(name, hintRu, nameRu1, nameRu2, nameRu3, nameEn1, nameEn2, nameEn3, state, func)       \
+#define DEF_CHOICE_3(name, hintRu, nameRu1, nameRu2, nameRu3, nameEn1, nameEn2, nameEn3, state, func)               \
 static pchar n##name##Ru[] = { nameRu1, nameRu2, nameRu3, nullptr };                                                \
 static Choice name(hintRu, hintEn, n##name##Ru, n##name##En, func, &state);
 
-#define DEF_CHOICE_4(name, hintRu,                                                                          \
+#define DEF_CHOICE_4(name, hintRu,                                                                                  \
     nameRu1, nameRu2, nameRu3, nameRu4, nameEn1, nameEn2, nameEn3, nameEn4, func)                                   \
 static pchar n##name##Ru[] = { nameRu1, nameRu2, nameRu3, nameRu4, nullptr };                                       \
 static uint8 state##name;                                                                                           \
 static Choice name(hintRu, hintEn, n##name##Ru, n##name##En, func, &state##name);
 
-#define DEF_CHOICE_5(name, hintRu,                                                                          \
+#define DEF_CHOICE_5(name, hintRu,                                                                                  \
     nameRu1, nameRu2, nameRu3, nameRu4, nameRu5, nameEn1, nameEn2, nameEn3, nameEn4, nameEn5, func)                 \
 static pchar n##name##Ru[] = { nameRu1, nameRu2, nameRu3, nameRu4, nameRu5, nullptr };                              \
 static pchar n##name##En[] = { nameEn1, nameEn2, nameEn3, nameEn4, nameEn5, nullptr };                              \
