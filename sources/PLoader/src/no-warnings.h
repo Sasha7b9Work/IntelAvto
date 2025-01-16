@@ -22,5 +22,7 @@
     #pragma clang diagnostic ignored "-Wgnu-anonymous-struct"
     #pragma clang diagnostic ignored "-Wnested-anon-types"
     #pragma clang diagnostic ignored "-Wshift-sign-overflow"
+    #pragma clang diagnostic ignored "-Winvalid-utf8"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #endif
 

@@ -44,6 +44,11 @@ EndBSPDependencies */
 #include "usbh_msc_bot.h"
 #include "usbh_msc_scsi.h"
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
+
 
 /** @addtogroup USBH_LIB
   * @{
