@@ -61,72 +61,118 @@ static Settings def_set =
     TypeSignal::_1,
     VoltageMode::_12,
     {
-        {   {   Voltage(80),        // 1 : Us   12
-                Time(1000),         // 1 : t1   12
-                Value(5000),        // 1 : N    12
-                Time(10),           // 1 : tdel 12
-                Time(100),          // 1 : t2   12
-                Time(50)}           // 1 : td   12
+        {   {   Voltage(80),                    // 1 : Us   12
+                Time(1000),                     // 1 : t1   12
+                Value(5000),                    // 1 : N    12
+                Time(10),                       // 1 : tdel 12
+                Time(100),                      // 1 : t2   12
+                Time(50)}                       // 1 : td   12
             ,
-            {   Voltage(50),        // 1 : Us   24
-                Time(2000),         // 1 : Us   24
-                Value(5000),        // 1 : N    24
-                Time(10),           // 1 : tdel 24
-                Time(100),          // 1 : t2   24
-                Time(50)  }}        // 1 : td   24
+            {   Voltage(50),                    // 1 : Us   24
+                Time(2000),                     // 1 : Us   24
+                Value(5000),                    // 1 : N    24
+                Time(10),                       // 1 : tdel 24
+                Time(100),                      // 1 : t2   24
+                Time(50)  }}                    // 1 : td   24
         ,
-        {   {   Voltage(80),        // 2a : Us 12
-                Time(1000),         // 2a : t1 12
-                Time(10)            // 2a : td 12
+        {   {   Voltage(80),                    // 2a : Us 12
+                Time(1000),                     // 2a : t1 12
+                Time(10),                       // 2a : td 12
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)
             }
             ,
-            {   Voltage(80),        // 2a : Us 24
-                Time(1000),         // 2a : t1 24
-                Time(10)  }}        // 2a : td 24
+            {   Voltage(80),                    // 2a : Us 24
+                Time(1000),                     // 2a : t1 24
+                Time(10),                       // 2a : td 24
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}}
         ,
-        {   {   Voltage(0),         // 2b : Us 12
-                Time(0)   }         // 2b : td 12
+        {   {   Voltage(0),                     // 2b : Us 12
+                Time(0),                        // 2b : td 12
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}
             ,
-            {   Voltage(0),         // 2b : Us 24
-                Time(0)   }}        // 2b : td 24
+            {   Voltage(0),                     // 2b : Us 24
+                Time(0),                        // 2b : td 24
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}}
         ,
-        {   {   Voltage(0),         // 3a : Us 12
-                Time(1000)    }     // 3a : duration Us 12
+        {   {   Voltage(0),                     // 3a : Us 12
+                Time(1000),                     // 3a : duration Us 12
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}
             ,
-            {   Voltage(0),         // 3a : Us 24
-                Time(1000)   }}     // 3a : duration Us 24
+            {   Voltage(0),                     // 3a : Us 24
+                Time(1000),                     // 3a : duration Us 24
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}}
         ,
-        {   {   Voltage(0),         // 3b : Us 12
-                Time(1000) }        // 3b : duration Us 12
+        {   {   Voltage(0),                     // 3b : Us 12
+                Time(1000),                     // 3b : duration Us 12
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}
             ,
-            {   Voltage(0),         // 3b : Us 24
-                Time(1000)   }}     // 3b : duration Us 24
+            {   Voltage(0),                     // 3b : Us 24
+                Time(1000),                     // 3b : duration Us 24
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}}
         ,
-        {   {   Voltage(-6500),     // 4 : Us
-                Voltage(-4000),     // 4 : Ua
-                Time(20),           // 4 : t7
-                Time(10000),        // 4 : t9
-                Time(50)        }   // 4 : t11
+        {   {   Voltage(-6500),                 // 4 : Us
+                Voltage(-4000),                 // 4 : Ua
+                Time(20),                       // 4 : t7
+                Time(10000),                    // 4 : t9
+                Time(50),                       // 4 : t11
+                Value(0, TypeValue::Count)}
             ,
-            {   Voltage(-6500),     // 4 : Us
-                Voltage(-4000),     // 4 : Ua
-                Time(20),           // 4 : t7
-                Time(10000),        // 4 : t9
-                Time(50)        }}  // 4 : t11
+            {   Voltage(-6500),                 // 4 : Us
+                Voltage(-4000),                 // 4 : Ua
+                Time(20),                       // 4 : t7
+                Time(10000),                    // 4 : t9
+                Time(50),                       // 4 : t11
+                Value(0, TypeValue::Count)}}
         ,
-        {   {   Voltage(0),         // 5a : Us 12
-                Time(0)     }       // 5a : td 12
+        {   {   Voltage(0),                     // 5a : Us 12
+                Time(0),                        // 5a : td 12
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}
             ,
-            {   Voltage(0),         // 5a : Us 24
-                Time(0)     }}      // 5a : td 24
+            {   Voltage(0),                     // 5a : Us 24
+                Time(0),                        // 5a : td 24
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}}
         ,
-        {  {    Voltage(0),         // 5b : Us 12
-                Voltage(0),         // 5b : Uss 12
-                Time(0)     }       // 5b : td 12
+        { {     Voltage(0),                     // 5b : Us 12
+                Voltage(0),                     // 5b : Uss 12
+                Time(0),                        // 5b : td 12
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)}
             ,
-            {   Voltage(0),         // 5b : Us 24
-                Voltage(0),         // 5b : Uss 24
-                Time(0)    }}       // 5b : td 24
+            {   Voltage(0),                     // 5b : Us 24
+                Voltage(0),                     // 5b : Uss 24
+                Time(0),                        // 5b : td 24
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count),
+                Value(0, TypeValue::Count)    }}
     }
 };
 

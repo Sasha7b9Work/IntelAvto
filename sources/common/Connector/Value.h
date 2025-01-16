@@ -38,7 +38,7 @@ struct Value
 {
     Value(uint _raw) : raw(_raw) { }
 
-    Value(int value = 0, TypeValue::E type = TypeValue::MS)
+    Value(int value, TypeValue::E type)
     {
         raw = (uint)value;
 
