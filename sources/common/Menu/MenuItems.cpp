@@ -150,6 +150,7 @@ void Parameter::Draw() const
         color.SetAsCurrent();
     }
 
+    // Нарисовать редактируемое значение на экране
     GetValue().Draw(this, x, y);
 
     if (IsNowSelected())

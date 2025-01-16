@@ -6,10 +6,15 @@
 class Parameter;
 
 
-enum TypeValue
+struct TypeValue
 {
-    Volts,
-    MS
+    enum E
+    {
+        Volts,      // Вольты
+        MS,         // Миллисекунды
+        RAW,        // Количество, без единиц измерения
+        Count
+    };
 };
 
 
@@ -18,7 +23,7 @@ struct DrawStruct
     void PressKey(Key::E);
     void Draw(int x, int y) const;
     void Clear(Parameter *_param) { index = 0; parameter = _param; }
-    bool ToRaw(uint *result, TypeValue) const;
+    bool ToRaw(uint *result, TypeValue::E) const;
 private:
     bool ConsistDot() const;
     void AppendSymbol(char);
@@ -33,7 +38,7 @@ struct Value
 {
     Value(uint _raw) : raw(_raw) { }
 
-    Value(int value = 0, TypeValue type = MS)
+    Value(int value = 0, TypeValue::E type = TypeValue::MS)
     {
         raw = (uint)value;
 
@@ -55,9 +60,9 @@ struct Value
     // Возвращает true, если значение находится в пределах [min, max]
     bool FromDrawStrut(const Value &min, const Value &max);
 
-    TypeValue GetType() const
+    TypeValue::E GetType() const
     {
-        return ((raw & (1 << 30)) == 0) ? Volts : MS;
+        return ((raw & (1 << 30)) == 0) ? TypeValue::Volts : TypeValue::MS;
     }
 
     uint GetRaw() const { return raw; }
@@ -80,7 +85,7 @@ struct Value
     {
         float value = (float)ToInt();
 
-        if (GetType() == MS)
+        if (GetType() == TypeValue::MS)
         {
             value *= 1e-3f;
         }
