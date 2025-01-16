@@ -5,6 +5,8 @@
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
 #include "Connector/Messages.h"
+#include "Display/Text.h"
+#include "Display/Display.h"
 
 
 namespace PageSignal4
@@ -67,7 +69,19 @@ namespace PageSignal4
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr, FuncStartTest);
+    static void AdditionDraw()
+    {
+        Text("Us : %s     Ua : %s     t7 : %s     t9 : %s",
+            VoltageMode::Is12() ? "-7.5 В" : "-16 В",
+            VoltageMode::Is12() ? "-6 В" : "-12 В",
+            VoltageMode::Is12() ? "15 мс" : "50 мс",
+            "2000 мс"
+        ).Write(
+            Display::xConstParameters, Display::yConstParameters
+        );
+    }
+
+    static Page page(items, nullptr, AdditionDraw, FuncStartTest);
 }
 
 

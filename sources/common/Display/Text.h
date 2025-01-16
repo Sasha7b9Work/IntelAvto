@@ -10,8 +10,8 @@ class String;
 class Text
 {
 public:
-    Text(pchar text);
-    Text(const String &text);
+    explicit Text(const String &text);
+    explicit Text(pchar format, ...);
     ~Text();
     int Write(int x, int y, Color color);
     int Write(int x, int y);
@@ -21,7 +21,7 @@ public:
     void WriteInCenterRect(int x, int y, int width, int height, Color color);
     void WriteInCenterRect(int x, int y, int width, int height);
 private:
-    char *text;
+    char *text = nullptr;
 
     void Create(pchar text);
 
@@ -43,4 +43,6 @@ private:
     void WriteSymbols(char *start, int num, int x, int y, int width, Color color) const;
 
     void WriteSymbols(char *start, int num, int x, int y, int width) const;
+
+    void Clear();
 };

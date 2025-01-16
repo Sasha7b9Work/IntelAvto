@@ -69,4 +69,8 @@ namespace Display
     void Draw(const uint *buffer);
 
     int Ymax();
+
+    // В этом месте будем выводить постоянные параметры
+    static const int yConstParameters = 250;
+    static const int xConstParameters = 10;
 };

@@ -5,6 +5,8 @@
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
 #include "Connector/Messages.h"
+#include "Display/Text.h"
+#include "Display/Display.h"
 
 
 namespace PageSignal5b
@@ -55,7 +57,14 @@ namespace PageSignal5b
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr, FuncStartTest);
+    static void AdditionDraw()
+    {
+        Text("Us* : %d Â", VoltageMode::Is12() ? 35 : 59).Write(
+            Display::xConstParameters, Display::yConstParameters
+        );
+    }
+
+    static Page page(items, nullptr, AdditionDraw, FuncStartTest);
 }
 
 

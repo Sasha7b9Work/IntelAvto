@@ -5,26 +5,31 @@
 #include "Display/Text.h"
 #include "Menu/MenuItems.h"
 #include <cstring>
+#include <cstdio>
 
 
 using namespace Primitives;
 
 
 
-Text::Text(pchar t)
-{
-    if (t == nullptr)
-    {
-        (void)t;
-    }
-
-    Create(t);
-}
-
-
 Text::Text(const String &t)
 {
     Create(t.c_str());
+}
+
+
+Text::Text(pchar format, ...)
+{
+    std::va_list args;
+    va_start(args, format);
+
+    char buffer[128];
+
+    std::vsprintf(buffer, format, args);
+
+    va_end(args);
+
+    Create(buffer);
 }
 
 
@@ -34,8 +39,20 @@ Text::~Text()
 }
 
 
+void Text::Clear()
+{
+    if (text)
+    {
+        delete []text;
+        text = nullptr;
+    }
+}
+
+
 void Text::Create(pchar _text)
 {
+    Clear();
+
     uint numSymbols = std::strlen(_text);
 
     if (numSymbols)

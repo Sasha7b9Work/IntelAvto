@@ -5,6 +5,8 @@
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
 #include "Connector/Messages.h"
+#include "Display/Text.h"
+#include "Display/Display.h"
 
 
 namespace PageSignal2a
@@ -55,7 +57,14 @@ namespace PageSignal2a
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr, PageSignal2a::Start);
+    static void AdditionDraw()
+    {
+        Text("Ri : 2 Îì").Write(
+            Display::xConstParameters, Display::yConstParameters
+        );
+    }
+
+    static Page page(items, nullptr, AdditionDraw, PageSignal2a::Start);
 }
 
 
