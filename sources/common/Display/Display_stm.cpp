@@ -6,7 +6,6 @@
 #include "Display/Text.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
-#include "Utils/String.h"
 #include "Settings/Settings.h"
 #include <cmath>
 #include <cstring>

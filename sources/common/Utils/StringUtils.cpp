@@ -425,17 +425,15 @@ static void Swap(char *ch1, char *ch2)
 }
 
 
-String SU::Int2String(int n)
+pchar SU::Int2String(int n, char out[32])
 {
-    char buffer[20];
-
-    char *result = buffer;
+    char *result = out;
 
     if (n < 0)
     {
-        buffer[0] = '-';
+        out[0] = '-';
         n = -n;
-        result = &buffer[1];
+        result = &out[1];
     }
 
     int i = 0;
@@ -455,7 +453,7 @@ String SU::Int2String(int n)
         Swap(&result[j], &result[i]);
     }
 
-    return String(buffer);
+    return out;
 }
 
 

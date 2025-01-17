@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Utils/Log.h"
 #include "Display/Console.h"
-#include "Utils/String.h"
+#include "Display/Text.h"
 
 
 void Log::Message(pchar message)
@@ -13,5 +13,5 @@ void Log::Message(pchar message)
 
 void Log::Message(pchar file, int line, pchar message)
 {
-    Console::AddString(String("%s %d %s", file, line, message).c_str());
+    Console::AddString(Text("%s %d %s", file, line, message).c_str());
 }

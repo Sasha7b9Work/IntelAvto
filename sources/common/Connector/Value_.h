@@ -1,6 +1,5 @@
 // 2023/12/22 14:56:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Hardware/Keyboard/Keyboard.h"
 
 
 class Parameter;
@@ -20,7 +19,7 @@ struct TypeValue
 
 struct DrawStruct
 {
-    void PressKey(Key::E);
+    void PressKey(int);
     void Draw(int x, int y) const;
     void Clear(Parameter *_param) { index = 0; parameter = _param; }
     bool ToRaw(uint *result, TypeValue::E) const;

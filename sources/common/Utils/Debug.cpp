@@ -3,6 +3,7 @@
 #include "Log.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Debug.h"
+#include "Display/Text.h"
 
 //static uint timeStart;
 //static uint timePrev;

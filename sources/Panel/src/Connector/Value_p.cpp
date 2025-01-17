@@ -44,7 +44,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
         if (value < 1000)
         {
-            std::strcat(pointer, String("%d", value).c_str());
+            std::strcat(pointer, Text("%d", value).c_str());
 
             if (GetType() == TypeValue::Time)
             {
@@ -55,13 +55,13 @@ void Value::Draw(const Parameter *param, int x, int y) const
         {
             int int_value = value / 1000;
 
-            std::strcat(pointer, String("%d", int_value).c_str());
+            std::strcat(pointer, Text("%d", int_value).c_str());
 
             std::strcat(string, ",");
 
             value = value - int_value * 1000;
 
-            std::strcat(string, String("%d", value).c_str());
+            std::strcat(string, Text("%d", value).c_str());
         }
 
         if (GetType() != TypeValue::Raw)
@@ -132,8 +132,10 @@ bool Value::FromDrawStrut(const Value &min, const Value &max)
 }
 
 
-void DrawStruct::PressKey(Key::E key)
+void DrawStruct::PressKey(int _key)
 {
+    Key::E key = (Key::E)_key;
+
     if (key == Key::Minus)
     {
         if (parameter->GetMin().ToFloat() < 0.0f && index == 0)

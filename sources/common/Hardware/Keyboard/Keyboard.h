@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "defines.h"
-#include "Utils/String.h"
+
 
 struct Key
 {
@@ -32,7 +32,7 @@ struct Key
         Count
     };
 
-    static String Name(E);
+    static pchar Name(E);
 };
 
 

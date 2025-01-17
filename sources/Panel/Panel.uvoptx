@@ -1711,7 +1711,7 @@
 
   <Group>
     <GroupName>Utils</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1830,30 +1830,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Utils\String.cpp</PathWithFileName>
-      <FilenameWithoutPath>String.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>109</FileNumber>
-      <FileType>5</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Utils\String.h</PathWithFileName>
-      <FilenameWithoutPath>String.h</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>14</GroupNumber>
-      <FileNumber>110</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>..\common\Utils\StringUtils.cpp</PathWithFileName>
       <FilenameWithoutPath>StringUtils.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -1861,7 +1837,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>111</FileNumber>
+      <FileNumber>109</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1873,7 +1849,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>112</FileNumber>
+      <FileNumber>110</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1885,7 +1861,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>113</FileNumber>
+      <FileNumber>111</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1897,7 +1873,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>114</FileNumber>
+      <FileNumber>112</FileNumber>
       <FileType>8</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
@@ -1909,7 +1885,7 @@
     </File>
     <File>
       <GroupNumber>14</GroupNumber>
-      <FileNumber>115</FileNumber>
+      <FileNumber>113</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>

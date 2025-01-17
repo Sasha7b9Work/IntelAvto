@@ -365,7 +365,7 @@ Control Keyboard::NextControl()
 }
 
 
-String Key::Name(E value)
+pchar Key::Name(E value)
 {
     static pchar names[] =
     {
@@ -395,7 +395,7 @@ String Key::Name(E value)
         "NULL"
     };
 
-    return String(names[value]);
+    return names[value];
 }
 
 

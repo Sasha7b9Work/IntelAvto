@@ -16,10 +16,10 @@ template                    ListElement<Task>::~ListElement();
 template Task              *ListElement<Task>::Get();
 template ListElement<Task> *ListElement<Task>::Next();
 
-template                    List<String>::List();
-template void               List<String>::Clear();
-template void               List<String>::Append(String *);
-template void               List<String>::Remove(String *);
+template                    List<Text>::List();
+template void               List<Text>::Clear();
+template void               List<Text>::Append(Text *);
+template void               List<Text>::Remove(Text *);
 
 
 

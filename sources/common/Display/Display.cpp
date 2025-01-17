@@ -7,7 +7,6 @@
 #include "Hardware/HAL/HAL.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
-#include "Utils/String.h"
 #include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Pages.h"
@@ -247,8 +246,8 @@ void Display::DrawWelcomeScreen()
 //            Text(String(LANG_IS_RU ? "OAO ÃÕ»œ»" : "OAO MNIPI")).WriteScaled(160, 70, 2);
 //            Text(String(STR_NUM_VERSION)).WriteScaled(140, 152, 2);
 
-            Text(String("OAO ÃÕ»œ»")).WriteScaled(110, 60, 3);
-            Text(String(STR_NUM_VERSION)).WriteScaled(140, 160, 2);
+            Text("OAO ÃÕ»œ»").WriteScaled(110, 60, 3);
+            Text(STR_NUM_VERSION).WriteScaled(140, 160, 2);
 
             EndScene();
         }
@@ -341,9 +340,9 @@ void Display::DrawScreen()
 {
     Menu::Draw();
 
-    Text(String("“ËÔ ÒË„Ì‡Î‡ %s : %s",
+    Text("“ËÔ ÒË„Ì‡Î‡ %s : %s",
         TypeSignal::ToString(),
-        TypeSignal::Name())).Write(230, 6, Color::WHITE);
+        TypeSignal::Name()).Write(230, 6, Color::WHITE);
 
     DrawSignal();
 }

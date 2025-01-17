@@ -6,16 +6,11 @@
 #include "Menu/MenuItems.h"
 #include <cstring>
 #include <cstdio>
+#include <cstdarg>
 
 
 using namespace Primitives;
 
-
-
-Text::Text(const String &t)
-{
-    Create(t.c_str());
-}
 
 
 Text::Text(pchar format, ...)

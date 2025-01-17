@@ -4,13 +4,9 @@
 #include "Display/Colors.h"
 
 
-class String;
-
-
 class Text
 {
 public:
-    explicit Text(const String &text);
     explicit Text(pchar format, ...);
     ~Text();
     int Write(int x, int y, Color color);
@@ -20,6 +16,10 @@ public:
     int WriteScaled(int x, int y, int size);
     void WriteInCenterRect(int x, int y, int width, int height, Color color);
     void WriteInCenterRect(int x, int y, int width, int height);
+    pchar c_str() const
+    {
+        return text;
+    }
 private:
     char *text = nullptr;
 

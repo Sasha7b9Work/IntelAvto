@@ -217,7 +217,7 @@ void GovernorChannelColor::DrawMenuItem(int _x, int _y, int _width, bool selecte
         Rect(width, height).DrawRounded(x, y, 1, ColorFill());
     }
 
-    Text(String("%0.3d", (int)*state)).Write(_x, _y + 6, _width, Color::WHITE);
+    Text("%0.3d", (int)*state).Write(_x, _y + 6, _width, Color::WHITE);
 }
 
 

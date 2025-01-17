@@ -49,7 +49,7 @@ file(GLOB CONNECTOR      ../common/Connector/Value_.*
                          ../common/Connector/Transceiver_.h
                                src/Connector/*.*)
 file(GLOB GENERATOR            src/Generator/*.*)
-file(GLOB HARDWARE             src/Hardware/*.h src/Hardware/*.cpp)
+#file(GLOB HARDWARE             src/Hardware/*.h src/Hardware/*.cpp)
 file(GLOB HARDWARE_CMSIS       src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL         src/Hardware/HAL/*)
 file(GLOB UTILS          ../common/Utils/Queue.*
@@ -63,7 +63,7 @@ source_group(libs/HAL        FILES ${LIBS_HAL})
 source_group(src             FILES ${SRC})
 source_group(Connector       FILES ${CONNECTOR})
 source_group(Generator       FILES ${GENERATOR})
-source_group(Hardware        FILES ${HARDWARE})
+#source_group(Hardware        FILES ${HARDWARE})
 source_group(Hardware/CMSIS  FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL    FILES ${HARDWARE_HAL})
 source_group(Utils           FILES ${UTILS})
@@ -73,7 +73,7 @@ add_library(${PROJECT_NAME}
     ${SRC}
     ${CONNECTOR}
     ${GENERATOR}
-    ${HARDWARE}
+#    ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
     ${UTILS}

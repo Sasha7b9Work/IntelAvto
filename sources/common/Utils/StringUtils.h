@@ -1,6 +1,6 @@
 // 2023/09/08 21:07:58 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Utils/String.h"
+//#include "Utils/String.h"
 
 
 struct Word
@@ -49,7 +49,7 @@ namespace SU
 
     bool String2Int(pchar buffer, int *value, char **end);
  
-    String Int2String(int n);
+    pchar Int2String(int n, char out[32]);
 
     // Оставляет в строке buffer размером size ровно digits цифр. Первые нули тоже учитываются
     void LeaveFewDigits(char *buffer, int size, int digits);

@@ -4,7 +4,6 @@
 #include "Display/Display.h"
 #include "Display/Primitives.h"
 #include "Display/Text.h"
-#include "Utils/String.h"
 #include <cstring>
 #include <cstdio>
 
