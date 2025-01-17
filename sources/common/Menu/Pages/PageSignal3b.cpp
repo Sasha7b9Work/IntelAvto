@@ -40,7 +40,7 @@ namespace PageSignal3b
 
     static void FuncStartTest()
     {
-        Message::Start3B(param_Us.GetValue(), param_duration.GetValue()).Transmit();
+        Message::Start3B(param_Us.GetValue()).Transmit();
     }
 
     static Item *items[] =

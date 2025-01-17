@@ -40,7 +40,7 @@ namespace PageSignal3a
 
     static void FuncStartTest()
     {
-        Message::Start3A(param_Us.GetValue(), param_duration.GetValue()).Transmit();
+        Message::Start3A(param_Us.GetValue()).Transmit();
     }
 
     static Item *items[] =

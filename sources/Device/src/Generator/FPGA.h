@@ -39,6 +39,4 @@ namespace FPGA
     void SetTypeSignal(TypeSignal::E);
 
     void WritePeriod(const Value &);
-
-    void WriteDuration(const Value &);
 }

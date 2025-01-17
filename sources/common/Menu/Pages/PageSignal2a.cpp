@@ -45,7 +45,7 @@ namespace PageSignal2a
 
     void Start()
     {
-        Message::Start2A(param_Us.GetValue(), param_period.GetValue(), param_duration.GetValue()).Transmit();
+        Message::Start2A(param_Us.GetValue(), param_period.GetValue()).Transmit();
     }
 
     static Item *items[] =

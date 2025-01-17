@@ -181,31 +181,28 @@ namespace Message
 
     struct Start2A : public BaseMessage
     {
-        Start2A(const Value &Us, const Value &period, const Value &duration) : BaseMessage(Command::START_2A)
+        Start2A(const Value &Us, const Value &t1) : BaseMessage(Command::START_2A)
         {
             Push(Us);
-            Push(period);
-            Push(duration);
+            Push(t1);
         }
     };
 
 
     struct Start3A : public BaseMessage
     {
-        Start3A(const Value &Us, const Value &duration) : BaseMessage(Command::START_3A)
+        Start3A(const Value &Us) : BaseMessage(Command::START_3A)
         {
             Push(Us);
-            Push(duration);
         }
     };
 
 
     struct Start3B : public BaseMessage
     {
-        Start3B(const Value &US, const Value &duration) : BaseMessage(Command::START_3B)
+        Start3B(const Value &Us) : BaseMessage(Command::START_3B)
         {
-            Push(US);
-            Push(duration);
+            Push(Us);
         }
     };
 }

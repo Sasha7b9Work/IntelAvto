@@ -17,12 +17,8 @@ namespace FPGA
         {
             None      = 0x00,
             Period1   = 0x01,       // Больше 500 мс
-            Duration1 = 0x02,       // 1 - 20 мкс
 
             Period2   = 0x03,       // Больше 500 мс
-            Duration2 = 0x04,       // 1 - 20 мкс
-
-            Duration3 = 0x05,       // 200 - 5000 нс
 
             Fail,
 
@@ -40,24 +36,6 @@ namespace FPGA
             else if (TypeSignal::Is2a())
             {
                 return Reg(Reg::Period2);
-            }
-
-            return Reg(Reg::Fail);
-        }
-
-        static Reg ForDiration()
-        {
-            if (TypeSignal::Is1())
-            {
-                return Reg(Reg::Duration1);
-            }
-            else if (TypeSignal::Is2a())
-            {
-                return Reg(Reg::Duration2);
-            }
-            else if (TypeSignal::Is3a() || TypeSignal::Is3b())
-            {
-                return Reg(Reg::Duration3);
             }
 
             return Reg(Reg::Fail);
@@ -118,12 +96,6 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
 void FPGA::WritePeriod(const Value &period)
 {
     Reg::ForPeriod().Write(period);
-}
-
-
-void FPGA::WriteDuration(const Value &duration)
-{
-    Reg::ForDiration().Write(duration);
 }
 
 

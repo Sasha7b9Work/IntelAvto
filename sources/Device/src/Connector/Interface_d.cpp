@@ -72,24 +72,21 @@ void DInterface::Update()
                 else if (command == Command::START_2A)
                 {
                     Value Us = message->PopValue();
-                    Value period = message->PopValue();
-                    Value duration = message->PopValue();
+                    Value t1 = message->PopValue();
 
-                    Generator::Start2A(Us, period, duration);
+                    Generator::Start2A(Us, t1);
                 }
                 else if (command == Command::START_3A)
                 {
                     Value Us = message->PopValue();
-                    Value duration = message->PopValue();
 
-                    Generator::Start3A(Us, duration);
+                    Generator::Start3A(Us);
                 }
                 else if (command == Command::START_3B)
                 {
                     Value Us = message->PopValue();
-                    Value duration = message->PopValue();
 
-                    Generator::Start3B(Us, duration);
+                    Generator::Start3B(Us);
                 }
                 else if (command == Command::SET_VOLTAGE)
                 {
@@ -131,23 +128,20 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         {
             Value Us((uint)(*pointer++));
             Value t1((uint)(*pointer++));
-            Value td((uint)(*pointer++));
 
-            return new Message::Start2A(Us, t1, td);
+            return new Message::Start2A(Us, t1);
         }
         else if (command == Command::START_3A)
         {
             Value Us((uint)(*pointer++));
-            Value duration((uint)(*pointer++));
 
-            return new Message::Start3A(Us, duration);
+            return new Message::Start3A(Us);
         }
         else if (command == Command::START_3B)
         {
             Value Us((uint)(*pointer++));
-            Value duration((uint)(*pointer++));
 
-            return new Message::Start3B(Us, duration);
+            return new Message::Start3B(Us);
         }
         else if (command == Command::SET_VOLTAGE)
         {
