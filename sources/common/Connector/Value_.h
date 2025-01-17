@@ -11,8 +11,8 @@ struct TypeValue
     enum E
     {
         Volts,      // Вольты
-        MS,         // Миллисекунды
-        RAW,        // Количество, без единиц измерения
+        Time,       // Миллисекунды
+        Raw,        // Количество, без единиц измерения
         Count
     };
 };
@@ -36,8 +36,6 @@ private:
 
 struct Value
 {
-    explicit Value(uint _raw) : raw(_raw) { }
-
     Value(int value, TypeValue::E type)
     {
         raw = (uint)value;
@@ -47,11 +45,21 @@ struct Value
             raw |= (uint)(1 << 31);
         }
 
-        if (type == TypeValue::MS)
+        if (type == TypeValue::Raw)         // 29-й и 30-й биты чистые
+        {
+
+        }
+        else if (type == TypeValue::Time)   // 30-й бит установлен
         {
             raw |= (1 << 30);
         }
+        else if (type == TypeValue::Volts)  // 29-й бит установлен
+        {
+            raw |= (1 << 29);
+        }
     }
+
+    Value (uint v) : raw(v) { }
 
     void Draw(const Parameter *, int x, int y) const;
 
@@ -62,7 +70,17 @@ struct Value
 
     TypeValue::E GetType() const
     {
-        return ((raw & (1 << 30)) == 0) ? TypeValue::Volts : TypeValue::MS;
+        if (raw & (1 << 30))
+        {
+            return TypeValue::Time;
+        }
+
+        if (raw & (1 << 29))
+        {
+            return TypeValue::Volts;
+        }
+
+        return TypeValue::Raw;
     }
 
     uint GetRaw() const { return raw; }
@@ -85,7 +103,7 @@ struct Value
     {
         float value = (float)ToInt();
 
-        if (GetType() == TypeValue::MS)
+        if (GetType() == TypeValue::Time)
         {
             value *= 1e-3f;
         }
@@ -104,11 +122,23 @@ private:
 
 struct Voltage : public Value
 {
-    Voltage(int voltage) : Value(voltage, TypeValue::Volts) {}
+    Voltage(int voltage) : Value(voltage, TypeValue::Volts) { }
 };
 
 
 struct Time : public Value
 {
-    Time(int ms) : Value(ms, TypeValue::MS) {}
+    Time(int ms) : Value(ms, TypeValue::Time) { }
+};
+
+
+struct Counter : public Value
+{
+    Counter(uint n) : Value((int)n, TypeValue::Raw) { }
+};
+
+
+struct ValueNull : public Value
+{
+    ValueNull() : Value(0, TypeValue::Count) { }
 };

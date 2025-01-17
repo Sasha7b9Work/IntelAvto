@@ -46,7 +46,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
         {
             std::strcat(pointer, String("%d", value).c_str());
 
-            if (GetType() == TypeValue::MS)
+            if (GetType() == TypeValue::Time)
             {
                 std::strcat(string, "m");
             }
@@ -64,7 +64,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
             std::strcat(string, String("%d", value).c_str());
         }
 
-        std::strcat(string, (GetType() == TypeValue::MS) ? "s" : "V");
+        std::strcat(string, (GetType() == TypeValue::Time) ? "s" : "V");
         Text(string).Write(x, y);
     }
 }
@@ -91,7 +91,7 @@ bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
             *result |= (uint)(1 << 31);
         }
 
-        if (type == TypeValue::MS)
+        if (type == TypeValue::Time)
         {
             *result |= (1 << 30);
         }
