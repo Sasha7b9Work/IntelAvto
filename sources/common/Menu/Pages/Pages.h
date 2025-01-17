@@ -59,8 +59,6 @@ namespace PageSignal4
 
     extern Parameter param_t9;
 
-    extern Parameter param_t11;
-
     extern Page *self;
 }
 
