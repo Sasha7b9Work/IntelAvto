@@ -4,9 +4,18 @@
 
 namespace Device
 {
-    void Run();
+    // По нажатию на START вызываем
+    void Start();
 
+    // По нажатию на STOP вызываем
     void Stop();
 
+    // Тест в состоянии выполнения
     bool IsRunning();
+
+    // Тест в паузе
+    bool IsPause();
+
+    // Тест не выполняется
+    bool IsStopped();
 }

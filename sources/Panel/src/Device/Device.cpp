@@ -7,15 +7,54 @@
 
 namespace Device
 {
-    static bool is_running = false;
+    struct State
+    {
+        enum E
+        {
+            Stopped,
+            Running,
+            Paused
+        };
+    };
+
+    static State::E state;
 }
 
 
-void Device::Run()
+bool Device::IsStopped()
+{
+    return state == State::Stopped;
+}
+
+
+bool Device::IsRunning()
+{
+    return state == State::Running;
+}
+
+
+bool Device::IsPause()
+{
+    return state == State::Paused;
+}
+
+
+void Device::Start()
 {
     Page::ForCurrentSignal()->StartTest();
 
-    is_running = true;
+    if (state == State::Stopped)
+    {
+        state = State::Running;
+    }
+    else if (state == State::Running)
+    {
+        state = State::Paused;
+    }
+    else if (state == State::Paused)
+    {
+        state = State::Running;
+    }
 }
 
 
@@ -23,11 +62,5 @@ void Device::Stop()
 {
     Message::Stop().Transmit();
 
-    is_running = false;
-}
-
-
-bool Device::IsRunning()
-{
-    return is_running;
+    state = State::Stopped;
 }

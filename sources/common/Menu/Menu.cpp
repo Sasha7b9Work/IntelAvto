@@ -67,7 +67,7 @@ void Menu::Input::OnControl(const Control &control)
         {
             if (control.IsRelease() && control.key == Key::Start)
             {
-                Device::IsRunning() ? Device::Stop() : Device::Run();
+                Device::IsRunning() ? Device::Stop() : Device::Start();
             }
         }
     }
