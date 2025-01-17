@@ -64,7 +64,10 @@ void Value::Draw(const Parameter *param, int x, int y) const
             std::strcat(string, String("%d", value).c_str());
         }
 
-        std::strcat(string, (GetType() == TypeValue::Time) ? "s" : "V");
+        if (GetType() != TypeValue::Raw)
+        {
+            std::strcat(string, (GetType() == TypeValue::Time) ? "s" : "V");
+        }
         Text(string).Write(x, y);
     }
 }
@@ -95,7 +98,10 @@ bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
         {
             *result |= (1 << 30);
         }
-
+        else if (type == TypeValue::Volts)
+        {
+            *result |= (1 << 29);
+        }
 
         return true;
     }
