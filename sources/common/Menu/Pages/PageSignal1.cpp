@@ -11,16 +11,19 @@
 
 namespace PageSignal1
 {
+    // Амплитуда
     Parameter param_Us("Us",
         &gset.signals[TypeSignal::_1].values12[0], Value(0, TypeValue::Volts), Value(800, TypeValue::Volts),
         &gset.signals[TypeSignal::_1].values24[0], Value(0, TypeValue::Volts), Value(800, TypeValue::Volts),
         340, 165);
 
-    Parameter param_period("Период",
+    // Период повторения
+    Parameter param_t1("Период",
         &gset.signals[TypeSignal::_1].values12[1], Value(500), Value(5000),
         &gset.signals[TypeSignal::_1].values24[1], Value(500), Value(5000),
         310, 33);
 
+    // Количество импульсов
     Parameter param_N("N",
         &gset.signals[TypeSignal::_1].values12[2], Value(5000), Value(100000),
         &gset.signals[TypeSignal::_1].values24[2], Value(5000), Value(100000),
@@ -47,7 +50,7 @@ namespace PageSignal1
 
     static void FuncStartTest()
     {
-        Message::Start1(param_Us.GetValue(), param_period.GetValue(), Value(1000U)).Transmit();
+        Message::Start1(param_Us.GetValue(), param_t1.GetValue()).Transmit();
     }
 
 
@@ -56,7 +59,7 @@ namespace PageSignal1
         &bSignal1,
         &chModeVoltage,
         &param_Us,
-        &param_period,
+        &param_t1,
         &param_N,
         nullptr
     };

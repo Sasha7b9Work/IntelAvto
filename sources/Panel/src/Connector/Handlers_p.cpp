@@ -7,7 +7,7 @@
 
 namespace PHandlers
 {
-    static bool Request(BaseMessage *);
+//    static bool Request(BaseMessage *);
 }
 
 

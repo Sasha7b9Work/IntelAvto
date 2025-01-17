@@ -171,11 +171,10 @@ namespace Message
 
     struct Start1 : public BaseMessage
     {
-        Start1(const Value &Us, const Value &period, const Value &duration) : BaseMessage(Command::START_1)
+        Start1(const Value &Us, const Value &t1) : BaseMessage(Command::START_1)
         {
-            Push(Us);
-            Push(period);
-            Push(duration);
+            Push(Us);   // Амплитуда
+            Push(t1);   // Период повторения
         }
     };
 

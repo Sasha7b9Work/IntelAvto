@@ -123,11 +123,10 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         }
         else if (command == Command::START_1)
         {
-            Value Us((uint)(*pointer++));
-            Value period((uint)(*pointer++));
-            Value duration((uint)(*pointer++));
+            Value Us((uint)(*pointer++));       // Амплитуда
+            Value t1((uint)(*pointer++));       // Период повторения
 
-            return new Message::Start1(Us, period, duration);
+            return new Message::Start1(Us, t1);
         }
         else if (command == Command::START_2A)
         {
