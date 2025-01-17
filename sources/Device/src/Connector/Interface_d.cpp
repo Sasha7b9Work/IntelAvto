@@ -65,10 +65,9 @@ void DInterface::Update()
                 else if (command == Command::START_1)
                 {
                     Value Us = message->PopValue();
-                    Value period = message->PopValue();
-                    Value duration = message->PopValue();
+                    Value t1 = message->PopValue();
 
-                    Generator::Start1(Us, period, duration);
+                    Generator::Start1(Us, t1);
                 }
                 else if (command == Command::START_2A)
                 {

@@ -17,15 +17,13 @@ void Generator::Stop()
 }
 
 
-void Generator::Start1(const Value &Us, const Value &period, const Value &duration)
+void Generator::Start1(const Value &Us, const Value &t1)
 {
     if (TypeSignal::IsOff())
     {
         FPGA::SetTypeSignal(TypeSignal::_1);
 
-        FPGA::WritePeriod(period);
-
-        FPGA::WriteDuration(duration);
+        FPGA::WritePeriod(t1);
 
         MCP4811::SetVoltage(Us);
 
