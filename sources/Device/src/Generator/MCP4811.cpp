@@ -39,7 +39,7 @@ void MCP4811::SetVoltage(const Value &value)
 {
     Gateway::Write(Converter(value).Resolve());
 
-    pin_DAC_ENB_HB.ToHi();
+//    pin_DAC_ENB_HB.ToHi();
 }
 
 
@@ -59,7 +59,7 @@ uint16 MCP4811::Converter::Resolve() const
 
 void MCP4811::Gateway::Write(uint16 value)
 {
-    pin_DAC_CS2_R.ToLow();
+//    pin_DAC_CS2_R.ToLow();
 
 //    HAL_TIM::DelayUS(100);    // \todo    на макете, кажется, без этого не работало
 
@@ -76,7 +76,7 @@ void MCP4811::Gateway::Write(uint16 value)
     WriteBit(false);
     WriteBit(false);
 
-    pin_DAC_CS2_R.ToHi();
+//    pin_DAC_CS2_R.ToHi();
 
     WriteBit(false);
 }

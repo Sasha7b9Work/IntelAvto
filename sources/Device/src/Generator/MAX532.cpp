@@ -40,7 +40,7 @@ void MAX532::Test()
 
 void MAX532::WriteChannels(uint value)
 {
-    pin_DAC_CS1_R.ToLow();
+//    pin_DAC_CS1_R.ToLow();
 
 //    HAL_TIM::DelayUS(500);          // \todo Ќа макете без этого, кажетс€, не работало
 
@@ -49,7 +49,7 @@ void MAX532::WriteChannels(uint value)
         WriteBit((value & (1 << i)) != 0);
     }
 
-    pin_DAC_CS1_R.ToHi();
+//    pin_DAC_CS1_R.ToHi();
 }
 
 

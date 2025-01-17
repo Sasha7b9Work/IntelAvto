@@ -22,11 +22,11 @@ namespace SwitchingBoard
 
 void SwitchingBoard::SetOff()
 {
-    static const int NUM_PINS = 8;
+    static const int NUM_PINS = 7;
 
     static PinOut *pins[NUM_PINS] =
     {
-        &pin_A12, &pin_2A, &pin_3AB, &pin_K1_COM, &pin_K3_COM, &pin_K5_COM, &pin_K6_COM, &pin_K7_COM
+        &pin_A12, &pin_2A, &pin_3AB, &pin_K3_COM, &pin_K5_COM, &pin_K6_COM, &pin_K7_COM
     };
 
     for (int i = 0; i < NUM_PINS; i++)
@@ -43,7 +43,6 @@ void SwitchingBoard::SetTypeSignal()
     if (TypeSignal::Is1())
     {
         pin_A12.ToHi();
-        pin_K1_COM.ToHi();
         pin_K5_COM.ToHi();
         pin_K6_COM.ToHi();
         pin_K7_COM.ToHi();
@@ -51,7 +50,6 @@ void SwitchingBoard::SetTypeSignal()
     else if (TypeSignal::Is2a())
     {
         pin_2A.ToHi();
-        pin_K1_COM.ToHi();
         pin_K3_COM.ToHi();
         pin_K5_COM.ToHi();
         pin_K7_COM.ToHi();
@@ -59,7 +57,6 @@ void SwitchingBoard::SetTypeSignal()
     else if (TypeSignal::Is3a() || TypeSignal::Is3b())
     {
         pin_3AB.ToHi();
-        pin_K1_COM.ToHi();
         pin_K3_COM.ToHi();
         pin_K6_COM.ToHi();
     }
