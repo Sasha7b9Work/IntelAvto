@@ -4,7 +4,7 @@
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "Menu/MenuItemsDef.h"
-#include "Connector/Messages.h"
+#include "Connector/Messages_.h"
 #include "Display/Text.h"
 #include "Display/Display.h"
 

@@ -535,21 +535,6 @@
           <GroupName>Connector</GroupName>
           <Files>
             <File>
-              <FileName>Messages.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Messages.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Messages.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Messages.h</FilePath>
-            </File>
-            <File>
-              <FileName>Value.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Value.h</FilePath>
-            </File>
-            <File>
               <FileName>Messages_p.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Connector\Messages_p.cpp</FilePath>
@@ -560,24 +545,49 @@
               <FilePath>.\src\Connector\Value_p.cpp</FilePath>
             </File>
             <File>
-              <FileName>Interface_p.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Interface_p.h</FilePath>
-            </File>
-            <File>
-              <FileName>Transceiver.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Transceiver.h</FilePath>
-            </File>
-            <File>
-              <FileName>Transceiver_p.cpp</FileName>
+              <FileName>Messages_.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Connector\Transceiver_p.cpp</FilePath>
+              <FilePath>..\common\Connector\Messages_.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Messages_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Messages_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Transceiver_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Value_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Value_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Handlers_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Handlers_p.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Handlers_p.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Connector\Handlers_p.h</FilePath>
             </File>
             <File>
               <FileName>Interface_p.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Connector\Interface_p.cpp</FilePath>
+              <FilePath>.\src\Connector\Interface_p.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Interface_p.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Connector\Interface_p.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Transceiver_p.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1547,21 +1557,6 @@
           <GroupName>Connector</GroupName>
           <Files>
             <File>
-              <FileName>Messages.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Connector\Messages.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Messages.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Messages.h</FilePath>
-            </File>
-            <File>
-              <FileName>Value.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Value.h</FilePath>
-            </File>
-            <File>
               <FileName>Messages_p.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Connector\Messages_p.cpp</FilePath>
@@ -1572,24 +1567,49 @@
               <FilePath>.\src\Connector\Value_p.cpp</FilePath>
             </File>
             <File>
-              <FileName>Interface_p.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Interface_p.h</FilePath>
-            </File>
-            <File>
-              <FileName>Transceiver.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Connector\Transceiver.h</FilePath>
-            </File>
-            <File>
-              <FileName>Transceiver_p.cpp</FileName>
+              <FileName>Messages_.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Connector\Transceiver_p.cpp</FilePath>
+              <FilePath>..\common\Connector\Messages_.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Messages_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Messages_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Transceiver_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Value_.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\Connector\Value_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Handlers_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Handlers_p.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Handlers_p.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Connector\Handlers_p.h</FilePath>
             </File>
             <File>
               <FileName>Interface_p.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Connector\Interface_p.cpp</FilePath>
+              <FilePath>.\src\Connector\Interface_p.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Interface_p.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Connector\Interface_p.h</FilePath>
+            </File>
+            <File>
+              <FileName>Transceiver_p.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Connector\Transceiver_p.cpp</FilePath>
             </File>
           </Files>
         </Group>

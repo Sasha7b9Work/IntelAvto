@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Connector/Transceiver.h"
+#include "Connector/Transceiver_.h"
 #include "Display/Colors.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"

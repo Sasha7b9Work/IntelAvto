@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Connector/Messages.h"
+#include "Connector/Messages_.h"
 #include "Queue.h"
 
 

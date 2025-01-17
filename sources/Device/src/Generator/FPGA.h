@@ -1,6 +1,6 @@
 // 2024/02/02 00:02:54 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Connector/Value.h"
+#include "Connector/Value_.h"
 
 
 struct TypeSignal
