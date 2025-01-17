@@ -46,44 +46,32 @@ void HAL_PINS::Init()
     pin_A2_RG.Init();
     pin_A3_RG.Init();
     pin_CLK_RG.Init();
-    pin_CLK_RG.ToLow();
     pin_DAT_RG.Init();
     pin_WR_RG.Init();
-    pin_WR_RG.ToLow();
 
     pin_ON_OFF.Init();
-    pin_ON_OFF.ToLow();
     pin_START.Init();
-    pin_START.ToLow();
     pin_STOP.Init();
-    pin_STOP.ToLow();
 
     pin_A12.Init();
-    pin_A12.ToLow();
     pin_2A.Init();
-    pin_2A.ToLow();
     pin_3AB.Init();
-    pin_3AB.ToLow();
     pin_K3_COM.Init();
-    pin_K3_COM.ToLow();
     pin_K5_COM.Init();
-    pin_K5_COM.ToLow();
     pin_K6_COM.Init();
-    pin_K6_COM.ToLow();
     pin_K7_COM.Init();
-    pin_K7_COM.ToLow();
 
     pin_K1_FOR.Init();
-    pin_K1_FOR.ToLow();
     pin_K_R1.Init();
 
     pin_DAC_SCLK_R.Init();
-    pin_DAC_SCLK_R.ToLow();
     pin_DAC_DAT_R.Init();
 
     pin_NPULES0.Init();
     pin_NPULSE1.Init();
     pin_NPULSE2.Init();
+
+    pin_FA.Init();
 }
 
 
@@ -142,6 +130,8 @@ void Pin::Init()
             GPIO_PULLUP
         };
         HAL_GPIO_Init((GPIO_TypeDef *)port, &is);
+
+        HAL_GPIO_WritePin((GPIO_TypeDef *)port, pin, GPIO_PIN_RESET);
     }
     else if (mode == PinMode::INPUT)
     {
