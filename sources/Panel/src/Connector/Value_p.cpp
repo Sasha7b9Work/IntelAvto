@@ -17,7 +17,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
         Color color = Color::GetCurrent();
 
-        Color::TYPE_BLUE.SetAsCurrent();
+        Color::BLUE.SetAsCurrent();
 
         param->GetMin().Draw(nullptr, x, y + 25);
 

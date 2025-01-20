@@ -145,7 +145,7 @@ void Parameter::Draw() const
     {
         Color color = Color::GetCurrent();
 
-        Rect(width - 2, height - 2).Fill(x - 2, y - 2, Color::TYPE_BLUE);
+        Rect(width - 2, height - 2).Fill(x - 2, y - 2, Color::BLUE);
 
         color.SetAsCurrent();
     }
@@ -177,74 +177,6 @@ void Choice::DrawMenuItem(int x, int y, int width, bool selected)
     ColorDraw(selected).SetAsCurrent();
 
     Text(Title()).Write(x, y + DeltaTextt(), width);
-}
-
-
-void GovernorChannelColor::DrawMenuItem(int _x, int _y, int _width, bool selected)
-{
-    if (selected)
-    {
-        const int x = _x + 4;
-        const int y = _y;
-        const int width = _width - 8;
-        const int height = HEIGHT - 8;
-
-        Rect(width, height).Fill(x, y, ColorFill());
-
-        HLine hLine(2);
-        Point point;
-
-        hLine.Draw(x, y, Color::MENU_SELECT);
-        point.Draw(x, y + 1);
-
-        hLine.Draw(x + width - 2, y);
-        point.Draw(x + width - 1, y + 1);
-
-        hLine.Draw(x, y + height - 1);
-        point.Draw(x, y + height - 2);
-
-        hLine.Draw(x + width - 2, y + height - 1);
-        point.Draw(x + width - 1, y + height - 2);
-    }
-    else
-    {
-        const int x = _x + 1;
-        const int y = _y - 3;
-        const int width = _width - 3;
-        const int height = HEIGHT - 3;
-
-        Rect(width - 1, height - 1).Fill(x + 1, y + 1, ColorFill());
-        Rect(width, height).DrawRounded(x, y, 1, ColorFill());
-    }
-
-    Text("%0.3d", (int)*state).Write(_x, _y + 6, _width, Color::WHITE);
-}
-
-
-Color GovernorChannelColor::ColorFill() const
-{
-    static Color colors[3] = { Color::TYPE_RED, Color::TYPE_GREEN, Color::TYPE_BLUE };
-
-    return colors[typeColor];
-}
-
-
-void GovernorChannelColor::SetValue(uint8 value)
-{
-    *state = value;
-
-    if (typeColor == Red)
-    {
-        Color::TYPE_RED.SetRED(*state);
-    }
-    else if (typeColor == Green)
-    {
-        Color::TYPE_GREEN.SetGREEN(*state);
-    }
-    else
-    {
-        Color::TYPE_BLUE.SetBLUE(*state);
-    }
 }
 
 
@@ -395,4 +327,18 @@ void Page::StartTest() const
     {
         func_start_test();
     }
+}
+
+
+bool Page::IsSignal(Page *page)
+{
+    return
+        page == PageSignal1::self ||
+        page == PageSignal2a::self ||
+        page == PageSignal2b::self ||
+        page == PageSignal3a::self ||
+        page == PageSignal3b::self ||
+        page == PageSignal4::self ||
+        page == PageSignal5a::self ||
+        page == PageSignal5b::self;
 }

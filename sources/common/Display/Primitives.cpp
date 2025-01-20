@@ -12,6 +12,19 @@ int Point::m_x = 0;
 int Point::m_y = 0;
 
 
+void Label::Draw()
+{
+    int width = 100;
+    int height = 30;
+
+    Rect(width, height).FillRounded(x, y, 2, color_back, color_border);
+
+    color_text.SetAsCurrent();
+
+    Text(text).WriteInCenterRect(x, y, width, height);
+}
+
+
 void Rect::FillRounded(int x, int y, int round, Color colorFill, Color colorBound)
 {
     DrawRounded(x, y, round, colorBound);

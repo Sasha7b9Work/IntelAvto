@@ -9,13 +9,12 @@ struct Color
     static Color BACK;              // Цвет фона
     static Color MENU_UNSELECT;     // Фон невыделенного итема
     static Color MENU_SELECT;       // Фон выделенного итема
-    static Color TYPE_RED;          // Красный компонент для настройки
-    static Color TYPE_GREEN;        // Зелёный компонент для настройки
-    static Color TYPE_BLUE;         // Синий компонент для настройки
+    static Color RED;               // Красный компонент для настройки
+    static Color GREEN;             // Зелёный компонент для настройки
+    static Color BLUE;              // Синий компонент для настройки
     static Color WHITE;             // Белый
-    static Color EMPTY;             // Чёрный фон
+    static Color BLACK;             // Чёрный фон
     static Color GRAY;
-    static Color BLUE;
 
     static const int COUNT = 13;
 

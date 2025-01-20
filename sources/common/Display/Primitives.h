@@ -6,6 +6,22 @@
 
 namespace Primitives
 {
+    // Используется для обозначительных надписей типа СТАРТ, СТОП
+    class Label
+    {
+    public:
+        Label(int _x, int _y, pchar _text, const Color &_color_text, const Color &_color_back, const Color &_color_border) :
+            x(_x), y(_y), text(_text), color_text(_color_text), color_back(_color_back), color_border(_color_border) { }
+        void Draw();
+    private:
+        int x;
+        int y;
+        pchar text;
+        Color color_text;
+        Color color_back;
+        Color color_border;
+    };
+
     class Rect
     {
     public:

@@ -10,11 +10,11 @@ Color Color::FILL(0);
 Color Color::BACK(1);
 Color Color::MENU_UNSELECT(2);
 Color Color::MENU_SELECT(3);
-Color Color::TYPE_RED(4);
-Color Color::TYPE_GREEN(5);
-Color Color::TYPE_BLUE(6);
+Color Color::RED(4);
+Color Color::GREEN(5);
+Color Color::BLUE(6);
 Color Color::WHITE(7);
-Color Color::EMPTY(8);
+Color Color::BLACK(8);
 Color Color::GRAY(9);
 
 

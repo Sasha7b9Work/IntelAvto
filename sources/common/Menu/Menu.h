@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Display/Primitives.h"
 
 
 class Page;
@@ -28,4 +29,7 @@ namespace Menu
 
         void FuncEmptyUpdate();
     };
+
+    extern Primitives::Label labelStart;
+    extern Primitives::Label labelStop;
 };

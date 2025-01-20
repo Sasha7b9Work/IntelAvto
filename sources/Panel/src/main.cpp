@@ -10,7 +10,7 @@
 
 
 int main(void)
-{
+    {
     HAL::Init();
 
     Display::Init();

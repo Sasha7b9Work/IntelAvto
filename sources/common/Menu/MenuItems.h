@@ -81,33 +81,6 @@ private:
 };
 
 
-// Настройка одного цветового канала
-class GovernorChannelColor : public Item
-{
-public:
-
-    enum Type
-    {
-        Red,
-        Green,
-        Blue
-    };
-
-    GovernorChannelColor(Type type, uint8 *_state, void (*func)(uint8)) :
-        Item(), state(_state), typeColor(type), funcChanged(func)
-    {
-    }
-    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
-    int Value() const { return (int)*state; }
-    void SetValue(uint8 value);
-private:
-    uint8 *state;
-    Type typeColor;
-    void (*funcChanged)(uint8);
-    Color ColorFill() const;
-};
-
-
 class Parameter : public Item
 {
 public:
@@ -206,6 +179,9 @@ public:
 
     // Запустить тест
     void StartTest() const;
+
+    // Возвращает true, если текущая страница - страница сигнала
+    static bool IsSignal(Page *);
 
 protected:
 

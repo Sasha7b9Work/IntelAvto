@@ -33,12 +33,21 @@ namespace Menu
         // Îáðàáîòêà íàæàòèÿ Enter è GovButton
         bool OnGovernorButton(const Control &);
     }
+
+    Primitives::Label labelStart(10, 170, "ÑÒÀÐÒ", Color::BLACK, Color::GREEN, Color::WHITE);
+    Primitives::Label labelStop(10, 210, "ÑÒÎÏ", Color::BLACK, Color::GREEN, Color::WHITE);
 }
 
 
 void Menu::Draw()
 {
     openedPage->DrawMenuItem(0, 0, 0);
+
+    if (Page::IsSignal(OpenedPage()))
+    {
+        labelStart.Draw();
+        labelStop.Draw();
+    }
 }
 
 
