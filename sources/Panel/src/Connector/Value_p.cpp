@@ -138,20 +138,24 @@ void DrawStruct::PressKey(int _key)
 
     if (key == Key::Minus)
     {
-        if (parameter->GetMin().ToFloat() < 0.0f && index == 0)
+        if (parameter->GetValue().IsVoltage() && index == 0)
         {
             AppendSymbol('-');
-        }
-        else
-        {
-            AppendSymbol('0');
         }
     }
     else if (key >= Key::_1 && key <= Key::_0)
     {
-        static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+        if ((key == Key::_0 && index == 0) ||
+            (key == Key::_0 && index == 1 && symbols[0] == '-'))
+        {
+            // Ноль первым быть не может
+        }
+        else
+        {
+            static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-        AppendSymbol(_keys[key]);
+            AppendSymbol(_keys[key]);
+        }
     }
 }
 

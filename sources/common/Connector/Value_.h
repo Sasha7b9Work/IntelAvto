@@ -72,6 +72,11 @@ struct Value
         return GetType() == TypeValue::Raw;
     }
 
+    bool IsVoltage() const
+    {
+        return GetType() == TypeValue::Voltage;
+    }
+
     TypeValue::E GetType() const
     {
         if (raw & (1 << 30))
