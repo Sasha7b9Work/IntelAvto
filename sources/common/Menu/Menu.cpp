@@ -85,7 +85,7 @@ void Menu::Input::OnControl(const Control &control)
             {
                 if (control.key == Key::Start)
                 {
-                    if (Device::IsStopped() || Device::InPause())
+                    if (Device::IsStopped())
                     {
                         labelMode.SetState("“≈—“", Color::WHITE, Color::RED);
 
@@ -96,6 +96,12 @@ void Menu::Input::OnControl(const Control &control)
                         labelMode.SetState("œ¿”«¿", Color::BLACK, Color::YELLOW);
 
                         Device::Pause();
+                    }
+                    else if (Device::InPause())
+                    {
+                        labelMode.SetState("“≈—“", Color::WHITE, Color::RED);
+
+                        Device::Resume();
                     }
                 }
                 else if (control.key == Key::Stop)

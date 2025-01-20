@@ -88,13 +88,15 @@ void FPGA::WritePeriod(const Value &period)
 
 void FPGA::Start()
 {
-    pin_ON_OFF.ToHi();
-
     pin_START.ToHi();
 
     HAL_TIM::DelayUS(20);
 
     pin_START.ToLow();
+
+    TimeMeterMS().Delay(2);
+
+    Resume();
 }
 
 
@@ -106,7 +108,19 @@ void FPGA::Stop()
 
     pin_STOP.ToLow();
 
+    Pause();
+}
+
+
+void FPGA::Pause()
+{
     pin_ON_OFF.ToLow();
+}
+
+
+void FPGA::Resume()
+{
+    pin_ON_OFF.ToHi();
 }
 
 

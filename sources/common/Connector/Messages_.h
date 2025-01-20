@@ -15,6 +15,8 @@ struct Command
         START_3A,
         START_3B,
         STOP,
+        PAUSE,
+        RESUME,
         Count
     };
 };
@@ -159,6 +161,17 @@ namespace Message
         Stop() : BaseMessage(Command::STOP) { }
     };
 
+
+    struct Pause : public BaseMessage
+    {
+        Pause() : BaseMessage(Command::PAUSE) { }
+    };
+
+
+    struct Resume : public BaseMessage
+    {
+        Resume() : BaseMessage(Command::RESUME) { }
+    };
 
     struct Start1_12V : public BaseMessage
     {

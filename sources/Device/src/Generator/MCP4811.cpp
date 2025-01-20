@@ -3,6 +3,7 @@
 #include "Generator/MCP4811.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/HAL/HAL.h"
+#include "Hardware/Timer.h"
 
 
 namespace MCP4811
@@ -39,15 +40,19 @@ void MCP4811::SetVoltage(const Value &value)
 {
     Gateway::Write(Converter(value).Resolve());
 
+    pin_K1_FOR.ToHi();
     pin_DAC_ENB_HV.ToHi();
+
+    TimeMeterMS().Delay(5000);
 }
 
 
 void MCP4811::Disable()
 {
-    Gateway::Write(Converter(Value(0, TypeValue::Voltage)).Resolve());
-
     pin_DAC_ENB_HV.ToLow();
+    pin_K1_FOR.ToLow();
+
+    Gateway::Write(Converter(Value(0, TypeValue::Voltage)).Resolve());
 }
 
 

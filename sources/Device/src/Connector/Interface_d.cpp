@@ -62,6 +62,14 @@ void DInterface::Update()
                 {
                     Generator::Stop();
                 }
+                else if (command == Command::PAUSE)
+                {
+                    Generator::Pause();
+                }
+                else if (command == Command::RESUME)
+                {
+                    Generator::Resume();
+                }
                 else if (command == Command::START_1_12V)
                 {
                     Value Us = message->PopValue();
@@ -116,6 +124,14 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         if (command == Command::STOP)
         {
             return new Message::Stop();
+        }
+        else if (command == Command::PAUSE)
+        {
+            return new Message::Pause();
+        }
+        else if (command == Command::RESUME)
+        {
+            return new Message::Resume();
         }
         else if (command == Command::START_1_12V)
         {

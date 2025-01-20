@@ -19,13 +19,25 @@ void Generator::Stop()
 }
 
 
+void Generator::Pause()
+{
+    FPGA::Pause();
+}
+
+
+void Generator::Resume()
+{
+    FPGA::Resume();
+}
+
+
 void Generator::Start1_12V(const Value &Us, const Value &t1)
 {
     Stop();
 
-    FPGA::SetTypeSignal(TypeSignal::_1_12V);
-
     FPGA::WritePeriod(t1);
+
+    FPGA::SetTypeSignal(TypeSignal::_1_12V);
 
     MCP4811::SetVoltage(Us);
 

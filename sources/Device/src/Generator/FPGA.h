@@ -38,6 +38,10 @@ namespace FPGA
 {
     void Start();
 
+    void Pause();
+
+    void Resume();
+
     void Stop();
 
     void SetTypeSignal(TypeSignal::E);

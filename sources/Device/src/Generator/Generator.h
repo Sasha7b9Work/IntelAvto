@@ -5,8 +5,6 @@
 
 namespace Generator
 {
-    void Stop();
-
     void Start1_12V(const Value &Us, const Value &t1);
 
     void Start1_24V(const Value &Us, const Value &t1);
@@ -16,4 +14,11 @@ namespace Generator
     void Start3A(const Value &US);
 
     void Start3B(const Value &Us);
+
+    void Pause();
+
+    void Resume();
+
+    void Stop();
+
 }
