@@ -69,6 +69,8 @@ void MCP4811::Gateway::Write(uint16 value)
 {
     HAL_TIM::DelayUS(100);    // \todo    на макете, кажется, без этого не работало
 
+    // page 22 datasheet от 2010-го года
+
     WriteBit(false);
     WriteBit(false);
     WriteBit(false);    // GA
@@ -82,7 +84,7 @@ void MCP4811::Gateway::Write(uint16 value)
     WriteBit(false);
     WriteBit(false);
 
-//    WriteBit(false);
+    WriteBit(false);    // Не помню, зачем
 }
 
 

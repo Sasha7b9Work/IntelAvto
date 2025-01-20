@@ -13,17 +13,10 @@ int main()
     HAL::Init();
     HAL_TIM::DelayMS(500);             // Задержка нужна для того, чтобы AD9952 успел пройти внутреннюю инициализацию
 
+    Generator::Stop();
+
     while (1)
     {
         DInterface::Update();
-
-//        static uint time = 0;
-//
-//        if (TIME_MS - time > 1000)
-//        {
-//            time = TIME_MS;
-//
-//            Generator::Start2A(Value(10), Value(100), Value(10));
-//        }
     }
 }

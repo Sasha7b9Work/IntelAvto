@@ -21,70 +21,65 @@ void Generator::Stop()
 
 void Generator::Start1_12V(const Value &Us, const Value &t1)
 {
-    if (TypeSignal::IsOff())
-    {
-        FPGA::SetTypeSignal(TypeSignal::_1_12V);
+    Stop();
 
-        FPGA::WritePeriod(t1);
+    FPGA::SetTypeSignal(TypeSignal::_1_12V);
 
-        MCP4811::SetVoltage(Us);
+    FPGA::WritePeriod(t1);
 
-        FPGA::Start();
-    }
+    MCP4811::SetVoltage(Us);
+
+    FPGA::Start();
 }
 
 
 void Generator::Start1_24V(const Value &Us, const Value &t1)
 {
-    if (TypeSignal::IsOff())
-    {
-        FPGA::SetTypeSignal(TypeSignal::_1_24V);
+    Stop();
 
-        FPGA::WritePeriod(t1);
+    FPGA::SetTypeSignal(TypeSignal::_1_24V);
 
-        MCP4811::SetVoltage(Us);
+    FPGA::WritePeriod(t1);
 
-        FPGA::Start();
-    }
+    MCP4811::SetVoltage(Us);
+
+    FPGA::Start();
 }
 
 
 void Generator::Start2A(const Value &Us, const Value &t1)
 {
-    if (TypeSignal::IsOff())
-    {
-        FPGA::SetTypeSignal(TypeSignal::_2a);
+    Stop();
 
-        FPGA::WritePeriod(t1);
+    FPGA::SetTypeSignal(TypeSignal::_2a);
 
-        MCP4811::SetVoltage(Us);
+    FPGA::WritePeriod(t1);
 
-        FPGA::Start();
-    }
+    MCP4811::SetVoltage(Us);
+
+    FPGA::Start();
 }
 
 
 void Generator::Start3A(const Value &Us)
 {
-    if (TypeSignal::IsOff())
-    {
-        FPGA::SetTypeSignal(TypeSignal::_3a);
+    Stop();
 
-        MCP4811::SetVoltage(Us);
+    FPGA::SetTypeSignal(TypeSignal::_3a);
 
-        FPGA::Start();
-    }
+    MCP4811::SetVoltage(Us);
+
+    FPGA::Start();
 }
 
 
 void Generator::Start3B(const Value &Us)
 {
-    if (TypeSignal::IsOff())
-    {
-        FPGA::SetTypeSignal(TypeSignal::_3b);
+    Stop();
 
-        MCP4811::SetVoltage(Us);
+    FPGA::SetTypeSignal(TypeSignal::_3b);
 
-        FPGA::Start();
-    }
+    MCP4811::SetVoltage(Us);
+
+    FPGA::Start();
 }
