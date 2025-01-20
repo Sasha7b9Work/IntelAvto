@@ -153,13 +153,6 @@ void DrawStruct::PressKey(int _key)
 
         AppendSymbol(_keys[key]);
     }
-//    else if (key == Key::Back)
-//    {
-//        if (index > 0)
-//        {
-//            index--;
-//        }
-//    }
 }
 
 
