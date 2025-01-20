@@ -31,18 +31,6 @@ struct Color
     // —сылка на значение
     uint &Value() const;
 
-    void SetRED(uint8 red) { SetValue(red, GetGREEN(), GetBLUE()); }
-
-    void SetGREEN(uint8 green) { SetValue(GetRED(), green, GetBLUE()); }
-
-    void SetBLUE(uint8 blue) { SetValue(GetRED(), GetGREEN(), blue); }
-
-    uint8 GetRED() const { return ((uint8)(Value() & 0xFF)); }
-
-    uint8 GetGREEN() const { return ((uint8)((Value() >> 8) & 0xFF)); }
-
-    uint8 GetBLUE() const { return ((uint8)((Value() >> 16) & 0xFF)); }
-
     static uint Make(uint8 r, uint8 g, uint8 b) { return ((uint)((r) | ((g) << 8) | ((b) << 16))); }
 
 private:
