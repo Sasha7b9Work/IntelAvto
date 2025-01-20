@@ -67,14 +67,12 @@ uint16 MCP4811::Converter::Resolve() const
 
 void MCP4811::Gateway::Write(uint16 value)
 {
-//    pin_DAC_CS2_R.ToLow();
-
-//    HAL_TIM::DelayUS(100);    // \todo    на макете, кажется, без этого не работало
+    HAL_TIM::DelayUS(100);    // \todo    на макете, кажется, без этого не работало
 
     WriteBit(false);
     WriteBit(false);
-    WriteBit(false);
-    WriteBit(true);
+    WriteBit(false);    // GA
+    WriteBit(true);     // SHDN
 
     for (int i = 9; i >= 0; i--)
     {
@@ -84,9 +82,7 @@ void MCP4811::Gateway::Write(uint16 value)
     WriteBit(false);
     WriteBit(false);
 
-//    pin_DAC_CS2_R.ToHi();
-
-    WriteBit(false);
+//    WriteBit(false);
 }
 
 
