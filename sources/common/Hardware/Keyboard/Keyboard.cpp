@@ -40,15 +40,15 @@ namespace Keyboard
 #define PORT_RL3 GPIOD
 
 #define PIN_RL4  GPIO_PIN_11    // 79   PC11        RL4
-#define PORT_RL4 GPIOD
+#define PORT_RL4 GPIOC
 
-#define PIN_ENC1  GPIO_PIN_11   // 58   PD11
+#define PIN_ENC1  GPIO_PIN_11   // 58   PD11        ENC1
 #define PORT_ENC1 GPIOD
 
-#define PIN_ENC2  GPIO_PIN_12   // 59   PD12
+#define PIN_ENC2  GPIO_PIN_12   // 59   PD12        ENC2
 #define PORT_ENC2 GPIOD
 
-#define PIN_ENCBUT GPIO_PIN_13  // 60   PD13
+#define PIN_ENCBUT GPIO_PIN_13  // 60   PD13        ENCBUT
 #define PORT_ENCBUT GPIOD
 
 
@@ -295,6 +295,9 @@ void Keyboard::InitPins()
 
     is.Pin = PIN_RL3;
     HAL_GPIO_Init(PORT_RL3, &is);
+
+    is.Pin = PIN_RL4;
+    HAL_GPIO_Init(PORT_RL4, &is);
 
     is.Pin = PIN_ENC1;
     HAL_GPIO_Init(PORT_ENC1, &is);
