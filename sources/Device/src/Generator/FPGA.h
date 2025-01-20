@@ -18,6 +18,8 @@ struct TypeSignal
 
     static void Set(E v) { current = v; }
 
+    static E Current() { return current; }
+
     static bool Is1_12V() { return current == _1_12V; }
     static bool Is1_24V() { return current == _1_24V; }
     static bool Is2a() { return current == _2a; }

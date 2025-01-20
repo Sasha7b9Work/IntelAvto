@@ -5,21 +5,6 @@
 #include "Generator/FPGA.h"
 
 
-namespace SwitchingBoard
-{
-    /*
-    +--------+---+---+---+---+---+---+---+---+
-    | Сигнал |A12|2A |3AB|K1 |K3 |K5 |K6 |K7 |
-    +--------+---+---+---+---+---+---+---+---+
-    | OFF    |   |   |   |   |   |   |   |   |
-    | 1      | 1 |   |   | 1 |   | 1 | 1 | 1 |
-    | 2a     |   | 1 |   | 1 | 1 | 1 |   | 1 |
-    | 3a,b   |   |   | 1 | 1 | 1 |   | 1 |   |
-    +--------+---+---+---+---+---+---+---+---+
-    */
-}
-
-
 void SwitchingBoard::SetOff()
 {
     static const int NUM_PINS = 7;
@@ -38,26 +23,22 @@ void SwitchingBoard::SetOff()
 
 void SwitchingBoard::SetTypeSignal()
 {
-    SetOff();
+    static const uint8 states[TypeSignal::Count][8] =
+    {
+        { 1, 0, 0, 0, 0, 1, 1, 1 },
+        { 1, 0, 0, 0, 0, 1, 1, 1 },
+        { 0, 1, 0, 1, 0, 0, 1, 1 },
+        { 0, 0, 1, 1, 1, 0, 0, 0 },
+        { 0, 0, 1, 1, 1, 0, 0, 0 },
+        { 0, 0, 0, 0, 0, 0, 0, 0 }
+    };
 
-    if (TypeSignal::Is1_12V() || TypeSignal::Is1_24V())
+    static PinOut *pins[8] = { &pin_A12, &pin_2A, &pin_3AB, &pin_K3_COM, &pin_K4_COM, &pin_K5_COM, &pin_K6_COM, &pin_K7_COM };
+
+    TypeSignal::E type = TypeSignal::Current();
+
+    for (int i = 0; i < 8; i++)
     {
-        pin_A12.ToHi();
-        pin_K5_COM.ToHi();
-        pin_K6_COM.ToHi();
-        pin_K7_COM.ToHi();
-    }
-    else if (TypeSignal::Is2a())
-    {
-        pin_2A.ToHi();
-        pin_K3_COM.ToHi();
-        pin_K5_COM.ToHi();
-        pin_K7_COM.ToHi();
-    }
-    else if (TypeSignal::Is3a() || TypeSignal::Is3b())
-    {
-        pin_3AB.ToHi();
-        pin_K3_COM.ToHi();
-        pin_K6_COM.ToHi();
+        pins[i]->ToState(states[type][i] == 0 ? false : true);
     }
 }

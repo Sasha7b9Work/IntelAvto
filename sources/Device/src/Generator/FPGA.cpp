@@ -4,6 +4,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
+#include "Generator/SwitchingBoard.h"
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::Off;
@@ -74,6 +75,8 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
     {
         pins[i]->ToState(states[type][i]);
     }
+
+    SwitchingBoard::SetTypeSignal();
 }
 
 
