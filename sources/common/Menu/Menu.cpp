@@ -35,8 +35,7 @@ namespace Menu
         bool OnGovernorButton(const Control &);
     }
 
-    Primitives::Label labelStart(10, 170, "—“¿–“", Color::BLACK, Color::GREEN, Color::WHITE);
-    Primitives::Label labelStop(10, 210, "—“Œœ", Color::BLACK, Color::GREEN, Color::WHITE);
+    Primitives::Label labelMode(10, 170, "—“Œœ", Color::BLACK, Color::GREEN, Color::WHITE);
 }
 
 
@@ -46,8 +45,7 @@ void Menu::Draw()
 
     if (Page::IsSignal(OpenedPage()))
     {
-        labelStart.Draw();
-        labelStop.Draw();
+        labelMode.Draw();
     }
 }
 
@@ -71,23 +69,31 @@ void Menu::SetOpenedPage(Page *page)
 
 void Menu::Input::OnControl(const Control &control)
 {
+    if (!Device::IsStopped())
+    {
+        if (control.key != Key::Start && control.key != Key::Stop)
+        {
+            return;
+        }
+    }
+
     if (!openedPage->OnEventControl(control))
     {
         if (!openedPage->SelectedItem()->OnEventControl(control))
         {
-            if (control.IsRelease() && control.key == Key::Start)
+            if (control.IsRelease())
             {
                 if (control.key == Key::Start)
                 {
                     if (Device::IsStopped() || Device::InPause())
                     {
-                        labelStart.SetColors(Color::WHITE, Color::RED);
+                        labelMode.SetState("“≈—“", Color::WHITE, Color::RED);
 
                         Device::Start();
                     }
                     else if (Device::IsRunning())
                     {
-                        labelStart.SetColors(Color::BLACK, Color::YELLOW);
+                        labelMode.SetState("œ¿”«¿", Color::BLACK, Color::YELLOW);
 
                         Device::Pause();
                     }
@@ -96,12 +102,11 @@ void Menu::Input::OnControl(const Control &control)
                 {
                     Device::Stop();
 
-                    labelStart.SetColors(Color::BLACK, Color::GRAY);
-                    labelStop.SetColors(Color::BLACK, Color::GREEN);
+                    labelMode.SetState("—“Œœ", Color::BLACK, Color::GREEN);
 
                     Timer::SetOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
                     {
-                        labelStop.SetColors(Color::BLACK, Color::GRAY);
+                        labelMode.SetState("—“Œœ", Color::BLACK, Color::GRAY);
                     });
                 }
             }

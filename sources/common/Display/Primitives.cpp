@@ -25,8 +25,10 @@ void Label::Draw()
 }
 
 
-void Label::SetColors(const Color &_color_text, const Color &_color_back)
+void Label::SetState(pchar _text, const Color &_color_text, const Color &_color_back)
 {
+    text = _text;
+
     if (_color_text.Value() != Color::COUNT)
     {
         color_text = _color_text;

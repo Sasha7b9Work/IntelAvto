@@ -41,11 +41,11 @@ bool Device::InPause()
 
 void Device::Start()
 {
-    if (IsStopped())
+    if (IsStopped() || InPause())
     {
         state = State::Running;
 
-        Page::ForCurrentSignal()->StartTest();
+//        Page::ForCurrentSignal()->StartTest();
     }
 }
 
@@ -56,7 +56,7 @@ void Device::Pause()
     {
         state = State::Paused;
 
-        Message::Stop().Transmit();
+//        Message::Stop().Transmit();
     }
 }
 
@@ -67,6 +67,6 @@ void Device::Stop()
     {
         state = State::Stopped;
 
-        Message::Stop().Transmit();
+//        Message::Stop().Transmit();
     }
 }

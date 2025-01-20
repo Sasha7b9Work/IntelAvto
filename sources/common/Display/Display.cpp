@@ -323,7 +323,7 @@ void Display::DrawPartScreen(int num, bool)
     {
         for (int i = 0; i < 5; i++)
         {
-            Text("ÒÅÑÒÈÐÎÂÀÍÈÅ").Write(120, 100 + 20 * i, Color::WHITE);
+            Text("ÒÅÑÒÈÐÎÂÀÍÈÅ").Write(190, 80 + 20 * i, Color::WHITE);
         }
     }
 

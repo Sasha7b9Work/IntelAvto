@@ -30,6 +30,5 @@ namespace Menu
         void FuncEmptyUpdate();
     };
 
-    extern Primitives::Label labelStart;
-    extern Primitives::Label labelStop;
+    extern Primitives::Label labelMode;
 };

@@ -840,11 +840,6 @@
               <FilePath>..\common\Menu\Menu.h</FilePath>
             </File>
             <File>
-              <FileName>Menu.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Menu\Menu.txt</FilePath>
-            </File>
-            <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Menu\MenuItems.cpp</FilePath>
@@ -1901,11 +1896,6 @@
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Menu\Menu.h</FilePath>
-            </File>
-            <File>
-              <FileName>Menu.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Menu\Menu.txt</FilePath>
             </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
