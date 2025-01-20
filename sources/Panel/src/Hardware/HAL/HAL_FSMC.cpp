@@ -244,7 +244,7 @@ static void WindowSet(int s_x, int e_x, int s_y, int e_y)
 static void Delay()
 {
     volatile int i = 0;
-    for (; i < 1; i++)
+    for (; i < 1; i++) //-V1008
     {
     }
 }

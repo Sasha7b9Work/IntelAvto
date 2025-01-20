@@ -27,7 +27,7 @@ void MCP4811::Test()
 {
     uint16 value = 0;
 
-    while (true)
+    while (true) //-V776
     {
         Gateway::Write(value++);
         HAL_TIM::DelayUS(10);

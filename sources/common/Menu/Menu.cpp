@@ -69,9 +69,9 @@ void Menu::SetOpenedPage(Page *page)
 
 void Menu::Input::OnControl(const Control &control)
 {
-    if (!Device::IsStopped())
+    if (!Device::IsStopped())                                               // Когда идёт тест,
     {
-        if (control.key != Key::Start && control.key != Key::Stop)
+        if (control.key != Key::Start && control.key != Key::Stop)          // то обрабатываем только СТАРТ и СТОП
         {
             return;
         }

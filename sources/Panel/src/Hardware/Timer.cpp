@@ -33,7 +33,7 @@ void Timer::UpdateTasks()
 {
     uint time = TIME_MS;
 
-    for (int i = 0; i < TimerTask::Count; i++)
+    for (int i = 0; i < TimerTask::Count; i++) //-V1008
     {
         StructTask &task = tasks[i];
 

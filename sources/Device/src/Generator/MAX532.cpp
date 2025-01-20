@@ -26,7 +26,7 @@ void MAX532::Test()
 {
     uint value = 0;
 
-    while (true)
+    while (true) //-V776
     {
         WriteChannels(value++);
 
