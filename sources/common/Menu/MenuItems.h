@@ -199,6 +199,7 @@ public:
     // Возвращает true, если страница имеет дополнительную функцию отрисовки
     bool IsAddition() const { return additionalDraw != nullptr; }
 
+    // Отображает значения параметров на изображении сигнала
     void DrawParameters() const;
 
     static const Page *ForCurrentSignal();

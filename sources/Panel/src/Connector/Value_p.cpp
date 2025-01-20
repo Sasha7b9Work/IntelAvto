@@ -42,7 +42,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
         *pointer = '\0';
 
-        if (value < 1000)
+        if (value < 1000 || IsRaw())
         {
             std::strcat(pointer, Text("%d", value).c_str());
 

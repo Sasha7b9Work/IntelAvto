@@ -67,6 +67,11 @@ struct Value
     // Возвращает true, если значение находится в пределах [min, max]
     bool FromDrawStrut(const Value &min, const Value &max);
 
+    bool IsRaw() const
+    {
+        return GetType() == TypeValue::Raw;
+    }
+
     TypeValue::E GetType() const
     {
         if (raw & (1 << 30))
@@ -87,7 +92,7 @@ struct Value
     // Вольты для напряжения, миллисекунды для времени
     int ToInt() const
     {
-        int value = (int)(raw & 0x3FFFFFFF);
+        int value = (int)(raw & 0x1FFFFFFF);        // Старший бит - знак, два следующие - тип
 
         if (raw & (uint)(1 << 31))
         {
