@@ -20,5 +20,4 @@ namespace Generator
     void Resume();
 
     void Stop();
-
 }

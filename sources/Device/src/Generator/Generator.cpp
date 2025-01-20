@@ -11,11 +11,11 @@
 
 void Generator::Stop()
 {
-    FPGA::SetTypeSignal(TypeSignal::Off);
+    FPGA::Stop();
 
     MCP4811::Disable();
 
-    FPGA::Stop();
+    FPGA::SetTypeSignal(TypeSignal::Off);
 }
 
 

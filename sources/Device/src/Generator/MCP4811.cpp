@@ -43,13 +43,16 @@ void MCP4811::SetVoltage(const Value &value)
     pin_K1_FOR.ToHi();
     pin_DAC_ENB_HV.ToHi();
 
-    TimeMeterMS().Delay(5000);
+    TimeMeterMS().Delay(2000);
 }
 
 
 void MCP4811::Disable()
 {
     pin_DAC_ENB_HV.ToLow();
+
+    TimeMeterMS().Delay(2000);
+
     pin_K1_FOR.ToLow();
 
     Gateway::Write(Converter(Value(0, TypeValue::Voltage)).Resolve());
