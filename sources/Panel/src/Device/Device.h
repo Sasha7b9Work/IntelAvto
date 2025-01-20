@@ -5,7 +5,7 @@
 namespace Device
 {
     // По нажатию на START вызываем
-    void _Start();
+    void Start();
 
     // По нажатию на STOP вызываем
     void Stop();
