@@ -3,6 +3,7 @@
 
 
 class Parameter;
+struct Value;
 
 
 struct TypeValue
@@ -22,7 +23,7 @@ struct DrawStruct
     void PressKey(int);
     void Draw(int x, int y) const;
     void Clear(Parameter *_param) { index = 0; parameter = _param; }
-    bool ToRaw(uint *result, TypeValue::E) const;
+    bool ToValue(Value *, TypeValue::E) const;
 private:
     bool ConsistDot() const;
     void AppendSymbol(char);
@@ -64,8 +65,8 @@ struct Value
 
     static DrawStruct ds;
 
-    // Возвращает true, если значение находится в пределах [min, max]
-    bool FromDrawStrut(const Value &min, const Value &max);
+    // Зафиксировать значение, ограничив минимальным и максимальным значениями
+    void SetValue(const Value &min, const Value &max);
 
     bool IsRaw() const
     {
@@ -99,12 +100,7 @@ struct Value
     {
         int value = (int)(raw & 0x1FFFFFFF);        // Старший бит - знак, два следующие - тип
 
-        if (raw & (uint)(1 << 31))
-        {
-            value = -value;
-        }
-
-        return value;
+        return (raw & (uint)(1 << 31)) ? -value : value;
     }
 
     // В секунды и в вольты

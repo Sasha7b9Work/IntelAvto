@@ -313,16 +313,14 @@ bool Parameter::OnEventControl(const Control &control)
 {
     if (control.IsRelease())
     {
-        if (control.key == Key::OK || control.key == Key::GovButton)
+        if (control.key == Key::OK ||
+            control.key == Key::GovButton)
         {
             if (IsNowEdited())
             {
                 editable = nullptr;
 
-                if (GetValue().FromDrawStrut(GetMin(), GetMax()))
-                {
-                    Message::SetVoltage(GetValue()).Transmit();
-                }
+                GetValue().SetValue(GetMin(), GetMax());
             }
             else
             {

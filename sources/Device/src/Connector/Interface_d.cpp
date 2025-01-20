@@ -95,13 +95,6 @@ void DInterface::Update()
 
                     Generator::Start3B(Us);
                 }
-                else if (command == Command::SET_VOLTAGE)
-                {
-                    Value U = message->PopValue();
-
-                    MAX532::SetVoltage(U);
-                    MCP4811::SetVoltage(U);
-                }
             }
 
             delete message;
@@ -156,12 +149,6 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
             Value Us((uint)(*pointer++));
 
             return new Message::Start3B(Us);
-        }
-        else if (command == Command::SET_VOLTAGE)
-        {
-            Value U((uint)(*pointer++));
-
-            return new Message::SetVoltage(U);
         }
     }
 

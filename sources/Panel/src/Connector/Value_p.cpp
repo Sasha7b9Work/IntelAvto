@@ -73,7 +73,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 }
 
 
-bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
+bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
 {
     char buffer[128];
 
@@ -87,21 +87,23 @@ bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
 
     if (SU::String2Int(buffer, &value, &end))
     {
-        *result = (value > 0) ? (uint)value : (uint)-value;
+        uint raw = (value > 0) ? (uint)value : (uint)-value;
 
         if (value < 0)
         {
-            *result |= (uint)(1 << 31);
+            raw |= (uint)(1 << 31);
         }
 
         if (type == TypeValue::Time)
         {
-            *result |= (1 << 30);
+            raw |= (1 << 30);
         }
         else if (type == TypeValue::Voltage)
         {
-            *result |= (1 << 29);
+            raw |= (1 << 29);
         }
+
+        *result = Value(raw);
 
         return true;
     }
@@ -110,25 +112,25 @@ bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
 }
 
 
-bool Value::FromDrawStrut(const Value &min, const Value &max)
+void Value::SetValue(const Value &min, const Value &max)
 {
-    uint new_raw = 0;
+    Value new_value(0);
 
-    bool result = false;
-
-    if (ds.ToRaw(&new_raw, GetType()))
+    if (ds.ToValue(&new_value, GetType()))
     {
-        Value value(new_raw);
-
-        if (value.ToFloat() >= min.ToFloat() && value.ToFloat() <= max.ToFloat())
+        if (new_value.ToFloat() < min.ToFloat())
         {
-            raw = new_raw;
-
-            result = true;
+            raw = min.GetRaw();
+        }
+        else if (new_value.ToFloat() > max.ToFloat())
+        {
+            raw = max.GetRaw();
+        }
+        else
+        {
+            raw = new_value.GetRaw();
         }
     }
-
-    return result;
 }
 
 
