@@ -71,7 +71,7 @@ namespace Keyboard
     static int numActions = 0;
 
     // Установленное в true значение означает, что сохранять куда-либо информацию о её состоянии нельзя до отпускания (чтобы не было ложных срабатываний типа Long
-    static bool alreadyLong[NUM_RL][NUM_SL];
+    static bool alreadyLong[NUM_SL][NUM_RL];
     // При обнаружении нажатия кнопки сюда записывается время нажатия
     static uint timePress[NUM_SL][NUM_RL];
 
