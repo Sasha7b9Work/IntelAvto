@@ -98,7 +98,7 @@ bool DrawStruct::ToRaw(uint *result, TypeValue::E type) const
         {
             *result |= (1 << 30);
         }
-        else if (type == TypeValue::Volts)
+        else if (type == TypeValue::Voltage)
         {
             *result |= (1 << 29);
         }

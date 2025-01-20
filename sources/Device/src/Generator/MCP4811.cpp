@@ -39,7 +39,15 @@ void MCP4811::SetVoltage(const Value &value)
 {
     Gateway::Write(Converter(value).Resolve());
 
-//    pin_DAC_ENB_HB.ToHi();
+    pin_DAC_ENB_HV.ToHi();
+}
+
+
+void MCP4811::Disable()
+{
+    Gateway::Write(Converter(Value(0, TypeValue::Voltage)).Resolve());
+
+    pin_DAC_ENB_HV.ToLow();
 }
 
 

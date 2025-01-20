@@ -9,7 +9,7 @@ struct TypeValue
 {
     enum E
     {
-        Volts,      // Вольты
+        Voltage,    // Вольты
         Time,       // Миллисекунды
         Raw,        // Количество, без единиц измерения
         Count
@@ -44,15 +44,15 @@ struct Value
             raw |= (uint)(1 << 31);
         }
 
-        if (type == TypeValue::Raw)         // 29-й и 30-й биты чистые
+        if (type == TypeValue::Raw)             // 29-й и 30-й биты чистые
         {
 
         }
-        else if (type == TypeValue::Time)   // 30-й бит установлен
+        else if (type == TypeValue::Time)       // 30-й бит установлен
         {
             raw |= (1 << 30);
         }
-        else if (type == TypeValue::Volts)  // 29-й бит установлен
+        else if (type == TypeValue::Voltage)    // 29-й бит установлен
         {
             raw |= (1 << 29);
         }
@@ -76,7 +76,7 @@ struct Value
 
         if (raw & (1 << 29))
         {
-            return TypeValue::Volts;
+            return TypeValue::Voltage;
         }
 
         return TypeValue::Raw;
@@ -121,7 +121,7 @@ private:
 
 struct Voltage : public Value
 {
-    Voltage(int voltage) : Value(voltage, TypeValue::Volts) { }
+    Voltage(int voltage) : Value(voltage, TypeValue::Voltage) { }
 };
 
 
