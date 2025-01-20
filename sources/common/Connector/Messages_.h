@@ -9,7 +9,8 @@ struct Command
 {
     enum E
     {
-        START_1,
+        START_1_12V,
+        START_1_24V,
         START_2A,
         START_3A,
         START_3B,
@@ -169,9 +170,19 @@ namespace Message
     };
 
 
-    struct Start1 : public BaseMessage
+    struct Start1_12V : public BaseMessage
     {
-        Start1(const Value &Us, const Value &t1) : BaseMessage(Command::START_1)
+        Start1_12V(const Value &Us, const Value &t1) : BaseMessage(Command::START_1_12V)
+        {
+            Push(Us);   // Амплитуда
+            Push(t1);   // Период повторения
+        }
+    };
+
+
+    struct Start1_24V : public BaseMessage
+    {
+        Start1_24V(const Value &Us, const Value &t1) : BaseMessage(Command::START_1_24V)
         {
             Push(Us);   // Амплитуда
             Push(t1);   // Период повторения

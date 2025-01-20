@@ -26,7 +26,7 @@ namespace FPGA
 
         static Reg ForPeriod()
         {
-            if (TypeSignal::Is1())
+            if (TypeSignal::Is1_12V() || TypeSignal::Is1_24V())
             {
                 return Reg(Reg::Period1);
             }
@@ -58,34 +58,21 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
 {
     TypeSignal::Set(type);
 
-    /*
-    +--------+------+------+------+
-    | Сигнал |PULSE0|PULSE1|PULSE2|
-    +--------+------+------+------+
-    | OFF    |      |      |      |
-    | 1      |  1   |      |      |
-    | 2a     |      |  1   |      |
-    | 3a,b   |  1   |  1   |      |
-    | OFF    |      |      |  1   |
-    +--------+------+------+------+
-    */
+    static const bool states[TypeSignal::Count][3] =
+    {
+        { true,  false, false },
+        { false, true,  false },
+        { true,  true,  false },
+        { false, false, true },
+        { true,  false, true },
+        { false, false, false }
+    };
 
-    pin_NPULES0.ToLow();
-    pin_NPULSE1.ToLow();
-    pin_NPULSE2.ToLow();
+    static PinOut *pins[3] = { &pin_NPULES0, &pin_NPULSE1, &pin_NPULSE2 };
 
-    if (TypeSignal::Is1())
+    for (int i = 0; i < 3; i++)
     {
-        pin_NPULES0.ToHi();
-    }
-    else if (TypeSignal::Is2a())
-    {
-        pin_NPULSE1.ToHi();
-    }
-    else if (TypeSignal::Is3a() || TypeSignal::Is3b())
-    {
-        pin_NPULES0.ToHi();
-        pin_NPULSE1.ToHi();
+        pins[i]->ToState(states[type][i]);
     }
 }
 

@@ -40,7 +40,7 @@ void SwitchingBoard::SetTypeSignal()
 {
     SetOff();
 
-    if (TypeSignal::Is1())
+    if (TypeSignal::Is1_12V() || TypeSignal::Is1_24V())
     {
         pin_A12.ToHi();
         pin_K5_COM.ToHi();

@@ -7,7 +7,9 @@ namespace Generator
 {
     void Stop();
 
-    void Start1(const Value &Us, const Value &t1);
+    void Start1_12V(const Value &Us, const Value &t1);
+
+    void Start1_24V(const Value &Us, const Value &t1);
 
     void Start2A(const Value &Us, const Value &t1);
 

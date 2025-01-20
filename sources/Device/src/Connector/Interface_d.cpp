@@ -62,12 +62,19 @@ void DInterface::Update()
                 {
                     Generator::Stop();
                 }
-                else if (command == Command::START_1)
+                else if (command == Command::START_1_12V)
                 {
                     Value Us = message->PopValue();
                     Value t1 = message->PopValue();
 
-                    Generator::Start1(Us, t1);
+                    Generator::Start1_12V(Us, t1);
+                }
+                else if (command == Command::START_1_24V)
+                {
+                    Value Us = message->PopValue();
+                    Value t1 = message->PopValue();
+
+                    Generator::Start1_24V(Us, t1);
                 }
                 else if (command == Command::START_2A)
                 {
@@ -117,12 +124,19 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         {
             return new Message::Stop();
         }
-        else if (command == Command::START_1)
+        else if (command == Command::START_1_12V)
         {
             Value Us = Value((uint)(*pointer++));       // Амплитуда
             Value t1 = Value((uint)(*pointer++));       // Период повторения
 
-            return new Message::Start1(Us, t1);
+            return new Message::Start1_12V(Us, t1);
+        }
+        else if (command == Command::START_1_24V)
+        {
+            Value Us = Value((uint)(*pointer++));
+            Value t1 = Value((uint)(*pointer++));
+
+            return new Message::Start1_24V(Us, t1);
         }
         else if (command == Command::START_2A)
         {

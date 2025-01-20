@@ -50,7 +50,14 @@ namespace PageSignal1
 
     static void FuncStartTest()
     {
-        Message::Start1(param_Us.GetValue(), param_t1.GetValue()).Transmit();
+        if (VoltageMode::Is12())
+        {
+            Message::Start1_12V(param_Us.GetValue(), param_t1.GetValue()).Transmit();
+        }
+        else
+        {
+            Message::Start1_24V(param_Us.GetValue(), param_t1.GetValue()).Transmit();
+        }
     }
 
 

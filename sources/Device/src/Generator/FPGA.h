@@ -7,17 +7,19 @@ struct TypeSignal
 {
     enum E
     {
-        _1,     // Int
-        _2a,    // Int
-        _3a,    // Int
-        _3b,    // Int
+        _1_12V,
+        _1_24V,
+        _2a,
+        _3a,
+        _3b,
         Off,
         Count
     };
 
     static void Set(E v) { current = v; }
 
-    static bool Is1()  { return current == _1; }
+    static bool Is1_12V() { return current == _1_12V; }
+    static bool Is1_24V() { return current == _1_24V; }
     static bool Is2a() { return current == _2a; }
     static bool Is3a() { return current == _3a; }
     static bool Is3b() { return current == _3b; }
