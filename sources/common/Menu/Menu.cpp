@@ -10,6 +10,7 @@
 #include "Settings/Settings.h"
 #include "Menu/Pages/Pages.h"
 #include "Device/Device.h"
+#include "Hardware/Timer.h"
 #include <cstring>
 
 
@@ -76,7 +77,33 @@ void Menu::Input::OnControl(const Control &control)
         {
             if (control.IsRelease() && control.key == Key::Start)
             {
-                Device::IsRunning() ? Device::Stop() : Device::Start();
+                if (control.key == Key::Start)
+                {
+                    if (Device::IsStopped() || Device::InPause())
+                    {
+                        labelStart.SetColors(Color::WHITE, Color::RED);
+
+                        Device::Start();
+                    }
+                    else if (Device::IsRunning())
+                    {
+                        labelStart.SetColors(Color::BLACK, Color::YELLOW);
+
+                        Device::Pause();
+                    }
+                }
+                else if (control.key == Key::Stop)
+                {
+                    Device::Stop();
+
+                    labelStart.SetColors(Color::BLACK, Color::GRAY);
+                    labelStop.SetColors(Color::BLACK, Color::GREEN);
+
+                    Timer::SetOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
+                    {
+                        labelStop.SetColors(Color::BLACK, Color::GRAY);
+                    });
+                }
             }
         }
     }

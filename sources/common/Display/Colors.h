@@ -15,6 +15,7 @@ struct Color
     static Color WHITE;             // Белый
     static Color BLACK;             // Чёрный фон
     static Color GRAY;
+    static Color YELLOW;
 
     static const int COUNT = 13;
 

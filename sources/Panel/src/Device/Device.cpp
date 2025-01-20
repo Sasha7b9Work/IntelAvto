@@ -33,7 +33,7 @@ bool Device::IsRunning()
 }
 
 
-bool Device::IsPause()
+bool Device::InPause()
 {
     return state == State::Paused;
 }
@@ -41,26 +41,32 @@ bool Device::IsPause()
 
 void Device::Start()
 {
-    Page::ForCurrentSignal()->StartTest();
-
-    if (state == State::Stopped)
+    if (IsStopped())
     {
         state = State::Running;
+
+        Page::ForCurrentSignal()->StartTest();
     }
-    else if (state == State::Running)
+}
+
+
+void Device::Pause()
+{
+    if (IsRunning())
     {
         state = State::Paused;
-    }
-    else if (state == State::Paused)
-    {
-        state = State::Running;
+
+        Message::Stop().Transmit();
     }
 }
 
 
 void Device::Stop()
 {
-    Message::Stop().Transmit();
+    if (Device::IsRunning() || Device::InPause())
+    {
+        state = State::Stopped;
 
-    state = State::Stopped;
+        Message::Stop().Transmit();
+    }
 }

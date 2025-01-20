@@ -7,6 +7,7 @@
 #include "Settings/Settings.h"
 #include "Connector/Messages_.h"
 #include "Menu/Pages/Pages.h"
+#include "Hardware/Timer.h"
 
 
 int main(void)
@@ -23,5 +24,6 @@ int main(void)
     {
         Menu::Input::Update();
         Display::Update();
+        Timer::UpdateTasks();
     }
 }

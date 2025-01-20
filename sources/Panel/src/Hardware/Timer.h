@@ -6,6 +6,25 @@
 #define TIME_MS HAL_TIM::TimeMS()
 
 
+struct TimerTask
+{
+    enum E
+    {
+        ChangeColorOnLabelStop,
+        Count
+    };
+};
+
+
+namespace Timer
+{
+    // ќднократное значение - выполн€етс€ только один раз
+    void SetOnceTask(TimerTask::E, uint time, void (*func)());
+
+    void UpdateTasks();
+}
+
+
 struct TimeMeterMS
 {
     TimeMeterMS()

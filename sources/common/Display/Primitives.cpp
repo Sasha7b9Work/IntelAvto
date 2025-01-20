@@ -25,6 +25,20 @@ void Label::Draw()
 }
 
 
+void Label::SetColors(const Color &_color_text, const Color &_color_back)
+{
+    if (_color_text.Value() != Color::COUNT)
+    {
+        color_text = _color_text;
+    }
+
+    if (_color_back.Value() != Color::COUNT)
+    {
+        color_back = _color_back;
+    }
+}
+
+
 void Rect::FillRounded(int x, int y, int round, Color colorFill, Color colorBound)
 {
     DrawRounded(x, y, round, colorBound);

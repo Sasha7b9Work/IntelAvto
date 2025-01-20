@@ -21,7 +21,8 @@ static ColorScheme def_colors[3] =
         Color::Make(0,   0,   248),     // TYPE_BLUE        6
         Color::Make(248, 248, 248),     // WHITE            7
         Color::Make(0,   0,   0),       // EMPTY            8
-        Color::Make(127, 127, 127)      // GRAY             9
+        Color::Make(127, 127, 127),     // GRAY             9
+        Color::Make(248, 248, 0)        // YELLOW          10
     },
     {
         Color::Make(248, 248, 248),     // FILL             0
@@ -33,7 +34,8 @@ static ColorScheme def_colors[3] =
         Color::Make(0,   0,   248),     // TYPE_BLUE        6
         Color::Make(248, 248, 248),     // WHITE            7
         Color::Make(112, 8,   8),       // EMPTY            8
-        Color::Make(127, 127, 127)      // GRAY             9
+        Color::Make(127, 127, 127),     // GRAY             9
+        Color::Make(248, 248, 0)        // YELLOW          10
     },
     {
         Color::Make(248, 248, 248),     // FILL             0
@@ -45,7 +47,8 @@ static ColorScheme def_colors[3] =
         Color::Make(0,   0,   248),     // TYPE_BLUE        6
         Color::Make(248, 248, 248),     // WHITE            7
         Color::Make(0,   0,   0),       // EMPTY            8
-        Color::Make(127, 127, 127)      // GRAY             9
+        Color::Make(127, 127, 127),     // GRAY             9
+        Color::Make(248, 248, 0)        // YELLOW          10
     }
 };
 

@@ -16,6 +16,7 @@ Color Color::BLUE(6);
 Color Color::WHITE(7);
 Color Color::BLACK(8);
 Color Color::GRAY(9);
+Color Color::YELLOW(10);
 
 
 uint &Color::Value() const
