@@ -31,8 +31,6 @@ struct Key
         Stop,       // 21
         Count
     };
-
-    static pchar Name(E);
 };
 
 

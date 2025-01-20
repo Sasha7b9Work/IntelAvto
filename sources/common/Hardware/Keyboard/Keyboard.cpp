@@ -12,34 +12,34 @@ namespace Keyboard
 #define NUM_RL 5
 #define NUM_SL 5
 
-#define PIN_SL0  GPIO_PIN_10    // 69   PA10
+#define PIN_SL0  GPIO_PIN_10    // 69   PA10        SL0
 #define PORT_SL0 GPIOA
 
-#define PIN_SL1  GPIO_PIN_8     // 67   PA8
+#define PIN_SL1  GPIO_PIN_8     // 67   PA8         SL1
 #define PORT_SL1 GPIOA
 
-#define PIN_SL2  GPIO_PIN_9     // 66   PC9
+#define PIN_SL2  GPIO_PIN_9     // 66   PC9         SL2
 #define PORT_SL2 GPIOC
 
-#define PIN_SL3  GPIO_PIN_8     // 65   PC8
+#define PIN_SL3  GPIO_PIN_8     // 65   PC8         SL3
 #define PORT_SL3 GPIOC
 
-#define PIN_SL4  GPIO_PIN_12    // 80   PC12
+#define PIN_SL4  GPIO_PIN_12    // 80   PC12        SL4
 #define PORT_SL4 GPIOC
 
-#define PIN_RL0  GPIO_PIN_7     // 64   PC7
+#define PIN_RL0  GPIO_PIN_7     // 64   PC7         RL0
 #define PORT_RL0 GPIOC
 
-#define PIN_RL1  GPIO_PIN_6     // 63   PC6
+#define PIN_RL1  GPIO_PIN_6     // 63   PC6         RL1
 #define PORT_RL1 GPIOC
 
-#define PIN_RL2  GPIO_PIN_15    // 62   PD15
+#define PIN_RL2  GPIO_PIN_15    // 62   PD15        RL2
 #define PORT_RL2 GPIOD
 
-#define PIN_RL3  GPIO_PIN_14    // 61   PD14
+#define PIN_RL3  GPIO_PIN_14    // 61   PD14        RL3
 #define PORT_RL3 GPIOD
 
-#define PIN_RL4  GPIO_PIN_11    // 79   PC11
+#define PIN_RL4  GPIO_PIN_11    // 79   PC11        RL4
 #define PORT_RL4 GPIOD
 
 #define PIN_ENC1  GPIO_PIN_11   // 58   PD11
@@ -231,7 +231,7 @@ bool Keyboard::Init()
 
 void Keyboard::Set_All_SL(int st)
 {
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < NUM_SL; i++)
     {
         Set_SL(i, st);
     }
@@ -278,6 +278,9 @@ void Keyboard::InitPins()
 
     is.Pin = PIN_SL3;
     HAL_GPIO_Init(PORT_SL3, &is);
+
+    is.Pin = PIN_SL4;
+    HAL_GPIO_Init(PORT_SL4, &is);
 
     is.Mode = GPIO_MODE_INPUT;
 
@@ -362,40 +365,6 @@ Control Keyboard::NextControl()
 
     --numActions;
     return result;
-}
-
-
-pchar Key::Name(E value)
-{
-    static pchar names[] =
-    {
-        "Ручка нажать",
-        "РЕЖИМ",
-        "ИНДИКАЦИЯ",
-        "3",
-        "<-",
-        "->",
-        "6",
-        "7",
-        "8",
-        "9",
-        "A",
-        "B",
-        "C",
-        "D",
-        "F5",
-        "ESC",
-        "Left",
-        "Right",
-        "Ручка влево",
-        "Ручка вправо",
-        "Channel",
-        "ТЕСТ",
-        "АВТО",
-        "NULL"
-    };
-
-    return names[value];
 }
 
 

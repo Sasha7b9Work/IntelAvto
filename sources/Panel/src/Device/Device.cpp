@@ -39,7 +39,7 @@ bool Device::IsPause()
 }
 
 
-void Device::Start()
+void Device::_Start()
 {
     Page::ForCurrentSignal()->StartTest();
 
