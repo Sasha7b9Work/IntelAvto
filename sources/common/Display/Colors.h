@@ -32,7 +32,7 @@ struct Color
     // —сылка на значение
     uint &Value() const;
 
-    static uint Make(uint8 r, uint8 g, uint8 b) { return ((uint)((r) | ((g) << 8) | ((b) << 16))); }
+    static uint Make(uint8 r, uint8 g, uint8 b) { return ((uint)((b) | ((g) << 8) | ((r) << 16))); }
 
 private:
 
