@@ -37,7 +37,7 @@ struct Value
 {
     Value(int value, TypeValue::E type)
     {
-        raw = (uint)value;
+        raw = value > 0 ? (uint)value : (uint)(-value);
 
         if (value < 0)
         {
