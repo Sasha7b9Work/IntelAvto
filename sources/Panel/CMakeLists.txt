@@ -63,7 +63,7 @@ file(GLOB HARDWARE_USBH       ../common/Hardware/USBH/*.*)
 file(GLOB HARDWARE_KEYBOARD   ../common/Hardware/Keyboard/*.*)
 file(GLOB MENU                      src/Menu/*.*)
 file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
-file(GLOB SETTINGS            ../common/Settings/*.*)
+file(GLOB SETTINGS                  src/Settings/*.*)
 file(GLOB UTILS               ../common/Utils/*.*)
 
 

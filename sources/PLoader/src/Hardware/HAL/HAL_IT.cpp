@@ -1,7 +1,5 @@
 // 2022/01/17 16:11:59 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Hardware/FDrive.h"
-#include <usbh_core.h>
 #include <stm32f4xx_hal.h>
 
 
@@ -26,7 +24,7 @@ extern "C" {
 
     void OTG_FS_IRQHandler()
     {
-        HAL_HCD_IRQHandler(reinterpret_cast<HCD_HandleTypeDef *>(FDrive::GetHandleHCD()));
+
     }
 
 #ifdef __cplusplus
