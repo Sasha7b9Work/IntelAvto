@@ -7,6 +7,7 @@
 #include "Generator/MAX532.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL_PINS.h"
+#include "Connector/Device/Value_.h"
 
 
 void Generator::Stop()
@@ -37,8 +38,8 @@ void Generator::Start1_12V(const Value &Us, const Value &t1)
 
     FPGA::WritePeriod(t1);
 
-    FPGA::SetTypeSignal(TypeSignal::_1_12V);
-
+    FPGA::SetTypeSignal(TypeSignal::_1_12V); 
+    
     MCP4811::SetVoltage(Us);
 
     FPGA::Start();
@@ -52,7 +53,7 @@ void Generator::Start1_24V(const Value &Us, const Value &t1)
     FPGA::SetTypeSignal(TypeSignal::_1_24V);
 
     FPGA::WritePeriod(t1);
-
+    
     MCP4811::SetVoltage(Us);
 
     FPGA::Start();

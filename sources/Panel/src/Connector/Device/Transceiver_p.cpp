@@ -5,6 +5,7 @@
 #include "Utils/Debug.h"
 #include "Connector/Device/Transceiver_.h"
 #include "Connector/Device/Messages_.h"
+#include "Display/Display_.h"
 
 
 namespace Transceiver
@@ -44,17 +45,26 @@ void Transceiver::Transmit(BaseMessage *message)
         recv_crc = HAL_SPI1::ReceiveUInt();
 
         HAL_SPI1::CS(false);
+
+        Display::num_sends = counter;
+        Display::crc_trans = message->CalculateCRC();
+        Display::crc_recv = recv_crc;
+
+        if ((counter % 10) == 0)
+        {
+            Display::Update();
+        }
     }
 
-    if (counter > 1)
-    {
-        counter++;
-    }
+    Display::num_sends = counter;
+    Display::crc_trans = message->CalculateCRC();
+    Display::crc_recv = recv_crc;
+
 #endif
 }
 
 
 void Transceiver::Delay()
 {
-    HAL_TIM::DelayUS(4);
+    HAL_TIM::DelayMS(2);
 }

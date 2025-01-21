@@ -5,6 +5,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
 #include "Connector/Device/Value_.h"
+#include <cmath>
 
 
 namespace MCP4811
@@ -27,12 +28,20 @@ namespace MCP4811
 
 void MCP4811::Test()
 {
-    uint16 value = 0;
+    static int voltage = 0;
 
     while (true) //-V776
     {
-        Gateway::Write(value++);
-        HAL_TIM::DelayUS(10);
+        Value value(voltage++, TypeValue::Voltage);
+
+        if (voltage > 600)
+        {
+            voltage = 0;
+        }
+
+        SetVoltage(value);
+
+        HAL_TIM::DelayMS(10);
     }
 }
 
@@ -70,7 +79,7 @@ uint16 MCP4811::Converter::Resolve() const
     *  
     */
 
-    return (uint16)(1024 * value.ToFloat() / 2.048f / 2.0f / 200.0f);
+    return (uint16)(1024 * std::fabsf(value.ToFloat()) / 2.048f / 2.0f / 200.0f);
 }
 
 

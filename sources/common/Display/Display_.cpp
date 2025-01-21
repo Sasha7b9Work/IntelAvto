@@ -21,6 +21,10 @@ using namespace Primitives;
 
 namespace Display
 {
+    int num_sends = 0;
+    uint crc_trans = 0;
+    uint crc_recv = 0;
+
     // Нарисовать подсказку
     void DrawHint(int x, int y);
 
@@ -316,7 +320,7 @@ void Display::DrawPartScreen(int num, bool)
 
     if ((counter++) % 3)
     {
-        Rect(10, 10).Fill(460, 260, Color::WHITE);
+        Rect(5, 5).Fill(Display::PHYSICAL_WIDTH - 5, Display::PHYSICAL_HEIGHT - 5, Color::WHITE);
     }
 
     if (Device::IsRunning())
@@ -326,6 +330,10 @@ void Display::DrawPartScreen(int num, bool)
             Text("ТЕСТИРОВАНИЕ").Write(190, 80 + 20 * i, Color::WHITE);
         }
     }
+
+    Text("%d", num_sends).Write(420, 180, Color::WHITE);
+    Text("%08X", crc_trans).Write(400, 210);
+    Text("%08X", crc_recv).Write(400, 240);
 
     Display::EndScene();
 
