@@ -1,8 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Connector/Messages_.h"
-#include "Connector/Transceiver_.h"
-#include "Connector/Interface_d.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Queue.h"
@@ -11,6 +8,8 @@
 #include "Generator/Generator.h"
 #include "Generator/MAX532.h"
 #include "Generator/MCP4811.h"
+#include "Connector/Device/Interface_d.h"
+#include "Connector/Device/Messages_.h"
 #include <cstdlib>
 
 
@@ -47,7 +46,7 @@ void DInterface::Update()
         BaseMessage *message = CreateMessage(buffer, size);
 
         uint value = message ? message->CalculateCRC() : 0;
-        
+
         HAL_SPI1::TransmitUInt(value);
 
         if (message)

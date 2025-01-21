@@ -5,6 +5,7 @@
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Generator/SwitchingBoard.h"
+#include "Connector/Device/Value_.h"
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::Off;

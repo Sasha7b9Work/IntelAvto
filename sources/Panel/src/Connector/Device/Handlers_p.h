@@ -2,6 +2,9 @@
 #pragma once
 
 
+struct BaseMessage;
+
+
 namespace PHandlers
 {
     bool Processing(BaseMessage *message);

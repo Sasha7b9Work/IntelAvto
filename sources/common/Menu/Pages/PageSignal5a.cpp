@@ -4,7 +4,6 @@
 #include "Menu/MenuItemsDef.h"
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
-#include "Connector/Messages_.h"
 
 
 namespace PageSignal5a

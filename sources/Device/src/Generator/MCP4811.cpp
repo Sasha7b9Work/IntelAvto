@@ -4,6 +4,7 @@
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
+#include "Connector/Device/Value_.h"
 
 
 namespace MCP4811

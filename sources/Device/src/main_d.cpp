@@ -3,9 +3,9 @@
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Hardware/Timer.h"
-#include "Connector/Interface_d.h"
 #include "Generator/Generator.h"
 #include "Generator/MAX532.h"
+#include "Connector/Device/Interface_d.h"
 
 
 int main()

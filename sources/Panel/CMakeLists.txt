@@ -42,10 +42,10 @@ add_compile_options(
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 file(GLOB SRC                       src/*.*)
-file(GLOB CONNECTOR           ../common/Connector/Messages_.*
-                              ../common/Connector/Transceiver_.h
-                              ../common/Connector/Value_.h
-                                    src/Connector/*.*)
+file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
+                              ../common/Connector/Device/Transceiver_.h
+                              ../common/Connector/Device/Value_.h
+                                    src/Connector/Device/*.*)
 file(GLOB DEVICE                    src/Device/*.*)
 file(GLOB DISPLAY             ../common/Display/*.*)
 file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
@@ -67,7 +67,7 @@ file(GLOB UTILS               ../common/Utils/*.*)
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
 source_group(src               FILES ${SRC})
-source_group(Connector         FILES ${CONNECTOR})
+source_group(Connector/Device  FILES ${CONNECTOR_DEVICE})
 source_group(Device            FILES ${DEVICE})
 source_group(Display           FILES ${DISPLAY})
 source_group(Display/Font      FILES ${DISPLAY_FONT})
@@ -91,7 +91,7 @@ set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
     ${SRC}
-    ${CONNECTOR}
+    ${CONNECTOR_DEVICE}
     ${DEVICE}
     ${DISPLAY}
     ${DISPLAY_FONT}

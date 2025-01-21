@@ -1,13 +1,13 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Connector/Interface_p.h"
-#include "Connector/Transceiver_.h"
 #include "Display/Console.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Debug.h"
-#include "Connector/Handlers_p.h"
 #include "Utils/List.h"
+#include "Connector/Device/Interface_p.h"
+#include "Connector/Device/Transceiver_.h"
+#include "Connector/Device/Messages_.h"
 #include <cstdlib>
 
 

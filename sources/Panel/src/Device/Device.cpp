@@ -1,8 +1,8 @@
 // 2024/02/01 10:16:08 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Device/Device.h"
-#include "Connector/Messages_.h"
 #include "Menu/MenuItems.h"
+#include "Connector/Device/Messages_.h"
 
 
 namespace Device

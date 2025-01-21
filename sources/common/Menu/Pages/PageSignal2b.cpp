@@ -4,7 +4,6 @@
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItemsDef.h"
-#include "Connector/Messages_.h"
 
 
 namespace PageSignal2b

@@ -2,6 +2,9 @@
 #pragma once
 
 
+struct BaseMessage;
+
+
 class Queue
 {
 public:

@@ -1,8 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Connector/Interface_p.h"
 #include "Display/Text.h"
 #include "Utils/List.h"
+#include "Connector/Device/Interface_p.h"
 
 
 template void               List<Task>::Append(Task *);

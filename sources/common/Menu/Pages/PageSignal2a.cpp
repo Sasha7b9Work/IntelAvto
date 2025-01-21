@@ -4,9 +4,9 @@
 #include "Menu/MenuItemsDef.h"
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
-#include "Connector/Messages_.h"
 #include "Display/Text.h"
 #include "Display/Display.h"
+#include "Connector/Device/Messages_.h"
 
 
 namespace PageSignal2a

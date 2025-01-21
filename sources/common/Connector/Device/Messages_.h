@@ -1,7 +1,7 @@
 // 2024/02/01 10:54:19 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Connector/Value_.h"
 #include "Utils/StringUtils.h"
+#include "Connector/Device/Value_.h"
 #include <cstring>
 
 
