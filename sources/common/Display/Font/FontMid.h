@@ -16,7 +16,6 @@
 #include <stddef.h>
 #include <stdbool.h>
 #include <assert.h>
-#include "Display/Colors.h"
 #include "defines.h"
 
 #define		FONTMID_STARTINDEX		32	// number of rows with the same pixels

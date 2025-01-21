@@ -1,9 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Console.h"
-#include "Display/Display.h"
-#include "Display/Primitives.h"
-#include "Display/Text.h"
+#include "Display/Console_.h"
+#include "Display/Display_.h"
 #include <cstring>
 #include <cstdio>
 

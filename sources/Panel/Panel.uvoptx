@@ -972,7 +972,7 @@
 
   <Group>
     <GroupName>Display</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -983,8 +983,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Colors.cpp</PathWithFileName>
-      <FilenameWithoutPath>Colors.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Colors_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Colors_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -995,8 +995,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Colors.h</PathWithFileName>
-      <FilenameWithoutPath>Colors.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Colors_.h</PathWithFileName>
+      <FilenameWithoutPath>Colors_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1007,8 +1007,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Console.cpp</PathWithFileName>
-      <FilenameWithoutPath>Console.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Console_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Console_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1019,8 +1019,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Console.h</PathWithFileName>
-      <FilenameWithoutPath>Console.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Console_.h</PathWithFileName>
+      <FilenameWithoutPath>Console_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1031,8 +1031,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Display.cpp</PathWithFileName>
-      <FilenameWithoutPath>Display.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Display_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Display_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1043,8 +1043,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Display.h</PathWithFileName>
-      <FilenameWithoutPath>Display.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Display_.h</PathWithFileName>
+      <FilenameWithoutPath>Display_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1055,8 +1055,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Display_stm.cpp</PathWithFileName>
-      <FilenameWithoutPath>Display_stm.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Display_stm_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Display_stm_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1067,8 +1067,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Primitives.cpp</PathWithFileName>
-      <FilenameWithoutPath>Primitives.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Primitives_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Primitives_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1079,8 +1079,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Primitives.h</PathWithFileName>
-      <FilenameWithoutPath>Primitives.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Primitives_.h</PathWithFileName>
+      <FilenameWithoutPath>Primitives_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1091,8 +1091,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Symbols.cpp</PathWithFileName>
-      <FilenameWithoutPath>Symbols.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Symbols_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Symbols_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1103,8 +1103,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Symbols.h</PathWithFileName>
-      <FilenameWithoutPath>Symbols.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Symbols_.h</PathWithFileName>
+      <FilenameWithoutPath>Symbols_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1115,8 +1115,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Text.cpp</PathWithFileName>
-      <FilenameWithoutPath>Text.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Text_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Text_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1127,8 +1127,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Display\Text.h</PathWithFileName>
-      <FilenameWithoutPath>Text.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Display\Text_.h</PathWithFileName>
+      <FilenameWithoutPath>Text_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

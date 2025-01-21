@@ -1,8 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Utils/Log.h"
-#include "Display/Console.h"
-#include "Display/Text.h"
+#include "Display/Console_.h"
+#include "Display/Text_.h"
 
 
 void Log::Message(pchar message)

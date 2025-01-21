@@ -1,7 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Font/Font.h"
-#include "Display/Colors.h"
+
+
+struct Color;
 
 
 class Text
@@ -9,12 +11,12 @@ class Text
 public:
     explicit Text(pchar format, ...);
     ~Text();
-    int Write(int x, int y, Color color);
+    int Write(int x, int y, const Color &);
     int Write(int x, int y);
-    int Write(int x, int y, int width, Color color);
+    int Write(int x, int y, int width, const Color &);
     int Write(int x, int y, int width);
     int WriteScaled(int x, int y, int size);
-    void WriteInCenterRect(int x, int y, int width, int height, Color color);
+    void WriteInCenterRect(int x, int y, int width, int height, const Color &);
     void WriteInCenterRect(int x, int y, int width, int height);
     pchar c_str() const
     {
@@ -40,7 +42,7 @@ private:
     int WriteSymbolsScaled(char *start, int num, int x, int y, int size) const;
 
     // Нарисовать num символов, начиная с адреса старт, в поле шириной width символов
-    void WriteSymbols(char *start, int num, int x, int y, int width, Color color) const;
+    void WriteSymbols(char *start, int num, int x, int y, int width, const Color &) const;
 
     void WriteSymbols(char *start, int num, int x, int y, int width) const;
 

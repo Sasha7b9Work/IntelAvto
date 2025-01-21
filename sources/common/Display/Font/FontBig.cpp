@@ -18,8 +18,7 @@
 #include <stdbool.h>
 #include <cstring>
 #include "Display/Font/FontBig.h"
-#include "Display/Primitives.h"
-#include "Display/Display.h"
+#include "Display/Primitives_.h"
 
 using namespace Primitives;
 

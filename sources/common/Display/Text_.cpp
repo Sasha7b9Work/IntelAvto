@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Display.h"
-#include "Display/Primitives.h"
-#include "Display/Text.h"
 #include "Menu/MenuItems.h"
+#include "Display/Primitives_.h"
+#include "Display/Text_.h"
+#include "Display/Display_.h"
 #include <cstring>
 #include <cstdio>
 #include <cstdarg>
@@ -62,7 +62,7 @@ void Text::Create(pchar _text)
 }
 
 
-int Text::Write(int x, int y, Color color)
+int Text::Write(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
@@ -124,7 +124,7 @@ int Text::WriteSymbolsScaled(char *start, int num, int x, int y, int size) const
 }
 
 
-int Text::Write(int x, int y, int _width, Color color)
+int Text::Write(int x, int y, int _width, const Color &color)
 {
     color.SetAsCurrent();
 
@@ -147,7 +147,7 @@ int Text::Write(int x, int y, int width)
 }
 
 
-void Text::WriteSymbols(char *start, int num, int x, int y, int width, Color color) const
+void Text::WriteSymbols(char *start, int num, int x, int y, int width, const Color &color) const
 {
     color.SetAsCurrent();
 
@@ -165,7 +165,7 @@ void Text::WriteSymbols(char *start, int num, int x, int y, int width) const
 }
 
 
-void Text::WriteInCenterRect(int x, int y, int width, int height, Color color)
+void Text::WriteInCenterRect(int x, int y, int width, int height, const Color &color)
 {
     color.SetAsCurrent();
 

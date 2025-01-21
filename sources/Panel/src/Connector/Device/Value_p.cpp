@@ -1,8 +1,8 @@
 // 2023/12/22 14:55:58 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Text.h"
 #include "Utils/StringUtils.h"
 #include "Menu/MenuItems.h"
+#include "Display/Text_.h"
 #include <cstring>
 
 

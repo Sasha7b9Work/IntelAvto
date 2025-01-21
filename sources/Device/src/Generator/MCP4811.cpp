@@ -93,7 +93,7 @@ void MCP4811::Gateway::Write(uint16 value)
     WriteBit(false);
     WriteBit(false);
 
-    WriteBit(false);    // Не помню, зачем
+//    WriteBit(false);    // Не помню, зачем
 }
 
 

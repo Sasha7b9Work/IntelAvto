@@ -1,8 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Colors.h"
-#include "Display/Display.h"
 #include "Hardware/HAL/HAL.h"
+#include "Display/Colors_.h"
 #include <stm32f4xx_hal.h>
 
 

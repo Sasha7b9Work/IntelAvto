@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Display/Primitives.h"
+#include "Display/Primitives_.h"
 
 
 class Page;

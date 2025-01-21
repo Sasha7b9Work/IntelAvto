@@ -1,9 +1,9 @@
 // 2023/09/08 21:15:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Primitives.h"
 #include "Display/Font/Font.h"
-#include "Display/Text.h"
 #include "Settings/Settings.h"
+#include "Display/Primitives_.h"
+#include "Display/Text_.h"
 
 
 using namespace Primitives;

@@ -1,9 +1,5 @@
 // 2023/09/08 20:56:57 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Console.h"
-#include "Display/Display.h"
-#include "Display/Primitives.h"
-#include "Display/Text.h"
 #include "Hardware/HAL/HAL.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
@@ -11,6 +7,10 @@
 #include "Settings/Settings.h"
 #include "Menu/Pages/Pages.h"
 #include "Device/Device.h"
+#include "Display/Display_.h"
+#include "Display/Font/Font.h"
+#include "Display/Text_.h"
+#include "Display/Console_.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

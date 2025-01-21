@@ -1,6 +1,5 @@
 // 2023/09/08 20:52:34 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Display.h"
 #include "Display/Font/Font.h"
 #include "Hardware/Keyboard/Keyboard.h"
 #include "Menu/MenuItems.h"

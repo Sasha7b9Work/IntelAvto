@@ -2,9 +2,7 @@
 #include "defines.h"
 #include "Settings.h"
 #include "Utils/Math.h"
-#include "Display/Colors.h"
 #include "Hardware/HAL/HAL.h"
-#include "Display/Text.h"
 
 
 TypeSignal::E TypeSignal::current = TypeSignal::_1;

@@ -4,9 +4,9 @@
 #include "Menu/MenuItemsDef.h"
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
-#include "Display/Text.h"
-#include "Display/Display.h"
 #include "Connector/Device/Messages_.h"
+#include "Display/Text_.h"
+#include "Display/Display_.h"
 
 
 namespace PageSignal3b

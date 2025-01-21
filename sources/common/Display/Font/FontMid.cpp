@@ -32,8 +32,7 @@
 	//#include "Application.h"
 #include "FontMid.h"
 #include "Display/Font/FontMid.h"
-#include "Display/Primitives.h"
-#include "Display/Display.h"
+#include "Display/Primitives_.h"
 using namespace Primitives;
 
 static const uint16_t	FontMidRow[] = {

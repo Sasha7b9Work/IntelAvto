@@ -4,8 +4,8 @@
 #include "Menu/MenuItemsDef.h"
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
-#include "Display/Text.h"
-#include "Display/Display.h"
+#include "Display/Text_.h"
+#include "Display/Display_.h"
 
 
 namespace PageSignal5b

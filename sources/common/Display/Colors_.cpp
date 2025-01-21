@@ -1,8 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Colors.h"
-#include "Display/Display.h"
-#include "Display/Primitives.h"
 #include "Settings/Settings.h"
 
 

@@ -12,7 +12,6 @@
 
 #define     NDEBUG
 
-#include "Display/Colors.h"
 #include "defines.h"
 
 #define     BIGSTART_INDEX      64      // number of rows with the same pixels

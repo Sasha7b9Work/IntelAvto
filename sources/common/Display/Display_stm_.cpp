@@ -1,12 +1,11 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Colors.h"
-#include "Display/Display.h"
-#include "Display/Primitives.h"
-#include "Display/Text.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Math.h"
 #include "Settings/Settings.h"
+#include "Display/Primitives_.h"
+#include "Display/Display_.h"
+#include "Display/Text_.h"
 #include <cmath>
 #include <cstring>
 #include <cstdlib>

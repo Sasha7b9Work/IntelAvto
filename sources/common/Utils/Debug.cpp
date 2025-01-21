@@ -3,15 +3,13 @@
 #include "Log.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Debug.h"
-#include "Display/Text.h"
+#include "Display/Text_.h"
 
-//static uint timeStart;
-//static uint timePrev;
 static uint timeCounter;
-//static uint timeStartCounter;
 
 // Время старта профилировщика
 volatile static uint timeStartMS = 0;
+
 // Время предыдущей точки профилировщика
 volatile static uint timePrevMS = 0;
 
