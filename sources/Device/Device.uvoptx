@@ -166,7 +166,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Generator\MCP4811.cpp</Filename>
+          <Filename>D:\Projects\IntelAvto\sources\Panel\src\Generator\MCP4811.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Device2\src/Generator/MCP4811.cpp\90</Expression>
         </Bp>
@@ -182,7 +182,7 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\src\Generator\Generator.cpp</Filename>
+          <Filename>D:\Projects\IntelAvto\sources\Panel\src\Generator\Generator.cpp</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Device2\src/Generator/Generator.cpp\46</Expression>
         </Bp>
@@ -1081,7 +1081,7 @@
 
   <Group>
     <GroupName>Generator</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

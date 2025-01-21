@@ -1572,7 +1572,7 @@
 
   <Group>
     <GroupName>Menu</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1583,7 +1583,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Menu.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Menu.cpp</PathWithFileName>
       <FilenameWithoutPath>Menu.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1595,7 +1595,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Menu.h</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Menu.h</PathWithFileName>
       <FilenameWithoutPath>Menu.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1607,7 +1607,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\MenuItems.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\MenuItems.cpp</PathWithFileName>
       <FilenameWithoutPath>MenuItems.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1619,7 +1619,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\MenuItems.h</PathWithFileName>
+      <PathWithFileName>.\src\Menu\MenuItems.h</PathWithFileName>
       <FilenameWithoutPath>MenuItems.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1631,7 +1631,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\MenuItemsDef.h</PathWithFileName>
+      <PathWithFileName>.\src\Menu\MenuItemsDef.h</PathWithFileName>
       <FilenameWithoutPath>MenuItemsDef.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1651,7 +1651,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageMain.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageMain.cpp</PathWithFileName>
       <FilenameWithoutPath>PageMain.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1663,7 +1663,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageMain.h</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageMain.h</PathWithFileName>
       <FilenameWithoutPath>PageMain.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1675,7 +1675,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\Pages.h</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\Pages.h</PathWithFileName>
       <FilenameWithoutPath>Pages.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1687,7 +1687,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal1.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal1.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal1.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1699,7 +1699,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal2a.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal2a.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal2a.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1711,7 +1711,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal2b.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal2b.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal2b.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1723,7 +1723,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal3a.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal3a.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal3a.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1735,7 +1735,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal3b.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal3b.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal3b.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1747,7 +1747,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal4.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal4.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal4.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1759,7 +1759,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal5a.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal5a.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal5a.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1771,7 +1771,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Menu\Pages\PageSignal5b.cpp</PathWithFileName>
+      <PathWithFileName>.\src\Menu\Pages\PageSignal5b.cpp</PathWithFileName>
       <FilenameWithoutPath>PageSignal5b.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

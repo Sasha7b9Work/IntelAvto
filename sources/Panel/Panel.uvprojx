@@ -877,27 +877,27 @@
             <File>
               <FileName>Menu.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Menu.cpp</FilePath>
+              <FilePath>.\src\Menu\Menu.cpp</FilePath>
             </File>
             <File>
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\Menu.h</FilePath>
+              <FilePath>.\src\Menu\Menu.h</FilePath>
             </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\MenuItems.cpp</FilePath>
+              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItems.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\MenuItems.h</FilePath>
+              <FilePath>.\src\Menu\MenuItems.h</FilePath>
             </File>
             <File>
               <FileName>MenuItemsDef.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\MenuItemsDef.h</FilePath>
+              <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -907,57 +907,57 @@
             <File>
               <FileName>PageMain.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageMain.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
             </File>
             <File>
               <FileName>PageMain.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\Pages\PageMain.h</FilePath>
+              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
             </File>
             <File>
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\Pages\Pages.h</FilePath>
+              <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
               <FileName>PageSignal1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal1.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal1.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal2a.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal2a.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal2a.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal2b.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal2b.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal2b.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal3a.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal3a.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal3a.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal3b.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal3b.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal3b.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal4.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal4.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal4.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal5a.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal5a.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal5a.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal5b.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal5b.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -1929,27 +1929,27 @@
             <File>
               <FileName>Menu.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Menu.cpp</FilePath>
+              <FilePath>.\src\Menu\Menu.cpp</FilePath>
             </File>
             <File>
               <FileName>Menu.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\Menu.h</FilePath>
+              <FilePath>.\src\Menu\Menu.h</FilePath>
             </File>
             <File>
               <FileName>MenuItems.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\MenuItems.cpp</FilePath>
+              <FilePath>.\src\Menu\MenuItems.cpp</FilePath>
             </File>
             <File>
               <FileName>MenuItems.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\MenuItems.h</FilePath>
+              <FilePath>.\src\Menu\MenuItems.h</FilePath>
             </File>
             <File>
               <FileName>MenuItemsDef.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\MenuItemsDef.h</FilePath>
+              <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1959,57 +1959,57 @@
             <File>
               <FileName>PageMain.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageMain.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
             </File>
             <File>
               <FileName>PageMain.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\Pages\PageMain.h</FilePath>
+              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
             </File>
             <File>
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Menu\Pages\Pages.h</FilePath>
+              <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
               <FileName>PageSignal1.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal1.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal1.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal2a.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal2a.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal2a.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal2b.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal2b.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal2b.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal3a.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal3a.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal3a.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal3b.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal3b.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal3b.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal4.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal4.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal4.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal5a.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal5a.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal5a.cpp</FilePath>
             </File>
             <File>
               <FileName>PageSignal5b.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Menu\Pages\PageSignal5b.cpp</FilePath>
+              <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
             </File>
           </Files>
         </Group>

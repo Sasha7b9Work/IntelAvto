@@ -61,8 +61,8 @@ file(GLOB HARDWARE_USBD       ../common/Hardware/USBD/*.*
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c)
 file(GLOB HARDWARE_USBH       ../common/Hardware/USBH/*.*)
 file(GLOB HARDWARE_KEYBOARD   ../common/Hardware/Keyboard/*.*)
-file(GLOB MENU                ../common/Menu/*.*)
-file(GLOB MENU_PAGES          ../common/Menu/Pages/*.*)
+file(GLOB MENU                      src/Menu/*.*)
+file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
 file(GLOB SETTINGS            ../common/Settings/*.*)
 file(GLOB UTILS               ../common/Utils/*.*)
 
