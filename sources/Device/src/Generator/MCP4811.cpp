@@ -76,6 +76,8 @@ uint16 MCP4811::Converter::Resolve() const
 
 void MCP4811::Gateway::Write(uint16 value)
 {
+    pin_DAC_CS.ToLow();
+
     HAL_TIM::DelayUS(100);    // \todo    на макете, кажется, без этого не работало
 
     // page 22 datasheet от 2010-го года
@@ -92,6 +94,10 @@ void MCP4811::Gateway::Write(uint16 value)
 
     WriteBit(false);
     WriteBit(false);
+
+    HAL_TIM::DelayUS(100);
+
+    pin_DAC_CS.ToHi();
 
 //    WriteBit(false);    // Не помню, зачем
 }

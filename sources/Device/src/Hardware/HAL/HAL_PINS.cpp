@@ -31,12 +31,11 @@ PinOut pin_K_R1(GPIOF, GPIO_PIN_7);
 PinOut pin_DAC_SCLK_R(GPIOA, GPIO_PIN_12);
 PinOut pin_DAC_DAT_R(GPIOA, GPIO_PIN_11);
 PinOut pin_DAC_ENB_HV(GPIOA, GPIO_PIN_8);
+PinOut pin_DAC_CS(GPIOA, GPIO_PIN_10);
 
 PinOut pin_NPULES0(GPIOG, GPIO_PIN_0);
 PinOut pin_NPULSE1(GPIOE, GPIO_PIN_15);
 PinOut pin_NPULSE2(GPIOE, GPIO_PIN_14);
-
-PinIn  pin_FA(GPIOA, GPIO_PIN_10);
 
 
 void HAL_PINS::Init()
@@ -71,7 +70,8 @@ void HAL_PINS::Init()
     pin_NPULSE1.Init();
     pin_NPULSE2.Init();
 
-    pin_FA.Init();
+    pin_DAC_CS.Init();
+    pin_DAC_CS.ToHi();
 }
 
 
