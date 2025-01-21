@@ -1411,18 +1411,6 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Hardware\HAL\HAL_SPI1_p.cpp</PathWithFileName>
-      <FilenameWithoutPath>HAL_SPI1_p.cpp</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
-    </File>
-    <File>
-      <GroupNumber>9</GroupNumber>
-      <FileNumber>76</FileNumber>
-      <FileType>8</FileType>
-      <tvExp>0</tvExp>
-      <tvExpOptDlg>0</tvExpOptDlg>
-      <bDave2>0</bDave2>
       <PathWithFileName>.\src\Hardware\HAL\HAL_PINS.cpp</PathWithFileName>
       <FilenameWithoutPath>HAL_PINS.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
@@ -1430,13 +1418,25 @@
     </File>
     <File>
       <GroupNumber>9</GroupNumber>
-      <FileNumber>77</FileNumber>
+      <FileNumber>76</FileNumber>
       <FileType>5</FileType>
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\src\Hardware\HAL\HAL_PINS.h</PathWithFileName>
       <FilenameWithoutPath>HAL_PINS.h</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>9</GroupNumber>
+      <FileNumber>77</FileNumber>
+      <FileType>8</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\common\Hardware\HAL\HAL_SPI1_p_.cpp</PathWithFileName>
+      <FilenameWithoutPath>HAL_SPI1_p_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1455,8 +1455,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Hardware\Keyboard\Keyboard.cpp</PathWithFileName>
-      <FilenameWithoutPath>Keyboard.cpp</FilenameWithoutPath>
+      <PathWithFileName>..\common\Hardware\Keyboard\Keyboard_.cpp</PathWithFileName>
+      <FilenameWithoutPath>Keyboard_.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1467,8 +1467,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\common\Hardware\Keyboard\Keyboard.h</PathWithFileName>
-      <FilenameWithoutPath>Keyboard.h</FilenameWithoutPath>
+      <PathWithFileName>..\common\Hardware\Keyboard\Keyboard_.h</PathWithFileName>
+      <FilenameWithoutPath>Keyboard_.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

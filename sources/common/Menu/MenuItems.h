@@ -3,11 +3,11 @@
 #include "defines.h"
 #include "Utils/Observer.h"
 #include "Settings/Settings.h"
-#include "Hardware/Keyboard/Keyboard.h"
 
 
 struct TypeMeasure;
 class Switch;
+struct Control;
 
 
 class Item

@@ -3,6 +3,7 @@
 #include "Utils/StringUtils.h"
 #include "Menu/MenuItems.h"
 #include "Display/Text_.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 #include <cstring>
 
 

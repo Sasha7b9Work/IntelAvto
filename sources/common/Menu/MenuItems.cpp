@@ -7,6 +7,7 @@
 #include "Display/Primitives_.h"
 #include "Display/Display_.h"
 #include "Display/Text_.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 #include <cstring>
 
 
