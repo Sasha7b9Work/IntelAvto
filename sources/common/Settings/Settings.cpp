@@ -1,7 +1,6 @@
 // 2023/09/08 16:18:29 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Settings.h"
-#include "Utils/Math.h"
 #include "Hardware/HAL/HAL.h"
 
 

@@ -2,8 +2,6 @@
 #include "defines.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
-#include "Utils/Queue.h"
-#include "Utils/StringUtils.h"
 #include "Hardware/HAL/HAL_PINS.h"
 #include "Generator/Generator.h"
 #include "Generator/MAX532.h"

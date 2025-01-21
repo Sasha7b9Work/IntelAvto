@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Connector/Device/Messages_.h"
-#include "Queue.h"
+#include "Utils/Queue_.h"
 
 
 Queue::Queue() : first(0), last(0)

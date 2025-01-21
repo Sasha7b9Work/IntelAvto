@@ -1,9 +1,9 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Log.h"
 #include "Hardware/HAL/HAL.h"
-#include "Utils/Debug.h"
 #include "Display/Text_.h"
+#include "Utils/Debug_.h"
+#include "Utils/Log_.h"
 
 static uint timeCounter;
 

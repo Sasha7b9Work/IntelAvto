@@ -3,7 +3,6 @@
 #include "Hardware/HAL/HAL.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
-#include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Pages.h"
 #include "Device/Device.h"

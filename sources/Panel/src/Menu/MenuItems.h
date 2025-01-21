@@ -1,8 +1,8 @@
 // 2023/09/08 21:53:53 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "defines.h"
-#include "Utils/Observer.h"
 #include "Settings/Settings.h"
+#include "Utils/Observer_.h"
 
 
 struct TypeMeasure;

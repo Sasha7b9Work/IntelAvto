@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Utils/Stack.h"
+#include "Utils/Stack_.h"
 #include <cstdlib>
 #include <cstring>
 

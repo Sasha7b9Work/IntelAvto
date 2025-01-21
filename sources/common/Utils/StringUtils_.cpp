@@ -1,24 +1,28 @@
 // 2023/09/08 21:07:51 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #define WIN32_LEAN_AND_MEAN
+
 #include "defines.h"
-#include "Utils/Buffer.h"
-#include "Utils/Stack.h"
-#include "Utils/StringUtils.h"
+#include "Utils/StringUtils_.h"
+#include "Utils/Stack_.h"
+#include "Utils/Buffer_.h"
+
 #ifdef WIN32
-#pragma warning(push)
-#pragma warning(disable:4668)
+    #pragma warning(push)
+    #pragma warning(disable:4668)
 #endif
+
 #include <cstring>
 #include <cctype>
 #include <cstdlib>
 #include <cstring>
+
 #ifdef WIN32
-#pragma warning(pop)
+    #pragma warning(pop)
 #endif
 
 #ifndef LANG
-#define LANG 0
-#define LANG_RU true
+    #define LANG 0
+    #define LANG_RU true
 #endif
 
 

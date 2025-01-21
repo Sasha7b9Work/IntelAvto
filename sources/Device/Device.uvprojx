@@ -1183,19 +1183,14 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Log.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Utils\Log.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.cpp</FileName>
+              <FileName>Queue_.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Utils\Queue.cpp</FilePath>
+              <FilePath>..\common\Utils\Queue_.cpp</FilePath>
             </File>
             <File>
-              <FileName>Queue.h</FileName>
+              <FileName>Queue_.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Utils\Queue.h</FilePath>
+              <FilePath>..\common\Utils\Queue_.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -2378,19 +2373,14 @@
           <GroupName>Utils</GroupName>
           <Files>
             <File>
-              <FileName>Log.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Utils\Log.h</FilePath>
-            </File>
-            <File>
-              <FileName>Queue.cpp</FileName>
+              <FileName>Queue_.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>..\common\Utils\Queue.cpp</FilePath>
+              <FilePath>..\common\Utils\Queue_.cpp</FilePath>
             </File>
             <File>
-              <FileName>Queue.h</FileName>
+              <FileName>Queue_.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\common\Utils\Queue.h</FilePath>
+              <FilePath>..\common\Utils\Queue_.h</FilePath>
             </File>
           </Files>
         </Group>

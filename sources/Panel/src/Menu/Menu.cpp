@@ -3,8 +3,6 @@
 #include "Display/Font/Font.h"
 #include "Menu/MenuItems.h"
 #include "Menu/Menu.h"
-#include "Utils/Math.h"
-#include "Utils/StringUtils.h"
 #include "Settings/Settings.h"
 #include "Menu/Pages/Pages.h"
 #include "Device/Device.h"

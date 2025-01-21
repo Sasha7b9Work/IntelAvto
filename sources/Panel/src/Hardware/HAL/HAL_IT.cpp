@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "Hardware/HAL/HAL.h"
-#include "Utils/Debug.h"
+#include "Utils/Debug_.h"
 #include <stm32f4xx_hal.h>
 
 

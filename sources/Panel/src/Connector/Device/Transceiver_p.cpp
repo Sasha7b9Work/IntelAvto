@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Hardware/Timer.h"
 #include "Hardware/HAL/HAL.h"
-#include "Utils/Debug.h"
 #include "Connector/Device/Transceiver_.h"
 #include "Connector/Device/Messages_.h"
 #include "Display/Display_.h"
