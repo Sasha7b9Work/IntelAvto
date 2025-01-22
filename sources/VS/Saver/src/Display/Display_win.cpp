@@ -91,12 +91,6 @@ static Screen *screen = nullptr;
 
 static wxBitmap *backgroundBMP = nullptr;
 
-void Display::Init()
-{
-    CreateFrame();
-
-}
-
 
 void Display::BeginScene(int, int)
 {
@@ -180,6 +174,12 @@ void Frame::OnTimerLong(wxTimerEvent&)
 void Frame::HandlerEvents()
 {
 }
+
+
+//void Display::InitHardware()
+//{
+//    CreateFrame();
+//}
 
 
 static void CreateFrame()

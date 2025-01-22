@@ -33,6 +33,9 @@
 #ifndef rs232_INCLUDED
 #define rs232_INCLUDED
 
+#pragma warning(push)
+#pragma warning(disable:4255)
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -85,6 +88,8 @@ int RS232_GetPortnr(const char *);
 #ifdef __cplusplus
 } /* extern "C" */
 #endif
+
+#pragma warning(pop)
 
 #endif
 

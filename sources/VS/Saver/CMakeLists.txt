@@ -12,6 +12,8 @@ include_directories(
     ../../common
     ../../common/_VS_KEIL/CMSIS/
     ../../common/_VS_KEIL/HAL/
+    ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
+    ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc/
     ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc/
     ../../Panel/src/
@@ -87,11 +89,16 @@ file(GLOB SRC                 ../../Panel/src/defines.h
                                           src/main_win.cpp
                                           src/functions_win.cpp)
 file(GLOB DISPLAY             ../../common/Display/Colors_.*
+                              ../../common/Display/Display_.*
                               ../../common/Display/Text_.*
+                              ../../common/Display/Primitives_.*
                                           src/Display/*.*)
 file(GLOB DISPLAY_FONT        ../../common/Display/Font/Font.cpp)
+file(GLOB HARDWARE_HAL        ../../Panel/src/Hardware/HAL/HAL.h
+                              ../../Panel/src/Hardware/HAL/HAL_TIM.cpp)
 file(GLOB KEYBOARD            ../../Panel/src/Keyboard/Keyboard.h
                                           src/Keyboard/Keyboard_win.cpp)
+file(GLOB MENU                ../../Panel/src/Menu/*.*)
 file(GLOB GUI                             src/GUI/*)
 file(GLOB SETTINGS            ../../Panel/src/Settings/*.*)
 file(GLOB UTILS               ../../common/Utils/Buffer.*
@@ -108,8 +115,10 @@ set_source_files_properties(
 
 source_group(src               FILES ${SRC})
 source_group(Display           FILES ${DISPLAY})
-source_group(Display\\Font     FILES ${DISPLAY_FONT})
+source_group(Display/Font      FILES ${DISPLAY_FONT})
+source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
 source_group(Keyboard          FILES ${KEYBOARD})
+source_group(Menu              FILES ${MENU})
 source_group(GUI               FILES ${GUI})
 source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
@@ -120,8 +129,10 @@ add_executable(
     ${SRC}
     ${DISPLAY}
     ${DISPLAY_FONT}
+    ${HARDWARE_HAL}
     ${GUI}
     ${KEYBOARD}
+    ${MENU}
     ${SETTINGS}
     ${UTILS}
 )

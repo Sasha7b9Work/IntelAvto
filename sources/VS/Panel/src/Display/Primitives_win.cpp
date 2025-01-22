@@ -14,7 +14,7 @@ using namespace Primitives;
 extern wxMemoryDC memDC;
 
 
-int HLine::Draw(int x, int y, Color color)
+int HLine::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
@@ -24,7 +24,7 @@ int HLine::Draw(int x, int y, Color color)
 }
 
 
-int HLine::Draw(const Coord &coord, Color color)
+int HLine::Draw(const Coord &coord, const Color &color)
 {
     return Draw(coord.x, coord.y, color);
 }
@@ -44,7 +44,7 @@ int HLine::Draw(const Coord &coord)
 }
 
 
-int VLine::Draw(int x, int y, Color color)
+int VLine::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
@@ -80,7 +80,7 @@ Coord Line::Draw(const Coord &coord, int x2, int y2)
 }
 
 
-void Point::Draw(int x, int y, Color color)
+void Point::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 

@@ -23,26 +23,55 @@ int HLine::Draw(int x, int y, const Color &color)
     return x + length;
 }
 
+int HLine::Draw(const Coord &coord, const Color &color)
+{
+    return Draw(coord.x, coord.y, color);
+}
+
+
+int HLine::Draw(const Coord &coord)
+{
+    return Draw(coord.x, coord.y);
+}
+
 
 int HLine::Draw(int x, int y)
 {
     memDC.DrawLine({ x, y }, { x + length, y });
+
+    return x + length;
 }
 
 
-void VLine::Draw(int x, int y)
+int VLine::Draw(int x, int y)
 {
     memDC.DrawLine({ x, y }, { x, y + length });
+
+    return y + length;
 }
 
 
-void Line::Draw(int x1, int y1, int x2, int y2)
+int VLine::Draw(const Coord &coord)
+{
+    return Draw(coord.x, coord.y);
+}
+
+
+Coord Line::Draw(int x1, int y1, int x2, int y2)
 {
     memDC.DrawLine({ x1, y1 }, { x2, y2 });
+
+    return { x2, y2 };
 }
 
 
-void Point::Draw(int x, int y, Color color)
+Coord Line::Draw(const Coord &coord, int x2, int y2)
+{
+    return Draw(coord.x, coord.y, x2, y2);
+}
+
+
+void Point::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 

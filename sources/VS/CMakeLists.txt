@@ -11,6 +11,6 @@ if(${CMAKE_BUILD_TYPE} STREQUAL Debug)
 endif()
 
 add_subdirectory(Panel)
-add_subdirectory(Saver)
+#add_subdirectory(Saver)
 add_subdirectory(checksum)
 add_subdirectory(Upgrader)
