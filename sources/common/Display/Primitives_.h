@@ -42,7 +42,7 @@ namespace Primitives
     {
     public:
         Point() {}
-        void Draw(int x, int y, Color color);
+        void Draw(int x, int y, const Color &);
         void Draw(int x, int y);
 
         static void MoveTo(int x, int y);
@@ -71,7 +71,7 @@ namespace Primitives
     {
     public:
         VLine(int l) : length(l) {}
-        int Draw(int x, int y, Color color);
+        int Draw(int x, int y, const Color &);
         int Draw(int x, int y);
         int Draw(const Coord &);
     private:

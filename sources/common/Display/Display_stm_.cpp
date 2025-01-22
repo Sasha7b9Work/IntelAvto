@@ -247,7 +247,7 @@ int Display::Ymax()
 }
 
 
-void Point::Draw(int x, int y, Color color)
+void Point::Draw(int x, int y, const Color &color)
 {
     m_x = x;
     m_y = y;
@@ -328,7 +328,7 @@ int VLine::Draw(const Coord &coord)
 }
 
 
-int VLine::Draw(int x, int y, Color color)
+int VLine::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
