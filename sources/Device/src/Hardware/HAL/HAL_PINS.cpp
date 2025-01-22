@@ -13,9 +13,6 @@ PinOut pin_A3_RG(GPIOG, GPIO_PIN_5);
 PinOut pin_CLK_RG(GPIOD, GPIO_PIN_11);
 PinOut pin_DAT_RG(GPIOD, GPIO_PIN_13);
 PinOut pin_WR_RG(GPIOD, GPIO_PIN_12);
-PinOut pin_ON_OFF(GPIOD, GPIO_PIN_9);
-PinOut pin_START(GPIOD, GPIO_PIN_8);
-PinOut pin_STOP(GPIOB, GPIO_PIN_15);
 PinOut pin_A12(GPIOE, GPIO_PIN_13);
 PinOut pin_2A(GPIOE, GPIO_PIN_12);
 PinOut pin_3AB(GPIOE, GPIO_PIN_11);
@@ -33,9 +30,12 @@ PinOut pin_DAC_DAT_R(GPIOA, GPIO_PIN_11);
 PinOut pin_DAC_ENB_HV(GPIOA, GPIO_PIN_8);
 PinOut pin_DAC_CS(GPIOA, GPIO_PIN_10);
 
-PinOut pin_NPULES0(GPIOG, GPIO_PIN_0);
-PinOut pin_NPULSE1(GPIOE, GPIO_PIN_15);
-PinOut pin_NPULSE2(GPIOE, GPIO_PIN_14);
+PinOut pin_ON_OFF(GPIOD, GPIO_PIN_9);
+PinOut pin_START(GPIOD, GPIO_PIN_8);            // 77
+PinOut pin_STOP(GPIOB, GPIO_PIN_15);
+PinOut pin_NPULES0(GPIOG, GPIO_PIN_10);
+PinOut pin_NPULSE1(GPIOG, GPIO_PIN_11);
+PinOut pin_NPULSE2(GPIOG, GPIO_PIN_12);
 
 
 void HAL_PINS::Init()
@@ -49,6 +49,7 @@ void HAL_PINS::Init()
     pin_WR_RG.Init();
 
     pin_ON_OFF.Init();
+    pin_ON_OFF.ToHi();
     pin_START.Init();
     pin_STOP.Init();
 

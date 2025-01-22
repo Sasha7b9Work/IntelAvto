@@ -6,6 +6,7 @@
 #include "Generator/Generator.h"
 #include "Generator/MAX532.h"
 #include "Connector/Device/Interface_d.h"
+#include "Connector/Device/Value_.h"
 
 
 int main()
@@ -17,6 +18,12 @@ int main()
 
     while (1)
     {
-        DInterface::Update();
+        Generator::Start2A(Value(0, TypeValue::Voltage), Value(1, TypeValue::Time));
+
+        HAL_TIM::DelayMS(5000);
+
+        Generator::Stop();
+
+        HAL_TIM::DelayMS(5000);
     }
 }
