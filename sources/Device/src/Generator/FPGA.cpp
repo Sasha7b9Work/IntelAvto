@@ -74,7 +74,7 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
 
     for (int i = 0; i < 3; i++)
     {
-        pins[i]->ToState(states[type][i]);
+//        pins[i]->ToState(states[type][i]);
     }
 
     SwitchingBoard::SetTypeSignal();

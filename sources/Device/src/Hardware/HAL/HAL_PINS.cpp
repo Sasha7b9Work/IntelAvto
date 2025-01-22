@@ -34,8 +34,8 @@ PinOut pin_ON_OFF(GPIOD, GPIO_PIN_9);
 PinOut pin_START(GPIOD, GPIO_PIN_8);            // 77
 PinOut pin_STOP(GPIOB, GPIO_PIN_15);
 PinOut pin_NPULES0(GPIOG, GPIO_PIN_0);
-PinOut pin_NPULSE1(GPIOE, GPIO_PIN_15);
-PinOut pin_NPULSE2(GPIOE, GPIO_PIN_14);
+PinOut pin_NPULSE1(GPIOF, GPIO_PIN_15);
+PinOut pin_NPULSE2(GPIOF, GPIO_PIN_14);
 
 
 void HAL_PINS::Init()
@@ -71,8 +71,11 @@ void HAL_PINS::Init()
     pin_DAC_CS.ToHi();
 
     pin_NPULES0.Init();
+    pin_NPULES0.ToHi();
     pin_NPULSE1.Init();
+    pin_NPULSE1.ToHi();
     pin_NPULSE2.Init();
+    pin_NPULSE2.ToLow();
 }
 
 
