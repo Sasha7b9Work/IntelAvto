@@ -26,3 +26,21 @@ ColorScheme &ColorScheme::Current()
 {
     return gset.schemes[gset.colorScheme];
 }
+
+
+uint8 Color::GetRED() const
+{
+    return (uint8)(Value() >> 16);
+}
+
+
+uint8 Color::GetGREEN() const
+{
+    return (uint8)(Value() >> 8);
+}
+
+
+uint8 Color::GetBLUE() const
+{
+    return (uint8)(Value());
+}

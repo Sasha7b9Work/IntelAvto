@@ -58,8 +58,8 @@ namespace Primitives
     {
     public:
         HLine(int _length) : length(_length) {}
-        int Draw(int x, int y, Color color);
-        int Draw(const Coord &, Color color);
+        int Draw(int x, int y, const Color &);
+        int Draw(const Coord &, const Color &);
         int Draw(const Coord &);
         int Draw(int x, int y);
     private:

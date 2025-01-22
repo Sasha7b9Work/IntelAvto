@@ -1,11 +1,12 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Display.h"
-#include "Display/Primitives.h"
 #include "Display/Font/Font.h"
 #include "GUI/GovernorGUI.h"
-#include "Hardware/Keyboard/Keyboard.h"
-#include "Utils/Math.h"
+#include "Display/Primitives_.h"
+#include "Hardware/Keyboard/Keyboard_.h"
+#include "Display/Display_.h"
+#include "Display/Colors_.h"
+#include "Utils/Math_.h"
 
 #pragma warning(push, 0)
 #undef CRC
@@ -195,7 +196,7 @@ static void CreateButtons(Frame *frame)
 
     const int KEYS_IN_ROW = 4;
 
-    Key::E keys1[KEYS_IN_ROW] = { Key::Left, Key::Right, Key::Back, Key::OK };
+    Key::E keys1[KEYS_IN_ROW] = { Key::Left, Key::Right, Key::Esc, Key::OK };
     Key::E keys2[KEYS_IN_ROW] = { Key::_1,   Key::_2,    Key::_3,   Key::_4 };
     Key::E keys3[KEYS_IN_ROW] = { Key::_5,   Key::_6,    Key::_7,   Key::_8 };
     Key::E keys4[KEYS_IN_ROW] = { Key::_9,   Key::Minus, Key::Dot,  Key::Start };
@@ -233,7 +234,7 @@ static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxS
         return;
     }
 
-    wxButton *button = new wxButton(frame, (wxWindowID)key, Key::Name(key).c_str(), pos, size);
+    wxButton *button = new wxButton(frame, (wxWindowID)key, Key::Name(key), pos, size);
 
     button->Connect((wxWindowID)key, wxEVT_LEFT_DOWN, wxCommandEventHandler(Frame::OnDown));
     button->Connect((wxWindowID)key, wxEVT_LEFT_UP, wxCommandEventHandler(Frame::OnUp));

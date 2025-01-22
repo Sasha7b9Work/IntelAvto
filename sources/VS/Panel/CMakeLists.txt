@@ -2,7 +2,7 @@
 
 project (PanelGUI)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -63,22 +63,21 @@ file(GLOB SRC                ../../Panel/src/defines.h
                              ../../Panel/src/Settings.*
                                          src/Application_win.*
                                          src/main_win.cpp)
-file(GLOB CONNECTOR             ../../common/Connector/Interface_p.*
-                                ../../common/Connector/Messages.*
-                                ../../common/Connector/Handlers_p.*
-                                ../../common/Connector/Transceiver.h
-                                ../../common/Connector/Transceiver_p.cpp
-                                ../../common/Connector/Value.h
-                             ../../Panel/src/Connector/*.*)
+file(GLOB CONNECTOR_DEVICE      ../../common/Connector/Device/Messages_.*
+                                ../../common/Connector/Device/Handlers_p.*
+                                ../../common/Connector/Device/Transceiver_.h
+                                ../../common/Connector/Device/Value_.h
+                             ../../Panel/src/Connector/Device/*.*)
 file(GLOB DEVICE             ../../Panel/src/Device/*)
 file(GLOB DISPLAY                        src/Display/Display_win.cpp
                                          src/Display/Colors_win.cpp
-                                ../../common/Display/Colors.*
-                                ../../common/Display/Console.*
-                                ../../common/Display/Display.*
+                                ../../common/Display/Colors_.*
+                                ../../common/Display/Console_.*
+                                ../../common/Display/Text_.*
+                                ../../common/Display/Display_.*
                                 ../../common/Display/Indicator.*
                                 ../../common/Display/RedrawingZone.*
-                                ../../common/Display/Primitives.*
+                                ../../common/Display/Primitives_.*
                                          src/Display/Primitives_win.cpp
                                 ../../common/Display/Symbols.*
                                 ../../common/Display/Text.*)
@@ -90,6 +89,7 @@ file(GLOB GUI                            src/GUI/*)
 file(GLOB HARDWARE           ../../Panel/src/Hardware/*FPGA.*
                              ../../Panel/src/Hardware/FreqMeter.*
                              ../../Panel/src/Hardware/VCP.h
+                             ../../Panel/src/Hardware/Timer.*
                                          src/Hardware/VCP_win.cpp)
 file(GLOB HARDWARE_HAL       ../../Panel/src/Hardware/HAL/HAL.*
                              ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
@@ -97,14 +97,14 @@ file(GLOB HARDWARE_HAL       ../../Panel/src/Hardware/HAL/HAL.*
                                          src/Hardware/HAL/*.*)
 file(GLOB HARDWARE_KEYBOARD     ../../common/Hardware/Keyboard/Keyboard.h
                                          src/Keyboard/Keyboard_win.cpp)
-file(GLOB MENU                  ../../common/Menu/*.*)
-file(GLOB MENU_PAGES            ../../common/Menu/Pages/*.*)
-file(GLOB SETTINGS              ../../common/Settings/*.*)
+file(GLOB MENU               ../../Panel/src/Menu/*.*)
+file(GLOB MENU_PAGES         ../../Panel/src/Menu/Pages/*.*)
+file(GLOB SETTINGS           ../../Panel/src/Settings/*.*)
 file(GLOB UTILS                 ../../common/Utils/*.*)
 
 source_group(_VS/HAL            FILES ${VS_HAL})
 source_group(src                FILES ${SRC})
-source_group(Connector          FILES ${CONNECTOR})
+source_group(Connector/Device   FILES ${CONNECTOR_DEVICE})
 source_group(Device             FILES ${DEVICE})
 source_group(Display            FILES ${DISPLAY})
 source_group(Display/Font       FILES ${DISPLAY_FONT})
@@ -127,7 +127,7 @@ set_source_files_properties(
 add_executable(${PROJECT_NAME}
     ${VS_HAL}
     ${SRC}
-    ${CONNECTOR}
+    ${CONNECTOR_DEVICE}
     ${DEVICE}
     ${DISPLAY}
     ${DISPLAY_FONT}

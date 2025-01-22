@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Hardware/Keyboard/Keyboard.h"
 #include "Application_win.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 
 
 namespace Keyboard
@@ -96,7 +96,7 @@ Control Keyboard::NextControl()
     return result;
 }
 
-String Key::Name(E value)
+pchar Key::Name(E value)
 {
     static const char *names[Key::Count] =
     {
@@ -115,6 +115,6 @@ String Key::Name(E value)
         /* 13 */   "NULL"
     };
 
-    return String(names[value]);
+    return names[value];
 }
 

@@ -1,8 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "GUI/Application.h"
-#include "Hardware/Keyboard/Keyboard.h"
 #include "Menu/Menu.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 
 
 // Очередь сообщений - здесь все события органов управления
@@ -98,7 +98,7 @@ Control Keyboard::NextControl()
 }
 
 
-String Key::Name(E value)
+pchar Key::Name(E value)
 {
     static const char *names[Key::Count] =
     {
@@ -125,7 +125,7 @@ String Key::Name(E value)
         ""
     };
 
-    return String(names[value]);
+    return names[value];
 }
 
 

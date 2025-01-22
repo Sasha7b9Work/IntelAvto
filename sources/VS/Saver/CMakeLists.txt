@@ -1,7 +1,7 @@
 # 2023/09/08 21:15:38 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 project (Saver)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 set(CMAKE_UNITY_BUILD_BATCH_SIZE 4)
 
@@ -77,6 +77,7 @@ add_compile_options(
     /wd5045    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
     /wd5204    # 'xxx': class has virtual functions, but its trivial destructor is not virtual; instances of objects derived from this class may not be destructed correctly
     /wd5219
+    /wd5267
     /wd26821
     /wd26812
 )
@@ -85,13 +86,14 @@ file(GLOB SRC                 ../../Panel/src/defines.h
                                           src/Application_win.*
                                           src/main_win.cpp
                                           src/functions_win.cpp)
-file(GLOB DISPLAY             ../../common/Display/Colors.*
-                                          src/Display/Display_win.*)
+file(GLOB DISPLAY             ../../common/Display/Colors_.*
+                              ../../common/Display/Text_.*
+                                          src/Display/*.*)
 file(GLOB DISPLAY_FONT        ../../common/Display/Font/Font.cpp)
 file(GLOB KEYBOARD            ../../Panel/src/Keyboard/Keyboard.h
                                           src/Keyboard/Keyboard_win.cpp)
 file(GLOB GUI                             src/GUI/*)
-file(GLOB SETTINGS            ../../common/Settings/*.*)
+file(GLOB SETTINGS            ../../Panel/src/Settings/*.*)
 file(GLOB UTILS               ../../common/Utils/Buffer.*
                               ../../common/Utils/Stack.*
                               ../../common/Utils/String.*

@@ -3,7 +3,6 @@
 #pragma warning(push, 0)
 #include <wx/wx.h>
 #pragma warning(pop)
-#include "Display/Display.h"
 
 
 class Application : public wxApp

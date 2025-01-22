@@ -1,8 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Display/Display.h"
-#include "Display/Colors.h"
-#include "Display/Primitives.h"
+#include "Display/Primitives_.h"
 
 #pragma warning(push, 0)
 #undef CRC

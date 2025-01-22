@@ -1,6 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-#include "Display/Primitives.h"
+#include "Display/Primitives_.h"
 
 
 #pragma warning(push, 0)
@@ -14,15 +14,17 @@ using namespace Primitives;
 extern wxMemoryDC memDC;
 
 
-void HLine::Draw(int x, int y, Color color)
+int HLine::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
     Draw(x, y);
+
+    return x + length;
 }
 
 
-void HLine::Draw(int x, int y)
+int HLine::Draw(int x, int y)
 {
     memDC.DrawLine({ x, y }, { x + length, y });
 }

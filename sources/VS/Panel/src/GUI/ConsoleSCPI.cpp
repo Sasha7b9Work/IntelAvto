@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "GUI/ConsoleSCPI.h"
 #include "GUI/ComPort.h"
-#include "Utils/String.h"
+#include "Display/Text_.h"
 
 #pragma warning(push, 0)
 #include <wx/wx.h>
@@ -118,7 +118,7 @@ void ConsoleSCPI::OnTimerComPort(wxTimerEvent &)
             }
             else
             {
-                String message(">>> %s", fullBuffer);
+                Text message(">>> %s", fullBuffer);
                 AddText(message.c_str());
 
                 buffer[positionOD] = 0;
@@ -197,7 +197,7 @@ void ConsoleSCPI::OnTimerTest(wxTimerEvent &)
         "F5"
     };
 
-    String message(":key:press %s", names[(rand() % 34) + 1]);
+    Text message(":key:press %s", names[(rand() % 34) + 1]);
 
     SendToSCPI(message.c_str());
 }
@@ -207,7 +207,7 @@ void ConsoleSCPI::SendToSCPI(const char *txt)
 {
     if (ComPort::IsOpened())
     {
-        String message("%s\x0d", txt);
+        Text message("%s\x0d", txt);
 
         ComPort::Send(message.c_str());
     }

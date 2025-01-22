@@ -277,7 +277,7 @@ void Point::Draw(int x, int y)
 }
 
 
-int HLine::Draw(int x, int y, Color color)
+int HLine::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
@@ -291,7 +291,7 @@ int HLine::Draw(const Coord &coord)
 }
 
 
-int HLine::Draw(const Coord &coord, Color color)
+int HLine::Draw(const Coord &coord, const Color &color)
 {
     return Draw(coord.x, coord.y, color);
 }

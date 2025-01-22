@@ -34,6 +34,10 @@ struct Color
 
     static uint Make(uint8 r, uint8 g, uint8 b) { return ((uint)((b) | ((g) << 8) | ((r) << 16))); }
 
+    uint8 GetRED() const;
+    uint8 GetGREEN() const;
+    uint8 GetBLUE() const;
+
 private:
 
     uint8 index;
