@@ -25,5 +25,7 @@ int main()
         Generator::Stop();
 
         HAL_TIM::DelayMS(5000);
+
+//        DInterface::Update();
     }
 }

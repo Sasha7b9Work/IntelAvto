@@ -11,6 +11,4 @@ namespace MCP4811
     void SetVoltage(const Value &);
 
     void Disable();
-
-    void Test();
 }

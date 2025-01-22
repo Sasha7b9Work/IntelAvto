@@ -10,6 +10,8 @@
 
 namespace MCP4811
 {
+    static const uint DELAY_RELAYS = 10;        // Задержка на заряд/разряд
+
     struct Converter
     {
         Converter(const Value &_value) : value(_value) { }
@@ -26,26 +28,6 @@ namespace MCP4811
 }
 
 
-void MCP4811::Test()
-{
-    static int voltage = 0;
-
-    while (true) //-V776
-    {
-        Value value(voltage++, TypeValue::Voltage);
-
-        if (voltage > 600)
-        {
-            voltage = 0;
-        }
-
-        SetVoltage(value);
-
-        HAL_TIM::DelayMS(10);
-    }
-}
-
-
 void MCP4811::SetVoltage(const Value &value)
 {
     Gateway::Write(Converter(value).Resolve());
@@ -53,7 +35,7 @@ void MCP4811::SetVoltage(const Value &value)
     pin_K1_FOR.ToHi();
     pin_DAC_ENB_HV.ToHi();
 
-    TimeMeterMS().Delay(2000);
+    TimeMeterMS().Delay(DELAY_RELAYS);
 }
 
 
@@ -61,7 +43,7 @@ void MCP4811::Disable()
 {
     pin_DAC_ENB_HV.ToLow();
 
-    TimeMeterMS().Delay(2000);
+    TimeMeterMS().Delay(DELAY_RELAYS);
 
     pin_K1_FOR.ToLow();
 

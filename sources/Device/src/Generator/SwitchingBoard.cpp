@@ -5,15 +5,19 @@
 #include "Generator/FPGA.h"
 
 
-void SwitchingBoard::SetOff()
+namespace SwitchingBoard
 {
-    static const int NUM_PINS = 7;
+    static const int NUM_PINS = 8;
 
     static PinOut *pins[NUM_PINS] =
     {
-        &pin_A12, &pin_2A, &pin_3AB, &pin_K3_COM, &pin_K5_COM, &pin_K6_COM, &pin_K7_COM
+        &pin_A12, &pin_2A, &pin_3AB, &pin_K3_COM, &pin_K4_COM, &pin_K5_COM, &pin_K6_COM, &pin_K7_COM
     };
+}
 
+
+void SwitchingBoard::SetOff()
+{
     for (int i = 0; i < NUM_PINS; i++)
     {
         pins[i]->ToLow();
@@ -23,7 +27,7 @@ void SwitchingBoard::SetOff()
 
 void SwitchingBoard::SetTypeSignal()
 {
-    static const uint8 states[TypeSignal::Count][8] =
+    static const uint8 states[TypeSignal::Count][NUM_PINS] =
     {
         { 1, 0, 0, 0, 0, 1, 1, 1 },
         { 1, 0, 0, 0, 0, 1, 1, 1 },
@@ -33,12 +37,10 @@ void SwitchingBoard::SetTypeSignal()
         { 0, 0, 0, 0, 0, 0, 0, 0 }
     };
 
-    static PinOut *pins[8] = { &pin_A12, &pin_2A, &pin_3AB, &pin_K3_COM, &pin_K4_COM, &pin_K5_COM, &pin_K6_COM, &pin_K7_COM };
-
     TypeSignal::E type = TypeSignal::Current();
 
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < NUM_PINS; i++)
     {
-        pins[i]->ToState(states[type][i] == 0 ? false : true);
+        pins[i]->ToState(states[type][i] != 0);
     }
 }
