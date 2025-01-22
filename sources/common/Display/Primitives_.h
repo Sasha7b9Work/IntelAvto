@@ -27,11 +27,11 @@ namespace Primitives
     public:
         Rect(int _width, int _height) : width(_width), height(_height) {}
         void Draw(int x, int y);
-        void Draw(int x, int y, Color color);
-        void DrawRounded(int x, int y, int round, Color color);
+        void Draw(int x, int y, const Color &);
+        void DrawRounded(int x, int y, int round, const Color &);
         void Fill(int x, int y);
         void Fill(int x, int y, Color color);
-        void FillRounded(int x, int y, int round, Color colorFill, Color colorBound);
+        void FillRounded(int x, int y, int round, const Color &colorFill, const Color &colorBound);
     private:
         int width;
         int height;

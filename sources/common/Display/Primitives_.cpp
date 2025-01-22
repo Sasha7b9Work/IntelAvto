@@ -41,7 +41,7 @@ void Label::SetState(pchar _text, const Color &_color_text, const Color &_color_
 }
 
 
-void Rect::FillRounded(int x, int y, int round, Color colorFill, Color colorBound)
+void Rect::FillRounded(int x, int y, int round, const Color &colorFill, const Color &colorBound)
 {
     DrawRounded(x, y, round, colorBound);
     Rect(width - 3, height - 3).Fill(x + 2, y + 2, colorFill);
@@ -60,7 +60,7 @@ void Rect::Fill(int x, int y, Color color)
 }
 
 
-void Rect::DrawRounded(int x, int y, int round, Color color)
+void Rect::DrawRounded(int x, int y, int round, const Color &color)
 {
     color.SetAsCurrent();
 
@@ -79,7 +79,7 @@ void Rect::DrawRounded(int x, int y, int round, Color color)
 }
 
 
-void Rect::Draw(int x, int y, Color color)
+void Rect::Draw(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
