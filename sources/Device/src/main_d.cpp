@@ -18,14 +18,6 @@ int main()
 
     while (1)
     {
-        Generator::Start2A(Value(0, TypeValue::Voltage), Value(1, TypeValue::Time));
-
-        HAL_TIM::DelayMS(5000);
-
-        Generator::Stop();
-
-        HAL_TIM::DelayMS(5000);
-
-//        DInterface::Update();
+        DInterface::Update();
     }
 }
