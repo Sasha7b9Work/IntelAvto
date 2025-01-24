@@ -39,7 +39,7 @@ private:
     struct StructCursor
     {
         bool leftIsDown;        // true, если левая кнопка нажата
-        POINT position;         // Позиция курсора
+        POINT position;         // Позиция курсора.
         int state;              // Состояние VK_LBUTTON
 
         // Рассчитывает dX и dY между position и текущей позицией

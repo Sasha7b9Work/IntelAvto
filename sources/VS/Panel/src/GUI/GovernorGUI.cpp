@@ -3,6 +3,8 @@
 #include "GUI/Application.h"
 #include "GUI/GovernorGUI.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "Utils/Log_.h"
+#include "Display/Text_.h"
 
 
 const float GovernorGUI::stepDegree = 60.0F;
@@ -106,6 +108,8 @@ void GovernorGUI::OnTimer(wxTimerEvent &)
     {
         ::SetCursor(LoadCursor(NULL, IDC_HAND)); //-V2571
 
+        POINT old_pos = cursor.position;
+
         int delta = cursor.CalculateDelta();
 
         if(delta != 0)
@@ -129,6 +133,12 @@ void GovernorGUI::OnTimer(wxTimerEvent &)
                 angleDiscrete += stepDegree;
                 Refresh();
             }
+
+            ::SetCursorPos(old_pos.x, old_pos.y);
+
+            cursor.position = old_pos;
+
+            Refresh();
         }
     }
 }

@@ -3,11 +3,19 @@
 #include "Display/Console_.h"
 #include "Display/Text_.h"
 #include "Utils/Log_.h"
+#include <cstdio>
 
 
 void Log::Message(pchar message)
 {
     Console::AddString(message);
+
+#ifdef WIN32
+
+    printf(message);
+    printf("\n");
+
+#endif
 }
 
 
