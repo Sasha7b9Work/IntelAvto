@@ -114,10 +114,10 @@ pchar Key::Name(E value)
         "->",
         "ESC",
         "OK",
+        "STOP",
         "",
         "",
-        "",
-        "STOP"
+        ""
     };
 
     return names[value];
