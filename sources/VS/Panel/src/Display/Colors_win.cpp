@@ -11,7 +11,10 @@
 using namespace Primitives;
 
 
-extern wxMemoryDC memDC;
+namespace Display
+{
+    extern wxMemoryDC memDC;
+}
 
 static Color current = Color::BACK;
 
@@ -26,7 +29,7 @@ void Color::SetAsCurrent() const
 
     wxColour colorDraw = wxColour(r, g, b);
 
-    memDC.SetPen(wxPen(colorDraw));
+    Display::memDC.SetPen(wxPen(colorDraw));
 
     current = *this;
 }

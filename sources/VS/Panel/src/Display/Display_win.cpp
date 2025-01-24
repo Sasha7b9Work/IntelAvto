@@ -39,63 +39,60 @@ using namespace Primitives;
 namespace Display
 {
     void InitHardware();
+
+    // Здесь хранятся указатели на кнопки
+    static wxButton *buttons[Key::Count] = { nullptr };
+
+    static GovernorGUI *governor = nullptr;
+
+    static bool needStartTimerLong = false;
+    static bool needStopTimerLong = false;
+
+    // Здесь имя нажатой кнопки
+    static Key::E pressedKey = Key::None;
+
+    // Контекст рисования
+    wxMemoryDC memDC;
+
+    static wxBitmap bitmap(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT);
+
+    // Создаёт окно приложения. Возвращает хэндл виджета для отрисовки
+    static void CreateFrame();
+
+    // Установить размер и оптимальную позицию для окна приложения
+    static void SetPositionAndSize(Frame *frame);
+
+    // Получить разрешение максимального имеющегося в системе монитора
+    static wxRect GetMaxDisplay();
+
+    // Создаёт все кнопки
+    static void CreateButtons(Frame *frame);
+
+    // Создаёт одну кнопку
+    static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size);
+
+    class Screen : public wxPanel
+    {
+    public:
+        Screen(wxWindow *parent) : wxPanel(parent, 320)
+        {
+            SetMinSize({ Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT });
+            SetDoubleBuffered(true);
+            Bind(wxEVT_PAINT, &Screen::OnPaint, this);
+        }
+
+        void OnPaint(wxPaintEvent &)
+        {
+            wxPaintDC dc(this);
+            dc.DrawBitmap(bitmap, 0, 0);
+        }
+    };
+
+    static Screen *screen = nullptr;
+
+    static wxBitmap *backgroundBMP = nullptr;
 }
 
-
-// Здесь хранятся указатели на кнопки
-static wxButton *buttons[Key::Count] = { nullptr };
-
-static GovernorGUI *governor = nullptr;
-
-static bool needStartTimerLong = false;
-static bool needStopTimerLong = false;
-
-// Здесь имя нажатой кнопки
-static Key::E pressedKey = Key::None;
-
-// Контекст рисования
-wxMemoryDC memDC;
-
-static wxBitmap bitmap(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT);
-
-// Создаёт окно приложения. Возвращает хэндл виджета для отрисовки
-static void CreateFrame();
-
-// Установить размер и оптимальную позицию для окна приложения
-static void SetPositionAndSize(Frame *frame);
-
-// Получить разрешение максимального имеющегося в системе монитора
-static wxRect GetMaxDisplay();
-
-// Создаёт все кнопки
-static void CreateButtons(Frame *frame);
-
-// Создаёт одну кнопку
-static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size);
-
-
-class Screen : public wxPanel
-{
-public:
-    Screen(wxWindow *parent) : wxPanel(parent, 320)
-    {
-        SetMinSize({ Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT });
-        SetDoubleBuffered(true);
-        Bind(wxEVT_PAINT, &Screen::OnPaint, this);
-    }
-
-    void OnPaint(wxPaintEvent &)
-    {
-        wxPaintDC dc(this);
-        dc.DrawBitmap(bitmap, 0, 0);
-    }
-};
-
-
-static Screen *screen = nullptr;
-
-
-static wxBitmap *backgroundBMP = nullptr;
 
 void Display::InitHardware()
 {
@@ -154,7 +151,7 @@ void Display::EndScene()
 }
 
 
-void Frame::OnTimerLong(wxTimerEvent&)
+void Frame::OnTimerLong(wxTimerEvent &)
 {
 }
 
@@ -164,27 +161,27 @@ void Frame::HandlerEvents()
 }
 
 
-static void CreateFrame()
+void Display::CreateFrame()
 {
-	Frame *frame = new Frame("");
+    Frame *frame = new Frame("");
 
-	SetPositionAndSize(frame);
+    SetPositionAndSize(frame);
 
-	wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer *sizer = new wxBoxSizer(wxHORIZONTAL);
 
     screen = new Screen(frame);
 
     sizer->Add(screen);
 
-	frame->SetSizer(sizer);
+    frame->SetSizer(sizer);
 
-	CreateButtons(frame);
+    CreateButtons(frame);
 
-	frame->Show(true);
+    frame->Show(true);
 }
 
 
-static void CreateButtons(Frame *frame)
+void Display::CreateButtons(Frame *frame)
 {
     int x0 = 500;
     int y0 = 15;
@@ -192,8 +189,8 @@ static void CreateButtons(Frame *frame)
     int dX = 10;
     int dY = 5;
 
-    int width = 65;
-    int height = 25;
+    int w = 65;
+    int h = 25;
 
     wxSize size(width, height);
 
@@ -206,17 +203,17 @@ static void CreateButtons(Frame *frame)
 
     for (int col = 0; col < KEYS_IN_ROW; col++)
     {
-        CreateButton(keys1[col], frame, { x0 + (width + dX) * col, y0 }, size);
-        CreateButton(keys2[col], frame, { x0 + (width + dX) * col, y0 + height + dY + 10 }, size);
-        CreateButton(keys3[col], frame, { x0 + (width + dX) * col, y0 + (height + dY) * 2 + 10 }, size);
-        CreateButton(keys4[col], frame, { x0 + (width + dX) * col, y0 + (height + dY) * 3 + 10 }, size);
+        CreateButton(keys1[col], frame, { x0 + (w + dX) * col, y0 }, size);
+        CreateButton(keys2[col], frame, { x0 + (w + dX) * col, y0 + h + dY + 10 }, size);
+        CreateButton(keys3[col], frame, { x0 + (w + dX) * col, y0 + (h + dY) * 2 + 10 }, size);
+        CreateButton(keys4[col], frame, { x0 + (w + dX) * col, y0 + (h + dY) * 3 + 10 }, size);
     }
 
     governor = new GovernorGUI(frame, { 700, 170 });
 }
 
 
-static void SetPositionAndSize(Frame *frame)
+void Display::SetPositionAndSize(Frame *frame)
 {
     wxSize size = { Display::PHYSICAL_WIDTH + 330, Display::PHYSICAL_HEIGHT };
 
@@ -230,7 +227,7 @@ static void SetPositionAndSize(Frame *frame)
 }
 
 
-static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size)
+void Display::CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size)
 {
     if (key == Key::None)
     {
@@ -246,7 +243,7 @@ static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxS
 }
 
 
-static wxRect GetMaxDisplay()
+wxRect Display::GetMaxDisplay()
 {
     wxRect result = { 0, 0, 0, 0 };
 
@@ -266,7 +263,7 @@ static wxRect GetMaxDisplay()
 }
 
 
-void Display::Sender::SendToFSMC(int , int )
+void Display::Sender::SendToFSMC(int, int)
 {
 
 }
