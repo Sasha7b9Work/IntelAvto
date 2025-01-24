@@ -194,19 +194,33 @@ void Display::CreateButtons(Frame *frame)
 
     wxSize size(w, h);
 
-    const int KEYS_IN_ROW = 5;
+    const int NUM_COLS = 5;
+    const int NUM_ROWS = 4;
 
-    Key::E keys1[KEYS_IN_ROW] = { Key::_1,    Key::_2, Key::_3,  Key::Left,  Key::Right };
-    Key::E keys2[KEYS_IN_ROW] = { Key::_4,    Key::_5, Key::_6,  Key::None,  Key::OK    };
-    Key::E keys3[KEYS_IN_ROW] = { Key::_7,    Key::_8, Key::_9,  Key::None,  Key::Esc   };
-    Key::E keys4[KEYS_IN_ROW] = { Key::Minus, Key::_0, Key::Dot, Key::Start, Key::Stop  };
-
-    for (int col = 0; col < KEYS_IN_ROW; col++)
+    static const Key::E keys[NUM_ROWS][NUM_COLS] =
     {
-        CreateButton(keys1[col], frame, { x0 + (w + dX) * col, y0 }, size);
-        CreateButton(keys2[col], frame, { x0 + (w + dX) * col, y0 + (h + dY) * 1}, size);
-        CreateButton(keys3[col], frame, { x0 + (w + dX) * col, y0 + (h + dY) * 2}, size);
-        CreateButton(keys4[col], frame, { x0 + (w + dX) * col, y0 + (h + dY) * 3}, size);
+        { Key::_1,    Key::_2, Key::_3,  Key::Left,  Key::Right },
+        { Key::_4,    Key::_5, Key::_6,  Key::None,  Key::OK    },
+        { Key::_7,    Key::_8, Key::_9,  Key::None,  Key::Esc   },
+        { Key::Minus, Key::_0, Key::Dot, Key::Start, Key::Stop  }
+    };
+
+    for (int row = 0; row < NUM_ROWS; row++)
+    {
+        for (int col = 0; col < NUM_COLS; col++)
+        {
+            int x = x0 + (w + dX) * col;
+            int y = y0 + (h + dY) * row;
+
+            Key::E key = keys[row][col];
+
+            if (key == Key::OK || key == Key::Esc)
+            {
+                x -= (size.GetWidth() / 2 + dX / 2);
+            }
+
+            CreateButton(key, frame, { x, y }, size);
+        }
     }
 
     governor = new GovernorGUI(frame, { 700, 170 });
