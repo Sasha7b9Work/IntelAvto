@@ -46,9 +46,6 @@ namespace FPGA
 
         const E address;
 
-        // На какое число нужно умножать период
-        uint PeriodMul();
-
         void SetAddress(uint8);
 
         void WriteRawValue(uint);
@@ -74,7 +71,7 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
 
     for (int i = 0; i < 3; i++)
     {
-//        pins[i]->ToState(states[type][i]);
+        pins[i]->ToState(states[type][i]);
     }
 
     SwitchingBoard::SetTypeSignal();
@@ -115,13 +112,13 @@ void FPGA::Stop()
 
 void FPGA::Pause()
 {
-//    pin_ON_OFF.ToLow();
+    pin_ON_OFF.ToLow();
 }
 
 
 void FPGA::Resume()
 {
-//    pin_ON_OFF.ToHi();
+    pin_ON_OFF.ToHi();
 }
 
 
@@ -135,34 +132,13 @@ void FPGA::Reg::Write(const Value &value)
 
     SetAddress((uint8)address);
 
-    uint duration = (uint)value.ToInt() * PeriodMul();
-
-    if (TypeSignal::Is3a() || TypeSignal::Is3b())
-    {
-        duration /= 100;
-    }
+    uint duration = (uint)value.ToInt() * 1000;         // Число приходит в миллисекундах, переводим его в микросекунды перед записью
 
     WriteRawValue(duration);
 
     pin_WR_RG.ToHi(5);
 
     SetAddress(0);
-}
-
-
-uint FPGA::Reg::PeriodMul()
-{
-    static const uint muls[] =
-    {
-        1,
-        1000,       // Period1
-        1,          // Duration1
-        1000,       // Period2
-        1,          // Duration2
-        1           // Duration3
-    };
-
-    return address < 6 ? muls[address] : 0;
 }
 
 

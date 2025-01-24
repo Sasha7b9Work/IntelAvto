@@ -1,4 +1,4 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+п»ї// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Font/Font.h"
 #include "GUI/GovernorGUI.h"
@@ -42,7 +42,7 @@ namespace Display
 }
 
 
-// Здесь хранятся указатели на кнопки
+// Р—РґРµСЃСЊ С…СЂР°РЅСЏС‚СЃСЏ СѓРєР°Р·Р°С‚РµР»Рё РЅР° РєРЅРѕРїРєРё
 static wxButton *buttons[Key::Count] = { nullptr };
 
 static GovernorGUI *governor = nullptr;
@@ -50,24 +50,27 @@ static GovernorGUI *governor = nullptr;
 static bool needStartTimerLong = false;
 static bool needStopTimerLong = false;
 
-// Здесь имя нажатой кнопки
+// Р—РґРµСЃСЊ РёРјСЏ РЅР°Р¶Р°С‚РѕР№ РєРЅРѕРїРєРё
 static Key::E pressedKey = Key::None;
 
-// Контекст рисования
+// РљРѕРЅС‚РµРєСЃС‚ СЂРёСЃРѕРІР°РЅРёСЏ
 wxMemoryDC memDC;
 
 static wxBitmap bitmap(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT);
 
-
-// Создаёт окно приложения. Возвращает хэндл виджета для отрисовки
+// РЎРѕР·РґР°С‘С‚ РѕРєРЅРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ. Р’РѕР·РІСЂР°С‰Р°РµС‚ С…СЌРЅРґР» РІРёРґР¶РµС‚Р° РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё
 static void CreateFrame();
-// Установить размер и оптимальную позицию для окна приложения
+
+// РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЂР°Р·РјРµСЂ Рё РѕРїС‚РёРјР°Р»СЊРЅСѓСЋ РїРѕР·РёС†РёСЋ РґР»СЏ РѕРєРЅР° РїСЂРёР»РѕР¶РµРЅРёСЏ
 static void SetPositionAndSize(Frame *frame);
-// Получить разрешение максимального имеющегося в системе монитора
+
+// РџРѕР»СѓС‡РёС‚СЊ СЂР°Р·СЂРµС€РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ РёРјРµСЋС‰РµРіРѕСЃСЏ РІ СЃРёСЃС‚РµРјРµ РјРѕРЅРёС‚РѕСЂР°
 static wxRect GetMaxDisplay();
-// Создаёт все кнопки
+
+// РЎРѕР·РґР°С‘С‚ РІСЃРµ РєРЅРѕРїРєРё
 static void CreateButtons(Frame *frame);
-// Создаёт одну кнопку
+
+// РЎРѕР·РґР°С‘С‚ РѕРґРЅСѓ РєРЅРѕРїРєСѓ
 static void CreateButton(Key::E key, Frame *frame, const wxPoint &pos, const wxSize &size);
 
 

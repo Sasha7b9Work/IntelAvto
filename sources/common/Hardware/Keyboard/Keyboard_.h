@@ -25,10 +25,10 @@ struct Key
         Right,      // 15
         Esc,        // 16
         OK,         // 17
+        Stop,       // 21
         GovButton,  // 18
         GovLeft,    // 19
         GovRight,   // 20
-        Stop,       // 21
         Count
     };
 
