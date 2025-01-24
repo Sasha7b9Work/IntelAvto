@@ -5,32 +5,34 @@
 #include "Hardware/Keyboard/Keyboard_.h"
 
 
-// Очередь сообщений - здесь все события органов управления
+namespace Keyboard
+{
+    // Очередь сообщений - здесь все события органов управления
 #define MAX_ACTIONS 100
 
-static Control actions[MAX_ACTIONS];
+    static Control actions[MAX_ACTIONS];
 
-// Количество уже имеющихся сообщений
-static int numActions = 0;
+    // Количество уже имеющихся сообщений
+    static int numActions = 0;
 
-static bool needStartTimerLong = false;
+    static bool needStartTimerLong = false;
 
-static bool needStopTimerLong = false;
+    static bool needStopTimerLong = false;
 
-// Здесь имя нажатой кнопки
-static Key::E pressedKey = Key::None;
+    // Здесь имя нажатой кнопки
+    static Key::E pressedKey = Key::None;
+
+    static void AddAction(Control control, Action::E action)
+    {
+        control.action = action;
+        actions[numActions++] = control;
+    }
+}
 
 
 bool Keyboard::Init()
 {
     return true;
-}
-
-
-static void AddAction(Control control, Action::E action)
-{
-    control.action = action;
-    actions[numActions++] = control;
 }
 
 
@@ -41,11 +43,11 @@ void Frame::OnDown(wxCommandEvent &event)
     //std::cout << "down " << Control(key).Name() << std::endl;
     event.Skip();
 
-    AddAction(key, Action::Press);
+    Keyboard::AddAction(key, Action::Press);
 
-    needStartTimerLong = true;
+    Keyboard::needStartTimerLong = true;
 
-    pressedKey = key;
+    Keyboard::pressedKey = key;
 }
 
 
@@ -56,11 +58,11 @@ void Frame::OnUp(wxCommandEvent &event)
     //std::cout << "up   " << Control(key).Name() << std::endl;
     event.Skip();
 
-    AddAction(key, Action::Release);
+    Keyboard::AddAction(key, Action::Release);
 
-    needStopTimerLong = true;
+    Keyboard::needStopTimerLong = true;
 
-    pressedKey = Key::None;
+    Keyboard::pressedKey = Key::None;
 }
 
 
