@@ -7,13 +7,16 @@
 
 // Очередь сообщений - здесь все события органов управления
 #define MAX_ACTIONS 100
+
 static Control actions[MAX_ACTIONS];
+
 // Количество уже имеющихся сообщений
 static int numActions = 0;
 
 static bool needStartTimerLong = false;
 
 static bool needStopTimerLong = false;
+
 // Здесь имя нажатой кнопки
 static Key::E pressedKey = Key::None;
 
@@ -26,20 +29,9 @@ bool Keyboard::Init()
 
 static void AddAction(Control control, Action::E action)
 {
-//    if (action != Action::Press)
-//    {
-//        return;
-//    }
-
     control.action = action;
     actions[numActions++] = control;
 }
-
-
-//void Keyboard::AppendControl(const Control &control)
-//{
-//    AddAction(control, control.action.Get());
-//}
 
 
 void Frame::OnDown(wxCommandEvent &event)
@@ -100,9 +92,9 @@ Control Keyboard::NextControl()
 
 pchar Key::Name(E value)
 {
-    static const char *names[Key::Count] =
+    static pchar names[Key::Count] =
     {
-        "",
+        "None",
         "1",
         "2",
         "3",
@@ -112,17 +104,18 @@ pchar Key::Name(E value)
         "7",
         "8",
         "9",
-        "9",
+        "0",
         "-",
         ".",
-        "ПУСК",
+        "START",
         "<-",
         "->",
-        "<---",
+        "ESC",
         "OK",
         "",
         "",
-        ""
+        "",
+        "STOP"
     };
 
     return names[value];
