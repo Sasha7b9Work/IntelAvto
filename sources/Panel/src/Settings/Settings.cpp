@@ -61,24 +61,24 @@ static Settings def_set =
     TypeSignal::_1,
     VoltageMode::_12,
     {
-        {   {   Voltage(-100),                  // 1 : Us   12
+        {   {   Voltage(-75),                   // 1 : Us   12      Signal 1
                 Time(1000),                     // 1 : t1   12
                 Counter(10000) }                // 1 : N    12
             ,
-            {   Voltage(-100),                  // 1 : Us   24
+            {   Voltage(-300),                  // 1 : Us   24
                 Time(1000),                     // 1 : Us   24
                 Counter(10000) }}               // 1 : N    24
         ,
-        {   {   Voltage(100),                   // 2a : Us 12
-                Time(1000),                     // 2a : t1 12
+        {   {   Voltage(55),                    // 2a : Us  12      Signal 2a
+                Time(1000),                     // 2a : t1  12
                 Counter(10000)                  // 2a : N
             }
             ,
-            {   Voltage(100),                   // 2a : Us 24
-                Time(1000),                     // 2a : t1 24
+            {   Voltage(55),                    // 2a : Us  24
+                Time(1000),                     // 2a : t1  24
                 Counter(10000) }}               // 2a : N
         ,
-        {   {   Time(500),                      // 2b : t1 12
+        {   {   Time(500),                      // 2b : t1  12      Signal 2b
                 ValueNull(),
                 ValueNull() }
             ,
@@ -86,23 +86,23 @@ static Settings def_set =
                 ValueNull(),
                 ValueNull() }}
         ,
-        {   {   Voltage(-120),                  // 3a : Us 12
+        {   {   Voltage(-112),                  // 3a : Us 12       Signal 3a
                 Counter(10000),                 // 3a : N  12
                 ValueNull() }
             ,
-            {   Voltage(-120),                  // 3a : Us 24
+            {   Voltage(-150),                  // 3a : Us 24
                 Counter(10000),                 // 3a : N  24
                 ValueNull() }}
         ,
-        {   {   Voltage(100),                   // 3b : Us 12
+        {   {   Voltage(75),                    // 3b : Us 12       Signal 3b
                 Counter(10000),                 // 3b : N  12
                 ValueNull() }
             ,
             {   Voltage(100),                   // 3b : Us 24
-                Counter(1000),                  // 3b : N  24
+                Counter(10000),                 // 3b : N  24
                 ValueNull() }}
         ,
-        {   {   Voltage(-6500),                 // 4 : Us
+        {   {   Voltage(-6500),                 // 4 : Us           Signal 4
                 Voltage(-4000),                 // 4 : Ua
                 Time(20) }                      // 4 : t7
             ,
@@ -110,7 +110,7 @@ static Settings def_set =
                 Voltage(-4000),                 // 4 : Ua
                 Time(20) }}                     // 4 : t7
         ,
-        {   {   Voltage(80),                    // 5a : Us 12
+        {   {   Voltage(80),                    // 5a : Us 12       Signal 5a
                 Time(54),                       // 5a : td 12
                 Counter(10) }                   // 5a : N  12
             ,
@@ -118,7 +118,7 @@ static Settings def_set =
                 Time(54),                       // 5a : td 24
                 Counter(10) }}                  // 5a : N  24
         ,
-        { {     Voltage(80),                    // 5b : Us 12
+        { {     Voltage(80),                    // 5b : Us 12       Signal 5b
                 Time(54)  ,                     // 5b : td 12
                 Counter(5) }                    // 5b : N  12
             ,

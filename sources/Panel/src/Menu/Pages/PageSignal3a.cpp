@@ -12,14 +12,14 @@
 namespace PageSignal3a
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_3a].values12[0], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_3b].values24[0], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_3a].values12[0], Value(-112, TypeValue::Voltage), Value(-150, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_3b].values24[0], Value(-150, TypeValue::Voltage), Value(-200, TypeValue::Voltage),
         275, 95);
 
-    Parameter param_duration("Длит",
-        &gset.signals[TypeSignal::_3a].values12[1], Value(200), Value(5000),
-        &gset.signals[TypeSignal::_3a].values24[1], Value(200), Value(5000),
-        90, 50);
+    Parameter param_N("N",
+        &gset.signals[TypeSignal::_3a].values12[1], Value(10000), Value(100000),
+        &gset.signals[TypeSignal::_3a].values24[1], Value(10000), Value(100000),
+        90, 100);
 
     static void FuncPress_Signal()
     {
@@ -48,7 +48,7 @@ namespace PageSignal3a
         &bSignal3a,
         &chModeVoltage,
         &param_Us,
-        &param_duration,
+        &param_N,
         nullptr
     };
 
