@@ -22,7 +22,7 @@ int Choice::NumStates() const
 {
     int result = 0;
 
-    while (namesRu[result])
+    while (names[result])
     {
         result++;
     }
@@ -215,7 +215,7 @@ void Button::SetTitle(pchar ru)
 
 pchar Choice::Title() const
 {
-    return namesRu[*state];
+    return names[*state];
 }
 
 
@@ -238,6 +238,27 @@ bool Button::OnEventControl(const Control &control)
     }
 
     return false;
+}
+
+
+bool Choice::OnEventControl(const Control &control)
+{
+    if ((control.key == Key::OK || control.key == Key::GovButton) && control.IsPress())
+    {
+        *state = (uint8)((*state) + 1);
+
+        if (*state == NumStates())
+        {
+            *state = 0;
+        }
+
+        if (funcOnPress)
+        {
+            funcOnPress();
+        }
+    }
+
+    return true;
 }
 
 

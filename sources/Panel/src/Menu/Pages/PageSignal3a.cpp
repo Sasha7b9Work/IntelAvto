@@ -13,7 +13,7 @@ namespace PageSignal3a
 {
     Parameter param_Us("Us",
         &gset.signals[TypeSignal::_3a].values12[0], Value(-112, TypeValue::Voltage), Value(-150, TypeValue::Voltage),
-        &gset.signals[TypeSignal::_3b].values24[0], Value(-150, TypeValue::Voltage), Value(-200, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_3a].values24[0], Value(-150, TypeValue::Voltage), Value(-200, TypeValue::Voltage),
         275, 95);
 
     Parameter param_N("N",

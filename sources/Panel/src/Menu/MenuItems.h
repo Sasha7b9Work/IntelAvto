@@ -60,20 +60,20 @@ private:
 class Choice : public Item
 {
 public:
-    Choice(pchar *_namesRu, void (*funcPress)(), uint8 *_state) :
+    Choice(pchar *_names, void (*funcPress)(), uint8 *_state) :
         Item(), colorBack(Color::MENU_UNSELECT), state(_state), funcOnPress(funcPress)
     {
-        namesRu = _namesRu;
+        names = _names;
     }
 
     virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
-//    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnEventControl(const Control &) override;
     pchar Title() const;
     int Value() const { return (int)*state; }
     void SetColorBackground(const Color &color) { colorBack = color; }
     Color colorBack;        // Этим цветом будем отрисовывать фон в случае Choice для выбора цвета
 private:
-    pchar *namesRu;
+    pchar *names;
     uint8 *state;
     void (*funcOnPress)();
     int NumStates() const;

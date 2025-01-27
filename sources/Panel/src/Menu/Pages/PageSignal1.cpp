@@ -36,7 +36,6 @@ namespace PageSignal1
         TypeSignal::Set(TypeSignal::_2a);
     }
 
-
     DEF_BUTTON(bSignal1,
         "Сигнал",
         FuncPress_Signal

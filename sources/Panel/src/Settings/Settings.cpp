@@ -98,7 +98,7 @@ static Settings def_set =
                 Counter(10000),                 // 3b : N  12
                 ValueNull() }
             ,
-            {   Voltage(100),                   // 3b : Us 24
+            {   Voltage(150),                   // 3b : Us 24
                 Counter(10000),                 // 3b : N  24
                 ValueNull() }}
         ,
