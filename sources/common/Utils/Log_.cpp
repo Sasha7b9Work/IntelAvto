@@ -12,8 +12,8 @@ void Log::Message(pchar message)
 
 #ifdef WIN32
 
-    printf(message);
-    printf("\n");
+//    printf(message);
+//    printf("\n");
 
 #endif
 }

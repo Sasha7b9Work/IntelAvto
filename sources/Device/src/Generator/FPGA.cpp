@@ -160,7 +160,7 @@ void FPGA::Reg::SetAddress(uint8 addr)
 
 void FPGA::Reg::WriteRawValue(uint value)
 {
-    for (int i = 31; i >= 0; i--)
+    for (int i = 23; i >= 0; i--)
     {
         pin_DAT_RG.ToState((value & (1 << i)) != 0);
 

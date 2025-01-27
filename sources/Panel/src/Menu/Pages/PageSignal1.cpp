@@ -27,7 +27,7 @@ namespace PageSignal1
     Parameter param_N("N",
         &gset.signals[TypeSignal::_1].values12[2], Value(5000), Value(100000),
         &gset.signals[TypeSignal::_1].values24[2], Value(5000), Value(100000),
-        90, 100);
+        90, 130);
 
     static void FuncPress_Signal()
     {

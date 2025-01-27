@@ -16,15 +16,15 @@ namespace PageSignal2a
         &gset.signals[TypeSignal::_2a].values24[0], Value(37), Value(112),
         320, 140);
 
-    Parameter param_period("Период",
+    Parameter param_t1("Период",
         &gset.signals[TypeSignal::_2a].values12[1], Value(200), Value(5000),
         &gset.signals[TypeSignal::_2a].values24[1], Value(200), Value(5000),
         270, 30);
 
-    Parameter param_duration("Длит",
-        &gset.signals[TypeSignal::_2a].values12[2], Value(1), Value(20),
-        &gset.signals[TypeSignal::_2a].values24[2], Value(1), Value(20),
-        90, 70);
+    Parameter param_N("N",
+        &gset.signals[TypeSignal::_2a].values12[2], Value(5000), Value(100000),
+        &gset.signals[TypeSignal::_2a].values24[2], Value(5000), Value(100000),
+        90, 130);
 
     static void FuncPress_Signal()
     {
@@ -45,15 +45,16 @@ namespace PageSignal2a
 
     void Start()
     {
-        Message::Start2A(param_Us.GetValue(), param_period.GetValue()).Transmit();
+        Message::Start2A(param_Us.GetValue(), param_t1.GetValue()).Transmit();
     }
 
     static Item *items[] =
     {
         &bSignal2a,
         &chModeVoltage,
-        &param_period,
-        &param_duration,
+        &param_Us,
+        &param_t1,
+        &param_N,
         nullptr
     };
 
