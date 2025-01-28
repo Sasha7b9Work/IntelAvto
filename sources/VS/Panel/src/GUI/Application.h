@@ -2,6 +2,7 @@
 #pragma once
 #pragma warning(push, 0)
 #include <wx/wx.h>
+#include <wx/wfstream.h>
 #pragma warning(pop)
 
 
@@ -21,6 +22,7 @@ public:
     void OnSize(wxCommandEvent &);
     void OnQuit(wxCommandEvent &);
     void OnSCPI(wxCommandEvent &);
+    void OnConvertToArray(wxCommandEvent &);
     void OnAbout(wxCommandEvent &);
     void OnTimer(wxTimerEvent &);
     void OnTimerLong(wxTimerEvent &);
