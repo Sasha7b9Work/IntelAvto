@@ -86,13 +86,13 @@ void FPGA::WritePeriod(TypeSignal::E type, const Value &period)
 
 void FPGA::Start()
 {
-    Resume();
-
     pin_START.ToHi();
 
     HAL_TIM::DelayUS(20);
 
     pin_START.ToLow();
+
+    Resume();
 
     TimeMeterMS().Delay(2);
 }
