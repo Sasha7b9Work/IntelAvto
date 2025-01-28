@@ -82,6 +82,8 @@ void Menu::Input::OnControl(const Control &control)
             {
                 if (control.key == Key::Start)
                 {
+                    Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
+
                     if (Device::IsStopped())
                     {
                         labelMode.SetState("реяр", Color::WHITE, Color::RED);

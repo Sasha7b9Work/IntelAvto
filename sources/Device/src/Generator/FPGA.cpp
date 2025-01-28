@@ -26,13 +26,13 @@ namespace FPGA
 
         Reg(E a) : address(a) { }
 
-        static Reg ForPeriod()
+        static Reg ForPeriod(TypeSignal::E type)
         {
-            if (TypeSignal::Is1_12V() || TypeSignal::Is1_24V())
+            if (type == TypeSignal::_1_12V || type == TypeSignal::_1_24V)
             {
                 return Reg(Reg::Period1);
             }
-            else if (TypeSignal::Is2a())
+            else if (type == TypeSignal::_2a)
             {
                 return Reg(Reg::Period2);
             }
@@ -78,9 +78,9 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
 }
 
 
-void FPGA::WritePeriod(const Value &period)
+void FPGA::WritePeriod(TypeSignal::E type, const Value &period)
 {
-    Reg::ForPeriod().Write(period);
+    Reg::ForPeriod(type).Write(period);
 }
 
 

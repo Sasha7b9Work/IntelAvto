@@ -29,6 +29,12 @@ void Timer::SetOnceTask(TimerTask::E task, uint time, void (*func)())
 }
 
 
+void Timer::DisableTask(TimerTask::E task)
+{
+    tasks[task].func = nullptr;
+}
+
+
 void Timer::UpdateTasks()
 {
     uint time = TIME_MS;

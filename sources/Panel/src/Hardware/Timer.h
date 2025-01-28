@@ -10,7 +10,7 @@ struct TimerTask
 {
     enum E
     {
-        ChangeColorOnLabelStop,
+        ChangeColorOnLabelStop,         // Изменить цвет кнопки СТОП через некоторое время после остановки
         Count
     };
 };
@@ -20,6 +20,8 @@ namespace Timer
 {
     // Однократное значение - выполняется только один раз
     void SetOnceTask(TimerTask::E, uint time, void (*func)());
+
+    void DisableTask(TimerTask::E);
 
     void UpdateTasks();
 }
