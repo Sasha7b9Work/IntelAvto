@@ -186,9 +186,12 @@ void Frame::OnConvertToArray(wxCommandEvent &)
     {
         wxFileInputStream istream(dialog.GetPath());
 
-        if (istre am.IsOk())
+        if (istream.IsOk())
         {
+            wxFile ofile;
+            ofile.Open(dialog.GetPath() + ".cpp", wxFile::write);
 
+            ofile.Write("buffer\n");
         }
     }
 }
