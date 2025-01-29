@@ -455,11 +455,7 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y - 10);
 
-        void *buffer = malloc(50 * 1024);
-
-        Picture::DrawPicure(0, 0, bmp_zip_Signal1, buffer);
-
-        delete buffer;
+        Picture::DrawPicure(0, 0, bmp_zip_Signal1);
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
     {

@@ -5,10 +5,8 @@
 #include <miniz/miniz.h>
 #include <cstring>
 
-void Picture::DrawPicure(int x, int y, const uint8 *archive, void *buffer)
+void Picture::DrawPicure(int x, int y, const uint8 *archive)
 {
-    uint bytes_decompress = 0;
-
     unsigned long length_archive = 0;
 
     if (archive == bmp_zip_Signal1)
@@ -22,17 +20,20 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive, void *buffer)
     if (mz_zip_reader_init_mem(&zip_archive, archive, length_archive, 0))
     {
         mz_zip_archive_file_stat file_stat;
-        
-        if (!mz_zip_reader_file_stat(&zip_archive, 0, &file_stat))
+
+        if (mz_zip_reader_file_stat(&zip_archive, 0, &file_stat))
         {
-            return;
+            void *buffer = malloc((size_t)file_stat.m_uncomp_size);
+
+            if(mz_zip_reader_extract_file_to_mem(&zip_archive, file_stat.m_filename, buffer, (size_t)file_stat.m_uncomp_size, 0))
+            {
+                // Файл распакован. Можно рисовать
+                int i = 0;
+            }
+
+            free(buffer);
         }
     }
 
-    int status = uncompress2((uint8 *)buffer, (unsigned long *)&bytes_decompress, archive, (unsigned long *)&length_archive);
-
-    if (status == Z_OK)
-    {
-        // Разахивировалось
-    }
+    return;
 }

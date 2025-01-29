@@ -10,5 +10,5 @@ namespace Picture
     int GetLengthBuffer(const uint8 *);
 
     // Нарисовать картинку. buffer - место для её хранения без распковки
-    void DrawPicure(int x, int y, const uint8 *, void *buffer);
+    void DrawPicure(int x, int y, const uint8 *);
 }
