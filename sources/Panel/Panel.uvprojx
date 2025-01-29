@@ -1094,6 +1094,11 @@
               <FileType>1</FileType>
               <FilePath>..\common\libs\miniz\miniz_tdef.c</FilePath>
             </File>
+            <File>
+              <FileName>miniz_zip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz_zip.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -2185,6 +2190,11 @@
               <FileName>miniz_tdef.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\libs\miniz\miniz_tdef.c</FilePath>
+            </File>
+            <File>
+              <FileName>miniz_zip.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz_zip.c</FilePath>
             </File>
           </Files>
         </Group>

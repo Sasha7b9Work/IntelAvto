@@ -3,7 +3,7 @@
 #include "Display/Pictures/Picture.h"
 #include "Display/Pictures/Signal1.inc"
 #include <miniz/miniz.h>
-
+#include <cstring>
 
 void Picture::DrawPicure(int x, int y, const uint8 *archive, void *buffer)
 {
@@ -16,7 +16,20 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive, void *buffer)
         length_archive = sizeof(bmp_zip_Signal1);
     }
 
-    int status = uncompress((uint8 *)buffer, (unsigned long *)&bytes_decompress, archive, (unsigned long)length_archive);
+    mz_zip_archive zip_archive;
+    std::memset(&zip_archive, 0, sizeof(zip_archive));
+
+    if (mz_zip_reader_init_mem(&zip_archive, archive, length_archive, 0))
+    {
+        mz_zip_archive_file_stat file_stat;
+        
+        if (!mz_zip_reader_file_stat(&zip_archive, 0, &file_stat))
+        {
+            return;
+        }
+    }
+
+    int status = uncompress2((uint8 *)buffer, (unsigned long *)&bytes_decompress, archive, (unsigned long *)&length_archive);
 
     if (status == Z_OK)
     {

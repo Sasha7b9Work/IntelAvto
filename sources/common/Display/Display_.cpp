@@ -443,8 +443,6 @@ bool Display::InDrawingPart(int y, int _height)
 
 void Display::DrawSignal()
 {
-    uint8 buffer[1024 * 64];
-
     int x = 130;
     int y = 70;
     Coord coord(x, y);
@@ -457,7 +455,11 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y - 10);
 
+        void *buffer = malloc(50 * 1024);
+
         Picture::DrawPicure(0, 0, bmp_zip_Signal1, buffer);
+
+        delete buffer;
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
     {
