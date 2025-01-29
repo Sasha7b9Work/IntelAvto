@@ -331,9 +331,12 @@ void Display::DrawPartScreen(int num, bool)
         }
     }
 
-    Text("%d", num_sends).Write(420, 180, Color::WHITE);
-    Text("%08X", crc_trans).Write(400, 210);
-    Text("%08X", crc_recv).Write(400, 240);
+    if (num_sends > 1)
+    {
+        Text("%d", num_sends).Write(420, 180, Color::WHITE);
+        Text("%08X", crc_trans).Write(400, 210);
+        Text("%08X", crc_recv).Write(400, 240);
+    }
 
     Display::EndScene();
 
@@ -451,8 +454,6 @@ void Display::DrawSignal()
 
     if (TypeSignal::Is(TypeSignal::_1))
     {
-        Axis().Draw(Coord(x, y + 25), 70, 330, 150);
-
         Text("Ua").Write(x - 25, y - 10);
 
         Picture::DrawPicure(150, 50, bmp_zip_Signal1);

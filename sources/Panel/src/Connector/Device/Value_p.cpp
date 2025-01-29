@@ -69,7 +69,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
         {
             std::strcat(string, (GetType() == TypeValue::Time) ? "s" : "V");
         }
-        Text(string).Write(x, y);
+        Text(string).Write(x, y, Color::WHITE);
     }
 }
 

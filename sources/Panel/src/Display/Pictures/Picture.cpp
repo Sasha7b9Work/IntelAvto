@@ -63,7 +63,7 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive)
                 {
                     for (int i = x; i < x + head->width; i++)
                     {
-                        Point().Draw(i, j, *pixel++ < 1 ? Color::GRAY : Color::WHITE);
+                        Point().Draw(i, j, *pixel++ < 1 ? Color::BACK : Color::WHITE);
                     }
                 }
             }
