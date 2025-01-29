@@ -14,6 +14,8 @@ include_directories(
     ../common
     ../common/_VS_KEIL/CMSIS
     ../common/_VS/std_includes
+    ../common/libs
+    ../common/libs/minz
     ../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     ../common/libs/STM32Cube_F4/Drivers/CMSIS/Include
     ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
@@ -28,6 +30,7 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
 add_compile_options(
     /wd4211    #  nonstandard extension used: redefined extern to static
+    /wd4505
     /wd4514    # 'function' : unreferenced inline function has been removed
     /wd4623    # 'xxx': default constructor was implicitly defined as deleted
     /wd4626    # 'derived class' : assignment operator was implicitly defined as deleted because a base

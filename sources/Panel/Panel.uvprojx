@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, DEBUG, PANEL, STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>.\src;.\src\Hardware\HAL;.\src\Hardware;..\libs\common;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Inc;.\src\libs;..\common;.\src\Hardware\USBD;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc;.\tests;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Class\HID\Inc</IncludePath>
+              <IncludePath>.\src;.\src\Hardware\HAL;.\src\Hardware;..\libs\common;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Core\Inc;.\src\libs;..\common;.\src\Hardware\USBD;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc;.\tests;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Device_Library\Class\HID\Inc;..\common\libs</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -735,9 +735,9 @@
               <FilePath>.\src\Display\Pictures\Picture.h</FilePath>
             </File>
             <File>
-              <FileName>Signal1.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Pictures\Signal1.cpp</FilePath>
+              <FileName>Signal1.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal1.inc</FilePath>
             </File>
           </Files>
         </Group>
@@ -1068,6 +1068,31 @@
               <FileName>Log_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Log_.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>libs/miniz</GroupName>
+          <Files>
+            <File>
+              <FileName>miniz.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz.c</FilePath>
+            </File>
+            <File>
+              <FileName>miniz.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\miniz\miniz.h</FilePath>
+            </File>
+            <File>
+              <FileName>miniz_tinfl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz_tinfl.c</FilePath>
+            </File>
+            <File>
+              <FileName>miniz_tdef.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz_tdef.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1802,9 +1827,9 @@
               <FilePath>.\src\Display\Pictures\Picture.h</FilePath>
             </File>
             <File>
-              <FileName>Signal1.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Pictures\Signal1.cpp</FilePath>
+              <FileName>Signal1.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal1.inc</FilePath>
             </File>
           </Files>
         </Group>
@@ -2135,6 +2160,31 @@
               <FileName>Log_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Log_.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>libs/miniz</GroupName>
+          <Files>
+            <File>
+              <FileName>miniz.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz.c</FilePath>
+            </File>
+            <File>
+              <FileName>miniz.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\miniz\miniz.h</FilePath>
+            </File>
+            <File>
+              <FileName>miniz_tinfl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz_tinfl.c</FilePath>
+            </File>
+            <File>
+              <FileName>miniz_tdef.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\common\libs\miniz\miniz_tdef.c</FilePath>
             </File>
           </Files>
         </Group>
