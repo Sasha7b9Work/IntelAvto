@@ -240,13 +240,13 @@ static void WindowSet(int s_x, int e_x, int s_y, int e_y)
 }
 
 
-static void Delay()
-{
-    volatile int i = 0;
-    for (; i < 1; i++) //-V1008
-    {
-    }
-}
+#ifdef WIN32
+    #define DELAY
+#else
+    #define DELAY  __NOP(); __NOP(); __NOP(); __NOP(); __NOP(); \
+                   __NOP(); __NOP(); __NOP(); __NOP(); __NOP(); \
+                   __NOP(); __NOP(); __NOP(); __NOP()
+#endif
 
 
 void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int height, int k)
@@ -279,27 +279,27 @@ void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int hei
         PORT_WR->BSRR = PIN_WR << 16;
         uint16 col3 = (uint16)color2;
         uint16 value = (uint16)(color1 << 8);
-        Delay();
+        DELAY;
         PORT_DATA->ODR = (uint)(value | (uint16)(color1 >> 8));
         PORT_WR->BSRR = PIN_WR;
-        Delay();
+        DELAY;
 
         value |= (uint8)(color2 >> 16);
-        Delay();
+        DELAY;
         PORT_WR->BSRR = PIN_WR << 16; //-V779
-        Delay();
+        DELAY;
         color1 = colors[*buffer++];
         PORT_DATA->ODR = value;
-        Delay();
+        DELAY;
         PORT_WR->BSRR = PIN_WR;
-        Delay();
+        DELAY;
         color2 = colors[*buffer++];
-        Delay();
+        DELAY;
         PORT_WR->BSRR = PIN_WR << 16;
-        Delay();
+        DELAY;
         PORT_DATA->ODR = col3;
         PORT_WR->BSRR = PIN_WR;
-        Delay();
+        DELAY;
     }
 
     PORT_CS->BSRR = PIN_CS;
