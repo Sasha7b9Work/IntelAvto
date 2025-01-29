@@ -22,5 +22,9 @@
     #pragma clang diagnostic ignored "-Wshift-sign-overflow"
     #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
     #pragma clang diagnostic ignored "-Winvalid-utf8"
+    
+//    #pragma clang diagnostic ignored "-Wpadded"
+//    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Wunused-function"
 #endif
 
