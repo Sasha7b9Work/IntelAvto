@@ -17,7 +17,7 @@ struct Color
     static Color GRAY;
     static Color YELLOW;
 
-    static const int COUNT = 13;
+    static const int COUNT = 255;
 
     explicit Color(uint8 i) : index(i) {}
 
