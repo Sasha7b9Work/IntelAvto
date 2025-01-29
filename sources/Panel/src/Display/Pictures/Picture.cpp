@@ -12,6 +12,13 @@
 using namespace Primitives;
 
 
+namespace Picture
+{
+    // \warn сюда нельз€ распаковать картинку больше 64 кЅ
+    static uint8 buffer[1024 * 64] __attribute__ ((section("CCM_DATA")));
+}
+
+
 void Picture::DrawPicure(int x, int y, const uint8 *archive)
 {
     unsigned long length_archive = 0;
@@ -30,8 +37,6 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive)
 
         if (mz_zip_reader_file_stat(&zip_archive, 0, &file_stat))
         {
-            void *buffer = malloc((size_t)file_stat.m_uncomp_size);
-
             if(mz_zip_reader_extract_file_to_mem(&zip_archive, file_stat.m_filename, buffer, (size_t)file_stat.m_uncomp_size, 0))
             {
 #pragma pack(1)
@@ -72,8 +77,6 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive)
                     }
                 }
             }
-
-            free(buffer);
         }
     }
 
