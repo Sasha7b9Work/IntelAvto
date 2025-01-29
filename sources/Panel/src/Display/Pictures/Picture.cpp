@@ -3,7 +3,9 @@
 #include "Display/Pictures/Picture.h"
 
 
-void Picture::DrawPicure(int x, int y, const uint8 *, void *buffer)
+void Picture::DrawPicure(int x, int y, const uint8 *archive, int length_archive, void *buffer)
 {
+    uint bytes_decompress = 0;
 
+    int result = tinf_gzip_uncompress(buffer, &bytes_decompress, archive, length_archive);
 }
