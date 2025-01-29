@@ -3,6 +3,8 @@
 #include "Display/Pictures/Picture.h"
 #include "Display/Pictures/Signal1.inc"
 #include "Display/Primitives_.h"
+#include "Hardware/Timer.h"
+#include "Display/Display_.h"
 #include <miniz/miniz.h>
 #include <cstring>
 
@@ -63,7 +65,10 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive)
                 {
                     for (int i = x; i < x + head->width; i++)
                     {
-                        Point().Draw(i, j, *pixel++ < 1 ? Color::BACK : Color::WHITE);
+                        if (*pixel++ > 1)
+                        {
+                            Point().Draw(i, j, Color::WHITE);
+                        }
                     }
                 }
             }
