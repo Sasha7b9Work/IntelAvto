@@ -110,6 +110,13 @@ void FPGA::Stop()
 }
 
 
+void FPGA::Init()
+{
+    WritePeriod(TypeSignal::_1_12V, Value(1000));
+    WritePeriod(TypeSignal::_2a, Value(1000));
+}
+
+
 void FPGA::Pause()
 {
     pin_ON_OFF.ToLow();

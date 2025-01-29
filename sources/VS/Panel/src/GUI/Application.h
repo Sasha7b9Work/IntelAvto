@@ -3,6 +3,7 @@
 #pragma warning(push, 0)
 #include <wx/wx.h>
 #include <wx/wfstream.h>
+#include <wx/filename.h>
 #pragma warning(pop)
 
 

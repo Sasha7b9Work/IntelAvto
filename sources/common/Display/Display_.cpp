@@ -10,6 +10,7 @@
 #include "Display/Font/Font.h"
 #include "Display/Text_.h"
 #include "Display/Console_.h"
+#include "Display/Pictures/Picture.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -442,6 +443,8 @@ bool Display::InDrawingPart(int y, int _height)
 
 void Display::DrawSignal()
 {
+    uint8 buffer[1024 * 64];
+
     int x = 130;
     int y = 70;
     Coord coord(x, y);
@@ -454,22 +457,7 @@ void Display::DrawSignal()
 
         Text("Ua").Write(x - 25, y - 10);
 
-        HMeasuringLines(x + 70, x + 290, y - 30, y - 15, y + 25).Draw();
-
-        VMeasuringLines(x + 70, x + 200, x + 210, y + 25, y + 175).Draw();
-
-        VLine(25).Draw(coord);
-        coord.x = HLine(50).Draw(coord, Color::WHITE);
-        coord.y = VLine(25).Draw(coord);
-        coord.x = HLine(20).Draw(coord);
-        coord = Line().Draw(coord, coord.x + 20, coord.y + 150);
-        coord = Line().Draw(coord, coord.x + 30, coord.y - 110);
-        coord = Line().Draw(coord, coord.x + 50, coord.y - 40);
-        coord.x = HLine(50).Draw(coord);
-        VLine(25).Draw(coord.x, coord.y - 25);
-        coord.x = HLine(50).Draw(coord.x, coord.y - 25);
-        coord.y = VLine(25).Draw(coord.x, coord.y - 25);
-        coord.x = HLine(20).Draw(coord);
+        Picture::DrawPicure(0, 0, bmp_zip_Signal1, buffer);
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
     {

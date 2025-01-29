@@ -38,6 +38,8 @@ private:
 
 namespace FPGA
 {
+    void Init();
+
     void Start();
 
     void Pause();

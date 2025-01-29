@@ -722,6 +722,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>Display/Pictures</GroupName>
+          <Files>
+            <File>
+              <FileName>Picture.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Pictures\Picture.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Picture.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Picture.h</FilePath>
+            </File>
+            <File>
+              <FileName>Signal1.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Pictures\Signal1.cpp</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
@@ -1765,6 +1785,26 @@
               <FileName>FontMid.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Font\FontMid.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Display/Pictures</GroupName>
+          <Files>
+            <File>
+              <FileName>Picture.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Pictures\Picture.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>Picture.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Picture.h</FilePath>
+            </File>
+            <File>
+              <FileName>Signal1.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Display\Pictures\Signal1.cpp</FilePath>
             </File>
           </Files>
         </Group>

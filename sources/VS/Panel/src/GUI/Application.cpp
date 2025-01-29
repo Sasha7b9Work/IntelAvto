@@ -186,12 +186,52 @@ void Frame::OnConvertToArray(wxCommandEvent &)
     {
         wxFileInputStream istream(dialog.GetPath());
 
+        wxFileName name(dialog.GetPath());
+
         if (istream.IsOk())
         {
             wxFile ofile;
             ofile.Open(dialog.GetPath() + ".cpp", wxFile::write);
 
-            ofile.Write("buffer\n");
+            ofile.Write(wxString::Format("static const unsigned char bmp_zip_%s[] =\n{\n", name.GetName()));
+
+            int num_symbols = 0;
+
+            while (!istream.Eof())
+            {
+                if (num_symbols == 0)
+                {
+                    ofile.Write("    ");
+                }
+
+                uint8 byte;
+                istream.Read(&byte, 1);
+                num_symbols++;
+                ofile.Write(wxString::Format("0x%02X", byte));
+
+                if (!istream.Eof())
+                {
+                    ofile.Write(",");
+
+                    if (num_symbols != 16)
+                    {
+                        ofile.Write(" ");
+                    }
+                }
+
+                if (num_symbols == 16)
+                {
+                    num_symbols = 0;
+                    ofile.Write("\n");
+                }
+            }
+
+            if (num_symbols != 0)
+            {
+                ofile.Write("\n");
+            }
+
+            ofile.Write("};\n");
         }
     }
 }

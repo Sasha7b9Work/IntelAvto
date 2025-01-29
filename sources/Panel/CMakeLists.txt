@@ -49,6 +49,7 @@ file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
 file(GLOB DEVICE                    src/Device/*.*)
 file(GLOB DISPLAY             ../common/Display/*.*)
 file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
+file(GLOB DISPLAY_PICTURES          src/Display/Pictures/*.*)
 file(GLOB HARDWARE                  src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_LAN        ../common/Hardware/LAN/*.*)
@@ -73,6 +74,7 @@ source_group(Connector/Device  FILES ${CONNECTOR_DEVICE})
 source_group(Device            FILES ${DEVICE})
 source_group(Display           FILES ${DISPLAY})
 source_group(Display/Font      FILES ${DISPLAY_FONT})
+source_group(Display/Pictures  FILES ${DISPLAY_PICTURES})
 source_group(Hardware          FILES ${HARDWARE})
 source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
@@ -99,6 +101,7 @@ add_library(${PROJECT_NAME}
     ${DEVICE}
     ${DISPLAY}
     ${DISPLAY_FONT}
+    ${DISPLAY_PICTURES}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}

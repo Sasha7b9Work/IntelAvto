@@ -7,6 +7,7 @@
 #include "Generator/MAX532.h"
 #include "Connector/Device/Interface_d.h"
 #include "Connector/Device/Value_.h"
+#include "Generator/FPGA.h"
 
 
 int main()
@@ -16,8 +17,18 @@ int main()
 
     Generator::Stop();
 
+    FPGA::Init();
+
     while (1)
     {
-        DInterface::Update();
+//        DInterface::Update();
+
+        FPGA::Start();
+
+        TimeMeterMS().Delay(20000);
+
+        FPGA::Stop();
+
+        TimeMeterMS().Delay(20000);
     }
 }
