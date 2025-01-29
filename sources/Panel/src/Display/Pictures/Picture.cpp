@@ -72,5 +72,7 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive)
         }
     }
 
+    mz_zip_reader_end(&zip_archive);
+
     return;
 }
