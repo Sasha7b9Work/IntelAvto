@@ -15,13 +15,13 @@ namespace PageSignal1
     Parameter param_Us("Us",
         &gset.signals[TypeSignal::_1].values12[0], Value(-600, TypeValue::Voltage), Value(-1, TypeValue::Voltage),
         &gset.signals[TypeSignal::_1].values24[0], Value(-600, TypeValue::Voltage), Value(-1, TypeValue::Voltage),
-        340, 165);
+        280, 155);
 
     // Период повторения
     Parameter param_t1("Период",
         &gset.signals[TypeSignal::_1].values12[1], Value(500), Value(5000),
         &gset.signals[TypeSignal::_1].values24[1], Value(500), Value(5000),
-        310, 33);
+        280, 50);
 
     // Количество импульсов
     Parameter param_N("N",
