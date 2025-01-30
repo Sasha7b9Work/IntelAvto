@@ -76,8 +76,8 @@ namespace Keyboard
     static uint timePress[NUM_SL][NUM_RL];
 
     // Время последнего автонажатия нопки
-    volatile uint prevRepeat = 0;
-    volatile uint prevPause = 0;
+    static volatile uint prevRepeat = 0;
+//    static volatile uint prevPause = 0;
 
     // Установить состояние пина
     static void Set_SL(int, int);

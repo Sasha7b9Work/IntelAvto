@@ -31,19 +31,9 @@ namespace Display
     void DrawInfo();
 
     static void SetTopRow(int i);
-
-
-    uint timeAutoHint = 0;
-    int second = 0;
     static int topRow = 0;
-
-
     static uint timeStart = 0;
     static uint timeFrame = 0;
-    uint fps = 0;                // Столько кадров отрисовано за последнюю секунду
-    uint beginSecond = 0;        // В это время началась последняя секунда
-    uint timePaint = 0;          // Время отрисовки за секунду
-
 
     static int topDraw = 0;             // Верхний у отрисовываемой части экрана
     static int bottomhDraw = 0;         // Нижний у отрисовываемой части экрана

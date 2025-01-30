@@ -15,10 +15,8 @@
     #pragma clang diagnostic ignored "-Wexit-time-destructors"
     #pragma clang diagnostic ignored "-Wformat-nonliteral"
     #pragma clang diagnostic ignored "-Wmissing-prototypes"
+
     #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
-    #pragma clang diagnostic ignored "-Wnon-virtual-dtor"
-    #pragma clang diagnostic ignored "-Wunused-private-field"
-    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
     #pragma clang diagnostic ignored "-Wshift-sign-overflow"
     #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
     #pragma clang diagnostic ignored "-Winvalid-utf8"
