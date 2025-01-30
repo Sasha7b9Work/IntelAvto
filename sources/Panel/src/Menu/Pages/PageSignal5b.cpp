@@ -58,8 +58,8 @@ namespace PageSignal5b
 
     static void AdditionDraw()
     {
-        Text("Us* : %d Â", VoltageMode::Is12() ? 35 : 59).Write(
-            Display::xConstParameters, Display::yConstParameters
+        Text("%s     Us* : %d Â", VoltageMode::TextValue(), VoltageMode::Is12() ? 35 : 59).Write(
+            Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }
 

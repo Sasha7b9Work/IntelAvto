@@ -4,6 +4,8 @@
 #include "Menu/MenuItemsDef.h"
 #include "Settings/Settings.h"
 #include "Menu/Menu.h"
+#include "Display/Text_.h"
+#include "Display/Display_.h"
 
 
 namespace PageSignal5a
@@ -48,7 +50,14 @@ namespace PageSignal5a
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr, FuncStartTest);
+    static void AdditionDraw()
+    {
+        Text("%s", VoltageMode::TextValue()).Write(
+            Display::xConstParameters, Display::yConstParameters, Color::WHITE
+        );
+    }
+
+    static Page page(items, nullptr, AdditionDraw, FuncStartTest);
 }
 
 

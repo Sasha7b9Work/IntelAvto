@@ -64,13 +64,14 @@ namespace PageSignal4
 
     static void AdditionDraw()
     {
-        Text("Us : %s     Ua : %s     t7 : %s     t9 : %s",
+        Text("%s     Us : %s     Ua : %s     t7 : %s     t9 : %s",
+            VoltageMode::TextValue(),
             VoltageMode::Is12() ? "-7.5 В" : "-16 В",
             VoltageMode::Is12() ? "-6 В" : "-12 В",
             VoltageMode::Is12() ? "15 мс" : "50 мс",
             "2000 мс"
         ).Write(
-            Display::xConstParameters, Display::yConstParameters
+            Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }
 

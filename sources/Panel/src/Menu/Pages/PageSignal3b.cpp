@@ -54,8 +54,8 @@ namespace PageSignal3b
 
     static void AdditionDraw()
     {
-        Text("Ri : 50 Îì").Write(
-            Display::xConstParameters, Display::yConstParameters
+        Text("%s     Ri : 50 Îì", VoltageMode::TextValue()).Write(
+            Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }
 

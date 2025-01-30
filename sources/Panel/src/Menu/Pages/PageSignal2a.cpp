@@ -60,8 +60,8 @@ namespace PageSignal2a
 
     static void AdditionDraw()
     {
-        Text("Ri : 2 Îì").Write(
-            Display::xConstParameters, Display::yConstParameters
+        Text("%s     Ri : 2 Îì", VoltageMode::TextValue()).Write(
+            Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }
 
