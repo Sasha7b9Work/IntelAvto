@@ -257,7 +257,14 @@ pchar Duration::ToStringValue(char buffer[32]) const
         {
             std::sprintf(buffer + std::strlen(buffer), "%02dì", minutes);
         }
-        std::sprintf(buffer + std::strlen(buffer), "%02d.%03dñ", secs, ms);
+        if(ms)
+        {
+            std::sprintf(buffer + std::strlen(buffer), "%02d.%03dñ", secs, ms);
+        }
+        else
+        {
+            std::sprintf(buffer + std::strlen(buffer), "%02dñ", secs);
+        }
     }
 
     return buffer;
