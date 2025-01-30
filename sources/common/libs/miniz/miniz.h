@@ -112,6 +112,11 @@
 */
 #pragma once
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wall"
+#endif
+
 #ifdef WIN32
     #pragma warning(push, 0)
 #endif
@@ -611,4 +616,8 @@ extern "C"
 
 #ifdef WIN32
     #pragma warning(pop)
+#endif
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
 #endif
