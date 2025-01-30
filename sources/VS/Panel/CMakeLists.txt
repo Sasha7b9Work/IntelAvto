@@ -29,16 +29,11 @@ add_definitions(-DSTM32F429xx -DWXUSINGDLL -DGUI)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
 add_compile_options(
-    /wd4201
-    /wd4211     # nonstandard extension used: redefined extern to static
     /wd4355     # 'this': used in base member initializer list
     /wd4514     # 'xxx': unreferenced inline function has been removed
-    /wd4571     # Informational: catch(...) semantics changed since Visual C++ 7.1
     /wd4623     # 'xxx': default constructor was implicitly defined as deleted
     /wd4625     # 'xxx': copy constructor was implicitly defined as deleted
     /wd4626     # 'xxx': assignment operator was implicitly defined as deleted
-    /wd4710     # function not inlined
-    /wd4774     # 'xxx' : format string expected in argument Y is not a string literal
     /wd4820     # 'xxx': 'y' bytes padding added after data member 'zzz'
     /wd4996     # 'xxx': This function or variable may be unsafe. Consider using yyy instead. To disable
                 # deprecation, use _CRT_SECURE_NO_WARNINGS
