@@ -24,6 +24,12 @@
  * THE SOFTWARE.
  *
  **************************************************************************/
+
+#ifdef WIN32
+    #pragma warning(push, 0)
+#endif
+
+
 #include "miniz.h"
 
 #ifndef MINIZ_NO_ARCHIVE_APIS
@@ -4893,3 +4899,7 @@ static int mz_stat64(const char *path, struct __stat64 *buffer)
 #endif
 
 #endif /*#ifndef MINIZ_NO_ARCHIVE_APIS*/
+
+#ifdef WIN32
+    #pragma warning(pop)
+#endif

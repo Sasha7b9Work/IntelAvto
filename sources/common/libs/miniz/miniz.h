@@ -112,6 +112,10 @@
 */
 #pragma once
 
+#ifdef WIN32
+    #pragma warning(push, 0)
+#endif
+
 #include "miniz_export.h"
 
 /* Defines to completely disable specific portions of miniz.c:
@@ -603,3 +607,8 @@ extern "C"
 #include "miniz_tdef.h"
 #include "miniz_tinfl.h"
 #include "miniz_zip.h"
+
+
+#ifdef WIN32
+    #pragma warning(pop)
+#endif

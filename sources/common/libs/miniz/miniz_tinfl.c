@@ -24,6 +24,11 @@
  *
  **************************************************************************/
 
+#ifdef WIN32
+    #pragma warning(push, 0)
+#endif
+
+
 #include "miniz.h"
 
 #ifndef MINIZ_NO_INFLATE_APIS
@@ -774,3 +779,7 @@ extern "C"
 #endif
 
 #endif /*#ifndef MINIZ_NO_INFLATE_APIS*/
+
+#ifdef WIN32
+    #pragma warning(pop)
+#endif

@@ -9,6 +9,7 @@ message("-----------------------------------------------------------------------
 include_directories(
     src
     ../../common/_VS_KEIL/HAL
+    ../../common/libs
     ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
     ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     ../../common/_VS_KEIL/CMSIS
@@ -63,6 +64,10 @@ file(GLOB SRC                ../../Panel/src/defines.h
                              ../../Panel/src/Settings.*
                                          src/Application_win.*
                                          src/main_win.cpp)
+file(GLOB LIBS_MINIZ            ../../common/libs/miniz/miniz_zip.*
+                                ../../common/libs/miniz/miniz.*
+                                ../../common/libs/miniz/miniz_tdef.*
+                                ../../common/libs/miniz/miniz_tinfl.*)
 file(GLOB CONNECTOR_DEVICE      ../../common/Connector/Device/Messages_.*
                                 ../../common/Connector/Device/Handlers_p.*
                                 ../../common/Connector/Device/Transceiver_.h
@@ -85,6 +90,7 @@ file(GLOB DISPLAY_FONT          ../../common/Display/Font/*.h
                                 ../../common/Display/Font/*.cpp
                                 ../../common/Display/Font/*.inc
                                 ../../common/Display/Font/*.xml)
+file(GLOB DISPLAY_PICTURES   ../../Panel/src/Display/Pictures/*.*)
 file(GLOB GUI                            src/GUI/*)
 file(GLOB HARDWARE           ../../Panel/src/Hardware/*FPGA.*
                              ../../Panel/src/Hardware/FreqMeter.*
@@ -104,10 +110,12 @@ file(GLOB UTILS                 ../../common/Utils/*.*)
 
 source_group(_VS/HAL            FILES ${VS_HAL})
 source_group(src                FILES ${SRC})
+source_group(libs/miniz         FILES ${LIBS_MINIZ})
 source_group(Connector/Device   FILES ${CONNECTOR_DEVICE})
 source_group(Device             FILES ${DEVICE})
 source_group(Display            FILES ${DISPLAY})
 source_group(Display/Font       FILES ${DISPLAY_FONT})
+source_group(Display/Pictures   FILES ${DISPLAY_PICTURES})
 source_group(GUI                FILES ${GUI})
 source_group(Hardware           FILES ${HARDWARE})
 source_group(Hardware/HAL       FILES ${HARDWARE_HAL})
@@ -127,10 +135,12 @@ set_source_files_properties(
 add_executable(${PROJECT_NAME}
     ${VS_HAL}
     ${SRC}
+    ${LIBS_MINIZ}
     ${CONNECTOR_DEVICE}
     ${DEVICE}
     ${DISPLAY}
     ${DISPLAY_FONT}
+    ${DISPLAY_PICTURES}
     ${HARDWARE}
     ${GUI}
     ${HARDWARE_HAL}

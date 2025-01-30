@@ -24,6 +24,11 @@
  *
  **************************************************************************/
 
+#ifdef WIN32
+    #pragma warning(push, 0)
+#endif
+
+
 #include "miniz.h"
 
 #ifndef MINIZ_NO_DEFLATE_APIS
@@ -1595,3 +1600,7 @@ static MZ_FORCEINLINE void tdefl_find_match(tdefl_compressor *d, mz_uint lookahe
 #endif
 
 #endif /*#ifndef MINIZ_NO_DEFLATE_APIS*/
+
+#ifdef WIN32
+    #pragma warning(pop)
+#endif

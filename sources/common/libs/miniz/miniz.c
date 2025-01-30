@@ -24,6 +24,11 @@
  *
  **************************************************************************/
 
+#ifdef WIN32
+    #pragma warning(push, 0)
+#endif
+
+
 #include "miniz.h"
 
 typedef unsigned char mz_validate_uint16[sizeof(mz_uint16) == 2 ? 1 : -1];
@@ -644,3 +649,8 @@ mz_ulong mz_crc32(mz_ulong crc, const mz_uint8 *ptr, size_t buf_len)
 
   For more information, please refer to <http://unlicense.org/>
 */
+
+
+#ifdef WIN32
+    #pragma warning(pop)
+#endif

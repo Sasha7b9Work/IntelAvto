@@ -23,12 +23,15 @@ int main()
     {
 //        DInterface::Update();
 
+        FPGA::WritePeriod(TypeSignal::_1_12V, Value(1000));
+        FPGA::WritePeriod(TypeSignal::_2a, Value(1000));
+
         FPGA::Start();
 
-        TimeMeterMS().Delay(20000);
+        TimeMeterMS().Delay(5000);
 
         FPGA::Stop();
 
-        TimeMeterMS().Delay(20000);
+        TimeMeterMS().Delay(5000);
     }
 }
