@@ -184,12 +184,13 @@ void Frame::OnConvertToArray(wxCommandEvent &)
 
     if (dialog.ShowModal() == wxID_OK)
     {
-        wxFileInputStream istream(dialog.GetPath());
+        wxString path = dialog.GetPath();
 
-        wxFileName name(dialog.GetPath());
+        wxFileInputStream istream(path);
 
         if (istream.IsOk())
         {
+            wxFileName name(dialog.GetPath());
             wxFile ofile;
             ofile.Open(dialog.GetPath() + ".cpp", wxFile::write);
 

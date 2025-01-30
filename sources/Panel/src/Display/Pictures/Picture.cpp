@@ -82,7 +82,7 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive)
 
     if (Uncompress(archive))
     {
-        StructureBMP *head = (StructureBMP *)buffer;
+        StructureBMP *head = (StructureBMP *)buffer; //-V641
 
         uint8 *pixel = ((uint8 *)buffer) + head->bmp_offset;
 

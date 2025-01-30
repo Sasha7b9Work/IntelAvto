@@ -438,7 +438,6 @@ void Display::DrawSignal()
 {
     int x = 130;
     int y = 70;
-    Coord coord(x, y);
 
     Color::GRAY.SetAsCurrent();
 
@@ -450,6 +449,8 @@ void Display::DrawSignal()
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
     {
+        Coord coord(x, y);
+
         Axis().Draw(Coord(x, y + 170), 210, 330, 10);
 
         Text("Ua").Write(x - 25, y + 140);
