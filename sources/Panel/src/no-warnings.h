@@ -8,7 +8,6 @@
     #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
     #pragma clang diagnostic ignored "-Wpadded"
     #pragma clang diagnostic ignored "-Wglobal-constructors"
-
     #pragma clang diagnostic ignored "-Wweak-vtables"
     #pragma clang diagnostic ignored "-Winvalid-source-encoding"
     #pragma clang diagnostic ignored "-Wfloat-equal"

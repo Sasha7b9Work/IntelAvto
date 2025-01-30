@@ -49,9 +49,6 @@ add_compile_options(
     /wd5045     # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
     /wd5204     # 'xxx': class has virtual functions, but its trivial destructor is not virtual;
                 # instances of objects derived from this class may not be destructed correctly
-    /wd5219 
-    /wd26821
-    /wd26812
 )
 
 file(GLOB VS_HAL             ../../common/_VS_KEIL/HAL/stm32f4xx_hal_gpio.*
