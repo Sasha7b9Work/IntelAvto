@@ -3,6 +3,7 @@
 #include "Device/Device.h"
 #include "Menu/MenuItems.h"
 #include "Connector/Device/Messages_.h"
+#include "Hardware/Timer.h"
 
 
 namespace Device
@@ -57,6 +58,8 @@ void Device::Pause()
         state = State::Paused;
 
         Message::Pause().Transmit();
+
+        RemainingTimeCounter::Pause();
     }
 }
 
@@ -68,6 +71,8 @@ void Device::Resume()
         state = State::Running;
 
         Message::Resume().Transmit();
+
+        RemainingTimeCounter::Resume();
     }
 }
 
@@ -79,5 +84,7 @@ void Device::Stop()
         state = State::Stopped;
 
         Message::Stop().Transmit();
+
+        RemainingTimeCounter::Stop();
     }
 }
