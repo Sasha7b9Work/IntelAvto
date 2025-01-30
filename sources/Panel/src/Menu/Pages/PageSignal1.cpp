@@ -77,18 +77,9 @@ namespace PageSignal1
     {
         char buffer[32];
 
-        if (RemainingTimeCounter::InProcess())
-        {
-            Text("%s     Äëèò: %s     Ri: %s", VoltageMode::TextValue(), RemainingTimeCounter::RemainingTime(buffer), VoltageMode::Is12() ? "10 Îì" : "50 Îì").Write(
-                Display::xConstParameters, Display::yConstParameters, Color::WHITE
-            );
-        }
-        else
-        {
-            Text("%s     Äëèò: %s     Ri: %s", VoltageMode::TextValue(), Duration(param_t1, param_N).ToStringValue(buffer), VoltageMode::Is12() ? "10 Îì" : "50 Îì").Write(
-                Display::xConstParameters, Display::yConstParameters, Color::WHITE
-            );
-        }
+        Text("%s     Äëèò: %s     Ri: %s", VoltageMode::TextValue(), Duration(param_t1, param_N).ToStringValue(buffer), VoltageMode::Is12() ? "10 Îì" : "50 Îì").Write(
+            Display::xConstParameters, Display::yConstParameters, Color::WHITE
+        );
     }
 
     static Page page(items, nullptr, AdditionDraw, FuncStartTest);

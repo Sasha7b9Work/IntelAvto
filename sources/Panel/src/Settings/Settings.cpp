@@ -4,6 +4,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Menu/MenuItems.h"
 #include "Utils/StringUtils_.h"
+#include "Hardware/Timer.h"
 #include <cstdio>
 #include <cstring>
 
@@ -218,5 +219,10 @@ Duration::Duration(const Parameter &period, const Parameter &N)
 
 pchar Duration::ToStringValue(char buffer[32]) const
 {
+    if (RemainingTimeCounter::InProcess())
+    {
+        return RemainingTimeCounter::RemainingTime(buffer);
+    }
+
     return SU::TimeMStoText(timeMS, buffer);
 }
