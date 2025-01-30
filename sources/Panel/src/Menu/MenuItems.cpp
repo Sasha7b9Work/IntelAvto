@@ -132,6 +132,11 @@ void Parameter::DrawMenuItem(int x0, int y0, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
+    if (!selected)
+    {
+        Color::WHITE.SetAsCurrent();
+    }
+
     Text(Title()).Write(x0, y0 + DeltaTextt(), width);
 }
 
@@ -168,6 +173,11 @@ void Button::DrawMenuItem(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
+    if (!selected)
+    {
+        Color::WHITE.SetAsCurrent();
+    }
+
     Text(GetTitle()).Write(x, y + DeltaTextt(), width);
 }
 
@@ -175,6 +185,11 @@ void Button::DrawMenuItem(int x, int y, int width, bool selected)
 void Choice::DrawMenuItem(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
+
+    if (!selected)
+    {
+        Color::WHITE.SetAsCurrent();
+    }
 
     Text(Title()).Write(x, y + DeltaTextt(), width);
 }
