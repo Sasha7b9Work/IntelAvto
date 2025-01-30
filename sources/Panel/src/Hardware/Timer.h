@@ -56,7 +56,7 @@ namespace RemainingTimeCounter
     void Start(const Parameter &period, const Parameter &N);
 
     // Возвращает в текстовом виде оставшееся время
-    pchar RemainingTime();
+    pchar RemainingTime(char buffer[32]);
 
     // Приостановить процесс отсчёта
     void Pause();

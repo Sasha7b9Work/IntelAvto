@@ -559,55 +559,55 @@ bool SU::IsDigit(char symbol)
 }
 
 
-pchar SU::TimeMStoText(int timeMS, char buffer[32])
+pchar SU::TimeMStoText(uint timeMS, char buffer[32])
 {
-    static const int MS_IN_DAY = 24 * 60 * 60 * 1000;
-    static const int MS_IN_HOUR = 60 * 60 * 1000;
-    static const int MS_IN_MIN = 60 * 1000;
-    static const int MS_IN_SEC = 1000;
+    static const uint MS_IN_DAY = 24 * 60 * 60 * 1000;
+    static const uint MS_IN_HOUR = 60 * 60 * 1000;
+    static const uint MS_IN_MIN = 60 * 1000;
+    static const uint MS_IN_SEC = 1000;
 
-    int value = timeMS;
+    uint value = timeMS;
 
-    int days = value / MS_IN_DAY;
+    uint days = value / MS_IN_DAY;
     value -= days * MS_IN_DAY;
 
-    int hours = value / MS_IN_HOUR;
+    uint hours = value / MS_IN_HOUR;
     value -= hours * MS_IN_HOUR;
 
-    int minutes = value / MS_IN_MIN;
+    uint minutes = value / MS_IN_MIN;
     value -= minutes * MS_IN_MIN;
 
-    int secs = value / MS_IN_SEC;
+    uint secs = value / MS_IN_SEC;
 
-    int ms = timeMS % MS_IN_SEC;
+    uint ms = timeMS % MS_IN_SEC;
 
     buffer[0] = '\0';
 
     if (timeMS < 1000)
     {
-        std::sprintf(buffer, "%03dìñ", timeMS);
+        std::sprintf(buffer, "%03uìñ", timeMS);
     }
     else
     {
         if (days)
         {
-            std::sprintf(buffer, "%dä", days);
+            std::sprintf(buffer, "%uä", days);
         }
         if (hours)
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02d÷", hours);
+            std::sprintf(buffer + std::strlen(buffer), "%02u÷", hours);
         }
         if (minutes)
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02dì", minutes);
+            std::sprintf(buffer + std::strlen(buffer), "%02uì", minutes);
         }
         if (ms)
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02d.%03dñ", secs, ms);
+            std::sprintf(buffer + std::strlen(buffer), "%02u.%03uñ", secs, ms);
         }
         else
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02dñ", secs);
+            std::sprintf(buffer + std::strlen(buffer), "%02uñ", secs);
         }
     }
 

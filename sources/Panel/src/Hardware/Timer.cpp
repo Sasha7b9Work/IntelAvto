@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Hardware/Timer.h"
 #include "Menu/MenuItems.h"
+#include "Utils/StringUtils_.h"
 
 
 namespace Timer
@@ -73,4 +74,15 @@ void Timer::UpdateTasks()
 void RemainingTimeCounter::Start(const Parameter &period, const Parameter &N)
 {
     time_end = TIME_MS + (uint)(period.GetValue().ToInt() * N.GetValue().ToInt());
+}
+
+
+pchar RemainingTimeCounter::RemainingTime(char buffer[32])
+{
+    if (TIME_MS >= time_end)
+    {
+        return SU::TimeMStoText(0, buffer);
+    }
+
+    return SU::TimeMStoText(time_end - TIME_MS, buffer);
 }
