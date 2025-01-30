@@ -15,7 +15,6 @@ class Item
     friend class Hint;
 public:
     Item() {}
-    virtual ~Item() {}
 
     static const int HEIGHT = 30;
 

@@ -72,7 +72,7 @@ namespace SU
     {
         uint crc = 0;
 
-        uint8 *data = (uint8 *)buffer;
+        const uint8 *data = (const uint8 *)buffer;
 
         for (int i = 0; i < size; i++)
         {

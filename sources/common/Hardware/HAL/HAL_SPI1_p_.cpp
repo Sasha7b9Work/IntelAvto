@@ -62,7 +62,7 @@ void HAL_SPI1::Init()
 
 void HAL_SPI1::Transmit(const void *buffer, int size)
 {
-    uint8 *pointer = (uint8 *)buffer;
+    const uint8 *pointer = (const uint8 *)buffer;
 
     for (int i = 0; i < size; i++)
     {

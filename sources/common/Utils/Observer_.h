@@ -15,7 +15,6 @@ struct EventType
 class Observer
 {
 public:
-    virtual ~Observer() {}
     virtual void OnEvent(EventType::E) = 0;
 };
 
