@@ -12,7 +12,7 @@ struct Duration
     pchar ToStringValue(char buffer[32]) const;
 
 private:
-    int timeMS;
+    uint timeMS;
 };
 
 

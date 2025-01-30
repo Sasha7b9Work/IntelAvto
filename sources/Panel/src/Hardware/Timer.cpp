@@ -25,6 +25,7 @@ namespace Timer
 namespace RemainingTimeCounter
 {
     static uint time_end = (uint)-1;    // В это время заканчивается отсчёт
+    static bool in_pause = false;
 }
 
 
@@ -85,4 +86,28 @@ pchar RemainingTimeCounter::RemainingTime(char buffer[32])
     }
 
     return SU::TimeMStoText(time_end - TIME_MS, buffer);
+}
+
+
+void RemainingTimeCounter::Pause()
+{
+    in_pause = true;
+}
+
+
+void RemainingTimeCounter::Resume()
+{
+    in_pause = false;
+}
+
+
+bool RemainingTimeCounter::InProcess()
+{
+    return time_end != (uint)-1;
+}
+
+
+void RemainingTimeCounter::Stop()
+{
+    time_end = (uint)-1;
 }

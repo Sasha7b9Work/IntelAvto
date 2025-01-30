@@ -109,6 +109,8 @@ void Menu::Input::OnControl(const Control &control)
 
                     labelMode.SetState("ярно", Color::BLACK, Color::GREEN);
 
+                    RemainingTimeCounter::Stop();
+
                     Timer::SetOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
                     {
                         labelMode.SetState("ярно", Color::BLACK, Color::GRAY);

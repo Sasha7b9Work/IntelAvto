@@ -212,7 +212,7 @@ Duration::Duration(const Parameter &period, const Parameter &N)
     Value val_period = period.GetValue();
     Value val_N = N.GetValue();
 
-    timeMS = val_period.ToInt() * val_N.ToInt();
+    timeMS = (uint)(val_period.ToInt() * val_N.ToInt());
 }
 
 
