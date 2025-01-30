@@ -1,6 +1,7 @@
 // 2024/02/05 11:50:24 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/Timer.h"
+#include "Menu/MenuItems.h"
 
 
 namespace Timer
@@ -17,6 +18,12 @@ namespace Timer
     };
 
     static StructTask tasks[TimerTask::Count];
+}
+
+
+namespace RemainingTimeCounter
+{
+    static uint time_end = (uint)-1;    // В это время заканчивается отсчёт
 }
 
 
@@ -60,4 +67,10 @@ void Timer::UpdateTasks()
             }
         }
     }
+}
+
+
+void RemainingTimeCounter::Start(const Parameter &period, const Parameter &N)
+{
+    time_end = TIME_MS + (uint)(period.GetValue().ToInt() * N.GetValue().ToInt());
 }

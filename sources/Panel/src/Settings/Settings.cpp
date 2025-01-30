@@ -3,6 +3,7 @@
 #include "Settings.h"
 #include "Hardware/HAL/HAL.h"
 #include "Menu/MenuItems.h"
+#include "Utils/StringUtils_.h"
 #include <cstdio>
 #include <cstring>
 
@@ -217,55 +218,5 @@ Duration::Duration(const Parameter &period, const Parameter &N)
 
 pchar Duration::ToStringValue(char buffer[32]) const
 {
-    static const int MS_IN_DAY = 24 * 60 * 60 * 1000;
-    static const int MS_IN_HOUR = 60 * 60 * 1000;
-    static const int MS_IN_MIN = 60 * 1000;
-    static const int MS_IN_SEC = 1000;
-
-    int value = timeMS;
-
-    int days = value / MS_IN_DAY;
-    value -= days * MS_IN_DAY;
-
-    int hours = value / MS_IN_HOUR;
-    value -= hours * MS_IN_HOUR;
-
-    int minutes = value / MS_IN_MIN;
-    value -= minutes * MS_IN_MIN;
-
-    int secs = value / MS_IN_SEC;
-
-    int ms = timeMS % MS_IN_SEC;
-
-    buffer[0] = '\0';
-
-    if (timeMS < 1000)
-    {
-        std::sprintf(buffer, "%03dìñ", timeMS);
-    }
-    else
-    {
-        if (days)
-        {
-            std::sprintf(buffer, "%dä", days);
-        }
-        if (hours)
-        {
-            std::sprintf(buffer + std::strlen(buffer), "%02d÷", hours);
-        }
-        if (minutes)
-        {
-            std::sprintf(buffer + std::strlen(buffer), "%02dì", minutes);
-        }
-        if(ms)
-        {
-            std::sprintf(buffer + std::strlen(buffer), "%02d.%03dñ", secs, ms);
-        }
-        else
-        {
-            std::sprintf(buffer + std::strlen(buffer), "%02dñ", secs);
-        }
-    }
-
-    return buffer;
+    return SU::TimeMStoText(timeMS, buffer);
 }

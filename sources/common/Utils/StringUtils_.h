@@ -81,6 +81,8 @@ namespace SU
 
         return crc;
     }
+
+    pchar TimeMStoText(int timeMS, char buffer[32]);
 };
 
 

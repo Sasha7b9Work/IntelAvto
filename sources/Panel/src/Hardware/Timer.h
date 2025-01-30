@@ -1,6 +1,7 @@
 // 2024/02/05 11:50:16 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Hardware/HAL/HAL.h"
+#include "Connector/Device/Value_.h"
 
 
 #define TIME_MS HAL_TIM::TimeMS()
@@ -45,4 +46,24 @@ struct TimeMeterMS
     }
 private:
     uint time_reset;
+};
+
+
+// Отсчитывает время до завершения работы теста
+namespace RemainingTimeCounter
+{
+    // Запускает процесс отсчёта
+    void Start(const Parameter &period, const Parameter &N);
+
+    // Возвращает в текстовом виде оставшееся время
+    pchar RemainingTime();
+
+    // Приостановить процесс отсчёта
+    void Pause();
+
+    // Продолжить процесс отсчёта
+    void Resume();
+
+    // Идёт отсчёт
+    bool InProcess();
 };

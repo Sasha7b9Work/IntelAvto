@@ -7,6 +7,7 @@
 #include "Connector/Device/Messages_.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"
+#include "Hardware/Timer.h"
 
 
 namespace PageSignal2a
@@ -46,6 +47,8 @@ namespace PageSignal2a
     void Start()
     {
         Message::Start2A(param_Us.GetValue(), param_t1.GetValue()).Transmit();
+
+        RemainingTimeCounter::Start(param_t1, param_N);
     }
 
     static Item *items[] =

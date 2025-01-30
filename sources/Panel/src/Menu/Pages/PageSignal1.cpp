@@ -7,6 +7,7 @@
 #include "Connector/Device/Messages_.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"
+#include "Hardware/Timer.h"
 
 
 namespace PageSignal1
@@ -57,6 +58,8 @@ namespace PageSignal1
         {
             Message::Start1_24V(param_Us.GetValue(), param_t1.GetValue()).Transmit();
         }
+
+        RemainingTimeCounter::Start(param_t1, param_N);
     }
 
 
