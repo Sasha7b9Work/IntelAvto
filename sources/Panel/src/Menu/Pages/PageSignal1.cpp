@@ -42,7 +42,7 @@ namespace PageSignal1
     );
 
     DEF_CHOICE_2(chModeVoltage,
-        "12V", "24V",
+        "12В", "24В",
         gset.voltage_mode,
         FuncVV
     );
@@ -72,7 +72,7 @@ namespace PageSignal1
 
     static void AdditionDraw()
     {
-        Text("Длительность : 750 мс     Ri : %s", VoltageMode::Is12() ? "10 Ом" : "50 Ом").Write(
+        Text("%s     Длительность : 750 мс     Ri : %s", VoltageMode::TextValue(), VoltageMode::Is12() ? "10 Ом" : "50 Ом").Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }

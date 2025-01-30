@@ -190,3 +190,14 @@ VoltageMode::E VoltageMode::Current()
 {
     return gset.voltage_mode;
 }
+
+
+pchar VoltageMode::TextValue()
+{
+    static const pchar text[Count] =
+    {
+        "12Â", "24Â"
+    };
+
+    return text[Current()];
+}
