@@ -32,7 +32,7 @@ namespace PageSignal5a
     );
 
     DEF_CHOICE_2(chModeVoltage,
-        "12V", "24V",
+        "12Â", "24Â",
         gset.voltage_mode,
         FuncVV
     );

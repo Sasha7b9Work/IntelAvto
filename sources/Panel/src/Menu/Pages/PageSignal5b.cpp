@@ -37,7 +37,7 @@ namespace PageSignal5b
     );
 
     DEF_CHOICE_2(chModeVoltage,
-        "12V", "24V",
+        "12Â", "24Â",
         gset.voltage_mode,
         FuncVV
     );
@@ -58,7 +58,7 @@ namespace PageSignal5b
 
     static void AdditionDraw()
     {
-        Text("%s     Us* : %d Â", VoltageMode::TextValue(), VoltageMode::Is12() ? 35 : 59).Write(
+        Text("%s     Us*: %d Â", VoltageMode::TextValue(), VoltageMode::Is12() ? 35 : 59).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }

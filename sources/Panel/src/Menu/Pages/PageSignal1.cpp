@@ -72,7 +72,7 @@ namespace PageSignal1
 
     static void AdditionDraw()
     {
-        Text("%s     ƒлительность : 750 мс     Ri : %s", VoltageMode::TextValue(), VoltageMode::Is12() ? "10 ќм" : "50 ќм").Write(
+        Text("%s     ƒлительность: 750 мс     Ri: %s", VoltageMode::TextValue(), VoltageMode::Is12() ? "10 ќм" : "50 ќм").Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }

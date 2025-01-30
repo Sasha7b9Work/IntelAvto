@@ -38,7 +38,7 @@ namespace PageSignal2a
     );
 
     DEF_CHOICE_2(chModeVoltage,
-        "12V", "24V",
+        "12Â", "24Â",
         gset.voltage_mode,
         FuncVV
     );
@@ -60,7 +60,7 @@ namespace PageSignal2a
 
     static void AdditionDraw()
     {
-        Text("%s     Ri : 2 Îì", VoltageMode::TextValue()).Write(
+        Text("%s     Ri: 2 Îì", VoltageMode::TextValue()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }

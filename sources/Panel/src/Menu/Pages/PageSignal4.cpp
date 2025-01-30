@@ -42,7 +42,7 @@ namespace PageSignal4
     );
 
     DEF_CHOICE_2(chModeVoltage,
-        "12V", "24V",
+        "12Â", "24Â",
         gset.voltage_mode,
         FuncVV
     );
@@ -64,7 +64,7 @@ namespace PageSignal4
 
     static void AdditionDraw()
     {
-        Text("%s     Us : %s     Ua : %s     t7 : %s     t9 : %s",
+        Text("%s    Us: %s    Ua: %s    t7: %s    t9: %s",
             VoltageMode::TextValue(),
             VoltageMode::Is12() ? "-7.5 Â" : "-16 Â",
             VoltageMode::Is12() ? "-6 Â" : "-12 Â",
