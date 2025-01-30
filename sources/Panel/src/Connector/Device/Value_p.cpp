@@ -49,7 +49,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
             if (GetType() == TypeValue::Time)
             {
-                std::strcat(string, "m");
+                std::strcat(string, "ì");
             }
         }
         else
@@ -67,7 +67,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
         if (GetType() != TypeValue::Raw)
         {
-            std::strcat(string, (GetType() == TypeValue::Time) ? "s" : "V");
+            std::strcat(string, (GetType() == TypeValue::Time) ? "ñ" : "Â");
         }
         Text(string).Write(x, y, Color::WHITE);
     }

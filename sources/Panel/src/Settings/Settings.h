@@ -4,6 +4,17 @@
 #include "Display/Colors_.h"
 
 
+struct Duration
+{
+    Duration(const Parameter &period, const Parameter &N);
+
+    pchar ToStringValue(char buffer[32]) const;
+
+private:
+    int timeMS;
+};
+
+
 struct VoltageMode
 {
     enum E
