@@ -104,7 +104,7 @@ bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
             raw |= (1 << 29);
         }
 
-        *result = Value(raw);
+        *result = Value((int)raw, TypeValue::Raw);
 
         return true;
     }
@@ -115,15 +115,19 @@ bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
 
 void Value::SetValue(const Value &min, const Value &max)
 {
-    Value new_value(0);
+    Value new_value(0, TypeValue::Raw);
 
     if (ds.ToValue(&new_value, GetType()))
     {
-        if (new_value.ToFloat() < min.ToFloat())
+        float value = new_value.ToFloat();
+        float min_val = min.ToFloat();
+        float max_val = max.ToFloat();
+
+        if (value < min_val)
         {
             raw = min.GetRaw();
         }
-        else if (new_value.ToFloat() > max.ToFloat())
+        else if (value > max_val)
         {
             raw = max.GetRaw();
         }

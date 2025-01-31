@@ -1,6 +1,7 @@
 #ifndef __STM32F4xx_HAL_CONF_H
 #define __STM32F4xx_HAL_CONF_H
 
+#define USE_RTOS 0U
 
 #ifdef WIN32
     #define __PACKED

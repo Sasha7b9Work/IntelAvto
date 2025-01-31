@@ -11,18 +11,18 @@
 namespace PageSignal5b
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_5b].values12[0], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_5b].values24[0], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_5b].values12[0], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_5b].values24[0], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
         420, 130);
 
     Parameter param_Uss("Us*",
-        &gset.signals[TypeSignal::_5b].values12[1], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_5b].values24[1], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_5b].values12[1], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_5b].values24[1], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
         380, 160);
 
     Parameter param_td("td",
-        &gset.signals[TypeSignal::_5b].values12[2], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_5b].values24[2], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_5b].values12[2], Value(0, TypeValue::Time), Value(10000, TypeValue::Time),
+        &gset.signals[TypeSignal::_5b].values24[2], Value(0, TypeValue::Time), Value(10000, TypeValue::Time),
         220, 160);
 
     static void FuncPress_Signal()

@@ -11,23 +11,23 @@
 namespace PageSignal4
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_4].values12[0], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_4].values24[0], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values12[0], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_4].values24[0], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
         230, 110);
 
     Parameter param_Ua("Ua",
-        &gset.signals[TypeSignal::_4].values12[1], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_4].values24[1], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values12[1], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_4].values24[1], Value(0, TypeValue::Voltage), Value(10000, TypeValue::Voltage),
         350, 100);
 
     Parameter param_t7("t7",
-        &gset.signals[TypeSignal::_4].values12[2], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_4].values24[2], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values12[2], Value(0, TypeValue::Time), Value(10000, TypeValue::Time),
+        &gset.signals[TypeSignal::_4].values24[2], Value(0, TypeValue::Time), Value(10000, TypeValue::Time),
         220, 160);
 
     Parameter param_t9("t9",
-        &gset.signals[TypeSignal::_4].values12[3], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_4].values24[3], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values12[3], Value(0, TypeValue::Time), Value(10000, TypeValue::Time),
+        &gset.signals[TypeSignal::_4].values24[3], Value(0, TypeValue::Time), Value(10000, TypeValue::Time),
         330, 160);
 
     static void FuncPress_Signal()

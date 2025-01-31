@@ -22,16 +22,5 @@ int main()
     while (1)
     {
         DInterface::Update();
-
-//        FPGA::WritePeriod(TypeSignal::_1_12V, Value(1000));
-//        FPGA::WritePeriod(TypeSignal::_2a, Value(1000));
-//
-//        FPGA::Start();
-//
-//        TimeMeterMS().Delay(5000);
-//
-//        FPGA::Stop();
-//
-//        TimeMeterMS().Delay(5000);
     }
 }

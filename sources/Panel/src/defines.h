@@ -2,8 +2,6 @@
 #pragma once
 #include "no-warnings.h"
 
-#include <stm32f4xx_hal.h>
-
 #define VERSION 4
 
 
@@ -12,6 +10,8 @@
     #define WIN32_LEAN_AND_MEAN
     #define __attribute(x)
     #define __attribute__(x)
+#else
+    #include <stm32f4xx_hal.h>
 #endif
 
 

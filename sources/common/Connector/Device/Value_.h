@@ -59,8 +59,6 @@ struct Value
         }
     }
 
-    Value (uint v) : raw(v) { }
-
     void Draw(const Parameter *, int x, int y) const;
 
     static DrawStruct ds;

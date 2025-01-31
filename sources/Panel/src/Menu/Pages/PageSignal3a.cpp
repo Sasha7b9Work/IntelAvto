@@ -17,8 +17,8 @@ namespace PageSignal3a
         275, 95);
 
     Parameter param_N("N",
-        &gset.signals[TypeSignal::_3a].values12[1], Value(10000), Value(100000),
-        &gset.signals[TypeSignal::_3a].values24[1], Value(10000), Value(100000),
+        &gset.signals[TypeSignal::_3a].values12[1], Value(10000, TypeValue::Raw), Value(100000, TypeValue::Raw),
+        &gset.signals[TypeSignal::_3a].values24[1], Value(10000, TypeValue::Raw), Value(100000, TypeValue::Raw),
         90, 100);
 
     static void FuncPress_Signal()
