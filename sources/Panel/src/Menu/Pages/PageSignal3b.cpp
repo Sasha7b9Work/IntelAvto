@@ -12,13 +12,13 @@
 namespace PageSignal3b
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_3b].values12[0], Value(75, TypeValue::Voltage), Value(100, TypeValue::Voltage),
-        &gset.signals[TypeSignal::_3b].values24[0], Value(150, TypeValue::Voltage), Value(200, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_3b].values12[0], Value(75, TVolt), Value(100, TVolt),
+        &gset.signals[TypeSignal::_3b].values24[0], Value(150, TVolt), Value(200, TVolt),
         350, 70);
 
     Parameter param_N("N",
-        &gset.signals[TypeSignal::_3b].values12[1], Value(10000, TypeValue::Raw), Value(100000, TypeValue::Raw),
-        &gset.signals[TypeSignal::_3b].values24[1], Value(10000, TypeValue::Raw), Value(100000, TypeValue::Raw),
+        &gset.signals[TypeSignal::_3b].values12[1], Value(10000, TRaw), Value(100000, TRaw),
+        &gset.signals[TypeSignal::_3b].values24[1], Value(10000, TRaw), Value(100000, TRaw),
         90, 100);
 
     static void FuncPress_Signal()

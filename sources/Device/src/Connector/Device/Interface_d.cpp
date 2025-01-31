@@ -132,34 +132,34 @@ BaseMessage *DInterface::CreateMessage(uint8 *data, int size)
         }
         else if (command == Command::START_1_12V)
         {
-            Value Us = Value((uint)(*pointer++));       // Амплитуда
-            Value t1 = Value((uint)(*pointer++));       // Период повторения
+            Value Us = Value((int)(*pointer++), TRaw);       // Амплитуда
+            Value t1 = Value((int)(*pointer++), TRaw);       // Период повторения
 
             return new Message::Start1_12V(Us, t1);
         }
         else if (command == Command::START_1_24V)
         {
-            Value Us = Value((uint)(*pointer++));
-            Value t1 = Value((uint)(*pointer++));
+            Value Us = Value((int)(*pointer++), TRaw);
+            Value t1 = Value((int)(*pointer++), TRaw);
 
             return new Message::Start1_24V(Us, t1);
         }
         else if (command == Command::START_2A)
         {
-            Value Us((uint)(*pointer++));
-            Value t1((uint)(*pointer++));
+            Value Us((int)(*pointer++), TRaw);
+            Value t1((int)(*pointer++), TRaw);
 
             return new Message::Start2A(Us, t1);
         }
         else if (command == Command::START_3A)
         {
-            Value Us((uint)(*pointer++));
+            Value Us((int)(*pointer++), TRaw);
 
             return new Message::Start3A(Us);
         }
         else if (command == Command::START_3B)
         {
-            Value Us((uint)(*pointer++));
+            Value Us((int)(*pointer++), TRaw);
 
             return new Message::Start3B(Us);
         }

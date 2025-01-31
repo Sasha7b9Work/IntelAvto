@@ -47,7 +47,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
         {
             std::strcat(pointer, Text("%d", value).c_str());
 
-            if (GetType() == TypeValue::Time)
+            if (GetType() == TTime)
             {
                 std::strcat(string, "ì");
             }
@@ -65,16 +65,16 @@ void Value::Draw(const Parameter *param, int x, int y) const
             std::strcat(string, Text("%d", value).c_str());
         }
 
-        if (GetType() != TypeValue::Raw)
+        if (GetType() != TRaw)
         {
-            std::strcat(string, (GetType() == TypeValue::Time) ? "ñ" : "Â");
+            std::strcat(string, (GetType() == TTime) ? "ñ" : "Â");
         }
         Text(string).Write(x, y, Color::WHITE);
     }
 }
 
 
-bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
+bool DrawStruct::ToValue(Value *result, TypeValue type) const
 {
     char buffer[128];
 
@@ -95,16 +95,16 @@ bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
             raw |= (uint)(1 << 31);
         }
 
-        if (type == TypeValue::Time)
+        if (type == TTime)
         {
             raw |= (1 << 30);
         }
-        else if (type == TypeValue::Voltage)
+        else if (type == TVolt)
         {
             raw |= (1 << 29);
         }
 
-        *result = Value((int)raw, TypeValue::Raw);
+        *result = Value((int)raw, TRaw);
 
         return true;
     }
@@ -115,7 +115,7 @@ bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
 
 void Value::SetValue(const Value &min, const Value &max)
 {
-    Value new_value(0, TypeValue::Raw);
+    Value new_value(0, TRaw);
 
     if (ds.ToValue(&new_value, GetType()))
     {

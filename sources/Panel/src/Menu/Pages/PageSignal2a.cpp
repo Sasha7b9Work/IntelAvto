@@ -13,18 +13,18 @@
 namespace PageSignal2a
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_2a].values12[0], Value(37, TypeValue::Voltage), Value(112, TypeValue::Voltage),
-        &gset.signals[TypeSignal::_2a].values24[0], Value(37, TypeValue::Voltage), Value(112, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_2a].values12[0], Value(37, TVolt), Value(112, TVolt),
+        &gset.signals[TypeSignal::_2a].values24[0], Value(37, TVolt), Value(112, TVolt),
         320, 140);
 
     Parameter param_t1("Период",
-        &gset.signals[TypeSignal::_2a].values12[1], Value(200, TypeValue::Time), Value(5000, TypeValue::Time),
-        &gset.signals[TypeSignal::_2a].values24[1], Value(200, TypeValue::Time), Value(5000, TypeValue::Time),
+        &gset.signals[TypeSignal::_2a].values12[1], Value(200, TTime), Value(5000, TTime),
+        &gset.signals[TypeSignal::_2a].values24[1], Value(200, TTime), Value(5000, TTime),
         270, 30);
 
     Parameter param_N("N",
-        &gset.signals[TypeSignal::_2a].values12[2], Value(5000, TypeValue::Raw), Value(100000, TypeValue::Raw),
-        &gset.signals[TypeSignal::_2a].values24[2], Value(5000, TypeValue::Raw), Value(100000, TypeValue::Raw),
+        &gset.signals[TypeSignal::_2a].values12[2], Value(5000, TRaw), Value(100000, TRaw),
+        &gset.signals[TypeSignal::_2a].values24[2], Value(5000, TRaw), Value(100000, TRaw),
         90, 130);
 
     static void FuncPress_Signal()

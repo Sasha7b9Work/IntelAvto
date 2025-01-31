@@ -6,15 +6,11 @@ class Parameter;
 struct Value;
 
 
-struct TypeValue
+enum TypeValue
 {
-    enum E
-    {
-        Voltage,    // Вольты
-        Time,       // Миллисекунды
-        Raw,        // Количество, без единиц измерения
-        Count
-    };
+    TVolt,      // Вольты
+    TTime,      // Миллисекунды
+    TRaw        // Количество, без единиц измерения
 };
 
 
@@ -23,7 +19,7 @@ struct DrawStruct
     void PressKey(int);
     void Draw(int x, int y) const;
     void Clear(Parameter *_param) { index = 0; parameter = _param; }
-    bool ToValue(Value *, TypeValue::E) const;
+    bool ToValue(Value *, TypeValue) const;
 private:
     bool ConsistDot() const;
     void AppendSymbol(char);
@@ -36,24 +32,24 @@ private:
 
 struct Value
 {
-    Value(int value, TypeValue::E type)
+    Value(int value, TypeValue type)
     {
         raw = value > 0 ? (uint)value : (uint)(-value);
 
-        if (value < 0)
+        if (value < 0 && type != TRaw)
         {
             raw |= (uint)(1 << 31);
         }
 
-        if (type == TypeValue::Raw)             // 29-й и 30-й биты чистые
+        if (type == TRaw)             // 29-й и 30-й биты чистые
         {
 
         }
-        else if (type == TypeValue::Time)       // 30-й бит установлен
+        else if (type == TTime)       // 30-й бит установлен
         {
             raw |= (1 << 30);
         }
-        else if (type == TypeValue::Voltage)    // 29-й бит установлен
+        else if (type == TVolt)    // 29-й бит установлен
         {
             raw |= (1 << 29);
         }
@@ -68,27 +64,27 @@ struct Value
 
     bool IsRaw() const
     {
-        return GetType() == TypeValue::Raw;
+        return GetType() == TRaw;
     }
 
     bool IsVoltage() const
     {
-        return GetType() == TypeValue::Voltage;
+        return GetType() == TVolt;
     }
 
-    TypeValue::E GetType() const
+    TypeValue GetType() const
     {
         if (raw & (1 << 30))
         {
-            return TypeValue::Time;
+            return TTime;
         }
 
         if (raw & (1 << 29))
         {
-            return TypeValue::Voltage;
+            return TVolt;
         }
 
-        return TypeValue::Raw;
+        return TRaw;
     }
 
     uint GetRaw() const { return raw; }
@@ -106,7 +102,7 @@ struct Value
     {
         float value = (float)ToInt();
 
-        if (GetType() == TypeValue::Time)
+        if (GetType() == TTime)
         {
             value *= 1e-3f;
         }
@@ -125,23 +121,23 @@ private:
 
 struct Voltage : public Value
 {
-    Voltage(int voltage) : Value(voltage, TypeValue::Voltage) { }
+    Voltage(int voltage) : Value(voltage, TVolt) { }
 };
 
 
 struct Time : public Value
 {
-    Time(int ms) : Value(ms, TypeValue::Time) { }
+    Time(int ms) : Value(ms, TTime) { }
 };
 
 
 struct Counter : public Value
 {
-    Counter(uint n) : Value((int)n, TypeValue::Raw) { }
+    Counter(uint n) : Value((int)n, TRaw) { }
 };
 
 
 struct ValueNull : public Value
 {
-    ValueNull() : Value(0, TypeValue::Count) { }
+    ValueNull() : Value(0, TRaw) { }
 };

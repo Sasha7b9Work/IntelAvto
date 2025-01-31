@@ -112,8 +112,8 @@ void FPGA::Stop()
 
 void FPGA::Init()
 {
-    WritePeriod(TypeSignal::_1_12V, Value(1000));
-    WritePeriod(TypeSignal::_2a, Value(1000));
+    WritePeriod(TypeSignal::_1_12V, Value(1000, TTime));
+    WritePeriod(TypeSignal::_2a, Value(1000, TTime));
 }
 
 
