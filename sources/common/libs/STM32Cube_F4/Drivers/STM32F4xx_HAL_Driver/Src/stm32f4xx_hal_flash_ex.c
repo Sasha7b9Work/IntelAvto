@@ -87,6 +87,7 @@
 /** @addtogroup FLASHEx_Private_Variables
   * @{
   */
+extern FLASH_ProcessTypeDef pFlash;
 /**
   * @}
   */
@@ -132,8 +133,8 @@ extern HAL_StatusTypeDef         FLASH_WaitForLastOperation(uint32_t Timeout);
   */
 
 /** @defgroup FLASHEx_Exported_Functions_Group1 Extended IO operation functions
- *  @brief   Extended IO operation functions
- *
+  *  @brief   Extended IO operation functions
+  *
 @verbatim
  ===============================================================================
                 ##### Extended programming operation functions #####
@@ -231,9 +232,6 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase_IT(FLASH_EraseInitTypeDef *pEraseInit)
 {
   HAL_StatusTypeDef status = HAL_OK;
 
-  /* Process Locked */
-  __HAL_LOCK(&pFlash);
-
   /* Check the parameters */
   assert_param(IS_FLASH_TYPEERASE(pEraseInit->TypeErase));
 
@@ -267,7 +265,7 @@ HAL_StatusTypeDef HAL_FLASHEx_Erase_IT(FLASH_EraseInitTypeDef *pEraseInit)
     pFlash.VoltageForErase = (uint8_t)pEraseInit->VoltageRange;
 
     /*Erase 1st sector and wait for IT*/
-    FLASH_Erase_Sector(pEraseInit->Sector, (uint8_t)pEraseInit->VoltageRange);
+    FLASH_Erase_Sector(pEraseInit->Sector, pEraseInit->VoltageRange);
   }
 
   return status;
@@ -309,7 +307,7 @@ HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit)
   /*Read protection configuration*/
   if ((pOBInit->OptionType & OPTIONBYTE_RDP) == OPTIONBYTE_RDP)
   {
-    status = FLASH_OB_RDP_LevelConfig((uint8_t)pOBInit->RDPLevel);
+    status = FLASH_OB_RDP_LevelConfig(pOBInit->RDPLevel);
   }
 
   /*USER  configuration*/
@@ -323,7 +321,7 @@ HAL_StatusTypeDef HAL_FLASHEx_OBProgram(FLASH_OBProgramInitTypeDef *pOBInit)
   /*BOR Level  configuration*/
   if ((pOBInit->OptionType & OPTIONBYTE_BOR) == OPTIONBYTE_BOR)
   {
-    status = FLASH_OB_BOR_LevelConfig((uint8_t)pOBInit->BORLevel);
+    status = FLASH_OB_BOR_LevelConfig(pOBInit->BORLevel);
   }
 
   /* Process Unlocked */
@@ -949,8 +947,6 @@ static HAL_StatusTypeDef FLASH_OB_DisablePCROP(uint32_t SectorBank1, uint32_t Se
   */
 static void FLASH_MassErase(uint8_t VoltageRange, uint32_t Banks)
 {
-    (void)Banks;
-    
   /* Check the parameters */
   assert_param(IS_VOLTAGERANGE(VoltageRange));
   assert_param(IS_FLASH_BANK(Banks));
@@ -1030,9 +1026,7 @@ void FLASH_Erase_Sector(uint32_t Sector, uint8_t VoltageRange)
   */
 static HAL_StatusTypeDef FLASH_OB_EnableWRP(uint32_t WRPSector, uint32_t Banks)
 {
-    HAL_StatusTypeDef status = HAL_OK;
-
-    (void)Banks;
+  HAL_StatusTypeDef status = HAL_OK;
 
   /* Check the parameters */
   assert_param(IS_OB_WRP_SECTOR(WRPSector));
@@ -1070,9 +1064,7 @@ static HAL_StatusTypeDef FLASH_OB_DisableWRP(uint32_t WRPSector, uint32_t Banks)
 {
   HAL_StatusTypeDef status = HAL_OK;
 
-    (void)Banks;
-
-    /* Check the parameters */
+  /* Check the parameters */
   assert_param(IS_OB_WRP_SECTOR(WRPSector));
   assert_param(IS_FLASH_BANK(Banks));
 

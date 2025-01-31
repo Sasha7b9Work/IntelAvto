@@ -132,9 +132,6 @@
   *            @arg PWR_REGULATOR_VOLTAGE_SCALE3: Regulator voltage output Scale 3 mode
   * @retval None
   */
-#ifdef WIN32
-    #define __HAL_PWR_VOLTAGESCALING_CONFIG(x)
-#else
 #define __HAL_PWR_VOLTAGESCALING_CONFIG(__REGULATOR__) do {                                                     \
                                                             __IO uint32_t tmpreg = 0x00U;                        \
                                                             MODIFY_REG(PWR->CR, PWR_CR_VOS, (__REGULATOR__));   \
@@ -142,7 +139,6 @@
                                                             tmpreg = READ_BIT(PWR->CR, PWR_CR_VOS);             \
                                                             UNUSED(tmpreg);                                     \
                                                           } while(0U)
-#endif
 #endif /* STM32F405xx || STM32F407xx || STM32F415xx || STM32F417xx */ 
 
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) ||\

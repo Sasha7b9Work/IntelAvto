@@ -21,12 +21,6 @@
 #ifndef __STM32F4xx_HAL_DEF
 #define __STM32F4xx_HAL_DEF
 
-#ifdef WIN32
-    #pragma warning(push)
-    #pragma warning(disable:4668)
-#endif
-
-
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -212,11 +206,6 @@ typedef enum
 #ifdef __cplusplus
 }
 #endif
-
-#ifdef WIN32
-    #pragma warning(pop)
-#endif
-
 
 #endif /* ___STM32F4xx_HAL_DEF */
 

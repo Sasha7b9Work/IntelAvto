@@ -20,11 +20,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usbh_core.h"
 
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-#endif
-
-
 
 /** @addtogroup USBH_LIB
   * @{
@@ -1174,6 +1169,9 @@ static USBH_StatusTypeDef USBH_HandleEnum(USBH_HandleTypeDef *phost)
         USBH_UsrLog("Serial Number : N/A");
         Status = USBH_OK;
       }
+      break;
+
+    default:
       break;
   }
   return Status;

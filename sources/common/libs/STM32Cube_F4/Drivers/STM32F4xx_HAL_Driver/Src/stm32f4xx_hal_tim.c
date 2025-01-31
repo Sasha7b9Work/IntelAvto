@@ -185,11 +185,6 @@ all interrupt callbacks are set to the corresponding weak functions:
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
 
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-#endif
-
-
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
   */
