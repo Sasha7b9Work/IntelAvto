@@ -143,7 +143,7 @@ struct Counter : public Value
 };
 
 
-struct ValueNull : public Value
+struct ValueNull : public Counter
 {
-    ValueNull() : Value(0, TypeValue::Count) { }
+    ValueNull() : Counter(0) { }
 };
