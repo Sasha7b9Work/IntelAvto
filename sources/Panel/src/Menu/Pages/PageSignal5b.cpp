@@ -10,12 +10,12 @@
 
 namespace PageSignal5b
 {
-    Parameter param_Us("Us",
+    VParameter param_Us("Us",
         &gset.signals[TypeSignal::_5b].values12[0], Voltage(0), Voltage(10000),
         &gset.signals[TypeSignal::_5b].values24[0], Voltage(0), Voltage(10000),
         420, 130);
 
-    Parameter param_Uss("Us*",
+    VParameter param_Uss("Us*",
         &gset.signals[TypeSignal::_5b].values12[1], Voltage(0), Voltage(10000),
         &gset.signals[TypeSignal::_5b].values24[1], Voltage(0), Voltage(10000),
         380, 160);

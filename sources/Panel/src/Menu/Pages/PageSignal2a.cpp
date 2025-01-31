@@ -12,7 +12,7 @@
 
 namespace PageSignal2a
 {
-    Parameter param_Us("Us",
+    VParameter param_Us("Us",
         &gset.signals[TypeSignal::_2a].values12[0], Voltage(37), Voltage(112),
         &gset.signals[TypeSignal::_2a].values24[0], Voltage(37), Voltage(112),
         320, 140);

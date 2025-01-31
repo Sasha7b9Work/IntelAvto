@@ -10,7 +10,7 @@
 
 namespace PageSignal5a
 {
-    Parameter param_Us("Us",
+    VParameter param_Us("Us",
         &gset.signals[TypeSignal::_5a].values12[0], Voltage(0), Voltage(10000),
         &gset.signals[TypeSignal::_5a].values24[0], Voltage(0), Voltage(10000),
         355, 125);
