@@ -7,7 +7,7 @@ namespace PageSignal1
 {
     extern Page *self;
 
-    extern Parameter param_Us;
+    extern VParameter param_Us;
 
     extern Parameter param_t1;
 }
