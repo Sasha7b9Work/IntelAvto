@@ -224,5 +224,5 @@ pchar Duration::ToStringValue(char buffer[32]) const
         return RemainingTimeCounter::RemainingTime(buffer);
     }
 
-    return SU::TimeMStoText(timeMS, buffer);
+    return SU::TimeMStoText(timeMS, buffer, false);
 }
