@@ -14,20 +14,20 @@ namespace PageSignal1
 {
     // Амплитуда
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_1].values12[0], Value(-600, TVolt), Value(-1, TVolt),
-        &gset.signals[TypeSignal::_1].values24[0], Value(-600, TVolt), Value(-1, TVolt),
+        &gset.signals[TypeSignal::_1].values12[0], Value(-600, TypeValue::Voltage), Value(-1, TypeValue::Voltage),
+        &gset.signals[TypeSignal::_1].values24[0], Value(-600, TypeValue::Voltage), Value(-1, TypeValue::Voltage),
         280, 155);
 
     // Период повторения
     Parameter param_t1("Период",
-        &gset.signals[TypeSignal::_1].values12[1], Value(500, TTime), Value(5000, TTime),
-        &gset.signals[TypeSignal::_1].values24[1], Value(500, TTime), Value(5000, TTime),
+        &gset.signals[TypeSignal::_1].values12[1], Value(500), Value(5000),
+        &gset.signals[TypeSignal::_1].values24[1], Value(500), Value(5000),
         280, 50);
 
     // Количество импульсов
     Parameter param_N("N",
-        &gset.signals[TypeSignal::_1].values12[2], Value(5000, TRaw), Value(100000, TRaw),
-        &gset.signals[TypeSignal::_1].values24[2], Value(5000, TRaw), Value(100000, TRaw),
+        &gset.signals[TypeSignal::_1].values12[2], Value(5000), Value(100000),
+        &gset.signals[TypeSignal::_1].values24[2], Value(5000), Value(100000),
         90, 130);
 
     static void FuncPress_Signal()

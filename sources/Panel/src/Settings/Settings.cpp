@@ -68,8 +68,8 @@ static Settings def_set =
     {
         {   {   Voltage(-75),                   // 1 : Us   12      Signal 1
                 Time(1000),                     // 1 : t1   12
-                Counter(10000)                  // 1 : N    12
-            },
+                Counter(10000) }                // 1 : N    12
+            ,
             {   Voltage(-300),                  // 1 : Us   24
                 Time(1000),                     // 1 : Us   24
                 Counter(10000) }}               // 1 : N    24

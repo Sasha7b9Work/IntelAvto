@@ -93,7 +93,7 @@ file(GLOB HARDWARE_HAL       ../../Panel/src/Hardware/HAL/HAL.*
                              ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
                              ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
                                          src/Hardware/HAL/*.*)
-file(GLOB HARDWARE_KEYBOARD     ../../common/Hardware/Keyboard/Keyboard_.h
+file(GLOB HARDWARE_KEYBOARD     ../../common/Hardware/Keyboard/Keyboard.h
                                          src/Keyboard/Keyboard_win.cpp)
 file(GLOB MENU               ../../Panel/src/Menu/*.*)
 file(GLOB MENU_PAGES         ../../Panel/src/Menu/Pages/*.*)

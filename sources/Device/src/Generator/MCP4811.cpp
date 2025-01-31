@@ -47,7 +47,7 @@ void MCP4811::Disable()
 
     pin_K1_FOR.ToLow();
 
-    Gateway::Write(Converter(Value(0, TVolt)).Resolve());
+    Gateway::Write(Converter(Value(0, TypeValue::Voltage)).Resolve());
 }
 
 

@@ -13,18 +13,18 @@
 namespace PageSignal2a
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_2a].values12[0], Value(37, TVolt), Value(112, TVolt),
-        &gset.signals[TypeSignal::_2a].values24[0], Value(37, TVolt), Value(112, TVolt),
+        &gset.signals[TypeSignal::_2a].values12[0], Value(37), Value(112),
+        &gset.signals[TypeSignal::_2a].values24[0], Value(37), Value(112),
         320, 140);
 
     Parameter param_t1("Период",
-        &gset.signals[TypeSignal::_2a].values12[1], Value(200, TTime), Value(5000, TTime),
-        &gset.signals[TypeSignal::_2a].values24[1], Value(200, TTime), Value(5000, TTime),
+        &gset.signals[TypeSignal::_2a].values12[1], Value(200), Value(5000),
+        &gset.signals[TypeSignal::_2a].values24[1], Value(200), Value(5000),
         270, 30);
 
     Parameter param_N("N",
-        &gset.signals[TypeSignal::_2a].values12[2], Value(5000, TRaw), Value(100000, TRaw),
-        &gset.signals[TypeSignal::_2a].values24[2], Value(5000, TRaw), Value(100000, TRaw),
+        &gset.signals[TypeSignal::_2a].values12[2], Value(5000), Value(100000),
+        &gset.signals[TypeSignal::_2a].values24[2], Value(5000), Value(100000),
         90, 130);
 
     static void FuncPress_Signal()

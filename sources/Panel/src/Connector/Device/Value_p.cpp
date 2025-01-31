@@ -47,7 +47,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
         {
             std::strcat(pointer, Text("%d", value).c_str());
 
-            if (GetType() == TTime)
+            if (GetType() == TypeValue::Time)
             {
                 std::strcat(string, "ì");
             }
@@ -65,16 +65,16 @@ void Value::Draw(const Parameter *param, int x, int y) const
             std::strcat(string, Text("%d", value).c_str());
         }
 
-        if (GetType() != TRaw)
+        if (GetType() != TypeValue::Raw)
         {
-            std::strcat(string, (GetType() == TTime) ? "ñ" : "Â");
+            std::strcat(string, (GetType() == TypeValue::Time) ? "ñ" : "Â");
         }
         Text(string).Write(x, y, Color::WHITE);
     }
 }
 
 
-bool DrawStruct::ToValue(Value *result, TypeValue type) const
+bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
 {
     char buffer[128];
 
@@ -95,16 +95,16 @@ bool DrawStruct::ToValue(Value *result, TypeValue type) const
             raw |= (uint)(1 << 31);
         }
 
-        if (type == TTime)
+        if (type == TypeValue::Time)
         {
             raw |= (1 << 30);
         }
-        else if (type == TVolt)
+        else if (type == TypeValue::Voltage)
         {
             raw |= (1 << 29);
         }
 
-        *result = Value((int)raw, TRaw);
+        *result = Value(raw);
 
         return true;
     }
@@ -115,19 +115,15 @@ bool DrawStruct::ToValue(Value *result, TypeValue type) const
 
 void Value::SetValue(const Value &min, const Value &max)
 {
-    Value new_value(0, TRaw);
+    Value new_value(0);
 
     if (ds.ToValue(&new_value, GetType()))
     {
-        float value = new_value.ToFloat();
-        float min_val = min.ToFloat();
-        float max_val = max.ToFloat();
-
-        if (value < min_val)
+        if (new_value.ToFloat() < min.ToFloat())
         {
             raw = min.GetRaw();
         }
-        else if (value > max_val)
+        else if (new_value.ToFloat() > max.ToFloat())
         {
             raw = max.GetRaw();
         }

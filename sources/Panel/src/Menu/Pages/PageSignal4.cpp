@@ -11,23 +11,23 @@
 namespace PageSignal4
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_4].values12[0], Value(0, TVolt), Value(10000, TVolt),
-        &gset.signals[TypeSignal::_4].values24[0], Value(0, TVolt), Value(10000, TVolt),
+        &gset.signals[TypeSignal::_4].values12[0], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values24[0], Value(0), Value(10000),
         230, 110);
 
     Parameter param_Ua("Ua",
-        &gset.signals[TypeSignal::_4].values12[1], Value(0, TVolt), Value(10000, TVolt),
-        &gset.signals[TypeSignal::_4].values24[1], Value(0, TVolt), Value(10000, TVolt),
+        &gset.signals[TypeSignal::_4].values12[1], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values24[1], Value(0), Value(10000),
         350, 100);
 
     Parameter param_t7("t7",
-        &gset.signals[TypeSignal::_4].values12[2], Value(0, TTime), Value(10000, TTime),
-        &gset.signals[TypeSignal::_4].values24[2], Value(0, TTime), Value(10000, TTime),
+        &gset.signals[TypeSignal::_4].values12[2], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values24[2], Value(0), Value(10000),
         220, 160);
 
     Parameter param_t9("t9",
-        &gset.signals[TypeSignal::_4].values12[3], Value(0, TTime), Value(10000, TTime),
-        &gset.signals[TypeSignal::_4].values24[3], Value(0, TTime), Value(10000, TTime),
+        &gset.signals[TypeSignal::_4].values12[3], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_4].values24[3], Value(0), Value(10000),
         330, 160);
 
     static void FuncPress_Signal()
