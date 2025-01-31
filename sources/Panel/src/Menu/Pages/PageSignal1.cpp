@@ -20,8 +20,8 @@ namespace PageSignal1
 
     // Период повторения
     Parameter param_t1("Период",
-        &gset.signals[TypeSignal::_1].values12[1], Value(500), Value(5000),
-        &gset.signals[TypeSignal::_1].values24[1], Value(500), Value(5000),
+        &gset.signals[TypeSignal::_1].values12[1], Value(500, TypeValue::Time), Value(5000, TypeValue::Time),
+        &gset.signals[TypeSignal::_1].values24[1], Value(500, TypeValue::Time), Value(5000, TypeValue::Time),
         280, 50);
 
     // Количество импульсов
