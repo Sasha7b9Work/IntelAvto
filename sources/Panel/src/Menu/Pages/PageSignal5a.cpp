@@ -11,13 +11,13 @@
 namespace PageSignal5a
 {
     Parameter param_Us("Us",
-        &gset.signals[TypeSignal::_5a].values12[0], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_5a].values24[0], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_5a].values12[0], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_5a].values24[0], Voltage(0), Voltage(10000),
         355, 125);
 
     Parameter param_td("td",
-        &gset.signals[TypeSignal::_5a].values12[1], Value(0), Value(10000),
-        &gset.signals[TypeSignal::_5a].values24[1], Value(0), Value(10000),
+        &gset.signals[TypeSignal::_5a].values12[1], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_5a].values24[1], Time(0), Time(10000),
         220, 155);
 
     static void FuncPress_Signal()
