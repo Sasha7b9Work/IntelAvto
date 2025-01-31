@@ -158,6 +158,19 @@ public:
 };
 
 
+class TParameter : public Parameter
+{
+public:
+    TParameter(pchar title_ru,
+        Value *value12, const Time &_min12, const Time &_max12,
+        Value *value24, const Time &_min24, const Time &_max24,
+        int _x, int _y) :
+        Parameter(title_ru, value12, _min12, _max12, value24, _min24, _max24, _x, _y)
+    {
+    }
+};
+
+
 class Page : public Item, public Observer
 {
     friend struct Channel;

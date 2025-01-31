@@ -20,12 +20,12 @@ namespace PageSignal4
         &gset.signals[TypeSignal::_4].values24[1], Voltage(0), Voltage(10000),
         350, 100);
 
-    Parameter param_t7("t7",
+    TParameter param_t7("t7",
         &gset.signals[TypeSignal::_4].values12[2], Time(0), Time(10000),
         &gset.signals[TypeSignal::_4].values24[2], Time(0), Time(10000),
         220, 160);
 
-    Parameter param_t9("t9",
+    TParameter param_t9("t9",
         &gset.signals[TypeSignal::_4].values12[3], Time(0), Time(10000),
         &gset.signals[TypeSignal::_4].values24[3], Time(0), Time(10000),
         330, 160);

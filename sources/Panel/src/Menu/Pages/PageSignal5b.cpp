@@ -20,7 +20,7 @@ namespace PageSignal5b
         &gset.signals[TypeSignal::_5b].values24[1], Voltage(0), Voltage(10000),
         380, 160);
 
-    Parameter param_td("td",
+    TParameter param_td("td",
         &gset.signals[TypeSignal::_5b].values12[2], Time(0), Time(10000),
         &gset.signals[TypeSignal::_5b].values24[2], Time(0), Time(10000),
         220, 160);

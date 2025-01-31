@@ -17,7 +17,7 @@ namespace PageSignal2a
         &gset.signals[TypeSignal::_2a].values24[0], Voltage(37), Voltage(112),
         320, 140);
 
-    Parameter param_t1("Период",
+    TParameter param_t1("Период",
         &gset.signals[TypeSignal::_2a].values12[1], Time(200), Time(5000),
         &gset.signals[TypeSignal::_2a].values24[1], Time(200), Time(5000),
         270, 30);

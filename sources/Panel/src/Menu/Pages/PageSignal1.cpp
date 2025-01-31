@@ -19,7 +19,7 @@ namespace PageSignal1
         280, 155);
 
     // Период повторения
-    Parameter param_t1("Период",
+    TParameter param_t1("Период",
         &gset.signals[TypeSignal::_1].values12[1], Time(500), Time(5000),
         &gset.signals[TypeSignal::_1].values24[1], Time(500), Time(5000),
         280, 50);
