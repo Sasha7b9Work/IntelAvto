@@ -22,7 +22,7 @@ namespace PageSignal2a
         &gset.signals[TypeSignal::_2a].values24[1], Time(200), Time(5000),
         270, 30);
 
-    Parameter param_N("N",
+    CParameter param_N("N",
         &gset.signals[TypeSignal::_2a].values12[2], Counter(5000), Counter(100000),
         &gset.signals[TypeSignal::_2a].values24[2], Counter(5000), Counter(100000),
         90, 130);

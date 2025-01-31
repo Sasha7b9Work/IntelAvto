@@ -83,8 +83,8 @@ class Parameter : public Item
 {
 public:
     Parameter(pchar title_ru,
-        Value *value12, Value _min12, Value _max12,
-        Value *value24, Value _min24, Value _max24,
+        Value *value12, const Value &_min12, const Value &_max12,
+        Value *value24, const Value &_min24, const Value &_max24,
         int _x, int _y) :
         Item(),
         min12(_min12), max12(_max12),
@@ -170,6 +170,17 @@ public:
     }
 };
 
+class CParameter : public Parameter
+{
+public:
+    CParameter(pchar title_ru,
+        Value *value12, const Counter &_min12, const Counter &_max12,
+        Value *value24, const Counter &_min24, const Counter &_max24,
+        int _x, int _y) :
+        Parameter(title_ru, value12, _min12, _max12, value24, _min24, _max24, _x, _y)
+    {
+    }
+};
 
 class Page : public Item, public Observer
 {

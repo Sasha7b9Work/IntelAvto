@@ -25,7 +25,7 @@ namespace PageSignal1
         280, 50);
 
     // Количество импульсов
-    Parameter param_N("N",
+    CParameter param_N("N",
         &gset.signals[TypeSignal::_1].values12[2], Counter(5000), Counter(100000),
         &gset.signals[TypeSignal::_1].values24[2], Counter(5000), Counter(100000),
         90, 130);
