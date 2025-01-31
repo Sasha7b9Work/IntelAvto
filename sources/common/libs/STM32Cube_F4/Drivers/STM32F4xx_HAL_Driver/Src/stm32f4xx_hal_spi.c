@@ -197,6 +197,13 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wimplicit-int-conversion"
+    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 #include "stm32f4xx_hal.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver
