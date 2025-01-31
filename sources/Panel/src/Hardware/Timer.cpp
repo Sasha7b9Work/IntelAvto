@@ -83,15 +83,15 @@ pchar RemainingTimeCounter::RemainingTime(char buffer[32])
 {
     if (TIME_MS >= time_end)
     {
-        return SU::TimeMStoText(0, buffer, true);
+        return SU::TimeMStoText(0, buffer, false);
     }
 
     if (in_pause)
     {
-        return SU::TimeMStoText(remaining_on_start_pause, buffer, true);
+        return SU::TimeMStoText(remaining_on_start_pause, buffer, false);
     }
 
-    return SU::TimeMStoText(time_end - TIME_MS, buffer, true);
+    return SU::TimeMStoText(time_end - TIME_MS, buffer, false);
 }
 
 

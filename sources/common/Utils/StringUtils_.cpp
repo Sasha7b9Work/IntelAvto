@@ -601,7 +601,7 @@ pchar SU::TimeMStoText(uint timeMS, char buffer[32], bool always_show_ms)
         {
             std::sprintf(buffer + std::strlen(buffer), "%02uì", minutes);
         }
-        if (ms || always_show_ms)
+        if (always_show_ms)
         {
             std::sprintf(buffer + std::strlen(buffer), "%02u.%03uñ", secs, ms);
         }
