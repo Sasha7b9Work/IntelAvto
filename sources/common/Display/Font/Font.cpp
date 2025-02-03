@@ -107,7 +107,7 @@ uint8 *NativeSymbol::Data()
 }
 
 
-void Font::Set(const TypeFont::E typeFont)
+void Font::_Set(const TypeFont::E typeFont)
 {
     switch (typeFont)
     {

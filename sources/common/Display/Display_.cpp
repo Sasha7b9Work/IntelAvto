@@ -53,7 +53,7 @@ namespace Display
 
     bool sendToSCPI = false;    // Если true, то надо посылать в SCPI
 
-    void DrawSignal();
+    static void DrawSignal();
 
     static void DrawScreen();
 
@@ -66,7 +66,7 @@ void Display::Init()
 {
     InitHardware();
 
-    Font::Set(TypeFont::GOSTAU16BOLD);
+    Font::_Set(TypeFont::GOSTAU16BOLD);
 
     Font::SetSpacing(2);
 }
@@ -341,11 +341,36 @@ void Display::DrawScreen()
 {
     Menu::Draw();
 
-    Text("Тип сигнала %s : %s",
-        TypeSignal::ToString(),
-        TypeSignal::Name()).Write(230, 6, Color::WHITE);
+    if (Menu::OpenedPageIsSignal())
+    {
+        Text("Тип сигнала %s : %s",
+            TypeSignal::ToString(),
+            TypeSignal::Name()).Write(230, 6, Color::WHITE);
 
-    DrawSignal();
+        DrawSignal();
+    }
+    else
+    {
+        Font::_Set(TypeFont::GOSTB28B);
+
+        const int y0 = 40;
+        const int dy = 70;
+        const int x = 200;
+
+        int y = y0;
+
+        Text("ГЕНЕРАТОР").Write(x, y, Color::WHITE);
+
+        y += dy;
+
+        Text("ИМПУЛЬСОВ").Write(x, y);
+
+        y += dy;
+
+        Text("ОАО МНИПИ").Write(x - 10, y);
+
+        Font::_Set(TypeFont::GOSTAU16BOLD);
+    }
 }
 
 
