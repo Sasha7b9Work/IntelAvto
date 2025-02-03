@@ -2,10 +2,21 @@
 #include "defines.h"
 #include "Menu/MenuItemsDef.h"
 #include "Menu/Pages/Pages.h"
+#include "Menu/Menu.h"
 
 
 namespace PageMain
 {
+    static void FuncPress_Tests()
+    {
+        Menu::SetOpenedPage(PageSignal1::self);
+    }
+
+    DEF_BUTTON(bTests,
+        "Тесты",
+        FuncPress_Tests
+    );
+
     static void FuncPress_Settings()
     {
 
@@ -18,6 +29,7 @@ namespace PageMain
 
     static Item *items[] =
     {
+        &bTests,
         &bSettings,
         nullptr
     };

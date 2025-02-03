@@ -118,6 +118,10 @@ void Menu::Input::OnControl(const Control &control)
                     {
                         SetOpenedPage(PageMain::self);
                     }
+                    else
+                    {
+                        SetOpenedPage(PageSignal1::self);
+                    }
                 }
             }
         }
