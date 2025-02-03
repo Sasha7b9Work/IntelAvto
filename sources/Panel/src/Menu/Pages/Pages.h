@@ -3,6 +3,12 @@
 #include "Menu/MenuItems.h"
 
 
+namespace PageMain
+{
+    extern Page *self;
+}
+
+
 namespace PageSignal1
 {
     extern Page *self;

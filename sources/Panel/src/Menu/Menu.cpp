@@ -13,8 +13,6 @@
 
 namespace Menu
 {
-    void SubscribeToEvents();
-
     // Текущая отображаемая страница меню
     Page *openedPage = PageSignal1::self;
 
@@ -114,6 +112,13 @@ void Menu::Input::OnControl(const Control &control)
                         labelMode.SetState("СТОП", Color::BLACK, Color::GRAY);
                     });
                 }
+                else if (control.key == Key::Esc)
+                {
+                    if (OpenedPageIsSignal())
+                    {
+                        SetOpenedPage(PageMain::self);
+                    }
+                }
             }
         }
     }
@@ -129,8 +134,6 @@ bool Menu::Input::OnGovernorButton(const Control &)
 void Menu::Init()
 {
     Input::SetFuncUpdate(Input::FuncUpdate);
-
-    SubscribeToEvents();
 }
 
 
@@ -168,6 +171,17 @@ void Menu::Input::SetFuncUpdate(void (*_funcUpdate)())
 }
 
 
-void Menu::SubscribeToEvents()
+bool Menu::OpenedPageIsSignal()
 {
+    Page *page = OpenedPage();
+
+    return
+        page == PageSignal1::self ||
+        page == PageSignal2a::self ||
+        page == PageSignal2b::self ||
+        page == PageSignal3a::self ||
+        page == PageSignal3b::self ||
+        page == PageSignal4::self ||
+        page == PageSignal5a::self ||
+        page == PageSignal5b::self;
 }

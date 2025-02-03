@@ -16,6 +16,9 @@ namespace Menu
 
     void SetOpenedPage(Page *page);
 
+    // Если сейчас открыта страница сигнала, то true
+    bool OpenedPageIsSignal();
+
     namespace Input
     {
         // Эта функция вызывается главном цикле
