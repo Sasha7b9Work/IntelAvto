@@ -66,7 +66,7 @@ void Display::Init()
 {
     InitHardware();
 
-    Font::_Set(TypeFont::GOSTAU16BOLD);
+    Font::Set(TypeFont::GOSTAU16BOLD);
 
     Font::SetSpacing(2);
 }
@@ -351,7 +351,7 @@ void Display::DrawScreen()
     }
     else
     {
-        Font::_Set(TypeFont::GOSTB28B);
+        Font::Set(TypeFont::GOSTB28B);
 
         const int y0 = 40;
         const int dy = 70;
@@ -369,7 +369,7 @@ void Display::DrawScreen()
 
         Text("Œ¿Œ ÃÕ»œ»").Write(x - 10, y);
 
-        Font::_Set(TypeFont::GOSTAU16BOLD);
+        Font::Set(TypeFont::GOSTAU16BOLD);
     }
 }
 

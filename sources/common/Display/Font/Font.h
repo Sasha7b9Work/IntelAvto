@@ -20,7 +20,7 @@ struct TypeFont
 namespace Font
 {
     // Устанавливает текущий шрифт. Ранее установленный можно восстановить функцией Pop()
-    void _Set(const TypeFont::E typeFont);
+    void Set(const TypeFont::E);
     uint8 GetWidth(uint8 symbol);
     uint8 GetWidth(char symbol);
     uint8 GetHeight();

@@ -98,7 +98,7 @@ void Display::InitHardware()
 {
     CreateFrame();
 
-    Font::_Set(TypeFont::GOSTAU16BOLD);
+    Font::Set(TypeFont::GOSTAU16BOLD);
 
     Font::SetSpacing(2);
 
