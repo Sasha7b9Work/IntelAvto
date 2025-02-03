@@ -930,11 +930,6 @@
               <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageMain.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
-            </File>
-            <File>
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
@@ -2025,11 +2020,6 @@
               <FileName>PageMain.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageMain.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageMain.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\PageMain.h</FilePath>
             </File>
             <File>
               <FileName>Pages.h</FileName>
