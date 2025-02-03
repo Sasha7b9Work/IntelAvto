@@ -4,7 +4,7 @@
 
 #define _FFCONF 68300	/* Revision ID */
 
-#ifdef STM32F437xx
+#ifndef WIN32
 #include "stm32f4xx_hal.h"
 #endif
 

@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 7
+#define VERSION_BUILD 8
 
-#define DATE_BUILD "2025-02-03 17:29:19"
+#define DATE_BUILD "2025-02-03 18:05:19"
 
 #include <stdint.h>
 
@@ -87,12 +87,3 @@ struct Coord
     int x;
     int y;
 };
-
-extern int FM_NEED_REDRAW;
-
-#define FM_REDRAW_FULL          1
-#define FM_REDRAW_FOLDERS       2
-#define FM_REDRAW_FILES         3
-
-extern pchar FILE_NAME;
-extern char FILE_NAME_MASK[64];

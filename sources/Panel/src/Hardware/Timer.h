@@ -25,6 +25,8 @@ namespace Timer
     void DisableTask(TimerTask::E);
 
     void UpdateTasks();
+
+    void Delay(uint timeMS);
 }
 
 

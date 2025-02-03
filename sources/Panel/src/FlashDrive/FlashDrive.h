@@ -1,6 +1,7 @@
 // 2024/01/05 21:19:18 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include <ff.h>
+#include <stm32f4xx_hal.h>
 
 
 
@@ -52,6 +53,8 @@ namespace FDrive
     bool AppendStringToFile(const char *string);
 
     extern USBH_HandleTypeDef hUSB_Host;
+
+    extern HCD_HandleTypeDef handleHCD;
 };
 
 

@@ -26,6 +26,7 @@ namespace FDrive
 
 
     USBH_HandleTypeDef hUSB_Host;
+    HCD_HandleTypeDef handleHCD;
     static FATFS USBDISKFatFs;
     static char USBDISKPath[4];
     static bool gFlashDriveIsConnected = false;
@@ -72,7 +73,7 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
     case HOST_USER_DISCONNECTION:
         gFlashDriveIsConnected = false;
-        Menu::ChangeStateFlashDrive();
+//        Menu::ChangeStateFlashDrive();
         break;
 
     default:
@@ -85,7 +86,7 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 void FDrive::Mount()
 {
     FileManager::Init();
-    Menu::ChangeStateFlashDrive();
+//    Menu::ChangeStateFlashDrive();
     if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 0) != FR_OK)
     {
         LOG_ERROR("Не могу примонтировать диск");
@@ -133,7 +134,7 @@ void FDrive::Update()
         {
             gFlashDriveIsConnected = true;
             FileManager::Init();
-            Menu::ChangeStateFlashDrive();
+//            Menu::ChangeStateFlashDrive();
         }
         while (TIME_MS - timeStart < 3000)
         {

@@ -27,6 +27,12 @@ namespace FileManager
 #define RECS_ON_PAGE    23
 #define WIDTH_COL       135
 
+#define FM_REDRAW_FULL          1
+#define FM_REDRAW_FOLDERS       2
+#define FM_REDRAW_FILES         3
+
+    int FM_NEED_REDRAW = FM_REDRAW_FULL;
+
     static char currentDir[255] = "\\";
     static int numFirstDir = 0;         // Ќомер первого выведенного каталога в левой панели. ¬сего может быть выведено RECS_ON_PAGE каталогов
     static int numCurDir = 0;           // Ќомер подсвеченного каталога
@@ -42,6 +48,10 @@ namespace FileManager
     static void DecCurrentDir();
     static void IncCurrentFile();
     static void DecCurrentFile();
+
+    static char FILE_NAME_MASK[64];
+
+    static pchar FILE_NAME = "";
 }
 
 

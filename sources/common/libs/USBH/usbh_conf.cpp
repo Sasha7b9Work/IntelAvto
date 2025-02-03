@@ -1,5 +1,8 @@
 #include "defines.h"
 #include "Hardware/Timer.h"
+#include "FlashDrive/FlashDrive.h"
+#include <usbh_def.h>
+#include <usbh_core.h>
 
  
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -48,23 +51,23 @@ void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *, uint8_t, HCD_URBSt
 USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
 {  
     /* Set the LL driver parameters */
-    handleHCD.Instance = USB_OTG_FS;
-    handleHCD.Init.speed = HCD_SPEED_FULL;
-    handleHCD.Init.Host_channels = 11; 
-    handleHCD.Init.dma_enable = 0;
-    handleHCD.Init.low_power_enable = 0;
-    handleHCD.Init.phy_itface = HCD_PHY_EMBEDDED; 
-    handleHCD.Init.Sof_enable = 0;
-    handleHCD.Init.vbus_sensing_enable = 0;
-    handleHCD.Init.use_external_vbus = 0;  
+    FDrive::handleHCD.Instance = USB_OTG_FS;
+    FDrive::handleHCD.Init.speed = HCD_SPEED_FULL;
+    FDrive::handleHCD.Init.Host_channels = 11; 
+    FDrive::handleHCD.Init.dma_enable = 0;
+    FDrive::handleHCD.Init.low_power_enable = 0;
+    FDrive::handleHCD.Init.phy_itface = HCD_PHY_EMBEDDED; 
+    FDrive::handleHCD.Init.Sof_enable = 0;
+    FDrive::handleHCD.Init.vbus_sensing_enable = 0;
+    FDrive::handleHCD.Init.use_external_vbus = 0;  
 
     /* Link the driver to the stack */
-    handleHCD.pData = phost;
-    phost->pData = &handleHCD;
+    FDrive::handleHCD.pData = phost;
+    phost->pData = &FDrive::handleHCD;
     /* Initialize the LL driver */
-    HAL_HCD_Init(&handleHCD);
+    HAL_HCD_Init(&FDrive::handleHCD);
  
-    USBH_LL_SetTimer(phost, HAL_HCD_GetCurrentFrame(&handleHCD));
+    USBH_LL_SetTimer(phost, HAL_HCD_GetCurrentFrame(&FDrive::handleHCD));
   
     return USBH_OK;
 }
@@ -237,7 +240,7 @@ USBH_URBStateTypeDef USBH_LL_GetURBState(USBH_HandleTypeDef *phost, uint8_t pipe
   * @retval USBH Status  */
 USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *, uint8_t)
 {
-    Timer::PauseOnTime(200);
+    Timer::Delay(200);
     return USBH_OK;  
 }
 
@@ -247,13 +250,13 @@ USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *, uint8_t)
   * @retval USBH Status  */
 USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *, uint8_t pipe, uint8_t toggle)   
 {
-    if(handleHCD.hc[pipe].ep_is_in)
+    if(FDrive::handleHCD.hc[pipe].ep_is_in)
     {
-        handleHCD.hc[pipe].toggle_in = toggle;
+        FDrive::handleHCD.hc[pipe].toggle_in = toggle;
     }
     else
     {
-        handleHCD.hc[pipe].toggle_out = toggle;
+        FDrive::handleHCD.hc[pipe].toggle_out = toggle;
     }
     return USBH_OK; 
 }
@@ -265,13 +268,13 @@ uint8_t USBH_LL_GetToggle(USBH_HandleTypeDef *, uint8_t pipe)
 {
     uint8_t toggle = 0;
   
-    if(handleHCD.hc[pipe].ep_is_in)
+    if(FDrive::handleHCD.hc[pipe].ep_is_in)
     {
-        toggle = handleHCD.hc[pipe].toggle_in;
+        toggle = FDrive::handleHCD.hc[pipe].toggle_in;
     }
     else
     {
-        toggle = handleHCD.hc[pipe].toggle_out;
+        toggle = FDrive::handleHCD.hc[pipe].toggle_out;
     }
     return toggle; 
 }
@@ -283,7 +286,7 @@ uint8_t USBH_LL_GetToggle(USBH_HandleTypeDef *, uint8_t pipe)
   */
 void USBH_Delay(uint32_t Delay)
 {
-    Timer::PauseOnTime(Delay);  
+    Timer::Delay(Delay);  
 }
 
 #if (USBH_DEBUG_LEVEL > 1)

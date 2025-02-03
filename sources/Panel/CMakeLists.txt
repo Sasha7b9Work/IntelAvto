@@ -40,6 +40,7 @@ add_compile_options(
     /wd4623    # 'xxx': default constructor was implicitly defined as deleted
     /wd4626    # 'derived class' : assignment operator was implicitly defined as deleted because a base
                # class assignment operator is inaccessible or deleted
+    /wd4668
     /wd4820    # 'N' bytes padding added after data member
     /wd4996    # This function or variable may be unsafe
     /wd5027    # move assignment operator was implicitly defined as deleted

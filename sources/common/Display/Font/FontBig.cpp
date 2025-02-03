@@ -13,10 +13,10 @@
       assert:        http://www.keil.com/support/man/docs/armlib/armlib_chr1358938924063.htm
     */
 
-#include "defines.h"
-#include <stdint.h>
-#include <stddef.h>
-#include <stdbool.h>
+//#include "defines.h"
+//#include <stdint.h>
+//#include <stddef.h>
+//#include <stdbool.h>
 #include <cstring>
 #include "Display/Font/FontBig.h"
 #include "Display/Primitives_.h"

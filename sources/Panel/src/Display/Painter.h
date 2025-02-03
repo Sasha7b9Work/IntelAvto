@@ -1,5 +1,6 @@
 // 2025/02/03 15:05:41 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Display/Colors_.h"
 
 
 namespace Painter

@@ -121,3 +121,13 @@ void RemainingTimeCounter::Stop()
 {
     time_end = (uint)-1;
 }
+
+
+void Timer::Delay(uint timeMS)
+{
+    uint end = TIME_MS + timeMS;
+
+    while (TIME_MS < end)
+    {
+    }
+}
