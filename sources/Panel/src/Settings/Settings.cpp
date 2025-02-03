@@ -217,7 +217,7 @@ Duration::Duration(const Parameter &period, const Parameter &N)
 }
 
 
-pchar Duration::ToStringValue(char buffer[32]) const
+pchar Duration::ToStringValue(char buffer[128]) const
 {
     if (RemainingTimeCounter::InProcess())
     {

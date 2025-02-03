@@ -58,7 +58,7 @@ namespace RemainingTimeCounter
     void Stop();
 
     // Возвращает в текстовом виде оставшееся время
-    pchar RemainingTime(char buffer[32]);
+    pchar RemainingTime(char buffer[128]);
 
     // Приостановить процесс отсчёта
     void Pause();

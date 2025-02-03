@@ -79,7 +79,7 @@ void RemainingTimeCounter::Start(const Parameter &period, const Parameter &N)
 }
 
 
-pchar RemainingTimeCounter::RemainingTime(char buffer[32])
+pchar RemainingTimeCounter::RemainingTime(char buffer[128])
 {
     if (TIME_MS >= time_end)
     {

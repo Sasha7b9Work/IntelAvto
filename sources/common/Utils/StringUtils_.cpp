@@ -559,7 +559,7 @@ bool SU::IsDigit(char symbol)
 }
 
 
-pchar SU::TimeMStoText(uint timeMS, char buffer[32], bool always_show_ms)
+pchar SU::TimeMStoText(uint timeMS, char buffer[128], bool always_show_ms)
 {
     static const uint MS_IN_DAY = 24 * 60 * 60 * 1000;
     static const uint MS_IN_HOUR = 60 * 60 * 1000;
@@ -595,19 +595,19 @@ pchar SU::TimeMStoText(uint timeMS, char buffer[32], bool always_show_ms)
         }
         if (hours)
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02u÷", hours);
+            std::sprintf(buffer + std::strlen(buffer), "%02u÷", hours); //-V512
         }
         if (minutes)
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02uì", minutes);
+            std::sprintf(buffer + std::strlen(buffer), "%02uì", minutes); //-V512
         }
         if (always_show_ms)
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02u.%03uñ", secs, ms);
+            std::sprintf(buffer + std::strlen(buffer), "%02u.%03uñ", secs, ms); //-V512
         }
         else
         {
-            std::sprintf(buffer + std::strlen(buffer), "%02uñ", secs);
+            std::sprintf(buffer + std::strlen(buffer), "%02uñ", secs); //-V512
         }
     }
 

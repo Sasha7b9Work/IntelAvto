@@ -82,7 +82,7 @@ namespace SU
         return crc;
     }
 
-    pchar TimeMStoText(uint timeMS, char buffer[32], bool always_show_ms);
+    pchar TimeMStoText(uint timeMS, char buffer[128], bool always_show_ms);
 };
 
 

@@ -9,7 +9,7 @@ struct Duration
 {
     Duration(const Parameter &period, const Parameter &N);
 
-    pchar ToStringValue(char buffer[32]) const;
+    pchar ToStringValue(char buffer[128]) const;
 
 private:
     uint timeMS;

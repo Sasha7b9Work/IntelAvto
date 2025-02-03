@@ -75,7 +75,7 @@ namespace PageSignal1
 
     static void AdditionDraw()
     {
-        char buffer[32];
+        char buffer[128];
 
         Text("%s     ƒлит: %s     Ri: %s", VoltageMode::TextValue(), Duration(param_t1, param_N).ToStringValue(buffer), VoltageMode::Is12() ? "10 ќм" : "50 ќм").Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
