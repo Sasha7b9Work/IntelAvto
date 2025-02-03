@@ -80,37 +80,43 @@ void Menu::Input::OnControl(const Control &control)
             {
                 if (control.key == Key::Start)
                 {
-                    Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
-
-                    if (Device::IsStopped())
+                    if (OpenedPageIsSignal())
                     {
-                        labelMode.SetState("реяр", Color::WHITE, Color::RED);
+                        Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
 
-                        Device::Start();
-                    }
-                    else if (Device::IsRunning())
-                    {
-                        labelMode.SetState("оюсгю", Color::BLACK, Color::YELLOW);
+                        if (Device::IsStopped())
+                        {
+                            labelMode.SetState("реяр", Color::WHITE, Color::RED);
 
-                        Device::Pause();
-                    }
-                    else if (Device::InPause())
-                    {
-                        labelMode.SetState("реяр", Color::WHITE, Color::RED);
+                            Device::Start();
+                        }
+                        else if (Device::IsRunning())
+                        {
+                            labelMode.SetState("оюсгю", Color::BLACK, Color::YELLOW);
 
-                        Device::Resume();
+                            Device::Pause();
+                        }
+                        else if (Device::InPause())
+                        {
+                            labelMode.SetState("реяр", Color::WHITE, Color::RED);
+
+                            Device::Resume();
+                        }
                     }
                 }
                 else if (control.key == Key::Stop)
                 {
-                    Device::Stop();
-
-                    labelMode.SetState("ярно", Color::BLACK, Color::GREEN);
-
-                    Timer::SetOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
+                    if (OpenedPageIsSignal())
                     {
-                        labelMode.SetState("ярно", Color::BLACK, Color::GRAY);
-                    });
+                        Device::Stop();
+
+                        labelMode.SetState("ярно", Color::BLACK, Color::GREEN);
+
+                        Timer::SetOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
+                        {
+                            labelMode.SetState("ярно", Color::BLACK, Color::GRAY);
+                        });
+                    }
                 }
                 else if (control.key == Key::Esc)
                 {
