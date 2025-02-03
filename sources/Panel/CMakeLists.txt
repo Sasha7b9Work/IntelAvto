@@ -10,10 +10,15 @@ include_directories(
     src
     src/Hardware/HAL
     src/Hardware/USBD
+    src/Hardware/USBH
     tests
     ../common
+    ../common/libs/FatFS
+    ../common/libs/USBH
     ../common/_VS_KEIL/CMSIS
-    ../common/_VS/std_includes
+    ../common/_VS_KEIL/FatFS
+    ../common/_VS_KEIL/USBH
+    ../common/_VS_KEIL/std_includes
     ../common/libs
     ../common/libs/minz
     ../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
@@ -50,9 +55,11 @@ file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
                               ../common/Connector/Device/Value_.h
                                     src/Connector/Device/*.*)
 file(GLOB DEVICE                    src/Device/*.*)
-file(GLOB DISPLAY             ../common/Display/*.*)
+file(GLOB DISPLAY             ../common/Display/*.*
+                                    src/Display/*.*)
 file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
 file(GLOB DISPLAY_PICTURES          src/Display/Pictures/*.*)
+file(GLOB FLASHDRIVE                src/FlashDrive/*.*)
 file(GLOB HARDWARE                  src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_LAN        ../common/Hardware/LAN/*.*)
@@ -78,6 +85,7 @@ source_group(Device            FILES ${DEVICE})
 source_group(Display           FILES ${DISPLAY})
 source_group(Display/Font      FILES ${DISPLAY_FONT})
 source_group(Display/Pictures  FILES ${DISPLAY_PICTURES})
+source_group(FlashDrive        FILES ${FLASHDRIVE})
 source_group(Hardware          FILES ${HARDWARE})
 source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
@@ -105,6 +113,7 @@ add_library(${PROJECT_NAME}
     ${DISPLAY}
     ${DISPLAY_FONT}
     ${DISPLAY_PICTURES}
+    ${FLASHDRIVE}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}

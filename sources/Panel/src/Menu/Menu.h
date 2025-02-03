@@ -33,5 +33,7 @@ namespace Menu
         void FuncEmptyUpdate();
     };
 
+    void ChangeStateFlashDrive();
+
     extern Primitives::Label labelMode;
 };

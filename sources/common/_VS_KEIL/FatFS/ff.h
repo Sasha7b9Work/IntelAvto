@@ -23,6 +23,9 @@ typedef unsigned short WCHAR; //-V677
 #define	FA_OPEN_APPEND		0x30
 
 
+typedef DWORD FSIZE_t;
+
+
 typedef enum {
     FR_OK = 0,				/* (0) Succeeded */
     FR_DISK_ERR,			/* (1) A hard error occurred in the low level disk I/O layer */

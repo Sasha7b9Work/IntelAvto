@@ -742,6 +742,31 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>FlashDrive</GroupName>
+          <Files>
+            <File>
+              <FileName>FileManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FlashDrive\FileManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FileManager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FlashDrive\FileManager.h</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FlashDrive\FlashDrive.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FlashDrive\FlashDrive.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
@@ -1072,6 +1097,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>libs/FatFS</GroupName>
+          <Files>
+            <File>
+              <FileName>ffconf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\FatFS\ffconf.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>libs/miniz</GroupName>
           <Files>
             <File>
@@ -1098,6 +1133,31 @@
               <FileName>miniz_zip.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\common\libs\miniz\miniz_zip.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>libs/USBH</GroupName>
+          <Files>
+            <File>
+              <FileName>usbh_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\libs\USBH\usbh_conf.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\USBH\usbh_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\libs\USBH\usbh_diskio.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\USBH\usbh_diskio.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1420,7 +1480,7 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>1</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>1</uSurpInc>
             <uC99>0</uC99>
@@ -1437,7 +1497,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, PANEL, STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;.\src;..\common;..\common\libs</IncludePath>
+              <IncludePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;.\src;..\common;..\common\libs;..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\common\libs\FatFS;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\common\libs\USBH;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1839,6 +1899,31 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>FlashDrive</GroupName>
+          <Files>
+            <File>
+              <FileName>FileManager.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FlashDrive\FileManager.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FileManager.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FlashDrive\FileManager.h</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\FlashDrive\FlashDrive.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>FlashDrive.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\FlashDrive\FlashDrive.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Hardware</GroupName>
           <Files>
             <File>
@@ -2169,6 +2254,16 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>libs/FatFS</GroupName>
+          <Files>
+            <File>
+              <FileName>ffconf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\FatFS\ffconf.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>libs/miniz</GroupName>
           <Files>
             <File>
@@ -2399,6 +2494,31 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>libs/USBH</GroupName>
+          <Files>
+            <File>
+              <FileName>usbh_conf.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\libs\USBH\usbh_conf.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_conf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\USBH\usbh_conf.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\libs\USBH\usbh_diskio.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>usbh_diskio.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\common\libs\USBH\usbh_diskio.h</FilePath>
             </File>
           </Files>
         </Group>

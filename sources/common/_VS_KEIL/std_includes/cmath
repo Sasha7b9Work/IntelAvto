@@ -3,4 +3,17 @@
 namespace std
 {
     float fabsf(float);
+
+    template <class T> class numeric_limits
+    {
+    public:
+        static T epsilon()
+        {
+            return static_cast<T>(0.1f);
+        }
+        static T infinity()
+        {
+            return 0;
+        }
+    };
 }

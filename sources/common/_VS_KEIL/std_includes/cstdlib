@@ -5,4 +5,6 @@ namespace std
 {
     double strtod(const char *start, char **end);
     long strtol(const char *start, char **end, int radix);
+    void free(void *ptr);
+    void *malloc(size_t size);
 }

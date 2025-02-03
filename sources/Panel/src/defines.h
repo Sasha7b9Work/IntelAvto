@@ -2,16 +2,18 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 6
+#define VERSION_BUILD 7
 
-#define DATE_BUILD "2025-02-03 14:30:02"
+#define DATE_BUILD "2025-02-03 17:29:19"
 
+#include <stdint.h>
 
 #ifdef WIN32
     #define __asm(x)
     #define WIN32_LEAN_AND_MEAN
     #define __attribute(x)
     #define __attribute__(x)
+    #define __IO
 #else
     #include <stm32f4xx_hal.h>
 #endif
@@ -85,3 +87,12 @@ struct Coord
     int x;
     int y;
 };
+
+extern int FM_NEED_REDRAW;
+
+#define FM_REDRAW_FULL          1
+#define FM_REDRAW_FOLDERS       2
+#define FM_REDRAW_FILES         3
+
+extern pchar FILE_NAME;
+extern char FILE_NAME_MASK[64];

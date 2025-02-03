@@ -3,6 +3,21 @@
 #include "defines.h"
 
 
+struct PackedTime
+{
+    uint timeMS : 32;   /// \brief Время в миллисекундах от старта системы. Т.к. структура заполняется во время сохранения данных в хранилище, то 
+    // timeMS == 0 означает, что полный сигнал в режиме поточеного вывода ещё не считан
+    uint hours : 5;
+    uint minutes : 6;
+    uint seconds : 6;
+    uint year : 7;
+    uint month : 4;
+    uint notUsed0 : 4;
+    uint day : 5;
+    uint notUsed1 : 27;
+};
+
+
 #define _HAL_GPIO_Init(x, y)    _
 
 
@@ -85,5 +100,11 @@ namespace HAL_SPI1
     void TransmitUInt(uint);
 
     uint ReceiveUInt();
+}
+
+
+namespace HAL_RTC
+{
+    PackedTime GetPackedTime();
 }
 

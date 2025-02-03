@@ -8,6 +8,8 @@ namespace std
     int     strcmp(const void *, const void *);
     void    memcpy(void *dest, const void *src, unsigned int);
     int     memcmp(void *dest, void *src, unsigned int);
+    void   *memset(void *dest, int ch, unsigned int count);
     char   *strcat(char *, char *);
+    char   *strcat(char *destination, const char *source);
     unsigned int  strlen(pchar);
 }

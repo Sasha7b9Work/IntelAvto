@@ -8,11 +8,11 @@
 
 namespace std
 {
-    template<class T>
-    struct numeric_limits
-    {
-        static float min() { return 0.0f; }
-        static float max() { return 0.0f; }
-        static float epsilon() { return 0.001f; }
-    };
+//    template<class T>
+//    struct numeric_limits
+//    {
+//        static float min() { return 0.0f; }
+//        static float max() { return 0.0f; }
+//        static float epsilon() { return 0.001f; }
+//    };
 }
