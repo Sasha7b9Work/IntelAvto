@@ -2,7 +2,10 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION 4
+#define VERSION_BUILD 5
+
+#define DATE_BUILD
+ "2025-02-03 14:29:41"
 
 
 #ifdef WIN32
