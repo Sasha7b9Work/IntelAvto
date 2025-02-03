@@ -974,6 +974,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageSettings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageSettings.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2065,6 +2070,11 @@
               <FileName>PageSignal5b.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageSettings.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageSettings.cpp</FilePath>
             </File>
           </Files>
         </Group>

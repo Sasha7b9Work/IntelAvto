@@ -9,6 +9,12 @@ namespace PageMain
 }
 
 
+namespace PageSettings
+{
+    extern Page *self;
+}
+
+
 namespace PageSignal1
 {
     extern Page *self;
