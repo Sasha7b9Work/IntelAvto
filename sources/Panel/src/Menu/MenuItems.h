@@ -2,7 +2,6 @@
 #pragma once
 #include "defines.h"
 #include "Settings/Settings.h"
-#include "Utils/Observer_.h"
 
 
 struct TypeMeasure;
@@ -182,14 +181,14 @@ public:
     }
 };
 
-class Page : public Item, public Observer
+class Page : public Item
 {
     friend struct Channel;
 
 public:
-    Page(Item **_items, void (*_onEvent)(EventType::E), void (*_additionalDraw)(), void (*_func_start_test)()) :
+    Page(Item **_items, void (*_additionalDraw)(), void (*_func_start_test)()) :
         Item(),
-        items(_items), onEvent(_onEvent), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
+        items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
     {}
 
     virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
@@ -201,8 +200,6 @@ public:
 
     // Проверить на корректность номер выделенного итема. Если он больше, чем количество итемов - скорректировать
     void VerifySelectedItem();
-
-    virtual void OnEvent(EventType::E) override;
 
     // Возвращает true, если страница имеет дополнительную функцию отрисовки
     bool IsAddition() const { return additionalDraw != nullptr; }
@@ -229,8 +226,6 @@ protected:
     // Указатель на массив элементов меню. Заканчивается нулём.
     Item **items;
 
-    void (*onEvent)(EventType::E);
-
     void (*additionalDraw)();
 
     void (*func_start_test)();
@@ -245,5 +240,5 @@ private:
 class PageModes : public Page
 {
 public:
-    PageModes(Item **_items, void (*_onEvent)(EventType::E)) : Page(_items, _onEvent, nullptr, nullptr) {}
+    PageModes(Item **_items) : Page(_items, nullptr, nullptr) {}
 };

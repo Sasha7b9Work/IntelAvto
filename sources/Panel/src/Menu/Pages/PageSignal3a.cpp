@@ -59,7 +59,7 @@ namespace PageSignal3a
         );
     }
 
-    static Page page(items, nullptr, AdditionDraw, FuncStartTest);
+    static Page page(items, AdditionDraw, FuncStartTest);
 }
 
 

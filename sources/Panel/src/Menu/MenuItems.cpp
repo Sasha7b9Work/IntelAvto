@@ -207,15 +207,6 @@ Color Item::ColorDraw(bool selected)
 }
 
 
-void Page::OnEvent(EventType::E event)
-{
-    if (onEvent)
-    {
-        onEvent(event);
-    }
-}
-
-
 pchar Button::GetTitle() const
 {
     return text;

@@ -68,7 +68,7 @@ namespace PageSignal2a
         );
     }
 
-    static Page page(items, nullptr, AdditionDraw, PageSignal2a::Start);
+    static Page page(items, AdditionDraw, PageSignal2a::Start);
 }
 
 
