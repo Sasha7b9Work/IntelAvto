@@ -114,11 +114,6 @@
 
 #include <string.h>
 
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wswitch-enum"
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-#endif
-
 #ifdef LWIP_HOOK_FILENAME
 #include LWIP_HOOK_FILENAME
 #endif
@@ -1337,7 +1332,7 @@ tcp_slowtmr_start:
       if ((u32_t)(tcp_ticks - pcb->tmr) >
           (pcb->keep_idle + TCP_KEEP_DUR(pcb)) / TCP_SLOW_INTERVAL) {
         LWIP_DEBUGF(TCP_DEBUG, ("tcp_slowtmr: KEEPALIVE timeout. Aborting connection to "));
-        ip_addr_debug_print_val(TCP_DEBUG, pcb->remote_ip)
+        ip_addr_debug_print_val(TCP_DEBUG, pcb->remote_ip);
         LWIP_DEBUGF(TCP_DEBUG, ("\n"));
 
         ++pcb_remove;

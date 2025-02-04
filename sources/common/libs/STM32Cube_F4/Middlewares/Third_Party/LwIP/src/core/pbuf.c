@@ -86,14 +86,6 @@
 
 #include <string.h>
 
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-    #pragma clang diagnostic ignored "-Wswitch-enum"
-    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
-    #pragma clang diagnostic ignored "-Wcovered-switch-default"
-    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
-#endif
-
 #define SIZEOF_STRUCT_PBUF        LWIP_MEM_ALIGN_SIZE(sizeof(struct pbuf))
 /* Since the pool is created in memp, PBUF_POOL_BUFSIZE will be automatically
    aligned there. Therefore, PBUF_POOL_BUFSIZE_ALIGNED can be used here. */

@@ -48,10 +48,6 @@
  * Author: Adam Dunkels <adam@sics.se>
  */
 
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wpadded"
-#endif
-
 #include "lwip/opt.h"
 
 #include <string.h> /* memset */
@@ -77,14 +73,6 @@
 #endif /* ENABLE_LOOPBACK */
 
 #include "netif/ethernet.h"
-
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-    #pragma clang diagnostic ignored "-Wswitch-enum"
-    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
-    #pragma clang diagnostic ignored "-Wcovered-switch-default"
-    #pragma clang diagnostic ignored "-Wdeclaration-after-statement"
-#endif
 
 #if LWIP_AUTOIP
 #include "lwip/autoip.h"
@@ -437,7 +425,7 @@ netif_add(struct netif *netif,
                             netif->name[0], netif->name[1]));
 #if LWIP_IPV4
   LWIP_DEBUGF(NETIF_DEBUG, (" addr "));
-  ip4_addr_debug_print(NETIF_DEBUG, ipaddr)
+  ip4_addr_debug_print(NETIF_DEBUG, ipaddr);
   LWIP_DEBUGF(NETIF_DEBUG, (" netmask "));
   ip4_addr_debug_print(NETIF_DEBUG, netmask);
   LWIP_DEBUGF(NETIF_DEBUG, (" gw "));

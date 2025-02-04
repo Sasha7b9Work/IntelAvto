@@ -15,7 +15,6 @@ include_directories(
     ../common
     ../common/libs/FatFS
     ../common/libs/USBH
-    ../common/libs/LwIP
     ../common/_VS_KEIL/CMSIS
     ../common/_VS_KEIL/FatFS
     ../common/_VS_KEIL/USBH
@@ -28,8 +27,6 @@ include_directories(
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc
-    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/LwIP/src/include
-    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/LwIP/system
 )
 
 add_definitions(-DSTM32F429xx)
@@ -48,14 +45,12 @@ add_compile_options(
     /wd4820    # 'N' bytes padding added after data member
     /wd4996    # This function or variable may be unsafe
     /wd5027    # move assignment operator was implicitly defined as deleted
-    /wd5039
     /wd5045    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
     /wd5204
 )
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
-file(GLOB LIBS_LWIP           ../common/libs/LwIP/*.*)
 file(GLOB SRC                       src/*.*)
 file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
                               ../common/Connector/Device/Transceiver_.h
@@ -74,9 +69,12 @@ file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
                               ../common/Hardware/HAL/HAL_SPI1_p.cpp
                               ../common/Hardware/HAL/HAL_PINS.*
                               ../common/Hardware/HAL/HAL_RTC_.cpp)
+file(GLOB HARDWARE_USBD       ../common/Hardware/USBD/*.*
+                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
+                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
+                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c)
 file(GLOB HARDWARE_USBH       ../common/Hardware/USBH/*.*)
 file(GLOB HARDWARE_KEYBOARD   ../common/Hardware/Keyboard/*.*)
-file(GLOB LAN                 ../common/LAN/*.*)
 file(GLOB MENU                      src/Menu/*.*)
 file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
 file(GLOB SETTINGS                  src/Settings/*.*)
@@ -84,7 +82,6 @@ file(GLOB UTILS               ../common/Utils/*.*)
 
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
-source_group(libs/LwIP         FILES ${LIBS_LWIP})
 source_group(src               FILES ${SRC})
 source_group(Connector/Device  FILES ${CONNECTOR_DEVICE})
 source_group(Device            FILES ${DEVICE})
@@ -96,9 +93,9 @@ source_group(Hardware          FILES ${HARDWARE})
 source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
 source_group(Hardware/LAN      FILES ${HARDWARE_LAN})
+source_group(Hardware/USBD     FILES ${HARDWARE_USBD})
 source_group(Hardware/USBH     FILES ${HARDWARE_USBH})
 source_group(Hardware/Keyboard FILES ${HARDWARE_KEYBOARD})
-source_group(LAN               FILES ${LAN})
 source_group(Menu              FILES ${MENU})
 source_group(Menu/Pages/       FILES ${MENU_PAGES})
 source_group(Settings          FILES ${SETTINGS})
@@ -113,7 +110,6 @@ set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
 
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
-    ${LIBS_LWIP}
     ${SRC}
     ${CONNECTOR_DEVICE}
     ${DEVICE}
@@ -125,9 +121,9 @@ add_library(${PROJECT_NAME}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
     ${HARDWARE_LAN}
+    ${HARDWARE_USBD}
     ${HARDWARE_USBH}
     ${HARDWARE_KEYBOARD}
-    ${LAN}
     ${MENU}
     ${MENU_PAGES}
     ${SETTINGS}

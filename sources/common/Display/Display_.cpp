@@ -10,6 +10,7 @@
 #include "Display/Font/Font.h"
 #include "Display/Text_.h"
 #include "Display/Console_.h"
+#include "Display/Pictures/Picture.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -469,7 +470,7 @@ void Display::DrawSignal()
     {
         Text("Ua").Write(x - 25, y - 10);
 
-//        Picture::DrawPicure(150, 50, bmp_zip_Signal1);
+        Picture::DrawPicure(150, 50, bmp_zip_Signal1);
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
     {

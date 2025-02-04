@@ -35,10 +35,6 @@
  * Author: Adam Dunkels <adam@sics.se>
  *
  */
- 
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wpadded"
-#endif
 
 #include "lwip/opt.h"
 
@@ -46,10 +42,6 @@
 
 #include "lwip/ip_addr.h"
 #include "lwip/netif.h"
-
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-#endif
 
 /* used by IP4_ADDR_ANY and IP_ADDR_BROADCAST in ip_addr.h */
 const ip_addr_t ip_addr_any = IPADDR4_INIT(IPADDR_ANY);

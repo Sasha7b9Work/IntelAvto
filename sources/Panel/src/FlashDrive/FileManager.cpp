@@ -85,7 +85,7 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
 }
 
 
-static void DrawHat(int x, int y, pchar string, int num1, int num2)
+static void DrawHat(int x, int y, char *string, int num1, int num2)
 {
     Painter::FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, Color::BACK);
     Painter::DrawFormText(x + 60, y, Color::FILL, string, num1, num2);
@@ -269,7 +269,7 @@ void FileManager::DecCurrentDir()
         {
             numCurDir = numDirs - 1;
             numFirstDir = numDirs - RECS_ON_PAGE;
-            LIMITATION(numFirstDir, 0, numCurDir)
+            LIMITATION(numFirstDir, 0, numCurDir);
         }
         if (numCurDir < numFirstDir)
         {
@@ -305,8 +305,8 @@ void FileManager::DecCurrentFile()
         if (numCurFile < 0)
         {
             numCurFile = numFiles - 1;
-            numFirstFile = numFiles - RECS_ON_PAGE;
-            LIMITATION(numFirstFile, 0, numCurFile)
+            numFirstFile = numFiles - RECS_ON_PAGE;;
+            LIMITATION(numFirstFile, 0, numCurFile);
         }
         if (numCurFile < numFirstFile)
         {
@@ -378,7 +378,7 @@ bool FileManager::GetNameForNewFile(char name[255])
             {
                 if (*ch >= 0x01 && *ch <= 0x06)
                 {
-                    std::strcpy(wr, SU::Int2String((int)values[(uint)*ch], false, 2, buffer));
+                    std::strcpy(wr, SU::Int2String((int)values[*ch], false, 2, buffer));
                     wr += std::strlen(buffer);
                 }
             }
