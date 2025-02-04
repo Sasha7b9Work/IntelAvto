@@ -64,16 +64,10 @@ file(GLOB DISPLAY_PICTURES          src/Display/Pictures/*.*)
 file(GLOB FLASHDRIVE                src/FlashDrive/*.*)
 file(GLOB HARDWARE                  src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
-file(GLOB HARDWARE_LAN        ../common/Hardware/LAN/*.*)
 file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
                               ../common/Hardware/HAL/HAL_SPI1_p.cpp
                               ../common/Hardware/HAL/HAL_PINS.*
                               ../common/Hardware/HAL/HAL_RTC_.cpp)
-file(GLOB HARDWARE_USBD       ../common/Hardware/USBD/*.*
-                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
-                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
-                              ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c)
-file(GLOB HARDWARE_USBH       ../common/Hardware/USBH/*.*)
 file(GLOB HARDWARE_KEYBOARD   ../common/Hardware/Keyboard/*.*)
 file(GLOB MENU                      src/Menu/*.*)
 file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
@@ -92,9 +86,6 @@ source_group(FlashDrive        FILES ${FLASHDRIVE})
 source_group(Hardware          FILES ${HARDWARE})
 source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
-source_group(Hardware/LAN      FILES ${HARDWARE_LAN})
-source_group(Hardware/USBD     FILES ${HARDWARE_USBD})
-source_group(Hardware/USBH     FILES ${HARDWARE_USBH})
 source_group(Hardware/Keyboard FILES ${HARDWARE_KEYBOARD})
 source_group(Menu              FILES ${MENU})
 source_group(Menu/Pages/       FILES ${MENU_PAGES})
@@ -120,9 +111,6 @@ add_library(${PROJECT_NAME}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
-    ${HARDWARE_LAN}
-    ${HARDWARE_USBD}
-    ${HARDWARE_USBH}
     ${HARDWARE_KEYBOARD}
     ${MENU}
     ${MENU_PAGES}

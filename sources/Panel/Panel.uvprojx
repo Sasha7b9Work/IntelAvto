@@ -897,51 +897,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Hardware/LAN</GroupName>
-          <Files>
-            <File>
-              <FileName>LAN_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\LAN\LAN_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>LAN_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\LAN\LAN_.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/USBD</GroupName>
-          <Files>
-            <File>
-              <FileName>USBD_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\USBD\USBD_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>USBD_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\USBD\USBD_.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/USBH</GroupName>
-          <Files>
-            <File>
-              <FileName>USBH_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\USBH\USBH_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>USBH_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\USBH\USBH_.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Menu</GroupName>
           <Files>
             <File>
@@ -2185,51 +2140,6 @@
               <FileName>Keyboard_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Hardware\Keyboard\Keyboard_.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/LAN</GroupName>
-          <Files>
-            <File>
-              <FileName>LAN_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\LAN\LAN_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>LAN_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\LAN\LAN_.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/USBD</GroupName>
-          <Files>
-            <File>
-              <FileName>USBD_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\USBD\USBD_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>USBD_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\USBD\USBD_.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/USBH</GroupName>
-          <Files>
-            <File>
-              <FileName>USBH_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\USBH\USBH_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>USBH_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\USBH\USBH_.h</FilePath>
             </File>
           </Files>
         </Group>
