@@ -26,7 +26,7 @@ int main(void)
     USBH::Init();
 
     Menu::Init();
-    
+
     FDrive::Init();
 
     while (1)
