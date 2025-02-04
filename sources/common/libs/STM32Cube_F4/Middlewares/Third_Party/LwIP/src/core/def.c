@@ -63,6 +63,10 @@
 
 #include <string.h>
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 #if BYTE_ORDER == LITTLE_ENDIAN
 
 #if !defined(lwip_htons)

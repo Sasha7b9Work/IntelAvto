@@ -62,6 +62,13 @@
 
 #include <string.h>
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
+    #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 #if MEM_LIBC_MALLOC
 #include <stdlib.h> /* for malloc()/free() */
 #endif

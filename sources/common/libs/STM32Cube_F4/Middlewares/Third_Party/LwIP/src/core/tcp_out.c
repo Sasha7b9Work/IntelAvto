@@ -60,6 +60,10 @@
  *
  */
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wpadded"
+#endif
+
 #include "lwip/opt.h"
 
 #if LWIP_TCP /* don't build if not configured for use in lwipopts.h */
@@ -79,6 +83,11 @@
 #endif
 
 #include <string.h>
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 
 #ifdef LWIP_HOOK_FILENAME
 #include LWIP_HOOK_FILENAME
@@ -2084,7 +2093,7 @@ tcp_keepalive(struct tcp_pcb *pcb)
   LWIP_ASSERT("tcp_keepalive: invalid pcb", pcb != NULL);
 
   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: sending KEEPALIVE probe to "));
-  ip_addr_debug_print_val(TCP_DEBUG, pcb->remote_ip);
+  ip_addr_debug_print_val(TCP_DEBUG, pcb->remote_ip)
   LWIP_DEBUGF(TCP_DEBUG, ("\n"));
 
   LWIP_DEBUGF(TCP_DEBUG, ("tcp_keepalive: tcp_ticks %"U32_F"   pcb->tmr %"U32_F" pcb->keep_cnt_sent %"U16_F"\n",
@@ -2127,7 +2136,7 @@ tcp_zero_window_probe(struct tcp_pcb *pcb)
   LWIP_ASSERT("tcp_zero_window_probe: invalid pcb", pcb != NULL);
 
   LWIP_DEBUGF(TCP_DEBUG, ("tcp_zero_window_probe: sending ZERO WINDOW probe to "));
-  ip_addr_debug_print_val(TCP_DEBUG, pcb->remote_ip);
+  ip_addr_debug_print_val(TCP_DEBUG, pcb->remote_ip)
   LWIP_DEBUGF(TCP_DEBUG, ("\n"));
 
   LWIP_DEBUGF(TCP_DEBUG,

@@ -32,6 +32,12 @@
 #endif /* LWIP_PBUF_MEMPOOL */
 
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+#endif
+
+
 /*
  * A list of internal pools used by LWIP.
  *

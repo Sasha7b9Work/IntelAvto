@@ -10,6 +10,7 @@
 #include <netif/etharp.h>
 #include "LAN/LTCP_.h"
 #include "LAN/LAN_.h"
+#include <stm32f4xx_hal.h>
 #include <cstring>
 
 
@@ -29,7 +30,7 @@ char *GetStringFromBuffer(const char *buffer, uint length, char *string)
 }
 
 
-static void FuncReceiver(const char *buffer, uint length)
+static void FuncReceiver(const char * /*buffer*/, uint /*length*/)
 {
 //    SCPI::AddNewData((uint8 *)buffer, length);
 }
@@ -71,7 +72,7 @@ void Netif_Config(void)
     IP4_ADDR(&gw, GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
 
     // add the network interface
-    netif_add(&gnetif, &ipaddr, &netmask, &gw, NULL, &ethernetif_init, &ethernet_input);
+    netif_add(&gnetif, &ipaddr, &netmask, &gw, nullptr, &ethernetif_init, &ethernet_input);
 
     // Registers the default network interface
     netif_set_default(&gnetif);

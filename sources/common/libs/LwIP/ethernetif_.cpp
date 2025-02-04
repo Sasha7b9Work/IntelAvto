@@ -16,11 +16,13 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
+#include "defines.h"
 #include "stm32f4xx_hal.h"
 #include "lwip/timeouts.h"
 #include "netif/ethernet.h"
 #include "netif/etharp.h"
 #include "ethernetif_.h"
+#include "LAN/dp83848_.h"
 #include <string.h>
 
 /* Private typedef -----------------------------------------------------------*/
@@ -82,6 +84,30 @@ static uint8_t RxAllocStatus;
 ETH_HandleTypeDef EthHandle;
 ETH_TxPacketConfig TxConfig;
 
+
+#define  DP83848_STATUS_READ_ERROR            ((int32_t)-5)
+#define  DP83848_STATUS_WRITE_ERROR           ((int32_t)-4)
+#define  DP83848_STATUS_ADDRESS_ERROR         ((int32_t)-3)
+#define  DP83848_STATUS_RESET_TIMEOUT         ((int32_t)-2)
+#define  DP83848_STATUS_ERROR                 ((int32_t)-1)
+#define  DP83848_STATUS_OK                    ((int32_t) 0)
+#define  DP83848_STATUS_LINK_DOWN             ((int32_t) 1)
+#define  DP83848_STATUS_100MBITS_FULLDUPLEX   ((int32_t) 2)
+#define  DP83848_STATUS_100MBITS_HALFDUPLEX   ((int32_t) 3)
+#define  DP83848_STATUS_10MBITS_FULLDUPLEX    ((int32_t) 4)
+#define  DP83848_STATUS_10MBITS_HALFDUPLEX    ((int32_t) 5)
+#define  DP83848_STATUS_AUTONEGO_NOTDONE      ((int32_t) 6)
+
+
+typedef int32_t  (*dp83848_Init_Func) (void);
+typedef int32_t  (*dp83848_DeInit_Func) (void);
+typedef int32_t  (*dp83848_ReadReg_Func)   (uint32_t, uint32_t, uint32_t *);
+typedef int32_t  (*dp83848_WriteReg_Func)  (uint32_t, uint32_t, uint32_t);
+typedef int32_t  (*dp83848_GetTick_Func)  (void);
+
+
+dp83848_Object_t DP83848;
+
 /* Private function prototypes -----------------------------------------------*/
 extern void Error_Handler(void);
 int32_t ETH_PHY_IO_Init(void);
@@ -91,11 +117,18 @@ int32_t ETH_PHY_IO_WriteReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t RegVal)
 int32_t ETH_PHY_IO_GetTick(void);
 void pbuf_free_custom(struct pbuf *p);
 
+typedef int32_t  (*dp83848_Init_Func) (void);
+typedef int32_t  (*dp83848_DeInit_Func) (void);
+typedef int32_t  (*dp83848_ReadReg_Func)   (uint32_t, uint32_t, uint32_t *);
+typedef int32_t  (*dp83848_WriteReg_Func)  (uint32_t, uint32_t, uint32_t);
+typedef int32_t  (*dp83848_GetTick_Func)  (void);
+
 dp83848_IOCtx_t  DP83848_IOCtx = {ETH_PHY_IO_Init,
                                ETH_PHY_IO_DeInit,
                                ETH_PHY_IO_WriteReg,
                                ETH_PHY_IO_ReadReg,
                                ETH_PHY_IO_GetTick};
+
 /* Private functions ---------------------------------------------------------*/
 /*******************************************************************************
                        LL Driver Interface ( LwIP stack --> ETH) 
@@ -179,19 +212,22 @@ static void low_level_init(struct netif *netif)
   */
 static err_t low_level_output(struct netif *netif, struct pbuf *p)
 {
+  (void)netif;
+
   uint32_t i = 0U;
-  struct pbuf *q = NULL;
+  struct pbuf *q = nullptr;
   err_t errval = ERR_OK;
-  ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT] = {0};
+  ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT];
+  std::memset(&Txbuffer, 0, sizeof(ETH_BufferTypeDef) * ETH_TX_DESC_CNT);
 
   memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
 
-  for(q = p; q != NULL; q = q->next)
+  for(q = p; q != nullptr; q = q->next)
   {
     if(i >= ETH_TX_DESC_CNT)
       return ERR_IF;
 
-    Txbuffer[i].buffer = q->payload;
+    Txbuffer[i].buffer = (uint8 *)q->payload;
     Txbuffer[i].len = q->len;
 
     if(i>0)
@@ -199,9 +235,9 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
       Txbuffer[i-1].next = &Txbuffer[i];
     }
 
-    if(q->next == NULL)
+    if(q->next == nullptr)
     {
-      Txbuffer[i].next = NULL;
+      Txbuffer[i].next = nullptr;
     }
 
     i++;
@@ -226,7 +262,9 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   */
 static struct pbuf * low_level_input(struct netif *netif)
 {
-  struct pbuf *p = NULL;
+  (void)netif;
+
+  struct pbuf *p = nullptr;
 
   if(RxAllocStatus == RX_ALLOC_OK)
   {
@@ -245,12 +283,12 @@ static struct pbuf * low_level_input(struct netif *netif)
   */
 void ethernetif_input(struct netif *netif)
 {
-  struct pbuf *p = NULL;
+  struct pbuf *p = nullptr;
 
     do
     {
       p = low_level_input( netif );
-      if (p != NULL)
+      if (p != nullptr)
       {
         if (netif->input( p, netif) != ERR_OK )
         {
@@ -258,7 +296,7 @@ void ethernetif_input(struct netif *netif)
         }
       }
 
-    } while(p!=NULL);
+    } while(p != nullptr);
 
 }
 
@@ -321,10 +359,20 @@ void pbuf_free_custom(struct pbuf *p)
   * @param  None
   * @retval Current Time value
   */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 u32_t sys_now(void)
 {
   return HAL_GetTick();
 }
+
+#ifdef __cplusplus
+}
+#endif
+
 /*******************************************************************************
                        Ethernet MSP Routines
 *******************************************************************************/
@@ -335,7 +383,9 @@ u32_t sys_now(void)
   */
 void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 {
-  GPIO_InitTypeDef GPIO_InitStructure = {0};
+  (void)heth;
+
+  GPIO_InitTypeDef GPIO_InitStructure;
 
   /* Enable GPIOs clocks */
   __HAL_RCC_GPIOA_CLK_ENABLE();
@@ -499,7 +549,7 @@ int32_t ETH_PHY_IO_WriteReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t RegVal)
   */
 int32_t ETH_PHY_IO_GetTick(void)
 {
-  return HAL_GetTick();
+  return (int)HAL_GetTick();
 }
 
 /**
@@ -508,7 +558,9 @@ int32_t ETH_PHY_IO_GetTick(void)
   */
 void ethernet_link_check_state(struct netif *netif)
 {
-  ETH_MACConfigTypeDef MACConf = {0};
+  ETH_MACConfigTypeDef MACConf;
+  std::memset(&MACConf, 0, sizeof(MACConf));
+
   int32_t PHYLinkState = 0U;
   uint32_t linkchanged = 0U, speed = 0U, duplex =0U;
 
@@ -564,7 +616,7 @@ void ethernet_link_check_state(struct netif *netif)
 
 void HAL_ETH_RxAllocateCallback(uint8_t **buff)
 {
-  struct pbuf_custom *p = LWIP_MEMPOOL_ALLOC(RX_POOL);
+  struct pbuf_custom *p = (struct pbuf_custom *)LWIP_MEMPOOL_ALLOC(RX_POOL);
   if (p)
   {
     /* Get the buff from the struct pbuf address. */
@@ -578,7 +630,7 @@ void HAL_ETH_RxAllocateCallback(uint8_t **buff)
   else
   {
     RxAllocStatus = RX_ALLOC_ERROR;
-    *buff = NULL;
+    *buff = nullptr;
   }
 }
 
@@ -586,11 +638,11 @@ void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t 
 {
   struct pbuf **ppStart = (struct pbuf **)pStart;
   struct pbuf **ppEnd = (struct pbuf **)pEnd;
-  struct pbuf *p = NULL;
+  struct pbuf *p = nullptr;
 
   /* Get the struct pbuf from the buff address. */
   p = (struct pbuf *)(buff - offsetof(RxBuff_t, buff));
-  p->next = NULL;
+  p->next = nullptr;
   p->tot_len = 0;
   p->len = Length;
 
@@ -609,7 +661,7 @@ void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t 
 
   /* Update the total length of all the buffers of the chain. Each pbuf in the chain should have its tot_len
    * set to its own length, plus the length of all the following pbufs in the chain. */
-  for (p = *ppStart; p != NULL; p = p->next)
+  for (p = *ppStart; p != nullptr; p = p->next)
   {
     p->tot_len += Length;
   }

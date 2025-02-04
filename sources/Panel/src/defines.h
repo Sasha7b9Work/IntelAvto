@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 13
+#define VERSION_BUILD 14
 
-#define DATE_BUILD "2025-02-04 10:12:30"
+#define DATE_BUILD "2025-02-04 14:42:40"
 
 #include <stdint.h>
 
@@ -91,12 +91,12 @@ struct Coord
 
 /* MAC ADDRESS: MAC_ADDR0:MAC_ADDR1:MAC_ADDR2:MAC_ADDR3:MAC_ADDR4:MAC_ADDR5 */
 // 00 13 8f af 2e 8b
-// #define MAC_ADDR0   0x8b
-// #define MAC_ADDR1   0x2e
-// #define MAC_ADDR2   0xaf
-// #define MAC_ADDR3   0x8f
-// #define MAC_ADDR4   0x13
-// #define MAC_ADDR5   0x00
+ #define ETH_MAC_ADDR0   0x8b
+ #define ETH_MAC_ADDR1   0x2e
+ #define ETH_MAC_ADDR2   0xaf
+ #define ETH_MAC_ADDR3   0x8f
+ #define ETH_MAC_ADDR4   0x13
+ #define ETH_MAC_ADDR5   0x00
 
 /*Static IP ADDRESS: IP_ADDR0.IP_ADDR1.IP_ADDR2.IP_ADDR3 */
 // 192.168.1.92

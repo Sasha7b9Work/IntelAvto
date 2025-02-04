@@ -21,6 +21,13 @@
 #include "ff.h"			/* Declarations of FatFs API */
 #include "diskio.h"		/* Declarations of device I/O functions */
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
+    #pragma clang diagnostic ignored "-Wimplicit-int-conversion"
+    #pragma clang diagnostic ignored "-Wsign-conversion"
+    #pragma clang diagnostic ignored "-Wconditional-uninitialized"
+#endif
 
 /*--------------------------------------------------------------------------
 
@@ -4094,7 +4101,7 @@ FRESULT f_lseek (
 #if !_FS_READONLY
 				if (clst == 0) {						/* If no cluster chain, create a new chain */
 					clst = create_chain(&fp->obj, 0);
-					if (clst == 1) ABORT(fs, FR_INT_ERR);
+					if (clst == 1) ABORT(fs, FR_INT_ERR)
 					if (clst == 0xFFFFFFFF) ABORT(fs, FR_DISK_ERR);
 					fp->obj.sclust = clst;
 				}

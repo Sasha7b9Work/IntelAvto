@@ -53,6 +53,11 @@
 
 #include <string.h>
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
+
 #ifndef LWIP_CHKSUM
 # define LWIP_CHKSUM lwip_standard_chksum
 # ifndef LWIP_CHKSUM_ALGORITHM

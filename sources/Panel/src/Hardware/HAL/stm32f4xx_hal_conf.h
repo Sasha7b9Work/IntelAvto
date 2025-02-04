@@ -44,6 +44,7 @@
 #define USE_HAL_PCD_REGISTER_CALLBACKS  0
 #define USE_HAL_SPI_REGISTER_CALLBACKS  0
 #define USE_HAL_HCD_REGISTER_CALLBACKS  0
+#define USE_HAL_ETH_REGISTER_CALLBACKS  0
 
 
 /* ########################## HSE/HSI Values adaptation ##################### */

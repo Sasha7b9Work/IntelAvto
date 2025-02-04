@@ -38,6 +38,11 @@
 #ifndef LWIP_HDR_UDP_H
 #define LWIP_HDR_UDP_H
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wpadded"
+#endif
+
+
 #include "lwip/opt.h"
 
 #if LWIP_UDP /* don't build if not configured for use in lwipopts.h */

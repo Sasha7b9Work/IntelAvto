@@ -51,6 +51,11 @@
 
 #include <string.h>
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wswitch-enum"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 #include "netif/ppp/ppp_opts.h"
 #if PPPOE_SUPPORT
 #include "netif/ppp/pppoe.h"

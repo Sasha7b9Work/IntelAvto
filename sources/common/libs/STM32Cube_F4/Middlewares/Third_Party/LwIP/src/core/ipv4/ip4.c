@@ -38,6 +38,10 @@
  *
  */
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wpadded"
+#endif
+
 #include "lwip/opt.h"
 
 #if LWIP_IPV4
@@ -58,6 +62,10 @@
 #include "lwip/prot/iana.h"
 
 #include <string.h>
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
 
 #ifdef LWIP_HOOK_FILENAME
 #include LWIP_HOOK_FILENAME

@@ -105,9 +105,9 @@ void FDrive::Init()
 {
     if (FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK)
     {
-        USBH_StatusTypeDef res = USBH_Init(&hUSB_Host, USBH_UserProcess, 0);
-        res = USBH_RegisterClass(&hUSB_Host, USBH_MSC_CLASS);
-        res = USBH_Start(&hUSB_Host);
+        USBH_Init(&hUSB_Host, USBH_UserProcess, 0);
+        USBH_RegisterClass(&hUSB_Host, USBH_MSC_CLASS);
+        USBH_Start(&hUSB_Host);
     }
     else
     {
@@ -138,7 +138,7 @@ void FDrive::Update()
         }
         while (TIME_MS - timeStart < 3000)
         {
-        };
+        }
 
 //        Display::FuncOnWaitStop();
     }
@@ -172,7 +172,7 @@ void FDrive::GetNumDirsAndFiles(const char *fullPath, int *num_dirs, int *num_fi
 
     if (f_opendir(&dir, nameDir) == FR_OK)
     {
-        int numReadingElements = 0;
+//        int numReadingElements = 0;
         bool alreadyNull = false;
         while (true)
         {
@@ -189,7 +189,7 @@ void FDrive::GetNumDirsAndFiles(const char *fullPath, int *num_dirs, int *num_fi
                 alreadyNull = true;
                 continue;
             }
-            numReadingElements++;
+//            numReadingElements++;
             if (fno.fname[0] != '.')
             {
                 if (fno.fattrib & AM_DIR)
@@ -382,7 +382,7 @@ bool FDrive::OpenNewFileForWrite(const char *fullPathToFile, StructForWrite *str
     {
         return false;
     }
-    std::strcpy(structForWrite->name, (char *)fullPathToFile);
+    std::strcpy(structForWrite->name, fullPathToFile);
     structForWrite->sizeData = 0;
     return true;
 }

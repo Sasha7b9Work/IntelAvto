@@ -39,6 +39,10 @@
 /* Some ICMP messages should be passed to the transport protocols. This
    is not implemented. */
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wpadded"
+#endif
+
 #include "lwip/opt.h"
 
 #if LWIP_IPV4 && LWIP_ICMP /* don't build if not configured for use in lwipopts.h */
@@ -50,6 +54,10 @@
 #include "lwip/stats.h"
 
 #include <string.h>
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
 
 #ifdef LWIP_HOOK_FILENAME
 #include LWIP_HOOK_FILENAME
@@ -362,9 +370,9 @@ icmp_send_response(struct pbuf *p, u8_t type, u8_t code)
 
   iphdr = (struct ip_hdr *)p->payload;
   LWIP_DEBUGF(ICMP_DEBUG, ("icmp_time_exceeded from "));
-  ip4_addr_debug_print_val(ICMP_DEBUG, iphdr->src);
+  ip4_addr_debug_print_val(ICMP_DEBUG, iphdr->src)
   LWIP_DEBUGF(ICMP_DEBUG, (" to "));
-  ip4_addr_debug_print_val(ICMP_DEBUG, iphdr->dest);
+  ip4_addr_debug_print_val(ICMP_DEBUG, iphdr->dest)
   LWIP_DEBUGF(ICMP_DEBUG, ("\n"));
 
   icmphdr = (struct icmp_echo_hdr *)q->payload;

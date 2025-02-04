@@ -51,6 +51,10 @@
 
 #include <string.h>
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 /* Make sure we include everything we need for size calculation required by memp_std.h */
 #include "lwip/pbuf.h"
 #include "lwip/raw.h"

@@ -8,7 +8,7 @@
 #include "LAN/LAN_.h"
 
 
-static struct tcp_pcb *pcbClient = 0;      // 0, если клиент не приконнекчен
+static struct tcp_pcb *pcbClient = nullptr;      // 0, если клиент не приконнекчен
 
 
 enum States
@@ -24,24 +24,24 @@ struct State
     uchar state;
 };
 
-void(*SocketFuncReciever)(const char *buffer, uint length) = 0;     // this function will be called when a message is recieved from any client
+void(*SocketFuncReciever)(const char *buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client
 
 
 bool TCP::IsConnected()
 {
-    return pcbClient != 0;
+    return pcbClient != nullptr;
 }
 
 
 void CloseConnection(struct tcp_pcb *tpcb, struct State *ss)
 {
-    tcp_arg(tpcb, NULL);
-    tcp_sent(tpcb, NULL);
-    tcp_recv(tpcb, NULL);
-    tcp_err(tpcb, NULL);
-    tcp_poll(tpcb, NULL, 0);
+    tcp_arg(tpcb, nullptr);
+    tcp_sent(tpcb, nullptr);
+    tcp_recv(tpcb, nullptr);
+    tcp_err(tpcb, nullptr);
+    tcp_poll(tpcb, nullptr, 0);
 
-    pcbClient = 0;
+    pcbClient = nullptr;
 
     if (ss)
     {
@@ -56,7 +56,7 @@ void Send(struct tcp_pcb *_tpcb, struct State *_ss)
     struct pbuf *ptr;
     err_t wr_err = ERR_OK;
 
-    while ((wr_err == ERR_OK) && (_ss->p != NULL) && (_ss->p->len <= tcp_sndbuf(_tpcb)))
+    while ((wr_err == ERR_OK) && (_ss->p != nullptr) && (_ss->p->len <= tcp_sndbuf(_tpcb)))
     {
         ptr = _ss->p;
         // enqueue data for transmittion
@@ -70,7 +70,7 @@ void Send(struct tcp_pcb *_tpcb, struct State *_ss)
             plen = ptr->len;
             // continue with new pbuf in chain (if any) 
             _ss->p = ptr->next;
-            if (_ss->p != NULL)
+            if (_ss->p != nullptr)
             {
                 // new reference!
                 pbuf_ref(_ss->p);
@@ -105,7 +105,7 @@ err_t CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len)
     LWIP_UNUSED_ARG(_len);
     ss = (struct State*)_arg;
 
-    if (ss->p != NULL)
+    if (ss->p != nullptr)
     {
         Send(_tpcb, ss);
     }
@@ -145,11 +145,11 @@ err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_
     LWIP_ASSERT("arg != NULL", _arg != NULL);
     struct State *ss = (struct State*)_arg;
 
-    if (_p == NULL)
+    if (_p == nullptr)
     {
         // remote host closed connection
         ss->state = S_CLOSING;
-        if (ss->p == NULL)
+        if (ss->p == nullptr)
         {
             // we're done sending, close it
             CloseConnection(_tpcb, ss);
@@ -164,9 +164,9 @@ err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_
     else if (_err != ERR_OK)
     {
         // cleanup, for unkown reason
-        if (_p != NULL)
+        if (_p != nullptr)
         {
-            ss->p = NULL;
+            ss->p = nullptr;
             pbuf_free(_p);
         }
         ret_err = _err;
@@ -183,7 +183,7 @@ err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_
     else if (ss->state == S_RECIEVED)
     {
         // read some more data
-        if (ss->p == NULL)
+        if (ss->p == nullptr)
         {
             //ss->p = _p;
             tcp_sent(_tpcb, CallbackOnSent);
@@ -211,7 +211,7 @@ err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_
     {
         // odd case, remote side closing twice, trash data
         tcp_recved(_tpcb, _p->tot_len);
-        ss->p = NULL;
+        ss->p = nullptr;
         pbuf_free(_p);
         ret_err = ERR_OK;
         CloseConnection(_tpcb, ss);
@@ -220,7 +220,7 @@ err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_
     {
         // unknown ss->state, trash data
         tcp_recved(_tpcb, _p->tot_len);
-        ss->p = NULL;
+        ss->p = nullptr;
         pbuf_free(_p);
         ret_err = ERR_OK;
     }
@@ -234,7 +234,7 @@ void CallbackOnError(void *_arg, err_t _err)
     LWIP_UNUSED_ARG(_err);
     ss = (struct State *)_arg;
 
-    pcbClient = 0;
+    pcbClient = nullptr;
 
     if (ss)
     {
@@ -249,9 +249,9 @@ err_t CallbackOnPoll(void *_arg, struct tcp_pcb *_tpcb)
 {
     err_t ret_err;
     struct State *ss = (struct State *)_arg;
-    if (ss != NULL)
+    if (ss != nullptr)
     {
-        if (ss->p != NULL)
+        if (ss->p != nullptr)
         {
             // there is a remaining pbuf (chain)
             tcp_sent(_tpcb, CallbackOnSent);
@@ -296,7 +296,7 @@ err_t CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err)
     if (s)
     {
         s->state = S_ACCEPTED;
-        s->p = NULL;
+        s->p = nullptr;
         /* pass newly allocated s to our callbacks */
         tcp_arg(_newPCB, s);
         tcp_recv(_newPCB, CallbackOnRecieve);
@@ -305,7 +305,7 @@ err_t CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err)
         tcp_sent(_newPCB, CallbackOnSent);
         ret_err = ERR_OK;
 
-        if (pcbClient == 0)
+        if (pcbClient == nullptr)
         {
             pcbClient = _newPCB;
             s->state = S_RECIEVED;
@@ -323,7 +323,7 @@ err_t CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err)
 void TCP::Init(void (*funcReciever)(pchar buffer, uint length))
 {
     struct tcp_pcb *pcb = tcp_new();
-    if (pcb != NULL)
+    if (pcb != nullptr)
     {
         err_t err = tcp_bind(pcb, IP_ADDR_ANY, ETH_PORT);
         if (err == ERR_OK)
@@ -342,7 +342,7 @@ void TCP::Init(void (*funcReciever)(pchar buffer, uint length))
         // abort? output diagonstic?
     }
 
-    pcbClient = 0;
+    pcbClient = nullptr;
 }
 
 
