@@ -20,6 +20,7 @@
 #include <cstring>
 #include "Display/Font/FontBig.h"
 #include "Display/Primitives_.h"
+#include <cstddef>
 
 using namespace Primitives;
 

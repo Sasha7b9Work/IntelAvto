@@ -1,0 +1,4 @@
+#pragma once
+
+#define offsetof(type, member) 1
+

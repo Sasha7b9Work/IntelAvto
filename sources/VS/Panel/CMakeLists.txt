@@ -34,6 +34,7 @@ add_compile_options(
     /wd4623     # 'xxx': default constructor was implicitly defined as deleted
     /wd4625     # 'xxx': copy constructor was implicitly defined as deleted
     /wd4626     # 'xxx': assignment operator was implicitly defined as deleted
+    /wd4774
     /wd4820     # 'xxx': 'y' bytes padding added after data member 'zzz'
     /wd4996     # 'xxx': This function or variable may be unsafe. Consider using yyy instead. To disable
                 # deprecation, use _CRT_SECURE_NO_WARNINGS
