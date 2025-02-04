@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 12
+#define VERSION_BUILD 13
 
-#define DATE_BUILD "2025-02-04 09:17:39"
+#define DATE_BUILD "2025-02-04 10:12:30"
 
 #include <stdint.h>
 
@@ -87,3 +87,41 @@ struct Coord
     int x;
     int y;
 };
+
+
+/* MAC ADDRESS: MAC_ADDR0:MAC_ADDR1:MAC_ADDR2:MAC_ADDR3:MAC_ADDR4:MAC_ADDR5 */
+// 00 13 8f af 2e 8b
+// #define MAC_ADDR0   0x8b
+// #define MAC_ADDR1   0x2e
+// #define MAC_ADDR2   0xaf
+// #define MAC_ADDR3   0x8f
+// #define MAC_ADDR4   0x13
+// #define MAC_ADDR5   0x00
+
+/*Static IP ADDRESS: IP_ADDR0.IP_ADDR1.IP_ADDR2.IP_ADDR3 */
+// 192.168.1.92
+#define IP_ADDR0   192
+#define IP_ADDR1   168
+#define IP_ADDR2   1
+#define IP_ADDR3   201
+
+/*NETMASK*/
+#define NETMASK_ADDR0   1
+#define NETMASK_ADDR1   1
+#define NETMASK_ADDR2   1
+#define NETMASK_ADDR3   1
+
+/*Gateway Address*/
+#define GW_ADDR0   1
+#define GW_ADDR1   1
+#define GW_ADDR2   1
+#define GW_ADDR3   1
+
+#define ETH_PORT 7
+
+#define MII_MODE
+
+/* Uncomment the define below to clock the PHY from external 25MHz crystal (only for MII mode) */
+#ifdef 	MII_MODE
+#define PHY_CLOCK_MCO
+#endif
