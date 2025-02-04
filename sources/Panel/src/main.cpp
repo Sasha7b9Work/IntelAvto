@@ -8,6 +8,7 @@
 #include "Hardware/USBH/USBH_.h"
 #include "Display/Display_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "FlashDrive/FlashDrive.h"
 
 
 int main(void)
@@ -25,6 +26,8 @@ int main(void)
     USBH::Init();
 
     Menu::Init();
+    
+    FDrive::Init();
 
     while (1)
     {

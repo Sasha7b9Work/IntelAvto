@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER, DEBUG, PANEL, STM32F429xx</Define>
               <Undefine></Undefine>
-              <IncludePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;.\src;..\common;..\common\libs</IncludePath>
+              <IncludePath>..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc;.\src\Hardware\HAL;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include;..\common\libs\STM32Cube_F4\Drivers\CMSIS\Include;.\src;..\common;..\common\libs;..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src;..\common\libs\FatFS;..\common\libs\USBH;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -873,6 +873,11 @@
               <FileName>HAL_SPI1_p_.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Hardware\HAL\HAL_SPI1_p_.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_RTC_.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Hardware\HAL\HAL_RTC_.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -2160,6 +2165,11 @@
               <FileName>HAL_SPI1_p_.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Hardware\HAL\HAL_SPI1_p_.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_RTC_.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Hardware\HAL\HAL_RTC_.cpp</FilePath>
             </File>
           </Files>
         </Group>

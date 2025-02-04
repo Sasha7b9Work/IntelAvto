@@ -41,6 +41,7 @@ add_compile_options(
     /wd4626    # 'derived class' : assignment operator was implicitly defined as deleted because a base
                # class assignment operator is inaccessible or deleted
     /wd4668
+    /wd4774
     /wd4820    # 'N' bytes padding added after data member
     /wd4996    # This function or variable may be unsafe
     /wd5027    # move assignment operator was implicitly defined as deleted
@@ -66,7 +67,8 @@ file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_LAN        ../common/Hardware/LAN/*.*)
 file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
                               ../common/Hardware/HAL/HAL_SPI1_p.cpp
-                              ../common/Hardware/HAL/HAL_PINS.*)
+                              ../common/Hardware/HAL/HAL_PINS.*
+                              ../common/Hardware/HAL/HAL_RTC_.cpp)
 file(GLOB HARDWARE_USBD       ../common/Hardware/USBD/*.*
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
                               ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c

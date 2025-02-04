@@ -613,3 +613,22 @@ pchar SU::TimeMStoText(uint timeMS, char buffer[128], bool always_show_ms)
 
     return buffer;
 }
+
+
+char *SU::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[20])
+{
+    const int SIZE = 20;
+    char format[SIZE] = "%";
+    snprintf(&(format[1]), SIZE - 1, "0%d", numMinFields);
+    std::strcat(format, "d");
+    if (alwaysSign && value >= 0)
+    {
+        buffer[0] = '+';
+        std::snprintf(buffer + 1, SIZE - 1, format, value);
+    }
+    else
+    {
+        snprintf(buffer, SIZE, format, value);
+    }
+    return buffer;
+}
