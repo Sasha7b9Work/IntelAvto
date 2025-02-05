@@ -18,7 +18,7 @@ int main(void)
 
     Menu::Init();
 
-//    FDrive::Init();
+    FDrive::Init();
 
     while (1)
     {
