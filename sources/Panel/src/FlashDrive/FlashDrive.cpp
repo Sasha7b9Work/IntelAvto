@@ -26,7 +26,10 @@ namespace FDrive
 
 
     USBH_HandleTypeDef hUSB_Host;
-    HCD_HandleTypeDef handleHCD;
+
+    static HCD_HandleTypeDef hHCD;
+    void *handleHCD = &hHCD;
+
     static FATFS USBDISKFatFs;
     static char USBDISKPath[4];
     static bool gFlashDriveIsConnected = false;
@@ -37,6 +40,8 @@ namespace FDrive
     static void USBH_UserProcess(USBH_HandleTypeDef *, uint8 id);
 
     static void SetTimeForFile(char *name);
+
+    static void InitPins();
 }
 
 
@@ -447,4 +452,32 @@ void FDrive::SetTimeForFile(char * /*name*/)
 //    info.ftime = (WORD)(time.hours * 2048 | time.minutes * 32 | time.seconds / 2);
 //
 //    f_utime(name, &info);
+}
+
+
+void FDrive::InitPins()
+{
+    /*
+    *   PA12    USB_OTG_FS_DP       71
+    *   PA11    USB_OTG_FS_DM       70
+    *   PA9     USB_OTG_VS_VBUS     68
+    */
+
+    GPIO_InitTypeDef is =
+    {
+        GPIO_PIN_9 |        // 68 - USB_OTG_FS_VBUS
+        GPIO_PIN_11 |       // 70 - USB_OTG_FS_DM
+        GPIO_PIN_12,        // 71 - USB_OTG_FS_DP
+        GPIO_MODE_AF_PP,
+        GPIO_NOPULL,
+        GPIO_SPEED_FAST,
+        GPIO_AF10_OTG_FS
+    };
+
+    HAL_GPIO_Init(GPIOA, &is);
+
+    __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
+
+    HAL_NVIC_SetPriority(OTG_FS_IRQn, 6, 0);
+    HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
 }

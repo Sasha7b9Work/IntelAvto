@@ -27,6 +27,8 @@ include_directories(
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc
+    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
+    ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc
 )
 
 add_definitions(-DSTM32F429xx)
@@ -51,6 +53,7 @@ add_compile_options(
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
+#file(GLOB LIBS_USBH           ../common/libs/USBH/*.*)
 file(GLOB SRC                       src/*.*)
 file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
                               ../common/Connector/Device/Transceiver_.h
@@ -76,6 +79,7 @@ file(GLOB UTILS               ../common/Utils/*.*)
 
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
+#source_group(libs/USBH         FILES ${LIBS_USBH})
 source_group(src               FILES ${SRC})
 source_group(Connector/Device  FILES ${CONNECTOR_DEVICE})
 source_group(Device            FILES ${DEVICE})
@@ -101,6 +105,7 @@ set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
 
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
+#    ${LIBS_USBH}
     ${SRC}
     ${CONNECTOR_DEVICE}
     ${DEVICE}

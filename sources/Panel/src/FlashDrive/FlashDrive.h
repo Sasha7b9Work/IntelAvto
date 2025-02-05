@@ -54,7 +54,7 @@ namespace FDrive
 
     extern USBH_HandleTypeDef hUSB_Host;
 
-    extern HCD_HandleTypeDef handleHCD;
+    extern void *handleHCD;     // HCD_HandleTypeDef
 };
 
 

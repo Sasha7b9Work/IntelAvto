@@ -50,24 +50,26 @@ void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *, uint8_t, HCD_URBSt
   * @retval USBH Status */
 USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
 {  
+    HCD_HandleTypeDef *handle = (HCD_HandleTypeDef *)FDrive::handleHCD;
+
     /* Set the LL driver parameters */
-    FDrive::handleHCD.Instance = USB_OTG_FS;
-    FDrive::handleHCD.Init.speed = HCD_SPEED_FULL;
-    FDrive::handleHCD.Init.Host_channels = 11; 
-    FDrive::handleHCD.Init.dma_enable = 0;
-    FDrive::handleHCD.Init.low_power_enable = 0;
-    FDrive::handleHCD.Init.phy_itface = HCD_PHY_EMBEDDED; 
-    FDrive::handleHCD.Init.Sof_enable = 0;
-    FDrive::handleHCD.Init.vbus_sensing_enable = 0;
-    FDrive::handleHCD.Init.use_external_vbus = 0;  
+    handle->Instance = USB_OTG_FS;
+    handle->Init.speed = HCD_SPEED_FULL;
+    handle->Init.Host_channels = 11; 
+    handle->Init.dma_enable = 0;
+    handle->Init.low_power_enable = 0;
+    handle->Init.phy_itface = HCD_PHY_EMBEDDED; 
+    handle->Init.Sof_enable = 0;
+    handle->Init.vbus_sensing_enable = 0;
+    handle->Init.use_external_vbus = 0;  
 
     /* Link the driver to the stack */
-    FDrive::handleHCD.pData = phost;
+    handle->pData = phost;
     phost->pData = &FDrive::handleHCD;
     /* Initialize the LL driver */
-    HAL_HCD_Init(&FDrive::handleHCD);
+    HAL_HCD_Init(handle);
  
-    USBH_LL_SetTimer(phost, HAL_HCD_GetCurrentFrame(&FDrive::handleHCD));
+    USBH_LL_SetTimer(phost, HAL_HCD_GetCurrentFrame(handle));
   
     return USBH_OK;
 }
@@ -250,13 +252,15 @@ USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *, uint8_t)
   * @retval USBH Status  */
 USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *, uint8_t pipe, uint8_t toggle)   
 {
-    if(FDrive::handleHCD.hc[pipe].ep_is_in)
+    HCD_HandleTypeDef *handle = (HCD_HandleTypeDef *)FDrive::handleHCD;
+
+    if(handle->hc[pipe].ep_is_in)
     {
-        FDrive::handleHCD.hc[pipe].toggle_in = toggle;
+        handle->hc[pipe].toggle_in = toggle;
     }
     else
     {
-        FDrive::handleHCD.hc[pipe].toggle_out = toggle;
+        handle->hc[pipe].toggle_out = toggle;
     }
     return USBH_OK; 
 }
@@ -267,14 +271,16 @@ USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *, uint8_t pipe, uint8_t
 uint8_t USBH_LL_GetToggle(USBH_HandleTypeDef *, uint8_t pipe)   
 {
     uint8_t toggle = 0;
-  
-    if(FDrive::handleHCD.hc[pipe].ep_is_in)
+
+    HCD_HandleTypeDef *handle = (HCD_HandleTypeDef *)FDrive::handleHCD;
+
+    if(handle->hc[pipe].ep_is_in)
     {
-        toggle = FDrive::handleHCD.hc[pipe].toggle_in;
+        toggle = handle->hc[pipe].toggle_in;
     }
     else
     {
-        toggle = FDrive::handleHCD.hc[pipe].toggle_out;
+        toggle = handle->hc[pipe].toggle_out;
     }
     return toggle; 
 }
