@@ -74,6 +74,7 @@ file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
 file(GLOB HARDWARE_KEYBOARD   ../common/Hardware/Keyboard/*.*)
 file(GLOB MENU                      src/Menu/*.*)
 file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
+file(GLOB SCPI                      src/SCPI/*.*)
 file(GLOB SETTINGS                  src/Settings/*.*)
 file(GLOB UTILS               ../common/Utils/*.*)
 
@@ -93,6 +94,7 @@ source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
 source_group(Hardware/Keyboard FILES ${HARDWARE_KEYBOARD})
 source_group(Menu              FILES ${MENU})
 source_group(Menu/Pages/       FILES ${MENU_PAGES})
+source_group(SCPI              FILES ${SCPI})
 source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
 
@@ -119,6 +121,7 @@ add_library(${PROJECT_NAME}
     ${HARDWARE_KEYBOARD}
     ${MENU}
     ${MENU_PAGES}
+    ${SCPI}
     ${SETTINGS}
     ${UTILS}
 )
