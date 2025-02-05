@@ -41,7 +41,7 @@ namespace FDrive
 
     static void SetTimeForFile(char *name);
 
-    static void InitPins();
+    static void InitHardware();
 }
 
 
@@ -108,6 +108,8 @@ bool FDrive::IsConnected()
 
 void FDrive::Init()
 {
+    InitHardware();
+
     if (FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK)
     {
         USBH_StatusTypeDef res = USBH_Init(&hUSB_Host, USBH_UserProcess, 0);
@@ -455,7 +457,7 @@ void FDrive::SetTimeForFile(char * /*name*/)
 }
 
 
-void FDrive::InitPins()
+void FDrive::InitHardware()
 {
     /*
     *   PA12    USB_OTG_FS_DP       71
