@@ -149,6 +149,20 @@ void DrawStruct::PressKey(int _key)
             SetSymbolToCurrentPos('-');
         }
     }
+    else if (key == Key::Left)
+    {
+        if (index > 0)
+        {
+            index--;
+        }
+    }
+    else if (key == Key::Right)
+    {
+        if (index < (int)std::strlen(symbols) - 1)
+        {
+            index++;
+        }
+    }
     else if (key >= Key::_1 && key <= Key::_0)
     {
         if ((key == Key::_0 && index == 0) ||
