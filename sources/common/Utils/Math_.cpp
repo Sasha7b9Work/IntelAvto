@@ -135,8 +135,8 @@ int Math::Sign(int val)
 
 void Math::ItoA(int n, char s[32])
 {
-    uint32_t i = 0;
-    uint32_t j;
+    uint i = 0;
+    uint j;
     char c;
 
     do

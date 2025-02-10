@@ -177,7 +177,7 @@ void DrawStruct::Set(Parameter *_param)
 {
     parameter = _param;
 
-    std::itoa(parameter->GetValue().ToInt(), symbols, 10);
+    Math::ItoA(parameter->GetValue().ToInt(), symbols);
 
     index = (int)std::strlen(symbols) - 1;
 }
