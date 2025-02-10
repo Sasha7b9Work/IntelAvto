@@ -79,9 +79,7 @@ bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
 {
     char buffer[128];
 
-    std::memcpy(buffer, symbols, (uint)index);
-
-    buffer[index] = '\0';
+    std::memcpy(buffer, symbols, std::strlen(symbols));
 
     char *end = nullptr;
 
@@ -144,7 +142,7 @@ void DrawStruct::PressKey(int _key)
     {
         if (parameter->GetValue().IsVoltage() && index == 0)
         {
-            AppendSymbol('-');
+            SetSymbolToCurrentPos('-');
         }
     }
     else if (key >= Key::_1 && key <= Key::_0)
@@ -158,15 +156,15 @@ void DrawStruct::PressKey(int _key)
         {
             static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            AppendSymbol(_keys[key]);
+            SetSymbolToCurrentPos(_keys[key]);
         }
     }
 }
 
 
-void DrawStruct::AppendSymbol(char symbol)
+void DrawStruct::SetSymbolToCurrentPos(char symbol)
 {
-    if (index < SIZE_BUFER)
+    if (index < SIZE_BUFER - 1)
     {
         symbols[index++] = symbol;
     }
@@ -175,7 +173,7 @@ void DrawStruct::AppendSymbol(char symbol)
 
 bool DrawStruct::ConsistDot() const
 {
-    for (int i = 0; i < index; i++)
+    for (uint i = 0; i < std::strlen(symbols); i++)
     {
         if (symbols[i] == '.')
         {
@@ -189,17 +187,13 @@ bool DrawStruct::ConsistDot() const
 
 void DrawStruct::Draw(int x, int y) const
 {
-    Color color = Color::GetCurrent();
-
     Color::WHITE.SetAsCurrent();
 
-    for (int i = 0; i < index; i++)
+    for (uint i = 0; i < std::strlen(symbols); i++)
     {
         char text[2] = { symbols[i], '\0' };
-        Text(text).Write(x + 10 * i, y);
+        Text(text).Write(x + 10 * (int)i, y);
     }
-
-    color.SetAsCurrent();
 }
 
 
@@ -209,5 +203,5 @@ void DrawStruct::Set(Parameter *_param)
 
     itoa(parameter->GetValue().ToInt(), symbols, 10);
 
-    index = (int)std::strlen(symbols);
+    index = (int)std::strlen(symbols) - 1;
 }

@@ -25,10 +25,10 @@ struct DrawStruct
     bool ToValue(Value *, TypeValue::E) const;
 private:
     bool ConsistDot() const;
-    void AppendSymbol(char);
+    void SetSymbolToCurrentPos(char);
     Parameter *parameter;
     int index;                          // Текущий разряд. 0 - "-", если есть
-    static const int SIZE_BUFER = 8;
+    static const int SIZE_BUFER = 10;   // Максимальное количество хранимх разрядов вместе с завершающим нулём
     char symbols[SIZE_BUFER];
 };
 
