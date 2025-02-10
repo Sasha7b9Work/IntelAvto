@@ -3,6 +3,7 @@
 #include "Utils/Log_.h"
 #include "Hardware/Timer.h"
 #include "VCP/VCP.h"
+#include "usbd_cdc.h"
 
 
 
