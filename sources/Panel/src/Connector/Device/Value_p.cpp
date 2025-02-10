@@ -4,8 +4,12 @@
 #include "Display/Text_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Utils/StringUtils_.h"
+#include "Display/Primitives_.h"
 #include <cstring>
 #include <cstdlib>
+
+
+using namespace Primitives;
 
 
 DrawStruct Value::ds;
@@ -187,12 +191,12 @@ bool DrawStruct::ConsistDot() const
 
 void DrawStruct::Draw(int x, int y) const
 {
-    Color::WHITE.SetAsCurrent();
-
-    for (uint i = 0; i < std::strlen(symbols); i++)
+    for (int i = 0; i < (int)std::strlen(symbols); i++)
     {
+        Rect(13, 18).Fill(x + 10 * i - 2, y - 2, (i == index) ? Color::BLUE : Color::BACK);
+
         char text[2] = { symbols[i], '\0' };
-        Text(text).Write(x + 10 * (int)i, y);
+        Text(text).Write(x + 10 * i, y, Color::WHITE);
     }
 }
 
