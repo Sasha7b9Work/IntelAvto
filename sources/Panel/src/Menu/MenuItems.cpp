@@ -156,7 +156,25 @@ void Parameter::Draw() const
     }
 
     // Нарисовать редактируемое значение на экране
-    GetValue().Draw(this, x, y);
+
+    if(IsNowEdited())
+    {
+        ds.Draw(x, y);
+
+        Color color = Color::GetCurrent();
+
+        Color::BACK.SetAsCurrent();
+
+        GetMin().Draw(x, y + 25);
+
+        GetMax().Draw(x, y - 25);
+
+        color.SetAsCurrent();
+    }
+    else
+    {
+        GetValue().Draw(x, y);
+    }
 
     if (IsNowSelected())
     {
@@ -279,19 +297,35 @@ bool Parameter::OnEventControl(const Control &control)
             {
                 editable = nullptr;
 
-                GetValue().SetValue(GetMin(), GetMax());
+                Value new_value(0);
+
+                if (ds.ToValue(&new_value, GetValue().GetType()))
+                {
+                    if (new_value.ToFloat() < GetMin().ToFloat())
+                    {
+                        GetValue() = Value(GetMin().GetRaw());
+                    }
+                    else if (new_value.ToFloat() > GetMax().ToFloat())
+                    {
+                        GetValue() = Value(GetMax().GetRaw());
+                    }
+                    else
+                    {
+                        GetValue() = new_value;
+                    }
+                }
             }
             else
             {
                 editable = this;
 
-                GetValue().ds.Set(this);
+                ds.Set(this);
             }
         }
 
         if (IsNowEdited())
         {
-            GetValue().ds.PressKey(control.key);
+            ds.PressKey(control.key);
         }
 
         return true;

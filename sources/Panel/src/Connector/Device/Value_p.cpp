@@ -12,70 +12,50 @@
 using namespace Primitives;
 
 
-DrawStruct Value::ds;
-
-
-void Value::Draw(const Parameter *param, int x, int y) const
+void Value::Draw(int x, int y) const
 {
-    if (param && param->IsNowEdited())
+    char string[32];
+
+    char *pointer = string;
+
+    int value = ToInt();
+
+    if (value < 0)
     {
-        ds.Draw(x, y);
+        value = -value;
+        string[0] = '-';
+        pointer++;
+    }
 
-        Color color = Color::GetCurrent();
+    *pointer = '\0';
 
-        Color::BACK.SetAsCurrent();
+    if (value < 1000 || IsRaw())
+    {
+        std::strcat(pointer, Text("%d", value).c_str());
 
-        param->GetMin().Draw(nullptr, x, y + 25);
-
-        param->GetMax().Draw(nullptr, x, y - 25);
-
-        color.SetAsCurrent();
+        if (GetType() == TypeValue::Time)
+        {
+            std::strcat(string, "ì");
+        }
     }
     else
     {
-        char string[32];
+        int int_value = value / 1000;
 
-        char *pointer = string;
+        std::strcat(pointer, Text("%d", int_value).c_str());
 
-        int value = ToInt();
+        std::strcat(string, ",");
 
-        if (value < 0)
-        {
-            value = -value;
-            string[0] = '-';
-            pointer++;
-        }
+        value = value - int_value * 1000;
 
-        *pointer = '\0';
-
-        if (value < 1000 || IsRaw())
-        {
-            std::strcat(pointer, Text("%d", value).c_str());
-
-            if (GetType() == TypeValue::Time)
-            {
-                std::strcat(string, "ì");
-            }
-        }
-        else
-        {
-            int int_value = value / 1000;
-
-            std::strcat(pointer, Text("%d", int_value).c_str());
-
-            std::strcat(string, ",");
-
-            value = value - int_value * 1000;
-
-            std::strcat(string, Text("%d", value).c_str());
-        }
-
-        if (GetType() != TypeValue::Raw)
-        {
-            std::strcat(string, (GetType() == TypeValue::Time) ? "ñ" : "Â");
-        }
-        Text(string).Write(x, y, Color::WHITE);
+        std::strcat(string, Text("%d", value).c_str());
     }
+
+    if (GetType() != TypeValue::Raw)
+    {
+        std::strcat(string, (GetType() == TypeValue::Time) ? "ñ" : "Â");
+    }
+    Text(string).Write(x, y, Color::WHITE);
 }
 
 
@@ -113,28 +93,6 @@ bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
     }
 
     return false;
-}
-
-
-void Value::SetValue(const Value &min, const Value &max)
-{
-    Value new_value(0);
-
-    if (ds.ToValue(&new_value, GetType()))
-    {
-        if (new_value.ToFloat() < min.ToFloat())
-        {
-            raw = min.GetRaw();
-        }
-        else if (new_value.ToFloat() > max.ToFloat())
-        {
-            raw = max.GetRaw();
-        }
-        else
-        {
-            raw = new_value.GetRaw();
-        }
-    }
 }
 
 
