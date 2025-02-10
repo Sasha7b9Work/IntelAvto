@@ -5,6 +5,7 @@
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Utils/StringUtils_.h"
 #include <cstring>
+#include <cstdlib>
 
 
 DrawStruct Value::ds;
@@ -18,7 +19,7 @@ void Value::Draw(const Parameter *param, int x, int y) const
 
         Color color = Color::GetCurrent();
 
-        Color::BLUE.SetAsCurrent();
+        Color::BACK.SetAsCurrent();
 
         param->GetMin().Draw(nullptr, x, y + 25);
 
@@ -199,4 +200,14 @@ void DrawStruct::Draw(int x, int y) const
     }
 
     color.SetAsCurrent();
+}
+
+
+void DrawStruct::Set(Parameter *_param)
+{
+    parameter = _param;
+
+    itoa(parameter->GetValue().ToInt(), symbols, 10);
+
+    index = (int)std::strlen(symbols);
 }

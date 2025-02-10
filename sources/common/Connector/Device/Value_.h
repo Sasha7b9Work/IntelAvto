@@ -21,13 +21,13 @@ struct DrawStruct
 {
     void PressKey(int);
     void Draw(int x, int y) const;
-    void Clear(Parameter *_param) { index = 0; parameter = _param; }
+    void Set(Parameter *_param);
     bool ToValue(Value *, TypeValue::E) const;
 private:
     bool ConsistDot() const;
     void AppendSymbol(char);
     Parameter *parameter;
-    int index;
+    int index;                          // Текущий разряд. 0 - "-", если есть
     static const int SIZE_BUFER = 8;
     char symbols[SIZE_BUFER];
 };

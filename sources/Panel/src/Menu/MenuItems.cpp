@@ -150,7 +150,7 @@ void Parameter::Draw() const
     {
         Color color = Color::GetCurrent();
 
-        Rect(width - 2, height - 2).Fill(x - 2, y - 2, Color::BLUE);
+        Rect(width - 2, height - 2).Fill(x - 2, y - 2, Color::BACK);
 
         color.SetAsCurrent();
     }
@@ -285,16 +285,16 @@ bool Parameter::OnEventControl(const Control &control)
             {
                 editable = this;
 
-                GetValue().ds.Clear(this);
+                GetValue().ds.Set(this);
             }
-
-            return true;
         }
 
         if (IsNowEdited())
         {
             GetValue().ds.PressKey(control.key);
         }
+
+        return true;
     }
 
     return false;
