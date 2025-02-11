@@ -289,9 +289,11 @@ bool Choice::OnEventControl(const Control &control)
         {
             funcOnPress();
         }
+
+        return true;
     }
 
-    return true;
+    return false;
 }
 
 

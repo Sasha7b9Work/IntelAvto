@@ -77,9 +77,9 @@ void Menu::Input::OnControl(const Control &control)
         }
     }
 
-    if (!openedPage->OnEventControl(control))
+    if (!openedPage->OnEventControl(control))                               // —начала пробуем применить событие клавиатуры на страницу
     {
-        if (!openedPage->SelectedItem()->OnEventControl(control))
+        if (!openedPage->SelectedItem()->OnEventControl(control))           // ѕотом - на текущий пункт меню
         {
             if (control.key == Key::Start)
             {
