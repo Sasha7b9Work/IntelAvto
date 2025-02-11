@@ -12,6 +12,7 @@ struct TimerTask
     enum E
     {
         ChangeColorOnLabelStop,         // Изменить цвет кнопки СТОП через некоторое время после остановки
+        kUSB,
         Count
     };
 };

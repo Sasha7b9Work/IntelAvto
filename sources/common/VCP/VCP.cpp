@@ -2,8 +2,11 @@
 #include "VCP/VCP.h"
 #include "usbd_desc.h"
 #include "Utils/Math_.h"
-#include <stdarg.h>
 #include "SCPI/SCPI.h"
+#include "USBD/usbd_cdc_interface.h"
+#include <usbd_core.h>
+#include <usbd_cdc.h>
+#include <cstdarg>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +38,7 @@ void VCP::SendDataAsynch(uint8 *buffer, int size)
 #define SIZE_BUFFER 64
     static uint8 trBuf[SIZE_BUFFER];
 
-    size = Min(size, SIZE_BUFFER);
+    size = Math::Min(size, SIZE_BUFFER);
     while (!PrevSendingComplete())  {};
     memcpy(trBuf, buffer, (uint)size);
 

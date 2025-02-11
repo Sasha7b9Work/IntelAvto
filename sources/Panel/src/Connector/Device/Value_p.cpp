@@ -5,6 +5,7 @@
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Utils/StringUtils_.h"
 #include "Display/Primitives_.h"
+#include "Utils/Math_.h"
 #include <cstring>
 #include <cstdlib>
 

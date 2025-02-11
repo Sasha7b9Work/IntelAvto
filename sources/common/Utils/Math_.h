@@ -33,5 +33,5 @@ namespace Math
 
     template<class T> bool InBound(T value, T min, T max) { return value >= min && value <= max; }
 
-    void ItoA(int n, char [32])
+    void ItoA(int n, char [32]);
 };
