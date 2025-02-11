@@ -64,6 +64,11 @@ void Menu::SetOpenedPage(Page *page)
 
 void Menu::Input::OnControl(const Control &control)
 {
+    if (!control.IsRelease() && !control.IsRotateGovernor())
+    {
+        return;
+    }
+
     if (!Device::IsStopped())                                               //  Ó„‰‡ Ë‰∏Ú ÚÂÒÚ,
     {
         if (control.key != Key::Start && control.key != Key::Stop)          // ÚÓ Ó·‡·‡Ú˚‚‡ÂÏ ÚÓÎ¸ÍÓ —“¿–“ Ë —“Œœ
@@ -76,58 +81,55 @@ void Menu::Input::OnControl(const Control &control)
     {
         if (!openedPage->SelectedItem()->OnEventControl(control))
         {
-            if (control.IsRelease())
+            if (control.key == Key::Start)
             {
-                if (control.key == Key::Start)
+                if (OpenedPageIsSignal())
                 {
-                    if (OpenedPageIsSignal())
+                    Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
+
+                    if (Device::IsStopped())
                     {
-                        Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
+                        labelMode.SetState("“≈—“", Color::WHITE, Color::RED);
 
-                        if (Device::IsStopped())
-                        {
-                            labelMode.SetState("“≈—“", Color::WHITE, Color::RED);
+                        Device::Start();
+                    }
+                    else if (Device::IsRunning())
+                    {
+                        labelMode.SetState("œ¿”«¿", Color::BLACK, Color::YELLOW);
 
-                            Device::Start();
-                        }
-                        else if (Device::IsRunning())
-                        {
-                            labelMode.SetState("œ¿”«¿", Color::BLACK, Color::YELLOW);
+                        Device::Pause();
+                    }
+                    else if (Device::InPause())
+                    {
+                        labelMode.SetState("“≈—“", Color::WHITE, Color::RED);
 
-                            Device::Pause();
-                        }
-                        else if (Device::InPause())
-                        {
-                            labelMode.SetState("“≈—“", Color::WHITE, Color::RED);
-
-                            Device::Resume();
-                        }
+                        Device::Resume();
                     }
                 }
-                else if (control.key == Key::Stop)
+            }
+            else if (control.key == Key::Stop)
+            {
+                if (OpenedPageIsSignal())
                 {
-                    if (OpenedPageIsSignal())
+                    Device::Stop();
+
+                    labelMode.SetState("—“Œœ", Color::BLACK, Color::GREEN);
+
+                    Timer::SetOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
                     {
-                        Device::Stop();
-
-                        labelMode.SetState("—“Œœ", Color::BLACK, Color::GREEN);
-
-                        Timer::SetOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
-                        {
-                            labelMode.SetState("—“Œœ", Color::BLACK, Color::GRAY);
-                        });
-                    }
+                        labelMode.SetState("—“Œœ", Color::BLACK, Color::GRAY);
+                    });
                 }
-                else if (control.key == Key::Esc)
+            }
+            else if (control.key == Key::Esc)
+            {
+                if (OpenedPageIsSignal())
                 {
-                    if (OpenedPageIsSignal())
-                    {
-                        SetOpenedPage(PageMain::self);
-                    }
-                    else
-                    {
-                        SetOpenedPage(PageSignal1::self);
-                    }
+                    SetOpenedPage(PageMain::self);
+                }
+                else
+                {
+                    SetOpenedPage(PageSignal1::self);
                 }
             }
         }

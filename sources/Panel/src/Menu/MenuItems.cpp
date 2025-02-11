@@ -251,7 +251,7 @@ pchar Parameter::Title() const
 
 bool Button::OnEventControl(const Control &control)
 {
-    if ((control.key == Key::OK || control.key == Key::GovButton) && control.IsPress())
+    if (control.key == Key::OK || control.key == Key::GovButton)
     {
         if (funcOnPress)
         {
@@ -267,7 +267,7 @@ bool Button::OnEventControl(const Control &control)
 
 bool Choice::OnEventControl(const Control &control)
 {
-    if ((control.key == Key::OK || control.key == Key::GovButton) && control.IsPress())
+    if (control.key == Key::OK || control.key == Key::GovButton)
     {
         *state = (uint8)((*state) + 1);
 
@@ -288,45 +288,44 @@ bool Choice::OnEventControl(const Control &control)
 
 bool Parameter::OnEventControl(const Control &control)
 {
-    if (control.IsRelease())
+    if (control.key == Key::OK ||
+        control.key == Key::GovButton)
     {
-        if (control.key == Key::OK ||
-            control.key == Key::GovButton)
-        {
-            if (IsNowEdited())
-            {
-                editable = nullptr;
-
-                Value new_value(0);
-
-                if (ds.ToValue(&new_value, GetValue().GetType()))
-                {
-                    if (new_value.ToFloat() < GetMin().ToFloat())
-                    {
-                        GetValue() = Value(GetMin().GetRaw());
-                    }
-                    else if (new_value.ToFloat() > GetMax().ToFloat())
-                    {
-                        GetValue() = Value(GetMax().GetRaw());
-                    }
-                    else
-                    {
-                        GetValue() = new_value;
-                    }
-                }
-            }
-            else
-            {
-                editable = this;
-
-                ds.Set(this);
-            }
-        }
-
         if (IsNowEdited())
         {
-            ds.PressKey(control.key);
+            editable = nullptr;
+
+            Value new_value(0);
+
+            if (ds.ToValue(&new_value, GetValue().GetType()))
+            {
+                if (new_value.ToFloat() < GetMin().ToFloat())
+                {
+                    GetValue() = Value(GetMin().GetRaw());
+                }
+                else if (new_value.ToFloat() > GetMax().ToFloat())
+                {
+                    GetValue() = Value(GetMax().GetRaw());
+                }
+                else
+                {
+                    GetValue() = new_value;
+                }
+            }
         }
+        else
+        {
+            editable = this;
+
+            ds.Set(this);
+        }
+
+        return true;
+    }
+
+    if (IsNowEdited())
+    {
+        ds.PressKey(control.key);
 
         return true;
     }
@@ -337,7 +336,7 @@ bool Parameter::OnEventControl(const Control &control)
 
 bool Page::OnEventControl(const Control &control)
 {
-    if ((control.key == Key::Left || control.key == Key::GovLeft) && control.IsPress())
+    if (control.key == Key::Left || control.key == Key::GovLeft)
     {
         if (!Parameter::editable)
         {
@@ -348,7 +347,7 @@ bool Page::OnEventControl(const Control &control)
             return true;
         }
     }
-    else if ((control.key == Key::Right || control.key == Key::GovRight) && control.IsPress())
+    else if (control.key == Key::Right || control.key == Key::GovRight)
     {
         if (!Parameter::editable)
         {
