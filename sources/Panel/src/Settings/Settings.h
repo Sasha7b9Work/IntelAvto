@@ -8,6 +8,7 @@
 struct Duration
 {
     Duration(const Parameter &period, const Parameter &N);
+    Duration(float periodSec, const Parameter &N);
 
     pchar ToStringValue(char buffer[128]) const;
 

@@ -63,7 +63,9 @@ namespace PageSignal2a
 
     static void AdditionDraw()
     {
-        Text("%s     Ri: 2 ќм", VoltageMode::TextValue()).Write(
+        char buffer[128];
+
+        Text("%s     Ri: 2 ќм     ƒлит: %s", VoltageMode::TextValue(), Duration(param_t1, param_N).ToStringValue(buffer)).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }

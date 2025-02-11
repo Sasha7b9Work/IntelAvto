@@ -122,6 +122,11 @@ void DrawStruct::PressKey(int _key)
             index++;
         }
     }
+    else if (key == Key::Esc)
+    {
+        symbols[0] = '\0';
+        index = 0;
+    }
     else if (key >= Key::_1 && key <= Key::_0)
     {
         if ((key == Key::_0 && index == 0) ||
@@ -143,8 +148,22 @@ void DrawStruct::SetSymbolToCurrentPos(char symbol)
 {
     if (index < SIZE_BUFER - 1)
     {
-        symbols[index++] = symbol;
+        if (index >= NumSymbols())
+        {
+            symbols[index++] = symbol;
+            symbols[index] = '\0';
+        }
+        else
+        {
+            symbols[index++] = symbol;
+        }
     }
+}
+
+
+int DrawStruct::NumSymbols() const
+{
+    return (int)std::strlen(symbols);
 }
 
 

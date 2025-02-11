@@ -77,7 +77,7 @@ namespace PageSignal1
     {
         char buffer[128];
 
-        Text("%s     Äëèò: %s     Ri: %s", VoltageMode::TextValue(), Duration(param_t1, param_N).ToStringValue(buffer), VoltageMode::Is12() ? "10 Îì" : "50 Îì").Write(
+        Text("%s     Ri: %s     Äëèò: %s", VoltageMode::TextValue(), VoltageMode::Is12() ? "10 Îì" : "50 Îì", Duration(param_t1, param_N).ToStringValue(buffer)).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
     }

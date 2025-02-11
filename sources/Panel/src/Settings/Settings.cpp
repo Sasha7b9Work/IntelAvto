@@ -217,6 +217,14 @@ Duration::Duration(const Parameter &period, const Parameter &N)
 }
 
 
+Duration::Duration(float periodSec, const Parameter &N)
+{
+    Value val_N = N.GetValue();
+
+    timeMS = (uint)(periodSec * 1000.f * (float)val_N.ToInt());
+}
+
+
 pchar Duration::ToStringValue(char buffer[128]) const
 {
     if (RemainingTimeCounter::InProcess())
