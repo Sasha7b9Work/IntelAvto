@@ -5,6 +5,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
 #include "Connector/Device/Value_.h"
+#include "Generator/FPGA.h"
 #include <cmath>
 
 
@@ -61,7 +62,52 @@ uint16 MCP4811::Converter::Resolve() const
     *  
     */
 
-    return (uint16)(1024 * std::fabsf(value.ToFloat()) / 2.048f / 2.0f / 200.0f);
+    float voltage = std::fabsf(value.ToFloat());
+
+    if (TypeSignal::Is1_12V())
+    {
+        if (voltage > 150.0f)
+        {
+            voltage = 150.0f;
+        }
+    }
+    else if (TypeSignal::Is1_24V())
+    {
+        if (voltage > 600.0f)
+        {
+            voltage = 600.0f;
+        }
+    }
+    else if (TypeSignal::Is2a())
+    {
+        if (voltage > 112.0f)
+        {
+            voltage = 112.0f;
+        }
+    }
+    else if (TypeSignal::Is3a())
+    {
+        if (voltage > 200.0f)
+        {
+            voltage = 200.0f;
+        }
+    }
+    else if (TypeSignal::Is3b())
+    {
+        if (voltage > 200.0f)
+        {
+            voltage = 200.0f;
+        }
+    }
+    else
+    {
+        if (voltage > 150.0f)
+        {
+            voltage = 150.0f;
+        }
+    }
+
+    return (uint16)(1024 * voltage / 2.048f / 2.0f / 200.0f);
 }
 
 
