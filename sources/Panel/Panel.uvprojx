@@ -984,6 +984,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSettings.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageInfo.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageInfo.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -2315,6 +2320,11 @@
               <FileName>PageSettings.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSettings.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageInfo.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageInfo.cpp</FilePath>
             </File>
           </Files>
         </Group>

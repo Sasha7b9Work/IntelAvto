@@ -28,7 +28,7 @@ namespace PageInfo
     {
         int x = 150;
 
-        int y = 100;
+        int y = 90;
         int dy = 50;
 
         Text("Версия : %d", VERSION_BUILD).Write(x, y, Color::WHITE);

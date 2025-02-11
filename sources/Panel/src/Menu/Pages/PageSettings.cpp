@@ -2,10 +2,21 @@
 #include "defines.h"
 #include "Menu/MenuItemsDef.h"
 #include "Menu/Pages/Pages.h"
+#include "Menu/Menu.h"
 
 
 namespace PageSettings
 {
+    static void FuncPress_Back()
+    {
+        Menu::SetOpenedPage(PageMain::self);
+    }
+
+    DEF_BUTTON(bBack,
+        "Назад",
+        FuncPress_Back
+    );
+
     static void FuncPress_LAN()
     {
 
@@ -18,6 +29,7 @@ namespace PageSettings
 
     static Item *items[] =
     {
+        &bBack,
         &bLAN,
         nullptr
     };
