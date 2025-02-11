@@ -143,24 +143,36 @@ void DrawStruct::PressKey(int _key)
     }
     else if (key == Key::GovLeft)
     {
-        DecreaseInPositionIndex();
+        DecreaseInPosition(index);
     }
     else if (key == Key::GovRight)
     {
-        IncreaseInPositionIndex();
+        IncreaseInPosition(index);
     }
 }
 
 
-void DrawStruct::DecreaseInPositionIndex()
+void DrawStruct::DecreaseInPosition(int pos)
 {
-
+    char symbol = symbols[pos];
+    symbol--;
+    if (symbol < 0x30)
+    {
+        symbol = 0x39;
+    }
+    symbols[pos] = symbol;
 }
 
 
-void DrawStruct::IncreaseInPositionIndex()
+void DrawStruct::IncreaseInPosition(int pos)
 {
-
+    char symbol = symbols[pos];
+    symbol++;
+    if (symbol > 0x39)
+    {
+        symbol = 0x30;
+    }
+    symbols[pos] = symbol;
 }
 
 
