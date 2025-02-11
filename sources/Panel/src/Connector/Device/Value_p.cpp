@@ -168,11 +168,13 @@ void DrawStruct::DecreaseInPosition(int pos)
     }
 
     symbol--;
+
     if (symbol < 0x30)
     {
         symbol = 0x39;
         DecreaseInPosition(pos - 1);
     }
+
     symbols[pos] = symbol;
 }
 
@@ -187,11 +189,13 @@ void DrawStruct::IncreaseInPosition(int pos)
     }
 
     symbol++;
+
     if (symbol > 0x39)
     {
         symbol = 0x30;
         IncreaseInPosition(pos - 1);
     }
+
     symbols[pos] = symbol;
 }
 

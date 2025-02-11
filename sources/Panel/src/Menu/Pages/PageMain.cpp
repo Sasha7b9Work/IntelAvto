@@ -27,10 +27,21 @@ namespace PageMain
         FuncPress_Settings
     );
 
+    static void FuncPress_Info()
+    {
+
+    }
+
+    DEF_BUTTON(bInfo,
+        "Информация",
+        FuncPress_Info
+    );
+
     static Item *items[] =
     {
         &bTests,
         &bSettings,
+        &bInfo,
         nullptr
     };
 
