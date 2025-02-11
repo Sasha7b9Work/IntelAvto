@@ -38,4 +38,6 @@ namespace Sound
 
     // Эту функцию надо вызывать перед записью/стиранием ППЗУ. Звук конфликтует с ППЗУ.
     void WaitForCompletion();
+
+    extern void *handle;
 };
