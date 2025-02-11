@@ -349,6 +349,10 @@ void Display::DrawScreen()
 
         DrawSignal();
     }
+    else if (Menu::OpenedPage() == PageInfo::self)
+    {
+
+    }
     else
     {
         Font::Set(TypeFont::GOSTB28B);

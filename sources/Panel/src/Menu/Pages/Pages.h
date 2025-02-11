@@ -15,6 +15,12 @@ namespace PageSettings
 }
 
 
+namespace PageInfo
+{
+    extern Page *self;
+}
+
+
 namespace PageSignal1
 {
     extern Page *self;

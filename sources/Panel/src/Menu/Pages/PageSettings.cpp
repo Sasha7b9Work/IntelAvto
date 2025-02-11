@@ -23,6 +23,6 @@ namespace PageSettings
     };
 
     static Page page(items, nullptr, nullptr);
-}
 
-Page *PageSettings::self = &PageSettings::page;
+    Page *self = &page;
+}

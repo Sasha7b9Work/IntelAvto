@@ -29,7 +29,7 @@ namespace PageMain
 
     static void FuncPress_Info()
     {
-
+        Menu::SetOpenedPage(PageInfo::self);
     }
 
     DEF_BUTTON(bInfo,

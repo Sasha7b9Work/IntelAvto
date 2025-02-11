@@ -217,10 +217,10 @@ public:
     // Возвращает true, если текущая страница - страница сигнала
     static bool IsSignal(Page *);
 
-protected:
-
     // Возвращает количество итемов на странице
     int NumItems() const;
+
+protected:
 
     // Возвращает ширину элемента меню с номером num
     int WidthItem(int num) const;
