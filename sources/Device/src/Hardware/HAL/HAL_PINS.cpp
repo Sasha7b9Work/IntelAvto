@@ -23,7 +23,6 @@ PinOut pin_K7_COM(GPIOC, GPIO_PIN_0);
 PinOut pin_K3_COM(GPIOF, GPIO_PIN_10);
 
 PinOut pin_K1_FOR(GPIOF, GPIO_PIN_1);
-PinOut pin_K_R1(GPIOF, GPIO_PIN_7);
 
 PinOut pin_DAC_SCLK_R(GPIOA, GPIO_PIN_12);
 PinOut pin_DAC_DAT_R(GPIOA, GPIO_PIN_11);
@@ -61,7 +60,6 @@ void HAL_PINS::Init()
     pin_K7_COM.Init();
 
     pin_K1_FOR.Init();
-    pin_K_R1.Init();
 
     pin_DAC_SCLK_R.Init();
     pin_DAC_DAT_R.Init();
