@@ -141,6 +141,26 @@ void DrawStruct::PressKey(int _key)
             SetSymbolToCurrentPos(_keys[key]);
         }
     }
+    else if (key == Key::GovLeft)
+    {
+        DecreaseInPositionIndex();
+    }
+    else if (key == Key::GovRight)
+    {
+        IncreaseInPositionIndex();
+    }
+}
+
+
+void DrawStruct::DecreaseInPositionIndex()
+{
+
+}
+
+
+void DrawStruct::IncreaseInPositionIndex()
+{
+
 }
 
 
