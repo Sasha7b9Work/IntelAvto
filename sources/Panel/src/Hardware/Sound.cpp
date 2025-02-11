@@ -39,6 +39,8 @@ namespace Sound
     static void SetWave();
 
     static void Sound_Beep(const TypeWave::E newTypeWave, const float newFreq, const float newAmpl, const int newDuration);
+
+    static void TIM7_Config(uint16 prescaler, uint16 period);
 }
 
 
@@ -62,7 +64,6 @@ void Sound::Init()
 }
 
 
-
 void Sound::Stop()
 {
     HAL_DAC_Stop_DMA(&handleDAC, DAC_CHANNEL_1);
@@ -71,8 +72,7 @@ void Sound::Stop()
 }
 
 
-
-static void TIM7_Config(uint16 prescaler, uint16 period)
+void Sound::TIM7_Config(uint16 prescaler, uint16 period)
 {
     static TIM_HandleTypeDef htim =
     {
@@ -98,14 +98,12 @@ static void TIM7_Config(uint16 prescaler, uint16 period)
 }
 
 
-
 uint16 Sound::CalculatePeriodForTIM()
 {
 #define MULTIPLIER_CALCPERFORTIM 30e6f
 
     return (uint16)(MULTIPLIER_CALCPERFORTIM / frequency / POINTS_IN_PERIOD_SOUND);
 }
-
 
 
 void Sound::CalculateSine()
@@ -132,7 +130,6 @@ void Sound::CalculateSine()
 }
 
 
-
 void Sound::CalculateMeandr()
 {
     for(int i = 0; i < POINTS_IN_PERIOD_SOUND / 2; i++)
@@ -144,7 +141,6 @@ void Sound::CalculateMeandr()
         points[i] = 0;
     }
 }
-
 
 
 void Sound::CalculateTriangle()
@@ -175,7 +171,6 @@ void Sound::SetWave()
         CalculateTriangle();
     }
 }
-
 
 
 void Sound::Sound_Beep(const TypeWave::E newTypeWave, const float newFreq, const float newAmpl, const int newDuration)
@@ -220,7 +215,6 @@ void Sound::ButtonPress()
 }
 
 
-
 void Sound::ButtonRelease()
 {
     if (buttonIsPressed)
@@ -231,13 +225,11 @@ void Sound::ButtonRelease()
 }
 
 
-
 void Sound::GovernorChangedValue()
 {
     Sound_Beep(TypeWave::Sine, 1000.0f, 0.5f, 50);
     buttonIsPressed = false;
 }
-
 
 
 void Sound::RegulatorShiftRotate()
@@ -247,13 +239,11 @@ void Sound::RegulatorShiftRotate()
 }
 
 
-
 void Sound::RegulatorSwitchRotate()
 {
     Sound_Beep(TypeWave::Sine, 500.0f, 0.5f, 75);
     buttonIsPressed = false;
 }
-
 
 
 void Sound::WarnBeepBad()
@@ -262,7 +252,6 @@ void Sound::WarnBeepBad()
     soundWarnIsBeep = true;
     buttonIsPressed = false;
 }
-
 
 
 void Sound::WarnBeepGood()
