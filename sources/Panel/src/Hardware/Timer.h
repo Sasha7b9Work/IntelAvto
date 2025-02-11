@@ -13,6 +13,7 @@ struct TimerTask
     {
         ChangeColorOnLabelStop,         // Изменить цвет кнопки СТОП через некоторое время после остановки
         kUSB,
+        kStopSound,
         Count
     };
 };
