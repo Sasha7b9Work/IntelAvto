@@ -48,6 +48,8 @@
 
 #define USE_HAL_DAC_REGISTER_CALLBACKS 0
 
+#define USBD_USER_REGISTER_CALLBACK 0
+
 /* ########################## HSE/HSI Values adaptation ##################### */
 /**
   * @brief Adjust the value of External High Speed oscillator (HSE) used in your application.

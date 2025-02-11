@@ -39,7 +39,7 @@ void VCP::SendDataAsynch(uint8 *buffer, int size)
     static uint8 trBuf[SIZE_BUFFER];
 
     size = Math::Min(size, SIZE_BUFFER);
-    while (!PrevSendingComplete())  {};
+    while (!PrevSendingComplete())  {}
     memcpy(trBuf, buffer, (uint)size);
 
     USBD_CDC_SetTxBuffer(&handleUSBD, trBuf, (uint16)size);
@@ -57,10 +57,10 @@ void VCP::Flush()
     if (sizeBuffer)
     {
         USBD_CDC_HandleTypeDef *pCDC = (USBD_CDC_HandleTypeDef *)handleUSBD.pClassData;
-        while (pCDC->TxState == 1) {};
+        while (pCDC->TxState == 1) {}
         USBD_CDC_SetTxBuffer(&handleUSBD, buffSend, (uint16)sizeBuffer);
         USBD_CDC_TransmitPacket(&handleUSBD);
-        while (pCDC->TxState == 1) {};
+        while (pCDC->TxState == 1) {}
     }
 
     sizeBuffer = 0;
@@ -78,8 +78,8 @@ void VCP::SendBufferSynch(const uint8 *buffer, int size)
             if (sizeBuffer + size > SIZE_BUFFER_VCP)
             {
                 int reqBytes = SIZE_BUFFER_VCP - sizeBuffer;
-                LIMITATION(reqBytes, 0, size);
-                while (pCDC->TxState == 1) {};
+                LIMITATION(reqBytes, 0, size)
+                while (pCDC->TxState == 1) {}
                 memcpy(buffSend + sizeBuffer, (void *)buffer, (uint)reqBytes);
                 USBD_CDC_SetTxBuffer(&handleUSBD, buffSend, SIZE_BUFFER_VCP);
                 USBD_CDC_TransmitPacket(&handleUSBD);

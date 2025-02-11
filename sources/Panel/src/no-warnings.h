@@ -18,5 +18,6 @@
     #pragma clang diagnostic ignored "-Wshift-sign-overflow"
     #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
     #pragma clang diagnostic ignored "-Winvalid-utf8"
+    #pragma clang diagnostic ignored "-Wmissing-field-initializers"
 #endif
 

@@ -150,7 +150,7 @@ void Math::ItoA(int n, char _s[32])
 
     do
     {
-        p[i++] = n % 10 + '0';
+        p[i++] = (char)(n % 10 + '0');
     } while ((n /= 10) > 0);
 
     p[i] = '\0';

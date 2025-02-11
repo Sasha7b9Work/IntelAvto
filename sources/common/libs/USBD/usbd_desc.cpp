@@ -16,9 +16,14 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------ */
+#include "defines.h"
 #include "usbd_core.h"
 #include "usbd_desc.h"
 #include "usbd_conf.h"
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wcast-qual"
+#endif
 
 /* Private typedef ----------------------------------------------------------- */
 /* Private define ------------------------------------------------------------ */

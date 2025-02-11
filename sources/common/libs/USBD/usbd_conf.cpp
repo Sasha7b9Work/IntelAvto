@@ -17,6 +17,15 @@
   */
 /* Includes ------------------------------------------------------------------ */
 #include "stm32f4xx_hal.h"
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+    #pragma clang diagnostic ignored "-Wold-style-cast"
+    #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
+    #pragma clang diagnostic ignored "-Wshadow"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+#endif
+
 #include "usbd_core.h"
 
 /* Private typedef ----------------------------------------------------------- */
@@ -337,6 +346,7 @@ void HAL_PCD_DisconnectCallback(PCD_HandleTypeDef * hpcd)
   */
 USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef * pdev)
 {
+  (void)pdev;
   /* Change Systick prioity */
   NVIC_SetPriority(SysTick_IRQn, 0);
 

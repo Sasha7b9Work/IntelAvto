@@ -10,7 +10,7 @@
 
 namespace Sound
 {
-    static const uint POINTS_IN_PERIOD_SOUND = 10;
+    static const int POINTS_IN_PERIOD_SOUND = 10;
 
     static uint8 points[POINTS_IN_PERIOD_SOUND] = { 0 };
 
@@ -209,7 +209,7 @@ void Sound::WaitForCompletion()
 {
     while (isBeep)
     {
-    };
+    }
 }
 
 
