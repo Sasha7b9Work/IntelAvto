@@ -297,7 +297,7 @@ bool Parameter::OnEventControl(const Control &control)
 
             Value new_value(0);
 
-            if (ds.ToValue(&new_value, GetValue().GetType()))
+            if (ds.ToValue(&new_value))
             {
                 if (new_value.ToFloat() < GetMin().ToFloat())
                 {

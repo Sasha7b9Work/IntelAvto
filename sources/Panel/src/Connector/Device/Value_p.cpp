@@ -60,7 +60,7 @@ void Value::Draw(int x, int y) const
 }
 
 
-bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
+bool DrawStruct::ToValue(Value *result) const
 {
     char buffer[128];
 
@@ -79,11 +79,11 @@ bool DrawStruct::ToValue(Value *result, TypeValue::E type) const
             raw |= (uint)(1 << 31);
         }
 
-        if (type == TypeValue::Time)
+        if (parameter->GetValue().GetType() == TypeValue::Time)
         {
             raw |= (1 << 30);
         }
-        else if (type == TypeValue::Voltage)
+        else if (parameter->GetValue().GetType() == TypeValue::Voltage)
         {
             raw |= (1 << 29);
         }

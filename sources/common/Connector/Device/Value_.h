@@ -22,7 +22,7 @@ struct DrawStruct
     void PressKey(int);
     void Draw(int x, int y) const;
     void Set(Parameter *_param);
-    bool ToValue(Value *, TypeValue::E) const;
+    bool ToValue(Value *) const;
 private:
     bool ConsistDot() const;
     void SetSymbolToCurrentPos(char);
