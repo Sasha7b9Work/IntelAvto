@@ -15,7 +15,7 @@ class Item
 public:
     Item() {}
 
-    static const int HEIGHT = 30;
+    static int Height();
 
     // Функция отрисовки
     virtual void DrawMenuItem(int x, int y, int width, bool selected = false) = 0;

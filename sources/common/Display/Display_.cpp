@@ -355,7 +355,7 @@ void Display::DrawScreen()
 
         const int y0 = 40;
         const int dy = 70;
-        const int x = 200;
+        const int x = 220;
 
         int y = y0;
 

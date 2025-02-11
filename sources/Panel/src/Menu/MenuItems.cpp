@@ -8,6 +8,7 @@
 #include "Display/Text_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Utils/Math_.h"
+#include "Menu/Menu.h"
 #include <cstring>
 
 
@@ -16,6 +17,12 @@ using namespace Primitives;
 
 Parameter *Parameter::current = nullptr;
 Parameter *Parameter::editable = nullptr;
+
+
+int Item::Height()
+{
+    return Page::IsSignal(Menu::OpenedPage()) ? 30 : 30;
+}
 
 
 int Choice::NumStates() const
@@ -39,11 +46,11 @@ void Page::DrawMenuItem(int x, int y, int, bool)
 
         Color colorBack = items[i]->ColorBackground(selected);
 
-        Rect(WidthItem(i) - 1, HEIGHT - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
+        Rect(WidthItem(i) - 1, Height() - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
 
         items[i]->DrawMenuItem(x, y + 5, WidthItem(i), selected);
 
-        y += HEIGHT;
+        y += Height();
     }
 
     if (additionalDraw)
@@ -102,7 +109,9 @@ void Page::DrawParameters() const
 
 int Page::WidthItem(int num) const
 {
-    int result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / 6) : (Display::PHYSICAL_WIDTH / 6);
+    int div = Page::IsSignal(Menu::OpenedPage()) ? 6 : 4;
+
+    int result = ((num % 2) == 0) ? ((Display::PHYSICAL_WIDTH - 1) / div) : (Display::PHYSICAL_WIDTH / div);
 
     return result;
 }
