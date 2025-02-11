@@ -63,7 +63,7 @@ void GovernorGUI::OnMouseLeftUp(wxMouseEvent &)
 {
     if (needEventPress)
     {
-        FuncPress();
+        FuncRelease();
     }
 
     needEventPress = false;
@@ -155,6 +155,13 @@ void GovernorGUI::FuncPress()
 {
     wxCommandEvent event(wxEVT_LEFT_DOWN, Key::GovButton);
     Frame::Self()->OnDown(event);
+}
+
+
+void GovernorGUI::FuncRelease()
+{
+    wxCommandEvent event(wxEVT_LEFT_UP, Key::GovButton);
+    Frame::Self()->OnUp(event);
 }
 
 

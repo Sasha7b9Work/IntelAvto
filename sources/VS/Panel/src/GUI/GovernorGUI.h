@@ -36,6 +36,8 @@ private:
     // Эта функция вызываетс при нажатии ручки
     void FuncPress();
 
+    void FuncRelease();
+
     struct StructCursor
     {
         bool leftIsDown;        // true, если левая кнопка нажата
