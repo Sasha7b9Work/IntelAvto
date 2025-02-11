@@ -31,6 +31,8 @@ private:
     void IncreaseInPosition(int);
     void DecreaseInPosition(int);
 
+    bool IsDigit(char) const;
+
     Parameter *parameter;
     int index;                          // Текущий разряд. 0 - "-", если есть
     static const int SIZE_BUFER = 10;   // Максимальное количество хранимх разрядов вместе с завершающим нулём

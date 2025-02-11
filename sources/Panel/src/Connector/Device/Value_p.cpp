@@ -152,13 +152,26 @@ void DrawStruct::PressKey(int _key)
 }
 
 
+bool DrawStruct::IsDigit(char symbol) const
+{
+    return (symbol >= 0x30) && (symbol <= 0x39);
+}
+
+
 void DrawStruct::DecreaseInPosition(int pos)
 {
     char symbol = symbols[pos];
+
+    if (!IsDigit(symbol))
+    {
+        return;
+    }
+
     symbol--;
     if (symbol < 0x30)
     {
         symbol = 0x39;
+        DecreaseInPosition(pos - 1);
     }
     symbols[pos] = symbol;
 }
@@ -167,10 +180,17 @@ void DrawStruct::DecreaseInPosition(int pos)
 void DrawStruct::IncreaseInPosition(int pos)
 {
     char symbol = symbols[pos];
+
+    if (!IsDigit(symbol))
+    {
+        return;
+    }
+
     symbol++;
     if (symbol > 0x39)
     {
         symbol = 0x30;
+        IncreaseInPosition(pos - 1);
     }
     symbols[pos] = symbol;
 }
