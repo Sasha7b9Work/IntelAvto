@@ -13,40 +13,46 @@
 using namespace Primitives;
 
 
-void ParameterDrawStruct::PressKey(int _key)
+void ParameterDrawStruct::PressKey(int key)
+{
+    p.PressKey(key, parameter);
+}
+
+
+void ParameterDrawStruct::Params::PressKey(int _key, Parameter *param)
 {
     Key::E key = (Key::E)_key;
 
     if (key == Key::Minus)
     {
-        if (parameter->GetValue().IsVoltage() && p.index == 0)
+        if (param->GetValue().IsVoltage() && index == 0)
         {
-            p.SetSymbolToCurrentPos('-');
+            SetSymbolToCurrentPos('-');
         }
     }
     else if (key == Key::Left)
     {
-        if (p.index > 0)
+        if (index > 0)
         {
-            p.index--;
+            index--;
         }
     }
     else if (key == Key::Right)
     {
-        if (p.index < (int)std::strlen(p.symbols) - 1)
+        if (index < (int)std::strlen(symbols) - 1)
         {
-            p.index++;
+            index++;
         }
     }
     else if (key == Key::Esc)
     {
-        p.symbols[0] = '\0';
-        p.index = 0;
+        symbols[0] = '\0';
+        index = 0;
     }
     else if (key >= Key::_1 && key <= Key::_0)
     {
-        if ((key == Key::_0 && p.index == 0) ||
-            (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))
+        if ((key == Key::_0 && index == 0) ||
+            (key == Key::_0 && index == 1 && symbols[0] == '-'))
         {
             // Ноль первым быть не может
         }
@@ -54,16 +60,16 @@ void ParameterDrawStruct::PressKey(int _key)
         {
             static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            p.SetSymbolToCurrentPos(_keys[key]);
+            SetSymbolToCurrentPos(_keys[key]);
         }
     }
     else if (key == Key::GovLeft)
     {
-        DecreaseInPosition(p.index);
+        DecreaseInPosition(index);
     }
     else if (key == Key::GovRight)
     {
-        IncreaseInPosition(p.index);
+        IncreaseInPosition(index);
     }
 }
 
