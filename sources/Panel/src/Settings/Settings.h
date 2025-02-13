@@ -4,6 +4,9 @@
 #include "Display/Colors_.h"
 
 
+class Parameter;
+
+
 // Используется для расчёта длительности теста
 struct Duration
 {

@@ -7,6 +7,9 @@
 #define TIME_MS HAL_TIM::TimeMS()
 
 
+class Parameter;
+
+
 struct TimerTask
 {
     enum E

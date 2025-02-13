@@ -2,6 +2,7 @@
 #pragma once
 #include "defines.h"
 #include "Settings/Settings.h"
+#include "Menu/ParameterDrawStruct.h"
 
 
 struct TypeMeasure;
