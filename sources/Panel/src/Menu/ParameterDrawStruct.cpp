@@ -211,26 +211,27 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
         return;
     }
 
-    char symbol = p.symbols[pos];
+    p.IncreaseInPosition(pos);
+}
 
-    if (!p.IsDigit(symbol))
-    {
-        return;
-    }
+
+void ParameterDrawStruct::Params::IncreaseInPosition(int pos)
+{
+    char symbol = symbols[pos];
 
     symbol++;
 
     if (symbol > '9')
     {
-        if (p.OnLeftAllNines(pos))
+        if (OnLeftAllNines(pos))
         {
             bool first_already_one = false;         // Когда установим первый символ в "1", сделаем это true
 
             for (int i = 0; i < pos; i++)
             {
-                if (p.IsDigit(p.symbols[i]))
+                if (IsDigit(symbols[i]))
                 {
-                    p.symbols[i] = first_already_one ? '0' : '1';
+                    symbols[i] = first_already_one ? '0' : '1';
 
                     first_already_one = true;
                 }
@@ -239,8 +240,8 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
             symbol = '0';
 
             char buffer[2] = { '0', '\0' };
-            std::strcat(p.symbols, buffer);
-            p.index++;
+            std::strcat(symbols, buffer);
+            index++;
         }
         else
         {
@@ -249,7 +250,8 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
         }
     }
 
-    p.symbols[pos] = symbol;
+    symbols[pos] = symbol;
+
 }
 
 

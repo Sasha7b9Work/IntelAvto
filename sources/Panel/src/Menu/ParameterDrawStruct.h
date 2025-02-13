@@ -46,6 +46,8 @@ private:
 
         bool IsDigit(char) const;
 
+        void IncreaseInPosition(int);
+
         void DecreaseInPosition(int);
     } p;
 };
