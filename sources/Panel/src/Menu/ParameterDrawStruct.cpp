@@ -79,9 +79,11 @@ void ParameterDrawStruct::Draw(int x, int y) const
 
     std::strcat(buffer, symbols);
 
+    int pos_hight = is_negative ? (index + 1) : (index);        // Позиция подсвеченного разряда
+
     for (int i = 0; i < (int)std::strlen(buffer); i++)
     {
-        Rect(13, 18).Fill(x + 10 * i - 2, y - 2, (i == index) ? Color::BLUE : Color::BACK);
+        Rect(13, 18).Fill(x + 10 * i - 2, y - 2, (i == pos_hight) ? Color::BLUE : Color::BACK);
 
         char text[2] = { buffer[i], '\0' };
         Text(text).Write(x + 10 * i, y, Color::WHITE);
