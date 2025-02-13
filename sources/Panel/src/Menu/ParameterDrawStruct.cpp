@@ -110,17 +110,17 @@ void ParameterDrawStruct::Set(Parameter *_param)
 }
 
 
-bool ParameterDrawStruct::IsMinimalValue() const
+bool ParameterDrawStruct::IsMinimalValueOrLess() const
 {
     Value value(0);
 
     ToValue(&value);
 
-    return value.ToInt() == parameter->GetMin().ToInt();
+    return value.ToInt() <= parameter->GetMin().ToInt();
 }
 
 
-bool ParameterDrawStruct::IsMaximumValue() const
+bool ParameterDrawStruct::IsMaximumValueOrAbove() const
 {
     Value value(0);
 
@@ -206,7 +206,7 @@ int ParameterDrawStruct::NumSymbols() const
 
 void ParameterDrawStruct::IncreaseInPosition(int pos)
 {
-    if (IsMaximumValue())
+    if (IsMaximumValueOrAbove())
     {
         return;
     }
@@ -255,7 +255,7 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
 
 void ParameterDrawStruct::DecreaseInPosition(int pos)
 {
-    if (IsMinimalValue())
+    if (IsMinimalValueOrLess())
     {
         return;
     }

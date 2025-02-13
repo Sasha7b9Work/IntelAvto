@@ -32,10 +32,10 @@ private:
     bool IsDigit(char) const;
 
     // “екущее значение €вл€етс€ минимально допустимым
-    bool IsMinimalValue() const;
+    bool IsMinimalValueOrLess() const;
 
     // “екущее значение €вл€етс€ максимально допустимым
-    bool IsMaximumValue() const;
+    bool IsMaximumValueOrAbove() const;
 
     Parameter *parameter;
 
