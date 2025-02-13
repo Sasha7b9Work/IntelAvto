@@ -19,34 +19,34 @@ void ParameterDrawStruct::PressKey(int _key)
 
     if (key == Key::Minus)
     {
-        if (parameter->GetValue().IsVoltage() && index == 0)
+        if (parameter->GetValue().IsVoltage() && p.index == 0)
         {
             SetSymbolToCurrentPos('-');
         }
     }
     else if (key == Key::Left)
     {
-        if (index > 0)
+        if (p.index > 0)
         {
-            index--;
+            p.index--;
         }
     }
     else if (key == Key::Right)
     {
-        if (index < (int)std::strlen(symbols) - 1)
+        if (p.index < (int)std::strlen(p.symbols) - 1)
         {
-            index++;
+            p.index++;
         }
     }
     else if (key == Key::Esc)
     {
-        symbols[0] = '\0';
-        index = 0;
+        p.symbols[0] = '\0';
+        p.index = 0;
     }
     else if (key >= Key::_1 && key <= Key::_0)
     {
-        if ((key == Key::_0 && index == 0) ||
-            (key == Key::_0 && index == 1 && symbols[0] == '-'))
+        if ((key == Key::_0 && p.index == 0) ||
+            (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))
         {
             // Ноль первым быть не может
         }
@@ -59,11 +59,11 @@ void ParameterDrawStruct::PressKey(int _key)
     }
     else if (key == Key::GovLeft)
     {
-        DecreaseInPosition(index);
+        DecreaseInPosition(p.index);
     }
     else if (key == Key::GovRight)
     {
-        IncreaseInPosition(index);
+        IncreaseInPosition(p.index);
     }
 }
 
@@ -72,14 +72,14 @@ void ParameterDrawStruct::Draw(int x, int y) const
 {
     char buffer[128] = { '\0' };
 
-    if (is_negative)
+    if (p.is_negative)
     {
         std::strcat(buffer, "-");
     }
 
-    std::strcat(buffer, symbols);
+    std::strcat(buffer, p.symbols);
 
-    int pos_hight = is_negative ? (index + 1) : (index);        // Позиция подсвеченного разряда
+    int pos_hight = p.is_negative ? (p.index + 1) : (p.index);        // Позиция подсвеченного разряда
 
     for (int i = 0; i < (int)std::strlen(buffer); i++)
     {
@@ -97,16 +97,16 @@ void ParameterDrawStruct::Set(Parameter *_param)
 
     int value = parameter->GetValue().ToInt();
 
-    is_negative = value < 0;
+    p.is_negative = value < 0;
 
-    if (is_negative)
+    if (p.is_negative)
     {
         value = -value;
     }
 
-    Math::ItoA(value, symbols);
+    Math::ItoA(value, p.symbols);
 
-    index = (int)std::strlen(symbols) - 1;
+    p.index = (int)std::strlen(p.symbols) - 1;
 }
 
 
@@ -134,7 +134,7 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 {
     char buffer[128];
 
-    std::memcpy(buffer, symbols, std::strlen(symbols));
+    std::memcpy(buffer, p.symbols, std::strlen(p.symbols));
 
     char *end = nullptr;
 
@@ -144,7 +144,7 @@ bool ParameterDrawStruct::ToValue(Value *result) const
     {
         uint raw = (uint)value;
 
-        if (is_negative)
+        if (p.is_negative)
         {
             raw |= (uint)(1 << 31);
         }
@@ -169,9 +169,9 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 
 bool ParameterDrawStruct::ConsistDot() const
 {
-    for (uint i = 0; i < std::strlen(symbols); i++)
+    for (uint i = 0; i < std::strlen(p.symbols); i++)
     {
-        if (symbols[i] == '.')
+        if (p.symbols[i] == '.')
         {
             return true;
         }
@@ -183,16 +183,16 @@ bool ParameterDrawStruct::ConsistDot() const
 
 void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
 {
-    if (index < SIZE_BUFER - 1)
+    if (p.index < p.SIZE_BUFER - 1)
     {
-        if (index >= NumSymbols())
+        if (p.index >= NumSymbols())
         {
-            symbols[index++] = symbol;
-            symbols[index] = '\0';
+            p.symbols[p.index++] = symbol;
+            p.symbols[p.index] = '\0';
         }
         else
         {
-            symbols[index++] = symbol;
+            p.symbols[p.index++] = symbol;
         }
     }
 }
@@ -200,7 +200,7 @@ void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
 
 int ParameterDrawStruct::NumSymbols() const
 {
-    return (int)std::strlen(symbols);
+    return (int)std::strlen(p.symbols);
 }
 
 
@@ -211,7 +211,7 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
         return;
     }
 
-    char symbol = symbols[pos];
+    char symbol = p.symbols[pos];
 
     if (!IsDigit(symbol))
     {
@@ -228,9 +228,9 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
 
             for (int i = 0; i < pos; i++)
             {
-                if (IsDigit(symbols[i]))
+                if (IsDigit(p.symbols[i]))
                 {
-                    symbols[i] = first_already_one ? '0' : '1';
+                    p.symbols[i] = first_already_one ? '0' : '1';
 
                     first_already_one = true;
                 }
@@ -239,8 +239,8 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
             symbol = '0';
 
             char buffer[2] = { '0', '\0' };
-            std::strcat(symbols, buffer);
-            index++;
+            std::strcat(p.symbols, buffer);
+            p.index++;
         }
         else
         {
@@ -249,7 +249,7 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
         }
     }
 
-    symbols[pos] = symbol;
+    p.symbols[pos] = symbol;
 }
 
 
@@ -260,7 +260,7 @@ void ParameterDrawStruct::DecreaseInPosition(int pos)
         return;
     }
 
-    char symbol = symbols[pos];
+    char symbol = p.symbols[pos];
 
     if (!IsDigit(symbol))
     {
@@ -275,7 +275,7 @@ void ParameterDrawStruct::DecreaseInPosition(int pos)
         DecreaseInPosition(pos - 1);
     }
 
-    symbols[pos] = symbol;
+    p.symbols[pos] = symbol;
 }
 
 
@@ -283,12 +283,12 @@ bool ParameterDrawStruct::OnLeftAllNines(int pos)
 {
     for (int i = 0; i < pos; i++)
     {
-        if (!IsDigit(symbols[i]))
+        if (!IsDigit(p.symbols[i]))
         {
             continue;
         }
 
-        if (symbols[i] != '9')
+        if (p.symbols[i] != '9')
         {
             return false;
         }
