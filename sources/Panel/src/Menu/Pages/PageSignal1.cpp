@@ -14,8 +14,8 @@ namespace PageSignal1
 {
     // Амплитуда
     VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_1].values12[0], Voltage(-150), Voltage(-75),
-        &gset.signals[TypeSignal::_1].values24[0], Voltage(-600), Voltage(-300),
+        &gset.signals[TypeSignal::_1].values12[0], Voltage(-75), Voltage(-150),
+        &gset.signals[TypeSignal::_1].values24[0], Voltage(-300), Voltage(-600),
         280, 155);
 
     // Период повторения

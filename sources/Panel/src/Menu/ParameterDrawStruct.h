@@ -31,6 +31,12 @@ private:
 
     bool IsDigit(char) const;
 
+    // “екущее значение €вл€етс€ минимально допустимым
+    bool IsMinimalValue() const;
+
+    // “екущее значение €вл€етс€ максимально допустимым
+    bool IsMaximumValue() const;
+
     Parameter *parameter;
 
     int index;                          // “екущий разр€д. 0 - "-", если есть

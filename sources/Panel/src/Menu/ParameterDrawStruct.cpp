@@ -110,6 +110,26 @@ void ParameterDrawStruct::Set(Parameter *_param)
 }
 
 
+bool ParameterDrawStruct::IsMinimalValue() const
+{
+    Value value(0);
+
+    ToValue(&value);
+
+    return value.ToInt() == parameter->GetMin().ToInt();
+}
+
+
+bool ParameterDrawStruct::IsMaximumValue() const
+{
+    Value value(0);
+
+    ToValue(&value);
+
+    return value.ToInt() == parameter->GetMax().ToInt();
+}
+
+
 bool ParameterDrawStruct::ToValue(Value *result) const
 {
     char buffer[128];
@@ -122,9 +142,9 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 
     if (SU::String2Int(buffer, &value, &end))
     {
-        uint raw = (value > 0) ? (uint)value : (uint)-value;
+        uint raw = (uint)value;
 
-        if (value < 0)
+        if (is_negative)
         {
             raw |= (uint)(1 << 31);
         }
@@ -186,6 +206,11 @@ int ParameterDrawStruct::NumSymbols() const
 
 void ParameterDrawStruct::IncreaseInPosition(int pos)
 {
+    if (IsMaximumValue())
+    {
+        return;
+    }
+
     char symbol = symbols[pos];
 
     if (!IsDigit(symbol))
@@ -230,6 +255,11 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
 
 void ParameterDrawStruct::DecreaseInPosition(int pos)
 {
+    if (IsMinimalValue())
+    {
+        return;
+    }
+
     char symbol = symbols[pos];
 
     if (!IsDigit(symbol))
@@ -334,4 +364,7 @@ void Value::Draw(int x, int y) const
     1.  ќткрытие параметра
         ¬ыводитс€ целочисленное значение без единиц измерени€
         ѕоследний разр€д подсвечен
+
+    2.  ¬ращение ручки вниз.
+        ”меньшает значение в текущем разр€де, если величина установленного напр€жени€ больше минимальной (допускает уменьшение)
 */
