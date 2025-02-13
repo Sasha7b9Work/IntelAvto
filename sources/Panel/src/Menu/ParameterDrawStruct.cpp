@@ -101,18 +101,22 @@ void ParameterDrawStruct::Set(Parameter *_param)
 {
     parameter = _param;
 
-    int value = parameter->GetValue().ToInt();
+    p.Set(parameter->GetValue().ToInt());
+}
 
-    p.is_negative = value < 0;
 
-    if (p.is_negative)
+void ParameterDrawStruct::Params::Set(int value)
+{
+    is_negative = value < 0;
+
+    if (is_negative)
     {
         value = -value;
     }
 
-    Math::ItoA(value, p.symbols);
+    Math::ItoA(value, symbols);
 
-    p.index = (int)std::strlen(p.symbols) - 1;
+    index = (int)std::strlen(symbols) - 1;
 }
 
 

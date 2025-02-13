@@ -49,5 +49,7 @@ private:
         int NumSymbols() const;
 
         void SetSymbolToCurrentPos(char);
+
+        void Set(int);
     } p;
 };
