@@ -21,7 +21,7 @@ void ParameterDrawStruct::PressKey(int _key)
     {
         if (parameter->GetValue().IsVoltage() && p.index == 0)
         {
-            SetSymbolToCurrentPos('-');
+            p.SetSymbolToCurrentPos('-');
         }
     }
     else if (key == Key::Left)
@@ -54,7 +54,7 @@ void ParameterDrawStruct::PressKey(int _key)
         {
             static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            SetSymbolToCurrentPos(_keys[key]);
+            p.SetSymbolToCurrentPos(_keys[key]);
         }
     }
     else if (key == Key::GovLeft)
@@ -181,18 +181,18 @@ bool ParameterDrawStruct::ConsistDot() const
 }
 
 
-void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
+void ParameterDrawStruct::Params::SetSymbolToCurrentPos(char symbol)
 {
-    if (p.index < p.SIZE_BUFER - 1)
+    if (index < SIZE_BUFER - 1)
     {
-        if (p.index >= p.NumSymbols())
+        if (index >= NumSymbols())
         {
-            p.symbols[p.index++] = symbol;
-            p.symbols[p.index] = '\0';
+            symbols[index++] = symbol;
+            symbols[index] = '\0';
         }
         else
         {
-            p.symbols[p.index++] = symbol;
+            symbols[index++] = symbol;
         }
     }
 }

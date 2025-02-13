@@ -19,8 +19,6 @@ private:
 
     bool ConsistDot() const;
 
-    void SetSymbolToCurrentPos(char);
-
     void IncreaseInPosition(int);
 
     void DecreaseInPosition(int);
@@ -49,5 +47,7 @@ private:
         void DecreaseInPosition(int);
 
         int NumSymbols() const;
+
+        void SetSymbolToCurrentPos(char);
     } p;
 };
