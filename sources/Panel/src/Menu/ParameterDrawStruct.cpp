@@ -185,7 +185,7 @@ void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
 {
     if (p.index < p.SIZE_BUFER - 1)
     {
-        if (p.index >= NumSymbols())
+        if (p.index >= p.NumSymbols())
         {
             p.symbols[p.index++] = symbol;
             p.symbols[p.index] = '\0';
@@ -198,9 +198,9 @@ void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
 }
 
 
-int ParameterDrawStruct::NumSymbols() const
+int ParameterDrawStruct::Params::NumSymbols() const
 {
-    return (int)std::strlen(p.symbols);
+    return (int)std::strlen(symbols);
 }
 
 

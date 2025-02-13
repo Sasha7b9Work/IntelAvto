@@ -21,8 +21,6 @@ private:
 
     void SetSymbolToCurrentPos(char);
 
-    int NumSymbols() const;
-
     void IncreaseInPosition(int);
 
     void DecreaseInPosition(int);
@@ -49,5 +47,7 @@ private:
         void IncreaseInPosition(int);
 
         void DecreaseInPosition(int);
+
+        int NumSymbols() const;
     } p;
 };
