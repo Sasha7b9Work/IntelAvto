@@ -154,7 +154,7 @@ void DrawStruct::PressKey(int _key)
 
 bool DrawStruct::IsDigit(char symbol) const
 {
-    return (symbol >= 0x30) && (symbol <= 0x39);
+    return (symbol >= '0') && (symbol <= '9');
 }
 
 
@@ -169,9 +169,9 @@ void DrawStruct::DecreaseInPosition(int pos)
 
     symbol--;
 
-    if (symbol < 0x30)
+    if (symbol < '0')
     {
-        symbol = 0x39;
+        symbol = '9';
         DecreaseInPosition(pos - 1);
     }
 
@@ -190,13 +190,55 @@ void DrawStruct::IncreaseInPosition(int pos)
 
     symbol++;
 
-    if (symbol > 0x39)
+    if (symbol > '9')
     {
-        symbol = 0x30;
-        IncreaseInPosition(pos - 1);
+        if(OnLeftAllNines(pos))
+        {
+            bool first_already_one = false;         // Когда установим первый символ в "1", сделаем это true
+
+            for (int i = 0; i < pos; i++)
+            {
+                if (IsDigit(symbols[i]))
+                {
+                    symbols[i] = first_already_one ? '0' : '1';
+
+                    first_already_one = true;
+                }
+            }
+
+            symbol = '0';
+
+            char buffer[2] = { '0', '\0' };
+            std::strcat(symbols, buffer);
+            index++;
+        }
+        else
+        {
+            symbol = '0';
+            IncreaseInPosition(pos - 1);
+        }
     }
 
     symbols[pos] = symbol;
+}
+
+
+bool DrawStruct::OnLeftAllNines(int pos)
+{
+    for (int i = 0; i < pos; i++)
+    {
+        if (!IsDigit(symbols[i]))
+        {
+            continue;;
+        }
+
+        if (symbols[i] != '9')
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 

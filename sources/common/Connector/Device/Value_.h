@@ -30,6 +30,7 @@ private:
 
     void IncreaseInPosition(int);
     void DecreaseInPosition(int);
+    bool OnLeftAllNines(int pos);
 
     bool IsDigit(char) const;
 
