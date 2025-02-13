@@ -26,6 +26,7 @@ private:
     int index;                          // Текущий разряд. 0 - "-", если есть
     static const int SIZE_BUFER = 10;   // Максимальное количество хранимх разрядов вместе с завершающим нулём
     char symbols[SIZE_BUFER];
+    bool is_negative = false;           // Полярность значения
 };
 
 

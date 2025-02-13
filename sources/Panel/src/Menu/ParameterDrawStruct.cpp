@@ -70,11 +70,20 @@ void ParameterDrawStruct::PressKey(int _key)
 
 void ParameterDrawStruct::Draw(int x, int y) const
 {
-    for (int i = 0; i < (int)std::strlen(symbols); i++)
+    char buffer[128] = { '\0' };
+
+    if (is_negative)
+    {
+        std::strcat(buffer, "-");
+    }
+
+    std::strcat(buffer, symbols);
+
+    for (int i = 0; i < (int)std::strlen(buffer); i++)
     {
         Rect(13, 18).Fill(x + 10 * i - 2, y - 2, (i == index) ? Color::BLUE : Color::BACK);
 
-        char text[2] = { symbols[i], '\0' };
+        char text[2] = { buffer[i], '\0' };
         Text(text).Write(x + 10 * i, y, Color::WHITE);
     }
 }
@@ -84,7 +93,16 @@ void ParameterDrawStruct::Set(Parameter *_param)
 {
     parameter = _param;
 
-    Math::ItoA(parameter->GetValue().ToInt(), symbols);
+    int value = parameter->GetValue().ToInt();
+
+    is_negative = value < 0;
+
+    if (is_negative)
+    {
+        value = -value;
+    }
+
+    Math::ItoA(value, symbols);
 
     index = (int)std::strlen(symbols) - 1;
 }
@@ -303,5 +321,15 @@ void Value::Draw(int x, int y) const
 
 
 /*
-    
+    *** Общие положения ***
+
+    - index указывает на текущую позицию без учёта знака
+    - если подсвечен разряд, в котором есть значение, то при нажатии цифровой кнопки в этом месте
+      появляется нажатая цифра, при вращении ручки это значение увеличивается/уменьшается
+
+    *** Алгоритмы ***
+
+    1.  Открытие параметра
+        Выводится целочисленное значение без единиц измерения
+        Последний разряд подсвечен
 */
