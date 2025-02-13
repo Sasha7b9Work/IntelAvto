@@ -36,8 +36,6 @@ private:
         char symbols[SIZE_BUFER];
         bool is_negative = false;           // Полярность значения
 
-        void PressKey(int, Parameter *);
-
         bool OnLeftAllNines(int pos);
 
         bool IsDigit(char) const;

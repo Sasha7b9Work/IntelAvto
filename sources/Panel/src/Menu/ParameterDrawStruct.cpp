@@ -13,13 +13,7 @@
 using namespace Primitives;
 
 
-void ParameterDrawStruct::PressKey(int key)
-{
-    p.PressKey(key, parameter);
-}
-
-
-void ParameterDrawStruct::Params::PressKey(int _key, Parameter *param)
+void ParameterDrawStruct::PressKey(int _key)
 {
     Key::E key = (Key::E)_key;
 
@@ -126,7 +120,11 @@ bool ParameterDrawStruct::IsMinimalValueOrLess() const
 
     ToValue(&value);
 
-    return value.ToInt() <= parameter->GetMin().ToInt();
+    int it_value = value.ToInt();
+
+    int min_value = parameter->GetMin().ToInt();
+
+    return it_value <= min_value;
 }
 
 
