@@ -27,10 +27,6 @@ private:
 
     void DecreaseInPosition(int);
 
-    bool OnLeftAllNines(int pos);
-
-    bool IsDigit(char) const;
-
     // Текущее значение является минимально допустимым
     bool IsMinimalValueOrLess() const;
 
@@ -45,5 +41,9 @@ private:
         int index;                          // Текущий разряд. 0 - "-", если есть
         char symbols[SIZE_BUFER];
         bool is_negative = false;           // Полярность значения
+
+        bool OnLeftAllNines(int pos);
+
+        bool IsDigit(char) const;
     } p;
 };

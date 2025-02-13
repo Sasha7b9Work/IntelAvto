@@ -213,7 +213,7 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
 
     char symbol = p.symbols[pos];
 
-    if (!IsDigit(symbol))
+    if (!p.IsDigit(symbol))
     {
         return;
     }
@@ -222,13 +222,13 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
 
     if (symbol > '9')
     {
-        if (OnLeftAllNines(pos))
+        if (p.OnLeftAllNines(pos))
         {
             bool first_already_one = false;         // Когда установим первый символ в "1", сделаем это true
 
             for (int i = 0; i < pos; i++)
             {
-                if (IsDigit(p.symbols[i]))
+                if (p.IsDigit(p.symbols[i]))
                 {
                     p.symbols[i] = first_already_one ? '0' : '1';
 
@@ -262,7 +262,7 @@ void ParameterDrawStruct::DecreaseInPosition(int pos)
 
     char symbol = p.symbols[pos];
 
-    if (!IsDigit(symbol))
+    if (!p.IsDigit(symbol))
     {
         return;
     }
@@ -279,16 +279,16 @@ void ParameterDrawStruct::DecreaseInPosition(int pos)
 }
 
 
-bool ParameterDrawStruct::OnLeftAllNines(int pos)
+bool ParameterDrawStruct::Params::OnLeftAllNines(int pos)
 {
     for (int i = 0; i < pos; i++)
     {
-        if (!IsDigit(p.symbols[i]))
+        if (!IsDigit(symbols[i]))
         {
             continue;
         }
 
-        if (p.symbols[i] != '9')
+        if (symbols[i] != '9')
         {
             return false;
         }
@@ -298,7 +298,7 @@ bool ParameterDrawStruct::OnLeftAllNines(int pos)
 }
 
 
-bool ParameterDrawStruct::IsDigit(char symbol) const
+bool ParameterDrawStruct::Params::IsDigit(char symbol) const
 {
     return (symbol >= '0') && (symbol <= '9');
 }
