@@ -167,20 +167,6 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 }
 
 
-bool ParameterDrawStruct::ConsistDot() const
-{
-    for (uint i = 0; i < std::strlen(p.symbols); i++)
-    {
-        if (p.symbols[i] == '.')
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-
 void ParameterDrawStruct::Params::SetSymbolToCurrentPos(char symbol)
 {
     if (index < SIZE_BUFER - 1)

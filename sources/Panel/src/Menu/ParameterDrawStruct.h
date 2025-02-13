@@ -17,8 +17,6 @@ struct ParameterDrawStruct
 
 private:
 
-    bool ConsistDot() const;
-
     void IncreaseInPosition(int);
 
     void DecreaseInPosition(int);
