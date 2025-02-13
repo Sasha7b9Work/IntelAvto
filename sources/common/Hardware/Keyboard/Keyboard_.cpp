@@ -67,32 +67,34 @@ namespace Keyboard
     // Очередь сообщений - здесь все события органов управления
 #define MAX_ACTIONS 100
     static Control controls[MAX_ACTIONS];
+
     // Количество уже имеющихся сообщений
     static int numActions = 0;
 
-    // Установленное в true значение означает, что сохранять куда-либо информацию о её состоянии нельзя до отпускания (чтобы не было ложных срабатываний типа Long
-    static bool alreadyLong[NUM_SL][NUM_RL];
     // При обнаружении нажатия кнопки сюда записывается время нажатия
     static uint timePress[NUM_SL][NUM_RL];
 
-    // Время последнего автонажатия нопки
-    static volatile uint prevRepeat = 0;
-//    static volatile uint prevPause = 0;
-
     // Установить состояние пина
     static void Set_SL(int, int);
+
     // Установить состояние всех пинов в одно положение
     static void Set_All_SL(int);
+
     // Возвращает состояние пина rl
     static int Read_RL(int rl);
+
     // Инициализировать пины
     static void InitPins();
+
     // Инициализировать таймер для периодического опроса клавиатуры
     static void InitTimer();
+
     // Функция, периодически вызываемая по прерыванию таймера
     static void Update();
+
     // Добавить действие в буфер
     static void AddAction(Key::E key, Action::E action);
+
     // Обработка ручки
     static void DetectRegulator();
 
@@ -127,25 +129,13 @@ void Keyboard::Update()
                         if (!BUTTON_IS_PRESS(state))        // Если сейчас кнопка находится в отжатом состояини
                         {
                             timePress[sl][rl] = 0;
-                            if (!alreadyLong[sl][rl])
-                            {
-                                AddAction(key, Action::Release);
-                            }
-                            alreadyLong[sl][rl] = false;
-                            prevRepeat = 0;
-                        }
-                        else if (time - timePress[sl][rl] > 500 && !alreadyLong[sl][rl])
-                        {
-                            AddAction(key, Action::Long);
-                            alreadyLong[sl][rl] = true;
                         }
                     }
                 }
-                else if (BUTTON_IS_PRESS(state) && !alreadyLong[sl][rl])
+                else if (BUTTON_IS_PRESS(state))
                 {
                     timePress[sl][rl] = time;
                     AddAction(key, Action::Press);
-                    prevRepeat = 0;
                 }
             }
         }
