@@ -60,7 +60,7 @@ void Value::Draw(int x, int y) const
 }
 
 
-bool DrawStruct::ToValue(Value *result) const
+bool ParameterDrawStruct::ToValue(Value *result) const
 {
     char buffer[128];
 
@@ -97,7 +97,7 @@ bool DrawStruct::ToValue(Value *result) const
 }
 
 
-void DrawStruct::PressKey(int _key)
+void ParameterDrawStruct::PressKey(int _key)
 {
     Key::E key = (Key::E)_key;
 
@@ -152,13 +152,13 @@ void DrawStruct::PressKey(int _key)
 }
 
 
-bool DrawStruct::IsDigit(char symbol) const
+bool ParameterDrawStruct::IsDigit(char symbol) const
 {
     return (symbol >= '0') && (symbol <= '9');
 }
 
 
-void DrawStruct::DecreaseInPosition(int pos)
+void ParameterDrawStruct::DecreaseInPosition(int pos)
 {
     char symbol = symbols[pos];
 
@@ -179,7 +179,7 @@ void DrawStruct::DecreaseInPosition(int pos)
 }
 
 
-void DrawStruct::IncreaseInPosition(int pos)
+void ParameterDrawStruct::IncreaseInPosition(int pos)
 {
     char symbol = symbols[pos];
 
@@ -223,13 +223,13 @@ void DrawStruct::IncreaseInPosition(int pos)
 }
 
 
-bool DrawStruct::OnLeftAllNines(int pos)
+bool ParameterDrawStruct::OnLeftAllNines(int pos)
 {
     for (int i = 0; i < pos; i++)
     {
         if (!IsDigit(symbols[i]))
         {
-            continue;;
+            continue;
         }
 
         if (symbols[i] != '9')
@@ -242,7 +242,7 @@ bool DrawStruct::OnLeftAllNines(int pos)
 }
 
 
-void DrawStruct::SetSymbolToCurrentPos(char symbol)
+void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
 {
     if (index < SIZE_BUFER - 1)
     {
@@ -259,13 +259,13 @@ void DrawStruct::SetSymbolToCurrentPos(char symbol)
 }
 
 
-int DrawStruct::NumSymbols() const
+int ParameterDrawStruct::NumSymbols() const
 {
     return (int)std::strlen(symbols);
 }
 
 
-bool DrawStruct::ConsistDot() const
+bool ParameterDrawStruct::ConsistDot() const
 {
     for (uint i = 0; i < std::strlen(symbols); i++)
     {
@@ -279,7 +279,7 @@ bool DrawStruct::ConsistDot() const
 }
 
 
-void DrawStruct::Draw(int x, int y) const
+void ParameterDrawStruct::Draw(int x, int y) const
 {
     for (int i = 0; i < (int)std::strlen(symbols); i++)
     {
@@ -291,7 +291,7 @@ void DrawStruct::Draw(int x, int y) const
 }
 
 
-void DrawStruct::Set(Parameter *_param)
+void ParameterDrawStruct::Set(Parameter *_param)
 {
     parameter = _param;
 

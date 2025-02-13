@@ -17,7 +17,7 @@ struct TypeValue
 };
 
 
-struct DrawStruct
+struct ParameterDrawStruct
 {
     void PressKey(int);
     void Draw(int x, int y) const;
