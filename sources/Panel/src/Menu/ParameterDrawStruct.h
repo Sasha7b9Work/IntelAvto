@@ -45,5 +45,7 @@ private:
         bool OnLeftAllNines(int pos);
 
         bool IsDigit(char) const;
+
+        void DecreaseInPosition(int);
     } p;
 };

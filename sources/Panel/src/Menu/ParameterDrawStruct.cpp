@@ -126,7 +126,7 @@ bool ParameterDrawStruct::IsMaximumValueOrAbove() const
 
     ToValue(&value);
 
-    return value.ToInt() == parameter->GetMax().ToInt();
+    return value.ToInt() >= parameter->GetMax().ToInt();
 }
 
 
@@ -260,9 +260,15 @@ void ParameterDrawStruct::DecreaseInPosition(int pos)
         return;
     }
 
-    char symbol = p.symbols[pos];
+    p.DecreaseInPosition(pos);
+}
 
-    if (!p.IsDigit(symbol))
+
+void ParameterDrawStruct::Params::DecreaseInPosition(int pos)
+{
+    char symbol = symbols[pos];
+
+    if (!IsDigit(symbol))
     {
         return;
     }
@@ -275,7 +281,7 @@ void ParameterDrawStruct::DecreaseInPosition(int pos)
         DecreaseInPosition(pos - 1);
     }
 
-    p.symbols[pos] = symbol;
+    symbols[pos] = symbol;
 }
 
 
