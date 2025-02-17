@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 56
+#define VERSION_BUILD 57
 
-#define DATE_BUILD "2025-02-17 14:13:07"
+#define DATE_BUILD "2025-02-17 14:52:08"
 
 #include <stdint.h>
 
@@ -14,6 +14,7 @@
     #define __attribute(x)
     #define __attribute__(x)
     #define __IO
+    #define __STATIC_INLINE
 #else
     #include <stm32f4xx_hal.h>
 #endif

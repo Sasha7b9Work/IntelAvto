@@ -14,6 +14,7 @@ include_directories(
     tests
     ../common
     ../common/libs/FatFS
+    ../common/libs/USBD
     ../common/libs/USBH
     ../common/_VS_KEIL/CMSIS
     ../common/_VS_KEIL/FatFS
@@ -77,6 +78,7 @@ file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
 file(GLOB SCPI                      src/SCPI/*.*)
 file(GLOB SETTINGS                  src/Settings/*.*)
 file(GLOB UTILS               ../common/Utils/*.*)
+file(GLOB VCP                 ../common/VCP/*.*)
 
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
@@ -97,6 +99,7 @@ source_group(Menu/Pages/       FILES ${MENU_PAGES})
 source_group(SCPI              FILES ${SCPI})
 source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
+source_group(VCP               FILES ${VCP})
 
 set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
@@ -124,4 +127,5 @@ add_library(${PROJECT_NAME}
     ${SCPI}
     ${SETTINGS}
     ${UTILS}
+    ${VCP}
 )

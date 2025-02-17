@@ -7,6 +7,7 @@
 #include <usbd_core.h>
 #include <usbd_cdc.h>
 #include <cstdarg>
+#include <cstring>
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -40,7 +41,7 @@ void VCP::SendDataAsynch(uint8 *buffer, int size)
 
     size = Math::Min(size, SIZE_BUFFER);
     while (!PrevSendingComplete())  {}
-    memcpy(trBuf, buffer, (uint)size);
+    std::memcpy(trBuf, buffer, (uint)size);
 
     USBD_CDC_SetTxBuffer(&handleUSBD, trBuf, (uint16)size);
     USBD_CDC_TransmitPacket(&handleUSBD);
@@ -80,7 +81,7 @@ void VCP::SendBufferSynch(const uint8 *buffer, int size)
                 int reqBytes = SIZE_BUFFER_VCP - sizeBuffer;
                 LIMITATION(reqBytes, 0, size)
                 while (pCDC->TxState == 1) {}
-                memcpy(buffSend + sizeBuffer, (void *)buffer, (uint)reqBytes);
+                std::memcpy(buffSend + sizeBuffer, (void *)buffer, (uint)reqBytes);
                 USBD_CDC_SetTxBuffer(&handleUSBD, buffSend, SIZE_BUFFER_VCP);
                 USBD_CDC_TransmitPacket(&handleUSBD);
                 size -= reqBytes;
@@ -89,7 +90,7 @@ void VCP::SendBufferSynch(const uint8 *buffer, int size)
             }
             else
             {
-                memcpy(buffSend + sizeBuffer, (void *)buffer, (uint)size);
+                std::memcpy(buffSend + sizeBuffer, (void *)buffer, (uint)size);
                 sizeBuffer += size;
                 size = 0;
             }
@@ -107,8 +108,8 @@ void VCP::SendStringAsynch(char *format, ...)
         va_start(args, format);
         vsprintf(buffer, format, args);
         va_end(args);
-        strcat(buffer, "\r\n");
-        SendDataAsynch((uint8 *)buffer, (int)strlen(buffer));
+        std::strcat(buffer, "\r\n");
+        SendDataAsynch((uint8 *)buffer, (int)std::strlen(buffer));
     }
 }
 
@@ -122,6 +123,6 @@ void VCP::SendStringAsynchRAW(char *format, ...)
         va_start(args, format);
         vsprintf(buffer, format, args);
         va_end(args);
-        SendDataAsynch((uint8 *)buffer, (int)strlen(buffer));
+        SendDataAsynch((uint8 *)buffer, (int)std::strlen(buffer));
     }
 }
