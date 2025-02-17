@@ -310,11 +310,11 @@ bool Parameter::OnEventControl(const Control &control)
 
             if (ds.ToValue(&new_value))
             {
-                if (new_value.ToFloat() < GetMin().ToFloat())
+                if (new_value.ToIntAbs() < GetMin().ToIntAbs())
                 {
                     GetValue() = Value(GetMin().GetRaw());
                 }
-                else if (new_value.ToFloat() > GetMax().ToFloat())
+                else if (new_value.ToIntAbs() > GetMax().ToIntAbs())
                 {
                     GetValue() = Value(GetMax().GetRaw());
                 }
