@@ -73,6 +73,7 @@ file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
                               ../common/Hardware/HAL/HAL_PINS.*
                               ../common/Hardware/HAL/HAL_RTC_.cpp)
 file(GLOB HARDWARE_KEYBOARD   ../common/Hardware/Keyboard/*.*)
+file(GLOB LAN                       src/LAN/*.*)
 file(GLOB MENU                      src/Menu/*.*)
 file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
 file(GLOB SCPI                      src/SCPI/*.*)
@@ -94,6 +95,7 @@ source_group(Hardware          FILES ${HARDWARE})
 source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
 source_group(Hardware/Keyboard FILES ${HARDWARE_KEYBOARD})
+source_group(LAN               FILES ${LAN})
 source_group(Menu              FILES ${MENU})
 source_group(Menu/Pages/       FILES ${MENU_PAGES})
 source_group(SCPI              FILES ${SCPI})
@@ -122,6 +124,7 @@ add_library(${PROJECT_NAME}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
     ${HARDWARE_KEYBOARD}
+    ${LAN}
     ${MENU}
     ${MENU_PAGES}
     ${SCPI}

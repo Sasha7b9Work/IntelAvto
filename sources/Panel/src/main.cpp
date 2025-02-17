@@ -6,6 +6,7 @@
 #include "Display/Display_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "FlashDrive/FlashDrive.h"
+#include "LAN/LAN.h"
 
 
 int main(void)
@@ -20,10 +21,13 @@ int main(void)
 
     FDrive::Init();
 
+    LAN::Init();
+
     while (1)
     {
         Menu::Input::Update();
         Display::Update();
         Timer::UpdateTasks();
+        LAN::Update();
     }
 }
