@@ -64,6 +64,11 @@ void Menu::SetOpenedPage(Page *page)
 
 void Menu::Input::OnControl(const Control &control)
 {
+    if (!control.IsRelease() && !control.IsRotateGovernor())
+    {
+        return;
+    }
+
     if (!Device::IsStopped())                                               // Когда идёт тест,
     {
         if (control.key != Key::Start && control.key != Key::Stop)          // то обрабатываем только СТАРТ и СТОП

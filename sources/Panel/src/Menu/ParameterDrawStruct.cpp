@@ -19,34 +19,34 @@ void ParameterDrawStruct::PressKey(int _key)
 
     if (key == Key::Minus)
     {
-        if (parameter->GetValue().IsVoltage() && index == 0)
+        if (parameter->GetValue().IsVoltage() && p.index == 0)
         {
-            SetSymbolToCurrentPos('-');
+            p.SetSymbolToCurrentPos('-');
         }
     }
     else if (key == Key::Left)
     {
-        if (index > 0)
+        if (p.index > 0)
         {
-            index--;
+            p.index--;
         }
     }
     else if (key == Key::Right)
     {
-        if (index < (int)std::strlen(symbols) - 1)
+        if (p.index < (int)std::strlen(p.symbols) - 1)
         {
-            index++;
+            p.index++;
         }
     }
     else if (key == Key::Esc)
     {
-        symbols[0] = '\0';
-        index = 0;
+        p.symbols[0] = '\0';
+        p.index = 0;
     }
     else if (key >= Key::_1 && key <= Key::_0)
     {
-        if ((key == Key::_0 && index == 0) ||
-            (key == Key::_0 && index == 1 && symbols[0] == '-'))
+        if ((key == Key::_0 && p.index == 0) ||
+            (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))
         {
             // Ноль первым быть не может
         }
@@ -54,27 +54,38 @@ void ParameterDrawStruct::PressKey(int _key)
         {
             static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            SetSymbolToCurrentPos(_keys[key]);
+            p.SetSymbolToCurrentPos(_keys[key]);
         }
     }
     else if (key == Key::GovLeft)
     {
-        DecreaseInPosition(index);
+        DecreaseInPosition(p.index);
     }
     else if (key == Key::GovRight)
     {
-        IncreaseInPosition(index);
+        IncreaseInPosition(p.index);
     }
 }
 
 
 void ParameterDrawStruct::Draw(int x, int y) const
 {
-    for (int i = 0; i < (int)std::strlen(symbols); i++)
-    {
-        Rect(13, 18).Fill(x + 10 * i - 2, y - 2, (i == index) ? Color::BLUE : Color::BACK);
+    char buffer[128] = { '\0' };
 
-        char text[2] = { symbols[i], '\0' };
+    if (p.is_negative)
+    {
+        std::strcat(buffer, "-");
+    }
+
+    std::strcat(buffer, p.symbols);
+
+    int pos_hight = p.is_negative ? (p.index + 1) : (p.index);        // Позиция подсвеченного разряда
+
+    for (int i = 0; i < (int)std::strlen(buffer); i++)
+    {
+        Rect(13, 18).Fill(x + 10 * i - 2, y - 2, (i == pos_hight) ? Color::BLUE : Color::BACK);
+
+        char text[2] = { buffer[i], '\0' };
         Text(text).Write(x + 10 * i, y, Color::WHITE);
     }
 }
@@ -84,9 +95,46 @@ void ParameterDrawStruct::Set(Parameter *_param)
 {
     parameter = _param;
 
-    Math::ItoA(parameter->GetValue().ToInt(), symbols);
+    p.Set(parameter->GetValue().ToInt());
+}
+
+
+void ParameterDrawStruct::Params::Set(int value)
+{
+    is_negative = value < 0;
+
+    if (is_negative)
+    {
+        value = -value;
+    }
+
+    Math::ItoA(value, symbols);
 
     index = (int)std::strlen(symbols) - 1;
+}
+
+
+bool ParameterDrawStruct::IsMinimalValueOrLess() const
+{
+    Value value(0);
+
+    ToValue(&value);
+
+    int it_value = value.ToInt();
+
+    int min_value = parameter->GetMin().ToInt();
+
+    return it_value <= min_value;
+}
+
+
+bool ParameterDrawStruct::IsMaximumValueOrAbove() const
+{
+    Value value(0);
+
+    ToValue(&value);
+
+    return value.ToInt() >= parameter->GetMax().ToInt();
 }
 
 
@@ -94,7 +142,7 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 {
     char buffer[128];
 
-    std::memcpy(buffer, symbols, std::strlen(symbols));
+    std::memcpy(buffer, p.symbols, std::strlen(p.symbols));
 
     char *end = nullptr;
 
@@ -102,9 +150,9 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 
     if (SU::String2Int(buffer, &value, &end))
     {
-        uint raw = (value > 0) ? (uint)value : (uint)-value;
+        uint raw = (uint)value;
 
-        if (value < 0)
+        if (p.is_negative)
         {
             raw |= (uint)(1 << 31);
         }
@@ -127,21 +175,7 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 }
 
 
-bool ParameterDrawStruct::ConsistDot() const
-{
-    for (uint i = 0; i < std::strlen(symbols); i++)
-    {
-        if (symbols[i] == '.')
-        {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-
-void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
+void ParameterDrawStruct::Params::SetSymbolToCurrentPos(char symbol)
 {
     if (index < SIZE_BUFER - 1)
     {
@@ -158,7 +192,7 @@ void ParameterDrawStruct::SetSymbolToCurrentPos(char symbol)
 }
 
 
-int ParameterDrawStruct::NumSymbols() const
+int ParameterDrawStruct::Params::NumSymbols() const
 {
     return (int)std::strlen(symbols);
 }
@@ -166,12 +200,18 @@ int ParameterDrawStruct::NumSymbols() const
 
 void ParameterDrawStruct::IncreaseInPosition(int pos)
 {
-    char symbol = symbols[pos];
-
-    if (!IsDigit(symbol))
+    if (IsMaximumValueOrAbove())
     {
         return;
     }
+
+    p.IncreaseInPosition(pos);
+}
+
+
+void ParameterDrawStruct::Params::IncreaseInPosition(int pos)
+{
+    char symbol = symbols[pos];
 
     symbol++;
 
@@ -205,10 +245,22 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
     }
 
     symbols[pos] = symbol;
+
 }
 
 
 void ParameterDrawStruct::DecreaseInPosition(int pos)
+{
+    if (IsMinimalValueOrLess())
+    {
+        return;
+    }
+
+    p.DecreaseInPosition(pos);
+}
+
+
+void ParameterDrawStruct::Params::DecreaseInPosition(int pos)
 {
     char symbol = symbols[pos];
 
@@ -229,7 +281,7 @@ void ParameterDrawStruct::DecreaseInPosition(int pos)
 }
 
 
-bool ParameterDrawStruct::OnLeftAllNines(int pos)
+bool ParameterDrawStruct::Params::OnLeftAllNines(int pos)
 {
     for (int i = 0; i < pos; i++)
     {
@@ -248,7 +300,7 @@ bool ParameterDrawStruct::OnLeftAllNines(int pos)
 }
 
 
-bool ParameterDrawStruct::IsDigit(char symbol) const
+bool ParameterDrawStruct::Params::IsDigit(char symbol) const
 {
     return (symbol >= '0') && (symbol <= '9');
 }
@@ -303,5 +355,18 @@ void Value::Draw(int x, int y) const
 
 
 /*
-    
+    *** Общие положения ***
+
+    - index указывает на текущую позицию без учёта знака
+    - если подсвечен разряд, в котором есть значение, то при нажатии цифровой кнопки в этом месте
+      появляется нажатая цифра, при вращении ручки это значение увеличивается/уменьшается
+
+    *** Алгоритмы ***
+
+    1.  Открытие параметра
+        Выводится целочисленное значение без единиц измерения
+        Последний разряд подсвечен
+
+    2.  Вращение ручки вниз.
+        Уменьшает значение в текущем разряде, если величина установленного напряжения больше минимальной (допускает уменьшение)
 */
