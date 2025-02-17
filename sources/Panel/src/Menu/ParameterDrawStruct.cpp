@@ -19,34 +19,34 @@ void ParameterDrawStruct::PressKey(int _key)
 
     if (key == Key::Minus)
     {
-        if (param->GetValue().IsVoltage() && index == 0)
+        if (parameter->GetValue().IsVoltage() && p.index == 0)
         {
-            SetSymbolToCurrentPos('-');
+            p.SetSymbolToCurrentPos('-');
         }
     }
     else if (key == Key::Left)
     {
-        if (index > 0)
+        if (p.index > 0)
         {
-            index--;
+            p.index--;
         }
     }
     else if (key == Key::Right)
     {
-        if (index < (int)std::strlen(symbols) - 1)
+        if (p.index < (int)std::strlen(p.symbols) - 1)
         {
-            index++;
+            p.index++;
         }
     }
     else if (key == Key::Esc)
     {
-        symbols[0] = '\0';
-        index = 0;
+        p.symbols[0] = '\0';
+        p.index = 0;
     }
     else if (key >= Key::_1 && key <= Key::_0)
     {
-        if ((key == Key::_0 && index == 0) ||
-            (key == Key::_0 && index == 1 && symbols[0] == '-'))
+        if ((key == Key::_0 && p.index == 0) ||
+            (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))
         {
             // Ноль первым быть не может
         }
@@ -54,16 +54,16 @@ void ParameterDrawStruct::PressKey(int _key)
         {
             static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
 
-            SetSymbolToCurrentPos(_keys[key]);
+            p.SetSymbolToCurrentPos(_keys[key]);
         }
     }
     else if (key == Key::GovLeft)
     {
-        DecreaseInPosition(index);
+        DecreaseInPosition(p.index);
     }
     else if (key == Key::GovRight)
     {
-        IncreaseInPosition(index);
+        IncreaseInPosition(p.index);
     }
 }
 
