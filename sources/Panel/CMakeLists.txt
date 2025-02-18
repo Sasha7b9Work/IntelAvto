@@ -11,11 +11,13 @@ include_directories(
     src/Hardware/HAL
     src/Hardware/USBD
     src/Hardware/USBH
+    src/LAN
     tests
     ../common
     ../common/libs/FatFS
     ../common/libs/USBD
     ../common/libs/USBH
+    ../common/libs/LwIP
     ../common/_VS_KEIL/CMSIS
     ../common/_VS_KEIL/FatFS
     ../common/_VS_KEIL/USBH
@@ -30,6 +32,8 @@ include_directories(
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/HID/Inc
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc
+    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/LwIP/src/include
+    ../common/libs/STM32Cube_F4/Middlewares/Third_Party/LwIP/system
 )
 
 add_definitions(-DSTM32F429xx)
@@ -50,6 +54,7 @@ add_compile_options(
     /wd5027    # move assignment operator was implicitly defined as deleted
     /wd5045    # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
     /wd5204
+    /wd5039
 )
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h

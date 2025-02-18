@@ -1,32 +1,71 @@
-/**
-  ******************************************************************************
-  * @file    LwIP/LwIP_HTTP_Server_Raw/Src/ethernetif.c
-  * @author  MCD Application Team
-  * @brief   This file implements Ethernet network interface drivers for lwIP
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2017 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* Includes ------------------------------------------------------------------*/
+#include "defines.h"
 #include "stm32f4xx_hal.h"
 #include "lwip/timeouts.h"
 #include "netif/ethernet.h"
 #include "netif/etharp.h"
 #include "ethernetif.h"
-#include "../Components/dp83848/dp83848.h"
 #include <string.h>
 
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Network interface name */
+#define DP83848_PHYSCSR_AUTONEGO_DONE   ((uint16_t)0x010U)
+#define DP83848_PHYSCSR_HCDSPEEDMASK    ((uint16_t)0x006U)
+#define DP83848_PHYSCSR_10BT_HD         ((uint16_t)0x002U)
+#define DP83848_PHYSCSR_10BT_FD         ((uint16_t)0x006U)
+#define DP83848_PHYSCSR_100BTX_HD       ((uint16_t)0x000U)
+#define DP83848_PHYSCSR_100BTX_FD       ((uint16_t)0x004U)
+
+#define DP83848_BCR_SOFT_RESET         ((uint16_t)0x8000U)
+#define DP83848_BCR_LOOPBACK           ((uint16_t)0x4000U)
+#define DP83848_BCR_SPEED_SELECT       ((uint16_t)0x2000U)
+#define DP83848_BCR_AUTONEGO_EN        ((uint16_t)0x1000U)
+#define DP83848_BCR_POWER_DOWN         ((uint16_t)0x0800U)
+#define DP83848_BCR_ISOLATE            ((uint16_t)0x0400U)
+#define DP83848_BCR_RESTART_AUTONEGO   ((uint16_t)0x0200U)
+#define DP83848_BCR_DUPLEX_MODE        ((uint16_t)0x0100U)
+
+#define DP83848_BSR_100BASE_T4       ((uint16_t)0x8000U)
+#define DP83848_BSR_100BASE_TX_FD    ((uint16_t)0x4000U)
+#define DP83848_BSR_100BASE_TX_HD    ((uint16_t)0x2000U)
+#define DP83848_BSR_10BASE_T_FD      ((uint16_t)0x1000U)
+#define DP83848_BSR_10BASE_T_HD      ((uint16_t)0x0800U)
+#define DP83848_BSR_MF_PREAMBLE      ((uint16_t)0x0040U)
+#define DP83848_BSR_AUTONEGO_CPLT    ((uint16_t)0x0020U)
+#define DP83848_BSR_REMOTE_FAULT     ((uint16_t)0x0010U)
+#define DP83848_BSR_AUTONEGO_ABILITY ((uint16_t)0x0008U)
+#define DP83848_BSR_LINK_STATUS      ((uint16_t)0x0004U)
+#define DP83848_BSR_JABBER_DETECT    ((uint16_t)0x0002U)
+#define DP83848_BSR_EXTENDED_CAP     ((uint16_t)0x0001U)
+
+#define DP83848_SMR_MODE       ((uint16_t)0x00E0U)
+#define DP83848_SMR_PHY_ADDR   ((uint16_t)0x001FU)
+
+#define DP83848_BCR      ((uint16_t)0x0000U)
+#define DP83848_BSR      ((uint16_t)0x0001U)
+#define DP83848_PHYI1R   ((uint16_t)0x0002U)
+#define DP83848_PHYI2R   ((uint16_t)0x0003U)
+#define DP83848_ANAR     ((uint16_t)0x0004U)
+#define DP83848_ANLPAR   ((uint16_t)0x0005U)
+#define DP83848_ANER     ((uint16_t)0x0006U)
+#define DP83848_ANNPTR   ((uint16_t)0x0007U)
+#define DP83848_SMR      ((uint16_t)0x0019U)
+#define DP83848_ISFR     ((uint16_t)0x0012U)
+#define DP83848_IMR      ((uint16_t)0x0011U)
+#define DP83848_PHYSCSR  ((uint16_t)0x0010U)
+
+#define DP83848_MAX_DEV_ADDR   ((uint32_t)31U)
+
+#define  DP83848_STATUS_READ_ERROR            ((int32_t)-5)
+#define  DP83848_STATUS_WRITE_ERROR           ((int32_t)-4)
+#define  DP83848_STATUS_ADDRESS_ERROR         ((int32_t)-3)
+#define  DP83848_STATUS_RESET_TIMEOUT         ((int32_t)-2)
+#define  DP83848_STATUS_ERROR                 ((int32_t)-1)
+#define  DP83848_STATUS_OK                    ((int32_t) 0)
+#define  DP83848_STATUS_LINK_DOWN             ((int32_t) 1)
+#define  DP83848_STATUS_100MBITS_FULLDUPLEX   ((int32_t) 2)
+#define  DP83848_STATUS_100MBITS_HALFDUPLEX   ((int32_t) 3)
+#define  DP83848_STATUS_10MBITS_FULLDUPLEX    ((int32_t) 4)
+#define  DP83848_STATUS_10MBITS_HALFDUPLEX    ((int32_t) 5)
+#define  DP83848_STATUS_AUTONEGO_NOTDONE      ((int32_t) 6)
+
 #define IFNAME0 's'
 #define IFNAME1 't'
 
@@ -37,6 +76,202 @@
 #define ETH_TX_BUFFER_MAX             ((ETH_TX_DESC_CNT) * 2) /* HAL_ETH_Transmit(_IT) may attach two
                                                * buffers per descriptor. */
 
+typedef int32_t  (*dp83848_Init_Func) (void);
+typedef int32_t  (*dp83848_DeInit_Func) (void);
+typedef int32_t  (*dp83848_ReadReg_Func)   (uint32_t, uint32_t, uint32_t *);
+typedef int32_t  (*dp83848_WriteReg_Func)  (uint32_t, uint32_t, uint32_t);
+typedef int32_t  (*dp83848_GetTick_Func)  (void);
+
+typedef struct
+{
+  dp83848_Init_Func      Init;
+  dp83848_DeInit_Func    DeInit;
+  dp83848_WriteReg_Func  WriteReg;
+  dp83848_ReadReg_Func   ReadReg;
+  dp83848_GetTick_Func   GetTick;
+} dp83848_IOCtx_t;
+
+typedef struct
+{
+  uint32_t            DevAddr;
+  uint32_t            Is_Initialized;
+  dp83848_IOCtx_t     IO;
+  void               *pData;
+}dp83848_Object_t;
+
+/**
+  * @brief  Register IO functions to component object
+  * @param  pObj: device object  of DP83848_Object_t.
+  * @param  ioctx: holds device IO functions.
+  * @retval DP83848_STATUS_OK  if OK
+  *         DP83848_STATUS_ERROR if missing mandatory function
+  */
+int32_t  DP83848_RegisterBusIO(dp83848_Object_t *pObj, dp83848_IOCtx_t *ioctx)
+{
+  if(!pObj || !ioctx->ReadReg || !ioctx->WriteReg || !ioctx->GetTick)
+  {
+    return DP83848_STATUS_ERROR;
+  }
+
+  pObj->IO.Init = ioctx->Init;
+  pObj->IO.DeInit = ioctx->DeInit;
+  pObj->IO.ReadReg = ioctx->ReadReg;
+  pObj->IO.WriteReg = ioctx->WriteReg;
+  pObj->IO.GetTick = ioctx->GetTick;
+
+  return DP83848_STATUS_OK;
+}
+
+/**
+  * @brief  Initialize the DP83848 and configure the needed hardware resources
+  * @param  pObj: device object DP83848_Object_t.
+  * @retval DP83848_STATUS_OK  if OK
+  *         DP83848_STATUS_ADDRESS_ERROR if cannot find device address
+  *         DP83848_STATUS_READ_ERROR if connot read register
+  */
+ int32_t DP83848_Init(dp83848_Object_t *pObj)
+ {
+   uint32_t regvalue = 0, addr = 0;
+   int32_t status = DP83848_STATUS_OK;
+
+   if(pObj->Is_Initialized == 0)
+   {
+     if(pObj->IO.Init != 0)
+     {
+       /* GPIO and Clocks initialization */
+       pObj->IO.Init();
+     }
+
+     /* for later check */
+     pObj->DevAddr = DP83848_MAX_DEV_ADDR + 1;
+
+     /* Get the device address from special mode register */
+     for(addr = 0; addr <= DP83848_MAX_DEV_ADDR; addr ++)
+     {
+       if(pObj->IO.ReadReg(addr, DP83848_SMR, &regvalue) < 0)
+       {
+         status = DP83848_STATUS_READ_ERROR;
+         /* Can't read from this device address
+            continue with next address */
+         continue;
+       }
+
+       if((regvalue & DP83848_SMR_PHY_ADDR) == addr)
+       {
+         pObj->DevAddr = addr;
+         status = DP83848_STATUS_OK;
+         break;
+       }
+     }
+
+     if(pObj->DevAddr > DP83848_MAX_DEV_ADDR)
+     {
+       status = DP83848_STATUS_ADDRESS_ERROR;
+     }
+
+     /* if device address is matched */
+     if(status == DP83848_STATUS_OK)
+     {
+       pObj->Is_Initialized = 1;
+     }
+   }
+
+   return status;
+ }
+
+/**
+  * @brief  Get the link state of DP83848 device.
+  * @param  pObj: Pointer to device object.
+  * @param  pLinkState: Pointer to link state
+  * @retval DP83848_STATUS_LINK_DOWN  if link is down
+  *         DP83848_STATUS_AUTONEGO_NOTDONE if Auto nego not completed
+  *         DP83848_STATUS_100MBITS_FULLDUPLEX if 100Mb/s FD
+  *         DP83848_STATUS_100MBITS_HALFDUPLEX if 100Mb/s HD
+  *         DP83848_STATUS_10MBITS_FULLDUPLEX  if 10Mb/s FD
+  *         DP83848_STATUS_10MBITS_HALFDUPLEX  if 10Mb/s HD
+  *         DP83848_STATUS_READ_ERROR if connot read register
+  *         DP83848_STATUS_WRITE_ERROR if connot write to register
+  */
+int32_t DP83848_GetLinkState(dp83848_Object_t *pObj)
+{
+  uint32_t readval = 0;
+
+  /* Read Status register  */
+  if(pObj->IO.ReadReg(pObj->DevAddr, DP83848_BSR, &readval) < 0)
+  {
+    return DP83848_STATUS_READ_ERROR;
+  }
+
+  /* Read Status register again */
+  if(pObj->IO.ReadReg(pObj->DevAddr, DP83848_BSR, &readval) < 0)
+  {
+    return DP83848_STATUS_READ_ERROR;
+  }
+
+  if((readval & DP83848_BSR_LINK_STATUS) == 0)
+  {
+    /* Return Link Down status */
+    return DP83848_STATUS_LINK_DOWN;
+  }
+
+  /* Check Auto negotiaition */
+  if(pObj->IO.ReadReg(pObj->DevAddr, DP83848_BCR, &readval) < 0)
+  {
+    return DP83848_STATUS_READ_ERROR;
+  }
+
+  if((readval & DP83848_BCR_AUTONEGO_EN) != DP83848_BCR_AUTONEGO_EN)
+  {
+    if(((readval & DP83848_BCR_SPEED_SELECT) == DP83848_BCR_SPEED_SELECT) && ((readval & DP83848_BCR_DUPLEX_MODE) == DP83848_BCR_DUPLEX_MODE))
+    {
+      return DP83848_STATUS_100MBITS_FULLDUPLEX;
+    }
+    else if ((readval & DP83848_BCR_SPEED_SELECT) == DP83848_BCR_SPEED_SELECT)
+    {
+      return DP83848_STATUS_100MBITS_HALFDUPLEX;
+    }
+    else if ((readval & DP83848_BCR_DUPLEX_MODE) == DP83848_BCR_DUPLEX_MODE)
+    {
+      return DP83848_STATUS_10MBITS_FULLDUPLEX;
+    }
+    else
+    {
+      return DP83848_STATUS_10MBITS_HALFDUPLEX;
+    }
+  }
+  else /* Auto Nego enabled */
+  {
+    if(pObj->IO.ReadReg(pObj->DevAddr, DP83848_PHYSCSR, &readval) < 0)
+    {
+      return DP83848_STATUS_READ_ERROR;
+    }
+
+    /* Check if auto nego not done */
+    if((readval & DP83848_PHYSCSR_AUTONEGO_DONE) == 0)
+    {
+      return DP83848_STATUS_AUTONEGO_NOTDONE;
+    }
+
+    if((readval & DP83848_PHYSCSR_HCDSPEEDMASK) == DP83848_PHYSCSR_100BTX_FD)
+    {
+      return DP83848_STATUS_100MBITS_FULLDUPLEX;
+    }
+    else if ((readval & DP83848_PHYSCSR_HCDSPEEDMASK) == DP83848_PHYSCSR_100BTX_HD)
+    {
+      return DP83848_STATUS_100MBITS_HALFDUPLEX;
+    }
+    else if ((readval & DP83848_PHYSCSR_HCDSPEEDMASK) == DP83848_PHYSCSR_10BT_FD)
+    {
+      return DP83848_STATUS_10MBITS_FULLDUPLEX;
+    }
+    else
+    {
+      return DP83848_STATUS_10MBITS_HALFDUPLEX;
+    }
+  }
+}
+
+/**
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
 /*
@@ -193,7 +428,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
     if(i >= ETH_TX_DESC_CNT)
       return ERR_IF;
 
-    Txbuffer[i].buffer = q->payload;
+    Txbuffer[i].buffer = (uint8 *)q->payload;
     Txbuffer[i].len = q->len;
 
     if(i>0)
@@ -323,10 +558,20 @@ void pbuf_free_custom(struct pbuf *p)
   * @param  None
   * @retval Current Time value
   */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 u32_t sys_now(void)
 {
   return HAL_GetTick();
 }
+
+#ifdef __cplusplus
+}
+#endif
+
 /*******************************************************************************
                        Ethernet MSP Routines
 *******************************************************************************/
@@ -566,7 +811,7 @@ void ethernet_link_check_state(struct netif *netif)
 
 void HAL_ETH_RxAllocateCallback(uint8_t **buff)
 {
-  struct pbuf_custom *p = LWIP_MEMPOOL_ALLOC(RX_POOL);
+  struct pbuf_custom *p = (pbuf_custom *)LWIP_MEMPOOL_ALLOC(RX_POOL);
   if (p)
   {
     /* Get the buff from the struct pbuf address. */

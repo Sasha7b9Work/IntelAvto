@@ -16,8 +16,8 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
+#include "defines.h"
 #include "lwip/opt.h"
-#include "main.h"
 #if LWIP_DHCP
 #include "lwip/dhcp.h"
 #endif
@@ -26,6 +26,7 @@
 #ifdef USE_LCD
 #include "lcd_log.h"
 #endif
+#include <stm32f4xx_hal.h>
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -117,8 +118,8 @@ void DHCP_Process(struct netif *netif)
 #ifdef USE_LCD
       LCD_UsrLog ("  State: Looking for DHCP server ...\n");
 #else
-      BSP_LED_Off(LED1);
-      BSP_LED_Off(LED2);
+//      BSP_LED_Off(LED1);
+//      BSP_LED_Off(LED2);
 #endif
       ip_addr_set_zero_ip4(&netif->ip_addr);
       ip_addr_set_zero_ip4(&netif->netmask);
@@ -137,8 +138,8 @@ void DHCP_Process(struct netif *netif)
         sprintf((char *)iptxt, "%s", ip4addr_ntoa(netif_ip4_addr(netif)));
         LCD_UsrLog ("IP address assigned by a DHCP server: %s\n", iptxt);
 #else
-        BSP_LED_On(LED1);
-        BSP_LED_Off(LED2);
+//        BSP_LED_On(LED1);
+//        BSP_LED_Off(LED2);
 #endif
       }
       else
@@ -161,8 +162,8 @@ void DHCP_Process(struct netif *netif)
           LCD_UsrLog ("DHCP Timeout !! \n");
           LCD_UsrLog ("Static IP address: %s\n", iptxt);
 #else
-          BSP_LED_On(LED1);
-          BSP_LED_Off(LED2);
+//          BSP_LED_On(LED1);
+//          BSP_LED_Off(LED2);
 #endif
         }
       }
@@ -174,8 +175,8 @@ void DHCP_Process(struct netif *netif)
 #ifdef USE_LCD
       LCD_UsrLog ("The network cable is not connected \n");
 #else
-      BSP_LED_Off(LED1);
-      BSP_LED_On(LED2);
+//      BSP_LED_Off(LED1);
+//      BSP_LED_On(LED2);
 #endif
     }
     break;
