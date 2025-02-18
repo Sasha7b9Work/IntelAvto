@@ -65,7 +65,11 @@ typedef int sys_prot_t;
 
 #elif defined (__CC_ARM)
 
+#ifdef WIN32
+#define PACK_STRUCT_BEGIN
+#else
 #define PACK_STRUCT_BEGIN __packed
+#endif
 #define PACK_STRUCT_STRUCT
 #define PACK_STRUCT_END
 #define PACK_STRUCT_FIELD(x) x

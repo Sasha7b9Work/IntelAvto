@@ -4,7 +4,7 @@
 #include "netif/ethernet.h"
 #include "netif/etharp.h"
 #include "ethernetif.h"
-#include <string.h>
+#include <cstring>
 
 #define DP83848_PHYSCSR_AUTONEGO_DONE   ((uint16_t)0x010U)
 #define DP83848_PHYSCSR_HCDSPEEDMASK    ((uint16_t)0x006U)
@@ -296,11 +296,15 @@ typedef enum
   RX_ALLOC_ERROR    = 0x01
 } RxAllocStatusTypeDef;
 
-typedef struct
+#ifdef WIN32
+    #define __ALIGNED(x)
+#endif
+
+struct RxBuff_t
 {
   struct pbuf_custom pbuf_custom;
   uint8_t buff[(ETH_RX_BUF_SIZE + 31) & ~31] __ALIGNED(32);
-} RxBuff_t;
+};
 
 ETH_DMADescTypeDef  DMARxDscrTab[ETH_RX_DESC_CNT]; /* Ethernet Rx DMA Descriptors */
 
@@ -377,7 +381,7 @@ static void low_level_init(struct netif *netif)
   LWIP_MEMPOOL_INIT(RX_POOL);
 
   /* Set Tx packet config common parameters */
-  memset(&TxConfig, 0 , sizeof(ETH_TxPacketConfig));
+  std::memset(&TxConfig, 0 , sizeof(ETH_TxPacketConfig));
   TxConfig.Attributes = ETH_TX_PACKETS_FEATURES_CSUM | ETH_TX_PACKETS_FEATURES_CRCPAD;
   TxConfig.ChecksumCtrl = ETH_CHECKSUM_IPHDR_PAYLOAD_INSERT_PHDR_CALC;
   TxConfig.CRCPadCtrl = ETH_CRC_PAD_INSERT;
@@ -419,7 +423,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   err_t errval = ERR_OK;
   ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT];
 
-  memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
+  std::memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
 
   for(q = p; q != nullptr; q = q->next)
   {
@@ -808,6 +812,12 @@ void ethernet_link_check_state(struct netif *netif)
     }
   }
 }
+
+
+#ifdef WIN32
+    #define offsetof(x, y) 1
+#endif
+
 
 void HAL_ETH_RxAllocateCallback(uint8_t **buff)
 {
