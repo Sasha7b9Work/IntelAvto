@@ -70,7 +70,7 @@ void LAN::Netif_Config(void)
 #endif
 
   /* add the network interface */
-  netif_add(&gnetif, &ipaddr, &netmask, &gw, NULL, &ethernetif_init, &ethernet_input);
+  netif_add(&gnetif, &ipaddr, &netmask, &gw, nullptr, &ethernetif_init, &ethernet_input);
 
   /*  Registers the default network interface */
   netif_set_default(&gnetif);

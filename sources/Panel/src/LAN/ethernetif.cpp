@@ -136,7 +136,7 @@ int32_t  DP83848_RegisterBusIO(dp83848_Object_t *pObj, dp83848_IOCtx_t *ioctx)
 
    if(pObj->Is_Initialized == 0)
    {
-     if(pObj->IO.Init != 0)
+     if(pObj->IO.Init != nullptr)
      {
        /* GPIO and Clocks initialization */
        pObj->IO.Init();
@@ -272,9 +272,6 @@ int32_t DP83848_GetLinkState(dp83848_Object_t *pObj)
 }
 
 /**
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-/*
 @Note: This interface is implemented to operate in zero-copy mode only:
         - Rx Buffers will be allocated from LwIP stack Rx memory pool,
           then passed to ETH HAL driver.
@@ -416,14 +413,15 @@ static void low_level_init(struct netif *netif)
   */
 static err_t low_level_output(struct netif *netif, struct pbuf *p)
 {
+  (void)netif;
   uint32_t i = 0U;
-  struct pbuf *q = NULL;
+  struct pbuf *q = nullptr;
   err_t errval = ERR_OK;
-  ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT] = {0};
+  ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT];
 
   memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
 
-  for(q = p; q != NULL; q = q->next)
+  for(q = p; q != nullptr; q = q->next)
   {
     if(i >= ETH_TX_DESC_CNT)
       return ERR_IF;
@@ -436,9 +434,9 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
       Txbuffer[i-1].next = &Txbuffer[i];
     }
 
-    if(q->next == NULL)
+    if(q->next == nullptr)
     {
-      Txbuffer[i].next = NULL;
+      Txbuffer[i].next = nullptr;
     }
 
     i++;
@@ -463,7 +461,8 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   */
 static struct pbuf * low_level_input(struct netif *netif)
 {
-  struct pbuf *p = NULL;
+  (void)netif;
+  struct pbuf *p = nullptr;
 
   if(RxAllocStatus == RX_ALLOC_OK)
   {
@@ -482,12 +481,12 @@ static struct pbuf * low_level_input(struct netif *netif)
   */
 void ethernetif_input(struct netif *netif)
 {
-  struct pbuf *p = NULL;
+  struct pbuf *p = nullptr;
 
     do
     {
       p = low_level_input( netif );
-      if (p != NULL)
+      if (p != nullptr)
       {
         if (netif->input( p, netif) != ERR_OK )
         {
@@ -495,7 +494,7 @@ void ethernetif_input(struct netif *netif)
         }
       }
 
-    } while(p!=NULL);
+    } while(p!=nullptr);
 
 }
 
@@ -582,6 +581,7 @@ u32_t sys_now(void)
   */
 void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 {
+  (void)heth;
   GPIO_InitTypeDef GPIO_InitStructure = {0};
 
   /* Enable GPIOs clocks */
@@ -746,7 +746,7 @@ int32_t ETH_PHY_IO_WriteReg(uint32_t DevAddr, uint32_t RegAddr, uint32_t RegVal)
   */
 int32_t ETH_PHY_IO_GetTick(void)
 {
-  return HAL_GetTick();
+  return (int)HAL_GetTick();
 }
 
 /**
@@ -825,7 +825,7 @@ void HAL_ETH_RxAllocateCallback(uint8_t **buff)
   else
   {
     RxAllocStatus = RX_ALLOC_ERROR;
-    *buff = NULL;
+    *buff = nullptr;
   }
 }
 
@@ -833,11 +833,11 @@ void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t 
 {
   struct pbuf **ppStart = (struct pbuf **)pStart;
   struct pbuf **ppEnd = (struct pbuf **)pEnd;
-  struct pbuf *p = NULL;
+  struct pbuf *p = nullptr;
 
   /* Get the struct pbuf from the buff address. */
   p = (struct pbuf *)(buff - offsetof(RxBuff_t, buff));
-  p->next = NULL;
+  p->next = nullptr;
   p->tot_len = 0;
   p->len = Length;
 
@@ -856,7 +856,7 @@ void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t 
 
   /* Update the total length of all the buffers of the chain. Each pbuf in the chain should have its tot_len
    * set to its own length, plus the length of all the following pbufs in the chain. */
-  for (p = *ppStart; p != NULL; p = p->next)
+  for (p = *ppStart; p != nullptr; p = p->next)
   {
     p->tot_len += Length;
   }
