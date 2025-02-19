@@ -19,15 +19,15 @@ int main(void)
 
     Menu::Init();
 
-    FDrive::Init();
+//    FDrive::Init();
 
-    LAN::Init();
+//    LAN::Init();
 
     while (1)
     {
         Menu::Input::Update();
         Display::Update();
         Timer::UpdateTasks();
-        LAN::Update();
+//        LAN::Update();
     }
 }
