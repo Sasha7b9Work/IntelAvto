@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 63
+#define VERSION_BUILD 64
 
-#define DATE_BUILD "2025-02-19 14:32:45"
+#define DATE_BUILD "2025-02-19 15:41:31"
 
 #include <stdint.h>
 
@@ -90,8 +90,8 @@ struct Coord
 
 #define IP_ADDR0   ((uint8_t) 192U)
 #define IP_ADDR1   ((uint8_t) 168U)
-#define IP_ADDR2   ((uint8_t) 0U)
-#define IP_ADDR3   ((uint8_t) 10U)
+#define IP_ADDR2   ((uint8_t) 1U)
+#define IP_ADDR3   ((uint8_t) 200U)
 
 #define NETMASK_ADDR0   ((uint8_t) 255U)
 #define NETMASK_ADDR1   ((uint8_t) 255U)
@@ -100,7 +100,7 @@ struct Coord
 
 #define GW_ADDR0   ((uint8_t) 192U)
 #define GW_ADDR1   ((uint8_t) 168U)
-#define GW_ADDR2   ((uint8_t) 0U)
+#define GW_ADDR2   ((uint8_t) 1U)
 #define GW_ADDR3   ((uint8_t) 1U)
 
 #define ETH_MAC_ADDR0    ((uint8_t)0x02)

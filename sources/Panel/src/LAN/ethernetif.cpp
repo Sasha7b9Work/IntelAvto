@@ -599,21 +599,21 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
 
 /* Ethernet pins configuration ************************************************/
   /*
-        ETH_MDIO -------------------------> PA2
-        ETH_MDC --------------------------> PC1
-        ETH_PPS_OUT ----------------------> PB5
-        ETH_MII_RXD2 ---------------------> PH6
-        ETH_MII_RXD3 ---------------------> PH7
-        ETH_MII_TX_CLK -------------------> PC3
-        ETH_MII_TXD2 ---------------------> PC2
-        ETH_MII_TXD3 ---------------------> PB8
-        ETH_MII_RX_CLK -------------------> PA1
-        ETH_MII_RX_DV --------------------> PA7
-        ETH_MII_RXD0 ---------------------> PC4
-        ETH_MII_RXD1 ---------------------> PC5
-        ETH_MII_TX_EN --------------------> PG11
-        ETH_MII_TXD0 ---------------------> PG13
-        ETH_MII_TXD1 ---------------------> PG14
+        ETH_MDIO -------------------------> PA2 +
+        ETH_MDC --------------------------> PC1 +
+        ETH_PPS_OUT ----------------------> PB5 -  -
+        ETH_MII_RXD2 ---------------------> PH6 - PB0
+        ETH_MII_RXD3 ---------------------> PH7 - PB1
+        ETH_MII_TX_CLK -------------------> PC3 +
+        ETH_MII_TXD2 ---------------------> PC2 +
+        ETH_MII_TXD3 ---------------------> PB8 +
+        ETH_MII_RX_CLK -------------------> PA1 +
+        ETH_MII_RX_DV --------------------> PA7 +
+        ETH_MII_RXD0 ---------------------> PC4 +
+        ETH_MII_RXD1 ---------------------> PC5 +
+        ETH_MII_TX_EN --------------------> PG11 - PB11
+        ETH_MII_TXD0 ---------------------> PG13 - PB12
+        ETH_MII_TXD1 ---------------------> PG14 - PB13
         ETH_MII_RX_ER --------------------> PI10 (not configured)        
         ETH_MII_CRS ----------------------> PA0  (not configured)
         ETH_MII_COL ----------------------> PH3  (not configured)
@@ -628,20 +628,12 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef *heth)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStructure);
 
   /* Configure PB5 and PB8 */
-  GPIO_InitStructure.Pin = GPIO_PIN_5 | GPIO_PIN_8;
+  GPIO_InitStructure.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_8 | GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
 
   /* Configure PC1, PC2, PC3, PC4 and PC5 */
   GPIO_InitStructure.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_5;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-  /* Configure PG11, PG14 and PG13 */
-  GPIO_InitStructure.Pin =  GPIO_PIN_11 | GPIO_PIN_13 | GPIO_PIN_14;
-  HAL_GPIO_Init(GPIOG, &GPIO_InitStructure);
-
-  /* Configure PH6, PH7 */
-  GPIO_InitStructure.Pin =  GPIO_PIN_6 | GPIO_PIN_7;
-  HAL_GPIO_Init(GPIOH, &GPIO_InitStructure);
   
   /* Configure PA0 
   GPIO_InitStructure.Pin =  GPIO_PIN_0;

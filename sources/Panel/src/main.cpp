@@ -13,6 +13,8 @@ int main(void)
 {
     HAL::Init();
 
+    LAN::Init();
+    
     Display::Init();
 
     Keyboard::Init();
@@ -21,13 +23,11 @@ int main(void)
 
 //    FDrive::Init();
 
-//    LAN::Init();
-
     while (1)
     {
         Menu::Input::Update();
         Display::Update();
         Timer::UpdateTasks();
-//        LAN::Update();
+        LAN::Update();
     }
 }
