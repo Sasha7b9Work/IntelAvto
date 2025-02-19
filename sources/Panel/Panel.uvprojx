@@ -1117,6 +1117,16 @@
                 </FileArmAds>
               </FileOption>
             </File>
+            <File>
+              <FileName>LTCP.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\LAN\LTCP.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LTCP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\LAN\LTCP.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4090,7 +4100,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>1</Optim>
+            <Optim>5</Optim>
             <oTime>1</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -4841,6 +4851,16 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
+            </File>
+            <File>
+              <FileName>LTCP.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\LAN\LTCP.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>LTCP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\LAN\LTCP.h</FilePath>
             </File>
           </Files>
         </Group>

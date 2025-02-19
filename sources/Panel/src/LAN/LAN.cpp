@@ -1,6 +1,7 @@
 // 2025/02/17 15:25:26 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "LAN/LAN.h"
+#include "LAN/LTCP.h"
 #include "LAN/http_cgi_ssi.h"
 #include "LAN/ethernetif.h"
 #include "LAN/app_ethernet.h"
@@ -18,6 +19,13 @@ namespace LAN
 }
 
 
+static void FuncReceiver(const char *buffer, uint length)
+{
+    (void)buffer;
+    (void)length;
+}
+
+
 void LAN::Init()
 {
     /* Initialize the LwIP stack */
@@ -28,6 +36,8 @@ void LAN::Init()
 
     /* Http webserver Init */
     http_server_init();
+    
+    TCP::Init(FuncReceiver);
 }
 
 
