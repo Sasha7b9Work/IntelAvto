@@ -3,6 +3,10 @@
 #include "defines.h"
 
 
+/*
+    Ждёт входящих подключений
+*/
+
 namespace ClientTCP
 {
     void Init(void (*funcReciever)(pchar buffer, uint length));

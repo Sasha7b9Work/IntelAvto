@@ -2,6 +2,10 @@
 #pragma once
 
 
+/*
+    Подключается к удалённому серверу
+*/
+
 namespace ServerTCP
 {
     void Init();
