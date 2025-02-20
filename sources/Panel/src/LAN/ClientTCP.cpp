@@ -1,5 +1,6 @@
+// 2025/02/20 11:40:21 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "LAN/LTCP.h"
+#include "LAN/ClientTCP.h"
 #include <lwip/tcp.h>
 #include <cstring>
 #include <stdarg.h>
@@ -8,53 +9,42 @@
 #include "LAN/LAN.h"
 
 
-namespace TCP
+namespace ClientTCP
 {
-    namespace Client
+    static struct tcp_pcb *pcbClient = nullptr;     // 0, если клиент не приконнекчен. Сюда коннектится новый пользователь
+
+    enum States
     {
-        static struct tcp_pcb *pcbClient = nullptr;     // 0, если клиент не приконнекчен. Сюда коннектится новый пользователь
+        S_ACCEPTED,
+        S_RECIEVED,
+        S_CLOSING
+    };
 
-        enum States
-        {
-            S_ACCEPTED,
-            S_RECIEVED,
-            S_CLOSING
-        };
-
-        struct State
-        {
-            struct pbuf *p;     // pbuf (chain) to recycle
-            uchar state;
-        };
-
-        static void(*SocketFuncReciever)(const char *buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client
-
-        static void CloseConnection(struct tcp_pcb *tpcb, struct State *ss);
-
-        static void Send(struct tcp_pcb *_tpcb, struct State *_ss);
-
-        static err_t CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len);
-
-        static err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_t _err);
-
-        static void CallbackOnError(void *_arg, err_t _err);
-
-        static err_t CallbackOnPoll(void *_arg, struct tcp_pcb *_tpcb);
-
-        static err_t CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err);
-    }
-
-    namespace Server
+    struct State
     {
-        static struct tcp_pcb *pcbServer = nullptr;     // Эти подключаемся к серверу
+        struct pbuf *p;     // pbuf (chain) to recycle
+        uchar state;
+    };
 
-        // Эта функция вызывается, когда происходит подключение к серверу
-        static err_t CallbackOnConnect(void *, struct tcp_pcb *, err_t);
-    }
+    static void(*SocketFuncReciever)(const char *buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client
+
+    static void CloseConnection(struct tcp_pcb *tpcb, struct State *ss);
+
+    static void Send(struct tcp_pcb *_tpcb, struct State *_ss);
+
+    static err_t CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len);
+
+    static err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_t _err);
+
+    static void CallbackOnError(void *_arg, err_t _err);
+
+    static err_t CallbackOnPoll(void *_arg, struct tcp_pcb *_tpcb);
+
+    static err_t CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err);
 }
 
 
-void TCP::Init(void (*funcReciever)(pchar buffer, uint length))
+void ClientTCP::Init(void (*funcReciever)(pchar buffer, uint length))
 {
     {
         // Создаём сервер для подключения пользователя
@@ -66,8 +56,8 @@ void TCP::Init(void (*funcReciever)(pchar buffer, uint length))
             if (err == ERR_OK)
             {
                 pcb = tcp_listen(pcb);
-                Client::SocketFuncReciever = funcReciever;
-                tcp_accept(pcb, Client::CallbackOnAccept);
+                SocketFuncReciever = funcReciever;
+                tcp_accept(pcb, CallbackOnAccept);
             }
             else
             {
@@ -79,43 +69,18 @@ void TCP::Init(void (*funcReciever)(pchar buffer, uint length))
             // abort? output diagonstic?
         }
 
-        Client::pcbClient = nullptr;
-    }
-
-    {
-        // Создаём клиента для подключения к серверу блока питания
-
-        Server::pcbServer = tcp_new();
-
-        if (Server::pcbServer != nullptr)
-        {
-            ip_addr_t ipaddr;
-
-            IP4_ADDR(&ipaddr, 192, 168, 1, 200);
-
-            err_t err = tcp_connect(Server::pcbServer, &ipaddr, 30000, Server::CallbackOnConnect);
-
-            if (err == ERR_OK)
-            {
-            }
-        }
+        pcbClient = nullptr;
     }
 }
 
 
-err_t TCP::Server::CallbackOnConnect(void * /*arg*/, struct tcp_pcb * /*tpcb*/, err_t err)
-{
-    return err;
-}
-
-
-bool TCP::Client::IsConnected()
+bool ClientTCP::IsConnected()
 {
     return pcbClient != nullptr;
 }
 
 
-void TCP::Client::CloseConnection(struct tcp_pcb *tpcb, struct State *ss)
+void ClientTCP::CloseConnection(struct tcp_pcb *tpcb, struct State *ss)
 {
     tcp_arg(tpcb, nullptr);
     tcp_sent(tpcb, nullptr);
@@ -133,7 +98,7 @@ void TCP::Client::CloseConnection(struct tcp_pcb *tpcb, struct State *ss)
 }
 
 
-void TCP::Client::Send(struct tcp_pcb *_tpcb, struct State *_ss)
+void ClientTCP::Send(struct tcp_pcb *_tpcb, struct State *_ss)
 {
     struct pbuf *ptr;
     err_t wr_err = ERR_OK;
@@ -181,7 +146,7 @@ void TCP::Client::Send(struct tcp_pcb *_tpcb, struct State *_ss)
 }
 
 
-err_t TCP::Client::CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len)
+err_t ClientTCP::CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len)
 {
     struct State *ss;
     LWIP_UNUSED_ARG(_len);
@@ -203,7 +168,7 @@ err_t TCP::Client::CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len)
 }
 
 
-err_t TCP::Client::CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_t _err)
+err_t ClientTCP::CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_t _err)
 {
     err_t ret_err;
 
@@ -293,7 +258,7 @@ err_t TCP::Client::CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct p
 }
 
 
-void TCP::Client::CallbackOnError(void *_arg, err_t _err)
+void ClientTCP::CallbackOnError(void *_arg, err_t _err)
 {
     struct State *ss;
     LWIP_UNUSED_ARG(_err);
@@ -310,7 +275,7 @@ void TCP::Client::CallbackOnError(void *_arg, err_t _err)
 }
 
 
-err_t TCP::Client::CallbackOnPoll(void *_arg, struct tcp_pcb *_tpcb)
+err_t ClientTCP::CallbackOnPoll(void *_arg, struct tcp_pcb *_tpcb)
 {
     err_t ret_err;
     struct State *ss = (struct State *)_arg;
@@ -342,7 +307,7 @@ err_t TCP::Client::CallbackOnPoll(void *_arg, struct tcp_pcb *_tpcb)
 }
 
 
-err_t TCP::Client::CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err)
+err_t ClientTCP::CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err)
 {
     err_t ret_err;
 
@@ -385,7 +350,7 @@ err_t TCP::Client::CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _
 }
 
 
-void TCP::Client::SendBuffer(pchar buffer, uint length)
+void ClientTCP::SendBuffer(pchar buffer, uint length)
 {
     if(pcbClient)
     {
@@ -400,7 +365,7 @@ void TCP::Client::SendBuffer(pchar buffer, uint length)
 }
 
 
-void TCP::Client::SendString(char *format, ...)
+void ClientTCP::SendString(char *format, ...)
 {
 #undef SIZE_BUFFER
 #define SIZE_BUFFER 200
@@ -413,12 +378,12 @@ void TCP::Client::SendString(char *format, ...)
         vsprintf(buffer, format, args);
         va_end(args);
         std::strcat(buffer, "\r\n");
-        TCP::Client::SendBuffer(buffer, (uint)std::strlen(buffer));
+        SendBuffer(buffer, (uint)std::strlen(buffer));
     }
 }
 
 
-void TCP::Client::SendStringRAW(char *format, ...)
+void ClientTCP::SendStringRAW(char *format, ...)
 {
 #undef SIZE_BUFFER
 #define SIZE_BUFFER 200
@@ -430,6 +395,6 @@ void TCP::Client::SendStringRAW(char *format, ...)
         va_start(args, format);
         vsprintf(buffer, format, args);
         va_end(args);
-        TCP::Client::SendBuffer(buffer, (uint)std::strlen(buffer));
+        SendBuffer(buffer, (uint)std::strlen(buffer));
     }
 }

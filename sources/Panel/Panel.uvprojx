@@ -1118,14 +1118,24 @@
               </FileOption>
             </File>
             <File>
-              <FileName>LTCP.cpp</FileName>
+              <FileName>ClientTCP.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\LAN\LTCP.cpp</FilePath>
+              <FilePath>.\src\LAN\ClientTCP.cpp</FilePath>
             </File>
             <File>
-              <FileName>LTCP.h</FileName>
+              <FileName>ClientTCP.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\LAN\LTCP.h</FilePath>
+              <FilePath>.\src\LAN\ClientTCP.h</FilePath>
+            </File>
+            <File>
+              <FileName>ServerTCP.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\LAN\ServerTCP.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ServerTCP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\LAN\ServerTCP.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -4853,14 +4863,24 @@
               </FileOption>
             </File>
             <File>
-              <FileName>LTCP.cpp</FileName>
+              <FileName>ClientTCP.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\LAN\LTCP.cpp</FilePath>
+              <FilePath>.\src\LAN\ClientTCP.cpp</FilePath>
             </File>
             <File>
-              <FileName>LTCP.h</FileName>
+              <FileName>ClientTCP.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\LAN\LTCP.h</FilePath>
+              <FilePath>.\src\LAN\ClientTCP.h</FilePath>
+            </File>
+            <File>
+              <FileName>ServerTCP.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\LAN\ServerTCP.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>ServerTCP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\LAN\ServerTCP.h</FilePath>
             </File>
           </Files>
         </Group>
