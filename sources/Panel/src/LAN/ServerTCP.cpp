@@ -16,9 +16,9 @@ namespace ServerTCP
 
     struct echoclient
     {
-        enum States state; /* connection status */
-        tcp_pcb *pcb;          /* pointer on the current tcp_pcb */
-        pbuf *p_tx;            /* pointer on pbuf to be transmitted */
+        States state;   /* connection status */
+        tcp_pcb *pcb;   /* pointer on the current tcp_pcb */
+        pbuf *p_tx;     /* pointer on pbuf to be transmitted */
     };
 
     static void(*SocketFuncReciever)(pchar buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client

@@ -13,29 +13,29 @@ namespace ClientTCP
 {
     static tcp_pcb *pcbClient = nullptr;     // 0, если клиент не приконнекчен. —юда коннектитс€ новый пользователь
 
-    enum States
+    enum State
     {
         S_ACCEPTED,
         S_RECIEVED,
         S_CLOSING
     };
 
-    struct State
+    struct Client
     {
         pbuf *p_tx;
-        States state;
+        State state;
     };
 
     static void(*SocketFuncReciever)(pchar buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client
 
-    static void CloseConnection(tcp_pcb *tpcb, State *ss);
-    static void Send(tcp_pcb *_tpcb, State *_ss);
+    static void CloseConnection(tcp_pcb *, Client *);
+    static void Send(tcp_pcb *, Client *);
 
-    static err_t CallbackAccept(void *_arg, tcp_pcb *_newPCB, err_t _err);
-    static err_t CallbackSent(void *_arg, tcp_pcb *_tpcb, u16_t _len);
-    static err_t CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err);
-    static void CallbackError(void *_arg, err_t _err);
-    static err_t CallbackPoll(void *_arg, tcp_pcb *_tpcb);
+    static err_t CallbackAccept(void *, tcp_pcb *, err_t);
+    static err_t CallbackSent(void *, tcp_pcb *, uint16);
+    static err_t CallbackRecv(void *, tcp_pcb *, pbuf *, err_t);
+    static void CallbackError(void *, err_t);
+    static err_t CallbackPoll(void *, tcp_pcb *);
 }
 
 
@@ -75,7 +75,7 @@ bool ClientTCP::IsConnected()
 }
 
 
-void ClientTCP::CloseConnection(tcp_pcb *tpcb, State *ss)
+void ClientTCP::CloseConnection(tcp_pcb *tpcb, Client *ss)
 {
     tcp_arg(tpcb, nullptr);
     tcp_sent(tpcb, nullptr);
@@ -93,7 +93,7 @@ void ClientTCP::CloseConnection(tcp_pcb *tpcb, State *ss)
 }
 
 
-void ClientTCP::Send(tcp_pcb *_tpcb, State *_ss)
+void ClientTCP::Send(tcp_pcb *_tpcb, Client *_ss)
 {
     err_t wr_err = ERR_OK;
 
@@ -141,7 +141,7 @@ void ClientTCP::Send(tcp_pcb *_tpcb, State *_ss)
 
 err_t ClientTCP::CallbackSent(void *_arg, tcp_pcb *_tpcb, u16_t /*_len*/)
 {
-    State *ss = (struct State*)_arg;
+    Client *ss = (Client *)_arg;
 
     if (ss->p_tx != nullptr)
     {
@@ -162,7 +162,7 @@ err_t ClientTCP::CallbackSent(void *_arg, tcp_pcb *_tpcb, u16_t /*_len*/)
 
 err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
 {
-    State *ss = (struct State*)_arg;
+    Client *ss = (Client *)_arg;
 
     if (_p == nullptr)
     {
@@ -253,11 +253,9 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
 }
 
 
-void ClientTCP::CallbackError(void *_arg, err_t _err)
+void ClientTCP::CallbackError(void *_arg, err_t)
 {
-    State *ss;
-    LWIP_UNUSED_ARG(_err);
-    ss = (State *)_arg;
+    Client *ss = (Client *)_arg;
 
     pcbClient = nullptr;
 
@@ -273,7 +271,7 @@ void ClientTCP::CallbackError(void *_arg, err_t _err)
 err_t ClientTCP::CallbackPoll(void *_arg, tcp_pcb *_tpcb)
 {
     err_t ret_err;
-    State *ss = (State *)_arg;
+    Client *ss = (Client *)_arg;
     if (ss != nullptr)
     {
         if (ss->p_tx != nullptr)
@@ -309,7 +307,7 @@ err_t ClientTCP::CallbackAccept(void * /*_arg*/, tcp_pcb *_newPCB, err_t err)
         new pcbs of higher priority. */
     tcp_setprio(_newPCB, TCP_PRIO_MIN);
 
-    State *s = (struct State*)mem_malloc(sizeof(struct State));
+    Client *s = (Client *)mem_malloc(sizeof(Client));
 
     if (s)
     {
@@ -346,7 +344,7 @@ void ClientTCP::SendBuffer(pchar buffer, uint length)
         pbuf *tcpBuffer = pbuf_alloc(PBUF_RAW, (uint16)length, PBUF_POOL);
         tcpBuffer->flags = 1;
         pbuf_take(tcpBuffer, buffer, (uint16)length);
-        State *ss = (State *)mem_malloc(sizeof(struct State));
+        Client *ss = (Client *)mem_malloc(sizeof(Client));
         ss->p_tx = tcpBuffer;
         Send(pcbClient, ss);
         mem_free(ss);
