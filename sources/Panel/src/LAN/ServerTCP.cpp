@@ -56,6 +56,11 @@ void ServerTCP::Init(void (*funcReceive)(pchar buffer, uint length))
 
         tcp_connect(pcb, &ipaddr, 30000, CallbackOnConnect);
     }
+    else
+    {
+        pcb = pcb;
+        SocketFuncReciever = nullptr;
+    }
 }
 
 
@@ -90,8 +95,6 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
             /* send data */
             Send(tpcb, es);
-
-            SendString("I'm connected");
 
             return ERR_OK;
         }
