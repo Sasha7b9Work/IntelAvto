@@ -163,11 +163,8 @@ err_t ClientTCP::CallbackSent(void *_arg, tcp_pcb *_tpcb, u16_t _len)
 }
 
 
-err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err)
+err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
 {
-    err_t ret_err;
-
-    LWIP_ASSERT("arg != NULL", _arg != NULL);
     State *ss = (struct State*)_arg;
 
     if (_p == nullptr)
@@ -184,9 +181,10 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err)
             // we're not done yet
             tcp_sent(_tpcb, CallbackSent);
         }
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
     }
-    else if (_err != ERR_OK)
+    else if (err != ERR_OK)
     {
         // cleanup, for unkown reason
         if (_p != nullptr)
@@ -194,7 +192,6 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err)
             ss->p = nullptr;
             pbuf_free(_p);
         }
-        ret_err = _err;
     }
     else if (ss->state == S_ACCEPTED)
     {
@@ -203,7 +200,8 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err)
         // store reference to incoming pbuf (chain)
         //ss->p = _p;
         // Send(_tpcb, ss);
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
     }
     else if (ss->state == S_RECIEVED)
     {
@@ -230,7 +228,8 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err)
             ptr = ss->p;
             pbuf_chain(ptr, _p);
         }
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
     }
     else if (ss->state == S_CLOSING)
     {
@@ -238,7 +237,9 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err)
         tcp_recved(_tpcb, _p->tot_len);
         ss->p = nullptr;
         pbuf_free(_p);
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
+
         CloseConnection(_tpcb, ss);
     }
     else
@@ -247,9 +248,11 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t _err)
         tcp_recved(_tpcb, _p->tot_len);
         ss->p = nullptr;
         pbuf_free(_p);
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
     }
-    return ret_err;
+
+    return err;
 }
 
 
