@@ -25,15 +25,14 @@ namespace ServerTCP
         struct pbuf *p_tx;            /* pointer on pbuf to be transmitted */
     };
 
-    /* Private function prototypes -----------------------------------------------*/
-    static err_t tcp_echoclient_recv(void *, tcp_pcb *, pbuf *, err_t);
-    static void tcp_echoclient_connection_close(tcp_pcb *, echoclient *);
+    // Эта функция вызывается, когда происходит подключение к серверу
+    static err_t CallbackOnConnect(void *, tcp_pcb *, err_t);
+    static err_t CallbackRecv(void *, tcp_pcb *, pbuf *, err_t);
     static err_t tcp_echoclient_poll(void *, tcp_pcb *);
     static err_t tcp_echoclient_sent(void *, tcp_pcb *, uint16);
     static void tcp_echoclient_send(tcp_pcb *, echoclient *);
 
-    // Эта функция вызывается, когда происходит подключение к серверу
-    static err_t CallbackOnConnect(void *, tcp_pcb *, err_t);
+    static void CloseConnection(tcp_pcb *, echoclient *);
 }
 
 
@@ -86,7 +85,7 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
                 tcp_arg(tpcb, es);
 
                 /* initialize LwIP tcp_recv callback function */
-                tcp_recv(tpcb, tcp_echoclient_recv);
+                tcp_recv(tpcb, CallbackRecv);
 
                 /* initialize LwIP tcp_sent callback function */
                 tcp_sent(tpcb, tcp_echoclient_sent);
@@ -103,7 +102,7 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
         else
         {
             /* close connection */
-            tcp_echoclient_connection_close(tpcb, es);
+            CloseConnection(tpcb, es);
 
             /* return memory allocation error */
             return ERR_MEM;
@@ -112,13 +111,13 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
     else
     {
         /* close connection */
-        tcp_echoclient_connection_close(tpcb, es);
+        CloseConnection(tpcb, es);
     }
     return err;
 }
 
 
-err_t ServerTCP::tcp_echoclient_recv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
+err_t ServerTCP::CallbackRecv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
 {
     struct echoclient *es;
     err_t ret_err;
@@ -135,7 +134,7 @@ err_t ServerTCP::tcp_echoclient_recv(void *arg, struct tcp_pcb *tpcb, struct pbu
         if (es->p_tx == nullptr)
         {
             /* we're done sending, close connection */
-            tcp_echoclient_connection_close(tpcb, es);
+            CloseConnection(tpcb, es);
         }
         else
         {
@@ -163,7 +162,7 @@ err_t ServerTCP::tcp_echoclient_recv(void *arg, struct tcp_pcb *tpcb, struct pbu
         tcp_recved(tpcb, p->tot_len);
 
         pbuf_free(p);
-        tcp_echoclient_connection_close(tpcb, es);
+        CloseConnection(tpcb, es);
         ret_err = ERR_OK;
     }
 
@@ -243,7 +242,7 @@ err_t ServerTCP::tcp_echoclient_poll(void *arg, struct tcp_pcb *tpcb)
             if (es->state == ES_CLOSING)
             {
                 /* close tcp connection */
-                tcp_echoclient_connection_close(tpcb, es);
+                CloseConnection(tpcb, es);
             }
         }
         ret_err = ERR_OK;
@@ -276,7 +275,7 @@ err_t ServerTCP::tcp_echoclient_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 }
 
 
-void ServerTCP::tcp_echoclient_connection_close(struct tcp_pcb *tpcb, struct echoclient *es)
+void ServerTCP::CloseConnection(struct tcp_pcb *tpcb, struct echoclient *es)
 {
     /* remove callbacks */
     tcp_recv(tpcb, nullptr);
