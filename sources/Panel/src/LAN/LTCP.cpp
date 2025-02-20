@@ -50,7 +50,7 @@ namespace TCP
 }
 
 
-bool TCP::IsConnected()
+bool TCP::Client::IsConnected()
 {
     return pcbClient != nullptr;
 }
@@ -345,31 +345,31 @@ err_t TCP::CallbackOnAccept(void *_arg, struct tcp_pcb *_newPCB, err_t _err)
 
 void TCP::Init(void (*funcReciever)(pchar buffer, uint length))
 {
-//    {
-//        // Создаём сервер для подключения пользователя
-//
-//        struct tcp_pcb *pcb = tcp_new();
-//        if (pcb != nullptr)
-//        {
-//            err_t err = tcp_bind(pcb, IP_ADDR_ANY, ETH_PORT);
-//            if (err == ERR_OK)
-//            {
-//                pcb = tcp_listen(pcb);
-//                SocketFuncReciever = funcReciever;
-//                tcp_accept(pcb, CallbackOnAccept);
-//            }
-//            else
-//            {
-//                // abort? output diagnostic?
-//            }
-//        }
-//        else
-//        {
-//            // abort? output diagonstic?
-//        }
-//
-//        pcbClient = nullptr;
-//    }
+    {
+        // Создаём сервер для подключения пользователя
+
+        struct tcp_pcb *pcb = tcp_new();
+        if (pcb != nullptr)
+        {
+            err_t err = tcp_bind(pcb, IP_ADDR_ANY, ETH_PORT);
+            if (err == ERR_OK)
+            {
+                pcb = tcp_listen(pcb);
+                SocketFuncReciever = funcReciever;
+                tcp_accept(pcb, CallbackOnAccept);
+            }
+            else
+            {
+                // abort? output diagnostic?
+            }
+        }
+        else
+        {
+            // abort? output diagonstic?
+        }
+
+        pcbClient = nullptr;
+    }
 
     {
         // Создаём клиента для подключения к серверу блока питания
@@ -409,13 +409,13 @@ void TCP::Init(void (*funcReciever)(pchar buffer, uint length))
 }
 
 
-err_t TCP::FuncOnConnectToServer(void *arg, struct tcp_pcb *tpcb, err_t err)
+err_t TCP::FuncOnConnectToServer(void * /*arg*/, struct tcp_pcb * /*tpcb*/, err_t err)
 {
     return err;
 }
 
 
-void TCP::SendBuffer(pchar buffer, uint length)
+void TCP::Client::SendBuffer(pchar buffer, uint length)
 {
     if(pcbClient)
     {
@@ -430,7 +430,7 @@ void TCP::SendBuffer(pchar buffer, uint length)
 }
 
 
-void TCP::SendString(char *format, ...)
+void TCP::Client::SendString(char *format, ...)
 {
 #undef SIZE_BUFFER
 #define SIZE_BUFFER 200
@@ -443,12 +443,12 @@ void TCP::SendString(char *format, ...)
         vsprintf(buffer, format, args);
         va_end(args);
         std::strcat(buffer, "\r\n");
-        TCP::SendBuffer(buffer, (uint)std::strlen(buffer));
+        TCP::Client::SendBuffer(buffer, (uint)std::strlen(buffer));
     }
 }
 
 
-void TCP::SendStringRAW(char *format, ...)
+void TCP::Client::SendStringRAW(char *format, ...)
 {
 #undef SIZE_BUFFER
 #define SIZE_BUFFER 200
@@ -460,6 +460,6 @@ void TCP::SendStringRAW(char *format, ...)
         va_start(args, format);
         vsprintf(buffer, format, args);
         va_end(args);
-        TCP::SendBuffer(buffer, (uint)std::strlen(buffer));
+        TCP::Client::SendBuffer(buffer, (uint)std::strlen(buffer));
     }
 }
