@@ -28,10 +28,10 @@ namespace ServerTCP
     // Эта функция вызывается, когда происходит подключение к серверу
     static err_t CallbackOnConnect(void *, tcp_pcb *, err_t);
     static err_t CallbackRecv(void *, tcp_pcb *, pbuf *, err_t);
-    static err_t tcp_echoclient_poll(void *, tcp_pcb *);
-    static err_t tcp_echoclient_sent(void *, tcp_pcb *, uint16);
-    static void tcp_echoclient_send(tcp_pcb *, echoclient *);
+    static err_t CallbackPoll(void *, tcp_pcb *);
+    static err_t CallbackSent(void *, tcp_pcb *, uint16);
 
+    static void Send(tcp_pcb *, echoclient *);
     static void CloseConnection(tcp_pcb *, echoclient *);
 }
 
@@ -88,13 +88,13 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
                 tcp_recv(tpcb, CallbackRecv);
 
                 /* initialize LwIP tcp_sent callback function */
-                tcp_sent(tpcb, tcp_echoclient_sent);
+                tcp_sent(tpcb, CallbackSent);
 
                 /* initialize LwIP tcp_poll callback function */
-                tcp_poll(tpcb, tcp_echoclient_poll, 1);
+                tcp_poll(tpcb, CallbackPoll, 1);
 
                 /* send data */
-                tcp_echoclient_send(tpcb, es);
+                Send(tpcb, es);
 
                 return ERR_OK;
             }
@@ -139,7 +139,7 @@ err_t ServerTCP::CallbackRecv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, e
         else
         {
             /* send remaining data*/
-            tcp_echoclient_send(tpcb, es);
+            Send(tpcb, es);
         }
         ret_err = ERR_OK;
     }
@@ -180,7 +180,7 @@ err_t ServerTCP::CallbackRecv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, e
 }
 
 
-void ServerTCP::tcp_echoclient_send(struct tcp_pcb *tpcb, struct echoclient *es)
+void ServerTCP::Send(struct tcp_pcb *tpcb, struct echoclient *es)
 {
     struct pbuf *ptr;
     err_t wr_err = ERR_OK;
@@ -223,7 +223,7 @@ void ServerTCP::tcp_echoclient_send(struct tcp_pcb *tpcb, struct echoclient *es)
 }
 
 
-err_t ServerTCP::tcp_echoclient_poll(void *arg, struct tcp_pcb *tpcb)
+err_t ServerTCP::CallbackPoll(void *arg, struct tcp_pcb *tpcb)
 {
     err_t ret_err;
     struct echoclient *es;
@@ -234,7 +234,7 @@ err_t ServerTCP::tcp_echoclient_poll(void *arg, struct tcp_pcb *tpcb)
         if (es->p_tx != nullptr)
         {
             /* there is a remaining pbuf (chain) , try to send data */
-            tcp_echoclient_send(tpcb, es);
+            Send(tpcb, es);
         }
         else
         {
@@ -257,7 +257,7 @@ err_t ServerTCP::tcp_echoclient_poll(void *arg, struct tcp_pcb *tpcb)
 }
 
 
-err_t ServerTCP::tcp_echoclient_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
+err_t ServerTCP::CallbackSent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 {
     struct echoclient *es;
 
@@ -268,7 +268,7 @@ err_t ServerTCP::tcp_echoclient_sent(void *arg, struct tcp_pcb *tpcb, u16_t len)
     if (es->p_tx != nullptr)
     {
         /* still got pbufs to send */
-        tcp_echoclient_send(tpcb, es);
+        Send(tpcb, es);
     }
 
     return ERR_OK;
