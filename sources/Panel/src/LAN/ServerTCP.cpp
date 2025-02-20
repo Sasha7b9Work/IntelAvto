@@ -93,8 +93,6 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
             SendString("I'm connected");
 
-            CloseConnection(tpcb, es);
-
             return ERR_OK;
         }
         else
@@ -212,45 +210,47 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 }
 
 
-void ServerTCP::Send(tcp_pcb *tpcb, Server *es)
+void ServerTCP::Send(tcp_pcb *tpcb, Server *ss)
 {
     err_t wr_err = ERR_OK;
 
     while ((wr_err == ERR_OK) &&
-        (es->p_tx != nullptr) &&
-        (es->p_tx->len <= tcp_sndbuf(tpcb)))
+        (ss->p_tx != nullptr) &&
+        (ss->p_tx->len <= tcp_sndbuf(tpcb)))
     {
-
-        /* get pointer on pbuf from es structure */
-        pbuf *ptr = es->p_tx;
-
-        /* enqueue data for transmission */
+        pbuf *ptr = ss->p_tx;
+        // enqueue data for transmittion
         wr_err = tcp_write(tpcb, ptr->payload, ptr->len, 1);
-
         tcp_output(tpcb);
-
         if (wr_err == ERR_OK)
         {
-            /* continue with next pbuf in chain (if any) */
-            es->p_tx = ptr->next;
-
-            if (es->p_tx != nullptr)
+            u16_t plen = ptr->len;
+            // continue with new pbuf in chain (if any) 
+            ss->p_tx = ptr->next;
+            if (ss->p_tx != nullptr)
             {
-                /* increment reference count for es->p */
-                pbuf_ref(es->p_tx);
+                // new reference!
+                pbuf_ref(ss->p_tx);
             }
 
-            /* free pbuf: will free pbufs up to es->p (because es->p has a reference count > 0) */
-            pbuf_free(ptr);
+            u8_t freed;
+
+            // chop first pbuf from chain
+            do
+            {
+                // try hard to free pbuf 
+                freed = pbuf_free(ptr);
+            } while (freed == 0);
+            // we can read more data now
+            tcp_recved(tpcb, plen);
         }
         else if (wr_err == ERR_MEM)
         {
-            /* we are low on memory, try later, defer to poll */
-            es->p_tx = ptr;
+            // we are low on memory, try later / harder, defer to poll
+            ss->p_tx = ptr;
         }
         else
         {
-            /* other problem ?? */
         }
     }
 }
