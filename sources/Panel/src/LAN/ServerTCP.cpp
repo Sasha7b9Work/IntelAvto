@@ -6,9 +6,6 @@
 
 namespace ServerTCP
 {
-    static tcp_pcb *server = nullptr;     // Эти подключаемся к серверу
-
-    static uint8  recev_buf[50];
     static __IO uint32_t message_count = 0;
 
     static uint8 data[100];
