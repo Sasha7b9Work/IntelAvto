@@ -6,7 +6,7 @@
 
 namespace ServerTCP
 {
-    enum States
+    enum State
     {
         S_NOT_CONNECTED = 0,
         S_CONNECTED,
@@ -14,17 +14,17 @@ namespace ServerTCP
         S_CLOSING,
     };
 
-    struct echoclient
+    struct Server
     {
-        States state;   /* connection status */
+        State    state;   /* connection status */
         tcp_pcb *pcb;   /* pointer on the current tcp_pcb */
-        pbuf *p_tx;     /* pointer on pbuf to be transmitted */
+        pbuf    *p_tx;     /* pointer on pbuf to be transmitted */
     };
 
     static void(*SocketFuncReciever)(pchar buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client
 
-    static void Send(tcp_pcb *, echoclient *);
-    static void CloseConnection(tcp_pcb *, echoclient *);
+    static void Send(tcp_pcb *, Server *);
+    static void CloseConnection(tcp_pcb *, Server *);
 
     static err_t CallbackOnConnect(void *, tcp_pcb *, err_t);
     static err_t CallbackRecv(void *, tcp_pcb *, pbuf *, err_t);
@@ -52,12 +52,12 @@ void ServerTCP::Init()
 
 err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 {
-    echoclient *es = nullptr;
+    Server *es = nullptr;
 
     if (err == ERR_OK)
     {
         /* allocate structure es to maintain tcp connection information */
-        es = (echoclient *)mem_malloc(sizeof(struct echoclient));
+        es = (Server *)mem_malloc(sizeof(Server));
 
         if (es != nullptr)
         {
@@ -102,7 +102,7 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
 err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 {
-    echoclient *es = (echoclient *)arg;
+    Server *es = (Server *)arg;
 
     /* if we receive an empty tcp frame from server => close connection */
     if (p == nullptr)
@@ -197,7 +197,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 }
 
 
-void ServerTCP::Send(tcp_pcb *tpcb, echoclient *es)
+void ServerTCP::Send(tcp_pcb *tpcb, Server *es)
 {
     err_t wr_err = ERR_OK;
 
@@ -243,10 +243,10 @@ void ServerTCP::Send(tcp_pcb *tpcb, echoclient *es)
 
 err_t ServerTCP::CallbackPoll(void *arg, tcp_pcb *tpcb)
 {
-    err_t ret_err;
-    echoclient *es;
+    Server *es = (Server *)arg;
 
-    es = (echoclient *)arg;
+    err_t err = ERR_OK;
+
     if (es != nullptr)
     {
         if (es->p_tx != nullptr)
@@ -263,21 +263,22 @@ err_t ServerTCP::CallbackPoll(void *arg, tcp_pcb *tpcb)
                 CloseConnection(tpcb, es);
             }
         }
-        ret_err = ERR_OK;
     }
     else
     {
         /* nothing to be done */
         tcp_abort(tpcb);
-        ret_err = ERR_ABRT;
+
+        err = ERR_ABRT;
     }
-    return ret_err;
+
+    return err;
 }
 
 
 err_t ServerTCP::CallbackSent(void *arg, tcp_pcb *tpcb, u16_t /*len*/)
 {
-    echoclient *es = (echoclient *)arg;
+    Server *es = (Server *)arg;
 
     if (es->p_tx != nullptr)
     {
@@ -296,7 +297,7 @@ err_t ServerTCP::CallbackSent(void *arg, tcp_pcb *tpcb, u16_t /*len*/)
 }
 
 
-void ServerTCP::CloseConnection(tcp_pcb *tpcb, echoclient *es)
+void ServerTCP::CloseConnection(tcp_pcb *tpcb, Server *es)
 {
     /* remove callbacks */
     tcp_recv(tpcb, nullptr);
