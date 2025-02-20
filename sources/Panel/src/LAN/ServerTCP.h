@@ -12,5 +12,7 @@ namespace ServerTCP
 
     void SendString(pchar buffer);
 
+    void SendBuffer(pchar buffer, uint length);
+
     bool IsConnected();
 }

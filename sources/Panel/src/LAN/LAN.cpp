@@ -28,7 +28,7 @@ static void FuncReceiverClient(pchar buffer, uint length)
 
 static void FuncReceiverServer(pchar buffer, uint length)
 {
-    ClientTCP::SendBuffer(buffer, length);
+    ServerTCP::SendBuffer(buffer, length);
 }
 
 

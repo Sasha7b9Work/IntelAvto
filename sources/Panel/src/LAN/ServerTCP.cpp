@@ -333,20 +333,24 @@ void ServerTCP::CloseConnection(tcp_pcb *tpcb, Server *es)
 }
 
 
-void ServerTCP::SendString(pchar buffer)
+void ServerTCP::SendBuffer(pchar buffer, uint length)
 {
     if (pcbServer)
     {
-        uint16 length = (uint16)(std::strlen(buffer) + 1);
-
-        pbuf *tcpBuffer = pbuf_alloc(PBUF_RAW, length, PBUF_POOL);
+        pbuf *tcpBuffer = pbuf_alloc(PBUF_RAW, (uint16)length, PBUF_POOL);
         tcpBuffer->flags = 1;
-        pbuf_take(tcpBuffer, buffer, length);
+        pbuf_take(tcpBuffer, buffer, (uint16)length);
         Server *ss = (Server *)mem_malloc(sizeof(Server));
         ss->p_tx = tcpBuffer;
         Send(pcbServer, ss);
         mem_free(ss);
     }
+}
+
+
+void ServerTCP::SendString(pchar buffer)
+{
+    SendBuffer(buffer, std::strlen(buffer) + 1);
 }
 
 
