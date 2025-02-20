@@ -6,10 +6,10 @@
 
 namespace ServerTCP
 {
-    static struct tcp_pcb *pcbServer = nullptr;     // Эти подключаемся к серверу
+    static tcp_pcb *server = nullptr;     // Эти подключаемся к серверу
 
     // Эта функция вызывается, когда происходит подключение к серверу
-    static err_t CallbackOnConnect(void *, struct tcp_pcb *, err_t);
+    static err_t CallbackOnConnect(void *, tcp_pcb *, err_t);
 }
 
 
@@ -17,15 +17,15 @@ void ServerTCP::Init()
 {
     // Создаём клиента для подключения к серверу блока питания
 
-    pcbServer = tcp_new();
+    tcp_pcb *pcb = tcp_new();
 
-    if (pcbServer != nullptr)
+    if (pcb != nullptr)
     {
         ip_addr_t ipaddr;
 
         IP4_ADDR(&ipaddr, 192, 168, 1, 200);
 
-        err_t err = tcp_connect(pcbServer, &ipaddr, 30000, CallbackOnConnect);
+        err_t err = tcp_connect(pcb, &ipaddr, 30000, CallbackOnConnect);
 
         if (err == ERR_OK)
         {
@@ -34,7 +34,9 @@ void ServerTCP::Init()
 }
 
 
-err_t ServerTCP::CallbackOnConnect(void * /*arg*/, struct tcp_pcb * /*tpcb*/, err_t err)
+err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 {
+    server = tpcb;
+
     return err;
 }
