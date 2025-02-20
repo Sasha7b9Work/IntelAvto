@@ -23,7 +23,7 @@ namespace ClientTCP
     struct State
     {
         pbuf *p_tx;
-        uchar state;
+        States state;
     };
 
     static void(*SocketFuncReciever)(pchar buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client

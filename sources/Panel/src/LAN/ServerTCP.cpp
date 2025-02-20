@@ -6,17 +6,17 @@
 
 namespace ServerTCP
 {
-    enum echoclient_states
+    enum States
     {
-        ES_NOT_CONNECTED = 0,
-        ES_CONNECTED,
-        ES_RECEIVED,
-        ES_CLOSING,
+        S_NOT_CONNECTED = 0,
+        S_CONNECTED,
+        S_RECEIVED,
+        S_CLOSING,
     };
 
     struct echoclient
     {
-        enum echoclient_states state; /* connection status */
+        enum States state; /* connection status */
         tcp_pcb *pcb;          /* pointer on the current tcp_pcb */
         pbuf *p_tx;            /* pointer on pbuf to be transmitted */
     };
@@ -61,7 +61,7 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
         if (es != nullptr)
         {
-            es->state = ES_CONNECTED;
+            es->state = S_CONNECTED;
             es->pcb = tpcb;
             es->p_tx = nullptr;
 
@@ -108,7 +108,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
     if (p == nullptr)
     {
         /* remote host closed connection */
-        es->state = ES_CLOSING;
+        es->state = S_CLOSING;
         if (es->p_tx == nullptr)
         {
             /* we're done sending, close connection */
@@ -131,9 +131,9 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
             pbuf_free(p);
         }
     }
-    else if (es->state == ES_CONNECTED)
+    else if (es->state == S_CONNECTED)
     {
-        es->state = ES_RECEIVED;
+        es->state = S_RECEIVED;
 
         /* Acknowledge data reception */
         tcp_recved(tpcb, p->tot_len);
@@ -143,7 +143,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 
         err = ERR_OK;
     }
-    else if (es->state == ES_RECEIVED)
+    else if (es->state == S_RECEIVED)
     {
         // read some more data
         if (es->p_tx == nullptr)
@@ -171,7 +171,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 
         err = ERR_OK;
     }
-    else if (es->state == ES_CLOSING)
+    else if (es->state == S_CLOSING)
     {
         // odd case, remote side closing twice, trash data
         tcp_recved(tpcb, p->tot_len);
@@ -257,7 +257,7 @@ err_t ServerTCP::CallbackPoll(void *arg, tcp_pcb *tpcb)
         else
         {
             /* no remaining pbuf (chain)  */
-            if (es->state == ES_CLOSING)
+            if (es->state == S_CLOSING)
             {
                 /* close tcp connection */
                 CloseConnection(tpcb, es);
@@ -286,7 +286,7 @@ err_t ServerTCP::CallbackSent(void *arg, tcp_pcb *tpcb, u16_t /*len*/)
     }
     else
     {
-        if (es->state == ES_CLOSING)
+        if (es->state == S_CLOSING)
         {
             CloseConnection(tpcb, es);
         }
