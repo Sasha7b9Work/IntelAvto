@@ -114,12 +114,7 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
 err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 {
-    echoclient *es;
-    err_t ret_err;
-
-    LWIP_ASSERT("arg != nullptr", arg != nullptr);
-
-    es = (echoclient *)arg;
+    echoclient *es = (echoclient *)arg;
 
     /* if we receive an empty tcp frame from server => close connection */
     if (p == nullptr)
@@ -136,7 +131,8 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
             /* send remaining data*/
             Send(tpcb, es);
         }
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
     }
     /* else : a non empty frame was received from echo server but for some reason err != ERR_OK */
     else if (err != ERR_OK)
@@ -146,7 +142,6 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
         {
             pbuf_free(p);
         }
-        ret_err = err;
     }
     else if (es->state == ES_CONNECTED)
     {
@@ -158,7 +153,8 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 
         pbuf_free(p);
         CloseConnection(tpcb, es);
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
     }
 
     /* data received when connection already closed */
@@ -169,9 +165,10 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 
         /* free pbuf and do nothing */
         pbuf_free(p);
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
     }
-    return ret_err;
+    return err;
 }
 
 
