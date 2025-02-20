@@ -21,18 +21,17 @@ namespace ServerTCP
     struct echoclient
     {
         enum echoclient_states state; /* connection status */
-        struct tcp_pcb *pcb;          /* pointer on the current tcp_pcb */
-        struct pbuf *p_tx;            /* pointer on pbuf to be transmitted */
+        tcp_pcb *pcb;          /* pointer on the current tcp_pcb */
+        pbuf *p_tx;            /* pointer on pbuf to be transmitted */
     };
 
-    // Эта функция вызывается, когда происходит подключение к серверу
+    static void Send(tcp_pcb *, echoclient *);
+    static void CloseConnection(tcp_pcb *, echoclient *);
+
     static err_t CallbackOnConnect(void *, tcp_pcb *, err_t);
     static err_t CallbackRecv(void *, tcp_pcb *, pbuf *, err_t);
     static err_t CallbackPoll(void *, tcp_pcb *);
     static err_t CallbackSent(void *, tcp_pcb *, uint16);
-
-    static void Send(tcp_pcb *, echoclient *);
-    static void CloseConnection(tcp_pcb *, echoclient *);
 }
 
 
@@ -55,12 +54,12 @@ void ServerTCP::Init()
 
 err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 {
-    struct echoclient *es = nullptr;
+    echoclient *es = nullptr;
 
     if (err == ERR_OK)
     {
         /* allocate structure es to maintain tcp connection information */
-        es = (struct echoclient *)mem_malloc(sizeof(struct echoclient));
+        es = (echoclient *)mem_malloc(sizeof(struct echoclient));
 
         if (es != nullptr)
         {
@@ -113,14 +112,14 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 }
 
 
-err_t ServerTCP::CallbackRecv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, err_t err)
+err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 {
-    struct echoclient *es;
+    echoclient *es;
     err_t ret_err;
 
     LWIP_ASSERT("arg != nullptr", arg != nullptr);
 
-    es = (struct echoclient *)arg;
+    es = (echoclient *)arg;
 
     /* if we receive an empty tcp frame from server => close connection */
     if (p == nullptr)
@@ -176,9 +175,9 @@ err_t ServerTCP::CallbackRecv(void *arg, struct tcp_pcb *tpcb, struct pbuf *p, e
 }
 
 
-void ServerTCP::Send(struct tcp_pcb *tpcb, struct echoclient *es)
+void ServerTCP::Send(tcp_pcb *tpcb, echoclient *es)
 {
-    struct pbuf *ptr;
+    pbuf *ptr;
     err_t wr_err = ERR_OK;
 
     while ((wr_err == ERR_OK) &&
@@ -219,12 +218,12 @@ void ServerTCP::Send(struct tcp_pcb *tpcb, struct echoclient *es)
 }
 
 
-err_t ServerTCP::CallbackPoll(void *arg, struct tcp_pcb *tpcb)
+err_t ServerTCP::CallbackPoll(void *arg, tcp_pcb *tpcb)
 {
     err_t ret_err;
-    struct echoclient *es;
+    echoclient *es;
 
-    es = (struct echoclient *)arg;
+    es = (echoclient *)arg;
     if (es != nullptr)
     {
         if (es->p_tx != nullptr)
@@ -253,13 +252,13 @@ err_t ServerTCP::CallbackPoll(void *arg, struct tcp_pcb *tpcb)
 }
 
 
-err_t ServerTCP::CallbackSent(void *arg, struct tcp_pcb *tpcb, u16_t len)
+err_t ServerTCP::CallbackSent(void *arg, tcp_pcb *tpcb, u16_t len)
 {
-    struct echoclient *es;
+    echoclient *es;
 
     LWIP_UNUSED_ARG(len);
 
-    es = (struct echoclient *)arg;
+    es = (echoclient *)arg;
 
     if (es->p_tx != nullptr)
     {
@@ -271,7 +270,7 @@ err_t ServerTCP::CallbackSent(void *arg, struct tcp_pcb *tpcb, u16_t len)
 }
 
 
-void ServerTCP::CloseConnection(struct tcp_pcb *tpcb, struct echoclient *es)
+void ServerTCP::CloseConnection(tcp_pcb *tpcb, echoclient *es)
 {
     /* remove callbacks */
     tcp_recv(tpcb, nullptr);
