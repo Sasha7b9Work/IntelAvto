@@ -35,8 +35,6 @@ namespace TCP
 
         static err_t CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len);
 
-        static void SendAnswer(void *_arg, struct tcp_pcb *_tpcb);
-
         static err_t CallbackOnRecieve(void *_arg, struct tcp_pcb *_tpcb, struct pbuf *_p, err_t _err);
 
         static void CallbackOnError(void *_arg, err_t _err);
@@ -202,23 +200,6 @@ err_t TCP::Client::CallbackOnSent(void *_arg, struct tcp_pcb *_tpcb, u16_t _len)
         }
     }
     return ERR_OK;
-}
-
-
-void TCP::Client::SendAnswer(void *_arg, struct tcp_pcb *_tpcb)
-{
-    static const char policy[] = "<?xml version=\"1.0\"?>"                                                  \
-        "<!DOCTYPE cross-domain-policy SYSTEM \"http://www.adobe.com/xml/dtds/cross-domain-policy.dtd\">"   \
-        "<cross-domain-policy>"                                                                             \
-        "<allow-access-from domain=\"*\" to-ports=\"9999\" />"                                                 \
-        "</cross-domain-policy>"                                                                            \
-        "\0";
-    struct pbuf *tcpBuffer = pbuf_alloc(PBUF_RAW, (uint16)std::strlen(policy), PBUF_POOL);
-    tcpBuffer->flags = 1;
-    pbuf_take(tcpBuffer, policy, (uint16)std::strlen(policy));
-    struct State *s = (struct State *)_arg;
-    s->p = tcpBuffer;
-    Send(_tpcb, s);
 }
 
 
