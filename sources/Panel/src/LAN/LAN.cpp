@@ -20,7 +20,13 @@ namespace LAN
 }
 
 
-static void FuncReceiver(pchar buffer, uint length)
+static void FuncReceiverClient(pchar buffer, uint length)
+{
+    ClientTCP::SendBuffer(buffer, length);
+}
+
+
+static void FuncReceiverServer(pchar buffer, uint length)
 {
     ClientTCP::SendBuffer(buffer, length);
 }
@@ -39,9 +45,9 @@ void LAN::Init()
 
     Update();
 
-    ClientTCP::Init(FuncReceiver);
+    ClientTCP::Init(FuncReceiverClient);
 
-    ServerTCP::Init();
+    ServerTCP::Init(FuncReceiverServer);
 }
 
 
@@ -57,6 +63,11 @@ void LAN::Update()
 #if LWIP_NETIF_LINK_CALLBACK
     Ethernet_Link_Periodic_Handle(&gnetif);
 #endif
+
+    if (!ServerTCP::IsConnected())
+    {
+        ServerTCP::Init(FuncReceiverServer);
+    }
 }
 
 

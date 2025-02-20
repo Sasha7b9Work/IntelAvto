@@ -9,7 +9,7 @@
 
 namespace ClientTCP
 {
-    void Init(void (*funcReciever)(pchar buffer, uint length));
+    void Init(void (*callbackReceive)(pchar, uint));
 
     void SendBuffer(pchar buffer, uint length);
 

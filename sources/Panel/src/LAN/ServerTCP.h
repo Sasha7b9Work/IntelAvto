@@ -8,7 +8,9 @@
 
 namespace ServerTCP
 {
-    void Init();
+    void Init(void (*callbackReceive)(pchar, uint));
 
     void SendString(pchar buffer);
+
+    bool IsConnected();
 }

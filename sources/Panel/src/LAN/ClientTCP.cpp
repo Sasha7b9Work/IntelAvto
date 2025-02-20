@@ -39,7 +39,7 @@ namespace ClientTCP
 }
 
 
-void ClientTCP::Init(void (*funcReciever)(pchar buffer, uint length))
+void ClientTCP::Init(void (*funcRecieve)(pchar buffer, uint length))
 {
     {
         // Создаём сервер для подключения пользователя
@@ -51,7 +51,7 @@ void ClientTCP::Init(void (*funcReciever)(pchar buffer, uint length))
             if (err == ERR_OK)
             {
                 pcb = tcp_listen(pcb);
-                SocketFuncReciever = funcReciever;
+                SocketFuncReciever = funcRecieve;
                 tcp_accept(pcb, CallbackAccept);
             }
             else

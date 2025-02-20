@@ -35,8 +35,15 @@ namespace ServerTCP
 }
 
 
-void ServerTCP::Init()
+void ServerTCP::Init(void (*funcReceive)(pchar buffer, uint length))
 {
+    if (SocketFuncReciever)                             // Идёт подключение к серверу
+    {
+        return;
+    }
+
+    SocketFuncReciever = funcReceive;
+
     // Создаём клиента для подключения к серверу блока питания
 
     tcp_pcb *pcb = tcp_new();
@@ -85,6 +92,8 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
             Send(tpcb, es);
 
             SendString("I'm connected");
+
+            CloseConnection(tpcb, es);
 
             return ERR_OK;
         }
@@ -315,6 +324,10 @@ void ServerTCP::CloseConnection(tcp_pcb *tpcb, Server *es)
         mem_free(es);
     }
 
+    pcbServer = nullptr;
+
+    SocketFuncReciever = nullptr;
+
     /* close tcp connection */
     tcp_close(tpcb);
 }
@@ -334,4 +347,10 @@ void ServerTCP::SendString(pchar buffer)
         Send(pcbServer, ss);
         mem_free(ss);
     }
+}
+
+
+bool ServerTCP::IsConnected()
+{
+    return pcbServer != nullptr;
 }
