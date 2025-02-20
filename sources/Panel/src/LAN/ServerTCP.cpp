@@ -32,6 +32,7 @@ namespace ServerTCP
     static err_t CallbackRecv(void *, tcp_pcb *, pbuf *, err_t);
     static err_t CallbackPoll(void *, tcp_pcb *);
     static err_t CallbackSent(void *, tcp_pcb *, uint16);
+    static void CallbackError(void *, err_t);
 }
 
 
@@ -52,13 +53,14 @@ void ServerTCP::Init(void (*funcReceive)(pchar buffer, uint length))
     {
         ip_addr_t ipaddr;
 
+        tcp_err(pcb, CallbackError);
+
         IP4_ADDR(&ipaddr, 192, 168, 1, 4);
 
         tcp_connect(pcb, &ipaddr, 30000, CallbackOnConnect);
     }
     else
     {
-        pcb = pcb;
         SocketFuncReciever = nullptr;
     }
 }
@@ -348,4 +350,12 @@ void ServerTCP::SendString(pchar buffer)
 bool ServerTCP::IsConnected()
 {
     return pcbServer != nullptr;
+}
+
+
+void ServerTCP::CallbackError(void *arg, err_t)
+{
+    Server *ss = (Server *)arg;
+
+    CloseConnection(pcbServer, ss);
 }
