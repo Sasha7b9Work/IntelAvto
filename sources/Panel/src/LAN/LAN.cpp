@@ -37,6 +37,8 @@ void LAN::Init()
     /* Http webserver Init */
     http_server_init();
     
+    Update();
+    
     TCP::Init(FuncReceiver);
 }
 

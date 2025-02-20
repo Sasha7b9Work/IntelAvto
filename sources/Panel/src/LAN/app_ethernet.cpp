@@ -86,12 +86,15 @@ void ethernet_link_status_updated(struct netif *netif)
   */
 void Ethernet_Link_Periodic_Handle(struct netif *netif)
 {
-  /* Ethernet Link every 100ms */
-  if (HAL_GetTick() - EthernetLinkTimer >= 100)
-  {
-    EthernetLinkTimer = HAL_GetTick();
-    ethernet_link_check_state(netif);
-  }
+    static bool first = true;
+
+    /* Ethernet Link every 100ms */
+    if (HAL_GetTick() - EthernetLinkTimer >= 100 || first)
+    {
+        first = false;
+        EthernetLinkTimer = HAL_GetTick();
+        ethernet_link_check_state(netif);
+    }
 }
 #endif
 
