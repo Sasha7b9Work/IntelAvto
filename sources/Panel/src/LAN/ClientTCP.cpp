@@ -22,7 +22,7 @@ namespace ClientTCP
 
     struct State
     {
-        pbuf *p;     // pbuf (chain) to recycle
+        pbuf *p_tx;
         uchar state;
     };
 
@@ -95,28 +95,29 @@ void ClientTCP::CloseConnection(tcp_pcb *tpcb, State *ss)
 
 void ClientTCP::Send(tcp_pcb *_tpcb, State *_ss)
 {
-    pbuf *ptr;
     err_t wr_err = ERR_OK;
 
-    while ((wr_err == ERR_OK) && (_ss->p != nullptr) && (_ss->p->len <= tcp_sndbuf(_tpcb)))
+    while ((wr_err == ERR_OK) &&
+        (_ss->p_tx != nullptr) &&
+        (_ss->p_tx->len <= tcp_sndbuf(_tpcb)))
     {
-        ptr = _ss->p;
+        pbuf *ptr = _ss->p_tx;
         // enqueue data for transmittion
         wr_err = tcp_write(_tpcb, ptr->payload, ptr->len, 1);
         tcp_output(_tpcb);
         if (wr_err == ERR_OK)
         {
-            u16_t plen;
-            u8_t freed;
-
-            plen = ptr->len;
+            u16_t plen = ptr->len;
             // continue with new pbuf in chain (if any) 
-            _ss->p = ptr->next;
-            if (_ss->p != nullptr)
+            _ss->p_tx = ptr->next;
+            if (_ss->p_tx != nullptr)
             {
                 // new reference!
-                pbuf_ref(_ss->p);
+                pbuf_ref(_ss->p_tx);
             }
+
+            u8_t freed;
+
             // chop first pbuf from chain
             do
             {
@@ -129,25 +130,20 @@ void ClientTCP::Send(tcp_pcb *_tpcb, State *_ss)
         else if (wr_err == ERR_MEM)
         {
             // we are low on memory, try later / harder, defer to poll
-            _ss->p = ptr;
+            _ss->p_tx = ptr;
         }
         else
         {
-            // other probler
-            volatile err_t err_ = wr_err;
-            err_ = err_;
         }
     }
 }
 
 
-err_t ClientTCP::CallbackSent(void *_arg, tcp_pcb *_tpcb, u16_t _len)
+err_t ClientTCP::CallbackSent(void *_arg, tcp_pcb *_tpcb, u16_t /*_len*/)
 {
-    State *ss;
-    LWIP_UNUSED_ARG(_len);
-    ss = (struct State*)_arg;
+    State *ss = (struct State*)_arg;
 
-    if (ss->p != nullptr)
+    if (ss->p_tx != nullptr)
     {
         Send(_tpcb, ss);
     }
@@ -159,6 +155,7 @@ err_t ClientTCP::CallbackSent(void *_arg, tcp_pcb *_tpcb, u16_t _len)
             CloseConnection(_tpcb, ss);
         }
     }
+
     return ERR_OK;
 }
 
@@ -171,7 +168,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
     {
         // remote host closed connection
         ss->state = S_CLOSING;
-        if (ss->p == nullptr)
+        if (ss->p_tx == nullptr)
         {
             // we're done sending, close it
             CloseConnection(_tpcb, ss);
@@ -189,7 +186,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
         // cleanup, for unkown reason
         if (_p != nullptr)
         {
-            ss->p = nullptr;
+            ss->p_tx = nullptr;
             pbuf_free(_p);
         }
     }
@@ -206,7 +203,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
     else if (ss->state == S_RECIEVED)
     {
         // read some more data
-        if (ss->p == nullptr)
+        if (ss->p_tx == nullptr)
         {
             //ss->p = _p;
             tcp_sent(_tpcb, CallbackSent);
@@ -225,7 +222,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
         {
             pbuf *ptr;
             // chain pbufs to the end of what we recv'ed previously
-            ptr = ss->p;
+            ptr = ss->p_tx;
             pbuf_chain(ptr, _p);
         }
 
@@ -235,7 +232,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
     {
         // odd case, remote side closing twice, trash data
         tcp_recved(_tpcb, _p->tot_len);
-        ss->p = nullptr;
+        ss->p_tx = nullptr;
         pbuf_free(_p);
 
         err = ERR_OK;
@@ -246,7 +243,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
     {
         // unknown ss->state, trash data
         tcp_recved(_tpcb, _p->tot_len);
-        ss->p = nullptr;
+        ss->p_tx = nullptr;
         pbuf_free(_p);
 
         err = ERR_OK;
@@ -279,7 +276,7 @@ err_t ClientTCP::CallbackPoll(void *_arg, tcp_pcb *_tpcb)
     State *ss = (State *)_arg;
     if (ss != nullptr)
     {
-        if (ss->p != nullptr)
+        if (ss->p_tx != nullptr)
         {
             // there is a remaining pbuf (chain)
             tcp_sent(_tpcb, CallbackSent);
@@ -305,33 +302,27 @@ err_t ClientTCP::CallbackPoll(void *_arg, tcp_pcb *_tpcb)
 }
 
 
-err_t ClientTCP::CallbackAccept(void *_arg, tcp_pcb *_newPCB, err_t _err)
+err_t ClientTCP::CallbackAccept(void * /*_arg*/, tcp_pcb *_newPCB, err_t err)
 {
-    err_t ret_err;
-
-    State *s;
-    LWIP_UNUSED_ARG(_arg);
-    LWIP_UNUSED_ARG(_err);
-    
-
     /* Unless this pcb should have NORMAL priority, set its priority now.
         When running out of pcbs, low priority pcbs can be aborted to create
         new pcbs of higher priority. */
     tcp_setprio(_newPCB, TCP_PRIO_MIN);
 
-    s = (struct State*)mem_malloc(sizeof(struct State));
+    State *s = (struct State*)mem_malloc(sizeof(struct State));
 
     if (s)
     {
         s->state = S_ACCEPTED;
-        s->p = nullptr;
+        s->p_tx = nullptr;
         /* pass newly allocated s to our callbacks */
         tcp_arg(_newPCB, s);
         tcp_recv(_newPCB, CallbackRecv);
         tcp_err(_newPCB, CallbackError);
         tcp_poll(_newPCB, CallbackPoll, 0);
         tcp_sent(_newPCB, CallbackSent);
-        ret_err = ERR_OK;
+
+        err = ERR_OK;
 
         if (pcbClient == nullptr)
         {
@@ -341,10 +332,10 @@ err_t ClientTCP::CallbackAccept(void *_arg, tcp_pcb *_newPCB, err_t _err)
     }
     else
     {
-        ret_err = ERR_MEM;
+        err = ERR_MEM;
     }
 
-    return ret_err;
+    return err;
 }
 
 
@@ -356,7 +347,7 @@ void ClientTCP::SendBuffer(pchar buffer, uint length)
         tcpBuffer->flags = 1;
         pbuf_take(tcpBuffer, buffer, (uint16)length);
         State *ss = (State *)mem_malloc(sizeof(struct State));
-        ss->p = tcpBuffer;
+        ss->p_tx = tcpBuffer;
         Send(pcbClient, ss);
         mem_free(ss);
     }

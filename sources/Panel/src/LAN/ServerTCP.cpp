@@ -6,10 +6,6 @@
 
 namespace ServerTCP
 {
-    static __IO uint32_t message_count = 0;
-
-    static uint8 data[100];
-
     enum echoclient_states
     {
         ES_NOT_CONNECTED = 0,
@@ -24,6 +20,8 @@ namespace ServerTCP
         tcp_pcb *pcb;          /* pointer on the current tcp_pcb */
         pbuf *p_tx;            /* pointer on pbuf to be transmitted */
     };
+
+    static void(*SocketFuncReciever)(pchar buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client
 
     static void Send(tcp_pcb *, echoclient *);
     static void CloseConnection(tcp_pcb *, echoclient *);
@@ -65,34 +63,24 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
         {
             es->state = ES_CONNECTED;
             es->pcb = tpcb;
+            es->p_tx = nullptr;
 
-            sprintf((char *)data, "sending tcp client message %d", (int)message_count);
+            /* pass newly allocated es structure as argument to tpcb */
+            tcp_arg(tpcb, es);
 
-            /* allocate pbuf */
-            es->p_tx = pbuf_alloc(PBUF_TRANSPORT, (uint16)std::strlen((char *)data), PBUF_POOL);
+            /* initialize LwIP tcp_recv callback function */
+            tcp_recv(tpcb, CallbackRecv);
 
-            if (es->p_tx)
-            {
-                /* copy data to pbuf */
-                pbuf_take(es->p_tx, (char *)data, (uint16)std::strlen((char *)data));
+            /* initialize LwIP tcp_sent callback function */
+            tcp_sent(tpcb, CallbackSent);
 
-                /* pass newly allocated es structure as argument to tpcb */
-                tcp_arg(tpcb, es);
+            /* initialize LwIP tcp_poll callback function */
+            tcp_poll(tpcb, CallbackPoll, 1);
 
-                /* initialize LwIP tcp_recv callback function */
-                tcp_recv(tpcb, CallbackRecv);
+            /* send data */
+            Send(tpcb, es);
 
-                /* initialize LwIP tcp_sent callback function */
-                tcp_sent(tpcb, CallbackSent);
-
-                /* initialize LwIP tcp_poll callback function */
-                tcp_poll(tpcb, CallbackPoll, 1);
-
-                /* send data */
-                Send(tpcb, es);
-
-                return ERR_OK;
-            }
+            return ERR_OK;
         }
         else
         {
@@ -145,24 +133,61 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
     }
     else if (es->state == ES_CONNECTED)
     {
-        /* increment message count */
-        message_count++;
+        es->state = ES_RECEIVED;
 
         /* Acknowledge data reception */
         tcp_recved(tpcb, p->tot_len);
 
-        pbuf_free(p);
-        CloseConnection(tpcb, es);
+//        pbuf_free(p);
+//        CloseConnection(tpcb, es);
 
         err = ERR_OK;
     }
+    else if (es->state == ES_RECEIVED)
+    {
+        // read some more data
+        if (es->p_tx == nullptr)
+        {
+            //ss->p = _p;
+            tcp_sent(tpcb, CallbackSent);
+            //Send(_tpcb, ss);
+            SocketFuncReciever((char *)p->payload, p->len);
 
+            u8_t freed = 0;
+            do
+            {
+                // try hard to free pbuf 
+                freed = pbuf_free(p);
+            } while (freed == 0);
+
+        }
+        else
+        {
+            pbuf *ptr;
+            // chain pbufs to the end of what we recv'ed previously
+            ptr = es->p_tx;
+            pbuf_chain(ptr, p);
+        }
+
+        err = ERR_OK;
+    }
+    else if (es->state == ES_CLOSING)
+    {
+        // odd case, remote side closing twice, trash data
+        tcp_recved(tpcb, p->tot_len);
+        es->p_tx = nullptr;
+        pbuf_free(p);
+
+        err = ERR_OK;
+
+        CloseConnection(tpcb, es);
+    }
     /* data received when connection already closed */
     else
     {
         /* Acknowledge data reception */
         tcp_recved(tpcb, p->tot_len);
-
+        es->p_tx = nullptr;
         /* free pbuf and do nothing */
         pbuf_free(p);
 
@@ -174,7 +199,6 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 
 void ServerTCP::Send(tcp_pcb *tpcb, echoclient *es)
 {
-    pbuf *ptr;
     err_t wr_err = ERR_OK;
 
     while ((wr_err == ERR_OK) &&
@@ -183,10 +207,12 @@ void ServerTCP::Send(tcp_pcb *tpcb, echoclient *es)
     {
 
         /* get pointer on pbuf from es structure */
-        ptr = es->p_tx;
+        pbuf *ptr = es->p_tx;
 
         /* enqueue data for transmission */
         wr_err = tcp_write(tpcb, ptr->payload, ptr->len, 1);
+
+        tcp_output(tpcb);
 
         if (wr_err == ERR_OK)
         {
@@ -249,18 +275,21 @@ err_t ServerTCP::CallbackPoll(void *arg, tcp_pcb *tpcb)
 }
 
 
-err_t ServerTCP::CallbackSent(void *arg, tcp_pcb *tpcb, u16_t len)
+err_t ServerTCP::CallbackSent(void *arg, tcp_pcb *tpcb, u16_t /*len*/)
 {
-    echoclient *es;
-
-    LWIP_UNUSED_ARG(len);
-
-    es = (echoclient *)arg;
+    echoclient *es = (echoclient *)arg;
 
     if (es->p_tx != nullptr)
     {
         /* still got pbufs to send */
         Send(tpcb, es);
+    }
+    else
+    {
+        if (es->state == ES_CLOSING)
+        {
+            CloseConnection(tpcb, es);
+        }
     }
 
     return ERR_OK;
