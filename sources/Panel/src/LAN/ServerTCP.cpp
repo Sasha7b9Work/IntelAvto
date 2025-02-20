@@ -48,11 +48,7 @@ void ServerTCP::Init()
 
         IP4_ADDR(&ipaddr, 192, 168, 1, 200);
 
-        err_t err = tcp_connect(pcb, &ipaddr, 30000, CallbackOnConnect);
-
-        if (err == ERR_OK)
-        {
-        }
+        tcp_connect(pcb, &ipaddr, 30000, CallbackOnConnect);
     }
 }
 
