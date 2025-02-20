@@ -20,10 +20,9 @@ namespace LAN
 }
 
 
-static void FuncReceiver(const char *buffer, uint length)
+static void FuncReceiver(pchar buffer, uint length)
 {
-    (void)buffer;
-    (void)length;
+    ClientTCP::SendBuffer(buffer, length);
 }
 
 
