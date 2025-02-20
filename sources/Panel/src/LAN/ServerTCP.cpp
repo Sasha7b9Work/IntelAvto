@@ -115,51 +115,40 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
 err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
 {
-    Server *es = (Server *)arg;
+    Server *ss = (Server *)arg;
 
-    /* if we receive an empty tcp frame from server => close connection */
     if (p == nullptr)
     {
-        /* remote host closed connection */
-        es->state = S_CLOSING;
-        if (es->p_tx == nullptr)
+        // remote host closed connection
+        ss->state = S_CLOSING;
+        if (ss->p_tx == nullptr)
         {
-            /* we're done sending, close connection */
-            CloseConnection(tpcb, es);
+            // we're done sending, close it
+            CloseConnection(tpcb, ss);
         }
         else
         {
-            /* send remaining data*/
-            Send(tpcb, es);
+            // we're not done yet
+            tcp_sent(tpcb, CallbackSent);
         }
 
         err = ERR_OK;
     }
-    /* else : a non empty frame was received from echo server but for some reason err != ERR_OK */
     else if (err != ERR_OK)
     {
-        /* free received pbuf*/
+        // cleanup, for unkown reason
         if (p != nullptr)
         {
+            ss->p_tx = nullptr;
             pbuf_free(p);
         }
     }
-    else if (es->state == S_CONNECTED)
+    else if (ss->state == S_RECEIVED || ss->state == S_CONNECTED)
     {
-        es->state = S_RECEIVED;
+        ss->state = S_RECEIVED;
 
-        /* Acknowledge data reception */
-        tcp_recved(tpcb, p->tot_len);
-
-//        pbuf_free(p);
-//        CloseConnection(tpcb, es);
-
-        err = ERR_OK;
-    }
-    else if (es->state == S_RECEIVED)
-    {
         // read some more data
-        if (es->p_tx == nullptr)
+        if (ss->p_tx == nullptr)
         {
             //ss->p = _p;
             tcp_sent(tpcb, CallbackSent);
@@ -178,34 +167,33 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
         {
             pbuf *ptr;
             // chain pbufs to the end of what we recv'ed previously
-            ptr = es->p_tx;
+            ptr = ss->p_tx;
             pbuf_chain(ptr, p);
         }
 
         err = ERR_OK;
     }
-    else if (es->state == S_CLOSING)
+    else if (ss->state == S_CLOSING)
     {
         // odd case, remote side closing twice, trash data
         tcp_recved(tpcb, p->tot_len);
-        es->p_tx = nullptr;
+        ss->p_tx = nullptr;
         pbuf_free(p);
 
         err = ERR_OK;
 
-        CloseConnection(tpcb, es);
+        CloseConnection(tpcb, ss);
     }
-    /* data received when connection already closed */
     else
     {
-        /* Acknowledge data reception */
+        // unknown ss->state, trash data
         tcp_recved(tpcb, p->tot_len);
-        es->p_tx = nullptr;
-        /* free pbuf and do nothing */
+        ss->p_tx = nullptr;
         pbuf_free(p);
 
         err = ERR_OK;
     }
+
     return err;
 }
 

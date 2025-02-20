@@ -190,18 +190,10 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
             pbuf_free(_p);
         }
     }
-    else if (ss->state == S_ACCEPTED)
+    else if (ss->state == S_RECIEVED || ss->state == S_ACCEPTED)
     {
-        // first data chunk in _p->payload
         ss->state = S_RECIEVED;
-        // store reference to incoming pbuf (chain)
-        //ss->p = _p;
-        // Send(_tpcb, ss);
 
-        err = ERR_OK;
-    }
-    else if (ss->state == S_RECIEVED)
-    {
         // read some more data
         if (ss->p_tx == nullptr)
         {
