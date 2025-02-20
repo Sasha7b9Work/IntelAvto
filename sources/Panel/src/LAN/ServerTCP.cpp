@@ -6,6 +6,8 @@
 
 namespace ServerTCP
 {
+    static tcp_pcb *pcbServer = nullptr;
+
     enum State
     {
         S_NOT_CONNECTED = 0,
@@ -43,7 +45,7 @@ void ServerTCP::Init()
     {
         ip_addr_t ipaddr;
 
-        IP4_ADDR(&ipaddr, 192, 168, 1, 200);
+        IP4_ADDR(&ipaddr, 192, 168, 1, 4);
 
         tcp_connect(pcb, &ipaddr, 30000, CallbackOnConnect);
     }
@@ -56,6 +58,8 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
     if (err == ERR_OK)
     {
+        pcbServer = tpcb;
+
         /* allocate structure es to maintain tcp connection information */
         es = (Server *)mem_malloc(sizeof(Server));
 
@@ -79,6 +83,8 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 
             /* send data */
             Send(tpcb, es);
+
+            SendString("I'm connected");
 
             return ERR_OK;
         }
@@ -311,4 +317,21 @@ void ServerTCP::CloseConnection(tcp_pcb *tpcb, Server *es)
 
     /* close tcp connection */
     tcp_close(tpcb);
+}
+
+
+void ServerTCP::SendString(pchar buffer)
+{
+    if (pcbServer)
+    {
+        uint16 length = (uint16)(std::strlen(buffer) + 1);
+
+        pbuf *tcpBuffer = pbuf_alloc(PBUF_RAW, length, PBUF_POOL);
+        tcpBuffer->flags = 1;
+        pbuf_take(tcpBuffer, buffer, length);
+        Server *ss = (Server *)mem_malloc(sizeof(Server));
+        ss->p_tx = tcpBuffer;
+        Send(pcbServer, ss);
+        mem_free(ss);
+    }
 }

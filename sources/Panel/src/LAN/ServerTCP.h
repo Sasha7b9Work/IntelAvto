@@ -9,4 +9,6 @@
 namespace ServerTCP
 {
     void Init();
+
+    void SendString(pchar buffer);
 }
