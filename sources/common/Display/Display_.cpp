@@ -11,6 +11,7 @@
 #include "Display/Text_.h"
 #include "Display/Console_.h"
 #include "Display/Pictures/Picture.h"
+#include "LAN/LAN.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -282,6 +283,7 @@ void Display::Update()
 #else
     for (int i = 0; i < NUM_PARTS; i++)
     {
+        LAN::Update();
         DrawPartScreen(i, true);
     }
 #endif
@@ -298,10 +300,15 @@ void Display::DrawPartScreen(int num, bool)
     {
         timeStart = TIME_MS;
     }
+    LAN::Update();
 
     Display::BeginScene();
 
+    LAN::Update();
+
     DrawScreen();
+
+    LAN::Update();
 
     if (num == 0)
     {
@@ -328,7 +335,9 @@ void Display::DrawPartScreen(int num, bool)
         Text("%08X", crc_recv).Write(400, 240);
     }
 
+    LAN::Update();
     Display::EndScene();
+    LAN::Update();
 
     if (num == Display::NUM_PARTS)
     {

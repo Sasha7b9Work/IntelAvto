@@ -25,8 +25,11 @@ int main(void)
 
     while (1)
     {
+        LAN::Update();
         Menu::Input::Update();
+        LAN::Update();
         Display::Update();
+        LAN::Update();
         Timer::UpdateTasks();
         LAN::Update();
     }
