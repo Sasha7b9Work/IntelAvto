@@ -56,7 +56,7 @@ void ServerTCP::Init(void (*funcReceive)(pchar buffer, uint length))
 
         tcp_err(pcb, CallbackError);
 
-        IP4_ADDR(&ipaddr, 192, 168, 1, 4);
+        IP4_ADDR(&ipaddr, gset.ipIT6523[0], gset.ipIT6523[1], gset.ipIT6523[2], gset.ipIT6523[3]);
 
         tcp_connect(pcb, &ipaddr, gset.portIT6523, CallbackOnConnect);
     }

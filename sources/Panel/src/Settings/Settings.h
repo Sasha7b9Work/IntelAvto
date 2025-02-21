@@ -104,6 +104,7 @@ struct Settings
     SettingsSignal signals[TypeSignal::Count];
     uint16         portSCPI;                            // По этому порту подключается внешний клиент для команд SCPI
     uint16         portIT6523;                          // По этому порту подключаемся к IT6523
+    uint8          ipIT6523[4];
 
     void Save();
     void Load();

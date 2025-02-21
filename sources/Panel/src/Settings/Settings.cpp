@@ -132,7 +132,8 @@ static Settings def_set =
                 Counter(5) }}                   // 5b : N 24
     },
     7,                                          // portSCPI
-    30000                                       // portIT6523
+    30000,                                      // portIT6523
+    { 192, 168, 1, 4 }                          // ipIT6523
 };
 
 
