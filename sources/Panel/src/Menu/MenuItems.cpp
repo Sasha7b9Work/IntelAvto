@@ -11,6 +11,7 @@
 #include "Utils/Math_.h"
 #include "Menu/Menu.h"
 #include "Hardware/HAL/HAL.h"
+#include "Utils/StringUtils_.h"
 #include <cstring>
 
 
@@ -481,7 +482,28 @@ bool IAddressIP::OnEventControl(const Control &control)
     {
         if (control.key == Key::OK)
         {
+            uint8 bytes[4];
+
+            if (ConvertStringToAddress(bytes))
+            {
+                std::memcpy(address, bytes, 4);
+            }
+
             Close();
+        }
+        else if (control.key == Key::Dot || (control.key >= Key::_1 && control.key <= Key::_0))
+        {
+            if (!edited)
+            {
+                buffer[0] = '\0';
+            }
+
+            edited = true;
+
+            if (std::strlen(buffer) < 15)
+            {
+                std::strcat(buffer, Key::Name(control.key));
+            }
         }
 
         return true;
@@ -500,9 +522,73 @@ bool IAddressIP::OnEventControl(const Control &control)
 }
 
 
+bool IAddressIP::ConvertStringToAddress(uint8 bytes[4]) const
+{
+    uint length = std::strlen(buffer);
+
+    int counter = 0;
+
+    for (uint i = 0; i < length; i++)
+    {
+        if (buffer[i] == '.')
+        {
+            counter++;
+        }
+    }
+
+    if (counter != 3)
+    {
+        return false;
+    }
+
+    const char *pointer = buffer;
+
+    for (uint i = 0; i < 4; i++)
+    {
+        const char *start = pointer;
+
+        while (*pointer != '.' && *pointer != '\0')
+        {
+            pointer++;
+        }
+
+        // Нашли конец числа
+
+        const char *end = pointer;
+
+        pointer++;
+
+        char str[10] = { '\0' };
+
+        while (start != end)
+        {
+            char symbol[2] = { *start, '\0' };
+            std::strcat(str, symbol);
+            start++;
+        }
+
+        int value = 0;
+        char *e = nullptr;
+
+        SU::String2Int(str, &value, &e);
+
+        if (value > 255)
+        {
+            return false;
+        }
+
+        bytes[i] = (uint8)value;
+    }
+
+    return true;
+}
+
+
 void IAddressIP::Open()
 {
     std::strcpy(buffer, Text("%d.%d.%d.%d", address[0], address[1], address[2], address[3]).c_str());
+
+    edited = false;
 
     Button::Open();
 }

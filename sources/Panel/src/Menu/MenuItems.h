@@ -84,11 +84,14 @@ public:
     virtual void Open() override;
     virtual void Close() override;
 
-private:
-    uint8 *address;
+    bool ConvertStringToAddress(uint8[4]) const;
 
+private:
+
+    uint8 *address;
     static const int SIZE_BUFFER = 64;
-    char buffer[SIZE_BUFFER];            // Здесь хранится в текстовом виде
+    char buffer[SIZE_BUFFER];           // Здесь хранится в текстовом виде
+    bool edited = false;                // Если true, то находимся в режие редактирования - уже идёт набор цифр
 };
 
 
