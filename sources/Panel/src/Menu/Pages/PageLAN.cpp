@@ -23,10 +23,46 @@ namespace PageLAN
         }
     );
 
+    DEF_BUTTON(bSCPI,
+        "SCPI",
+        []()
+        {
+            Menu::SetOpenedPage(PageSCPI::self);
+        }
+    );
+
+    DEF_BUTTON(bNetmask,
+        "Маска сети",
+        []()
+        {
+
+        }
+    );
+
+    DEF_BUTTON(bGateway,
+        "Gateway IP",
+        []()
+        {
+
+        }
+    );
+
+    DEF_BUTTON(bMAC,
+        "MAC",
+        []()
+        {
+
+        }
+    );
+
     static Item *items[] =
     {
         &bBack,
         &bIT6523,
+        &bSCPI,
+        &bNetmask,
+        &bGateway,
+        &bMAC,
         nullptr
     };
 
@@ -61,38 +97,11 @@ namespace PageLAN
             }
         );
 
-        DEF_BUTTON(bNetmask,
-            "Маска сети",
-            []()
-            {
-
-            }
-        );
-
-        DEF_BUTTON(bGateway,
-            "Gateway IP",
-            []()
-            {
-
-            }
-        );
-
-        DEF_BUTTON(bMAC,
-            "MAC",
-            []()
-            {
-
-            }
-        );
-
         static Item *items[] =
         {
             &bBack,
             &bIP,
             &bPort,
-            &bNetmask,
-            &bGateway,
-            &bMAC,
             nullptr
         };
 
@@ -101,4 +110,43 @@ namespace PageLAN
         Page *self = &page;
     }
 
+
+    namespace PageSCPI
+    {
+        DEF_BUTTON(bBack,
+            "Назад",
+            []()
+            {
+                Menu::SetOpenedPage(PageLAN::self);
+            }
+        );
+
+        DEF_BUTTON(bIP,
+            "Адрес IP",
+            []()
+            {
+                
+            }
+        );
+
+        DEF_BUTTON(bPort,
+            "Порт",
+            []()
+            {
+    
+            }
+        );
+
+        static Item *items[] =
+        {
+            &bBack,
+            &bIP,
+            &bPort,
+            nullptr
+        };
+
+        static Page page(items, nullptr, nullptr);
+
+        Page *self = &page;
+    }
 }
