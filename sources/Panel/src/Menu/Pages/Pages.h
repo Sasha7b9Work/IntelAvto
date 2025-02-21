@@ -15,6 +15,22 @@ namespace PageSettings
 }
 
 
+namespace PageLAN
+{
+    extern Page *self;
+
+    namespace PageIT6523
+    {
+        extern Page *self;
+    }
+
+    namespace PageSCPI
+    {
+        extern Page *self;
+    }
+}
+
+
 namespace PageInfo
 {
     extern Page *self;

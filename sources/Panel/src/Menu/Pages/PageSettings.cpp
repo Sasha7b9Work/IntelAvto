@@ -19,7 +19,7 @@ namespace PageSettings
 
     static void FuncPress_LAN()
     {
-
+        Menu::SetOpenedPage(PageLAN::self);
     }
 
     DEF_BUTTON(bLAN,

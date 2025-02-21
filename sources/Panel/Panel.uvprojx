@@ -1242,6 +1242,11 @@
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageInfo.cpp</FilePath>
             </File>
+            <File>
+              <FileName>PageLAN.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageLAN.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4986,6 +4991,11 @@
               <FileName>PageInfo.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageInfo.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PageLAN.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Menu\Pages\PageLAN.cpp</FilePath>
             </File>
           </Files>
         </Group>
