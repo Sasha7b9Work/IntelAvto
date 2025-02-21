@@ -86,7 +86,9 @@ public:
 
 private:
     uint8 *address;
-    uint8 storage[4];   // Здесь находится редактируемое значение, чтобы сохранить его в дальнейшем
+
+    static const int SIZE_BUFFER = 64;
+    char buffer[SIZE_BUFFER];            // Здесь хранится в текстовом виде
 };
 
 
@@ -258,6 +260,8 @@ public:
 
     // Отобразить состояние сервера
     static void DrawConnectionServer();
+
+    bool ConsistOpenedItems() const;
 
 protected:
 

@@ -80,6 +80,21 @@ const Page *Page::ForCurrentSignal()
 }
 
 
+
+bool Page::ConsistOpenedItems() const
+{
+    for (int i = 0; i < NumItems(); i++)
+    {
+        if (items[i]->IsOpened())
+        {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 void Page::DrawParameters() const
 {
     for (int i = 0; i < NumItems(); i++)
@@ -445,7 +460,13 @@ void IAddressIP::Draw(int x, int y, int widht, bool selected /* = false */)
 {
     if (IsOpened())
     {
+        Button::Draw(x, y, widht, selected);
 
+        x += 130;
+
+        Rect(150, 30).FillRounded(x, y - 6, 1, Color::BACK, Color::WHITE);
+
+        Text(buffer).Write(x + 5, y + 2, Color::WHITE);
     }
     else
     {
@@ -481,6 +502,8 @@ bool IAddressIP::OnEventControl(const Control &control)
 
 void IAddressIP::Open()
 {
+    std::strcpy(buffer, Text("%d.%d.%d.%d", address[0], address[1], address[2], address[3]).c_str());
+
     Button::Open();
 }
 
