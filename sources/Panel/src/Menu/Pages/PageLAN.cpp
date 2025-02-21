@@ -7,24 +7,20 @@
 
 namespace PageLAN
 {
-    static void FuncPress_Back()
-    {
-        Menu::SetOpenedPage(PageSettings::self);
-    }
-
     DEF_BUTTON(bBack,
         "Назад",
-        FuncPress_Back
+        []()
+        {
+            Menu::SetOpenedPage(PageSettings::self);
+        }
     );
-
-    static void FuncPress_IT6523()
-    {
-        Menu::SetOpenedPage(PageIT6523::self);
-    }
 
     DEF_BUTTON(bIT6523,
         "IT6523",
-        FuncPress_IT6523
+        []()
+        {
+            Menu::SetOpenedPage(PageIT6523::self);
+        }
     );
 
     static Item *items[] =
@@ -41,19 +37,62 @@ namespace PageLAN
 
     namespace PageIT6523
     {
-        static void FuncPress_Back()
-        {
-            Menu::SetOpenedPage(PageLAN::self);
-        }
-
         DEF_BUTTON(bBack,
             "Назад",
-            FuncPress_Back
+            []()
+            {
+                Menu::SetOpenedPage(PageLAN::self);
+            }
+        );
+
+        DEF_BUTTON(bIP,
+            "Адрес IP",
+            []()
+            {
+
+            }
+        );
+
+        DEF_BUTTON(bPort,
+            "Порт",
+            []()
+            {
+
+            }
+        );
+
+        DEF_BUTTON(bNetmask,
+            "Маска сети",
+            []()
+            {
+
+            }
+        );
+
+        DEF_BUTTON(bGateway,
+            "Gateway IP",
+            []()
+            {
+
+            }
+        );
+
+        DEF_BUTTON(bMAC,
+            "MAC",
+            []()
+            {
+
+            }
         );
 
         static Item *items[] =
         {
             &bBack,
+            &bIP,
+            &bPort,
+            &bNetmask,
+            &bGateway,
+            &bMAC,
             nullptr
         };
 
