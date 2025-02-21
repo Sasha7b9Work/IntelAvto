@@ -491,6 +491,10 @@ bool IAddressIP::OnEventControl(const Control &control)
 
             Close();
         }
+        else if (control.key == Key::Esc)
+        {
+            Close();
+        }
         else if (control.key == Key::Dot || (control.key >= Key::_1 && control.key <= Key::_0))
         {
             if (!edited)

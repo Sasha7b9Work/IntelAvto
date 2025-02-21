@@ -118,13 +118,10 @@ namespace PageLAN
             }
         );
 
-        DEF_BUTTON(bIP,
+        IAddressIP bIP{
             "Адрес IP",
-            []()
-            {
-                
-            }
-        );
+            gset.ipSCPI
+        };
 
         DEF_BUTTON(bPort,
             "Порт",
