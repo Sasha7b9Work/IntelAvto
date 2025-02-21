@@ -133,7 +133,8 @@ static Settings def_set =
     },
     7,                                          // portSCPI
     30000,                                      // portIT6523
-    { 192, 168, 1, 4 }                          // ipIT6523
+    { 192, 168, 1, 4 },                         // ipIT6523
+    { 0, 1, 2, 3, 4, 5 }                        // mac
 };
 
 

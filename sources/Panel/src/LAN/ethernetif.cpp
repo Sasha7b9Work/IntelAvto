@@ -4,6 +4,7 @@
 #include "netif/ethernet.h"
 #include "netif/etharp.h"
 #include "ethernetif.h"
+#include "Settings/Settings.h"
 #include <cstring>
 
 #define DP83848_PHYSCSR_AUTONEGO_DONE   ((uint16_t)0x010U)
@@ -347,7 +348,7 @@ dp83848_IOCtx_t  DP83848_IOCtx = {ETH_PHY_IO_Init,
   */
 static void low_level_init(struct netif *netif)
 {
-  uint8_t macaddress[6]= {ETH_MAC_ADDR0, ETH_MAC_ADDR1, ETH_MAC_ADDR2, ETH_MAC_ADDR3, ETH_MAC_ADDR4, ETH_MAC_ADDR5};
+  uint8_t macaddress[6]= {gset.mac[0], gset.mac[1], gset.mac[2], gset.mac[3], gset.mac[4], gset.mac[5] };
 
   EthHandle.Instance = ETH;
   EthHandle.Init.MACAddr = macaddress;
@@ -363,12 +364,12 @@ static void low_level_init(struct netif *netif)
   netif->hwaddr_len = ETH_HWADDR_LEN;
 
   /* set MAC hardware address */
-  netif->hwaddr[0] =  ETH_MAC_ADDR0;
-  netif->hwaddr[1] =  ETH_MAC_ADDR1;
-  netif->hwaddr[2] =  ETH_MAC_ADDR2;
-  netif->hwaddr[3] =  ETH_MAC_ADDR3;
-  netif->hwaddr[4] =  ETH_MAC_ADDR4;
-  netif->hwaddr[5] =  ETH_MAC_ADDR5;
+  netif->hwaddr[0] =  gset.mac[0];
+  netif->hwaddr[1] =  gset.mac[1];
+  netif->hwaddr[2] =  gset.mac[2];
+  netif->hwaddr[3] =  gset.mac[3];
+  netif->hwaddr[4] =  gset.mac[4];
+  netif->hwaddr[5] =  gset.mac[5];
 
   /* maximum transfer unit */
   netif->mtu = ETH_MAX_PAYLOAD;
