@@ -6,6 +6,7 @@
 #include "LAN/http_cgi_ssi.h"
 #include "LAN/ethernetif.h"
 #include "LAN/app_ethernet.h"
+#include "Settings/Settings.h"
 #include <lwip/init.h>
 #include <lwip/netif.h>
 #include <lwip/timeouts.h>
@@ -78,9 +79,9 @@ void LAN::Netif_Config(void)
     ip_addr_t gw;
 
     /* IP address default setting */
-    IP4_ADDR(&ipaddr, IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
-    IP4_ADDR(&netmask, NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
-    IP4_ADDR(&gw, GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
+    IP4_ADDR(&ipaddr, gset.ipSCPI[0], gset.ipSCPI[1], gset.ipSCPI[2], gset.ipSCPI[3]);
+    IP4_ADDR(&netmask, gset.netmask[0], gset.netmask[1], gset.netmask[2], gset.netmask[3]);
+    IP4_ADDR(&gw, gset.gw[0], gset.gw[1], gset.gw[2], gset.gw[3]);
 
     /* add the network interface */
     netif_add(&gnetif, &ipaddr, &netmask, &gw, nullptr, &ethernetif_init, &ethernet_input);
