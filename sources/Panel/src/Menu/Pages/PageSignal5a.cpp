@@ -55,6 +55,8 @@ namespace PageSignal5a
         Text("%s", VoltageMode::TextValue()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
+
+        Page::DrawConnectionServer();
     }
 
     static Page page(items, AdditionDraw, FuncStartTest);

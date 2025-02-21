@@ -61,6 +61,8 @@ namespace PageSignal5b
         Text("%s     Us*: %d Â", VoltageMode::TextValue(), VoltageMode::Is12() ? 35 : 59).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
+
+        Page::DrawConnectionServer();
     }
 
     static Page page(items, AdditionDraw, FuncStartTest);

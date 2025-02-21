@@ -7,8 +7,10 @@
 #include "Display/Display_.h"
 #include "Display/Text_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "LAN/ServerTCP.h"
 #include "Utils/Math_.h"
 #include "Menu/Menu.h"
+#include "Hardware/HAL/HAL.h"
 #include <cstring>
 
 
@@ -412,4 +414,28 @@ bool Page::IsSignal(Page *page)
         page == PageSignal4::self ||
         page == PageSignal5a::self ||
         page == PageSignal5b::self;
+}
+
+
+void Page::DrawConnectionServer()
+{
+    int x = Display::xConstParameters;
+
+    int y = Display::yConstParameters - 25;
+
+    Text("IT6523C : ").Write(x, y, Color::WHITE);
+
+    x += 90;
+
+    if (ServerTCP::IsConnected())
+    {
+        Text("ондйкчвем").Write(x, y, Color::GREEN);
+    }
+    else
+    {
+        if ((TIME_MS / 500) % 2)
+        {
+            Text("ме ондйкчвем").Write(x, y, Color::RED);
+        }
+    }
 }

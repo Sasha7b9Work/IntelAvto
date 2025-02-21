@@ -221,6 +221,9 @@ public:
     // Возвращает количество итемов на странице
     int NumItems() const;
 
+    // Отобразить состояние сервера
+    static void DrawConnectionServer();
+
 protected:
 
     // Возвращает ширину элемента меню с номером num
