@@ -30,7 +30,7 @@ namespace Menu
 
 void Menu::Draw()
 {
-    openedPage->DrawMenuItem(0, 0, 0);
+    openedPage->Draw(0, 0, 0);
 
     if (Page::IsSignal(OpenedPage()))
     {

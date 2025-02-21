@@ -40,7 +40,7 @@ int Choice::NumStates() const
 }
 
 
-void Page::DrawMenuItem(int x, int y, int, bool)
+void Page::Draw(int x, int y, int, bool)
 {
     for (int i = 0; i < NumItems(); i++)
     {
@@ -50,7 +50,7 @@ void Page::DrawMenuItem(int x, int y, int, bool)
 
         Rect(WidthItem(i) - 1, Height() - 1).FillRounded(x, y + 1, 2, colorBack, Color::FILL);
 
-        items[i]->DrawMenuItem(x, y + 5, WidthItem(i), selected);
+        items[i]->Draw(x, y + 5, WidthItem(i), selected);
 
         y += Height();
     }
@@ -139,7 +139,7 @@ void Page::VerifySelectedItem()
 }
 
 
-void Parameter::DrawMenuItem(int x0, int y0, int width, bool selected)
+void Parameter::Draw(int x0, int y0, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
@@ -198,7 +198,7 @@ void Parameter::Draw() const
 }
 
 
-void Button::DrawMenuItem(int x, int y, int width, bool selected)
+void Button::Draw(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
@@ -211,7 +211,7 @@ void Button::DrawMenuItem(int x, int y, int width, bool selected)
 }
 
 
-void Choice::DrawMenuItem(int x, int y, int width, bool selected)
+void Choice::Draw(int x, int y, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();
 
@@ -441,7 +441,7 @@ void Page::DrawConnectionServer()
 }
 
 
-void IAddressIP::DrawMenuItem(int x, int y, int widht, bool selected /* = false */)
+void IAddressIP::Draw(int x, int y, int widht, bool selected /* = false */)
 {
 
 }

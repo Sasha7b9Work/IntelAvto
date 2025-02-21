@@ -20,7 +20,7 @@ public:
     static int Height();
 
     // Функция отрисовки
-    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) = 0;
+    virtual void Draw(int x, int y, int width, bool selected = false) = 0;
 
     virtual bool IsParameter() const { return false; }
 
@@ -46,7 +46,7 @@ public:
     {
         text = text_ru;
     }
-    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
     pchar GetTitle() const;
     void SetTitle(pchar);
@@ -61,7 +61,7 @@ class IAddressIP : public Button
 public:
     IAddressIP(pchar text_ru, uint8 *_address) : Button(text_ru, [](){}), address(_address) { }
 
-    virtual void DrawMenuItem(int x, int y, int widht, bool selected = false) override;
+    virtual void Draw(int x, int y, int widht, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
 
 private:
@@ -80,7 +80,7 @@ public:
         names = _names;
     }
 
-    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
     pchar Title() const;
     int Value() const { return (int)*state; }
@@ -112,7 +112,7 @@ public:
         title = title_ru;
     }
 
-    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
 
     void Draw() const;
 
@@ -209,7 +209,7 @@ public:
         items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
     {}
 
-    virtual void DrawMenuItem(int x, int y, int width, bool selected = false) override;
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
 
     virtual bool OnEventControl(const Control &) override;
 
