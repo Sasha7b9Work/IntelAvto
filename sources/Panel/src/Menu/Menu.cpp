@@ -66,9 +66,9 @@ void Menu::Input::OnControl(const Control &control)
         }
     }
 
-    if (!openedPage->OnEventControl(control))                               // Сначала пробуем применить событие клавиатуры на страницу
+    if (!openedPage->SelectedItem()->OnEventControl(control))               // Сначала пытаемся обработать тенущий элемент меню
     {
-        if (!openedPage->SelectedItem()->OnEventControl(control))           // Потом - на текущий пункт меню
+        if (!openedPage->OnEventControl(control))                           // Потом передаём событие странице
         {
             if (control.key == Key::Start)
             {

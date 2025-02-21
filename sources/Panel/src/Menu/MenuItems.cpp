@@ -443,11 +443,49 @@ void Page::DrawConnectionServer()
 
 void IAddressIP::Draw(int x, int y, int widht, bool selected /* = false */)
 {
+    if (IsOpened())
+    {
 
+    }
+    else
+    {
+        Button::Draw(x, y, widht, selected);
+    }
 }
 
 
-bool IAddressIP::OnEventControl(const Control &)
+bool IAddressIP::OnEventControl(const Control &control)
 {
+    if (IsOpened())
+    {
+        if (control.key == Key::OK)
+        {
+            Close();
+        }
+
+        return true;
+    }
+    else
+    {
+        if (control.key == Key::OK)
+        {
+            Open();
+
+            return true;
+        }
+    }
+
     return false;
+}
+
+
+void IAddressIP::Open()
+{
+    Button::Open();
+}
+
+
+void IAddressIP::Close()
+{
+    Button::Close();
 }

@@ -31,9 +31,26 @@ public:
 
     static Color ColorDraw(bool selected);
 
+    bool IsOpened() const
+    {
+        return is_opened;
+    }
+
+    virtual void Open()
+    {
+        is_opened = true;
+    }
+
+    virtual void Close()
+    {
+        is_opened = false;
+    }
+
 protected:
 
     int DeltaTextt() const { return 3; }
+
+    bool is_opened = false;
 };
 
 
@@ -63,6 +80,9 @@ public:
 
     virtual void Draw(int x, int y, int widht, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
+
+    virtual void Open() override;
+    virtual void Close() override;
 
 private:
     uint8 *address;
