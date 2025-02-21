@@ -96,6 +96,8 @@ file(GLOB HARDWARE_HAL       ../../Panel/src/Hardware/HAL/HAL.*
                                          src/Hardware/HAL/*.*)
 file(GLOB HARDWARE_KEYBOARD     ../../common/Hardware/Keyboard/Keyboard_.h
                                          src/Keyboard/Keyboard_win.cpp)
+file(GLOB LAN                ../../Panel/src/LAN/LAN.h
+                                         src/LAN/*.*)
 file(GLOB MENU               ../../Panel/src/Menu/*.*)
 file(GLOB MENU_PAGES         ../../Panel/src/Menu/Pages/*.*)
 file(GLOB SETTINGS           ../../Panel/src/Settings/*.*)
@@ -113,6 +115,7 @@ source_group(GUI                FILES ${GUI})
 source_group(Hardware           FILES ${HARDWARE})
 source_group(Hardware/HAL       FILES ${HARDWARE_HAL})
 source_group(Hardware/Keyboard  FILES ${HARDWARE_KEYBOARD})
+source_group(LAN                FILES ${LAN})
 source_group(Menu               FILES ${MENU})
 source_group(Menu/Pages         FILES ${MENU_PAGES})
 source_group(Settings           FILES ${SETTINGS})
@@ -138,6 +141,7 @@ add_executable(${PROJECT_NAME}
     ${GUI}
     ${HARDWARE_HAL}
     ${HARDWARE_KEYBOARD}
+    ${LAN}
     ${MENU}
     ${MENU_PAGES}
     ${SETTINGS}
