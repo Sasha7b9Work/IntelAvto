@@ -439,3 +439,15 @@ void Page::DrawConnectionServer()
         }
     }
 }
+
+
+void IAddressIP::DrawMenuItem(int x, int y, int widht, bool selected /* = false */)
+{
+
+}
+
+
+bool IAddressIP::OnEventControl(const Control &)
+{
+    return false;
+}

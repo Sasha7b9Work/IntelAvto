@@ -59,14 +59,14 @@ private:
 class IAddressIP : public Button
 {
 public:
-    IAddressIP(pchar text_ru, uint8 _address[4]) :
-        Button(text_ru, [](){})
-    {
-        std::memcpy(address, _address, 4);
-    }
+    IAddressIP(pchar text_ru, uint8 *_address) : Button(text_ru, [](){}), address(_address) { }
+
+    virtual void DrawMenuItem(int x, int y, int widht, bool selected = false) override;
+    virtual bool OnEventControl(const Control &) override;
 
 private:
-    uint8 address[4];
+    uint8 *address;
+    uint8 storage[4];   // Здесь находится редактируемое значение, чтобы сохранить его в дальнейшем
 };
 
 
@@ -118,7 +118,7 @@ public:
 
     virtual bool OnEventControl(const Control &) override;
 
-    pchar Title() const;
+    pchar Title() const; 
 
     Value &GetValue() const;
 
