@@ -47,7 +47,7 @@ void ClientTCP::Init(void (*funcRecieve)(pchar buffer, uint length))
         tcp_pcb *pcb = tcp_new();
         if (pcb != nullptr)
         {
-            err_t err = tcp_bind(pcb, IP_ADDR_ANY, ETH_PORT);
+            err_t err = tcp_bind(pcb, IP_ADDR_ANY, gset.portSCPI);
             if (err == ERR_OK)
             {
                 pcb = tcp_listen(pcb);

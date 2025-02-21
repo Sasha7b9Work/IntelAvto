@@ -102,6 +102,8 @@ struct Settings
     TypeSignal::E  signal;
     VoltageMode::E voltage_mode;
     SettingsSignal signals[TypeSignal::Count];
+    uint16         portSCPI;                            // По этому порту подключается внешний клиент для команд SCPI
+    uint16         portIT6523;                          // По этому порту подключаемся к IT6523
 
     void Save();
     void Load();

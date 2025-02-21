@@ -130,7 +130,9 @@ static Settings def_set =
             {   Voltage(80),                    // 5b : Us 24
                 Time(54),                       // 5b : td 24
                 Counter(5) }}                   // 5b : N 24
-    }
+    },
+    7,                                          // portSCPI
+    30000                                       // portIT6523
 };
 
 

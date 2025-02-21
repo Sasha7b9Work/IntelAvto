@@ -1,6 +1,7 @@
 // 2025/02/20 11:44:48 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "LAN/ServerTCP.h"
+#include "Settings/Settings.h"
 #include <lwip/tcp.h>
 #include <cstring>
 
@@ -57,7 +58,7 @@ void ServerTCP::Init(void (*funcReceive)(pchar buffer, uint length))
 
         IP4_ADDR(&ipaddr, 192, 168, 1, 4);
 
-        tcp_connect(pcb, &ipaddr, 30000, CallbackOnConnect);
+        tcp_connect(pcb, &ipaddr, gset.portIT6523, CallbackOnConnect);
     }
     else
     {
