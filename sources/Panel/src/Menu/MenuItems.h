@@ -3,6 +3,7 @@
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Menu/ParameterDrawStruct.h"
+#include <cstring>
 
 
 struct TypeMeasure;
@@ -52,6 +53,20 @@ public:
 private:
     pchar text;
     void (*funcOnPress)();
+};
+
+
+class IAddressIP : public Button
+{
+public:
+    IAddressIP(pchar text_ru, uint8 _address[4]) :
+        Button(text_ru, [](){})
+    {
+        std::memcpy(address, _address, 4);
+    }
+
+private:
+    uint8 address[4];
 };
 
 

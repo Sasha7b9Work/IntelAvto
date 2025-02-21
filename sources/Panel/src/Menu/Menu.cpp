@@ -22,12 +22,6 @@ namespace Menu
     {
         // Обработка события кнопки
         void OnControl(const Control &);
-
-        // Обработка события ручки
-        void OnGovernorRotate(const Control &);
-
-        // Обработка нажатия Enter и GovButton
-        bool OnGovernorButton(const Control &);
     }
 
     Primitives::Label labelMode(10, 170, "СТОП", Color::BLACK, Color::GREEN, Color::WHITE);
@@ -42,11 +36,6 @@ void Menu::Draw()
     {
         labelMode.Draw();
     }
-}
-
-
-void Menu::Input::OnGovernorRotate(const Control &)
-{
 }
 
 
@@ -137,12 +126,6 @@ void Menu::Input::OnControl(const Control &control)
 }
 
 
-bool Menu::Input::OnGovernorButton(const Control &)
-{
-    return false;
-}
-
-
 void Menu::Init()
 {
     Input::SetFuncUpdate(Input::FuncUpdate);
@@ -160,8 +143,6 @@ void Menu::Input::FuncUpdate()
     while (!Keyboard::Empty())
     {
         Control control = Keyboard::NextControl();
-
-        OnGovernorRotate(control);
 
         OnControl(control);
     }

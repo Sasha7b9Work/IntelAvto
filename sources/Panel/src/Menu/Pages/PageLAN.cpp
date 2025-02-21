@@ -40,7 +40,7 @@ namespace PageLAN
     );
 
     DEF_BUTTON(bGateway,
-        "Gateway IP",
+        "Gateway",
         []()
         {
 
@@ -81,13 +81,10 @@ namespace PageLAN
             }
         );
 
-        DEF_BUTTON(bIP,
+        IAddressIP bIP{
             "Адрес IP",
-            []()
-            {
-
-            }
-        );
+            gset.ipIT6523
+        };
 
         DEF_BUTTON(bPort,
             "Порт",
