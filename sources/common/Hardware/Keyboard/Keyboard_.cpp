@@ -406,3 +406,35 @@ void Keyboard::Unlock()
 {
     Menu::Input::SetFuncUpdate(Menu::Input::FuncUpdate);
 }
+
+
+pchar Key::Name(E value)
+{
+    static pchar names[Key::Count] =
+    {
+        "None",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "0",
+        "-",
+        ".",
+        "START",
+        "<-",
+        "->",
+        "ESC",
+        "OK",
+        "STOP",
+        "",
+        "",
+        ""
+    };
+
+    return names[value];
+}

@@ -31,21 +31,15 @@ namespace PageLAN
         }
     );
 
-    DEF_BUTTON(bNetmask,
+    IAddressIP bNetmask{
         "Маска сети",
-        []()
-        {
+        gset.netmask
+    };
 
-        }
-    );
-
-    DEF_BUTTON(bGateway,
+    IAddressIP bGateway{
         "Gateway",
-        []()
-        {
-
-        }
-    );
+        gset.gw
+    };
 
     DEF_BUTTON(bMAC,
         "MAC",
