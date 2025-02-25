@@ -13,6 +13,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Utils/StringUtils_.h"
 #include <cstring>
+#include <cstdlib>
 
 
 using namespace Primitives;
@@ -476,6 +477,25 @@ void FieldLAN::Draw(int x, int y, int widht, bool selected /* = false */)
 }
 
 
+void FieldPort::Draw(int x, int y, int width, bool selected /* = false */)
+{
+    if (IsOpened())
+    {
+        Button::Draw(x, y, width, selected);
+
+        x += 130;
+
+        Rect(150, 30).FillRounded(x, y - 6, 1, Color::BACK, Color::WHITE);
+
+        Text(buffer).Write(x + 5, y + 2, Color::WHITE);
+    }
+    else
+    {
+        Button::Draw(x, y, width, selected);
+    }
+}
+
+
 bool FieldLAN::OnEventControl(const Control &control)
 {
     if (IsOpened())
@@ -505,6 +525,56 @@ bool FieldLAN::OnEventControl(const Control &control)
             edited = true;
 
             if (std::strlen(buffer) < 15)
+            {
+                std::strcat(buffer, Key::Name(control.key));
+            }
+        }
+
+        return true;
+    }
+    else
+    {
+        if (control.key == Key::OK)
+        {
+            Open();
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+bool FieldPort::OnEventControl(const Control &control)
+{
+    if (IsOpened())
+    {
+        if (control.key == Key::OK)
+        {
+            int value = std::atoi(buffer);
+
+            if (value > 0 && value < 65536)
+            {
+                *port = (uint16)value;
+            }
+
+            Close();
+        }
+        else if (control.key == Key::Esc)
+        {
+            Close();
+        }
+        else if (control.key >= Key::_1 && control.key <= Key::_0)
+        {
+            if (!edited)
+            {
+                buffer[0] = '\0';
+            }
+
+            edited = true;
+
+            if (std::strlen(buffer) < 3)
             {
                 std::strcat(buffer, Key::Name(control.key));
             }
@@ -598,7 +668,23 @@ void FieldLAN::Open()
 }
 
 
+void FieldPort::Open()
+{
+    std::strcpy(buffer, Text("%u", *port).c_str());
+
+    edited = false;
+
+    Button::Open();
+}
+
+
 void FieldLAN::Close()
+{
+    Button::Close();
+}
+
+
+void FieldPort::Close()
 {
     Button::Close();
 }

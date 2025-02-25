@@ -32,13 +32,11 @@ namespace PageLAN
     );
 
     FieldLAN bNetmask{
-        Address,
         "Маска сети",
         gset.netmask
     };
 
     FieldLAN bGateway{
-        Address,
         "Gateway",
         gset.gw
     };
@@ -78,7 +76,6 @@ namespace PageLAN
         );
 
         FieldLAN bIP{
-            Address,
             "Адрес IP",
             gset.ipIT6523
         };
@@ -116,18 +113,14 @@ namespace PageLAN
         );
 
         FieldLAN bIP{
-            Address,
             "Адрес IP",
             gset.ipSCPI
         };
 
-        DEF_BUTTON(bPort,
+        FieldPort bPort{
             "Порт",
-            []()
-            {
-    
-            }
-        );
+            &gset.portSCPI
+        };
 
         static Item *items[] =
         {

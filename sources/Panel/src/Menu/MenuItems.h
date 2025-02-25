@@ -73,20 +73,12 @@ private:
 };
 
 
-enum TypeFieldLAN
-{
-    Address,
-    Port,
-    MAC
-};
-
-
 // Поле для ввода настройки сети - адреса, порта или MAC
 class FieldLAN : public Button
 {
 public:
-    FieldLAN(TypeFieldLAN _type, pchar text_ru, uint8 *_address) :
-        Button(text_ru, [](){}), type(_type), address(_address) { }
+    FieldLAN(pchar text_ru, uint8 *_address) :
+        Button(text_ru, [](){}), address(_address) { }
 
     virtual void Draw(int x, int y, int widht, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
@@ -98,11 +90,30 @@ public:
 
 private:
 
-    TypeFieldLAN type;
     uint8 *address;
     static const int SIZE_BUFFER = 64;
     char buffer[SIZE_BUFFER];           // Здесь хранится в текстовом виде
     bool edited = false;                // Если true, то находимся в режие редактирования - уже идёт набор цифр
+};
+
+
+class FieldPort : public Button
+{
+public:
+    FieldPort(pchar title, uint16 *_port) :
+        Button(title, []() {}), port(_port) { }
+
+    virtual void Draw(int x, int y, int width, bool selected = false) override;
+    virtual bool OnEventControl(const Control &) override;
+
+    virtual void Open() override;
+    virtual void Close() override;
+
+private:
+    uint16 *port;
+    static const int SIZE_BUFFER = 64;
+    char buffer[SIZE_BUFFER];
+    bool edited = false;
 };
 
 
