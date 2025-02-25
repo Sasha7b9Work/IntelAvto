@@ -97,6 +97,32 @@ private:
 };
 
 
+class FieldMAC : public Button
+{
+public:
+    FieldMAC(pchar text_ru, uint8 *_address) :
+        Button(text_ru, []()
+    {}), address(_address)
+    {
+    }
+
+    virtual void Draw(int x, int y, int widht, bool selected = false) override;
+    virtual bool OnEventControl(const Control &) override;
+
+    virtual void Open() override;
+    virtual void Close() override;
+
+    bool ConvertStringToAddress(uint8[4]) const;
+
+private:
+
+    uint8 *address;
+    static const int SIZE_BUFFER = 64;
+    char buffer[SIZE_BUFFER];           // Здесь хранится в текстовом виде
+    bool edited = false;                // Если true, то находимся в режие редактирования - уже идёт набор цифр
+};
+
+
 class FieldPort : public Button
 {
 public:
