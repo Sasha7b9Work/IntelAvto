@@ -31,12 +31,12 @@ namespace PageLAN
         }
     );
 
-    FieldLAN bNetmask{
+    FieldIP bNetmask{
         "Маска сети",
         gset.netmask
     };
 
-    FieldLAN bGateway{
+    FieldIP bGateway{
         "Gateway",
         gset.gw
     };
@@ -75,7 +75,7 @@ namespace PageLAN
             }
         );
 
-        FieldLAN bIP{
+        FieldIP bIP{
             "Адрес IP",
             gset.ipIT6523
         };
@@ -109,7 +109,7 @@ namespace PageLAN
             }
         );
 
-        FieldLAN bIP{
+        FieldIP bIP{
             "Адрес IP",
             gset.ipSCPI
         };

@@ -74,10 +74,10 @@ private:
 
 
 // Поле для ввода настройки сети - адреса, порта или MAC
-class FieldLAN : public Button
+class FieldIP : public Button
 {
 public:
-    FieldLAN(pchar text_ru, uint8 *_address) :
+    FieldIP(pchar text_ru, uint8 *_address) :
         Button(text_ru, [](){}), address(_address) { }
 
     virtual void Draw(int x, int y, int widht, bool selected = false) override;
