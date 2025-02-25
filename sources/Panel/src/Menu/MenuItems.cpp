@@ -457,7 +457,7 @@ void Page::DrawConnectionServer()
 }
 
 
-void IAddressIP::Draw(int x, int y, int widht, bool selected /* = false */)
+void FieldLAN::Draw(int x, int y, int widht, bool selected /* = false */)
 {
     if (IsOpened())
     {
@@ -476,7 +476,7 @@ void IAddressIP::Draw(int x, int y, int widht, bool selected /* = false */)
 }
 
 
-bool IAddressIP::OnEventControl(const Control &control)
+bool FieldLAN::OnEventControl(const Control &control)
 {
     if (IsOpened())
     {
@@ -526,7 +526,7 @@ bool IAddressIP::OnEventControl(const Control &control)
 }
 
 
-bool IAddressIP::ConvertStringToAddress(uint8 bytes[4]) const
+bool FieldLAN::ConvertStringToAddress(uint8 bytes[4]) const
 {
     uint length = std::strlen(buffer);
 
@@ -588,7 +588,7 @@ bool IAddressIP::ConvertStringToAddress(uint8 bytes[4]) const
 }
 
 
-void IAddressIP::Open()
+void FieldLAN::Open()
 {
     std::strcpy(buffer, Text("%d.%d.%d.%d", address[0], address[1], address[2], address[3]).c_str());
 
@@ -598,7 +598,7 @@ void IAddressIP::Open()
 }
 
 
-void IAddressIP::Close()
+void FieldLAN::Close()
 {
     Button::Close();
 }

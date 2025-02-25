@@ -73,10 +73,19 @@ private:
 };
 
 
-class IAddressIP : public Button
+enum TypeFieldLAN
+{
+    Address,
+    Port,
+    MAC
+};
+
+
+// Поле для ввода настройки сети - адреса, порта или MAC
+class FieldLAN : public Button
 {
 public:
-    IAddressIP(pchar text_ru, uint8 *_address) : Button(text_ru, [](){}), address(_address) { }
+    FieldLAN(pchar text_ru, uint8 *_address) : Button(text_ru, [](){}), address(_address) { }
 
     virtual void Draw(int x, int y, int widht, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
