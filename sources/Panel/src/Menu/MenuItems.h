@@ -85,7 +85,8 @@ enum TypeFieldLAN
 class FieldLAN : public Button
 {
 public:
-    FieldLAN(pchar text_ru, uint8 *_address) : Button(text_ru, [](){}), address(_address) { }
+    FieldLAN(TypeFieldLAN _type, pchar text_ru, uint8 *_address) :
+        Button(text_ru, [](){}), type(_type), address(_address) { }
 
     virtual void Draw(int x, int y, int widht, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
@@ -97,6 +98,7 @@ public:
 
 private:
 
+    TypeFieldLAN type;
     uint8 *address;
     static const int SIZE_BUFFER = 64;
     char buffer[SIZE_BUFFER];           // Здесь хранится в текстовом виде

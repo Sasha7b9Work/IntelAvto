@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 115
+#define VERSION_BUILD 116
 
-#define DATE_BUILD "2025-02-25 10:20:19"
+#define DATE_BUILD "2025-02-25 10:21:36"
 
 #include <stdint.h>
 
