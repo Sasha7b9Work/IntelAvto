@@ -80,13 +80,10 @@ namespace PageLAN
             gset.ipIT6523
         };
 
-        DEF_BUTTON(bPort,
+        FieldPort bPort{
             "Порт",
-            []()
-            {
-
-            }
-        );
+            &gset.portIT6523
+        };
 
         static Item *items[] =
         {

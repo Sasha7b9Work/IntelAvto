@@ -574,7 +574,7 @@ bool FieldPort::OnEventControl(const Control &control)
 
             edited = true;
 
-            if (std::strlen(buffer) < 3)
+            if (std::strlen(buffer) < 5)
             {
                 std::strcat(buffer, Key::Name(control.key));
             }
