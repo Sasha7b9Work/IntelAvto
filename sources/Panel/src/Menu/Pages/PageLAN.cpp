@@ -41,13 +41,10 @@ namespace PageLAN
         gset.gw
     };
 
-    DEF_BUTTON(bMAC,
+    FieldMAC bMAC{
         "MAC",
-        []()
-        {
-
-        }
-    );
+        gset.mac
+    };
 
     static Item *items[] =
     {

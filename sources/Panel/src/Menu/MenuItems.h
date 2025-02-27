@@ -100,9 +100,9 @@ private:
 class FieldMAC : public Button
 {
 public:
-    FieldMAC(pchar text_ru, uint8 *_address) :
+    FieldMAC(pchar text_ru, uint8 *_mac) :
         Button(text_ru, []()
-    {}), address(_address)
+    {}), mac(_mac)
     {
     }
 
@@ -112,11 +112,11 @@ public:
     virtual void Open() override;
     virtual void Close() override;
 
-    bool ConvertStringToAddress(uint8[4]) const;
+    bool ConvertStringToMAC(uint8[6]) const;
 
 private:
 
-    uint8 *address;
+    uint8 *mac;
     static const int SIZE_BUFFER = 64;
     char buffer[SIZE_BUFFER];           // Здесь хранится в текстовом виде
     bool edited = false;                // Если true, то находимся в режие редактирования - уже идёт набор цифр

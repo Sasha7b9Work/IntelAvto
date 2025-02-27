@@ -477,6 +477,25 @@ void FieldIP::Draw(int x, int y, int widht, bool selected /* = false */)
 }
 
 
+void FieldMAC::Draw(int x, int y, int widht, bool selected /* = false */)
+{
+    if (IsOpened())
+    {
+        Button::Draw(x, y, widht, selected);
+
+        x += 130;
+
+        Rect(150, 30).FillRounded(x, y - 6, 1, Color::BACK, Color::WHITE);
+
+        Text(buffer).Write(x + 5, y + 2, Color::WHITE);
+    }
+    else
+    {
+        Button::Draw(x, y, widht, selected);
+    }
+}
+
+
 void FieldPort::Draw(int x, int y, int width, bool selected /* = false */)
 {
     if (IsOpened())
@@ -527,6 +546,56 @@ bool FieldIP::OnEventControl(const Control &control)
             if (std::strlen(buffer) < 15)
             {
                 std::strcat(buffer, Key::Name(control.key));
+            }
+        }
+
+        return true;
+    }
+    else
+    {
+        if (control.key == Key::OK)
+        {
+            Open();
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+bool FieldMAC::OnEventControl(const Control &control)
+{
+    if (IsOpened())
+    {
+        if (control.key == Key::OK)
+        {
+            uint8 bytes[6];
+
+            if (ConvertStringToMAC(bytes))
+            {
+                std::memcpy(mac, bytes, 6);
+            }
+
+            Close();
+        }
+        else if (control.key == Key::Esc)
+        {
+            Close();
+        }
+        else if (control.key == Key::Dot || (control.key >= Key::_1 && control.key <= Key::_0))
+        {
+            if (!edited)
+            {
+                buffer[0] = '\0';
+            }
+
+            edited = true;
+
+            if (std::strlen(buffer) < 17)
+            {
+                std::strcat(buffer, (control.key == Key::Dot) ? ":" : Key::Name(control.key));
             }
         }
 
@@ -658,9 +727,80 @@ bool FieldIP::ConvertStringToAddress(uint8 bytes[4]) const
 }
 
 
+bool FieldMAC::ConvertStringToMAC(uint8 bytes[6]) const
+{
+    uint length = std::strlen(buffer);
+
+    int counter = 0;
+
+    for (uint i = 0; i < length; i++)
+    {
+        if (buffer[i] == ':')
+        {
+            counter++;
+        }
+    }
+
+    if (counter != 5)
+    {
+        return false;
+    }
+
+    const char *pointer = buffer;
+
+    for (uint i = 0; i < 6; i++)
+    {
+        const char *start = pointer;
+
+        while (*pointer != ':' && *pointer != '\0')
+        {
+            pointer++;
+        }
+
+        // Нашли конец числа
+
+        const char *end = pointer;
+
+        pointer++;
+
+        char str[10] = { '\0' };
+
+        while (start != end)
+        {
+            char symbol[2] = { *start, '\0' };
+            std::strcat(str, symbol);
+            start++;
+        }
+
+        char *e = nullptr;
+
+        int value = std::strtol(str, &e, 16);
+
+        if (value > 255 || *e != '\0')
+        {
+            return false;
+        }
+
+        bytes[i] = (uint8)value;
+    }
+
+    return true;
+}
+
+
 void FieldIP::Open()
 {
     std::strcpy(buffer, Text("%d.%d.%d.%d", address[0], address[1], address[2], address[3]).c_str());
+
+    edited = false;
+
+    Button::Open();
+}
+
+
+void FieldMAC::Open()
+{
+    std::strcpy(buffer, Text("%02X:%02X:%02X:%02X:%02X:%02X", mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]).c_str());
 
     edited = false;
 
@@ -679,6 +819,12 @@ void FieldPort::Open()
 
 
 void FieldIP::Close()
+{
+    Button::Close();
+}
+
+
+void FieldMAC::Close()
 {
     Button::Close();
 }
