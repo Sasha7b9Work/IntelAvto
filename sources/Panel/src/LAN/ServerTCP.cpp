@@ -24,7 +24,7 @@ namespace ServerTCP
         pbuf    *p_tx;      // pointer on pbuf to be transmitted
     };
 
-    static void(*SocketFuncReciever)(pchar buffer, uint length) = nullptr;     // this function will be called when a message is recieved from any client
+    static void (*SocketFuncReciever)(pchar buffer, uint length) = nullptr;
 
     static void Send(tcp_pcb *, Server *);
     static void CloseConnection(tcp_pcb *, Server *);
@@ -344,7 +344,7 @@ void ServerTCP::SendBuffer(pchar buffer, uint length)
 
 void ServerTCP::SendString(pchar buffer)
 {
-    SendBuffer(buffer, std::strlen(buffer) + 1);
+    SendBuffer(buffer, std::strlen(buffer));
 }
 
 

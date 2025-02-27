@@ -7,6 +7,7 @@
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "FlashDrive/FlashDrive.h"
 #include "LAN/LAN.h"
+#include "Device/IT6523.h"
 
 
 int main(void)
@@ -32,5 +33,6 @@ int main(void)
         LAN::Update();
         Timer::UpdateTasks();
         LAN::Update();
+        IT6523::Update();
     }
 }

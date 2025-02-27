@@ -7,4 +7,5 @@ namespace std
     long strtol(const char *start, char **end, int radix);
     void free(void *ptr);
     void *malloc(size_t size);
+    int atoi(const char *str);
 }

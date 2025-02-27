@@ -726,6 +726,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Device\Device.h</FilePath>
             </File>
+            <File>
+              <FileName>IT6523.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Device\IT6523.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>IT6523.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Device\IT6523.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4475,6 +4485,16 @@
               <FileName>Device.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Device\Device.h</FilePath>
+            </File>
+            <File>
+              <FileName>IT6523.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\src\Device\IT6523.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>IT6523.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Device\IT6523.h</FilePath>
             </File>
           </Files>
         </Group>

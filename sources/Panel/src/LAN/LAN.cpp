@@ -7,6 +7,7 @@
 #include "LAN/ethernetif.h"
 #include "LAN/app_ethernet.h"
 #include "Settings/Settings.h"
+#include "Device/IT6523.h"
 #include <lwip/init.h>
 #include <lwip/netif.h>
 #include <lwip/timeouts.h>
@@ -18,18 +19,16 @@ namespace LAN
     static void Netif_Config(void);
 
     struct netif gnetif;
-}
 
+    static void FuncReceiverClient(pchar buffer, uint length)
+    {
+        ClientTCP::SendBuffer(buffer, length);
+    }
 
-static void FuncReceiverClient(pchar buffer, uint length)
-{
-    ClientTCP::SendBuffer(buffer, length);
-}
-
-
-static void FuncReceiverServer(pchar buffer, uint length)
-{
-    ServerTCP::SendBuffer(buffer, length);
+    static void FuncReceiverServer(pchar buffer, uint length)
+    {
+        ServerTCP::SendBuffer(buffer, length);
+    }
 }
 
 
@@ -47,8 +46,6 @@ void LAN::Init()
     Update();
 
     ClientTCP::Init(FuncReceiverClient);
-
-    ServerTCP::Init(FuncReceiverServer);
 }
 
 
