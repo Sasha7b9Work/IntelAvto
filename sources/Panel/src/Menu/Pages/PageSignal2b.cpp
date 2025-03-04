@@ -10,10 +10,16 @@
 
 namespace PageSignal2b
 {
-    TParameter param_td("td",
+    static TParameter param_td("td",
         &gset.signals[TypeSignal::_2b].values12[0], Time(200), Time(2000),
         &gset.signals[TypeSignal::_2b].values24[0], Time(200), Time(2000),
         290, 60);
+
+    static CParameter param_N("N",
+        &gset.signals[TypeSignal::_2b].values12[1], Counter(1), Counter(1000),
+        &gset.signals[TypeSignal::_2b].values24[1], Counter(1), Counter(1000),
+        90, 130
+    );
 
     static void FuncPress_Signal()
     {
@@ -41,6 +47,7 @@ namespace PageSignal2b
         &bSignal2b,
         &chModeVoltage,
         &param_td,
+        &param_N,
         nullptr
     };
 

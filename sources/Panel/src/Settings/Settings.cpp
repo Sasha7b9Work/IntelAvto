@@ -84,11 +84,11 @@ static Settings def_set =
                 Counter(10000) }}               // 2a : N
         ,
         {   {   Time(500),                      // 2b : t1  12      Signal 2b
-                ValueNull(),
+                Counter(10),
                 ValueNull() }
             ,
             {   Time(500),                      // 2b : t1 24
-                ValueNull(),
+                Counter(10),
                 ValueNull() }}
         ,
         {   {   Voltage(-112),                  // 3a : Us 12       Signal 3a
