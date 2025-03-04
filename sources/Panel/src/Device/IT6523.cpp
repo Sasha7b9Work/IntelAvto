@@ -39,7 +39,7 @@ void IT6523::Update()
 
             is_connected = true;
 
-            ServerTCP::SendString(":SYSTem:REMote\x0d\x0a");
+            SendCommand("SYSTem:REMote");
         }
     }
 }
@@ -47,6 +47,8 @@ void IT6523::Update()
 
 void IT6523::SendCommand(pchar message)
 {
+    ServerTCP::SendString(":");
+
     ServerTCP::SendString(message);
 
     ServerTCP::SendString("\x0d\x0a");
