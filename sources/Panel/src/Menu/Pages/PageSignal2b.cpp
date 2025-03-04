@@ -53,7 +53,7 @@ namespace PageSignal2b
 
     static void AdditionDraw()
     {
-        Text("%s", VoltageMode::TextValue()).Write(
+        Text("%s     Ri: 0.05 Îì", VoltageMode::TextValue()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 
