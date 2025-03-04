@@ -5,6 +5,7 @@
 #include "netif/etharp.h"
 #include "ethernetif.h"
 #include "Settings/Settings.h"
+#include "LAN/ServerTCP.h"
 #include <cstring>
 
 #define DP83848_PHYSCSR_AUTONEGO_DONE   ((uint16_t)0x010U)
@@ -863,6 +864,8 @@ void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t 
   {
     p->tot_len += Length;
   }
+
+  ServerTCP::CallbackOnRxETH();
 }
 
 void HAL_ETH_TxFreeCallback(uint32_t * buff)

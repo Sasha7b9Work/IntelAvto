@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "LAN/ServerTCP.h"
 #include "Settings/Settings.h"
+#include "Hardware/Timer.h"
 #include <lwip/tcp.h>
 #include <cstring>
 
@@ -24,6 +25,8 @@ namespace ServerTCP
         pbuf    *p_tx;      // pointer on pbuf to be transmitted
     };
 
+    static Server *server = nullptr;
+
     static void (*SocketFuncReciever)(pchar buffer, uint length) = nullptr;
 
     static void Send(tcp_pcb *, Server *);
@@ -34,6 +37,8 @@ namespace ServerTCP
     static err_t CallbackPoll(void *, tcp_pcb *);
     static err_t CallbackSent(void *, tcp_pcb *, uint16);
     static void CallbackError(void *, err_t);
+
+    static uint time_last_callback_ETH = 0;
 }
 
 
@@ -69,23 +74,21 @@ void ServerTCP::Init(void (*funcReceive)(pchar buffer, uint length))
 
 err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
 {
-    Server *es = nullptr;
-
     if (err == ERR_OK)
     {
         pcbServer = tpcb;
 
         /* allocate structure es to maintain tcp connection information */
-        es = (Server *)mem_malloc(sizeof(Server));
+        server = (Server *)mem_malloc(sizeof(Server));
 
-        if (es != nullptr)
+        if (server != nullptr)
         {
-            es->state = S_CONNECTED;
-            es->pcb = tpcb;
-            es->p_tx = nullptr;
+            server->state = S_CONNECTED;
+            server->pcb = tpcb;
+            server->p_tx = nullptr;
 
             /* pass newly allocated es structure as argument to tpcb */
-            tcp_arg(tpcb, es);
+            tcp_arg(tpcb, server);
 
             /* initialize LwIP tcp_recv callback function */
             tcp_recv(tpcb, CallbackRecv);
@@ -97,14 +100,14 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
             tcp_poll(tpcb, CallbackPoll, 1);
 
             /* send data */
-            Send(tpcb, es);
+            Send(tpcb, server);
 
             return ERR_OK;
         }
         else
         {
             /* close connection */
-            CloseConnection(tpcb, es);
+            CloseConnection(tpcb, server);
 
             /* return memory allocation error */
             return ERR_MEM;
@@ -113,7 +116,7 @@ err_t ServerTCP::CallbackOnConnect(void * /*arg*/, tcp_pcb *tpcb, err_t err)
     else
     {
         /* close connection */
-        CloseConnection(tpcb, es);
+        CloseConnection(tpcb, server);
     }
     return err;
 }
@@ -350,6 +353,11 @@ void ServerTCP::SendString(pchar buffer)
 
 bool ServerTCP::IsConnected()
 {
+    if (TIME_MS - time_last_callback_ETH > 1000)
+    {
+        CloseConnection(pcbServer, server);
+    }
+
     return pcbServer != nullptr;
 }
 
@@ -359,4 +367,10 @@ void ServerTCP::CallbackError(void *arg, err_t)
     Server *ss = (Server *)arg;
 
     CloseConnection(pcbServer, ss);
+}
+
+
+void ServerTCP::CallbackOnRxETH()
+{
+    time_last_callback_ETH = TIME_MS;
 }
