@@ -10,22 +10,22 @@
 
 namespace PageSignal4
 {
-    VParameter param_Us("Us",
+    static VParameter param_Us("Us",
         &gset.signals[TypeSignal::_4].values12[0], Voltage(0), Voltage(10000),
         &gset.signals[TypeSignal::_4].values24[0], Voltage(0), Voltage(10000),
         230, 110);
 
-    VParameter param_Ua("Ua",
+    static VParameter param_Ua("Ua",
         &gset.signals[TypeSignal::_4].values12[1], Voltage(0), Voltage(10000),
         &gset.signals[TypeSignal::_4].values24[1], Voltage(0), Voltage(10000),
         350, 100);
 
-    TParameter param_t7("t7",
+    static TParameter param_t7("t7",
         &gset.signals[TypeSignal::_4].values12[2], Time(0), Time(10000),
         &gset.signals[TypeSignal::_4].values24[2], Time(0), Time(10000),
         220, 160);
 
-    TParameter param_t9("t9",
+    static TParameter param_t9("t9",
         &gset.signals[TypeSignal::_4].values12[3], Time(0), Time(10000),
         &gset.signals[TypeSignal::_4].values24[3], Time(0), Time(10000),
         330, 160);

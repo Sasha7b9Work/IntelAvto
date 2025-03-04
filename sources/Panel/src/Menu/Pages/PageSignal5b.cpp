@@ -10,17 +10,17 @@
 
 namespace PageSignal5b
 {
-    VParameter param_Us("Us",
+    static VParameter param_Us("Us",
         &gset.signals[TypeSignal::_5b].values12[0], Voltage(0), Voltage(10000),
         &gset.signals[TypeSignal::_5b].values24[0], Voltage(0), Voltage(10000),
         420, 130);
 
-    VParameter param_Uss("Us*",
+    static VParameter param_Uss("Us*",
         &gset.signals[TypeSignal::_5b].values12[1], Voltage(0), Voltage(10000),
         &gset.signals[TypeSignal::_5b].values24[1], Voltage(0), Voltage(10000),
         380, 160);
 
-    TParameter param_td("td",
+    static TParameter param_td("td",
         &gset.signals[TypeSignal::_5b].values12[2], Time(0), Time(10000),
         &gset.signals[TypeSignal::_5b].values24[2], Time(0), Time(10000),
         220, 160);

@@ -13,19 +13,19 @@
 namespace PageSignal1
 {
     // Амплитуда
-    VParameter param_Us("Us",
+    static VParameter param_Us("Us",
         &gset.signals[TypeSignal::_1].values12[0], Voltage(-75), Voltage(-150),
         &gset.signals[TypeSignal::_1].values24[0], Voltage(-300), Voltage(-600),
         280, 155);
 
     // Период повторения
-    TParameter param_t1("Период",
+    static TParameter param_t1("Период",
         &gset.signals[TypeSignal::_1].values12[1], Time(500), Time(5000),
         &gset.signals[TypeSignal::_1].values24[1], Time(500), Time(5000),
         280, 50);
 
     // Количество импульсов
-    CParameter param_N("N",
+    static CParameter param_N("N",
         &gset.signals[TypeSignal::_1].values12[2], Counter(5000), Counter(100000),
         &gset.signals[TypeSignal::_1].values24[2], Counter(5000), Counter(100000),
         90, 130);

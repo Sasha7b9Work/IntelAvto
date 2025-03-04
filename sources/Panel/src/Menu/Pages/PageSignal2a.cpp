@@ -12,17 +12,17 @@
 
 namespace PageSignal2a
 {
-    VParameter param_Us("Us",
+    static VParameter param_Us("Us",
         &gset.signals[TypeSignal::_2a].values12[0], Voltage(37), Voltage(112),
         &gset.signals[TypeSignal::_2a].values24[0], Voltage(37), Voltage(112),
         320, 140);
 
-    TParameter param_t1("Период",
+    static TParameter param_t1("Период",
         &gset.signals[TypeSignal::_2a].values12[1], Time(200), Time(5000),
         &gset.signals[TypeSignal::_2a].values24[1], Time(200), Time(5000),
         270, 30);
 
-    CParameter param_N("N",
+    static CParameter param_N("N",
         &gset.signals[TypeSignal::_2a].values12[2], Counter(5000), Counter(100000),
         &gset.signals[TypeSignal::_2a].values24[2], Counter(5000), Counter(100000),
         90, 130);

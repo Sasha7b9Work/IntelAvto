@@ -11,12 +11,12 @@
 
 namespace PageSignal3a
 {
-    VParameter param_Us("Us",
+    static VParameter param_Us("Us",
         &gset.signals[TypeSignal::_3a].values12[0], Voltage(-112), Voltage(-150),
         &gset.signals[TypeSignal::_3a].values24[0], Voltage(-150), Voltage(-200),
         275, 95);
 
-    CParameter param_N("N",
+    static CParameter param_N("N",
         &gset.signals[TypeSignal::_3a].values12[1], Counter(10000), Counter(100000),
         &gset.signals[TypeSignal::_3a].values24[1], Counter(10000), Counter(100000),
         90, 100);
