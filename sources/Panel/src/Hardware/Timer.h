@@ -15,8 +15,8 @@ struct TimerTask
     enum E
     {
         ChangeColorOnLabelStop,         // Изменить цвет кнопки СТОП через некоторое время после остановки
-        kUSB,
-        kStopSound,
+        USB,
+        StopSound,
         Count
     };
 };
@@ -25,7 +25,7 @@ struct TimerTask
 namespace Timer
 {
     // Однократное значение - выполняется только один раз
-    void SetOnceTask(TimerTask::E, uint time, void (*func)());
+    void SetDefferedOnceTask(TimerTask::E, uint time, void (*func)());
 
     void DisableTask(TimerTask::E);
 

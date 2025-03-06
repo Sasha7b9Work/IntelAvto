@@ -30,7 +30,7 @@ namespace RemainingTimeCounter
 }
 
 
-void Timer::SetOnceTask(TimerTask::E task, uint time, void (*func)())
+void Timer::SetDefferedOnceTask(TimerTask::E task, uint time, void (*func)())
 {
     tasks[task].dT = time;
     tasks[task].time_next_run = TIME_MS + time;

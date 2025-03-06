@@ -40,6 +40,7 @@ namespace PageSignal2b
 
     static void FuncStartTest()
     {
+
     }
 
     static Item *items[] =
@@ -53,7 +54,7 @@ namespace PageSignal2b
 
     static void AdditionDraw()
     {
-        Text("%s     Ri: 0.05 ќм     ƒлит: %s", VoltageMode::TextValue()).Write(
+        Text("%s     Ri: 0.05 ќм", VoltageMode::TextValue()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 

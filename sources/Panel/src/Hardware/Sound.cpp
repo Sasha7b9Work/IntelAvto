@@ -244,7 +244,7 @@ void Sound::Sound_Beep(const TypeWave::E newTypeWave, const float newFreq, const
 
     HAL_DAC_Start_DMA(&handleDAC, DAC_CHANNEL_1, (uint *)points, POINTS_IN_PERIOD_SOUND, DAC_ALIGN_8B_R);
 
-    Timer::SetOnceTask(TimerTask::kStopSound, (uint)newDuration, Stop);
+    Timer::SetDefferedOnceTask(TimerTask::StopSound, (uint)newDuration, Stop);
 }
 
 
