@@ -3,6 +3,8 @@
 #include "Device/IT6523.h"
 #include "LAN/ServerTCP.h"
 #include "Hardware/Timer.h"
+#include <cstdarg>
+#include <cstdio>
 
 
 namespace IT6523
@@ -47,9 +49,49 @@ void IT6523::Update()
 
 void IT6523::SendCommand(pchar message)
 {
-    ServerTCP::SendString(":");
+    if (message[0] != '*')
+    {
+        ServerTCP::SendString(":");
+    }
 
     ServerTCP::SendString(message);
 
     ServerTCP::SendString("\x0d\x0a");
+}
+
+
+void IT6523::SendCommandF(pchar format, ...)
+{
+    static char buffer[128];
+    va_list args;
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    va_end(args);
+
+    SendCommand(buffer);
+}
+
+
+void IT6523::Start()
+{
+    SendCommand("SOURCE:OUTPut:STATE 1");
+    SendCommand("*TRG");
+}
+
+
+void IT6523::Pause()
+{
+
+}
+
+
+void IT6523::Resume()
+{
+
+}
+
+
+void IT6523::Stop()
+{
+    SendCommand("SOURCE:OUTPut:STATE 0");
 }

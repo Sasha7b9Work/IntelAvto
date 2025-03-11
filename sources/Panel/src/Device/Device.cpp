@@ -4,6 +4,7 @@
 #include "Menu/MenuItems.h"
 #include "Connector/Device/Messages_.h"
 #include "Hardware/Timer.h"
+#include "Device/IT6523.h"
 
 
 namespace Device
@@ -60,6 +61,8 @@ void Device::Pause()
         Message::Pause().Transmit();
 
         RemainingTimeCounter::Pause();
+
+        IT6523::Pause();
     }
 }
 
@@ -73,6 +76,8 @@ void Device::Resume()
         Message::Resume().Transmit();
 
         RemainingTimeCounter::Resume();
+
+        IT6523::Resume();
     }
 }
 
@@ -86,5 +91,7 @@ void Device::Stop()
         Message::Stop().Transmit();
 
         RemainingTimeCounter::Stop();
+
+        IT6523::Stop();
     }
 }

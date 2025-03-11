@@ -6,6 +6,8 @@
 #include "Menu/MenuItemsDef.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"
+#include "LAN/ServerTCP.h"
+#include "Device/IT6523.h"
 
 
 namespace PageSignal2b
@@ -40,7 +42,10 @@ namespace PageSignal2b
 
     static void FuncStartTest()
     {
-
+        IT6523::SendCommand("carwave:sae:2b:volt 12V");
+        IT6523::SendCommand("carwave:sae:2b:td 0.2");
+        IT6523::SendCommand("carwave:sae:2b:state 1");
+        IT6523::Start();
     }
 
     static Item *items[] =

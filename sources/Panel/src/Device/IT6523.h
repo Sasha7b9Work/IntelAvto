@@ -6,6 +6,16 @@ namespace IT6523
 {
     void Update();
 
+    void Start();
+
+    void Pause();
+
+    void Resume();
+
+    void Stop();
+
     // Само дополнит завершающими символами
     void SendCommand(pchar);
+
+    void SendCommandF(pchar, ...);
 }
