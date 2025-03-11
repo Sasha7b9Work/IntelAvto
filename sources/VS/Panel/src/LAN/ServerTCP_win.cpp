@@ -8,3 +8,8 @@ bool ServerTCP::IsConnected()
     return false;
 }
 
+
+void ServerTCP::SendString(pchar)
+{
+
+}

@@ -516,7 +516,7 @@ void Display::DrawSignal()
 
         HMeasuringLines(x + 70, x + 270, y - 5, y + 10, y + 170).Draw();
 
-        VMeasuringLines(x + 90, x + 290, x + 310, y + 45, y + 170).Draw();
+//        VMeasuringLines(x + 90, x + 290, x + 310, y + 45, y + 170).Draw();
 
         Point().Draw(x, y + 20, Color::WHITE);
         Point::MoveOn(30, 0);
