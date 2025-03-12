@@ -87,7 +87,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
 
     if (current == TypeSignal::_2b)
     {
-        IT6523::SendCommand("carwave:sae:2b:volt 12V");
+        IT6523::SendCommandF("carwave:sae:2b:volt %dV", (gset.voltage_mode == VoltageMode::_12) ? 12 : 24);
         IT6523::SendCommand("carwave:sae:2b:td 0.2");
         IT6523::SendCommand("carwave:sae:2b:state 1");
     }
