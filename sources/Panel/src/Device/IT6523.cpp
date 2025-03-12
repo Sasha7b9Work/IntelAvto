@@ -4,6 +4,7 @@
 #include "LAN/ServerTCP.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "Device/Device.h"
 #include <cstdarg>
 #include <cstdio>
 
@@ -117,7 +118,7 @@ void IT6523::CallbackOnTimerImpulse()
 
         if (--pulses_remained == 0)
         {
-            Stop();
+            Device::Stop();
         }
     }
 }
