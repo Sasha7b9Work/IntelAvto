@@ -246,7 +246,7 @@ static void WindowSet(int s_x, int e_x, int s_y, int e_y)
     #define DELAY  __NOP(); __NOP(); __NOP(); __NOP(); __NOP(); \
                    __NOP(); __NOP(); __NOP(); __NOP(); __NOP(); \
                    __NOP(); __NOP(); __NOP(); __NOP(); __NOP(); \
-                   __NOP(); __NOP(); __NOP(); __NOP(); __NOP()
+                   __NOP(); __NOP(); __NOP(); __NOP()
 #endif
 
 
