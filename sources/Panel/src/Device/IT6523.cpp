@@ -17,6 +17,11 @@ namespace IT6523
     static bool in_pause = false;
 
     static TypeSignal::E current = TypeSignal::Count;
+
+    int RemainedPulses()
+    {
+        return pulses_remained;
+    }
 }
 
 

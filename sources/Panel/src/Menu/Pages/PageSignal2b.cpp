@@ -8,6 +8,7 @@
 #include "Display/Display_.h"
 #include "LAN/ServerTCP.h"
 #include "Device/IT6523.h"
+#include "Device/Device.h"
 
 
 namespace PageSignal2b
@@ -56,7 +57,8 @@ namespace PageSignal2b
 
     static void AdditionDraw()
     {
-        Text("%s     Ri: 0.05 ќм", VoltageMode::TextValue()).Write(
+        Text("%s     Ri: 0.05 ќм     »мпульсов: %d", VoltageMode::TextValue(),
+            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToInt()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 

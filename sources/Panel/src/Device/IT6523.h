@@ -26,4 +26,7 @@ namespace IT6523
 
     // Здесь происходит очередной импульс
     void CallbackOnTimerImpulse();
+
+    // Столько импульсов осталось произвести
+    int RemainedPulses();
 }
