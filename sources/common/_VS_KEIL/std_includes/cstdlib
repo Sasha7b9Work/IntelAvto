@@ -8,4 +8,5 @@ namespace std
     void free(void *ptr);
     void *malloc(size_t size);
     int atoi(const char *str);
+    char *itoa(int value, char *str, int base);
 }

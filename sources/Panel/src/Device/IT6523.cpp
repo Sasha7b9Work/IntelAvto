@@ -5,6 +5,8 @@
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Device/Device.h"
+#include "Menu/Pages/Pages.h"
+#include "Utils/StringUtils_.h"
 #include <cstdarg>
 #include <cstdio>
 
@@ -90,10 +92,14 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
 
     pulses_remained = num_pulses;
 
+    uint period = 5000;
+
     if (current == TypeSignal::_2b)
     {
+        char buffer[32];
+
         IT6523::SendCommandF("carwave:sae:2b:volt %dV", (gset.voltage_mode == VoltageMode::_12) ? 12 : 24);
-        IT6523::SendCommand("carwave:sae:2b:td 0.2");
+        IT6523::SendCommandF("carwave:sae:2b:td %s", SU::MillisecondsToSeconds(PageSignal2b::param_td.GetValue().ToInt(), buffer));
         IT6523::SendCommand("carwave:sae:2b:state 1");
     }
     else if (current == TypeSignal::_4)
@@ -111,7 +117,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
 
     SendCommand("SOURCE:OUTPut:STATE 1");
 
-    Timer::SetPeriodicTask(TimerTask::IT6523, 2000, IT6523::CallbackOnTimerImpulse);
+    Timer::SetPeriodicTask(TimerTask::IT6523, period, IT6523::CallbackOnTimerImpulse);
 }
 
 

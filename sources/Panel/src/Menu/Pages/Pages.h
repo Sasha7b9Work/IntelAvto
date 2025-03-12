@@ -52,6 +52,8 @@ namespace PageSignal2a
 namespace PageSignal2b
 {
     extern Page *self;
+
+    extern TParameter param_td;
 }
 
 

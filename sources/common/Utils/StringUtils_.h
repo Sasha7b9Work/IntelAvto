@@ -15,6 +15,8 @@ struct Word
 
 namespace SU
 {
+    char *MillisecondsToSeconds(int, char[32]);
+
     // Эта команда сразу преобразует к верхенму регистру слово.
     bool GetWord(pchar string, Word *word, const int numWord);
 

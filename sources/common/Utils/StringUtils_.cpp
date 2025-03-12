@@ -632,3 +632,42 @@ char *SU::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[2
     }
     return buffer;
 }
+
+
+char *SU::MillisecondsToSeconds(int ms, char out[32])
+{
+    out[0] = '\0';
+
+    if (ms < 1000)
+    {
+        std::strcpy(out, "0.");
+
+        char value[32];
+
+        std::sprintf(value, "%d", ms);
+
+        std::strcat(out, value);
+    }
+    else if (ms < 2000)
+    {
+        std::strcpy(out, "1.0");
+
+        char value[32];
+
+        std::sprintf(value, "%d", ms - 1000);
+
+        std::strcat(out, value);
+    }
+    else if (ms < 3000)
+    {
+        std::strcpy(out, "2.0");
+
+        char value[32];
+
+        std::sprintf(value, "%d", ms - 2000);
+
+        std::strcat(out, value);
+    }
+
+    return out;
+}

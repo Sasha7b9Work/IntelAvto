@@ -13,7 +13,7 @@
 
 namespace PageSignal2b
 {
-    static TParameter param_td("td",
+    TParameter param_td("td",
         &gset.signals[TypeSignal::_2b].values12[0], Time(200), Time(2000),
         &gset.signals[TypeSignal::_2b].values24[0], Time(200), Time(2000),
         290, 60);
