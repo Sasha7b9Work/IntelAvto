@@ -158,15 +158,15 @@ static Settings def_set =
         ,
         { {     Voltage(80),                    // 5b : Us 12       Signal 5b
                 Time(54),                       // 5b : td 12
-                Counter(5),                     // 5b : N  12
-                ValueNull(),
+                Time(54),                       // 5b : N  12
+                Counter(5),
                 ValueNull()
             }
             ,
             {   Voltage(80),                    // 5b : Us 24
                 Time(54),                       // 5b : td 24
-                Counter(5),                     // 5b : N 24
-                ValueNull(),
+                Time(54),                       // 5b : N 24
+                Counter(5),
                 ValueNull() }}
     },
     7,                                          // portSCPI

@@ -6,6 +6,7 @@
 #include "Menu/Menu.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"
+#include "Device/IT6523.h"
 
 
 namespace PageSignal5b
@@ -24,6 +25,11 @@ namespace PageSignal5b
         &gset.signals[TypeSignal::_5b_16750_2].values12[2], Time(0), Time(10000),
         &gset.signals[TypeSignal::_5b_16750_2].values24[2], Time(0), Time(10000),
         220, 160);
+
+    static CParameter param_N("N",
+        &gset.signals[TypeSignal::_5b_16750_2].values12[3], Counter(1), Counter(1000),
+        &gset.signals[TypeSignal::_5b_16750_2].values24[3], Counter(1), Counter(1000),
+        90, 70);
 
     static void FuncPress_Signal()
     {
@@ -44,12 +50,14 @@ namespace PageSignal5b
 
     static void FuncStartTest()
     {
+        IT6523::Start(TypeSignal::_5b_16750_2, param_N.GetValue().ToInt());
     }
 
     static Item *items[] =
     {
         &bSignal5b,
         &chModeVoltage,
+        &param_N,
         &param_Us,
         &param_Uss,
         &param_td,
