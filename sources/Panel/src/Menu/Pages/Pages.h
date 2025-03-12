@@ -84,4 +84,8 @@ namespace PageSignal5a
 namespace PageSignal5b
 {
     extern Page *self;
+
+    extern VParameter param_Us;
+
+    extern TParameter param_td;
 }

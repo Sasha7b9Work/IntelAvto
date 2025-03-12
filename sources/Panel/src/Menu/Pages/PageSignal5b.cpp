@@ -7,24 +7,25 @@
 #include "Display/Text_.h"
 #include "Display/Display_.h"
 #include "Device/IT6523.h"
+#include "Device/Device.h"
 
 
 namespace PageSignal5b
 {
-    static VParameter param_Us("Us",
+    VParameter param_Us("Us",
         &gset.signals[TypeSignal::_5b_16750_2].values12[0], Voltage(79), Voltage(101),
         &gset.signals[TypeSignal::_5b_16750_2].values24[0], Voltage(101), Voltage(202),
         420, 130);
 
-    static TParameter param_td("td",
-        &gset.signa ls[TypeSignal::_5b_16750_2].values12[2], Time(40), Time(400),
+    TParameter param_td("td",
+        &gset.signals[TypeSignal::_5b_16750_2].values12[2], Time(40), Time(400),
         &gset.signals[TypeSignal::_5b_16750_2].values24[2], Time(100), Time(350),
         220, 160);
 
     static CParameter param_N("N",
         &gset.signals[TypeSignal::_5b_16750_2].values12[3], Counter(1), Counter(1000),
         &gset.signals[TypeSignal::_5b_16750_2].values24[3], Counter(1), Counter(1000),
-        90, 70);
+        90, Parameter::CalculateY(4));
 
     static void FuncPress_Signal()
     {
@@ -52,15 +53,16 @@ namespace PageSignal5b
     {
         &bSignal5b,
         &chModeVoltage,
-        &param_N,
         &param_Us,
         &param_td,
+        &param_N,
         nullptr
     };
 
     static void AdditionDraw()
     {
-        Text("%s     Us*: %d В", VoltageMode::TextValue(), VoltageMode::Is12() ? 35 : 59).Write(
+        Text("%s     Us*: %d В     Импульсов: %d",
+            VoltageMode::TextValue(), VoltageMode::Is12() ? 35 : 59, Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToInt()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 

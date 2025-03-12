@@ -216,6 +216,11 @@ public:
     // Редактируемый в данный момент
     static Parameter *editable;
 
+    static int CalculateY(int num)
+    {
+        return num * 32;
+    }
+
 private:
 
     pchar title;
