@@ -638,36 +638,15 @@ char *SU::MillisecondsToSeconds(int ms, char out[32])
 {
     out[0] = '\0';
 
-    if (ms < 1000)
-    {
-        std::strcpy(out, "0.");
+    int num_sec = ms / 1000;
 
-        char value[32];
+    std::sprintf(out, "%d.", num_sec);
 
-        std::sprintf(value, "%d", ms);
+    char value[32];
 
-        std::strcat(out, value);
-    }
-    else if (ms < 2000)
-    {
-        std::strcpy(out, "1.0");
+    std::sprintf(value, "%d", ms - num_sec * 1000);
 
-        char value[32];
-
-        std::sprintf(value, "%d", ms - 1000);
-
-        std::strcat(out, value);
-    }
-    else if (ms < 3000)
-    {
-        std::strcpy(out, "2.0");
-
-        char value[32];
-
-        std::sprintf(value, "%d", ms - 2000);
-
-        std::strcat(out, value);
-    }
+    std::strcat(out, value);
 
     return out;
 }
