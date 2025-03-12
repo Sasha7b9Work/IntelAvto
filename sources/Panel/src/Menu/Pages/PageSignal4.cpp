@@ -6,6 +6,7 @@
 #include "Menu/Menu.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"
+#include "Device/IT6523.h"
 
 
 namespace PageSignal4
@@ -54,6 +55,7 @@ namespace PageSignal4
 
     static void FuncStartTest()
     {
+        IT6523::Start(TypeSignal::_4_DIN40839, param_N.GetValue().ToInt());
     }
 
     static Item *items[] =

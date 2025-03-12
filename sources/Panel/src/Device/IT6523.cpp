@@ -106,6 +106,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
     {
         IT6523::SendCommandF("carwave:startup:din40839:volt %dV", (gset.voltage_mode == VoltageMode::_12) ? 12 : 24);
         IT6523::SendCommand("carwave:startup:din40839:state 1");
+        period = 10000;
     }
     else if (current == TypeSignal::_5a_16750_1)
     {
