@@ -353,7 +353,7 @@ void ServerTCP::SendString(pchar buffer)
 
 bool ServerTCP::IsConnected()
 {
-    if (TIME_MS - time_last_callback_ETH > 1000)
+    if (TIME_MS - time_last_callback_ETH > 5000)
     {
         CloseConnection(pcbServer, server);
     }
