@@ -3,6 +3,7 @@
 #include "Device/IT6523.h"
 #include "LAN/ServerTCP.h"
 #include "Hardware/Timer.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 #include <cstdarg>
 #include <cstdio>
 
@@ -12,6 +13,7 @@ namespace IT6523
     static bool is_connected = false;
     static uint time_connect = 0;
     static int pulses_remained = 0;         // Осталось импульсов
+    static bool in_pause = false;
 
     static TypeSignal::E current = TypeSignal::Count;
 }
@@ -109,24 +111,27 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
 
 void IT6523::CallbackOnTimerImpulse()
 {
-    SendCommand("*trg");
-
-    if (--pulses_remained == 0)
+    if (!in_pause)
     {
-        Stop();
+        SendCommand("*trg");
+
+        if (--pulses_remained == 0)
+        {
+            Stop();
+        }
     }
 }
 
 
 void IT6523::Pause()
 {
-
+    in_pause = true;
 }
 
 
 void IT6523::Resume()
 {
-
+    in_pause = false;
 }
 
 
@@ -140,4 +145,6 @@ void IT6523::Stop()
     }
 
     SendCommand("SOURCE:OUTPut:STATE 0");
+
+    Keyboard::AddAction(Key::Stop, Action::Release);
 }

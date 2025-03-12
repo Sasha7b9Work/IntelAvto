@@ -91,8 +91,6 @@ namespace Keyboard
     static void InitTimer();
     // Функция, периодически вызываемая по прерыванию таймера
     static void Update();
-    // Добавить действие в буфер
-    static void AddAction(Key::E key, Action::E action);
     // Обработка ручки
     static void DetectRegulator();
 

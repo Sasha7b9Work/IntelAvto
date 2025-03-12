@@ -72,4 +72,7 @@ namespace Keyboard
     void Lock();
 
     void Unlock();
+
+    // Добавить действие в буфер
+    void AddAction(Key::E, Action::E);
 };
