@@ -11,18 +11,18 @@
 namespace PageSignal5b
 {
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_5b].values12[0], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_5b].values24[0], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_5b_16750_2].values12[0], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_5b_16750_2].values24[0], Voltage(0), Voltage(10000),
         420, 130);
 
     static VParameter param_Uss("Us*",
-        &gset.signals[TypeSignal::_5b].values12[1], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_5b].values24[1], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_5b_16750_2].values12[1], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_5b_16750_2].values24[1], Voltage(0), Voltage(10000),
         380, 160);
 
     static TParameter param_td("td",
-        &gset.signals[TypeSignal::_5b].values12[2], Time(0), Time(10000),
-        &gset.signals[TypeSignal::_5b].values24[2], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_5b_16750_2].values12[2], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_5b_16750_2].values24[2], Time(0), Time(10000),
         220, 160);
 
     static void FuncPress_Signal()

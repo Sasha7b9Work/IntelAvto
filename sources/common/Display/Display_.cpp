@@ -508,7 +508,7 @@ void Display::DrawSignal()
         coord.x = HLine(100).Draw(coord);
         coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
     }
-    else if (TypeSignal::Is(TypeSignal::_2b))
+    else if (TypeSignal::Is(TypeSignal::_2b_SAEJ1113))
     {
         Axis().Draw(Coord(x, y + 170), 210, 330, 10);
 
@@ -608,7 +608,7 @@ void Display::DrawSignal()
         Point::MoveOn(15, 80);
         Point::MoveOn(50, 0);
     }
-    else if (TypeSignal::Is(TypeSignal::_4))
+    else if (TypeSignal::Is(TypeSignal::_4_DIN40839))
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 
@@ -633,7 +633,7 @@ void Display::DrawSignal()
         Point::MoveOn(20, -35);
         Point::MoveOn(40, 0);
     }
-    else if (TypeSignal::Is(TypeSignal::_5a))
+    else if (TypeSignal::Is(TypeSignal::_5a_16750_1))
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 
@@ -652,7 +652,7 @@ void Display::DrawSignal()
         Point::MoveOn(40, 10);
         Point::MoveOn(50, 0);
     }
-    else if (TypeSignal::Is(TypeSignal::_5b))
+    else if (TypeSignal::Is(TypeSignal::_5b_16750_2))
     {
         Axis().Draw(Coord(x, y + 150), 170, 330, 00);
 

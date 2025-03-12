@@ -94,7 +94,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
 
     uint period = 5000;
 
-    if (current == TypeSignal::_2b)
+    if (current == TypeSignal::_2b_SAEJ1113)
     {
         char buffer[32];
 
@@ -102,15 +102,16 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommandF("carwave:sae:2b:td %s", SU::MillisecondsToSeconds(PageSignal2b::param_td.GetValue().ToInt(), buffer));
         IT6523::SendCommand("carwave:sae:2b:state 1");
     }
-    else if (current == TypeSignal::_4)
+    else if (current == TypeSignal::_4_DIN40839)
+    {
+        IT6523::SendCommandF("carwave:startup:din40839:volt %dV", (gset.voltage_mode == VoltageMode::_12) ? 12 : 24);
+        IT6523::SendCommand("carwave:startup:din40839:state 1");
+    }
+    else if (current == TypeSignal::_5a_16750_1)
     {
 
     }
-    else if (current == TypeSignal::_5a)
-    {
-
-    }
-    else if (current == TypeSignal::_5b)
+    else if (current == TypeSignal::_5b_16750_2)
     {
 
     }
@@ -151,7 +152,7 @@ void IT6523::Stop()
 {
     Timer::DisableTask(TimerTask::IT6523);
 
-    if (current == TypeSignal::_2b)
+    if (current == TypeSignal::_2b_SAEJ1113)
     {
         IT6523::SendCommand("carwave:sae:2b:state 0");
     }

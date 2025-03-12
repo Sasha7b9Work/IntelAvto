@@ -14,13 +14,13 @@
 namespace PageSignal2b
 {
     TParameter param_td("td",
-        &gset.signals[TypeSignal::_2b].values12[0], Time(200), Time(2000),
-        &gset.signals[TypeSignal::_2b].values24[0], Time(200), Time(2000),
+        &gset.signals[TypeSignal::_2b_SAEJ1113].values12[0], Time(200), Time(2000),
+        &gset.signals[TypeSignal::_2b_SAEJ1113].values24[0], Time(200), Time(2000),
         290, 60);
 
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_2b].values12[1], Counter(1), Counter(1000),
-        &gset.signals[TypeSignal::_2b].values24[1], Counter(1), Counter(1000),
+        &gset.signals[TypeSignal::_2b_SAEJ1113].values12[1], Counter(1), Counter(1000),
+        &gset.signals[TypeSignal::_2b_SAEJ1113].values24[1], Counter(1), Counter(1000),
         90, 100
     );
 
@@ -43,7 +43,7 @@ namespace PageSignal2b
 
     static void FuncStartTest()
     {
-        IT6523::Start(TypeSignal::_2b, param_N.GetValue().ToInt());
+        IT6523::Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToInt());
     }
 
     static Item *items[] =

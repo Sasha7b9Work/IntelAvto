@@ -11,19 +11,19 @@
 namespace PageSignal5a
 {
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_5a].values12[0], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_5a].values24[0], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_5a_16750_1].values12[0], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_5a_16750_1].values24[0], Voltage(0), Voltage(10000),
         355, 125);
 
     static TParameter param_td("td",
-        &gset.signals[TypeSignal::_5a].values12[1], Time(0), Time(10000),
-        &gset.signals[TypeSignal::_5a].values24[1], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_5a_16750_1].values12[1], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_5a_16750_1].values24[1], Time(0), Time(10000),
         220, 155);
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal5b::self);
-        TypeSignal::Set(TypeSignal::_5b);
+        TypeSignal::Set(TypeSignal::_5b_16750_2);
     }
 
     DEF_BUTTON(bSignal5a,

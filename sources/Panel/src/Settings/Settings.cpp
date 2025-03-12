@@ -191,7 +191,7 @@ pchar TypeSignal::Name()
         "3b",
         "DIN40839",
         "16750-1",
-        "16750-1"
+        "16750-2"
     };
 
     return names[current];

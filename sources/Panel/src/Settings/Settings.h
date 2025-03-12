@@ -41,14 +41,14 @@ struct TypeSignal
 {
     enum E
     {
-        _1,     // Int
-        _2a,    // Int
-        _2b,    // Ext
-        _3a,    // Int
-        _3b,    // Int
-        _4,     // Ext
-        _5a,    // Ext
-        _5b,    // Ext
+        _1,             // Int
+        _2a,            // Int
+        _2b_SAEJ1113,   // Ext
+        _3a,            // Int
+        _3b,            // Int
+        _4_DIN40839,    // Ext
+        _5a_16750_1,    // Ext
+        _5b_16750_2,    // Ext
         Count
     };
 

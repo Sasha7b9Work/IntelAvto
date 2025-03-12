@@ -11,29 +11,29 @@
 namespace PageSignal4
 {
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_4].values12[0], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_4].values24[0], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[0], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[0], Voltage(0), Voltage(10000),
         230, 110);
 
     static VParameter param_Ua("Ua",
-        &gset.signals[TypeSignal::_4].values12[1], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_4].values24[1], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[1], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[1], Voltage(0), Voltage(10000),
         350, 100);
 
     static TParameter param_t7("t7",
-        &gset.signals[TypeSignal::_4].values12[2], Time(0), Time(10000),
-        &gset.signals[TypeSignal::_4].values24[2], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[2], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[2], Time(0), Time(10000),
         220, 160);
 
     static TParameter param_t9("t9",
-        &gset.signals[TypeSignal::_4].values12[3], Time(0), Time(10000),
-        &gset.signals[TypeSignal::_4].values24[3], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[3], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[3], Time(0), Time(10000),
         330, 160);
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal5a::self);
-        TypeSignal::Set(TypeSignal::_5a);
+        TypeSignal::Set(TypeSignal::_5a_16750_1);
     }
 
     DEF_BUTTON(bSignal5a,

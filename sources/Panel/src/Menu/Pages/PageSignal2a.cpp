@@ -30,7 +30,7 @@ namespace PageSignal2a
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal2b::self);
-        TypeSignal::Set(TypeSignal::_2b);
+        TypeSignal::Set(TypeSignal::_2b_SAEJ1113);
     }
 
     DEF_BUTTON(bSignal2a,

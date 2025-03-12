@@ -22,9 +22,18 @@ namespace Keyboard
     // Здесь имя нажатой кнопки
     static Key::E pressedKey = Key::None;
 
-    static void AddAction(Control control, Action::E action)
+    void AddAction(Control control, Action::E action)
     {
         control.action = action;
+        actions[numActions++] = control;
+    }
+
+    void AddAction(Key::E key, Action::E action)
+    {
+        Control control;
+        control.key = key;
+        control.action = action;
+
         actions[numActions++] = control;
     }
 }
