@@ -86,7 +86,7 @@ struct StyleGUI
 
 struct SettingsSignal
 {
-    static const int MAX_PARAMS = 3;
+    static const int MAX_PARAMS = 5;
 
     Value values12[MAX_PARAMS];
     Value values24[MAX_PARAMS];

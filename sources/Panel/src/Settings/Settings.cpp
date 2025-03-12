@@ -68,68 +68,106 @@ static Settings def_set =
     {
         {   {   Voltage(-75),                   // 1 : Us   12      Signal 1
                 Time(1000),                     // 1 : t1   12
-                Counter(10000) }                // 1 : N    12
+                Counter(10000),                 // 1 : N    12
+                ValueNull(),
+                ValueNull()
+            }
             ,
             {   Voltage(-300),                  // 1 : Us   24
                 Time(1000),                     // 1 : Us   24
-                Counter(10000) }}               // 1 : N    24
+                Counter(10000),                 // 1 : N    24
+                ValueNull(),
+                ValueNull() }}
         ,
         {   {   Voltage(55),                    // 2a : Us  12      Signal 2a
                 Time(1000),                     // 2a : t1  12
-                Counter(10000)                  // 2a : N
+                Counter(10000),                 // 2a : N
+                ValueNull(),
+                ValueNull()
             }
             ,
             {   Voltage(55),                    // 2a : Us  24
                 Time(1000),                     // 2a : t1  24
-                Counter(10000) }}               // 2a : N
+                Counter(10000),                 // 2a : N
+                ValueNull(),
+                ValueNull() }}
         ,
         {   {   Time(500),                      // 2b : t1  12      Signal 2b
                 Counter(10),
-                ValueNull() }
+                ValueNull(),
+                ValueNull(),
+                ValueNull()
+            }
             ,
             {   Time(500),                      // 2b : t1 24
                 Counter(10),
+                ValueNull(),
+                ValueNull(),
                 ValueNull() }}
         ,
         {   {   Voltage(-112),                  // 3a : Us 12       Signal 3a
                 Counter(10000),                 // 3a : N  12
-                ValueNull() }
+                ValueNull(),
+                ValueNull(),
+                ValueNull()
+            }
             ,
             {   Voltage(-150),                  // 3a : Us 24
                 Counter(10000),                 // 3a : N  24
+                ValueNull(),
+                ValueNull(),
                 ValueNull() }}
         ,
         {   {   Voltage(75),                    // 3b : Us 12       Signal 3b
                 Counter(10000),                 // 3b : N  12
-                ValueNull() }
+                ValueNull(),
+                ValueNull(),
+                ValueNull()
+            }
             ,
             {   Voltage(150),                   // 3b : Us 24
                 Counter(10000),                 // 3b : N  24
+                ValueNull(),
+                ValueNull(),
                 ValueNull() }}
         ,
-        {   {   Voltage(-6500),                 // 4 : Us           Signal 4
+        {   {   Counter(10),                    // 4 : N
+                Voltage(-6500),                 // 4 : Us           Signal 4
                 Voltage(-4000),                 // 4 : Ua
-                Time(20) }                      // 4 : t7
+                Time(20),                       // 4 : t7
+                Time(20)}                       // 4 : t9
             ,
-            {   Voltage(-6500),                 // 4 : Us
+            {   Counter(10),                    // 4 : N
+                Voltage(-6500),                 // 4 : Us
                 Voltage(-4000),                 // 4 : Ua
-                Time(20) }}                     // 4 : t7
+                Time(20),                       // 4 : t7
+                Time(20)}}                      // 4 : t9
         ,
         {   {   Voltage(80),                    // 5a : Us 12       Signal 5a
                 Time(54),                       // 5a : td 12
-                Counter(10) }                   // 5a : N  12
+                Counter(10),                    // 5a : N  12
+                ValueNull(),
+                ValueNull()
+            }
             ,
             {   Voltage(80),                    // 5a : Us 24
                 Time(54),                       // 5a : td 24
-                Counter(10) }}                  // 5a : N  24
+                Counter(10),                    // 5a : N  24
+                ValueNull(),
+                ValueNull() }}
         ,
         { {     Voltage(80),                    // 5b : Us 12       Signal 5b
-                Time(54)  ,                     // 5b : td 12
-                Counter(5) }                    // 5b : N  12
+                Time(54),                       // 5b : td 12
+                Counter(5),                     // 5b : N  12
+                ValueNull(),
+                ValueNull()
+            }
             ,
             {   Voltage(80),                    // 5b : Us 24
                 Time(54),                       // 5b : td 24
-                Counter(5) }}                   // 5b : N 24
+                Counter(5),                     // 5b : N 24
+                ValueNull(),
+                ValueNull() }}
     },
     7,                                          // portSCPI
     30000,                                      // portIT6523

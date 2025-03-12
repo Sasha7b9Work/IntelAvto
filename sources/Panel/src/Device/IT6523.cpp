@@ -109,11 +109,20 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
     }
     else if (current == TypeSignal::_5a_16750_1)
     {
-
+        IT6523::SendCommand("carwave:iso16750:load:dump:test amode");
+        IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", (gset.voltage_mode == VoltageMode::_12) ? 12 : 24);
+        IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", 79);
+        IT6523::SendCommandF("carwave:iso16750:load:dump:TD %s", "0.04");
+        IT6523::SendCommandF("carwave:iso16750:load:dump:state 1");
     }
     else if (current == TypeSignal::_5b_16750_2)
     {
-
+        IT6523::SendCommand("carwave:iso16750:load:dump:test bmode");
+        IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", (gset.voltage_mode == VoltageMode::_12) ? 12 : 24);
+        IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", 79);
+        IT6523::SendCommandF("carwave:iso16750:load:dump:US %d", 58);
+        IT6523::SendCommandF("carwave:iso16750:load:dump:TD %s", "0.04");
+        IT6523::SendCommandF("carwave:iso16750:load:dump:state 1");
     }
 
     SendCommand("SOURCE:OUTPut:STATE 1");
@@ -155,6 +164,15 @@ void IT6523::Stop()
     if (current == TypeSignal::_2b_SAEJ1113)
     {
         IT6523::SendCommand("carwave:sae:2b:state 0");
+    }
+    else if (current == TypeSignal::_4_DIN40839)
+    {
+        IT6523::SendCommand("carwave:startup:din40839:state 0");
+    }
+    else if (current == TypeSignal::_5a_16750_1 ||
+        current == TypeSignal::_5b_16750_2)
+    {
+        IT6523::SendCommandF("carwave:iso16750:load:dump:state 0");
     }
 
     SendCommand("SOURCE:OUTPut:STATE 0");
