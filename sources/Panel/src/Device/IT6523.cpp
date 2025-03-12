@@ -11,6 +11,9 @@ namespace IT6523
 {
     static bool is_connected = false;
     static uint time_connect = 0;
+    static int pulses_remained = 0;         // Осталось импульсов
+
+    static TypeSignal::E current = TypeSignal::Count;
 }
 
 
@@ -42,6 +45,7 @@ void IT6523::Update()
             is_connected = true;
 
             SendCommand("SYSTem:REMote");
+            SendCommand("trigger:source bus");
         }
     }
 }
@@ -72,10 +76,45 @@ void IT6523::SendCommandF(pchar format, ...)
 }
 
 
-void IT6523::Start()
+void IT6523::Start(TypeSignal::E type, int num_pulses)
 {
+    current = type;
+
+    pulses_remained = num_pulses;
+
+    if (current == TypeSignal::_2b)
+    {
+        IT6523::SendCommand("carwave:sae:2b:volt 12V");
+        IT6523::SendCommand("carwave:sae:2b:td 0.2");
+        IT6523::SendCommand("carwave:sae:2b:state 1");
+    }
+    else if (current == TypeSignal::_4)
+    {
+
+    }
+    else if (current == TypeSignal::_5a)
+    {
+
+    }
+    else if (current == TypeSignal::_5b)
+    {
+
+    }
+
     SendCommand("SOURCE:OUTPut:STATE 1");
-    SendCommand("*TRG");
+
+    Timer::SetPeriodicTask(TimerTask::IT6523, 2000, IT6523::CallbackOnTimerImpulse);
+}
+
+
+void IT6523::CallbackOnTimerImpulse()
+{
+    SendCommand("*trg");
+
+    if (--pulses_remained == 0)
+    {
+        Stop();
+    }
 }
 
 
@@ -93,5 +132,12 @@ void IT6523::Resume()
 
 void IT6523::Stop()
 {
+    Timer::DisableTask(TimerTask::IT6523);
+
+    if (current == TypeSignal::_2b)
+    {
+        IT6523::SendCommand("carwave:sae:2b:state 0");
+    }
+
     SendCommand("SOURCE:OUTPut:STATE 0");
 }

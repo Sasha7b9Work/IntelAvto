@@ -42,10 +42,7 @@ namespace PageSignal2b
 
     static void FuncStartTest()
     {
-        IT6523::SendCommand("carwave:sae:2b:volt 12V");
-        IT6523::SendCommand("carwave:sae:2b:td 0.2");
-        IT6523::SendCommand("carwave:sae:2b:state 1");
-        IT6523::Start();
+        IT6523::Start(TypeSignal::_2b, param_N.GetValue().ToInt());
     }
 
     static Item *items[] =

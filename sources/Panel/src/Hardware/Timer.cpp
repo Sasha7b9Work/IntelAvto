@@ -39,6 +39,15 @@ void Timer::SetDefferedOnceTask(TimerTask::E task, uint time, void (*func)())
 }
 
 
+void Timer::SetPeriodicTask(TimerTask::E task, uint time, void (*func)())
+{
+    tasks[task].dT = time;
+    tasks[task].time_next_run = TIME_MS;
+    tasks[task].repeat = true;
+    tasks[task].func = func;
+}
+
+
 void Timer::DisableTask(TimerTask::E task)
 {
     tasks[task].func = nullptr;

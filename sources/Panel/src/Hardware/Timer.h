@@ -17,6 +17,7 @@ struct TimerTask
         ChangeColorOnLabelStop,         // Изменить цвет кнопки СТОП через некоторое время после остановки
         USB,
         StopSound,
+        IT6523,
         Count
     };
 };
@@ -26,6 +27,8 @@ namespace Timer
 {
     // Однократное значение - выполняется только один раз
     void SetDefferedOnceTask(TimerTask::E, uint time, void (*func)());
+
+    void SetPeriodicTask(TimerTask::E, uint time, void (*func)());
 
     void DisableTask(TimerTask::E);
 
