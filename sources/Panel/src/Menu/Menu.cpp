@@ -24,7 +24,7 @@ namespace Menu
         void OnControl(const Control &);
     }
 
-    Primitives::Label labelMode(10, 170, "ярно", Color::BLACK, Color::GREEN, Color::WHITE);
+    Primitives::Label labelMode(100, 5, "ярно", Color::BLACK, Color::GREEN, Color::WHITE);
 }
 
 

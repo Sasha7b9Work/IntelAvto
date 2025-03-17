@@ -17,23 +17,23 @@ namespace PageSignal4
         90, 70);
 
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[1], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[1], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[1], Voltage(-6000), Voltage(-7500),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[1], Voltage(-12000), Voltage(-16000),
         230, 110);
 
     static VParameter param_Ua("Ua",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[2], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[2], Voltage(0), Voltage(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[2], Voltage(-2500), Voltage(-6000),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[2], Voltage(-5000), Voltage(-12000),
         350, 100);
 
     static TParameter param_t7("t7",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[3], Time(0), Time(10000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[3], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[3], Time(15), Time(40),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[3], Time(50), Time(100),
         220, 160);
 
     static TParameter param_t9("t9",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[4], Time(0), Time(10000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[4], Time(0), Time(10000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[4], Time(500), Time(20000),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[4], Time(500), Time(20000),
         330, 160);
 
     static void FuncPress_Signal()

@@ -132,16 +132,16 @@ static Settings def_set =
                 ValueNull() }}
         ,
         {   {   Counter(10),                    // 4 : N
-                Voltage(-6500),                 // 4 : Us           Signal 4
-                Voltage(-4000),                 // 4 : Ua
-                Time(20),                       // 4 : t7
-                Time(20)}                       // 4 : t9
+                Voltage(-7500),                 // 4 : Us           Signal 4
+                Voltage(-6000),                 // 4 : Ua
+                Time(15),                       // 4 : t7
+                Time(2000)}                     // 4 : t9
             ,
             {   Counter(10),                    // 4 : N
-                Voltage(-6500),                 // 4 : Us
-                Voltage(-4000),                 // 4 : Ua
-                Time(20),                       // 4 : t7
-                Time(20)}}                      // 4 : t9
+                Voltage(-16000),                // 4 : Us
+                Voltage(-12000),                // 4 : Ua
+                Time(50),                       // 4 : t7
+                Time(2000)}}                    // 4 : t9
         ,
         {   {   Voltage(80),                    // 5a : Us 12       Signal 5a
                 Time(54),                       // 5a : td 12
