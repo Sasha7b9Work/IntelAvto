@@ -59,7 +59,7 @@ add_compile_options(
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
-#file(GLOB LIBS_USBH           ../common/libs/USBH/*.*)
+file(GLOB LIBS_USBD           ../common/libs/USBD/*.*)
 file(GLOB SRC                       src/*.*)
 file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
                               ../common/Connector/Device/Transceiver_.h
@@ -88,7 +88,7 @@ file(GLOB VCP                 ../common/VCP/*.*)
 
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
-#source_group(libs/USBH         FILES ${LIBS_USBH})
+source_group(libs/USBD         FILES ${LIBS_USBD})
 source_group(src               FILES ${SRC})
 source_group(Connector/Device  FILES ${CONNECTOR_DEVICE})
 source_group(Device            FILES ${DEVICE})
@@ -117,7 +117,7 @@ set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
 
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
-#    ${LIBS_USBH}
+    ${LIBS_USBD}
     ${SRC}
     ${CONNECTOR_DEVICE}
     ${DEVICE}

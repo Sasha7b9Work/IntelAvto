@@ -25,8 +25,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define USBD_CLASS_BOS_ENABLED 0
-
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Common Config */

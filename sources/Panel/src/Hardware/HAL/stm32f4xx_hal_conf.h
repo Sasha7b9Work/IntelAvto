@@ -38,6 +38,7 @@
 #define HAL_SPI_MODULE_ENABLED
 #define HAL_DAC_MODULE_ENABLED
 #define HAL_ETH_MODULE_ENABLED
+#define HAL_UART_MODULE_ENABLED
 
 
 #define USE_HAL_LTDC_REGISTER_CALLBACKS 0
@@ -51,6 +52,9 @@
 #define USE_HAL_DAC_REGISTER_CALLBACKS 0
 
 #define USBD_USER_REGISTER_CALLBACK 0
+
+#define USE_HAL_UART_REGISTER_CALLBACKS 0
+#define USBD_CLASS_BOS_ENABLED 0
 
 /* ########################## HSE/HSI Values adaptation ##################### */
 /**

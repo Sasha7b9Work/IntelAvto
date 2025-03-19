@@ -417,6 +417,11 @@ typedef enum
   */
 
 
+#ifdef WIN32
+    #define __STATIC_INLINE
+#endif
+
+
 
 /** @defgroup USBD_DEF_Exported_Macros
   * @{
