@@ -1,33 +1,27 @@
+// 2025/03/19 10:57:12 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include <usbd_def.h>
 
 
-class VCP
+namespace VCP
 {
-public:
+    void Init();
 
-    static void Init();
-
-    static void SendBufferSynch(const uint8 *data, int size);
+    void SendBufferSynch(const uint8 *data, int size);
 
     // Эта строка передаётся с завершающими символами \\r\\n
-    static void SendStringAsynch(char *format, ...);
+    void SendStringAsynch(char *format, ...);
 
     // Строка передаётся "как есть"
-    static void SendStringAsynchRAW(char *format, ...);
+    void SendStringAsynchRAW(char *format, ...);
 
-    static void Flush();
+    void Flush();
 
-    static USBD_HandleTypeDef handleUSBD;
+    extern USBD_HandleTypeDef handleUSBD;
 
-    static PCD_HandleTypeDef handlePCD;
+    extern PCD_HandleTypeDef handlePCD;
 
-    static bool isConnected;
+    extern bool isConnected;
 
-    static bool cableIsConnected;
-
-private:
-    static bool PrevSendingComplete();
-
-    static void SendDataAsynch(uint8 *data, int size);
+    extern bool cableIsConnected;
 };

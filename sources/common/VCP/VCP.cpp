@@ -1,3 +1,4 @@
+// 2025/03/19 10:57:17 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "VCP/VCP.h"
 #include "usbd_desc.h"
@@ -10,14 +11,19 @@
 #include <cstring>
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-USBD_HandleTypeDef VCP::handleUSBD;
-PCD_HandleTypeDef  VCP::handlePCD;
-bool               VCP::cableIsConnected = false;
-bool               VCP::isConnected = false;
+namespace VCP
+{
+    USBD_HandleTypeDef handleUSBD;
+    PCD_HandleTypeDef  handlePCD;
+    bool               cableIsConnected = false;
+    bool               isConnected = false;
+
+    static bool PrevSendingComplete();
+
+    static void SendDataAsynch(uint8 *data, int size);
+}
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void VCP::Init()
 {
     USBD_Init(&handleUSBD, &VCP_Desc, 0);
