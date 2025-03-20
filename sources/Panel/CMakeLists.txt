@@ -36,7 +36,7 @@ include_directories(
     ../common/libs/STM32Cube_F4/Middlewares/Third_Party/LwIP/system
 )
 
-add_definitions(-DSTM32F429xx)
+add_definitions(-DSTM32F429xx -DUSE_USB_HS_IN_FS -DUSE_USB_FS -DUSE_USB_HS)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 

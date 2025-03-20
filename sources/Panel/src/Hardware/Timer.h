@@ -15,7 +15,7 @@ struct TimerTask
     enum E
     {
         ChangeColorOnLabelStop,         // Изменить цвет кнопки СТОП через некоторое время после остановки
-        USB,
+        USBD,
         StopSound,
         IT6523,
         Count
