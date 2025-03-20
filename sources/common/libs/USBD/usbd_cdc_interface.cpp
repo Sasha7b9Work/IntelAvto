@@ -26,7 +26,6 @@ static int8_t CDC_Itf_DeInit(void);
 static int8_t CDC_Itf_Control(uint8_t cmd, uint8_t *pbuf, uint16_t length);
 static int8_t CDC_Itf_Receive(uint8_t *pbuf, uint32_t *Len);
 static int8_t CDC_Itf_TransmitCplt(uint8_t *pbuf, uint32_t *Len, uint8_t epnum);
-static void Error_Handler(void);
 
 
 USBD_CDC_ItfTypeDef USBD_CDC_fops = {
@@ -141,10 +140,4 @@ static int8_t CDC_Itf_TransmitCplt(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
     (void)epnum;
 
     return (0);
-}
-
-
-static void Error_Handler(void)
-{
-
 }

@@ -25,6 +25,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#endif
+
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Common Config */
@@ -68,5 +73,9 @@
 #endif
 
 /* Exported functions ------------------------------------------------------- */
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
+#endif
 
 #endif /* __USBD_CONF_H */
