@@ -80,9 +80,14 @@ void SysTick_Handler(void)
 void OTG_FS_IRQHandler()
 {
     HAL_PCD_IRQHandler(&VCP::handlePCD);
-
-//    HAL_HCD_IRQHandler((HCD_HandleTypeDef *)FDrive::handleHCD);
 }
+
+
+void OTG_HS_IRQHandler()
+{
+    HAL_HCD_IRQHandler((HCD_HandleTypeDef *)FDrive::handleHCD);
+}
+
 
 void DMA1_Stream5_IRQHandler()
 {

@@ -23,7 +23,7 @@ int main(void)
 
     Menu::Init();
 
-    VCP::Init();
+//    VCP::Init();
 
     FDrive::Init();
 
