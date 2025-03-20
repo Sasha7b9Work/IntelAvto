@@ -8,6 +8,7 @@
 #include "FlashDrive/FlashDrive.h"
 #include "LAN/LAN.h"
 #include "Device/IT6523.h"
+#include "VCP/VCP.h"
 
 
 int main(void)
@@ -21,6 +22,8 @@ int main(void)
     Keyboard::Init();
 
     Menu::Init();
+
+//    VCP::Init();
 
 //    FDrive::Init();
 
