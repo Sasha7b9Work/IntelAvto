@@ -35,6 +35,12 @@ namespace HAL
 };
 
 
+namespace HAL_HCD
+{
+    void In it();
+}
+
+
 namespace HAL_TIM
 {
     void Init();
