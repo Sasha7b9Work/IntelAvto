@@ -9,6 +9,16 @@ namespace PageCalibration
 {
     static uint8 type_signal = 0;
     static uint8 type_accum = 0;
+    static uint8 type_point = 0;
+
+    struct State
+    {
+        enum E
+        {
+            None,
+            DrawWarningMessageReset         // Выводим предупреждающее сообщение про сброс калибровочных коэффициентов
+        };
+    };
 
     static void FuncPress_Back()
     {
@@ -34,15 +44,39 @@ namespace PageCalibration
         FuncVV
     );
 
+    DEF_CHOICE_4_FULL(chTypePoint,
+        "Точка",
+        "1", "2", "3", "4",
+        type_point,
+        FuncVV
+    );
+
+    static void FuncPress_Reset()
+    {
+        
+    }
+
+    DEF_BUTTON(bReset,
+        "Сброс",
+        FuncPress_Reset
+    );
+
     static Item *items[] =
     {
         &bBack,
         &chTypeSignal,
         &chTypeAccum,
+        &chTypePoint,
+        &bReset,
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr);
+    static void FuncDraw()
+    {
+
+    }
+
+    static Page page(items, FuncDraw, nullptr);
 
     Page *self = &page;
 }
