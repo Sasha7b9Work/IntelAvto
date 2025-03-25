@@ -147,8 +147,9 @@ private:
 class Choice : public Item
 {
 public:
-    Choice(pchar *_names, void (*funcPress)(), uint8 *_state) :
-        Item(), colorBack(Color::MENU_UNSELECT), state(_state), funcOnPress(funcPress)
+    // Если title == nullptr, то имена будут выводиться прямо на кнопке, иначе - справа
+    Choice(pchar _title, pchar *_names, void (*funcPress)(), uint8 *_state) :
+        Item(), colorBack(Color::MENU_UNSELECT), title(_title), state(_state), funcOnPress(funcPress)
     {
         names = _names;
     }
@@ -160,6 +161,7 @@ public:
     void SetColorBackground(const Color &color) { colorBack = color; }
     Color colorBack;        // Этим цветом будем отрисовывать фон в случае Choice для выбора цвета
 private:
+    pchar title;
     pchar *names;
     uint8 *state;
     void (*funcOnPress)();

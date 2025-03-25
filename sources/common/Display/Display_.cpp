@@ -230,7 +230,7 @@ void Display::DrawWelcomeScreen()
 {
     uint startTime = TIME_MS;
 
-    while (TIME_MS - startTime < 3000)
+    while (TIME_MS - startTime < 5000)
     {
         for (int i = 0; i < NUM_PARTS; i++)
         {
@@ -358,7 +358,9 @@ void Display::DrawScreen()
 
         DrawSignal();
     }
-    else if (Menu::OpenedPage() == PageInfo::self || Menu::OpenedPage()->ConsistOpenedItems())
+    else if (Menu::OpenedPage() == PageInfo::self ||
+        Menu::OpenedPage()->ConsistOpenedItems() ||
+        Menu::OpenedPage() == PageCalibration::self)
     {
 
     }
