@@ -37,7 +37,7 @@ namespace HAL
 
 namespace HAL_HCD
 {
-    void In it();
+    void Init();
 }
 
 
