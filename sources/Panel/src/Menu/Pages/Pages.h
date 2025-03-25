@@ -15,6 +15,12 @@ namespace PageSettings
 }
 
 
+namespace PageCalibration
+{
+    extern Page *self;
+}
+
+
 namespace PageLAN
 {
     extern Page *self;

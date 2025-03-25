@@ -40,10 +40,10 @@ void HAL::Init()
     /* SysTick_IRQn interrupt configuration */
     HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 
+#ifndef WIN32
+
     __USB_OTG_FS_CLK_ENABLE();
     __USB_OTG_HS_CLK_ENABLE();
-
-#ifndef WIN32
 
     __SYSCFG_CLK_ENABLE();
 
