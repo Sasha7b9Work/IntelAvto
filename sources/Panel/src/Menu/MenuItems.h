@@ -156,6 +156,7 @@ public:
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
     virtual bool OnEventControl(const Control &) override;
+    pchar CurrentChoice() const;
     pchar Title() const;
     int Value() const { return (int)*state; }
     void SetColorBackground(const Color &color) { colorBack = color; }

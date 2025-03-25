@@ -7,6 +7,8 @@
 
 namespace PageCalibration
 {
+    static uint8 type_signal = 0;
+
     static void FuncPress_Back()
     {
         Menu::SetOpenedPage(PageMain::self);
@@ -17,9 +19,17 @@ namespace PageCalibration
         FuncPress_Back
     );
 
+    DEF_CHOICE_4(chTypeSignal,
+        "Импульс",
+        "1", "2a", "3a", "3b",
+        type_signal,
+        FuncVV
+    );
+
     static Item *items[] =
     {
         &bBack,
+        &chTypeSignal,
         nullptr
     };
 

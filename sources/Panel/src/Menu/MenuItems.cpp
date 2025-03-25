@@ -237,7 +237,18 @@ void Choice::Draw(int x, int y, int width, bool selected)
         Color::WHITE.SetAsCurrent();
     }
 
-    Text(Title()).Write(x, y + DeltaTextt(), width);
+    if (title)
+    {
+        Text(Title()).Write(x, y + DeltaTextt(), width);
+
+        ColorDraw(false).SetAsCurrent();
+
+        Text(CurrentChoice()).Write(x + width + 10, y + DeltaTextt());
+    }
+    else
+    {
+        Text(CurrentChoice()).Write(x, y + DeltaTextt(), width);
+    }
 }
 
 
@@ -265,9 +276,15 @@ void Button::SetTitle(pchar ru)
 }
 
 
-pchar Choice::Title() const
+pchar Choice::CurrentChoice() const
 {
     return names[*state];
+}
+
+
+pchar Choice::Title() const
+{
+    return title;
 }
 
 
