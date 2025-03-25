@@ -9,7 +9,7 @@ namespace PageCalibration
 {
     static void FuncPress_Back()
     {
-        Menu::SetOpenedPage(PageSettings::self);
+        Menu::SetOpenedPage(PageMain::self);
     }
 
     DEF_BUTTON(bBack,
