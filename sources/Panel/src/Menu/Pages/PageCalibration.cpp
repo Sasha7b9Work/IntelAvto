@@ -8,6 +8,7 @@
 namespace PageCalibration
 {
     static uint8 type_signal = 0;
+    static uint8 type_accum = 0;
 
     static void FuncPress_Back()
     {
@@ -19,10 +20,17 @@ namespace PageCalibration
         FuncPress_Back
     );
 
-    DEF_CHOICE_4(chTypeSignal,
+    DEF_CHOICE_4_FULL(chTypeSignal,
         "Импульс",
         "1", "2a", "3a", "3b",
         type_signal,
+        FuncVV
+    );
+
+    DEF_CHOICE_2_FULL(chTypeAccum,
+        "Аккумулятор",
+        "12В", "24В",
+        type_accum,
         FuncVV
     );
 
@@ -30,6 +38,7 @@ namespace PageCalibration
     {
         &bBack,
         &chTypeSignal,
+        &chTypeAccum,
         nullptr
     };
 
