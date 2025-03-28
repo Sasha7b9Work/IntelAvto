@@ -29,11 +29,23 @@ struct VoltageMode
         Count
     };
 
+    VoltageMode(E v)
+    {
+        current = v;
+    }
+
     static E Current();
 
     static bool Is12() { return Current() == _12; }
 
+    int CurrentVolts()
+    {
+        return Is12() ? 12 : 24;
+    }
+
     static pchar TextValue();
+
+    E current;
 };
 
 
@@ -43,10 +55,10 @@ struct TypeSignal
     {
         _1,             // Int
         _2a,            // Int
-        _2b_SAEJ1113,   // Ext
+        _2b_SAEJ1113,   // Ext 
         _3a,            // Int
         _3b,            // Int
-        _4_DIN40839,    // Ext
+        _4_DIN40839,    // Ext Программно формируемый сигнал командами LIST
         _5a_16750_1,    // Ext
         _5b_16750_2,    // Ext
         Count
@@ -100,7 +112,7 @@ struct Settings
     StyleGUI       styleGUI;
     uint8          colorScheme;
     TypeSignal::E  signal;
-    VoltageMode::E voltage_mode;
+    VoltageMode    voltage_mode;
     SettingsSignal signals[TypeSignal::Count];
     uint16         portSCPI;                            // По этому порту подключается внешний клиент для команд SCPI
     uint16         portIT6523;                          // По этому порту подключаемся к IT6523

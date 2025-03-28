@@ -59,6 +59,8 @@ namespace PageSignal3b
         Text("%s     Ri: 50 ќм     ƒлит: %s", VoltageMode::TextValue(), Duration(1.0f, param_N).ToStringValue(buffer)).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
+
+        Page::DrawConnectionServer();
     }
 
     static Page page(items, AdditionDraw, FuncStartTest);

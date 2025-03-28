@@ -68,6 +68,8 @@ namespace PageSignal2a
         Text("%s     Ri: 2 ќм     ƒлит: %s", VoltageMode::TextValue(), Duration(param_t1, param_N).ToStringValue(buffer)).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
+
+        Page::DrawConnectionServer();
     }
 
     static Page page(items, AdditionDraw, PageSignal2a::Start);

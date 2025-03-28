@@ -238,7 +238,7 @@ pchar TypeSignal::Name()
 
 VoltageMode::E VoltageMode::Current()
 {
-    return gset.voltage_mode;
+    return gset.voltage_mode.current;
 }
 
 

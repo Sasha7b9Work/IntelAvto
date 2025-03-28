@@ -78,6 +78,14 @@ namespace PageSignal3b
 namespace PageSignal4
 {
     extern Page *self;
+
+    extern VParameter param_Us;
+
+    extern VParameter param_Ua;
+
+    extern TParameter param_t7;
+
+    extern TParameter param_t9;
 }
 
 

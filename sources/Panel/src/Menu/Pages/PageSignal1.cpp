@@ -80,6 +80,8 @@ namespace PageSignal1
         Text("%s     Ri: %s     ƒлит: %s", VoltageMode::TextValue(), VoltageMode::Is12() ? "10 ќм" : "50 ќм", Duration(param_t1, param_N).ToStringValue(buffer)).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
+
+        Page::DrawConnectionServer();
     }
 
     static Page page(items, AdditionDraw, FuncStartTest);

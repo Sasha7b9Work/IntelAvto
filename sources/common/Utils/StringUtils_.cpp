@@ -634,7 +634,7 @@ char *SU::Int2String(int value, bool alwaysSign, int numMinFields, char buffer[2
 }
 
 
-char *SU::MillisecondsToSeconds(int ms, char out[32])
+char *SU::MilliUnitsToUnits(int ms, char out[32])
 {
     out[0] = '\0';
 
