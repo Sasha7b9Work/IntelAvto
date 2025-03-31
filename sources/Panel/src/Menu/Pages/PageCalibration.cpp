@@ -30,23 +30,26 @@ namespace PageCalibration
         FuncPress_Back
     );
 
-    DEF_CHOICE_4_FULL(chTypeSignal,
+    DEF_CHOICE_1_FULL(chTypeSignal,
         "Импульс",
-        "1", "2a", "3a", "3b",
+//        "1", "2a", "3a", "3b",
+        "1",
         type_signal,
         FuncVV
     );
 
-    DEF_CHOICE_2_FULL(chTypeAccum,
+    DEF_CHOICE_1_FULL(chTypeAccum,
         "Аккумулятор",
-        "12В", "24В",
+//        "12В", "24В",
+        "12В",
         type_accum,
         FuncVV
     );
 
-    DEF_CHOICE_4_FULL(chTypePoint,
+    DEF_CHOICE_1_FULL(chTypePoint,
         "Точка",
-        "1", "2", "3", "4",
+//        "1", "2", "3", "4",
+        "1",
         type_point,
         FuncVV
     );
