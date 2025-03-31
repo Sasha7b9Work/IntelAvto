@@ -18,6 +18,8 @@ namespace PageSettings
 namespace PageCalibration
 {
     extern Page *self;
+
+    void UpdateInput();
 }
 
 

@@ -124,4 +124,10 @@ namespace PageCalibration
     static Page page(items, FuncDraw, nullptr);
 
     Page *self = &page;
+
+
+    void UpdateInput()
+    {
+
+    }
 }
