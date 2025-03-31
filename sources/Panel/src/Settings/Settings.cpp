@@ -64,7 +64,7 @@ static Settings def_set =
     StyleGUI(StyleGUI::Modern),
     0,                                          // colorScheme
     TypeSignal::_1,
-    VoltageMode::_12,
+    { VoltageMode::_12 },
     {
         {   {   Voltage(-75),                   // 1 : Us   12      Signal 1
                 Time(1000),                     // 1 : t1   12

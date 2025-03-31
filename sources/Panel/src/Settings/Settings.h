@@ -29,11 +29,6 @@ struct VoltageMode
         Count
     };
 
-    VoltageMode(E v)
-    {
-        current = v;
-    }
-
     static E Current();
 
     static bool Is12() { return Current() == _12; }
@@ -109,7 +104,6 @@ struct SettingsCal
 {
     struct StructCal
     {
-//        StructCal(float _offset = 0.0f, float _k = 1.0f) : offset(_offset), k(_k) { }
         float offset;
         float k;
     };
