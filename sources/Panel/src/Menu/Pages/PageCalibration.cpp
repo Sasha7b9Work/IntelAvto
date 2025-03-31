@@ -5,6 +5,8 @@
 #include "Menu/MenuItemsDef.h"
 #include "Display/Text_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "Display/Display_.h"
+#include "Hardware/Timer.h"
 
 
 using namespace Primitives;
@@ -31,14 +33,19 @@ namespace PageCalibration
     // dir = 1/-1 Изменяет калибровочный коэффициент в бОльшую (1) или меньшую (-1) стОроны
     static void ChangeCalibrationFactor(int dir);
 
+    static void TimerFunction();
+
     struct State
     {
         enum E
         {
-            None,
-            DrawWarningMessageReset         // Выводим предупреждающее сообщение про сброс калибровочных коэффициентов
+            Normal,
+            FactorSave,         // Калибровочный коэффициент сохранён
+            FactroNotSave       // Калибровочный коэффициент не сохранён
         };
     };
+
+    static State::E state = State::Normal;
 
     static void FuncPress_Back()
     {
@@ -96,27 +103,49 @@ namespace PageCalibration
 
     static void FuncDraw()
     {
-        int x = 180;
-        int y = 10;
         int dy = 25;
 
-        Text("1. Нажмите кнопку START.").Write(x, y, Color::WHITE);                 y += dy;
+        if (state == State::Normal)
+        {
+            int x = 180;
+            int y = 20;
 
-        Text("2. Вращением ручки установите").Write(x, y);                          y += dy;
+            Text("1. Нажмите кнопку START.").Write(x, y, Color::WHITE);                 y += dy;
 
-        Text("   амлитуду выходного сигнала").Write(x, y);                          y += dy;
+            Text("2. Вращением ручки установите").Write(x, y);                          y += dy;
 
-        Text("   %d В (контроль по осцилло-", GetDisplayVoltage()).Write(x, y);     y += dy;
+            Text("   амлитуду выходного сигнала").Write(x, y);                          y += dy;
 
-        Text("   графу).").Write(x, y);                                             y += dy;
+            Text("   %d В (контроль по осцилло-", GetDisplayVoltage()).Write(x, y);     y += dy;
 
-        Text("3. Нажмите кнопку ОК, чтобы").Write(x, y);                            y += dy;
+            Text("   графу).").Write(x, y);                                             y += dy;
 
-        Text("   сохранить калибровочный").Write(x, y);                             y += dy;
+            Text("3. Нажмите кнопку ОК, чтобы").Write(x, y);                            y += dy;
 
-        Text("   коэффиициент, либо кнопку ESC,").Write(x, y);                      y += dy;
+            Text("   сохранить калибровочный").Write(x, y);                             y += dy;
 
-        Text("   чтобы отменить.").Write(x, y);                                     y += dy;
+            Text("   коэффиициент, либо кнопку ESC,").Write(x, y);                      y += dy;
+
+            Text("   чтобы не сохранять.").Write(x, y);                                 y += dy;
+        }
+        else if (state == State::FactorSave)
+        {
+            int x = 180;
+            int y = 70;
+
+            Text("Коэффициент").Write(x, y, Display::Width() - x, Color::GREEN); y += 30;
+
+            Text("cохранен").Write(x, y, Display::Width() - x);
+        }
+        else if (state == State::FactroNotSave)
+        {
+            int x = 180;
+            int y = 70;
+
+            Text("Коэффициент").Write(x, y, Display::Width() - x, Color::RED); y += 30;
+
+            Text("не cохранен").Write(x, y, Display::Width() - x);
+        }
 
         Font::Set(TypeFont::GOSTB28B);
 
@@ -155,6 +184,10 @@ namespace PageCalibration
                 if (control.key == Key::Stop || control.key == Key::Esc)
                 {
                     DisableOutput();
+
+                    state = State::FactroNotSave;
+
+                    Timer::SetDefferedOnceTask(TimerTask::Calibrate, 1000, TimerFunction);
                 }
                 else if (control.key == Key::OK)
                 {
@@ -226,7 +259,9 @@ void PageCalibration::DisableOutput()
 
 void PageCalibration::SaveCalibrationFactor()
 {
+    state = State::FactorSave;
 
+    Timer::SetDefferedOnceTask(TimerTask::Calibrate, 1000, TimerFunction);
 }
 
 
@@ -242,4 +277,10 @@ void PageCalibration::ChangeCalibrationFactor(int dir)
     {
         cal.k /= 1.05f;
     }
+}
+
+
+void PageCalibration::TimerFunction()
+{
+    state = State::Normal;
 }

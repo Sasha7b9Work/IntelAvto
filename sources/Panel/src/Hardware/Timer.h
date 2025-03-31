@@ -14,10 +14,11 @@ struct TimerTask
 {
     enum E
     {
-        ChangeColorOnLabelStop,         // Изменить цвет кнопки СТОП через некоторое время после остановки
+        ChangeColorOnLabelStop,     // Изменить цвет кнопки СТОП через некоторое время после остановки
         USBD,
         StopSound,
         IT6523,
+        Calibrate,                  // Функция страницы калибровки
         Count
     };
 };

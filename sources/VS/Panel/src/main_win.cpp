@@ -4,6 +4,7 @@
 #include "Menu/Menu.h"
 #include "Display/Display_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "Hardware/Timer.h"
 
 
 void init()
@@ -19,4 +20,5 @@ void update()
 {
     Menu::Input::Update();
     Display::Update();
+    Timer::UpdateTasks();
 }
