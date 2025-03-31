@@ -4,6 +4,7 @@
 #include "Menu/Menu.h"
 #include "Menu/MenuItemsDef.h"
 #include "Display/Text_.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 
 
 using namespace Primitives;
@@ -15,23 +16,20 @@ namespace PageCalibration
 
     static uint8 type_signal = 0;
     static uint8 type_accum = 0;
-    static uint8 type_point = 0;        // 0 - максимальный размах
+    static uint8 num_point = 0;        // 0 - максимальный размах
+    static bool output_en = false;
 
-    static int GetDisplayVoltage()
-    {
-        if (type_signal == 0)           // 1
-        {
-            int values[2][4] =
-            {
-                {-150, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE},
-                {-600, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE}
-            };
+    static int GetDisplayVoltage();
 
-            return values[type_accum][type_point];
-        }
+    static void EnableOutput();
 
-        return INVALID_VOLTAGE;
-    }
+    static void DisableOutput();
+
+    // —охранить калибровочный коэффициент
+    static void SaveCalibrationFactor();
+
+    // dir = 1/-1 »змен€ет калибровочный коэффициент в бќльшую (1) или меньшую (-1) стќроны
+    static void ChangeCalibrationFactor(int dir);
 
     struct State
     {
@@ -72,7 +70,7 @@ namespace PageCalibration
         "“очка",
 //        "1", "2", "3", "4",
         "1",
-        type_point,
+        num_point,
         FuncVV
     );
 
@@ -128,6 +126,98 @@ namespace PageCalibration
 
     void UpdateInput()
     {
+        while (!Keyboard::Empty())
+        {
+            Control control = Keyboard::NextControl();
 
+            if (control.action != Action::Press)
+            {
+                continue;
+            }
+
+            if (output_en)
+            {
+                if (control.key == Key::Stop || control.key == Key::Esc)
+                {
+                    DisableOutput();
+                }
+                else if(control.key == Key::OK)
+                {
+                    DisableOutput();
+
+                    SaveCalibrationFactor();
+                }
+                else if (control.key == Key::GovLeft)
+                {
+                    DisableOutput();
+
+                    ChangeCalibrationFactor(-1);
+
+                    EnableOutput();
+                }
+                else if (control.key == Key::GovRight)
+                {
+                    DisableOutput();
+
+                    ChangeCalibrationFactor(1);
+
+                    EnableOutput();
+                }
+            }
+            else
+            {
+                EnableOutput();
+            }
+        }
+    }
+}
+
+
+int PageCalibration::GetDisplayVoltage()
+{
+    if (type_signal == 0)           // 1
+    {
+        int values[2][4] =
+        {
+            {-150, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE},
+            {-600, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE}
+        };
+
+        return values[type_accum][num_point];
+    }
+
+    return INVALID_VOLTAGE;
+}
+
+
+void PageCalibration::EnableOutput()
+{
+
+}
+
+
+void PageCalibration::DisableOutput()
+{
+
+}
+
+
+void PageCalibration::SaveCalibrationFactor()
+{
+
+}
+
+
+void PageCalibration::ChangeCalibrationFactor(int dir)
+{
+    SettingsCal::StructCal &cal = gset.cal.cal[type_signal][type_accum][num_point];
+
+    if (dir > 0)
+    {
+        cal.k *= 1.05f;
+    }
+    else
+    {
+        cal.k /= 1.05f;
     }
 }
