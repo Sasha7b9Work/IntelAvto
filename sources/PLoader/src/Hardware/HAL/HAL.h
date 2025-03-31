@@ -32,7 +32,7 @@ struct HAL_EEPROM
     static const uint ADDR_SECTOR_SETTINGS = ((uint)0x08060000);  // 128k
     static const uint SIZE_SECTOR_SETTINGS = (128 * 1024);
 
-    static void LoadSettings(Settings *settings);
+    static bool LoadSettings(Settings *settings);
 
     static void SaveSettings(Settings *settings);
 

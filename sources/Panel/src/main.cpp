@@ -15,6 +15,8 @@ int main(void)
 {
     HAL::Init();
 
+    gset.Load();
+
     LAN::Init();
     
     Display::Init();
@@ -37,5 +39,7 @@ int main(void)
         Timer::UpdateTasks();
         LAN::Update();
         IT6523::Update();
+
+        gset.Save();
     }
 }

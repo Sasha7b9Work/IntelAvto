@@ -190,7 +190,13 @@ void Settings::Load()
 
 void Settings::Save()
 {
-    HAL_EEPROM::SaveSettings(this);
+    Settings set = def_set;
+
+    if (!HAL_EEPROM::LoadSettings(&set) ||
+        std::memcmp(&set, &gset, sizeof(set)) != 0)
+    {
+        HAL_EEPROM::SaveSettings(this);
+    }
 }
 
 

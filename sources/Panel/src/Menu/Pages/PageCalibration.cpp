@@ -3,13 +3,35 @@
 #include "Menu/Pages/Pages.h"
 #include "Menu/Menu.h"
 #include "Menu/MenuItemsDef.h"
+#include "Display/Text_.h"
+
+
+using namespace Primitives;
 
 
 namespace PageCalibration
 {
+    static const int INVALID_VOLTAGE = 999999999;
+
     static uint8 type_signal = 0;
     static uint8 type_accum = 0;
-    static uint8 type_point = 0;
+    static uint8 type_point = 0;        // 0 - максимальный размах
+
+    static int GetDisplayVoltage()
+    {
+        if (type_signal == 0)           // 1
+        {
+            int values[2][4] =
+            {
+                {-150, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE},
+                {-600, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE}
+            };
+
+            return values[type_accum][type_point];
+        }
+
+        return INVALID_VOLTAGE;
+    }
 
     struct State
     {
@@ -70,13 +92,33 @@ namespace PageCalibration
         &chTypeSignal,
         &chTypeAccum,
         &chTypePoint,
-        &bReset,
+//        &bReset,
         nullptr
     };
 
     static void FuncDraw()
     {
+        int x = 180;
+        int y = 10;
+        int dy = 25;
 
+        Text("1. Нажмите кнопку START.").Write(x, y, Color::WHITE);                 y += dy;
+
+        Text("2. Вращением ручки установите").Write(x, y);                          y += dy;
+
+        Text("   амлитуду выходного сигнала").Write(x, y);                          y += dy;
+
+        Text("   %d В (контроль по осцилло-", GetDisplayVoltage()).Write(x, y);     y += dy;
+
+        Text("   графу).").Write(x, y);                                             y += dy;
+
+        Text("3. Нажмите кнопку ОК, чтобы").Write(x, y);                            y += dy;
+
+        Text("   сохранить калибровочный").Write(x, y);                             y += dy;
+
+        Text("   коэффиициент, либо кнопку ESC,").Write(x, y);                      y += dy;
+
+        Text("   чтобы отменить.").Write(x, y);                                     y += dy;
     }
 
     static Page page(items, FuncDraw, nullptr);

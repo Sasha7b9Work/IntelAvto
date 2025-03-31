@@ -3,9 +3,9 @@
 #include "Hardware/HAL/HAL.h"
 
 
-void HAL_EEPROM::LoadSettings(Settings *)
+bool HAL_EEPROM::LoadSettings(Settings *)
 {
-
+    return true;
 }
 
 

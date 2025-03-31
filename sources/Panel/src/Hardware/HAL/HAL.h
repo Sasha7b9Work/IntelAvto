@@ -55,17 +55,17 @@ namespace HAL_TIM
 
 namespace HAL_EEPROM
 {
-    const uint ADDR_SECTOR_0 = ((uint)0x08000000);  // 16k  Основная прошивка
-    const uint ADDR_SECTOR_1 = ((uint)0x08004000);  // 16k
-    const uint ADDR_SECTOR_2 = ((uint)0x08008000);  // 16k
-    const uint ADDR_SECTOR_3 = ((uint)0x0800c000);  // 16k
-    const uint ADDR_SECTOR_4 = ((uint)0x08010000);  // 64k
-    const uint ADDR_SECTOR_FIRMWARE = ((uint)0x08020000);  // 128k  Сюда записываем прошивку
-    const uint ADDR_SECTOR_UPGRADE = ((uint)0x08040000);  // 128k  Здесь хранится считанная из флешки прошивка
-    const uint ADDR_SECTOR_SETTINGS = ((uint)0x08060000);  // 128k
+    const uint ADDR_SECTOR_0 = ((uint)0x08000000);              // 16k  Основная прошивка
+    const uint ADDR_SECTOR_1 = ((uint)0x08004000);              // 16k
+    const uint ADDR_SECTOR_2 = ((uint)0x08008000);              // 16k
+    const uint ADDR_SECTOR_3 = ((uint)0x0800c000);              // 16k
+    const uint ADDR_SECTOR_4 = ((uint)0x08010000);              // 64k
+    const uint ADDR_SECTOR_FIRMWARE = ((uint)0x08020000);       // 128k  Сюда записываем прошивку
+    const uint ADDR_SECTOR_UPGRADE = ((uint)0x08040000);        // 128k  Здесь хранится считанная из флешки прошивка
+    const uint ADDR_SECTOR_SETTINGS = ((uint)0x08060000);       // 128k
     const uint SIZE_SECTOR_SETTINGS = (128 * 1024);
 
-    void LoadSettings(Settings *settings);
+    bool LoadSettings(Settings *settings);
 
     void SaveSettings(Settings *settings);
 

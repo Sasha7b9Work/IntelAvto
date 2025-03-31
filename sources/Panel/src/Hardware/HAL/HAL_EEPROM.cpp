@@ -25,7 +25,7 @@ static uint FindLastOccupiedRecord(uint start, uint sizeSector, uint sizeRecord)
 static uint GetSector(uint address);
 
 
-void HAL_EEPROM::LoadSettings(Settings *settings)
+bool HAL_EEPROM::LoadSettings(Settings *settings)
 {
     uint address = FindLastOccupiedRecord(ADDR_SECTOR_SETTINGS, SIZE_SECTOR_SETTINGS, sizeof(Settings));
 
@@ -36,12 +36,18 @@ void HAL_EEPROM::LoadSettings(Settings *settings)
         if (size == sizeof(Settings))
         {
             *settings = *(reinterpret_cast<Settings *>(address));      // То запишем её в целевой объект
+
+            return true;
         }
         else
         {
             EraseSector(ADDR_SECTOR_SETTINGS);
+
+            return false;
         }
     }
+
+    return false;
 }
 
 
