@@ -15,6 +15,7 @@ using namespace Primitives;
 namespace PageCalibration
 {
     static const int INVALID_VOLTAGE = 999999999;
+    static const uint TIME_TIMER = 1500;
 
     static uint8 type_signal = 0;
     static uint8 type_accum = 0;
@@ -187,7 +188,7 @@ namespace PageCalibration
 
                     state = State::FactroNotSave;
 
-                    Timer::SetDefferedOnceTask(TimerTask::Calibrate, 1000, TimerFunction);
+                    Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
                 }
                 else if (control.key == Key::OK)
                 {
@@ -261,7 +262,7 @@ void PageCalibration::SaveCalibrationFactor()
 {
     state = State::FactorSave;
 
-    Timer::SetDefferedOnceTask(TimerTask::Calibrate, 1000, TimerFunction);
+    Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
 }
 
 
