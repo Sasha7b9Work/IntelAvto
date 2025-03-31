@@ -117,6 +117,21 @@ namespace PageCalibration
         Text("   коэффиициент, либо кнопку ESC,").Write(x, y);                      y += dy;
 
         Text("   чтобы отменить.").Write(x, y);                                     y += dy;
+
+        Font::Set(TypeFont::GOSTB28B);
+
+        Text("Выход:").Write(30, 150);
+
+        if (output_en)
+        {
+            Text("ВКЛ").Write(45, 205, Color::GREEN);
+        }
+        else
+        {
+            Text("ОТКЛ").Write(40, 205, Color::RED);
+        }
+
+        Font::Set(TypeFont::GOSTAU16BOLD);
     }
 
     static Page page(items, FuncDraw, nullptr);
@@ -199,13 +214,13 @@ int PageCalibration::GetDisplayVoltage()
 
 void PageCalibration::EnableOutput()
 {
-
+    output_en = true;
 }
 
 
 void PageCalibration::DisableOutput()
 {
-
+    output_en = false;
 }
 
 
