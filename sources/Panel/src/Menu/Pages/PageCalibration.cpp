@@ -130,7 +130,7 @@ namespace PageCalibration
         {
             Control control = Keyboard::NextControl();
 
-            if (control.action != Action::Press)
+            if (!control.IsPress())
             {
                 continue;
             }
@@ -141,7 +141,7 @@ namespace PageCalibration
                 {
                     DisableOutput();
                 }
-                else if(control.key == Key::OK)
+                else if (control.key == Key::OK)
                 {
                     DisableOutput();
 
@@ -166,7 +166,14 @@ namespace PageCalibration
             }
             else
             {
-                EnableOutput();
+                if (control.key == Key::Start)
+                {
+                    EnableOutput();
+                }
+                else
+                {
+                    Menu::Input::OnControl(control);
+                }
             }
         }
     }

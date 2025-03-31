@@ -18,12 +18,6 @@ namespace Menu
 
     void (*funcUpdate)() = nullptr;
 
-    namespace Input
-    {
-        // Обработка события кнопки
-        void OnControl(const Control &);
-    }
-
     Primitives::Label labelMode(100, 5, "СТОП", Color::BLACK, Color::GREEN, Color::WHITE);
 }
 
@@ -62,7 +56,7 @@ void Menu::SetOpenedPage(Page *page)
 
 void Menu::Input::OnControl(const Control &control)
 {
-    if (!control.IsRelease() && !control.IsRotateGovernor())
+    if (!control.IsPress() && !control.IsRotateGovernor())
     {
         return;
     }

@@ -57,6 +57,8 @@ struct Control
     bool IsRotateGovernor() const { return (key == Key::GovLeft) || (key == Key::GovRight); }
 
     bool IsRelease() const { return action == Action::Release; }
+
+    bool IsPress() const { return action == Action::Press; }
 };
 
 namespace Keyboard

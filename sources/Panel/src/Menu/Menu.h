@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Display/Primitives_.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 
 
 class Page;
@@ -31,6 +32,9 @@ namespace Menu
         void FuncUpdate();
 
         void FuncEmptyUpdate();
+
+        // Обработка события кнопки
+        void OnControl(const Control &);
     };
 
     extern Primitives::Label labelMode;
