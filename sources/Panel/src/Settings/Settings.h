@@ -105,6 +105,22 @@ struct SettingsSignal
 };
 
 
+struct SettingsCal
+{
+    struct StructCal
+    {
+//        StructCal(float _offset = 0.0f, float _k = 1.0f) : offset(_offset), k(_k) { }
+        float offset;
+        float k;
+    };
+
+    // 8 типов сигналов
+    // 2 - 12/24В
+    // 4 - четыре точки
+    StructCal cal[8][2][4];
+};
+
+
 struct Settings
 {
     uint           size;
@@ -121,6 +137,7 @@ struct Settings
     uint8          mac[6];
     uint8          gw[4];
     uint8          netmask[4];
+    SettingsCal    cal;
 
     void Save();
     void Load();
