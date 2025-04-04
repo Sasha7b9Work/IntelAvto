@@ -42,6 +42,7 @@ namespace PageCalibration
         enum E
         {
             Normal,             // Начальное состояние
+
             FactorSave,         // Калибровочный коэффициент сохранён
             FactroNotSave       // Калибровочный коэффициент не сохранён
         };
