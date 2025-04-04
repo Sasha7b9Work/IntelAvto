@@ -19,7 +19,8 @@ namespace PageCalibration
 
     static uint8 type_signal = 0;
     static uint8 type_accum = 0;
-    static uint8 num_point = 0;        // 0 - максимальный размах
+    static const int NUM_POINTS = 4;        // Столько всего точек для калибровки
+    static int  current_point = 0;          // Точка, которую сейчас измеряем
     static bool output_en = false;
 
     static int GetDisplayVoltage();
@@ -40,7 +41,7 @@ namespace PageCalibration
     {
         enum E
         {
-            Normal,
+            Normal,             // Начальное состояние
             FactorSave,         // Калибровочный коэффициент сохранён
             FactroNotSave       // Калибровочный коэффициент не сохранён
         };
@@ -58,28 +59,28 @@ namespace PageCalibration
         FuncPress_Back
     );
 
-    DEF_CHOICE_1_FULL(chTypeSignal,
+    DEF_CHOICE_4_FULL(chTypeSignal,
         "Импульс",
-//        "1", "2a", "3a", "3b",
-        "1",
+        "1", "2a", "3a", "3b",
         type_signal,
         FuncVV
     );
 
-    DEF_CHOICE_1_FULL(chTypeAccum,
+    DEF_CHOICE_2_FULL(chTypeAccum,
         "Аккумулятор",
-//        "12В", "24В",
-        "12В",
+        "12В", "24В",
         type_accum,
         FuncVV
     );
 
-    DEF_CHOICE_1_FULL(chTypePoint,
-        "Точка",
-//        "1", "2", "3", "4",
-        "1",
-        num_point,
-        FuncVV
+    static void FuncPress_Start()
+    {
+
+    }
+
+    DEF_BUTTON(bStart,
+        "Калибровать",
+        FuncPress_Start
     );
 
     static void FuncPress_Reset()
@@ -97,7 +98,7 @@ namespace PageCalibration
         &bBack,
         &chTypeSignal,
         &chTypeAccum,
-        &chTypePoint,
+        &bStart,
 //        &bReset,
         nullptr
     };
@@ -109,25 +110,11 @@ namespace PageCalibration
         if (state == State::Normal)
         {
             int x = 180;
-            int y = 20;
+            int y = 70;
 
-            Text("1. Нажмите кнопку START.").Write(x, y, Color::WHITE);                 y += dy;
+            Text("Для начала калибровки").Write(x + 30, y, Color::WHITE);                    y += 2 * dy;
 
-            Text("2. Вращением ручки установите").Write(x, y);                          y += dy;
-
-            Text("   амлитуду выходного сигнала").Write(x, y);                          y += dy;
-
-            Text("   %d В (контроль по осцилло-", GetDisplayVoltage()).Write(x, y);     y += dy;
-
-            Text("   графу).").Write(x, y);                                             y += dy;
-
-            Text("3. Нажмите кнопку ОК, чтобы").Write(x, y);                            y += dy;
-
-            Text("   сохранить калибровочный").Write(x, y);                             y += dy;
-
-            Text("   коэффиициент, либо кнопку ESC,").Write(x, y);                      y += dy;
-
-            Text("   чтобы не сохранять.").Write(x, y);                                 y += dy;
+            Text("нажмите кнопку \"Калибровать\".").Write(x, y);
         }
         else if (state == State::FactorSave)
         {
@@ -180,46 +167,17 @@ namespace PageCalibration
                 continue;
             }
 
-            if (output_en)
+            if (control.key == Key::OK)
             {
-                if (control.key == Key::Stop || control.key == Key::Esc)
+                switch (state)
                 {
-                    DisableOutput();
-
-                    state = State::FactroNotSave;
-
-                    Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
-                }
-                else if (control.key == Key::OK)
-                {
-                    DisableOutput();
-
-                    SaveCalibrationFactor();
-                }
-                else if (control.key == Key::GovLeft)
-                {
-                    DisableOutput();
-
-                    ChangeCalibrationFactor(-1);
-
-                    EnableOutput();
-                }
-                else if (control.key == Key::GovRight)
-                {
-                    DisableOutput();
-
-                    ChangeCalibrationFactor(1);
-
-                    EnableOutput();
+                case State::Normal:
+                    break;
                 }
             }
             else
             {
-                if (control.key == Key::Start)
-                {
-                    EnableOutput();
-                }
-                else
+                if (state == State::Normal)
                 {
                     Menu::Input::OnControl(control);
                 }
@@ -239,7 +197,7 @@ int PageCalibration::GetDisplayVoltage()
             {-600, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE}
         };
 
-        return values[type_accum][num_point];
+        return values[type_accum][current_point];
     }
 
     return INVALID_VOLTAGE;
@@ -268,7 +226,7 @@ void PageCalibration::SaveCalibrationFactor()
 
 void PageCalibration::ChangeCalibrationFactor(int dir)
 {
-    SettingsCal::StructCal &cal = gset.cal.cal[type_signal][type_accum][num_point];
+    SettingsCal::StructCal &cal = gset.cal.cal[type_signal][type_accum][current_point];
 
     if (dir > 0)
     {

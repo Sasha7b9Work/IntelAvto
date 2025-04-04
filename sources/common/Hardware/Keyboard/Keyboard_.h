@@ -41,8 +41,6 @@ struct Action
     enum E
     {
         Press,
-        Release,
-        Long,
         Count
     };
 };
@@ -55,8 +53,6 @@ struct Control
     Control(Key::E v = Key::None, Action::E a = Action::Press) : key(v), action(a) {}
 
     bool IsRotateGovernor() const { return (key == Key::GovLeft) || (key == Key::GovRight); }
-
-    bool IsRelease() const { return action == Action::Release; }
 
     bool IsPress() const { return action == Action::Press; }
 };

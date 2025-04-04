@@ -62,12 +62,7 @@ void Frame::OnDown(wxCommandEvent &event)
 
 void Frame::OnUp(wxCommandEvent &event)
 {
-    Key::E key = (Key::E)event.GetId();
-
-    //std::cout << "up   " << Control(key).Name() << std::endl;
     event.Skip();
-
-    Keyboard::AddAction(key, Action::Release);
 
     Keyboard::needStopTimerLong = true;
 
