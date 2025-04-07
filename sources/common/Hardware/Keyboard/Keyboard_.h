@@ -36,21 +36,11 @@ struct Key
 };
 
 
-struct Action
-{
-    enum E
-    {
-        Press,
-        Count
-    };
-};
-
 struct Control
 {
     Key::E key = Key::None;
-    Action::E action = Action::Count;
 
-    Control(Key::E v = Key::None, Action::E a = Action::Press) : key(v), action(a) {}
+    Control(Key::E v = Key::None) : key(v) {}
 
     bool IsRotateGovernor() const { return (key == Key::GovLeft) || (key == Key::GovRight); }
 };
@@ -70,5 +60,5 @@ namespace Keyboard
     void Unlock();
 
     // Добавить действие в буфер
-    void AddAction(Key::E, Action::E);
+    void AddAction(Key::E);
 };

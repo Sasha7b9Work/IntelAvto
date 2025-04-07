@@ -22,17 +22,15 @@ namespace Keyboard
     // Здесь имя нажатой кнопки
     static Key::E pressedKey = Key::None;
 
-    void AddAction(Control control, Action::E action)
+    void AddAction(Control control)
     {
-        control.action = action;
         actions[numActions++] = control;
     }
 
-    void AddAction(Key::E key, Action::E action)
+    void AddAction(Key::E key)
     {
         Control control;
         control.key = key;
-        control.action = action;
 
         actions[numActions++] = control;
     }
@@ -52,7 +50,7 @@ void Frame::OnDown(wxCommandEvent &event)
     //std::cout << "down " << Control(key).Name() << std::endl;
     event.Skip();
 
-    Keyboard::AddAction(key, Action::Press);
+    Keyboard::AddAction(key);
 
     Keyboard::needStartTimerLong = true;
 

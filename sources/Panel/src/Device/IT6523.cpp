@@ -208,5 +208,5 @@ void IT6523::Stop()
 
     SendCommand("SOURCE:OUTPut:STATE 0");
 
-    Keyboard::AddAction(Key::Stop, Action::Press);
+    Keyboard::AddAction(Key::Stop);
 }
