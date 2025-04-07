@@ -120,6 +120,21 @@ void Font::Set(const TypeFont::E typeFont)
 }
 
 
+TypeFont::E Font::Get()
+{
+    if (font == fontGOSTAU16BOLD)
+    {
+        return TypeFont::GOSTAU16BOLD;
+    }
+    else if (font == fontGOSTB28B)
+    {
+        return TypeFont::GOSTB28B;
+    }
+
+    return TypeFont::Count;
+}
+
+
 uint8 Font::GetWidth(uint8 num)
 {
     if (num == 0x20)

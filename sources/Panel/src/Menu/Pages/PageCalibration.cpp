@@ -17,7 +17,9 @@ namespace PageCalibration
     static const int INVALID_VOLTAGE = 999999999;
     static const uint TIME_TIMER = 1500;
 
+    static const int NUM_SIGNALS = 4;
     static uint8 type_signal = 0;
+    static const int NUM_ACCUM = 2;
     static uint8 type_accum = 0;
     static const int NUM_POINTS = 4;        // Столько всего точек для калибровки
     static int  current_point = 0;          // Точка, которую сейчас измеряем
@@ -26,6 +28,9 @@ namespace PageCalibration
     void EnableOutput();
 
     void DisableOutput();
+
+    // Возвращает напряжение текущей точки
+    static int GetVoltagePoint();
 
     // Сохранить калибровочный коэффициент
     void SaveCalibrationFactor();
@@ -124,7 +129,11 @@ namespace PageCalibration
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
+            Font::Set(TypeFont::GOSTB28B);
 
+            Text("%d В", GetVoltagePoint()).Write(250, 50, Color::WHITE);
+
+            Font::Set(TypeFont::GOSTAU16BOLD);
         }
         else if (state == State::FactorSave)
         {
@@ -147,7 +156,7 @@ namespace PageCalibration
 
         Font::Set(TypeFont::GOSTB28B);
 
-        Text("Выход:").Write(30, 150);
+        Text("Выход:").Write(30, 150, Color::WHITE);
 
         if (output_en)
         {
@@ -182,7 +191,7 @@ namespace PageCalibration
             }
             else
             {
-                if (state == State::Normal)
+                if (state == State::Normal || control.key == Key::OK)
                 {
                     Menu::Input::OnControl(control);
                 }
@@ -230,4 +239,29 @@ void PageCalibration::ChangeCalibrationFactor(int dir)
 void PageCalibration::TimerFunction()
 {
     state = State::Normal;
+}
+
+
+int PageCalibration::GetVoltagePoint()
+{
+    static const int voltages[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
+    {
+        {                                                                   // 1
+            { -75,  -150 },
+            { -300, -600 }
+        },
+        {                                                                   // 2a
+            { 37, 112 },
+            { 37, 112 }
+        },
+        {                                                                   // 3a
+
+        },
+        {                                                                   // 3b
+            { 75,  100 },
+            { 150, 200 }
+        }
+    };
+
+    return voltages[type_signal][type_accum][current_point];
 }

@@ -100,7 +100,14 @@ int Text::WriteSymbols(char* start, int num, int x, int y) const
 
         for (int i = 0; i < num; i++)
         {
+            char symbol = *p;
+
             x = WriteSymbol(x, y, (uint8)(*p++)) + Font::GetSpacing();
+
+            if (symbol == ' ' && Font::Get() == TypeFont::GOSTB28B)
+            {
+                x -= 20;
+            }
         }
     }
 
