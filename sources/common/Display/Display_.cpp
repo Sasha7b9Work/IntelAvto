@@ -12,6 +12,7 @@
 #include "Display/Console_.h"
 #include "Display/Pictures/Picture.h"
 #include "LAN/LAN.h"
+#include "Hardware/Timer.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -275,6 +276,14 @@ void Display::SetTopRow(int i)
 
 void Display::Update()
 {
+    static TimeMeterMS meter;
+
+    if (meter.ElapsedTime() > 30000)
+    {
+        meter.Reset();
+        Init();
+    }
+
 #ifdef GUI
     BeginScene();
     DrawScreen();

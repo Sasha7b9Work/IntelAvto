@@ -22,15 +22,38 @@ namespace PageCalibration
     static uint8 type_signal = 0;
     static const int NUM_ACCUM = 2;
     static uint8 type_accum = 0;
-    static const int NUM_POINTS = 4;        // Столько всего точек для калибровки
+    static const int NUM_POINTS = 2;        // Столько всего точек для калибровки
     static int  current_point = 0;          // Точка, которую сейчас измеряем
     static bool output_en = false;
 
+    // Здесь измеренные значения, введённые вручную
+    static int values[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
+    {
+        {                   // 1
+            { 0, 0 },
+            { 0, 0 }
+        },
+        {                   // 2a
+            { 0, 0 },
+            { 0, 0 }
+        },
+        {                   // 3a
+            { 0, 0 },
+            { 0, 0 }
+        },
+        {                   // 3b
+            { 0, 0 },
+            { 0, 0 }
+        }
+    };
+
     static InputField field;
 
-    void EnableOutput();
+    // Подать напряжение на выход в соответствии с установленными параметрами
+    static void EnableOutput();
 
-    void DisableOutput();
+    // Снять напряжение с выхода
+    static void DisableOutput();
 
     // Возвращает напряжение текущей точки
     static int GetVoltagePoint();
@@ -49,6 +72,7 @@ namespace PageCalibration
         {
             Normal,                     // Начальное состояние
             EnableOutputAndWaitEnter,   // Установлено напряжение на выходе и ожидается ввод измеренного значения
+            ConfirmForSave,             // Вывести подтверждение на сохранение настроек
             FactorSave,                 // Калибровочный коэффициент сохранён
             FactroNotSave               // Калибровочный коэффициент не сохранён
         };
@@ -88,9 +112,36 @@ namespace PageCalibration
         {
             state = State::EnableOutputAndWaitEnter;
 
+            current_point = 0;
+
             EnableOutput();
         }
         else if (state == State::EnableOutputAndWaitEnter)
+        {
+            values[type_signal][type_accum][current_point] = field.GetValue();
+
+            if (current_point < NUM_POINTS - 1)
+            {
+                current_point++;
+
+                EnableOutput();
+            }
+            else
+            {
+                DisableOutput();
+
+                state = State::ConfirmForSave;
+            }
+        }
+        else if (state == State::ConfirmForSave)
+        {
+
+        }
+        else if (state == State::FactorSave)
+        {
+
+        }
+        else if (state == State::FactroNotSave)
         {
 
         }
@@ -136,7 +187,21 @@ namespace PageCalibration
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
-            field.Draw(210, 150, FieldIsVisible());
+            Text("Точка %d", current_point + 1).Write(250, 45, Color::WHITE);
+
+            field.Draw(240, 150, FieldIsVisible());
+        }
+        else if (state == State::ConfirmForSave)
+        {
+            for (int i = 0; i < NUM_POINTS; i++)
+            {
+                int y = 20 + 25 * i;
+
+                Text("Точка %d", i + 1).Write(200, y, Color::WHITE);
+                Text("%d В", values[type_signal][type_accum][current_point]).Write(300, y);
+
+//                Text("Для сохранения калибровочных коэффициентов на")
+            }
         }
         else if (state == State::FactorSave)
         {
@@ -249,20 +314,20 @@ int PageCalibration::GetVoltagePoint()
     static const int voltages[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
     {
         {                                                                           // 1
-            { -75,  -150, INVALID_VOLTAGE, INVALID_VOLTAGE },
-            { -300, -600, INVALID_VOLTAGE, INVALID_VOLTAGE }
+            { -75,  -150 },
+            { -300, -600 }
         },
         {                                                                           // 2a
-            { 37, 112, INVALID_VOLTAGE, INVALID_VOLTAGE },
-            { 37, 112, INVALID_VOLTAGE, INVALID_VOLTAGE }
+            { 37, 112 },
+            { 37, 112 }
         },
         {                                                                           // 3a
-            { INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE },
-            { INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE }
+            { INVALID_VOLTAGE, INVALID_VOLTAGE },
+            { INVALID_VOLTAGE, INVALID_VOLTAGE }
         },
         {                                                                           // 3b
-            { 75,  100, INVALID_VOLTAGE, INVALID_VOLTAGE },
-            { 150, 200, INVALID_VOLTAGE, INVALID_VOLTAGE }
+            { 75,  100 },
+            { 150, 200 }
         }
     };
 
