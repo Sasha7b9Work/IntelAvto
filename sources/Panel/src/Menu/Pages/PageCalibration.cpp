@@ -87,6 +87,8 @@ namespace PageCalibration
         if (state == State::Normal)
         {
             state = State::EnableOutputAndWaitEnter;
+
+            EnableOutput();
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
@@ -134,12 +136,6 @@ namespace PageCalibration
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
-            Font::Set(TypeFont::GOSTB28B);
-
-            Text("%d Â", GetVoltagePoint()).Write(250, 50, Color::WHITE);
-
-            Font::Set(TypeFont::GOSTAU16BOLD);
-
             field.Draw(210, 150, FieldIsVisible());
         }
         else if (state == State::FactorSave)
@@ -167,7 +163,7 @@ namespace PageCalibration
 
         if (output_en)
         {
-            Text("ÂÊË").Write(45, 205, Color::GREEN);
+            Text("%d Â", GetVoltagePoint()).Write(45, 205, Color::WHITE);
         }
         else
         {

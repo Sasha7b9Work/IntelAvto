@@ -12,6 +12,10 @@ struct InputField
 
     void OnKey(Key::E);
 
+    int GetValue() const;
+
+private:
+
     static const int SIZE_BUFFER = 5;
     char buffer[SIZE_BUFFER];
 };
