@@ -7,6 +7,7 @@
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Display/Display_.h"
 #include "Hardware/Timer.h"
+#include "Menu/Pages/InputField.h"
 
 
 using namespace Primitives;
@@ -24,6 +25,8 @@ namespace PageCalibration
     static const int NUM_POINTS = 4;        // Столько всего точек для калибровки
     static int  current_point = 0;          // Точка, которую сейчас измеряем
     static bool output_en = false;
+
+    static InputField field;
 
     void EnableOutput();
 
@@ -50,6 +53,8 @@ namespace PageCalibration
             FactroNotSave               // Калибровочный коэффициент не сохранён
         };
     };
+
+    static bool FieldIsVisible();
 
     static State::E state = State::Normal;
 
@@ -134,6 +139,8 @@ namespace PageCalibration
             Text("%d В", GetVoltagePoint()).Write(250, 50, Color::WHITE);
 
             Font::Set(TypeFont::GOSTAU16BOLD);
+
+            field.Draw(210, 150, FieldIsVisible());
         }
         else if (state == State::FactorSave)
         {
@@ -181,17 +188,23 @@ namespace PageCalibration
         {
             Control control = Keyboard::NextControl();
 
-            if (control.key == Key::Start)
+            const Key::E key = control.key;
+
+            if (key == Key::Start)
             {
 
             }
-            else if (control.key == Key::Stop)
+            else if (key == Key::Stop)
+            {
+
+            }
+            else if (FieldIsVisible() && ((key >= Key::_1 && key <= Key::_0) || key == Key::Esc))
             {
 
             }
             else
             {
-                if (state == State::Normal || control.key == Key::OK)
+                if (state == State::Normal || key == Key::OK)
                 {
                     Menu::Input::OnControl(control);
                 }
@@ -246,22 +259,29 @@ int PageCalibration::GetVoltagePoint()
 {
     static const int voltages[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
     {
-        {                                                                   // 1
-            { -75,  -150 },
-            { -300, -600 }
+        {                                                                           // 1
+            { -75,  -150, INVALID_VOLTAGE, INVALID_VOLTAGE },
+            { -300, -600, INVALID_VOLTAGE, INVALID_VOLTAGE }
         },
-        {                                                                   // 2a
-            { 37, 112 },
-            { 37, 112 }
+        {                                                                           // 2a
+            { 37, 112, INVALID_VOLTAGE, INVALID_VOLTAGE },
+            { 37, 112, INVALID_VOLTAGE, INVALID_VOLTAGE }
         },
-        {                                                                   // 3a
-
+        {                                                                           // 3a
+            { INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE },
+            { INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE }
         },
-        {                                                                   // 3b
-            { 75,  100 },
-            { 150, 200 }
+        {                                                                           // 3b
+            { 75,  100, INVALID_VOLTAGE, INVALID_VOLTAGE },
+            { 150, 200, INVALID_VOLTAGE, INVALID_VOLTAGE }
         }
     };
 
     return voltages[type_signal][type_accum][current_point];
+}
+
+
+bool PageCalibration::FieldIsVisible()
+{
+    return state != State::Normal;
 }
