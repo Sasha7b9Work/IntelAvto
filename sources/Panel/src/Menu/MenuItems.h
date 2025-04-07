@@ -3,12 +3,12 @@
 #include "defines.h"
 #include "Settings/Settings.h"
 #include "Menu/ParameterDrawStruct.h"
+#include "Hardware/Keyboard/Keyboard_.h"
 #include <cstring>
 
 
 struct TypeMeasure;
 class Switch;
-struct Control;
 
 
 class Item
@@ -25,7 +25,7 @@ public:
     virtual bool IsParameter() const { return false; }
 
     // Функция обработки нажатия кнопки/ручки
-    virtual bool OnEventControl(const Control &) { return false; }
+    virtual bool OnKey(Key::E) { return false; }
 
     Color ColorBackground(bool selected);
 
@@ -64,7 +64,7 @@ public:
         text = text_ru;
     }
     virtual void Draw(int x, int y, int width, bool selected = false) override;
-    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnKey(Key::E) override;
     pchar GetTitle() const;
     void SetTitle(pchar);
 private:
@@ -81,7 +81,7 @@ public:
         Button(text_ru, [](){}), address(_address) { }
 
     virtual void Draw(int x, int y, int widht, bool selected = false) override;
-    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnKey(Key::E) override;
 
     virtual void Open() override;
     virtual void Close() override;
@@ -107,7 +107,7 @@ public:
     }
 
     virtual void Draw(int x, int y, int widht, bool selected = false) override;
-    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnKey(Key::E) override;
 
     virtual void Open() override;
     virtual void Close() override;
@@ -130,7 +130,7 @@ public:
         Button(title, []() {}), port(_port) { }
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
-    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnKey(Key::E) override;
 
     virtual void Open() override;
     virtual void Close() override;
@@ -155,7 +155,7 @@ public:
     }
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
-    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnKey(Key::E) override;
     pchar CurrentChoice() const;
     pchar Title() const;
     int Value() const { return (int)*state; }
@@ -192,7 +192,7 @@ public:
 
     void Draw() const;
 
-    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnKey(Key::E) override;
 
     pchar Title() const; 
 
@@ -292,7 +292,7 @@ public:
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
 
-    virtual bool OnEventControl(const Control &) override;
+    virtual bool OnKey(Key::E) override;
 
     // Возвращает указатель на выделенный пункт меню
     Item *SelectedItem() { return items[selectedItem]; }

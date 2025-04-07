@@ -36,15 +36,6 @@ struct Key
 };
 
 
-struct Control
-{
-    Key::E key = Key::None;
-
-    Control(Key::E v = Key::None) : key(v) {}
-
-    bool IsRotateGovernor() const { return (key == Key::GovLeft) || (key == Key::GovRight); }
-};
-
 namespace Keyboard
 {
     bool Init();
@@ -53,12 +44,12 @@ namespace Keyboard
     bool Empty();
 
     // Возвращает следующее событие
-    Control NextControl();
+    Key::E NextKey();
 
     void Lock();
 
     void Unlock();
 
     // Добавить действие в буфер
-    void AddAction(Key::E);
+    void AddKey(Key::E);
 };

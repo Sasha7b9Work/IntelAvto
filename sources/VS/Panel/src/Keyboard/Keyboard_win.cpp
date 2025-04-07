@@ -8,9 +8,9 @@
 namespace Keyboard
 {
     // Очередь сообщений - здесь все события органов управления
-#define MAX_ACTIONS 100
+#define MAX_KEYS 100
 
-    static Control actions[MAX_ACTIONS];
+    static Key::E keys[MAX_KEYS];
 
     // Количество уже имеющихся сообщений
     static int numActions = 0;
@@ -22,17 +22,9 @@ namespace Keyboard
     // Здесь имя нажатой кнопки
     static Key::E pressedKey = Key::None;
 
-    void AddAction(Control control)
+    void AddKey(Key::E key)
     {
-        actions[numActions++] = control;
-    }
-
-    void AddAction(Key::E key)
-    {
-        Control control;
-        control.key = key;
-
-        actions[numActions++] = control;
+        keys[numActions++] = key;
     }
 }
 
@@ -50,7 +42,7 @@ void Frame::OnDown(wxCommandEvent &event)
     //std::cout << "down " << Control(key).Name() << std::endl;
     event.Skip();
 
-    Keyboard::AddAction(key);
+    Keyboard::AddKey(key);
 
     Keyboard::needStartTimerLong = true;
 
@@ -74,18 +66,18 @@ bool Keyboard::Empty()
 }
 
 
-Control Keyboard::NextControl()
+Key::E Keyboard::NextKey()
 {
     if (Empty())
     {
-        return Control();
+        return Key::Count;
     }
 
-    Control result = actions[0];
+    Key::E result = keys[0];
 
     for (int i = 1; i < numActions; i++)
     {
-        actions[i - 1] = actions[i];
+        keys[i - 1] = keys[i];
     }
 
     --numActions;

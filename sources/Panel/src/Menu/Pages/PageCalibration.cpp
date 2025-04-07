@@ -186,27 +186,20 @@ namespace PageCalibration
     {
         while (!Keyboard::Empty())
         {
-            Control control = Keyboard::NextControl();
+            const Key::E key = Keyboard::NextKey();
 
-            const Key::E key = control.key;
-
-            if (key == Key::Start)
+            if (key == Key::Start || key == Key::Stop)
             {
-
-            }
-            else if (key == Key::Stop)
-            {
-
             }
             else if (FieldIsVisible() && ((key >= Key::_1 && key <= Key::_0) || key == Key::Esc))
             {
-
+                field.OnKey(key);
             }
             else
             {
                 if (state == State::Normal || key == Key::OK)
                 {
-                    Menu::Input::OnControl(control);
+                    Menu::Input::OnKey(key);
                 }
             }
         }

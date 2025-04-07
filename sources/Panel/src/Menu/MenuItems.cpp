@@ -294,9 +294,9 @@ pchar Parameter::Title() const
 }
 
 
-bool Button::OnEventControl(const Control &control)
+bool Button::OnKey(Key::E key)
 {
-    if (control.key == Key::OK || control.key == Key::GovButton)
+    if (key == Key::OK || key == Key::GovButton)
     {
         if (funcOnPress)
         {
@@ -310,9 +310,9 @@ bool Button::OnEventControl(const Control &control)
 }
 
 
-bool Choice::OnEventControl(const Control &control)
+bool Choice::OnKey(Key::E key)
 {
-    if (control.key == Key::OK || control.key == Key::GovButton)
+    if (key == Key::OK || key == Key::GovButton)
     {
         *state = (uint8)((*state) + 1);
 
@@ -333,10 +333,10 @@ bool Choice::OnEventControl(const Control &control)
 }
 
 
-bool Parameter::OnEventControl(const Control &control)
+bool Parameter::OnKey(Key::E key)
 {
-    if (control.key == Key::OK ||
-        control.key == Key::GovButton)
+    if (key == Key::OK ||
+        key == Key::GovButton)
     {
         if (IsNowEdited())
         {
@@ -372,7 +372,7 @@ bool Parameter::OnEventControl(const Control &control)
 
     if (IsNowEdited())
     {
-        ds.PressKey(control.key);
+        ds.PressKey(key);
 
         return true;
     }
@@ -381,9 +381,9 @@ bool Parameter::OnEventControl(const Control &control)
 }
 
 
-bool Page::OnEventControl(const Control &control)
+bool Page::OnKey(Key::E key)
 {
-    if (control.key == Key::Left || control.key == Key::GovLeft)
+    if (key == Key::Left || key == Key::GovLeft)
     {
         if (!Parameter::editable)
         {
@@ -394,7 +394,7 @@ bool Page::OnEventControl(const Control &control)
             return true;
         }
     }
-    else if (control.key == Key::Right || control.key == Key::GovRight)
+    else if (key == Key::Right || key == Key::GovRight)
     {
         if (!Parameter::editable)
         {
@@ -532,11 +532,11 @@ void FieldPort::Draw(int x, int y, int width, bool selected /* = false */)
 }
 
 
-bool FieldIP::OnEventControl(const Control &control)
+bool FieldIP::OnKey(Key::E key)
 {
     if (IsOpened())
     {
-        if (control.key == Key::OK)
+        if (key == Key::OK)
         {
             uint8 bytes[4];
 
@@ -547,11 +547,11 @@ bool FieldIP::OnEventControl(const Control &control)
 
             Close();
         }
-        else if (control.key == Key::Esc)
+        else if (key == Key::Esc)
         {
             Close();
         }
-        else if (control.key == Key::Dot || (control.key >= Key::_1 && control.key <= Key::_0))
+        else if (key == Key::Dot || (key >= Key::_1 && key <= Key::_0))
         {
             if (!edited)
             {
@@ -562,7 +562,7 @@ bool FieldIP::OnEventControl(const Control &control)
 
             if (std::strlen(buffer) < 15)
             {
-                std::strcat(buffer, Key::Name(control.key));
+                std::strcat(buffer, Key::Name(key));
             }
         }
 
@@ -570,7 +570,7 @@ bool FieldIP::OnEventControl(const Control &control)
     }
     else
     {
-        if (control.key == Key::OK)
+        if (key == Key::OK)
         {
             Open();
 
@@ -582,11 +582,11 @@ bool FieldIP::OnEventControl(const Control &control)
 }
 
 
-bool FieldMAC::OnEventControl(const Control &control)
+bool FieldMAC::OnKey(Key::E key)
 {
     if (IsOpened())
     {
-        if (control.key == Key::OK)
+        if (key == Key::OK)
         {
             uint8 bytes[6];
 
@@ -597,11 +597,11 @@ bool FieldMAC::OnEventControl(const Control &control)
 
             Close();
         }
-        else if (control.key == Key::Esc)
+        else if (key == Key::Esc)
         {
             Close();
         }
-        else if (control.key == Key::Dot || (control.key >= Key::_1 && control.key <= Key::_0))
+        else if (key == Key::Dot || (key >= Key::_1 && key <= Key::_0))
         {
             if (!edited)
             {
@@ -612,7 +612,7 @@ bool FieldMAC::OnEventControl(const Control &control)
 
             if (std::strlen(buffer) < 17)
             {
-                std::strcat(buffer, (control.key == Key::Dot) ? ":" : Key::Name(control.key));
+                std::strcat(buffer, (key == Key::Dot) ? ":" : Key::Name(key));
             }
         }
 
@@ -620,7 +620,7 @@ bool FieldMAC::OnEventControl(const Control &control)
     }
     else
     {
-        if (control.key == Key::OK)
+        if (key == Key::OK)
         {
             Open();
 
@@ -632,11 +632,11 @@ bool FieldMAC::OnEventControl(const Control &control)
 }
 
 
-bool FieldPort::OnEventControl(const Control &control)
+bool FieldPort::OnKey(Key::E key)
 {
     if (IsOpened())
     {
-        if (control.key == Key::OK)
+        if (key == Key::OK)
         {
             int value = std::atoi(buffer);
 
@@ -647,11 +647,11 @@ bool FieldPort::OnEventControl(const Control &control)
 
             Close();
         }
-        else if (control.key == Key::Esc)
+        else if (key == Key::Esc)
         {
             Close();
         }
-        else if (control.key >= Key::_1 && control.key <= Key::_0)
+        else if (key >= Key::_1 && key <= Key::_0)
         {
             if (!edited)
             {
@@ -662,7 +662,7 @@ bool FieldPort::OnEventControl(const Control &control)
 
             if (std::strlen(buffer) < 5)
             {
-                std::strcat(buffer, Key::Name(control.key));
+                std::strcat(buffer, Key::Name(key));
             }
         }
 
@@ -670,7 +670,7 @@ bool FieldPort::OnEventControl(const Control &control)
     }
     else
     {
-        if (control.key == Key::OK)
+        if (key == Key::OK)
         {
             Open();
 

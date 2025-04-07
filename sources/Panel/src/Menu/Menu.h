@@ -34,7 +34,7 @@ namespace Menu
         void FuncEmptyUpdate();
 
         // Обработка события кнопки
-        void OnControl(const Control &);
+        void OnKey(Key::E);
     };
 
     extern Primitives::Label labelMode;

@@ -65,8 +65,8 @@ namespace Keyboard
     };
 
     // Очередь сообщений - здесь все события органов управления
-#define MAX_ACTIONS 100
-    static Control controls[MAX_ACTIONS];
+#define MAX_KEYS 100
+    static Key::E controls[MAX_KEYS];
     // Количество уже имеющихся сообщений
     static int numActions = 0;
 
@@ -127,14 +127,12 @@ void Keyboard::Update()
                             timePress[sl][rl] = 0;
                             if (!alreadyLong[sl][rl])
                             {
-                                AddAction(key, Action::Release);
                             }
                             alreadyLong[sl][rl] = false;
                             prevRepeat = 0;
                         }
                         else if (time - timePress[sl][rl] > 500 && !alreadyLong[sl][rl])
                         {
-                            AddAction(key, Action::Long);
                             alreadyLong[sl][rl] = true;
                         }
                     }
@@ -142,7 +140,7 @@ void Keyboard::Update()
                 else if (BUTTON_IS_PRESS(state) && !alreadyLong[sl][rl])
                 {
                     timePress[sl][rl] = time;
-                    AddAction(key, Action::Press);
+                    AddKey(key);
                     prevRepeat = 0;
                 }
             }
@@ -171,13 +169,13 @@ void Keyboard::DetectRegulator()
     {
         prevStatesIsOne = false;
 
-        AddAction(Key::GovLeft, Action::Press);
+        AddKey(Key::GovLeft);
     }
     else if (prevStatesIsOne && !stateLeft && stateRight)
     {
         prevStatesIsOne = false;
 
-        AddAction(Key::GovRight, Action::Press);
+        AddKey(Key::GovRight);
     }
 }
 
@@ -337,9 +335,9 @@ void Keyboard::InitTimer()
 }
 
 
-void Keyboard::AddAction(Key::E key, Action::E action)
+void Keyboard::AddKey(Key::E key)
 {
-    controls[numActions++] = Control(key, action);
+    controls[numActions++] = key;
 }
 
 
@@ -350,14 +348,14 @@ bool Keyboard::Empty()
 
 
 
-Control Keyboard::NextControl()
+Key::E Keyboard::NextKey()
 {
     if (Empty())
     {
-        return Control();
+        return Key::Count;
     }
 
-    Control result = controls[0];
+    Key::E result = controls[0];
 
     for (int i = 1; i < numActions; i++)
     {

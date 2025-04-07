@@ -54,21 +54,21 @@ void Menu::SetOpenedPage(Page *page)
 }
 
 
-void Menu::Input::OnControl(const Control &control)
+void Menu::Input::OnKey(Key::E key)
 {
-    if (!Device::IsStopped())                                               // Когда идёт тест,
+    if (!Device::IsStopped())                                           // Когда идёт тест,
     {
-        if (control.key != Key::Start && control.key != Key::Stop)          // то обрабатываем только СТАРТ и СТОП
+        if (key != Key::Start && key != Key::Stop)                      // то обрабатываем только СТАРТ и СТОП
         {
             return;
         }
     }
 
-    if (!openedPage->SelectedItem()->OnEventControl(control))               // Сначала пытаемся обработать тенущий элемент меню
+    if (!openedPage->SelectedItem()->OnKey(key))                        // Сначала пытаемся обработать тенущий элемент меню
     {
-        if (!openedPage->OnEventControl(control))                           // Потом передаём событие странице
+        if (!openedPage->OnKey(key))                                    // Потом передаём событие странице
         {
-            if (control.key == Key::Start)
+            if (key == Key::Start)
             {
                 if (OpenedPageIsSignal())
                 {
@@ -94,7 +94,7 @@ void Menu::Input::OnControl(const Control &control)
                     }
                 }
             }
-            else if (control.key == Key::Stop)
+            else if (key == Key::Stop)
             {
                 if (OpenedPageIsSignal())
                 {
@@ -108,7 +108,7 @@ void Menu::Input::OnControl(const Control &control)
                     });
                 }
             }
-            else if (control.key == Key::Esc)
+            else if (key == Key::Esc)
             {
                 if (OpenedPageIsSignal())
                 {
@@ -140,9 +140,7 @@ void Menu::Input::FuncUpdate()
 {
     while (!Keyboard::Empty())
     {
-        Control control = Keyboard::NextControl();
-
-        OnControl(control);
+        OnKey(Keyboard::NextKey());
     }
 }
 
@@ -151,7 +149,7 @@ void Menu::Input::FuncEmptyUpdate()
 {
     while (!Keyboard::Empty())
     {
-        Keyboard::NextControl();
+        Keyboard::NextKey();
     }
 }
 

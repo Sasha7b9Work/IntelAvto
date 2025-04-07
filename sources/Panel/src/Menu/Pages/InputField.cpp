@@ -26,3 +26,9 @@ void InputField::Draw(int x, int y, bool visible)
 
     Text(buffer).Write(x + 5, y + 2, Color::WHITE);
 }
+
+
+void InputField::OnKey(Key::E)
+{
+
+}

@@ -10,7 +10,7 @@ struct InputField
     // ≈сли visible == true, то отрисовка будет произведена
     void Draw(int x, int y, bool visible);
 
-    void OnControl(Key::E);
+    void OnKey(Key::E);
 
     static const int SIZE_BUFFER = 5;
     char buffer[SIZE_BUFFER];
