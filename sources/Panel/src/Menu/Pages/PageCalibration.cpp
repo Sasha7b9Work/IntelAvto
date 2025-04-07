@@ -23,17 +23,15 @@ namespace PageCalibration
     static int  current_point = 0;          // Точка, которую сейчас измеряем
     static bool output_en = false;
 
-    static int GetDisplayVoltage();
+    void EnableOutput();
 
-    static void EnableOutput();
-
-    static void DisableOutput();
+    void DisableOutput();
 
     // Сохранить калибровочный коэффициент
-    static void SaveCalibrationFactor();
+    void SaveCalibrationFactor();
 
     // dir = 1/-1 Изменяет калибровочный коэффициент в бОльшую (1) или меньшую (-1) стОроны
-    static void ChangeCalibrationFactor(int dir);
+    void ChangeCalibrationFactor(int dir);
 
     static void TimerFunction();
 
@@ -41,10 +39,10 @@ namespace PageCalibration
     {
         enum E
         {
-            Normal,             // Начальное состояние
-
-            FactorSave,         // Калибровочный коэффициент сохранён
-            FactroNotSave       // Калибровочный коэффициент не сохранён
+            Normal,                     // Начальное состояние
+            EnableOutputAndWaitEnter,   // Установлено напряжение на выходе и ожидается ввод измеренного значения
+            FactorSave,                 // Калибровочный коэффициент сохранён
+            FactroNotSave               // Калибровочный коэффициент не сохранён
         };
     };
 
@@ -76,7 +74,14 @@ namespace PageCalibration
 
     static void FuncPress_Start()
     {
+        if (state == State::Normal)
+        {
+            state = State::EnableOutputAndWaitEnter;
+        }
+        else if (state == State::EnableOutputAndWaitEnter)
+        {
 
+        }
     }
 
     DEF_BUTTON(bStart,
@@ -117,6 +122,10 @@ namespace PageCalibration
 
             Text("нажмите кнопку \"Калибровать\".").Write(x, y);
         }
+        else if (state == State::EnableOutputAndWaitEnter)
+        {
+
+        }
         else if (state == State::FactorSave)
         {
             int x = 180;
@@ -152,7 +161,14 @@ namespace PageCalibration
         Font::Set(TypeFont::GOSTAU16BOLD);
     }
 
-    static Page page(items, FuncDraw, nullptr);
+    static void FuncEnter()
+    {
+        type_signal = 0;
+        type_accum = 0;
+        current_point = 0;
+    }
+
+    static Page page(items, FuncDraw, nullptr, FuncEnter);
 
     Page *self = &page;
 
@@ -163,18 +179,13 @@ namespace PageCalibration
         {
             Control control = Keyboard::NextControl();
 
-            if (!control.IsPress())
+            if (control.key == Key::Start)
             {
-                continue;
-            }
 
-            if (control.key == Key::OK)
+            }
+            else if (control.key == Key::Stop)
             {
-                switch (state)
-                {
-                case State::Normal:
-                    break;
-                }
+
             }
             else
             {
@@ -185,23 +196,6 @@ namespace PageCalibration
             }
         }
     }
-}
-
-
-int PageCalibration::GetDisplayVoltage()
-{
-    if (type_signal == 0)           // 1
-    {
-        int values[2][4] =
-        {
-            {-150, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE},
-            {-600, INVALID_VOLTAGE, INVALID_VOLTAGE, INVALID_VOLTAGE}
-        };
-
-        return values[type_accum][current_point];
-    }
-
-    return INVALID_VOLTAGE;
 }
 
 

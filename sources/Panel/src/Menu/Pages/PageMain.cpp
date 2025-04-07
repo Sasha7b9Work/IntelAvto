@@ -56,7 +56,7 @@ namespace PageMain
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr);
+    static Page page(items, nullptr, nullptr, nullptr);
 }
 
 

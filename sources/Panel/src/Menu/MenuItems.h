@@ -285,9 +285,9 @@ class Page : public Item
     friend struct Channel;
 
 public:
-    Page(Item **_items, void (*_additionalDraw)(), void (*_func_start_test)()) :
+    Page(Item **_items, void (*_additionalDraw)(), void (*_func_start_test)(), void (*_func_enter)()) :
         Item(),
-        items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
+        items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test), func_enter(_func_enter), selectedItem(0)
     {}
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -322,6 +322,8 @@ public:
 
     bool ConsistOpenedItems() const;
 
+    void OnEventOpenPage();
+
 protected:
 
     // Возвращает ширину элемента меню с номером num
@@ -334,6 +336,8 @@ protected:
 
     void (*func_start_test)();
 
+    void (*func_enter)();
+
 private:
 
     // Номер выбранного итема
@@ -344,5 +348,5 @@ private:
 class PageModes : public Page
 {
 public:
-    PageModes(Item **_items) : Page(_items, nullptr, nullptr) {}
+    PageModes(Item **_items) : Page(_items, nullptr, nullptr, nullptr) {}
 };

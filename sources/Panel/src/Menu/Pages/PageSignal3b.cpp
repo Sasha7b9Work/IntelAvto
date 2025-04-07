@@ -63,7 +63,7 @@ namespace PageSignal3b
         Page::DrawConnectionServer();
     }
 
-    static Page page(items, AdditionDraw, FuncStartTest);
+    static Page page(items, AdditionDraw, FuncStartTest, nullptr);
 }
 
 
