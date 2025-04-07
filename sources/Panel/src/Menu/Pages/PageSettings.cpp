@@ -34,7 +34,7 @@ namespace PageSettings
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr, nullptr);
+    static Page page(items, nullptr, nullptr);
 
     Page *self = &page;
 }

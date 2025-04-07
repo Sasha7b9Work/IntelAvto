@@ -36,7 +36,7 @@ namespace PageInfo
         Text("Дата : %s", DATE_BUILD).Write(x, y + dy);
     }
 
-    static Page pages(items, Func_Draw, nullptr, nullptr);
+    static Page pages(items, Func_Draw, nullptr);
 
     Page *self = &pages;
 }

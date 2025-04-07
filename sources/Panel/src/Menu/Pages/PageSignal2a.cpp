@@ -72,7 +72,7 @@ namespace PageSignal2a
         Page::DrawConnectionServer();
     }
 
-    static Page page(items, AdditionDraw, PageSignal2a::Start, nullptr);
+    static Page page(items, AdditionDraw, PageSignal2a::Start);
 }
 
 

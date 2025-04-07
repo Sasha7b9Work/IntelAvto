@@ -161,14 +161,7 @@ namespace PageCalibration
         Font::Set(TypeFont::GOSTAU16BOLD);
     }
 
-    static void FuncEnter()
-    {
-        type_signal = 0;
-        type_accum = 0;
-        current_point = 0;
-    }
-
-    static Page page(items, FuncDraw, nullptr, FuncEnter);
+    static Page page(items, FuncDraw, nullptr);
 
     Page *self = &page;
 

@@ -851,12 +851,3 @@ void FieldPort::Close()
 {
     Button::Close();
 }
-
-
-void Page::OnEventOpenPage()
-{
-    if (func_enter)
-    {
-        func_enter();
-    }
-}

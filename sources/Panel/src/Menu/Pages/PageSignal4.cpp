@@ -85,7 +85,7 @@ namespace PageSignal4
         Page::DrawConnectionServer();
     }
 
-    static Page page(items, AdditionDraw, FuncStartTest, nullptr);
+    static Page page(items, AdditionDraw, FuncStartTest);
 }
 
 

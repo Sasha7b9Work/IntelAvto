@@ -57,7 +57,7 @@ namespace PageLAN
         nullptr
     };
 
-    static Page page(items, nullptr, nullptr, nullptr);
+    static Page page(items, nullptr, nullptr);
 
     Page *self = &page;
 
@@ -90,7 +90,7 @@ namespace PageLAN
             nullptr
         };
 
-        static Page page(items, nullptr, nullptr, nullptr);
+        static Page page(items, nullptr, nullptr);
 
         Page *self = &page;
     }
@@ -124,7 +124,7 @@ namespace PageLAN
             nullptr
         };
 
-        static Page page(items, nullptr, nullptr, nullptr);
+        static Page page(items, nullptr, nullptr);
 
         Page *self = &page;
     }
