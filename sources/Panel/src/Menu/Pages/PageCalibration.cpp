@@ -58,11 +58,14 @@ namespace PageCalibration
     // Возвращает напряжение текущей точки
     static int GetVoltagePoint();
 
-    // Сохранить калибровочный коэффициент
-    void SaveCalibrationFactor();
+    // Сохранить действующие калибровочные коэффициенты для последующего восстановления
+    static void StoreCalibrateFactors();
 
-    // dir = 1/-1 Изменяет калибровочный коэффициент в бОльшую (1) или меньшую (-1) стОроны
-    void ChangeCalibrationFactor(int dir);
+    // Восстановить ранее сохранённые коэффициенты
+    static void RestoreCalibrateFactors();
+
+    // Рассчитать и приименить калибровочные факторы
+    static void CalculateCalibrateFactors();
 
     static void TimerFunction();
 
@@ -106,11 +109,13 @@ namespace PageCalibration
         FuncVV
     );
 
-    static void FuncPress_Start()
+    static void FuncPress_Calibrate()
     {
         if (state == State::Normal)
         {
             state = State::EnableOutputAndWaitEnter;
+
+            StoreCalibrateFactors();
 
             current_point = 0;
 
@@ -118,22 +123,25 @@ namespace PageCalibration
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
-            values[type_signal][type_accum][current_point] = field.GetValue();
-
-            if (current_point < NUM_POINTS - 1)
+            if (field.GetValue() != 0)
             {
-                current_point++;
+                values[type_signal][type_accum][current_point] = field.GetValue();
 
-                EnableOutput();
+                if (current_point < NUM_POINTS - 1)
+                {
+                    current_point++;
+
+                    EnableOutput();
+                }
+                else
+                {
+                    DisableOutput();
+
+                    state = State::ConfirmForSave;
+                }
+
+                field.Reset();
             }
-            else
-            {
-                DisableOutput();
-
-                state = State::ConfirmForSave;
-            }
-
-            field.Reset();
         }
         else if (state == State::ConfirmForSave)
         {
@@ -149,9 +157,9 @@ namespace PageCalibration
         }
     }
 
-    DEF_BUTTON(bStart,
+    DEF_BUTTON(bCalibrate,
         "Калибровать",
-        FuncPress_Start
+        FuncPress_Calibrate
     );
 
     static void FuncPress_Reset()
@@ -169,7 +177,7 @@ namespace PageCalibration
         &bBack,
         &chTypeSignal,
         &chTypeAccum,
-        &bStart,
+        &bCalibrate,
 //        &bReset,
         nullptr
     };
@@ -264,6 +272,20 @@ namespace PageCalibration
             {
                 field.OnKey(key);
             }
+            else if (state == State::ConfirmForSave)
+            {
+                if (key == Key::OK)
+                {
+                    CalculateCalibrateFactors();
+                }
+                else if (key == Key::Esc)
+                {
+                    RestoreCalibrateFactors();
+                }
+            }
+            else if (state == State::FactorSave || state == State::FactroNotSave)
+            {
+            }
             else
             {
                 if (state == State::Normal || key == Key::OK)
@@ -288,26 +310,11 @@ void PageCalibration::DisableOutput()
 }
 
 
-void PageCalibration::SaveCalibrationFactor()
+void PageCalibration::CalculateCalibrateFactors()
 {
     state = State::FactorSave;
 
     Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
-}
-
-
-void PageCalibration::ChangeCalibrationFactor(int dir)
-{
-    SettingsCal::StructCal &cal = gset.cal.cal[type_signal][type_accum][current_point];
-
-    if (dir > 0)
-    {
-        cal.k *= 1.05f;
-    }
-    else
-    {
-        cal.k /= 1.05f;
-    }
 }
 
 
@@ -345,5 +352,19 @@ int PageCalibration::GetVoltagePoint()
 
 bool PageCalibration::FieldIsVisible()
 {
-    return state != State::Normal;
+    return state == State::EnableOutputAndWaitEnter;
+}
+
+
+void PageCalibration::StoreCalibrateFactors()
+{
+
+}
+
+
+void PageCalibration::RestoreCalibrateFactors()
+{
+    state = State::FactroNotSave;
+
+    Timer::SetDefferedOnceTask(TimerTask::Calibrate, 3000, TimerFunction);
 }

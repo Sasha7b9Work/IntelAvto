@@ -281,7 +281,7 @@ void Display::Update()
     if (meter.ElapsedTime() > 30000)
     {
         meter.Reset();
-        Init();
+//        Init();
     }
 
 #ifdef GUI
