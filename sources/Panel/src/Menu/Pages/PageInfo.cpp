@@ -26,14 +26,15 @@ namespace PageInfo
 
     static void Func_Draw()
     {
-        int x = 150;
-
-        int y = 90;
+        int x = 170;
+        int y = 60;
         int dy = 50;
 
-        Text("Версия : %d", VERSION_BUILD).Write(x, y, Color::WHITE);
+        Text("Генератор импульсов КПТС").Write(x, y, Color::WHITE);
 
-        Text("Дата : %s", DATE_BUILD).Write(x, y + dy);
+        Text("Версия : %d", VERSION_BUILD).Write(x, y + dy);
+
+        Text("Дата : %s", DATE_BUILD).Write(x, y + dy * 2);
     }
 
     static Page pages(items, Func_Draw, nullptr);

@@ -379,19 +379,20 @@ void Display::DrawScreen()
 
         const int y0 = 40;
         const int dy = 70;
-        const int x = 220;
+        const int x = 150;
+        const int w = 300;
 
         int y = y0;
 
-        Text("цемепюрнп").Write(x, y, Color::WHITE);
+        Text("цемепюрнп").Write(x, y, w, Color::WHITE);
 
         y += dy;
 
-        Text("хлоскэянб").Write(x, y);
+        Text("хлоскэянб").Write(x, y, w);
 
         y += dy;
 
-        Text("нюн лмхох").Write(x - 10, y);
+        Text("йоря").Write(x, y, w);
 
         Font::Set(TypeFont::GOSTAU16BOLD);
     }
