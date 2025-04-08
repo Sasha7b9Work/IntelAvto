@@ -3,6 +3,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Menu/Menu.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "Hardware/Timer.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -176,6 +177,29 @@ void Keyboard::DetectRegulator()
         prevStatesIsOne = false;
 
         AddKey(Key::GovRight);
+    }
+
+    {
+        static bool prev_button = false;
+
+        static TimeMeterMS meter;
+
+        if (meter.ElapsedTime() < 100)
+        {
+            return;
+        }
+
+        bool state = (HAL_GPIO_ReadPin(PORT_ENCBUT, PIN_ENCBUT) == GPIO_PIN_RESET);
+
+        if (state != prev_button)
+        {
+            prev_button = state;
+
+            if (state)
+            {
+                AddKey(Key::GovButton);
+            }
+        }
     }
 }
 
