@@ -198,9 +198,9 @@ void Keyboard::DetectRegulator()
             if (state)
             {
                 AddKey(Key::GovButton);
-
-                meter.Reset();
             }
+
+            meter.Reset();
         }
     }
 }
