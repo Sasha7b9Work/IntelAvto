@@ -12,6 +12,8 @@ struct InputField
 
     void OnKey(Key::E);
 
+    void Reset();
+
     int GetValue() const;
 
 private:

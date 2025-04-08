@@ -12,7 +12,7 @@ using namespace Primitives;
 
 InputField::InputField()
 {
-    OnKey(Key::Esc);
+    Reset();
 }
 
 
@@ -37,7 +37,7 @@ void InputField::OnKey(Key::E key)
 {
     if (key == Key::Esc)
     {
-        std::memset(buffer, 0, SIZE_BUFFER);
+        Reset();
     }
     else
     {
@@ -58,6 +58,12 @@ void InputField::OnKey(Key::E key)
             buffer[std::strlen(buffer)] = symbol;
         }
     }
+}
+
+
+void InputField::Reset()
+{
+    std::memset(buffer, 0, SIZE_BUFFER);
 }
 
 

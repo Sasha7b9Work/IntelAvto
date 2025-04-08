@@ -132,6 +132,8 @@ namespace PageCalibration
 
                 state = State::ConfirmForSave;
             }
+
+            field.Reset();
         }
         else if (state == State::ConfirmForSave)
         {
@@ -198,14 +200,20 @@ namespace PageCalibration
                 int y = 20 + 25 * i;
 
                 Text("Точка %d", i + 1).Write(200, y, Color::WHITE);
-                Text("%d В", values[type_signal][type_accum][current_point]).Write(300, y);
-
-//                Text("Для сохранения калибровочных коэффициентов на")
+                Text("%d В", values[type_signal][type_accum][i]).Write(300, y);
             }
+
+            int x = 170;
+            int y = 125;
+
+            Text("Для сохранения калибровочных").Write(x, y);
+            Text("коэффициентов нажмите OK.").Write(x, y + 25);
+
+            Text("Для отмены нажмите Esc.").Write(x, y + 75);
         }
         else if (state == State::FactorSave)
         {
-            int x = 180;
+            int x = 190;
             int y = 70;
 
             Text("Коэффициент").Write(x, y, Display::Width() - x, Color::GREEN); y += 30;
