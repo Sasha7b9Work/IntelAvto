@@ -93,6 +93,10 @@ namespace PageSignal4
 
 namespace PageSignal5a
 {
+    extern VParameter param_Us;
+
+    extern TParameter param_td;
+
     extern Page *self;
 }
 

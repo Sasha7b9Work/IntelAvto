@@ -112,6 +112,8 @@ struct SettingsCal
     // 2 - 12/24В
     // 4 - четыре точки
     StructCal cal[8][2][4];
+
+    float Calculate(float, TypeSignal::E, VoltageMode::E);
 };
 
 

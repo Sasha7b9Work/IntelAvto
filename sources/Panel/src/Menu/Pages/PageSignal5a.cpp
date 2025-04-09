@@ -11,14 +11,14 @@
 
 namespace PageSignal5a
 {
-    static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_5a_16750_1].values12[0], Voltage(0), Voltage(10000),
-        &gset.signals[TypeSignal::_5a_16750_1].values24[0], Voltage(0), Voltage(10000),
+    VParameter param_Us("Us",
+        &gset.signals[TypeSignal::_5a_16750_1].values12[0], Voltage(79), Voltage(101),
+        &gset.signals[TypeSignal::_5a_16750_1].values24[0], Voltage(101), Voltage(202),
         355, 125);
 
-    static TParameter param_td("td",
-        &gset.signals[TypeSignal::_5a_16750_1].values12[1], Time(0), Time(10000),
-        &gset.signals[TypeSignal::_5a_16750_1].values24[1], Time(0), Time(10000),
+    TParameter param_td("td",
+        &gset.signals[TypeSignal::_5a_16750_1].values12[1], Time(40), Time(400),
+        &gset.signals[TypeSignal::_5a_16750_1].values24[1], Time(100), Time(350),
         220, 155);
 
     static CParameter param_N("N",

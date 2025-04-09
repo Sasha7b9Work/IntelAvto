@@ -142,8 +142,8 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
     {
         IT6523::SendCommand("carwave:iso16750:load:dump:test amode");
         IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", gset.voltage_mode.CurrentVolts());
-        IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", 79);
-        IT6523::SendCommandF("carwave:iso16750:load:dump:TD %s", "0.04");
+        IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", PageSignal5a::param_Us.GetValue().ToInt());
+        IT6523::SendCommandF("carwave:iso16750:load:dump:TD %s", SU::MilliUnitsToUnits(PageSignal5a::param_td.GetValue().ToInt(), buffer));
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 1");
     }
     else if (current == TypeSignal::_5b_16750_2)
@@ -151,7 +151,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommand("carwave:iso16750:load:dump:test bmode");
         IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", gset.voltage_mode.CurrentVolts());
         IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", PageSignal5b::param_Us.GetValue().ToInt());
-        IT6523::SendCommandF("carwave:iso16750:load:dump:US %d", PageSignal5b::param_Us.GetValue().ToInt());
+        IT6523::SendCommandF("carwave:iso16750:load:dump:US %d", gset.voltage_mode.CurrentVolts() == 12 ? 35 : 59);
         IT6523::SendCommandF("carwave:iso16750:load:dump:TD %s", SU::MilliUnitsToUnits(PageSignal5b::param_td.GetValue().ToInt(), buffer));
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 1");
     }

@@ -320,3 +320,30 @@ pchar Duration::ToStringValue(char buffer[128]) const
 
     return SU::TimeMStoText(timeMS, buffer, false);
 }
+
+
+float SettingsCal::Calculate(float value, TypeSignal::E type, VoltageMode::E mode)
+{
+    /*
+          Выход
+            |
+        Uo2 |..................+
+            |                  .
+            |                  .
+            |                  .
+        Uo1 |.....+            .
+            |     .            .
+            +----------------------- Вход
+                 Ui1          Ui2
+
+        Uo = offset + Ui * k
+
+        k = (Uo2 - Uo1) / (Ui2 - Ui1)
+
+        offset = Uo1 - Ui1 * k
+    */
+
+    StructCal &val = cal[type][mode][0];
+
+    return val.offset + value * val.k;
+}
