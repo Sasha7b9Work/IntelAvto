@@ -276,14 +276,6 @@ void Display::SetTopRow(int i)
 
 void Display::Update()
 {
-    static TimeMeterMS meter;
-
-    if (meter.ElapsedTime() > 30000)
-    {
-        meter.Reset();
-//        Init();
-    }
-
 #ifdef GUI
     BeginScene();
     DrawScreen();

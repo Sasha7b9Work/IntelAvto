@@ -3,6 +3,7 @@
 #include "Menu/MenuItemsDef.h"
 #include "Menu/Pages/Pages.h"
 #include "Menu/Menu.h"
+#include "Display/Display_.h"
 
 
 namespace PageMain
@@ -47,12 +48,24 @@ namespace PageMain
         FuncPress_Info
     );
 
+    static void FuncPress_Display()
+    {
+        Display::Init();
+    }
+
+
+    DEF_BUTTON(bDisplay,
+        "Дисплей",
+        FuncPress_Display
+    );
+
     static Item *items[] =
     {
         &bTests,
         &bSettings,
         &bCalibration,
         &bInfo,
+        &bDisplay,
         nullptr
     };
 
