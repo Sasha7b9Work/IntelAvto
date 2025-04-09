@@ -6,6 +6,7 @@
 #include "Display/Display_.h"
 #include "Display/Text_.h"
 #include "Utils/Math_.h"
+#include "Device/IT6523.h"
 #include <cmath>
 #include <cstring>
 #include <cstdlib>
@@ -192,6 +193,8 @@ void Display::EndScene()
     Text("Отладка").Write(410, 0, Color::FILL);
 
 #endif
+    
+    Text(IT6523::value).Write(400, 30, Color::WHITE);
 
     HAL_BUS_DISPLAY::SendBuffer(buffer[0], 0, TopRow(), PHYSICAL_WIDTH, PHYSICAL_HEIGHT, 2);
 

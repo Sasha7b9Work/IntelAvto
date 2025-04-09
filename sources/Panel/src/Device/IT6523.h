@@ -29,4 +29,6 @@ namespace IT6523
 
     // Столько импульсов осталось произвести
     int RemainedPulses();
+
+    extern char value[32];
 }

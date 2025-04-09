@@ -638,15 +638,17 @@ char *SU::MilliUnitsToUnits(int ms, char out[32])
 {
     out[0] = '\0';
 
-    int num_sec = ms / 1000;
+    float num_sec = (float)ms / 1000.0f;
 
-    std::sprintf(out, "%d.", num_sec);
+    std::sprintf(out, "%f", (double)num_sec);
 
-    char value[32];
+    char *pointer = out + std::strlen(out) - 1;
 
-    std::sprintf(value, "%d", ms - num_sec * 1000);
-
-    std::strcat(out, value);
+    while (*pointer == '0')
+    {
+        *pointer = '\0';
+        pointer--;
+    }
 
     return out;
 }

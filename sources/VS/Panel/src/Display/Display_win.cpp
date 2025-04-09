@@ -7,6 +7,8 @@
 #include "Display/Display_.h"
 #include "Display/Colors_.h"
 #include "Utils/Math_.h"
+#include "Device/IT6523.h"
+#include "Display/Text_.h"
 
 #pragma warning(push, 0)
 #undef CRC
@@ -146,6 +148,8 @@ void Display::BeginScene(int, int)
 
 void Display::EndScene()
 {
+    Text(IT6523::value).Write(400, 30, Color::WHITE);
+
     memDC.SelectObject(wxNullBitmap);
     screen->Refresh();
 }
