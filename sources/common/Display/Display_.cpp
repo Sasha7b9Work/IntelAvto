@@ -392,21 +392,28 @@ void Display::DrawScreen()
 
     if (warn != WarningMessage::Count)
     {
-        int w = 300;
-        int h = 100;
+        if (IT6523::TimeLeftToHeavyImpulse() == 0)
+        {
+            DisableWarningMessage();
+        }
+        else
+        {
+            int w = 366;
+            int h = 38;
 
-        int x = 120;
-        int y = 50;
+            int x = 95;
+            int y = 90;
 
-        int d = 10;
+            int d = 10;
 
-        Rect(w, h).FillRounded(x, y, 2, Color::BACK, Color::WHITE);
+            Rect(w, h).FillRounded(x, y, 2, Color::BACK, Color::WHITE);
 
-        Text("Импульс можно включить").
-            Write(x + d, y + d, Color::WHITE);
-
-        Text("через %d секунд", IT6523::TimeLeftToHeavyImpulse()).
-            Write(x + d, y + d + 25, Color::WHITE);
+            if ((((TIME_MS - time_warn) / 500) % 2) == 0)
+            {
+                Text("Импульс можно включить через %d секунд", IT6523::TimeLeftToHeavyImpulse()).
+                    Write(x + d, y + d, Color::WHITE);
+            }
+        }
     }
 }
 
@@ -709,7 +716,7 @@ void Display::ShowWarningMessage(WarningMessage::E _warn)
 
     time_warn = TIME_MS;
 
-    Timer::SetDefferedOnceTask(TimerTask::DisplayWarningMessage, 5000, DisableWarningMessage);
+    Timer::SetDefferedOnceTask(TimerTask::DisplayWarningMessage, 4500, DisableWarningMessage);
 }
 
 
