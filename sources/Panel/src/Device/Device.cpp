@@ -41,14 +41,23 @@ bool Device::InPause()
 }
 
 
-void Device::Start()
+bool Device::Start()
 {
     if (IsStopped())
     {
-        state = State::Running;
+        if (Page::ForCurrentSignal()->StartTest())
+        {
+            state = State::Running;
 
-        Page::ForCurrentSignal()->StartTest();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
+
+    return true;
 }
 
 

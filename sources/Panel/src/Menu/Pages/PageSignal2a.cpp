@@ -44,11 +44,13 @@ namespace PageSignal2a
         FuncVV
     );
 
-    void Start()
+    bool Start()
     {
         Message::Start2A(param_Us.GetValue(), param_t1.GetValue()).Transmit();
 
         RemainingTimeCounter::Start(param_t1, param_N);
+
+        return true;
     }
 
     static Item *items[] =

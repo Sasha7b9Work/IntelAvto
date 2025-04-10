@@ -428,12 +428,14 @@ const Value &Parameter::GetMax() const
 }
 
 
-void Page::StartTest() const
+bool Page::StartTest() const
 {
     if (func_start_test)
     {
-        func_start_test();
+        return func_start_test();
     }
+
+    return true;
 }
 
 

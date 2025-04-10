@@ -49,12 +49,16 @@ namespace PageSignal5b
         FuncVV
     );
 
-    static void FuncStartTest()
+    static bool FuncStartTest()
     {
         if (!IT6523::_Start(TypeSignal::_5b_16750_2, param_N.GetValue().ToInt()))
         {
             Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse);
+
+            return false;
         }
+
+        return true;
     }
 
     static Item *items[] =

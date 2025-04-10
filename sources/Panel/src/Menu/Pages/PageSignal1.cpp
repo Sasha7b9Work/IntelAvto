@@ -48,7 +48,7 @@ namespace PageSignal1
         FuncVV
     );
 
-    static void FuncStartTest()
+    static bool FuncStartTest()
     {
         if (VoltageMode::Is12())
         {
@@ -60,6 +60,8 @@ namespace PageSignal1
         }
 
         RemainingTimeCounter::Start(param_t1, param_N);
+
+        return true;
     }
 
 

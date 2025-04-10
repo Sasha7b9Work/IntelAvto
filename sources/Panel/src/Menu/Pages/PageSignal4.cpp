@@ -54,9 +54,11 @@ namespace PageSignal4
         FuncVV
     );
 
-    static void FuncStartTest()
+    static bool FuncStartTest()
     {
         IT6523::_Start(TypeSignal::_4_DIN40839, param_N.GetValue().ToInt());
+
+        return true;
     }
 
     static Item *items[] =

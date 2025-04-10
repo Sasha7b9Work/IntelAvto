@@ -38,9 +38,11 @@ namespace PageSignal3a
         FuncVV
     );
 
-    static void FuncStartTest()
+    static bool FuncStartTest()
     {
         Message::Start3A(param_Us.GetValue()).Transmit();
+
+        return true;
     }
 
     static Item *items[] =

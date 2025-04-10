@@ -285,7 +285,7 @@ class Page : public Item
     friend struct Channel;
 
 public:
-    Page(Item **_items, void (*_additionalDraw)(), void (*_func_start_test)()) :
+    Page(Item **_items, void (*_additionalDraw)(), bool (*_func_start_test)()) :
         Item(),
         items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
     {}
@@ -309,7 +309,7 @@ public:
     static const Page *ForCurrentSignal();
 
     // Запустить тест
-    void StartTest() const;
+    bool StartTest() const;
 
     // Возвращает true, если текущая страница - страница сигнала
     static bool IsSignal(Page *);
@@ -332,7 +332,7 @@ protected:
 
     void (*additionalDraw)();
 
-    void (*func_start_test)();
+    bool (*func_start_test)();
 
 private:
 

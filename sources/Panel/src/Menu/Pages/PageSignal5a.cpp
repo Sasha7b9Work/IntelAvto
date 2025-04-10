@@ -49,12 +49,15 @@ namespace PageSignal5a
         FuncVV
     );
 
-    static void FuncStartTest()
+    static bool FuncStartTest()
     {
         if (!IT6523::_Start(TypeSignal::_5a_16750_1, param_N.GetValue().ToInt()))
         {
             Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse);
+            return false;
         }
+
+        return true;
     }
 
     static Item *items[] =

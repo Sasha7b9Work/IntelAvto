@@ -76,9 +76,10 @@ void Menu::Input::OnKey(Key::E key)
 
                     if (Device::IsStopped())
                     {
-                        labelMode.SetState("реяр", Color::WHITE, Color::RED);
-
-                        Device::Start();
+                        if (Device::Start())
+                        {
+                            labelMode.SetState("реяр", Color::WHITE, Color::RED);
+                        }
                     }
                     else if (Device::IsRunning())
                     {
