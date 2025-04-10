@@ -43,7 +43,7 @@ namespace PageSignal2b
 
     static void FuncStartTest()
     {
-        IT6523::Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToInt());
+        IT6523::_Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToInt());
     }
 
     static Item *items[] =

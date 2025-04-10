@@ -189,7 +189,7 @@ void Text::WriteInCenterRect(int x, int y, int width, int height)
         int dY = (height - Font::GetHeight()) / 2;
         Write(x, y + dY, width);
     }
-    else if (numWords == 2)
+    else if (numWords == 2 || numWords == 3)
     {
         char *start = nullptr;
         int num = 0;

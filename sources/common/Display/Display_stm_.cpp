@@ -194,8 +194,6 @@ void Display::EndScene()
 
 #endif
     
-    Text(IT6523::value).Write(400, 30, Color::WHITE);
-
     HAL_BUS_DISPLAY::SendBuffer(buffer[0], 0, TopRow(), PHYSICAL_WIDTH, PHYSICAL_HEIGHT, 2);
 
     if (sendToSCPI)

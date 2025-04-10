@@ -8,7 +8,8 @@ namespace IT6523
     void Update();
 
     // Запускает процесс формирования периодических импульсов
-    void Start(TypeSignal::E, int num_pulses);
+    // Возвращает false, если запуск не может быть произведён - не прошло достаточно времени
+    bool _Start(TypeSignal::E, int num_pulses);
 
     // Приостановить процесс формирования импульсов
     void Pause();
@@ -30,5 +31,6 @@ namespace IT6523
     // Столько импульсов осталось произвести
     int RemainedPulses();
 
-    extern char value[32];
+    // Осталось до запуска следующего "тяжёлого" импульса
+    uint TimeLeftToHeavyImpulse();
 }

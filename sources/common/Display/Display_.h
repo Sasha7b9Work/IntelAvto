@@ -6,6 +6,16 @@ class DataZone;
 class ProgressBarTimeMeasureZone;
 
 
+struct WarningMessage
+{
+    enum E
+    {
+        LittleTimeHeavyImpulse,
+        Count
+    };
+};
+
+
 namespace Display
 {
     extern int num_sends;
@@ -54,6 +64,8 @@ namespace Display
 
     // Отрисовка времени отсчёта времени измерения
     extern ProgressBarTimeMeasureZone *zoneProgressBarTimeMeasure;
+
+    void ShowWarningMessage(WarningMessage::E);
 
     // Структура для непосредсвенного рисования в дисплей
     namespace Sender

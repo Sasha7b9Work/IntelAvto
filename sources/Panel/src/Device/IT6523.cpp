@@ -15,8 +15,10 @@ namespace IT6523
 {
     static bool is_connected = false;
     static uint time_connect = 0;
-    static int pulses_remained = 0;         // Осталось импульсов
+    static int pulses_remained = 0;                 // Осталось импульсов
     static bool in_pause = false;
+    static uint period_heavy_impulses = 60 * 1000;  // Время между "тяжёлыми" импульсами - теми, которые выделяют много тепла (5а, 5б)
+    static uint time_last_heavy_impulse = 0;        // Время запуска последнего "тяжёлого" импульса
 
     static TypeSignal::E current = TypeSignal::Count;
 
@@ -86,13 +88,7 @@ void IT6523::SendCommandF(pchar format, ...)
 }
 
 
-namespace IT6523
-{
-    char value[32] = { '\0' };
-}
-
-
-void IT6523::Start(TypeSignal::E type, int num_pulses)
+bool IT6523::_Start(TypeSignal::E type, int num_pulses)
 {
     current = type;
 
@@ -107,7 +103,6 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommandF("carwave:sae:2b:volt %dV", gset.voltage_mode.CurrentVolts());
         IT6523::SendCommandF("carwave:sae:2b:TD %s", SU::MilliUnitsToUnits(PageSignal2b::param_td.GetValue().ToInt(), buffer));
-        std::strcpy(value, buffer);
         IT6523::SendCommand("carwave:sae:2b:state 1");
     }
     else if (current == TypeSignal::_4_DIN40839)
@@ -149,29 +144,43 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
     }
     else if (current == TypeSignal::_5a_16750_1)
     {
+        if (time_last_heavy_impulse != 0 && TIME_MS < time_last_heavy_impulse + period_heavy_impulses)
+        {
+            return false;
+        }
+
+        period = period_heavy_impulses;
         IT6523::SendCommandF("RES %d.0", PageSignal5a::param_Ri.GetValue().ToInt());
         IT6523::SendCommand("carwave:iso16750:load:dump:test amode");
         IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", gset.voltage_mode.CurrentVolts());
         IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", PageSignal5a::param_Us.GetValue().ToInt());
         IT6523::SendCommandF("carwave:iso16750:load:dump:TD %s", SU::MilliUnitsToUnits(PageSignal5a::param_td.GetValue().ToInt(), buffer));
-        std::strcpy(value, buffer);
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 1");
+        time_last_heavy_impulse = TIME_MS;
     }
     else if (current == TypeSignal::_5b_16750_2)
     {
+        if (time_last_heavy_impulse != 0 && TIME_MS < time_last_heavy_impulse + period_heavy_impulses)
+        {
+            return false;
+        }
+
+        period = period_heavy_impulses;
         IT6523::SendCommandF("RES %d.0", PageSignal5b::param_Ri.GetValue().ToInt());
         IT6523::SendCommand("carwave:iso16750:load:dump:test bmode");
         IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", gset.voltage_mode.CurrentVolts());
         IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", PageSignal5b::param_Us.GetValue().ToInt());
         IT6523::SendCommandF("carwave:iso16750:load:dump:US %d", gset.voltage_mode.Is12() ? 35 : 59);
         IT6523::SendCommandF("carwave:iso16750:load:dump:TD %s", SU::MilliUnitsToUnits(PageSignal5b::param_td.GetValue().ToInt(), buffer));
-        std::strcpy(value, buffer);
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 1");
+        time_last_heavy_impulse = TIME_MS;
     }
 
     SendCommand("SOURCE:OUTPut:STATE 1");
 
     Timer::SetPeriodicTask(TimerTask::IT6523, period, IT6523::CallbackOnTimerImpulse);
+
+    return true;
 }
 
 
@@ -222,4 +231,15 @@ void IT6523::Stop()
     SendCommand("SOURCE:OUTPut:STATE 0");
 
     Keyboard::AddKey(Key::Stop);
+}
+
+
+uint IT6523::TimeLeftToHeavyImpulse()
+{
+    if (TIME_MS >= time_last_heavy_impulse + period_heavy_impulses)
+    {
+        return 0;
+    }
+
+    return (period_heavy_impulses - (TIME_MS - time_last_heavy_impulse)) / 1000;
 }

@@ -148,8 +148,6 @@ void Display::BeginScene(int, int)
 
 void Display::EndScene()
 {
-    Text(IT6523::value).Write(400, 30, Color::WHITE);
-
     memDC.SelectObject(wxNullBitmap);
     screen->Refresh();
 }

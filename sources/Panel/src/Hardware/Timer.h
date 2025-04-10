@@ -19,6 +19,7 @@ struct TimerTask
         StopSound,
         IT6523,
         Calibrate,                  // Функция страницы калибровки
+        DisplayWarningMessage,
         Count
     };
 };

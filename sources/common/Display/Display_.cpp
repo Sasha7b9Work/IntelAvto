@@ -13,6 +13,7 @@
 #include "Display/Pictures/Picture.h"
 #include "LAN/LAN.h"
 #include "Hardware/Timer.h"
+#include "Device/IT6523.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -27,10 +28,8 @@ namespace Display
     uint crc_trans = 0;
     uint crc_recv = 0;
 
-    // Нарисовать подсказку
-    void DrawHint(int x, int y);
-
-    void DrawInfo();
+    static WarningMessage::E warn = WarningMessage::Count;
+    static uint time_warn = 0;
 
     static void SetTopRow(int i);
     static int topRow = 0;
@@ -62,6 +61,8 @@ namespace Display
     void DrawRectangle1(int x, int y);
 
     void InitHardware();
+
+    static void DisableWarningMessage();
 }
 
 void Display::Init()
@@ -388,6 +389,25 @@ void Display::DrawScreen()
 
         Font::Set(TypeFont::GOSTAU16BOLD);
     }
+
+    if (warn != WarningMessage::Count)
+    {
+        int w = 300;
+        int h = 100;
+
+        int x = 120;
+        int y = 50;
+
+        int d = 10;
+
+        Rect(w, h).FillRounded(x, y, 2, Color::BACK, Color::WHITE);
+
+        Text("Импульс можно включить").
+            Write(x + d, y + d, Color::WHITE);
+
+        Text("через %d секунд", IT6523::TimeLeftToHeavyImpulse()).
+            Write(x + d, y + d + 25, Color::WHITE);
+    }
 }
 
 
@@ -680,4 +700,20 @@ void Display::DrawSignal()
     }
 
     Page::ForCurrentSignal()->DrawParameters();
+}
+
+
+void Display::ShowWarningMessage(WarningMessage::E _warn)
+{
+    warn = _warn;
+
+    time_warn = TIME_MS;
+
+    Timer::SetDefferedOnceTask(TimerTask::DisplayWarningMessage, 5000, DisableWarningMessage);
+}
+
+
+void Display::DisableWarningMessage()
+{
+    warn = WarningMessage::Count;
 }

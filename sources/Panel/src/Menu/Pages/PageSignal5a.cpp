@@ -51,7 +51,10 @@ namespace PageSignal5a
 
     static void FuncStartTest()
     {
-        IT6523::Start(TypeSignal::_5a_16750_1, param_N.GetValue().ToInt());
+        if (!IT6523::_Start(TypeSignal::_5a_16750_1, param_N.GetValue().ToInt()))
+        {
+            Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse);
+        }
     }
 
     static Item *items[] =
