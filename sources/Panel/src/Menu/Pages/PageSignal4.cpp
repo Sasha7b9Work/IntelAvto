@@ -7,13 +7,14 @@
 #include "Display/Text_.h"
 #include "Display/Display_.h"
 #include "Device/IT6523.h"
+#include "Device/Device.h"
 
 
 namespace PageSignal4
 {
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[0], Counter(1), Counter(1000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[0], Counter(1), Counter(1000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[0], Counter(1), Counter(10),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[0], Counter(1), Counter(10),
         90, 70);
 
     VParameter param_Us("Us",
@@ -72,12 +73,9 @@ namespace PageSignal4
 
     static void AdditionDraw()
     {
-        Text("%s    Us: %s    Ua: %s    t7: %s    t9: %s",
+        Text("%s    Ri: 0.01 Ом    Импульсов: %d",
             VoltageMode::TextValue(),
-            VoltageMode::Is12() ? "-7.5 В" : "-16 В",
-            VoltageMode::Is12() ? "-6 В" : "-12 В",
-            VoltageMode::Is12() ? "15 мс" : "50 мс",
-            "2000 мс"
+            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToInt()
         ).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );

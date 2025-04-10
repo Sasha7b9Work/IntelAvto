@@ -22,10 +22,15 @@ namespace PageSignal5b
         &gset.signals[TypeSignal::_5b_16750_2].values24[2], Time(100), Time(350),
         220, 160);
 
+    CParameter param_Ri("Ri",
+        &gset.signals[TypeSignal::_5b_16750_2].values12[1], Counter(1), Counter(10),
+        &gset.signals[TypeSignal::_5b_16750_2].values24[1], Counter(1), Counter(10),
+        90, Parameter::CalculateY(4));
+
     static CParameter param_N("N",
         &gset.signals[TypeSignal::_5b_16750_2].values12[3], Counter(1), Counter(1000),
         &gset.signals[TypeSignal::_5b_16750_2].values24[3], Counter(1), Counter(1000),
-        90, Parameter::CalculateY(4));
+        90, Parameter::CalculateY(5));
 
     static void FuncPress_Signal()
     {
@@ -55,6 +60,7 @@ namespace PageSignal5b
         &chModeVoltage,
         &param_Us,
         &param_td,
+        &param_Ri,
         &param_N,
         nullptr
     };

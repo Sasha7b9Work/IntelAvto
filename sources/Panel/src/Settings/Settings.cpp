@@ -146,27 +146,27 @@ static Settings def_set =
         {   {   Voltage(80),                    // 5a : Us 12       Signal 5a
                 Time(54),                       // 5a : td 12
                 Counter(10),                    // 5a : N  12
-                ValueNull(),
+                Counter(10),                    // 5a : Ri 10
                 ValueNull()
             }
             ,
             {   Voltage(80),                    // 5a : Us 24
                 Time(54),                       // 5a : td 24
                 Counter(10),                    // 5a : N  24
-                ValueNull(),
+                Counter(10),                    // 5a : Ri 10
                 ValueNull() }}
         ,
         { {     Voltage(79),                    // 5b : Us 12       Signal 5b
-                ValueNull(),
-                Time(54),                       // 5b : N  12
-                Counter(5),
+                Counter(10),                    // 5b : Ri 10
+                Time(54),                       // 5b : td 54
+                Counter(5),                     // 5b : N 5
                 ValueNull()
             }
             ,
             {   Voltage(101),                   // 5b : Us 24
-                ValueNull(),
-                Time(54),                       // 5b : N 24
-                Counter(5),
+                Counter(10),                    // 5b : Ri 10
+                Time(54),                       // 5b : td 54
+                Counter(5),                     // 5b : N 5
                 ValueNull() }}
     },
     7,                                          // portSCPI

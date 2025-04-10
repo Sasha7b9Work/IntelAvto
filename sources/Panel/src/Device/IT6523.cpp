@@ -104,6 +104,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
 
     if (current == TypeSignal::_2b_SAEJ1113)
     {
+        IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommandF("carwave:sae:2b:volt %dV", gset.voltage_mode.CurrentVolts());
         IT6523::SendCommandF("carwave:sae:2b:TD %s", SU::MilliUnitsToUnits(PageSignal2b::param_td.GetValue().ToInt(), buffer));
         std::strcpy(value, buffer);
@@ -116,6 +117,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommand("carwave:startup:din40839:state 1");
         */
 
+        IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommand("list:state 0");
         IT6523::SendCommand("sequence:edit");
         IT6523::SendCommand("sequence:recall 1");
@@ -147,6 +149,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
     }
     else if (current == TypeSignal::_5a_16750_1)
     {
+        IT6523::SendCommandF("RES %d.0", PageSignal5a::param_Ri.GetValue().ToInt());
         IT6523::SendCommand("carwave:iso16750:load:dump:test amode");
         IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", gset.voltage_mode.CurrentVolts());
         IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", PageSignal5a::param_Us.GetValue().ToInt());
@@ -156,6 +159,7 @@ void IT6523::Start(TypeSignal::E type, int num_pulses)
     }
     else if (current == TypeSignal::_5b_16750_2)
     {
+        IT6523::SendCommandF("RES %d.0", PageSignal5b::param_Ri.GetValue().ToInt());
         IT6523::SendCommand("carwave:iso16750:load:dump:test bmode");
         IT6523::SendCommandF("carwave:iso16750:load:dump:volt %dV", gset.voltage_mode.CurrentVolts());
         IT6523::SendCommandF("carwave:iso16750:load:dump:UN %d", PageSignal5b::param_Us.GetValue().ToInt());

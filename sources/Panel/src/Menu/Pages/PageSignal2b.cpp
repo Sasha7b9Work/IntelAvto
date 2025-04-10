@@ -19,8 +19,8 @@ namespace PageSignal2b
         290, 60);
 
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_2b_SAEJ1113].values12[1], Counter(1), Counter(1000),
-        &gset.signals[TypeSignal::_2b_SAEJ1113].values24[1], Counter(1), Counter(1000),
+        &gset.signals[TypeSignal::_2b_SAEJ1113].values12[1], Counter(1), Counter(10),
+        &gset.signals[TypeSignal::_2b_SAEJ1113].values24[1], Counter(1), Counter(10),
         90, 100
     );
 
@@ -57,7 +57,7 @@ namespace PageSignal2b
 
     static void AdditionDraw()
     {
-        Text("%s     Ri: 0.05 ќм     »мпульсов: %d", VoltageMode::TextValue(),
+        Text("%s     Ri: 0.01 ќм     »мпульсов: %d", VoltageMode::TextValue(),
             Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToInt()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );

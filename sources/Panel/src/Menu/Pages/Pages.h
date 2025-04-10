@@ -97,6 +97,8 @@ namespace PageSignal5a
 
     extern TParameter param_td;
 
+    extern CParameter param_Ri;
+
     extern Page *self;
 }
 
@@ -108,4 +110,6 @@ namespace PageSignal5b
     extern VParameter param_Us;
 
     extern TParameter param_td;
+
+    extern CParameter param_Ri;
 }
