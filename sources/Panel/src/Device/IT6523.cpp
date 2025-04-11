@@ -26,6 +26,8 @@ namespace IT6523
     {
         return pulses_remained;
     }
+
+    static void SendSequence(int num_step, int volts, int ms);
 }
 
 

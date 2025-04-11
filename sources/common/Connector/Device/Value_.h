@@ -108,7 +108,18 @@ private:
 
 struct Voltage : public Value
 {
-    Voltage(int voltage) : Value(voltage, TypeValue::Voltage) { }
+    Voltage(int voltage) : Value(voltage, TypeValue::Voltage)
+    {
+        if (voltage < 0)
+        {
+            voltage = -voltage;
+        }
+
+        if (voltage < 1000 && voltage != 0)
+        {
+            voltage = voltage;
+        }
+    }
 };
 
 
