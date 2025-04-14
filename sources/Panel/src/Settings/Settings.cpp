@@ -67,14 +67,14 @@ static Settings def_set =
     { VoltageMode::_12 },
     {
         {   {   Voltage(-75000),                // 1 : Us   12      Signal 1
-                Time(1000),                     // 1 : t1   12
+                Time(1100),                     // 1 : t1   12
                 Counter(10000),                 // 1 : N    12
                 ValueNull(),
                 ValueNull()
             }
             ,
             {   Voltage(-300000),               // 1 : Us   24
-                Time(1000),                     // 1 : Us   24
+                Time(1100),                     // 1 : Us   24
                 Counter(10000),                 // 1 : N    24
                 ValueNull(),
                 ValueNull() }}

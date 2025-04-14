@@ -348,17 +348,24 @@ void Value::Draw(int x, int y) const
 
         std::strcat(string, Text("%d", value).c_str());
 
-        if (IsVoltage())
+        while (true)
         {
-            while (string[std::strlen(string) - 1] == '0')          // Убираем незначащие нули
+            if (std::strlen(string) < 2)
             {
-                string[std::strlen(string) - 1] = '\0';
+                break;
             }
 
-            while (string[std::strlen(string) - 1] == ',')          // Убираем запятую, если она - последний символ
+            if (string[std::strlen(string) - 1] != '0')
             {
-                string[std::strlen(string) - 1] = '\0';
+                break;
             }
+
+            if (string[std::strlen(string) - 2] == ',')
+            {
+                break;
+            }
+
+            string[std::strlen(string) - 1] = '\0';
         }
     }
 
