@@ -345,6 +345,16 @@ void Value::Draw(int x, int y) const
         value = value - int_value * 1000;
 
         std::strcat(string, Text("%d", value).c_str());
+
+        while (string[std::strlen(string) - 1] == '0')
+        {
+            string[std::strlen(string) - 1] = '\0';
+        }
+
+        while (string[std::strlen(string) - 1] == ',')
+        {
+            string[std::strlen(string) - 1] = '\0';
+        }
     }
 
     if (GetType() != TypeValue::Raw)
