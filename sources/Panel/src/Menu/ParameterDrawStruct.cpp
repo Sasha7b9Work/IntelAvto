@@ -95,20 +95,22 @@ void ParameterDrawStruct::Set(Parameter *_param)
 {
     parameter = _param;
 
-    p.Set(parameter->GetValue().ToInt());
+    p.Set(parameter->GetValue());
 }
 
 
-void ParameterDrawStruct::Params::Set(int value)
+void ParameterDrawStruct::Params::Set(const Value &val)
 {
-    is_negative = value < 0;
+    int value_int = val.ToInt();
+
+    is_negative = value_int < 0;
 
     if (is_negative)
     {
-        value = -value;
+        value_int = -value_int;
     }
 
-    Math::ItoA(value, symbols);
+    Math::ItoA(value_int, symbols);
 
     index = (int)std::strlen(symbols) - 1;
 }
@@ -346,14 +348,17 @@ void Value::Draw(int x, int y) const
 
         std::strcat(string, Text("%d", value).c_str());
 
-        while (string[std::strlen(string) - 1] == '0')
+        if (IsVoltage())
         {
-            string[std::strlen(string) - 1] = '\0';
-        }
+            while (string[std::strlen(string) - 1] == '0')          // Убираем незначащие нули
+            {
+                string[std::strlen(string) - 1] = '\0';
+            }
 
-        while (string[std::strlen(string) - 1] == ',')
-        {
-            string[std::strlen(string) - 1] = '\0';
+            while (string[std::strlen(string) - 1] == ',')          // Убираем запятую, если она - последний символ
+            {
+                string[std::strlen(string) - 1] = '\0';
+            }
         }
     }
 

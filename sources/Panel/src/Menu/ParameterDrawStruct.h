@@ -48,6 +48,6 @@ private:
 
         void SetSymbolToCurrentPos(char);
 
-        void Set(int);
+        void Set(const Value &);
     } p;
 };
