@@ -120,11 +120,11 @@ bool IT6523::_Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommand("sequence:recall 1");
         IT6523::SendCommand("sequence:step:count 3");
 
-        SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Ua.GetValue().ToIntAbs(), buffer);
+        SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Us.GetValue().ToIntAbs(), buffer);
         int duration = PageSignal4::param_t7.GetValue().ToInt();
         IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms; load curr 1,3", buffer, duration);
 
-        SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Us.GetValue().ToIntAbs(), buffer);
+        SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Ua.GetValue().ToIntAbs(), buffer);
         duration = PageSignal4::param_t9.GetValue().ToInt();
         IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms; load curr 2,3", buffer, duration);
 
