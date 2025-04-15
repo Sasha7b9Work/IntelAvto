@@ -1,8 +1,8 @@
 // 2025/02/13 10:50:14 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Connector/Device/Value_.h"
 
 class Parameter;
-struct Value;
 
 
 struct ParameterDrawStruct
@@ -11,7 +11,7 @@ struct ParameterDrawStruct
 
     void Draw(int x, int y) const;
 
-    void Set(Parameter *_param);
+    void Set(Parameter *);
 
     bool ToValue(Value *) const;
 
@@ -35,6 +35,8 @@ private:
         int index;                          // Текущий разряд. 0 - "-", если есть
         char symbols[SIZE_BUFER];
         bool is_negative = false;           // Полярность значения
+
+        Value value{ 0, TypeValue::Raw };
 
         bool OnLeftAllNines(int pos);
 

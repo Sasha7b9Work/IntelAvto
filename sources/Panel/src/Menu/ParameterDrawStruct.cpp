@@ -81,12 +81,19 @@ void ParameterDrawStruct::Draw(int x, int y) const
 
     int pos_hight = p.is_negative ? (p.index + 1) : (p.index);        // Позиция подсвеченного разряда
 
-    for (int i = 0; i < (int)std::strlen(buffer); i++)
+    int size_buffer = (int)std::strlen(buffer);
+
+    for (int i = 0; i < size_buffer; i++)
     {
         Rect(13, 18).Fill(x + 10 * i - 2, y - 2, (i == pos_hight) ? Color::BLUE : Color::BACK);
 
         char text[2] = { buffer[i], '\0' };
         Text(text).Write(x + 10 * i, y, Color::WHITE);
+    }
+
+    if (p.value.IsVoltage())
+    {
+
     }
 }
 
@@ -101,6 +108,8 @@ void ParameterDrawStruct::Set(Parameter *_param)
 
 void ParameterDrawStruct::Params::Set(const Value &val)
 {
+    value = val;
+
     int value_int = val.ToInt();
 
     is_negative = value_int < 0;
