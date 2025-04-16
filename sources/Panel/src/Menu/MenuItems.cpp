@@ -553,7 +553,7 @@ bool FieldIP::OnKey(Key::E key)
         {
             Close();
         }
-        else if (key == Key::Dot || (key >= Key::_1 && key <= Key::_0))
+        else if (key == Key::Dot || (key >= Key::_0 && key <= Key::_9))
         {
             if (!edited)
             {
@@ -603,7 +603,7 @@ bool FieldMAC::OnKey(Key::E key)
         {
             Close();
         }
-        else if (key == Key::Dot || (key >= Key::_1 && key <= Key::_0))
+        else if (key == Key::Dot || (key >= Key::_0 && key <= Key::_9))
         {
             if (!edited)
             {
@@ -653,7 +653,7 @@ bool FieldPort::OnKey(Key::E key)
         {
             Close();
         }
-        else if (key >= Key::_1 && key <= Key::_0)
+        else if (key >= Key::_0 && key <= Key::_9)
         {
             if (!edited)
             {

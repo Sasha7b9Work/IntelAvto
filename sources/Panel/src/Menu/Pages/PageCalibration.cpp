@@ -268,7 +268,7 @@ namespace PageCalibration
             if (key == Key::Start || key == Key::Stop)
             {
             }
-            else if (FieldIsVisible() && ((key >= Key::_1 && key <= Key::_0) || key == Key::Esc))
+            else if (FieldIsVisible() && ((key >= Key::_0 && key <= Key::_9) || key == Key::Dot || key == Key::Esc))
             {
                 field.OnKey(key);
             }

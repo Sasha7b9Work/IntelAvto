@@ -43,7 +43,7 @@ void ParameterDrawStruct::PressKey(int _key)
         p.symbols[0] = '\0';
         p.index = 0;
     }
-    else if (key >= Key::_1 && key <= Key::_0)
+    else if (key >= Key::_0 && key <= Key::_9)
     {
         if ((key == Key::_0 && p.index == 0) ||
             (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))

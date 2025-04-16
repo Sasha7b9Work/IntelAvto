@@ -48,11 +48,11 @@ void InputField::OnKey(Key::E key)
 
         if (std::strlen(buffer) < SIZE_BUFFER - 1)
         {
-            char symbol = (char)key + 0x30;
+            char symbol = (char)(key - 1) + 0x30;
 
-            if (key == Key::_0)
+            if (key == Key::Dot)
             {
-                symbol = '0';
+                symbol = '.';
             }
 
             buffer[std::strlen(buffer)] = symbol;
