@@ -91,6 +91,7 @@ pchar Key::Name(E value)
     static pchar names[Key::Count] =
     {
         "None",
+        "0",
         "1",
         "2",
         "3",
@@ -100,7 +101,6 @@ pchar Key::Name(E value)
         "7",
         "8",
         "9",
-        "0",
         "-",
         ".",
         "START",

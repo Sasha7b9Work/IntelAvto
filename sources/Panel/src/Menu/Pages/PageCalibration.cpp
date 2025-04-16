@@ -123,9 +123,9 @@ namespace PageCalibration
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
-            if (field.GetValue() != 0)
+            if (field.GetValueMilliUnits() != 0)
             {
-                values[type_signal][type_accum][current_point] = field.GetValue();
+                values[type_signal][type_accum][current_point] = field.GetValueMilliUnits();
 
                 if (current_point < NUM_POINTS - 1)
                 {

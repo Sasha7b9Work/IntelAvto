@@ -15,6 +15,10 @@ struct Word
 
 namespace SU
 {
+    char *GetWord(pchar, int start_pos, int end_pos, char *out);
+
+    int FindPosition(pchar, char);
+
     // Перевод из миллисекунд и милливольт в секунды и вольты
     char *MilliUnitsToUnits(int, char[32]);
 

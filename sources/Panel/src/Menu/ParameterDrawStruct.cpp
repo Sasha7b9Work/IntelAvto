@@ -52,7 +52,7 @@ void ParameterDrawStruct::PressKey(int _key)
         }
         else
         {
-            static const char _keys[Key::Count] = { ' ', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+            static const char _keys[Key::Count] = { ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
             p.SetSymbolToCurrentPos(_keys[key]);
         }

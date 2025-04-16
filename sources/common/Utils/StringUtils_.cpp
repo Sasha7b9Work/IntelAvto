@@ -652,3 +652,31 @@ char *SU::MilliUnitsToUnits(int ms, char out[32])
 
     return out;
 }
+
+
+int SU::FindPosition(pchar text, char symbol)
+{
+    for (uint i = 0; i < std::strlen(text); i++)
+    {
+        if (text[i] == symbol)
+        {
+            return (int)i;
+        }
+    }
+
+    return -1;
+}
+
+
+char *SU::GetWord(pchar text, int start_pos, int end_pos, char *out)
+{
+    out[0] = '\0';
+
+    for (int i = start_pos; i < end_pos; i++)
+    {
+        char buf[2] = { text[i], '\0' };
+        std::strcat(out, buf);
+    }
+
+    return out;
+}

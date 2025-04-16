@@ -14,10 +14,12 @@ struct InputField
 
     void Reset();
 
-    int GetValue() const;
+    int GetValueMilliUnits() const;
 
 private:
 
-    static const int SIZE_BUFFER = 5;
+    static const int SIZE_BUFFER = 6;
     char buffer[SIZE_BUFFER];
+
+    bool IsConsist(char) const;
 };

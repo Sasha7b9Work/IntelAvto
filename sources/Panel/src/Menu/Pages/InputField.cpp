@@ -3,6 +3,7 @@
 #include "Menu/Pages/InputField.h"
 #include "Display/Primitives_.h"
 #include "Display/Text_.h"
+#include "Utils/StringUtils_.h"
 #include <cstring>
 #include <cstdlib>
 
@@ -55,7 +56,13 @@ void InputField::OnKey(Key::E key)
                 symbol = '.';
             }
 
-            buffer[std::strlen(buffer)] = symbol;
+            if (symbol == '.' && IsConsist('.'))
+            {
+            }
+            else
+            {
+                buffer[std::strlen(buffer)] = symbol;
+            }
         }
     }
 }
@@ -67,7 +74,51 @@ void InputField::Reset()
 }
 
 
-int InputField::GetValue() const
+int InputField::GetValueMilliUnits() const
 {
-    return std::atoi(buffer);
+    int pos = SU::FindPosition(buffer, '.');
+
+    if (pos == -1)
+    {
+        return std::atoi(buffer) * 1000;
+    }
+
+    char units[32];
+
+    SU::GetWord(buffer, 0, pos, units);
+
+    char milliunits[32];
+
+    SU::GetWord(buffer, pos + 1, (int)std::strlen(buffer), milliunits);
+
+    int milli = std::atoi(milliunits);
+
+    if (std::strlen(milliunits) == 0)
+    {
+        milli *= 1000;
+    }
+    else if (std::strlen(milliunits) == 1)
+    {
+        milli *= 100;
+    }
+    else if (std::strlen(milliunits) == 2)
+    {
+        milli *= 10;
+    }
+
+    return std::atoi(units) * 1000 + milli;
+}
+
+
+bool InputField::IsConsist(char symbol) const
+{
+    for (uint i = 0; i < std::strlen(buffer); i++)
+    {
+        if (buffer[i] == symbol)
+        {
+            return true;
+        }
+    }
+
+    return false;
 }
