@@ -197,7 +197,11 @@ namespace PageCalibration
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
-            Text("Точка %d", current_point + 1).Write(250, 45, Color::WHITE);
+            Text("Точка %d", current_point + 1).Write(260, 30, Color::WHITE);
+
+            Text("Введите значение измеренного").Write(200, 70);
+
+            Text("напряжения").Write(200, 100);
 
             field.Draw(240, 150, FieldIsVisible());
         }
