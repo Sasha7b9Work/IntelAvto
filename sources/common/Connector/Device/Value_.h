@@ -17,6 +17,13 @@ struct Value
 {
     Value(int value, TypeValue::E type)
     {
+        Set(value, type);
+    }
+
+    Value (uint v) : raw(v) { }
+
+    void Set(int value, TypeValue::E type)
+    {
         raw = value > 0 ? (uint)value : (uint)(-value);
 
         if (value < 0)
@@ -37,8 +44,6 @@ struct Value
             raw |= (1 << 29);
         }
     }
-
-    Value (uint v) : raw(v) { }
 
     void Draw(int x, int y) const;
 
@@ -109,6 +114,11 @@ private:
 struct Voltage : public Value
 {
     Voltage(int voltage) : Value(voltage, TypeValue::Voltage) { }
+
+    void Set(int mv)
+    {
+        Value::Set(mv, TypeValue::Voltage);
+    }
 };
 
 

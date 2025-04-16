@@ -27,23 +27,23 @@ namespace PageCalibration
     static bool output_en = false;
 
     // Здесь измеренные значения, введённые вручную
-    static int values[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
+    static Voltage values[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
     {
-        {                   // 1
-            { 0, 0 },
-            { 0, 0 }
+        {                               // 1
+            { Voltage(0), Voltage(0) },
+            { Voltage(0), Voltage(0) }
         },
-        {                   // 2a
-            { 0, 0 },
-            { 0, 0 }
+        {                               // 2a
+            { Voltage(0), Voltage(0) },
+            { Voltage(0), Voltage(0) }
         },
-        {                   // 3a
-            { 0, 0 },
-            { 0, 0 }
+        {                               // 3a
+            { Voltage(0), Voltage(0) },
+            { Voltage(0), Voltage(0) }
         },
-        {                   // 3b
-            { 0, 0 },
-            { 0, 0 }
+        {                               // 3b
+            { Voltage(0), Voltage(0) },
+            { Voltage(0), Voltage(0) }
         }
     };
 
@@ -125,7 +125,7 @@ namespace PageCalibration
         {
             if (field.GetValueMilliUnits() != 0)
             {
-                values[type_signal][type_accum][current_point] = field.GetValueMilliUnits();
+                values[type_signal][type_accum][current_point].Set(field.GetValueMilliUnits());
 
                 if (current_point < NUM_POINTS - 1)
                 {
@@ -208,7 +208,8 @@ namespace PageCalibration
                 int y = 20 + 25 * i;
 
                 Text("Точка %d", i + 1).Write(200, y, Color::WHITE);
-                Text("%d В", values[type_signal][type_accum][i]).Write(300, y);
+
+                values[type_signal][type_accum][i].Draw(300, y);
             }
 
             int x = 170;
