@@ -253,6 +253,8 @@ public:
         Parameter(title_ru, value12, _min12, _max12, value24, _min24, _max24, _x, _y)
     {
     }
+
+    Value GetCalibrateValue(TypeSignal::E, VoltageMode::E);
 };
 
 

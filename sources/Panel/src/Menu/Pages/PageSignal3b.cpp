@@ -40,7 +40,7 @@ namespace PageSignal3b
 
     static bool FuncStartTest()
     {
-        Message::Start3B(param_Us.GetValue()).Transmit();
+        Message::Start3B(param_Us.GetCalibrateValue(TypeSignal::_3b, VoltageMode::Current())).Transmit();
 
         return true;
     }

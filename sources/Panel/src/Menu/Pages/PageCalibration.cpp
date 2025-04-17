@@ -9,6 +9,7 @@
 #include "Hardware/Timer.h"
 #include "Menu/Pages/InputField.h"
 #include "Connector/Device/Messages_.h"
+#include <cmath>
 
 
 using namespace Primitives;
@@ -17,7 +18,7 @@ using namespace Primitives;
 namespace PageCalibration
 {
     static const int INVALID_VOLTAGE = 999999999;
-    static const uint TIME_TIMER = 1500;
+    static const uint TIME_TIMER = 5000;
 
     static const int NUM_SIGNALS = 4;       // Калибруем только четыре из всех сигналов - те, которые формируем сами
     static uint8 type_signal = 0;           // Один из 
@@ -32,24 +33,6 @@ namespace PageCalibration
                                             // NUM_POINTS - 1 - максимальное напряжение
 
     static bool output_en = false;
-
-    // Здесь храним старые калибровочные коэффициенты того сигнала, что калибруем
-    namespace Storage
-    {
-        SettingsCal::StructCal cal;
-
-        // Сохранить текущие коэффициенты калибруемого сигнала
-        void Store()
-        {
-            cal = gset.cal.cal[CurrentSignal()][type_accum][0];
-        }
-
-        // Восстановить коэффицинеты калибруемого сиганала, которые были до начала калибровки
-        void Restore()
-        {
-            gset.cal.cal[CurrentSignal()][type_accum][0] = cal;
-        }
-    }
 
     // Здесь измеренные значения, введённые вручную
     static Voltage values[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
@@ -72,6 +55,7 @@ namespace PageCalibration
         }
     };
 
+    // Поле для ввода измеренного значения
     static InputField field;
 
     // Подать напряжение на выход в соответствии с установленными параметрами
@@ -81,10 +65,7 @@ namespace PageCalibration
     static void DisableOutput();
 
     // Возвращает напряжение текущей точки
-    static Voltage GetVoltagePoint();
-
-    // Сохранить действующие калибровочные коэффициенты для последующего восстановления
-    static void StoreCalibrateFactorsAndReset();
+    static Voltage GetVoltagePoint(int num_point);
 
     // Отказаться от применения калибровочных факторов
     static void RefuseCalibrateFactors();
@@ -139,8 +120,6 @@ namespace PageCalibration
         if (state == State::Normal)                     // Исходное состояние
         {
             state = State::EnableOutputAndWaitEnter;    // После нажатия кнопки будем ждать ввода измеренного значения
-
-            StoreCalibrateFactorsAndReset();            // Сохраняем текущие калибровки на случай позжего восстановления
 
             current_point = 0;                          // Будем устанавливать минимальное напряжение
 
@@ -258,7 +237,11 @@ namespace PageCalibration
 
             Text("Коэффициент").Write(x, y, Display::Width() - x, Color::GREEN); y += 30;
 
-            Text("cохранен").Write(x, y, Display::Width() - x);
+            Text("cохранен").Write(x, y, Display::Width() - x); y += 30;
+
+            Text("k = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].k).Write(x, y, Display::Width() - x); y += 30;
+
+            Text("offset = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].offset).Write(x, y, Display::Width() - x); y += 30;
         }
         else if (state == State::RefuseCalibration)
         {
@@ -267,7 +250,11 @@ namespace PageCalibration
 
             Text("Коэффициент").Write(x, y, Display::Width() - x, Color::RED); y += 30;
 
-            Text("не cохранен").Write(x, y, Display::Width() - x);
+            Text("не cохранен").Write(x, y, Display::Width() - x); x += 30;
+
+            Text("k = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].k).Write(x, y, Display::Width() - x); y += 30;
+
+            Text("offset = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].offset).Write(x, y, Display::Width() - x); y += 30;
         }
 
         Font::Set(TypeFont::GOSTB28B);
@@ -276,7 +263,7 @@ namespace PageCalibration
 
         if (output_en)
         {
-            Text buffer("%f", GetVoltagePoint().ToUnits());
+            Text buffer("%f", (double)GetVoltagePoint(current_point).ToUnits());
 
             while (*buffer.LastSymbol() == '0')
             {
@@ -344,7 +331,7 @@ namespace PageCalibration
 
 void PageCalibration::EnableOutput()
 {
-    Voltage voltage = GetVoltagePoint();
+    Voltage voltage = GetVoltagePoint(current_point);
     Time time(500);
 
     if (CurrentSignal() == TypeSignal::_1)
@@ -389,7 +376,7 @@ void PageCalibration::TimerFunction()
 }
 
 
-Voltage PageCalibration::GetVoltagePoint()
+Voltage PageCalibration::GetVoltagePoint(int num_point)
 {
     static const int voltages[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
     {
@@ -411,7 +398,7 @@ Voltage PageCalibration::GetVoltagePoint()
         }
     };
 
-    return Voltage(voltages[type_signal][type_accum][current_point] * 1000);
+    return Voltage(voltages[type_signal][type_accum][num_point] * 1000);
 }
 
 
@@ -421,25 +408,48 @@ bool PageCalibration::FieldIsVisible()
 }
 
 
-void PageCalibration::StoreCalibrateFactorsAndReset()
+void PageCalibration::CalculateCalibrateFactors()
 {
-    Storage::Store();
+    /*
+          Выход
+            |
+        Uo2 |..................+
+            |                  .
+            |                  .
+            |                  .
+        Uo1 |.....+            .
+            |     .            .
+            +----------------------- Вход
+                 Ui1          Ui2
+    
+        Uo = offset + Ui * k
+    
+        k = (Uo2 - Uo1) / (Ui2 - Ui1)
+    
+        offset = Uo1 - Ui1 * k
+    */
 
-    gset.cal.cal[CurrentSignal()][type_accum][0].Reset();
+    float out1 = values[type_signal][type_accum][0].ToUnits();
+    float out2 = values[type_signal][type_accum][1].ToUnits();
+
+    float in1 = std::fabsf(GetVoltagePoint(0).ToUnits());
+    float in2 = std::fabsf(GetVoltagePoint(1).ToUnits());
+
+    float k = (out2 - out1) / (in2 - in1);
+    float offset = out1 - in1 * k;
+
+    gset.cal.cal[CurrentSignal()][type_accum][0].k = k;
+    gset.cal.cal[CurrentSignal()][type_accum][0].offset = offset;
+
+    state = State::FactorSave;
+
+    Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
 }
 
 
 void PageCalibration::RefuseCalibrateFactors()
 {
     state = State::RefuseCalibration;
-
-    Timer::SetDefferedOnceTask(TimerTask::Calibrate, 3000, TimerFunction);
-}
-
-
-void PageCalibration::CalculateCalibrateFactors()
-{
-    state = State::FactorSave;
 
     Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
 }

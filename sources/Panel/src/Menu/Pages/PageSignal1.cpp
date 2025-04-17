@@ -52,11 +52,11 @@ namespace PageSignal1
     {
         if (VoltageMode::Is12())
         {
-            Message::Start1_12V(param_Us.GetValue(), param_t1.GetValue()).Transmit();
+            Message::Start1_12V(param_Us.GetCalibrateValue(TypeSignal::_1, VoltageMode::_12), param_t1.GetValue()).Transmit();
         }
         else
         {
-            Message::Start1_24V(param_Us.GetValue(), param_t1.GetValue()).Transmit();
+            Message::Start1_24V(param_Us.GetCalibrateValue(TypeSignal::_1, VoltageMode::_24), param_t1.GetValue()).Transmit();
         }
 
         RemainingTimeCounter::Start(param_t1, param_N);

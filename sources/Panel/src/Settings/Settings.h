@@ -112,10 +112,8 @@ struct SettingsCal
 
     // 8 типов сигналов
     // 2 - 12/24¬
-    // 4 - четыре точки
+    // 4 - четыре отрезка дл€ калибровки. ѕока используем один
     StructCal cal[TypeSignal::Count][VoltageMode::Count][4];
-
-    float Calculate(float, TypeSignal::E, VoltageMode::E);
 };
 
 

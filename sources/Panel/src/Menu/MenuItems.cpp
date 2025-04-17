@@ -14,6 +14,7 @@
 #include "Utils/StringUtils_.h"
 #include <cstring>
 #include <cstdlib>
+#include <cmath>
 
 
 using namespace Primitives;
@@ -291,6 +292,16 @@ pchar Choice::Title() const
 pchar Parameter::Title() const
 {
     return title;
+}
+
+
+Value VParameter::GetCalibrateValue(TypeSignal::E type, VoltageMode::E mode)
+{
+    const SettingsCal::StructCal &cal = gset.cal.cal[type][mode][0];
+
+    float voltage = cal.offset + std::fabsf(GetValue().ToUnits()) * cal.offset;
+
+    return Value((int)(voltage * 1e3f), TypeValue::Voltage);
 }
 
 
