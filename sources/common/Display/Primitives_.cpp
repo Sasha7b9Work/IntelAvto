@@ -41,6 +41,14 @@ void Label::SetState(pchar _text, const Color &_color_text, const Color &_color_
 }
 
 
+void Label::SetColors(const Color &_text, const Color &back, const Color &border)
+{
+    color_text = _text;
+    color_back = back;
+    color_border = border;
+}
+
+
 void Rect::FillRounded(int x, int y, int round, const Color &colorFill, const Color &colorBound)
 {
     DrawRounded(x, y, round, colorBound);

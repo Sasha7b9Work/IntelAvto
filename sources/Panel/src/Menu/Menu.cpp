@@ -128,6 +128,8 @@ void Menu::Input::OnKey(Key::E key)
 void Menu::Init()
 {
     Input::SetFuncUpdate(Input::FuncUpdate);
+
+    labelMode.SetColors(Color::BLACK, Color::GREEN, Color::WHITE);
 }
 
 

@@ -13,6 +13,7 @@ namespace Primitives
             x(_x), y(_y), text(_text), color_text(_color_text), color_back(_color_back), color_border(_color_border) { }
         void Draw();
         void SetState(pchar text, const Color &color_text, const Color &color_back);
+        void SetColors(const Color &text, const Color &back, const Color &border);
     private:
         int x;
         int y;
