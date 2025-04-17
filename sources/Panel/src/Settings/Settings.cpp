@@ -299,7 +299,7 @@ Duration::Duration(const Parameter &period, const Parameter &N)
     Value val_period = period.GetValue();
     Value val_N = N.GetValue();
 
-    timeMS = (uint)(val_period.ToIntMU() * val_N.ToIntMU());
+    timeMS = (uint)(val_period.ToMU() * val_N.ToMU());
 }
 
 
@@ -307,7 +307,7 @@ Duration::Duration(float periodSec, const Parameter &N)
 {
     Value val_N = N.GetValue();
 
-    timeMS = (uint)(periodSec * 1000.f * (float)val_N.ToIntMU());
+    timeMS = (uint)(periodSec * 1000.f * (float)val_N.ToMU());
 }
 
 

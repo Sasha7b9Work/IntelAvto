@@ -139,7 +139,7 @@ void FPGA::Reg::Write(const Value &value)
 
     SetAddress((uint8)address);
 
-    uint duration = (uint)value.ToIntMU() * 1000;         // Число приходит в миллисекундах, переводим его в микросекунды перед записью
+    uint duration = (uint)value.ToMU() * 1000;         // Число приходит в миллисекундах, переводим его в микросекунды перед записью
 
     WriteRawValue(duration);
 

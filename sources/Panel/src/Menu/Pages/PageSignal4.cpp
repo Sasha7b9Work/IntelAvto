@@ -56,7 +56,7 @@ namespace PageSignal4
 
     static bool FuncStartTest()
     {
-        IT6523::_Start(TypeSignal::_4_DIN40839, param_N.GetValue().ToIntMU());
+        IT6523::_Start(TypeSignal::_4_DIN40839, param_N.GetValue().ToMU());
 
         return true;
     }
@@ -77,7 +77,7 @@ namespace PageSignal4
     {
         Text("%s    Ri: 0.01 ќм    »мпульсов: %d",
             VoltageMode::TextValue(),
-            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToIntMU()
+            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToMU()
         ).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
