@@ -288,7 +288,7 @@ namespace PageCalibration
                 *buffer.LastSymbol() = '\0';
             }
 
-            Text("%s B", buffer).Write(45, 205, Color::WHITE);
+            Text("%s B", buffer.c_str()).Write(45, 205, Color::WHITE);
         }
         else
         {
