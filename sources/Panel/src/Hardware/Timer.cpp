@@ -84,7 +84,7 @@ void Timer::UpdateTasks()
 
 void RemainingTimeCounter::Start(const Parameter &period, const Parameter &N)
 {
-    time_end = TIME_MS + (uint)(period.GetValue().ToInt() * N.GetValue().ToInt());
+    time_end = TIME_MS + (uint)(period.GetValue().ToIntMU() * N.GetValue().ToIntMU());
 }
 
 

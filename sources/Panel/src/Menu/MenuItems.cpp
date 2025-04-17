@@ -346,11 +346,11 @@ bool Parameter::OnKey(Key::E key)
 
             if (ds.ToValue(&new_value))
             {
-                if (new_value.ToIntAbs() < GetMin().ToIntAbs())
+                if (new_value.ToIntAbsMU() < GetMin().ToIntAbsMU())
                 {
                     GetValue() = Value(GetMin().GetRaw());
                 }
-                else if (new_value.ToIntAbs() > GetMax().ToIntAbs())
+                else if (new_value.ToIntAbsMU() > GetMax().ToIntAbsMU())
                 {
                     GetValue() = Value(GetMax().GetRaw());
                 }

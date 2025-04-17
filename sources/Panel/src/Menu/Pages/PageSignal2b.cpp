@@ -43,7 +43,7 @@ namespace PageSignal2b
 
     static bool FuncStartTest()
     {
-        IT6523::_Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToInt());
+        IT6523::_Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToIntMU());
 
         return true;
     }
@@ -60,7 +60,7 @@ namespace PageSignal2b
     static void AdditionDraw()
     {
         Text("%s     Ri: 0.01 ќм     »мпульсов: %d", VoltageMode::TextValue(),
-            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToInt()).Write(
+            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToIntMU()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 

@@ -51,7 +51,7 @@ namespace PageSignal5a
 
     static bool FuncStartTest()
     {
-        if (!IT6523::_Start(TypeSignal::_5a_16750_1, param_N.GetValue().ToInt()))
+        if (!IT6523::_Start(TypeSignal::_5a_16750_1, param_N.GetValue().ToIntMU()))
         {
             Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse);
             return false;
@@ -74,7 +74,7 @@ namespace PageSignal5a
     static void AdditionDraw()
     {
         Text("%s     Импульсов: %d", VoltageMode::TextValue(),
-            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToInt()).Write(
+            Device::IsRunning() ? IT6523::RemainedPulses() : param_N.GetValue().ToIntMU()).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 

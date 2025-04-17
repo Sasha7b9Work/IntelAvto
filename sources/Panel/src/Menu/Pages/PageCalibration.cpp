@@ -276,7 +276,7 @@ namespace PageCalibration
 
         if (output_en)
         {
-            Text buffer("%f", GetVoltagePoint().ToFloat());
+            Text buffer("%f", GetVoltagePoint().ToFloatUnits());
 
             while (*buffer.LastSymbol() == '0')
             {

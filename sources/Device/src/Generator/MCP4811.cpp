@@ -62,7 +62,7 @@ uint16 MCP4811::Converter::Resolve() const
     *  
     */
 
-    float voltage = std::fabsf(value.ToFloat());
+    float voltage = std::fabsf(value.ToFloatUnits());
 
     if (TypeSignal::Is1_12V())
     {

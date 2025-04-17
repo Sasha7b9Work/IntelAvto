@@ -75,24 +75,25 @@ struct Value
     uint GetRaw() const { return raw; }
 
     // Вольты для напряжения, миллисекунды для времени
-    int ToInt() const
+    // MU - миллиюниты
+    int ToIntMU() const
     {
         int value = (int)(raw & 0x1FFFFFFF);        // Старший бит - знак, два следующие - тип
 
         return (raw & (uint)(1 << 31)) ? -value : value;
     }
 
-    int ToIntAbs() const
+    int ToIntAbsMU() const
     {
-        int int_value = ToInt();
+        int int_value = ToIntMU();
 
         return int_value >= 0 ? int_value : -int_value;
     }
 
     // В секунды и в вольты
-    float ToFloat() const
+    float ToFloatUnits() const
     {
-        return (float)ToInt() * 1e-3f;
+        return (float)ToIntMU() * 1e-3f;
     }
 
 private:

@@ -110,7 +110,7 @@ void ParameterDrawStruct::Params::Set(const Value &val)
 {
     value = val;
 
-    int value_int = val.ToInt();
+    int value_int = val.ToIntMU();
 
     is_negative = value_int < 0;
 
@@ -131,8 +131,8 @@ bool ParameterDrawStruct::IsMinimalValueOrLess() const
 
     ToValue(&value);
 
-    int int_value = value.ToIntAbs();
-    int min_value = parameter->GetMin().ToIntAbs();
+    int int_value = value.ToIntAbsMU();
+    int min_value = parameter->GetMin().ToIntAbsMU();
 
     return int_value <= min_value;
 }
@@ -144,8 +144,8 @@ bool ParameterDrawStruct::IsMaximumValueOrAbove() const
 
     ToValue(&value);
 
-    int int_value = value.ToIntAbs();
-    int max_value = parameter->GetMax().ToIntAbs();
+    int int_value = value.ToIntAbsMU();
+    int max_value = parameter->GetMax().ToIntAbsMU();
 
     return int_value >= max_value;
 }
@@ -325,7 +325,7 @@ void Value::Draw(int x, int y) const
 
     char *pointer = string;
 
-    int value = ToInt();
+    int value = ToIntMU();
 
     if (value < 0)
     {
