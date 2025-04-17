@@ -18,10 +18,8 @@ public:
     int WriteScaled(int x, int y, int size);
     void WriteInCenterRect(int x, int y, int width, int height, const Color &);
     void WriteInCenterRect(int x, int y, int width, int height);
-    pchar c_str() const
-    {
-        return text;
-    }
+    pchar c_str() const;
+    char *LastSymbol();
 private:
     char *text = nullptr;
 

@@ -14,6 +14,7 @@ struct InputField
 
     void Reset();
 
+    // ¬озвращает значение в милли-частицах
     int GetValueMilliUnits() const;
 
 private:

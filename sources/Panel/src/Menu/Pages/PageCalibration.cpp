@@ -8,6 +8,7 @@
 #include "Display/Display_.h"
 #include "Hardware/Timer.h"
 #include "Menu/Pages/InputField.h"
+#include "Connector/Device/Messages_.h"
 
 
 using namespace Primitives;
@@ -18,13 +19,37 @@ namespace PageCalibration
     static const int INVALID_VOLTAGE = 999999999;
     static const uint TIME_TIMER = 1500;
 
-    static const int NUM_SIGNALS = 4;
-    static uint8 type_signal = 0;
+    static const int NUM_SIGNALS = 4;       // Калибруем только четыре из всех сигналов - те, которые формируем сами
+    static uint8 type_signal = 0;           // Один из 
+    static TypeSignal::E CurrentSignal();
+
     static const int NUM_ACCUM = 2;
     static uint8 type_accum = 0;
+
     static const int NUM_POINTS = 2;        // Столько всего точек для калибровки
     static int  current_point = 0;          // Точка, которую сейчас измеряем
+                                            // 0 - минимальное напряжение
+                                            // NUM_POINTS - 1 - максимальное напряжение
+
     static bool output_en = false;
+
+    // Здесь храним старые калибровочные коэффициенты того сигнала, что калибруем
+    namespace Storage
+    {
+        SettingsCal::StructCal cal;
+
+        // Сохранить текущие коэффициенты калибруемого сигнала
+        void Store()
+        {
+            cal = gset.cal.cal[CurrentSignal()][type_accum][0];
+        }
+
+        // Восстановить коэффицинеты калибруемого сиганала, которые были до начала калибровки
+        void Restore()
+        {
+            gset.cal.cal[CurrentSignal()][type_accum][0] = cal;
+        }
+    }
 
     // Здесь измеренные значения, введённые вручную
     static Voltage values[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
@@ -56,10 +81,10 @@ namespace PageCalibration
     static void DisableOutput();
 
     // Возвращает напряжение текущей точки
-    static int GetVoltagePoint();
+    static Voltage GetVoltagePoint();
 
     // Сохранить действующие калибровочные коэффициенты для последующего восстановления
-    static void StoreCalibrateFactors();
+    static void StoreCalibrateFactorsAndReset();
 
     // Восстановить ранее сохранённые коэффициенты
     static void RestoreCalibrateFactors();
@@ -111,20 +136,22 @@ namespace PageCalibration
 
     static void FuncPress_Calibrate()
     {
-        if (state == State::Normal)
+        if (state == State::Normal)                     // Исходное состояние
         {
-            state = State::EnableOutputAndWaitEnter;
+            state = State::EnableOutputAndWaitEnter;    // После нажатия кнопки будем ждать ввода измеренного значения
 
-            StoreCalibrateFactors();
+            StoreCalibrateFactorsAndReset();            // Сохраняем текущие калибровки на случай позжего восстановления
 
-            current_point = 0;
+            current_point = 0;                          // Будем устанавливать минимальное напряжение
 
-            EnableOutput();
+            EnableOutput();                             // Подаём напряжение на выход
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
             if (field.GetValueMilliUnits() != 0)
             {
+                DisableOutput();
+
                 values[type_signal][type_accum][current_point].Set(field.GetValueMilliUnits());
 
                 if (current_point < NUM_POINTS - 1)
@@ -135,9 +162,7 @@ namespace PageCalibration
                 }
                 else
                 {
-                    DisableOutput();
-
-                    state = State::ConfirmForSave;
+                    state = State::ConfirmForSave;      // Если все точки пройдены, то переходим в состояние ожидания сохранения
                 }
 
                 field.Reset();
@@ -191,7 +216,9 @@ namespace PageCalibration
             int x = 180;
             int y = 70;
 
-            Text("Для начала калибровки").Write(x + 30, y, Color::WHITE);                    y += 2 * dy;
+            Text("Для начала калибровки").Write(x + 30, y, Color::WHITE);
+
+            y += 2 * dy;
 
             Text("нажмите кнопку \"Калибровать\".").Write(x, y);
         }
@@ -249,7 +276,19 @@ namespace PageCalibration
 
         if (output_en)
         {
-            Text("%d В", GetVoltagePoint()).Write(45, 205, Color::WHITE);
+            Text buffer("%f", GetVoltagePoint().ToFloat());
+
+            while (*buffer.LastSymbol() == '0')
+            {
+                *buffer.LastSymbol() = '\0';
+            }
+
+            if (*buffer.LastSymbol() == '.' || *buffer.LastSymbol() == ',')
+            {
+                *buffer.LastSymbol() = '\0';
+            }
+
+            Text("%s B", buffer).Write(45, 205, Color::WHITE);
         }
         else
         {
@@ -305,12 +344,41 @@ namespace PageCalibration
 
 void PageCalibration::EnableOutput()
 {
+    Voltage voltage = GetVoltagePoint();
+    Time time(500);
+
+    if (CurrentSignal() == TypeSignal::_1)
+    {
+        if (type_accum == 0)
+        {
+            Message::Start1_12V(voltage, time).Transmit();
+        }
+        else
+        {
+            Message::Start1_24V(voltage, time).Transmit();
+        }
+    }
+    else if (CurrentSignal() == TypeSignal::_2a)
+    {
+        Message::Start2A(voltage, time).Transmit();
+    }
+    else if (CurrentSignal() == TypeSignal::_3a)
+    {
+        Message::Start3A(voltage).Transmit();
+    }
+    else if (CurrentSignal() == TypeSignal::_3b)
+    {
+        Message::Start3B(voltage).Transmit();
+    }
+
     output_en = true;
 }
 
 
 void PageCalibration::DisableOutput()
 {
+    Message::Stop().Transmit();
+
     output_en = false;
 }
 
@@ -329,7 +397,7 @@ void PageCalibration::TimerFunction()
 }
 
 
-int PageCalibration::GetVoltagePoint()
+Voltage PageCalibration::GetVoltagePoint()
 {
     static const int voltages[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
     {
@@ -351,7 +419,7 @@ int PageCalibration::GetVoltagePoint()
         }
     };
 
-    return voltages[type_signal][type_accum][current_point];
+    return Voltage(voltages[type_signal][type_accum][current_point] * 1000);
 }
 
 
@@ -361,9 +429,11 @@ bool PageCalibration::FieldIsVisible()
 }
 
 
-void PageCalibration::StoreCalibrateFactors()
+void PageCalibration::StoreCalibrateFactorsAndReset()
 {
+    Storage::Store();
 
+    gset.cal.cal[CurrentSignal()][type_accum][0].Reset();
 }
 
 
@@ -372,4 +442,18 @@ void PageCalibration::RestoreCalibrateFactors()
     state = State::FactroNotSave;
 
     Timer::SetDefferedOnceTask(TimerTask::Calibrate, 3000, TimerFunction);
+}
+
+
+TypeSignal::E PageCalibration::CurrentSignal()
+{
+    static TypeSignal::E signals[4] =
+    {
+        TypeSignal::_1,
+        TypeSignal::_2a,
+        TypeSignal::_3a,
+        TypeSignal::_3b
+    };
+
+    return signals[type_signal];
 }

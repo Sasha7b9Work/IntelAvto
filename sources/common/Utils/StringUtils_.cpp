@@ -656,7 +656,9 @@ char *SU::MilliUnitsToUnits(int ms, char out[32])
 
 int SU::FindPosition(pchar text, char symbol)
 {
-    for (uint i = 0; i < std::strlen(text); i++)
+    uint size = std::strlen(text);
+
+    for (uint i = 0; i < size; i++)
     {
         if (text[i] == symbol)
         {

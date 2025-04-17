@@ -12,7 +12,6 @@
 using namespace Primitives;
 
 
-
 Text::Text(pchar format, ...)
 {
     std::va_list args;
@@ -372,4 +371,16 @@ int Text::WriteSymbolScaled(int x, int y, uint8 chr, int size) const
     }
 
     return x + width * size;
+}
+
+
+pchar Text::c_str() const
+{
+    return text;
+}
+
+
+char *Text::LastSymbol()
+{
+    return &text[std::strlen(text) - 1];
 }

@@ -92,14 +92,7 @@ struct Value
     // В секунды и в вольты
     float ToFloat() const
     {
-        float value = (float)ToInt();
-
-        if (GetType() == TypeValue::Time)
-        {
-            value *= 1e-3f;
-        }
-
-        return value;
+        return (float)ToInt() * 1e-3f;
     }
 
 private:

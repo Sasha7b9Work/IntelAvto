@@ -106,12 +106,14 @@ struct SettingsCal
     {
         float offset;
         float k;
+
+        void Reset();
     };
 
     // 8 типов сигналов
     // 2 - 12/24В
     // 4 - четыре точки
-    StructCal cal[8][2][4];
+    StructCal cal[TypeSignal::Count][VoltageMode::Count][4];
 
     float Calculate(float, TypeSignal::E, VoltageMode::E);
 };

@@ -15,7 +15,7 @@ class Item
 {
     friend class Hint;
 public:
-    Item() {}
+    Item() = default;
 
     static int Height();
 

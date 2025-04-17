@@ -155,7 +155,7 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 {
     char buffer[128];
 
-    std::memcpy(buffer, p.symbols, std::strlen(p.symbols));
+    std::strcpy(buffer, p.symbols);
 
     char *end = nullptr;
 

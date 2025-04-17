@@ -347,3 +347,10 @@ float SettingsCal::Calculate(float value, TypeSignal::E type, VoltageMode::E mod
 
     return val.offset + value * val.k;
 }
+
+
+void SettingsCal::StructCal::Reset()
+{
+    offset = 0.0f;
+    k = 1.0f;
+}
