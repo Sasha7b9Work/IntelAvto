@@ -25,7 +25,7 @@ Parameter *Parameter::editable = nullptr;
 
 int Item::Height()
 {
-    return Page::IsSignal(Menu::OpenedPage()) ? 30 : 30;
+    return 30;
 }
 
 

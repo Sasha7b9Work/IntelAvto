@@ -93,15 +93,17 @@ int InputField::GetValueMilliUnits() const
 
     int milli = std::atoi(milliunits);
 
-    if (std::strlen(milliunits) == 0)
+    int length = (int)std::strlen(milliunits);
+
+    if (length == 0)
     {
         milli *= 1000;
     }
-    else if (std::strlen(milliunits) == 1)
+    else if (length == 1)
     {
         milli *= 100;
     }
-    else if (std::strlen(milliunits) == 2)
+    else if (length == 2)
     {
         milli *= 10;
     }
@@ -112,7 +114,9 @@ int InputField::GetValueMilliUnits() const
 
 bool InputField::IsConsist(char symbol) const
 {
-    for (uint i = 0; i < std::strlen(buffer); i++)
+    uint size = std::strlen(buffer);
+
+    for (uint i = 0; i < size; i++)
     {
         if (buffer[i] == symbol)
         {
