@@ -124,6 +124,8 @@ namespace PageCalibration
             current_point = 0;                          // Будем устанавливать минимальное напряжение
 
             EnableOutput();                             // Подаём напряжение на выход
+
+
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
@@ -200,6 +202,15 @@ namespace PageCalibration
             y += 2 * dy;
 
             Text("нажмите кнопку \"Калибровать\".").Write(x, y);
+
+            y = 180;
+
+            x -= 30;
+
+            Text("k = %.3f", (double)gset.cal.cal[CurrentSignal()][type_accum][0].k).Write(x, y, Display::Width() - x); y += 30;
+
+            Text("offset = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].offset).Write(x, y, Display::Width() - x);
+
         }
         else if (state == State::EnableOutputAndWaitEnter)
         {
@@ -239,7 +250,7 @@ namespace PageCalibration
 
             Text("cохранен").Write(x, y, Display::Width() - x); y += 30;
 
-            Text("k = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].k).Write(x, y, Display::Width() - x); y += 30;
+            Text("k = %.3f", (double)gset.cal.cal[CurrentSignal()][type_accum][0].k).Write(x, y, Display::Width() - x); y += 30;
 
             Text("offset = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].offset).Write(x, y, Display::Width() - x); y += 30;
         }
@@ -252,7 +263,7 @@ namespace PageCalibration
 
             Text("не cохранен").Write(x, y, Display::Width() - x); x += 30;
 
-            Text("k = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].k).Write(x, y, Display::Width() - x); y += 30;
+            Text("k = %.3f", (double)gset.cal.cal[CurrentSignal()][type_accum][0].k).Write(x, y, Display::Width() - x); y += 30;
 
             Text("offset = %.3f В", (double)gset.cal.cal[CurrentSignal()][type_accum][0].offset).Write(x, y, Display::Width() - x); y += 30;
         }
