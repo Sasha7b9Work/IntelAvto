@@ -86,8 +86,8 @@ namespace PageCalibration
     // Сохранить действующие калибровочные коэффициенты для последующего восстановления
     static void StoreCalibrateFactorsAndReset();
 
-    // Восстановить ранее сохранённые коэффициенты
-    static void RestoreCalibrateFactors();
+    // Отказаться от применения калибровочных факторов
+    static void RefuseCalibrateFactors();
 
     // Рассчитать и приименить калибровочные факторы
     static void CalculateCalibrateFactors();
@@ -102,7 +102,7 @@ namespace PageCalibration
             EnableOutputAndWaitEnter,   // Установлено напряжение на выходе и ожидается ввод измеренного значения
             ConfirmForSave,             // Вывести подтверждение на сохранение настроек
             FactorSave,                 // Калибровочный коэффициент сохранён
-            FactroNotSave               // Калибровочный коэффициент не сохранён
+            RefuseCalibration           // Калибровочный коэффициент не сохранён
         };
     };
 
@@ -176,7 +176,7 @@ namespace PageCalibration
         {
 
         }
-        else if (state == State::FactroNotSave)
+        else if (state == State::RefuseCalibration)
         {
 
         }
@@ -260,7 +260,7 @@ namespace PageCalibration
 
             Text("cохранен").Write(x, y, Display::Width() - x);
         }
-        else if (state == State::FactroNotSave)
+        else if (state == State::RefuseCalibration)
         {
             int x = 180;
             int y = 70;
@@ -316,7 +316,7 @@ namespace PageCalibration
             {
                 field.OnKey(key);
             }
-            else if (state == State::ConfirmForSave)
+            else if (state == State::ConfirmForSave)                        // Ожидание подтверждения калибровки
             {
                 if (key == Key::OK)
                 {
@@ -324,10 +324,10 @@ namespace PageCalibration
                 }
                 else if (key == Key::Esc)
                 {
-                    RestoreCalibrateFactors();
+                    RefuseCalibrateFactors();
                 }
             }
-            else if (state == State::FactorSave || state == State::FactroNotSave)
+            else if (state == State::FactorSave || state == State::RefuseCalibration)
             {
             }
             else
@@ -383,14 +383,6 @@ void PageCalibration::DisableOutput()
 }
 
 
-void PageCalibration::CalculateCalibrateFactors()
-{
-    state = State::FactorSave;
-
-    Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
-}
-
-
 void PageCalibration::TimerFunction()
 {
     state = State::Normal;
@@ -437,11 +429,19 @@ void PageCalibration::StoreCalibrateFactorsAndReset()
 }
 
 
-void PageCalibration::RestoreCalibrateFactors()
+void PageCalibration::RefuseCalibrateFactors()
 {
-    state = State::FactroNotSave;
+    state = State::RefuseCalibration;
 
     Timer::SetDefferedOnceTask(TimerTask::Calibrate, 3000, TimerFunction);
+}
+
+
+void PageCalibration::CalculateCalibrateFactors()
+{
+    state = State::FactorSave;
+
+    Timer::SetDefferedOnceTask(TimerTask::Calibrate, TIME_TIMER, TimerFunction);
 }
 
 
