@@ -299,7 +299,7 @@ Value VParameter::GetCalibrateValue(TypeSignal::E type, VoltageMode::E mode)
 {
     const SettingsCal::StructCal &cal = gset.cal.cal[type][mode][0];
 
-    float voltage = cal.offset + std::fabsf(GetValue().ToUnits()) * cal.offset;
+    float voltage = cal.offset + std::fabsf(GetValue().ToUnits()) * cal.k;
 
     return Value((int)(voltage * 1e3f), TypeValue::Voltage);
 }

@@ -446,7 +446,8 @@ void PageCalibration::CalculateCalibrateFactors()
     float in1 = std::fabsf(GetVoltagePoint(0).ToUnits());
     float in2 = std::fabsf(GetVoltagePoint(1).ToUnits());
 
-    float k = (out2 - out1) / (in2 - in1);
+//    float k = (out2 - out1) / (in2 - in1);
+    float k = (in2 - in1) / (out2 - out1);
     float offset = out1 - in1 * k;
 
     gset.cal.cal[CurrentSignal()][type_accum][0].k = k;

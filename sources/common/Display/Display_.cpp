@@ -24,6 +24,9 @@ using namespace Primitives;
 
 namespace Display
 {
+    Value value_in(0, TypeValue::Voltage);
+    Value value_out(0, TypeValue::Voltage);
+
     int num_sends = 0;
     uint crc_trans = 0;
     uint crc_recv = 0;
@@ -281,6 +284,10 @@ void Display::Update()
     BeginScene();
     DrawScreen();
     Console::Draw();
+
+    Text("%.2f", value_in.ToUnits()).Write(400, 5, Color::WHITE);
+    Text("%.2f", value_out.ToUnits()).Write(400, 30);
+
     EndScene();
 #else
     for (int i = 0; i < NUM_PARTS; i++)
@@ -338,6 +345,10 @@ void Display::DrawPartScreen(int num, bool)
     }
 
     LAN::Update();
+
+    Text("%.2f", (double)value_in.ToUnits()).Write(400, 5, Color::WHITE);
+    Text("%.2f", (double)value_out.ToUnits()).Write(400, 30);
+
     Display::EndScene();
     LAN::Update();
 

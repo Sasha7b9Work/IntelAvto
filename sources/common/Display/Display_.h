@@ -1,5 +1,6 @@
 ﻿// 2023/09/08 20:57:01 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Connector/Device/Value_.h"
 
 
 class DataZone;
@@ -18,6 +19,9 @@ struct WarningMessage
 
 namespace Display
 {
+    extern Value value_in;
+    extern Value value_out;
+
     extern int num_sends;
     extern uint crc_trans;
     extern uint crc_recv;
