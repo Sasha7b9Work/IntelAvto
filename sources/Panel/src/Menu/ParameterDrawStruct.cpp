@@ -43,7 +43,7 @@ void ParameterDrawStruct::PressKey(int _key)
         p.symbols[0] = '\0';
         p.index = 0;
     }
-    else if (key >= Key::_0 && key <= Key::_9)
+    else if ((key >= Key::_0 && key <= Key::_9) || key == Key::Dot)
     {
         if ((key == Key::_0 && p.index == 0) ||
             (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))
@@ -52,7 +52,7 @@ void ParameterDrawStruct::PressKey(int _key)
         }
         else
         {
-            static const char _keys[Key::Count] = { ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+            static const char _keys[Key::Count] = { ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ','};
 
             p.SetSymbolToCurrentPos(_keys[key]);
         }
@@ -184,6 +184,15 @@ void ParameterDrawStruct::ToValue(Value *result) const
 
     SU::String2Int(end + 1, &fract_value, &end);
 
+    if (fract_value < 10)
+    {
+        fract_value *= 100;
+    }
+    else if (fract_value < 100)
+    {
+        fract_value *= 10;
+    }
+
     uint raw = (uint)(whole_value * 1000 + fract_value);
 
     if (parameter->GetValue().GetType() == TypeValue::Time)
@@ -201,16 +210,39 @@ void ParameterDrawStruct::ToValue(Value *result) const
 
 void ParameterDrawStruct::Params::SetSymbolToCurrentPos(char symbol)
 {
+    if (symbol == ',' && SU::FindPosition(symbols, ',') != -1)
+    {
+        return;
+    }
+
     if (index < SIZE_BUFER - 1)
     {
         if (index >= NumSymbols())
         {
-            symbols[index++] = symbol;
-            symbols[index] = '\0';
+            int pos = SU::FindPosition(symbols, ',');
+
+            if (pos < 0 || std::strlen(symbols) - pos < 4)
+            {
+                symbols[index++] = symbol;
+                symbols[index] = '\0';
+            }
         }
         else
         {
-            symbols[index++] = symbol;
+            if (symbols[index] == ',' && symbol >= '0' && symbol <= '9')
+            {
+                index++;
+                return;
+            }
+            else if (symbol == ',' && SU::FindPosition(symbols, ',') != -1)
+            {
+
+            }
+            else 
+            {
+                symbols[index] = symbol;
+            }
+            index++;
         }
     }
 }
