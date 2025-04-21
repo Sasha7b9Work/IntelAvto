@@ -1,5 +1,6 @@
 // 2023/12/22 14:56:11 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include <cstdio>
 
 
 struct TypeValue
@@ -81,6 +82,38 @@ struct Value
         int value = (int)(raw & 0x1FFFFFFF);        // Старший бит - знак, два следующие - тип
 
         return (raw & (uint)(1 << 31)) ? -value : value;
+    }
+
+    int WholePart() const
+    {
+        return ToMU() / 1000;
+    }
+
+    int FractPart() const
+    {
+        return ToMU() - WholePart() * 1000;
+    }
+
+    char *FractPart(char buffer[4]) const
+    {
+        buffer[0] = '\0';
+
+        int part = FractPart();
+
+        if (part < 10)
+        {
+            std::sprintf(buffer, "00%d", part);
+        }
+        else if (part < 100)
+        {
+            std::sprintf(buffer, "0%d", part);
+        }
+        else
+        {
+            std::sprintf(buffer, "%d", part);
+        }
+
+        return buffer;
     }
 
     // В секунды и в вольты

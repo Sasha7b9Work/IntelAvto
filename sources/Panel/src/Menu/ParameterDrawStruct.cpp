@@ -72,14 +72,9 @@ void ParameterDrawStruct::Draw(int x, int y) const
 {
     char buffer[128] = { '\0' };
 
-    if (p.is_negative)
-    {
-        std::strcat(buffer, "-");
-    }
-
     std::strcat(buffer, p.symbols);
 
-    int pos_hight = p.is_negative ? (p.index + 1) : (p.index);        // Позиция подсвеченного разряда
+    int pos_hight = p.index;                            // Позиция подсвеченного разряда
 
     int size_buffer = (int)std::strlen(buffer);
 
@@ -110,18 +105,40 @@ void ParameterDrawStruct::Params::Set(const Value &val)
 {
     value = val;
 
-    int value_int = val.ToMU();
+    std::sprintf(symbols, "%d,", val.WholePart());
 
-    is_negative = value_int < 0;
+    char buffer[4];
 
-    if (is_negative)
-    {
-        value_int = -value_int;
-    }
+    std::strcat(symbols, val.FractPart(buffer));
 
-    Math::ItoA(value_int, symbols);
+    SetIndexInLastSignedSymbol();
+}
 
+
+void ParameterDrawStruct::Params::SetIndexInLastSignedSymbol()
+{
     index = (int)std::strlen(symbols) - 1;
+
+    while (true)
+    {
+        if (symbols[index] == '0')
+        {
+            index--;
+        }
+        else if (symbols[index] == ',')
+        {
+            index--;
+        }
+        else if (symbols[index + 1] == ',')
+        {
+            break;
+        }
+        else
+        {
+            break;
+        }
+        index--;
+    }
 }
 
 
@@ -164,11 +181,6 @@ bool ParameterDrawStruct::ToValue(Value *result) const
     if (SU::String2Int(buffer, &value, &end))
     {
         uint raw = (uint)value;
-
-        if (p.is_negative)
-        {
-            raw |= (uint)(1 << 31);
-        }
 
         if (parameter->GetValue().GetType() == TypeValue::Time)
         {
@@ -225,6 +237,11 @@ void ParameterDrawStruct::IncreaseInPosition(int pos)
 void ParameterDrawStruct::Params::IncreaseInPosition(int pos)
 {
     char symbol = symbols[pos];
+
+    if (symbol < '0' || symbol > '9')
+    {
+        return;
+    }
 
     symbol++;
 

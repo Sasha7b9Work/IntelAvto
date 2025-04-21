@@ -34,7 +34,6 @@ private:
         static const int SIZE_BUFER = 10;   // Максимальное количество хранимх разрядов вместе с завершающим нулём
         int index;                          // Текущий разряд. 0 - "-", если есть
         char symbols[SIZE_BUFER];
-        bool is_negative = false;           // Полярность значения
 
         Value value{ 0, TypeValue::Raw };
 
@@ -51,5 +50,7 @@ private:
         void SetSymbolToCurrentPos(char);
 
         void Set(const Value &);
+
+        void SetIndexInLastSignedSymbol();
     } p;
 };
