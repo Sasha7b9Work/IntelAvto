@@ -355,20 +355,19 @@ bool Parameter::OnKey(Key::E key)
 
             Value new_value(0);
 
-            if (ds.ToValue(&new_value))
+            ds.ToValue(&new_value);
+
+            if (new_value.ToMU() < GetMin().ToMU())
             {
-                if (new_value.ToMU() < GetMin().ToMU())
-                {
-                    GetValue() = Value(GetMin().GetRaw());
-                }
-                else if (new_value.ToMU() > GetMax().ToMU())
-                {
-                    GetValue() = Value(GetMax().GetRaw());
-                }
-                else
-                {
-                    GetValue() = new_value;
-                }
+                GetValue() = Value(GetMin().GetRaw());
+            }
+            else if (new_value.ToMU() > GetMax().ToMU())
+            {
+                GetValue() = Value(GetMax().GetRaw());
+            }
+            else
+            {
+                GetValue() = new_value;
             }
         }
         else

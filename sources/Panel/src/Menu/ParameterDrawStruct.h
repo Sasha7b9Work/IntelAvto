@@ -13,7 +13,7 @@ struct ParameterDrawStruct
 
     void Set(Parameter *);
 
-    bool ToValue(Value *) const;
+    void ToValue(Value *) const;
 
 private:
 

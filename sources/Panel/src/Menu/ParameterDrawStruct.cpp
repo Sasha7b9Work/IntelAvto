@@ -168,7 +168,7 @@ bool ParameterDrawStruct::IsMaximumValueOrAbove() const
 }
 
 
-bool ParameterDrawStruct::ToValue(Value *result) const
+void ParameterDrawStruct::ToValue(Value *result) const
 {
     char buffer[128];
 
@@ -176,27 +176,26 @@ bool ParameterDrawStruct::ToValue(Value *result) const
 
     char *end = nullptr;
 
-    int value = 0;
+    int whole_value = 0;
 
-    if (SU::String2Int(buffer, &value, &end))
+    SU::String2Int(buffer, &whole_value, &end);
+
+    int fract_value = 0;
+
+    SU::String2Int(end + 1, &fract_value, &end);
+
+    uint raw = (uint)(whole_value * 1000 + fract_value);
+
+    if (parameter->GetValue().GetType() == TypeValue::Time)
     {
-        uint raw = (uint)value;
-
-        if (parameter->GetValue().GetType() == TypeValue::Time)
-        {
-            raw |= (1 << 30);
-        }
-        else if (parameter->GetValue().GetType() == TypeValue::Voltage)
-        {
-            raw |= (1 << 29);
-        }
-
-        *result = Value(raw);
-
-        return true;
+        raw |= (1 << 30);
+    }
+    else if (parameter->GetValue().GetType() == TypeValue::Voltage)
+    {
+        raw |= (1 << 29);
     }
 
-    return false;
+    *result = Value(raw);
 }
 
 
