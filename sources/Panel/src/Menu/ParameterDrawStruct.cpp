@@ -131,8 +131,8 @@ bool ParameterDrawStruct::IsMinimalValueOrLess() const
 
     ToValue(&value);
 
-    int int_value = value.ToAbsMU();
-    int min_value = parameter->GetMin().ToAbsMU();
+    int int_value = value.ToMU();
+    int min_value = parameter->GetMin().ToMU();
 
     return int_value <= min_value;
 }
@@ -144,8 +144,8 @@ bool ParameterDrawStruct::IsMaximumValueOrAbove() const
 
     ToValue(&value);
 
-    int int_value = value.ToAbsMU();
-    int max_value = parameter->GetMax().ToAbsMU();
+    int int_value = value.ToMU();
+    int max_value = parameter->GetMax().ToMU();
 
     return int_value >= max_value;
 }

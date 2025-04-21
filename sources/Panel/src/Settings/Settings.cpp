@@ -66,14 +66,14 @@ static Settings def_set =
     TypeSignal::_1,
     { VoltageMode::_12 },
     {
-        {   {   Voltage(-75000),                // 1 : Us   12      Signal 1
+        {   {   Voltage(75000),                 // 1 : Us   12      Signal 1
                 Time(1100),                     // 1 : t1   12
                 Counter(10000),                 // 1 : N    12
                 ValueNull(),
                 ValueNull()
             }
             ,
-            {   Voltage(-300000),               // 1 : Us   24
+            {   Voltage(300000),                // 1 : Us   24
                 Time(1100),                     // 1 : Us   24
                 Counter(10000),                 // 1 : N    24
                 ValueNull(),
@@ -105,14 +105,14 @@ static Settings def_set =
                 ValueNull(),
                 ValueNull() }}
         ,
-        {   {   Voltage(-112000),               // 3a : Us 12       Signal 3a
+        {   {   Voltage(112000),                // 3a : Us 12       Signal 3a
                 Counter(10000),                 // 3a : N  12
                 ValueNull(),
                 ValueNull(),
                 ValueNull()
             }
             ,
-            {   Voltage(-150000),               // 3a : Us 24
+            {   Voltage(150000),                // 3a : Us 24
                 Counter(10000),                 // 3a : N  24
                 ValueNull(),
                 ValueNull(),
@@ -132,14 +132,14 @@ static Settings def_set =
                 ValueNull() }}
         ,
         {   {   Counter(10),                    // 4 : N
-                Voltage(-7500),                 // 4 : Us           Signal 4
-                Voltage(-6000),                 // 4 : Ua
+                Voltage(7500),                  // 4 : Us           Signal 4
+                Voltage(6000),                  // 4 : Ua
                 Time(15),                       // 4 : t7
                 Time(2000)}                     // 4 : t9
             ,
             {   Counter(10),                    // 4 : N
-                Voltage(-16000),                // 4 : Us
-                Voltage(-12000),                // 4 : Ua
+                Voltage(16000),                 // 4 : Us
+                Voltage(12000),                 // 4 : Ua
                 Time(50),                       // 4 : t7
                 Time(2000)}}                    // 4 : t9
         ,

@@ -9,7 +9,7 @@ namespace IT6523
 
     // Запускает процесс формирования периодических импульсов
     // Возвращает false, если запуск не может быть произведён - не прошло достаточно времени
-    bool _Start(TypeSignal::E, int num_pulses);
+    bool Start(TypeSignal::E, int num_pulses);
 
     // Приостановить процесс формирования импульсов
     void Pause();

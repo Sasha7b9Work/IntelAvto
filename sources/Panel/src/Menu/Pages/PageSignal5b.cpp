@@ -51,7 +51,7 @@ namespace PageSignal5b
 
     static bool FuncStartTest()
     {
-        if (!IT6523::_Start(TypeSignal::_5b_16750_2, param_N.GetValue().ToMU()))
+        if (!IT6523::Start(TypeSignal::_5b_16750_2, param_N.GetValue().ToMU()))
         {
             Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse);
 

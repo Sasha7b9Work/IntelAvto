@@ -83,13 +83,6 @@ struct Value
         return (raw & (uint)(1 << 31)) ? -value : value;
     }
 
-    int ToAbsMU() const
-    {
-        int int_value = ToMU();
-
-        return int_value >= 0 ? int_value : -int_value;
-    }
-
     // В секунды и в вольты
     float ToUnits() const
     {

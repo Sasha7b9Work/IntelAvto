@@ -43,7 +43,7 @@ namespace PageSignal2b
 
     static bool FuncStartTest()
     {
-        IT6523::_Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToMU());
+        IT6523::Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToMU());
 
         return true;
     }

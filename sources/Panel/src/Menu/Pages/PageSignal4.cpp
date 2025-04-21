@@ -18,13 +18,13 @@ namespace PageSignal4
         90, 70);
 
     VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[1], Voltage(-6000), Voltage(-7500),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[1], Voltage(-12000), Voltage(-16000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[1], Voltage(6000), Voltage(7500),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[1], Voltage(12000), Voltage(16000),
         230, 110);
 
     VParameter param_Ua("Ua",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[2], Voltage(-2500), Voltage(-6000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[2], Voltage(-5000), Voltage(-12000),
+        &gset.signals[TypeSignal::_4_DIN40839].values12[2], Voltage(2500), Voltage(6000),
+        &gset.signals[TypeSignal::_4_DIN40839].values24[2], Voltage(5000), Voltage(12000),
         350, 100);
 
     TParameter param_t7("t7",
@@ -56,7 +56,7 @@ namespace PageSignal4
 
     static bool FuncStartTest()
     {
-        IT6523::_Start(TypeSignal::_4_DIN40839, param_N.GetValue().ToMU());
+        IT6523::Start(TypeSignal::_4_DIN40839, param_N.GetValue().ToMU());
 
         return true;
     }
