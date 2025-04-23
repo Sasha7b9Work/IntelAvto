@@ -221,7 +221,7 @@ void ParameterDrawStruct::Params::SetSymbolToCurrentPos(char symbol)
         {
             int pos = SU::FindPosition(symbols, ',');
 
-            if (pos < 0 || std::strlen(symbols) - pos < 4)
+            if (pos < 0 || (int)std::strlen(symbols) - pos < 4)
             {
                 symbols[index++] = symbol;
                 symbols[index] = '\0';
