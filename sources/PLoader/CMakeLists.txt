@@ -32,6 +32,7 @@ add_compile_options(
     /wd4623     # 'xxx': default constructor was implicitly defined as deleted
     /wd4626
     /wd4820     # 'xxx': '4' bytes padding added after data member 'yyy'
+    /wd4996     # 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead.
     /wd5027
     /wd5039     # 'xxx': pointer or reference to potentially throwing function passed to extern C function under -EHc.
     /wd5045     # Compiler will insert Spectre mitigation for memory load if /Qspectre switch specified
