@@ -87,16 +87,16 @@ uint16 MCP4811::Converter::Resolve() const
     }
     else if (TypeSignal::Is3a())
     {
-        if (voltage > 200.0f)
+        if (voltage > 300.0f)
         {
-            voltage = 200.0f;
+            voltage = 300.0f;
         }
     }
     else if (TypeSignal::Is3b())
     {
-        if (voltage > 200.0f)
+        if (voltage > 300.0f)
         {
-            voltage = 200.0f;
+            voltage = 300.0f;
         }
     }
     else
