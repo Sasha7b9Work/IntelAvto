@@ -22,7 +22,7 @@ namespace PageSignal1
     static TParameter param_t1("Период",
         &gset.signals[TypeSignal::_1].values12[1], Time(500), Time(5000),
         &gset.signals[TypeSignal::_1].values24[1], Time(500), Time(5000),
-        280, 50);
+        230, 60);
 
     // Количество импульсов
     static CParameter param_N("N",

@@ -529,8 +529,6 @@ void Display::DrawSignal()
 
     if (TypeSignal::Is(TypeSignal::_1))
     {
-        Text("Ua").Write(x - 25, y - 10);
-
         Picture::DrawPicure(150, 50, bmp_zip_Signal1);
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
