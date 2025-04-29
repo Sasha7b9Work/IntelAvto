@@ -529,7 +529,7 @@ void Display::DrawSignal()
 
     if (TypeSignal::Is(TypeSignal::_1))
     {
-        Picture::DrawPicure(150, 50, bmp_zip_Signal1);
+        Picture::DrawPicure(150, 50, TypeSignal::_1);
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
     {
@@ -554,7 +554,7 @@ void Display::DrawSignal()
 //        coord.x = HLine(100).Draw(coord);
 //        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
 
-        Picture::DrawPicure(150, 50, bmp_zip_Signal2a);
+        Picture::DrawPicure(150, 50, TypeSignal::_2a);
     }
     else if (TypeSignal::Is(TypeSignal::_2b_SAEJ1113))
     {

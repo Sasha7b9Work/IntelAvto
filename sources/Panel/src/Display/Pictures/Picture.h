@@ -1,15 +1,10 @@
 // 2025/01/29 13:58:25 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
-
-
-extern const unsigned char bmp_zip_Signal1[];
-extern const unsigned char bmp_zip_Signal2a[];
+#include "Settings/Settings.h"
 
 
 namespace Picture
 {
-    int GetLengthBuffer(const uint8 *);
-
     // Нарисовать картинку. buffer - место для её хранения без распковки
-    void DrawPicure(int x, int y, const uint8 *);
+    void DrawPicure(int x, int y, TypeSignal::E);
 }

@@ -15,6 +15,21 @@ using namespace Primitives;
 
 namespace Picture
 {
+//    extern const unsigned char bmp_zip_Signal1[];
+//    extern const unsigned char bmp_zip_Signal2a[];
+
+    static const unsigned char *archives[TypeSignal::Count] =
+    {
+        bmp_zip_Signal1,
+        bmp_zip_Signal2a,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr
+    };
+
     // \warn сюда нельз€ распаковать картинку больше 64 кЅ
     static uint8 buffer[1024 * 64] __attribute__ ((section("CCM_DATA")));
     static const uint8 *prev_archive = nullptr;
@@ -56,7 +71,7 @@ bool Picture::Uncompress(const uint8 *archive)
 }
 
 
-void Picture::DrawPicure(int x, int y, const uint8 *archive)
+void Picture::DrawPicure(int x, int y, TypeSignal::E type)
 {
 #pragma pack(1)
     struct StructureBMP
@@ -81,7 +96,7 @@ void Picture::DrawPicure(int x, int y, const uint8 *archive)
         uint    num_important_colors;
     };
 
-    if (Uncompress(archive))
+    if (Uncompress(archives[type]))
     {
         StructureBMP *head = (StructureBMP *)buffer; //-V641
 
