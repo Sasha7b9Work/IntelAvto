@@ -533,26 +533,28 @@ void Display::DrawSignal()
     }
     else if (TypeSignal::Is(TypeSignal::_2a))
     {
-        Coord coord(x, y);
+//        Coord coord(x, y);
+//
+//        Axis().Draw(Coord(x, y + 170), 210, 330, 10);
+//
+//        Text("Ua").Write(x - 25, y + 140);
+//
+//        HMeasuringLines(x + 50, x + 245, y - 30, y - 15, y + 151).Draw();
+//
+//        VMeasuringLines(x + 70, x + 180, x + 200, y, y + 150).Draw();
+//
+//        coord.y += 150;
+//
+//        coord.x = HLine(50).Draw(coord, Color::WHITE);
+//        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
+//        coord = Line().Draw(coord, coord.x + 10, coord.y - 10);
+//        coord.x = HLine(10).Draw(coord);
+//        coord = Line().Draw(coord, coord.x + 10, coord.y + 10);
+//        coord = Line().Draw(coord, coord.x + 50, coord.y + 140);
+//        coord.x = HLine(100).Draw(coord);
+//        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
 
-        Axis().Draw(Coord(x, y + 170), 210, 330, 10);
-
-        Text("Ua").Write(x - 25, y + 140);
-
-        HMeasuringLines(x + 50, x + 245, y - 30, y - 15, y + 151).Draw();
-
-        VMeasuringLines(x + 70, x + 180, x + 200, y, y + 150).Draw();
-
-        coord.y += 150;
-
-        coord.x = HLine(50).Draw(coord, Color::WHITE);
-        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
-        coord = Line().Draw(coord, coord.x + 10, coord.y - 10);
-        coord.x = HLine(10).Draw(coord);
-        coord = Line().Draw(coord, coord.x + 10, coord.y + 10);
-        coord = Line().Draw(coord, coord.x + 50, coord.y + 140);
-        coord.x = HLine(100).Draw(coord);
-        coord = Line().Draw(coord, coord.x + 15, coord.y - 140);
+        Picture::DrawPicure(150, 50, bmp_zip_Signal2a);
     }
     else if (TypeSignal::Is(TypeSignal::_2b_SAEJ1113))
     {

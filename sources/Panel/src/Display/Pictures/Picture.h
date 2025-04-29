@@ -3,6 +3,7 @@
 
 
 extern const unsigned char bmp_zip_Signal1[];
+extern const unsigned char bmp_zip_Signal2a[];
 
 
 namespace Picture

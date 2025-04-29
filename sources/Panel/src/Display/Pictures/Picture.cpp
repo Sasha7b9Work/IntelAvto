@@ -2,6 +2,7 @@
 #include "defines.h"
 #include "Display/Pictures/Picture.h"
 #include "Display/Pictures/Signal1.inc"
+#include "Display/Pictures/Signal2a.inc"
 #include "Display/Primitives_.h"
 #include "Hardware/Timer.h"
 #include "Display/Display_.h"
@@ -105,6 +106,10 @@ unsigned long Picture::CalculateSize(const uint8 *archive)
     if (archive == bmp_zip_Signal1)
     {
         return sizeof(bmp_zip_Signal1);
+    }
+    else if (archive == bmp_zip_Signal2a)
+    {
+        return sizeof(bmp_zip_Signal2a);
     }
 
     return 0UL;

@@ -881,6 +881,11 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\Pictures\Signal1.inc</FilePath>
             </File>
+            <File>
+              <FileName>Signal2a.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal2a.inc</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4655,6 +4660,11 @@
               <FileName>Signal1.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Pictures\Signal1.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Signal2a.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal2a.inc</FilePath>
             </File>
           </Files>
         </Group>
