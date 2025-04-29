@@ -15,9 +15,6 @@ using namespace Primitives;
 
 namespace Picture
 {
-//    extern const unsigned char bmp_zip_Signal1[];
-//    extern const unsigned char bmp_zip_Signal2a[];
-
     static const unsigned char *archives[TypeSignal::Count] =
     {
         bmp_zip_Signal1,
@@ -32,27 +29,27 @@ namespace Picture
 
     // \warn сюда нельз€ распаковать картинку больше 64 кЅ
     static uint8 buffer[1024 * 64] __attribute__ ((section("CCM_DATA")));
-    static const uint8 *prev_archive = nullptr;
+    static TypeSignal::E prev_type = TypeSignal::Count;
 
-    static bool Uncompress(const uint8 *archive);
+    static bool Uncompress(TypeSignal::E);
 
-    static unsigned long CalculateSize(const uint8 *archive);
+    static unsigned long CalculateSize(TypeSignal::E);
 }
 
 
-bool Picture::Uncompress(const uint8 *archive)
+bool Picture::Uncompress(TypeSignal::E type)
 {
-    if (archive == prev_archive)
+    if (type == prev_type)
     {
         return true;
     }
 
-    prev_archive = nullptr;
+    prev_type = TypeSignal::Count;
 
     mz_zip_archive zip_archive;
     std::memset(&zip_archive, 0, sizeof(zip_archive));
 
-    if (mz_zip_reader_init_mem(&zip_archive, archive, CalculateSize(archive), 0))
+    if (mz_zip_reader_init_mem(&zip_archive, archives[type], CalculateSize(type), 0))
     {
         mz_zip_archive_file_stat file_stat;
 
@@ -60,14 +57,14 @@ bool Picture::Uncompress(const uint8 *archive)
         {
             if (mz_zip_reader_extract_file_to_mem(&zip_archive, file_stat.m_filename, buffer, (size_t)file_stat.m_uncomp_size, 0))
             {
-                prev_archive = archive;
+                prev_type = type;
             }
         }
     }
 
     mz_zip_reader_end(&zip_archive);
 
-    return (prev_archive != nullptr);
+    return (prev_type != TypeSignal::Count);
 }
 
 
@@ -96,7 +93,7 @@ void Picture::DrawPicure(int x, int y, TypeSignal::E type)
         uint    num_important_colors;
     };
 
-    if (Uncompress(archives[type]))
+    if (Uncompress(type))
     {
         StructureBMP *head = (StructureBMP *)buffer; //-V641
 
@@ -116,16 +113,16 @@ void Picture::DrawPicure(int x, int y, TypeSignal::E type)
 }
 
 
-unsigned long Picture::CalculateSize(const uint8 *archive)
+unsigned long Picture::CalculateSize(TypeSignal::E type)
 {
-    if (archive == bmp_zip_Signal1)
+    if (type == TypeSignal::_1)
     {
         return sizeof(bmp_zip_Signal1);
     }
-    else if (archive == bmp_zip_Signal2a)
+    else if (type == TypeSignal::_2a)
     {
         return sizeof(bmp_zip_Signal2a);
     }
 
-    return 0UL;
+    return 0;
 }
