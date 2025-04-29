@@ -5,7 +5,7 @@
 
   <Header>### uVision Project, (C) Keil Software</Header>
 
-  <WorkspaceName>D:\Projects\IntelAvto\sources\IntelAvto.uvmpw</WorkspaceName>
+  <WorkspaceName>D:\My\Prog\GitHub\Work\IntelAvto\sources\IntelAvto.uvmpw</WorkspaceName>
 
   <project>
     <PathAndName>.\Panel\Panel.uvprojx</PathAndName>

@@ -259,6 +259,18 @@ pchar TypeSignal::ToString()
 }
 
 
+bool TypeSignal::IsExtern()
+{
+    E s = Current();
+
+    return
+        s == E::_2b_SAEJ1113 ||
+        s == E::_4_DIN40839 ||
+        s == E::_5a_16750_1 ||
+        s == E::_5b_16750_2;
+}
+
+
 pchar TypeSignal::Name()
 {
     static const pchar names[Count] =

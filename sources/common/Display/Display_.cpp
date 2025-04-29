@@ -285,8 +285,11 @@ void Display::Update()
     DrawScreen();
     Console::Draw();
 
-    Text("%.2f", value_in.ToUnits()).Write(400, 5, Color::WHITE);
-    Text("%.2f", value_out.ToUnits()).Write(400, 30);
+    if (!TypeSignal::IsExtern())
+    {
+        Text("%.2f", value_in.ToUnits()).Write(400, 5, Color::WHITE);
+        Text("%.2f", value_out.ToUnits()).Write(400, 30);
+    }
 
     EndScene();
 #else
@@ -346,8 +349,11 @@ void Display::DrawPartScreen(int num, bool)
 
     LAN::Update();
 
-    Text("%.2f", (double)value_in.ToUnits()).Write(400, 5, Color::WHITE);
-    Text("%.2f", (double)value_out.ToUnits()).Write(400, 30);
+    if (!TypeSignal::IsExtern())
+    {
+        Text("%.2f", (double)value_in.ToUnits()).Write(400, 5, Color::WHITE);
+        Text("%.2f", (double)value_out.ToUnits()).Write(400, 30);
+    }
 
     Display::EndScene();
     LAN::Update();

@@ -69,6 +69,9 @@ struct TypeSignal
 
     static E Current() { return current; }
 
+    // true, если сигнал формируется внешним источником
+    static bool IsExtern();
+
 private:
 
     static E current;
