@@ -20,7 +20,7 @@ namespace PageSignal2a
     static TParameter param_t1("Период",
         &gset.signals[TypeSignal::_2a].values12[1], Time(200), Time(5000),
         &gset.signals[TypeSignal::_2a].values24[1], Time(200), Time(5000),
-        270, 30);
+        250, 70);
 
     static CParameter param_N("N",
         &gset.signals[TypeSignal::_2a].values12[2], Counter(5000), Counter(100000),
