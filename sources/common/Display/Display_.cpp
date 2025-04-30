@@ -537,23 +537,7 @@ void Display::DrawSignal()
     }
     else if (TypeSignal::Is(TypeSignal::_2b_SAEJ1113))
     {
-        Axis().Draw(Coord(x, y + 170), 210, 330, 10);
-
-        Text("Ua").Write(x - 25, y + 10);
-
-        HMeasuringLines(x + 70, x + 270, y - 5, y + 10, y + 170).Draw();
-
-//        VMeasuringLines(x + 90, x + 290, x + 310, y + 45, y + 170).Draw();
-
-        Point().Draw(x, y + 20, Color::WHITE);
-        Point::MoveOn(30, 0);
-        Point::MoveOn(30, 150);
-        Point::MoveOn(10, 0);
-        Point::MoveOn(20, -120);
-        Point::MoveOn(5, -5);
-        Point::MoveOn(10, 0);
-        Point::MoveOn(5, 5);
-        Point::MoveOn(160, 120);
+        Picture::DrawPicure(150, 50, TypeSignal::_2b_SAEJ1113);
     }
     else if (TypeSignal::Is(TypeSignal::_3a))
     {

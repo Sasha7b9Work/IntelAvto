@@ -3,6 +3,7 @@
 #include "Display/Pictures/Picture.h"
 #include "Display/Pictures/Signal1.inc"
 #include "Display/Pictures/Signal2a.inc"
+#include "Display/Pictures/Signal2b.inc"
 #include "Display/Primitives_.h"
 #include "Hardware/Timer.h"
 #include "Display/Display_.h"
@@ -19,7 +20,7 @@ namespace Picture
     {
         bmp_zip_Signal1,
         bmp_zip_Signal2a,
-        nullptr,
+        bmp_zip_Signal2b,
         nullptr,
         nullptr,
         nullptr,
@@ -122,6 +123,10 @@ unsigned long Picture::CalculateSize(TypeSignal::E type)
     else if (type == TypeSignal::_2a)
     {
         return sizeof(bmp_zip_Signal2a);
+    }
+    else if (type == TypeSignal::_2b_SAEJ1113)
+    {
+        return sizeof(bmp_zip_Signal2b);
     }
 
     return 0;
