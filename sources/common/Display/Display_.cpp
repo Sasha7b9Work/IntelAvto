@@ -549,28 +549,7 @@ void Display::DrawSignal()
     }
     else if (TypeSignal::Is(TypeSignal::_4_DIN40839))
     {
-        Axis().Draw(Coord(x, y + 150), 170, 330, 00);
-
-        Text("Ua").Write(x - 25, y + 10);
-
-        VMeasuringLines(x + 40, x + 95, x + 105, y + 20, y + 80).Draw(); //-V525
-
-        VMeasuringLines(x + 200, x + 210, x + 300, y + 20, y + 55).Draw();
-
-        HMeasuringLines(x + 75, x + 115, y + 80, y + 110, y + 120).Draw();
-
-        HMeasuringLines(x + 155, x + 255, y + 57, y + 110, y + 120).Draw();
-
-        HMeasuringLines(x + 255, x + 275, y + 20, y + 110, y + 130).Draw();
-
-        Point().Draw(x, y + 20, Color::WHITE);
-        Point::MoveOn(40, 0);
-        Point::MoveOn(35, 60);
-        Point::MoveOn(40, 0);
-        Point::MoveOn(40, -25);
-        Point::MoveOn(100, 0);
-        Point::MoveOn(20, -35);
-        Point::MoveOn(40, 0);
+        Picture::DrawPicure(150, 50, TypeSignal::_4_DIN40839);
     }
     else if (TypeSignal::Is(TypeSignal::_5a_16750_1))
     {
