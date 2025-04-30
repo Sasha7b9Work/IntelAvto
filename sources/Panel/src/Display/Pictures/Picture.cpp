@@ -4,6 +4,7 @@
 #include "Display/Pictures/Signal1.inc"
 #include "Display/Pictures/Signal2a.inc"
 #include "Display/Pictures/Signal2b.inc"
+#include "Display/Pictures/Signal3a.inc"
 #include "Display/Primitives_.h"
 #include "Hardware/Timer.h"
 #include "Display/Display_.h"
@@ -21,7 +22,7 @@ namespace Picture
         bmp_zip_Signal1,
         bmp_zip_Signal2a,
         bmp_zip_Signal2b,
-        nullptr,
+        bmp_zip_Signal3a,
         nullptr,
         nullptr,
         nullptr,
@@ -116,18 +117,17 @@ void Picture::DrawPicure(int x, int y, TypeSignal::E type)
 
 unsigned long Picture::CalculateSize(TypeSignal::E type)
 {
-    if (type == TypeSignal::_1)
+    static unsigned long sizes[TypeSignal::Count] =
     {
-        return sizeof(bmp_zip_Signal1);
-    }
-    else if (type == TypeSignal::_2a)
-    {
-        return sizeof(bmp_zip_Signal2a);
-    }
-    else if (type == TypeSignal::_2b_SAEJ1113)
-    {
-        return sizeof(bmp_zip_Signal2b);
-    }
+        sizeof(bmp_zip_Signal1),
+        sizeof(bmp_zip_Signal2a),
+        sizeof(bmp_zip_Signal2b),
+        sizeof(bmp_zip_Signal3a),
+        0,
+        0,
+        0,
+        0
+    };
 
-    return 0;
+    return sizes[type];
 }
