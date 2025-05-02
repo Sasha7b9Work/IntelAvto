@@ -16,14 +16,7 @@
 
 namespace FDrive
 {
-#define NEED_MOUNT (bf.needToMoundFlash)
-
-    static struct BitFieldFlashDrive
-    {
-        uint needToMoundFlash : 1;  // Установленное в 1 значение означает, что подсоединена флешка. Надо её монтировать.
-        uint notUsed : 31;
-    } bf = { 0, 0 };
-
+    static bool need_mount = false;
 
     USBH_HandleTypeDef hUSB_Host;
 
@@ -53,8 +46,7 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
         break;
 
     case HOST_USER_CLASS_ACTIVE:
-        NEED_MOUNT = 1;
-
+        need_mount = true;
         /*
         if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 1) != FR_OK)
         {
@@ -126,10 +118,10 @@ void FDrive::Init()
 
 void FDrive::Update()
 {
-    if (NEED_MOUNT)      // Если обнаружено физическое подключение внешнего диска
+    if (need_mount)      // Если обнаружено физическое подключение внешнего диска
     {
         uint timeStart = TIME_MS;
-        NEED_MOUNT = 0;
+        need_mount = false;
 
 //        Display::FuncOnWaitStart(DICT(DDetectFlashDrive), false);
 
@@ -468,19 +460,24 @@ void FDrive::InitHardware()
 
     GPIO_InitTypeDef is =
     {
-        GPIO_PIN_9 |        // 68 - USB_OTG_FS_VBUS
-        GPIO_PIN_11 |       // 70 - USB_OTG_FS_DM
-        GPIO_PIN_12,        // 71 - USB_OTG_FS_DP
+        GPIO_PIN_11 |               // 70 - USB_OTG_FS_DM
+        GPIO_PIN_12,                // 71 - USB_OTG_FS_DP
         GPIO_MODE_AF_PP,
         GPIO_NOPULL,
-        GPIO_SPEED_FAST,
+        GPIO_SPEED_FREQ_VERY_HIGH,
         GPIO_AF10_OTG_FS
     };
 
     HAL_GPIO_Init(GPIOA, &is);
 
+    is.Pin = GPIO_PIN_9;            // 68 - USB_OTG_FS_VBUS
+    is.Mode = GPIO_MODE_INPUT;
+    is.Pull = GPIO_NOPULL;
+
+    HAL_GPIO_Init(GPIOA, &is);
+
     __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
 
-    HAL_NVIC_SetPriority(OTG_FS_IRQn, 6, 0);
+    HAL_NVIC_SetPriority(OTG_FS_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
 }

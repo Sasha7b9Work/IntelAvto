@@ -27,18 +27,23 @@ int main(void)
 
 //    VCP::Init();
 
-//    FDrive::Init();
+    FDrive::Init();
 
     while (1)
     {
         LAN::Update();
         Menu::Input::Update();
+
         LAN::Update();
         Display::Update();
+
         LAN::Update();
         Timer::UpdateTasks();
+
         LAN::Update();
         IT6523::Update();
+
+        FDrive::Update();
 
         gset.Save();
     }
