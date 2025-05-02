@@ -20,7 +20,7 @@ namespace PageSignal4
     VParameter param_Us("Us",
         &gset.signals[TypeSignal::_4_DIN40839].values12[1], Voltage(6000), Voltage(7500),
         &gset.signals[TypeSignal::_4_DIN40839].values24[1], Voltage(12000), Voltage(16000),
-        210, 90);
+        200, 110);
 
     VParameter param_Ua("Ua",
         &gset.signals[TypeSignal::_4_DIN40839].values12[2], Voltage(2500), Voltage(6000),

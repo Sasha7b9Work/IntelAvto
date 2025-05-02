@@ -15,12 +15,12 @@ namespace PageSignal5a
     VParameter param_Us("Us",
         &gset.signals[TypeSignal::_5a_16750_1].values12[0], Voltage(79000), Voltage(101000),
         &gset.signals[TypeSignal::_5a_16750_1].values24[0], Voltage(101000), Voltage(202000),
-        355, 125);
+        350, 100);
 
     TParameter param_td("td",
         &gset.signals[TypeSignal::_5a_16750_1].values12[1], Time(40), Time(400),
         &gset.signals[TypeSignal::_5a_16750_1].values24[1], Time(100), Time(350),
-        220, 155);
+        230, 160);
 
     CParameter param_Ri("Ri",
         &gset.signals[TypeSignal::_5b_16750_2].values12[3], Counter(1), Counter(10),

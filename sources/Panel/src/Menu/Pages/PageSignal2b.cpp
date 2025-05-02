@@ -16,7 +16,7 @@ namespace PageSignal2b
     TParameter param_td("td",
         &gset.signals[TypeSignal::_2b_SAEJ1113].values12[0], Time(200), Time(2000),
         &gset.signals[TypeSignal::_2b_SAEJ1113].values24[0], Time(200), Time(2000),
-        290, 60);
+        250, 165);
 
     static CParameter param_N("N",
         &gset.signals[TypeSignal::_2b_SAEJ1113].values12[1], Counter(1), Counter(10),

@@ -522,76 +522,9 @@ bool Display::InDrawingPart(int y, int _height)
 
 void Display::DrawSignal()
 {
-    int x = 130;
-    int y = 70;
-
     Color::GRAY.SetAsCurrent();
 
-    if (TypeSignal::Is(TypeSignal::_1))
-    {
-        Picture::DrawPicure(150, 50, TypeSignal::_1);
-    }
-    else if (TypeSignal::Is(TypeSignal::_2a))
-    {
-        Picture::DrawPicure(150, 50, TypeSignal::_2a);
-    }
-    else if (TypeSignal::Is(TypeSignal::_2b_SAEJ1113))
-    {
-        Picture::DrawPicure(150, 50, TypeSignal::_2b_SAEJ1113);
-    }
-    else if (TypeSignal::Is(TypeSignal::_3a))
-    {
-        Picture::DrawPicure(150, 50, TypeSignal::_3a);
-    }
-    else if (TypeSignal::Is(TypeSignal::_3b))
-    {
-        Picture::DrawPicure(150, 50, TypeSignal::_3b);
-    }
-    else if (TypeSignal::Is(TypeSignal::_4_DIN40839))
-    {
-        Picture::DrawPicure(150, 50, TypeSignal::_4_DIN40839);
-    }
-    else if (TypeSignal::Is(TypeSignal::_5a_16750_1))
-    {
-        Axis().Draw(Coord(x, y + 150), 170, 330, 00);
-
-        VMeasuringLines(x + 20, x + 220, x + 230, y, y + 130).Draw();
-
-        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130).Draw();
-
-        Point().Draw(x, y + 130, Color::WHITE);
-        Point::MoveOn(30, 0);
-        Point::MoveOn(30, -120);
-        Point::MoveOn(10, -10);
-        Point::MoveOn(10, 0);
-        Point::MoveOn(10, 10);
-        Point::MoveOn(80, 100);
-        Point::MoveOn(15, 10);
-        Point::MoveOn(40, 10);
-        Point::MoveOn(50, 0);
-    }
-    else if (TypeSignal::Is(TypeSignal::_5b_16750_2))
-    {
-        Axis().Draw(Coord(x, y + 150), 170, 330, 00);
-
-        VMeasuringLines(x + 20, x + 280, x + 290, y, y + 130).Draw();
-
-        VMeasuringLines(x + 48, x + 240, x + 250, y + 60, y + 130).Draw();
-
-        HMeasuringLines(x + 30, x + 200, y + 80, y + 110, y + 130).Draw();
-
-        Point().Draw(x, y + 130, Color::WHITE);
-        HLine(80).Draw(x + 48, y + 60);
-        Point::MoveOn(30, 0);
-        Point::MoveOn(30, -120);
-        Point::MoveOn(10, -10);
-        Point::MoveOn(10, 0);
-        Point::MoveOn(10, 10);
-        Point::MoveOn(80, 100);
-        Point::MoveOn(15, 10);
-        Point::MoveOn(40, 10);
-        Point::MoveOn(50, 0);
-    }
+    Picture::DrawPicure(150, 50, TypeSignal::Current());
 
     Page::ForCurrentSignal()->DrawParameters();
 }

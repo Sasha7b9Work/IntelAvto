@@ -906,6 +906,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\Pictures\Signal4.inc</FilePath>
             </File>
+            <File>
+              <FileName>Signal5a.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal5a.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Signal5b.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal5b.inc</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4705,6 +4715,16 @@
               <FileName>Signal4.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Pictures\Signal4.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Signal5a.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal5a.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Signal5b.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Signal5b.inc</FilePath>
             </File>
           </Files>
         </Group>
