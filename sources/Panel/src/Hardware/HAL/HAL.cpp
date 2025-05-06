@@ -42,7 +42,7 @@ void HAL::Init()
 
 #ifndef WIN32
 
-    __USB_OTG_FS_CLK_ENABLE();
+//    __USB_OTG_FS_CLK_ENABLE();
     __USB_OTG_HS_CLK_ENABLE();
 
     __SYSCFG_CLK_ENABLE();
@@ -72,9 +72,9 @@ void HAL::Init()
     //
     //    _HAL_GPIO_Init(GPIOA, &isGPIO);
 
-    HAL_NVIC_SetPriority(OTG_FS_IRQn, 0, 0);
+//    HAL_NVIC_SetPriority(OTG_FS_IRQn, 0, 0);
 
-    HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
+//    HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
 
     SystemClock_Config();
 
@@ -106,20 +106,20 @@ static void SystemClock_Config()
 #ifndef WIN32
     __HAL_RCC_PWR_CLK_ENABLE();
 
-    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
 #endif
 
     /**Initializes the CPU, AHB and APB busses clocks
     */
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-    RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-    RCC_OscInitStruct.HSICalibrationValue = 16;
+    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+    RCC_OscInitStruct.HSIState = RCC_HSE_ON;
+//    RCC_OscInitStruct.HSICalibrationValue = 16;
     RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-    RCC_OscInitStruct.PLL.PLLM = 16;
-    RCC_OscInitStruct.PLL.PLLN = 360;
+    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+    RCC_OscInitStruct.PLL.PLLM = 15;
+    RCC_OscInitStruct.PLL.PLLN = 144;
     RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-    RCC_OscInitStruct.PLL.PLLQ = 4;
+    RCC_OscInitStruct.PLL.PLLQ = 5;
     if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
     {
         HAL::ERROR_HANDLER();
@@ -140,7 +140,7 @@ static void SystemClock_Config()
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
+    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
     {
         HAL::ERROR_HANDLER();
     }

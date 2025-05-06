@@ -452,32 +452,18 @@ void FDrive::SetTimeForFile(char * /*name*/)
 
 void FDrive::InitHardware()
 {
-    /*
-    *   PA12    USB_OTG_FS_DP       71
-    *   PA11    USB_OTG_FS_DM       70
-    *   PA9     USB_OTG_VS_VBUS     68
-    */
-
     GPIO_InitTypeDef is =
     {
-        GPIO_PIN_11 |               // 70 - USB_OTG_FS_DM
-        GPIO_PIN_12,                // 71 - USB_OTG_FS_DP
+        GPIO_PIN_14 |               // 53 - USB_OTG_HS_DM
+        GPIO_PIN_15,                // 54 - USB_OTG_HS_DP
         GPIO_MODE_AF_PP,
         GPIO_NOPULL,
-        GPIO_SPEED_FREQ_VERY_HIGH,
-        GPIO_AF10_OTG_FS
+        GPIO_SPEED_FAST,
+        GPIO_AF12_OTG_HS_FS
     };
 
-    HAL_GPIO_Init(GPIOA, &is);
+    HAL_GPIO_Init(GPIOB, &is);
 
-    is.Pin = GPIO_PIN_9;            // 68 - USB_OTG_FS_VBUS
-    is.Mode = GPIO_MODE_INPUT;
-    is.Pull = GPIO_NOPULL;
-
-    HAL_GPIO_Init(GPIOA, &is);
-
-    __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
-
-    HAL_NVIC_SetPriority(OTG_FS_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
+    HAL_NVIC_SetPriority(OTG_HS_IRQn, 2, 0);
+    HAL_NVIC_EnableIRQ(OTG_HS_IRQn);
 }

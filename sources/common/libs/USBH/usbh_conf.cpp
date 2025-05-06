@@ -53,9 +53,9 @@ USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
     HCD_HandleTypeDef *handle = (HCD_HandleTypeDef *)FDrive::handleHCD;
 
     /* Set the LL driver parameters */
-    handle->Instance = USB_OTG_FS;
+    handle->Instance = USB_OTG_HS;
     handle->Init.speed = HCD_SPEED_FULL;
-    handle->Init.Host_channels = 11; 
+    handle->Init.Host_channels = 12; 
     handle->Init.dma_enable = 0;
     handle->Init.low_power_enable = 0;
     handle->Init.phy_itface = HCD_PHY_EMBEDDED; 
