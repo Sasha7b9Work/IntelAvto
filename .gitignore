@@ -9,20 +9,21 @@ sources/PLoader/Objects-Debug/*
 sources/PLoader/DebugConfig/*
 sources/PLoader/Listings/*
 sources/PLoader/Listings-Debug/*
-
+sources/PLoader/RTE/
 
 sources/Panel/Objects/*
 sources/Panel/Objects-Debug/*
 sources/Panel/DebugConfig/*
 sources/Panel/Listings/*
 sources/Panel/Listings-Debug/*
-
+sources/Panel/RTE/
 
 sources/Device/Objects/*
 sources/Device/Objects-Debug/*
 sources/Device/DebugConfig/*
 sources/Device/Listings/*
 sources/Device/Listings-Debug/*
+sources/Device/RTE/*
 
 
 sources/generated/*
