@@ -3,6 +3,7 @@
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
 #include "FlashDrive/FlashDrive.h"
+#include <usbh_msc.h>
 
 DSTATUS USBH_initialize (BYTE);
 DSTATUS USBH_status (BYTE);

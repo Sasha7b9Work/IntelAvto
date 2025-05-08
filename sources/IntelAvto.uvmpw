@@ -5,11 +5,12 @@
 
   <Header>### uVision Project, (C) Keil Software</Header>
 
-  <WorkspaceName>IntelAvto</WorkspaceName>
+  <WorkspaceName>D:\Projects\IntelAvto\sources\IntelAvto.uvmpw</WorkspaceName>
 
   <project>
     <PathAndName>.\Panel\Panel.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>

@@ -60,6 +60,7 @@ add_compile_options(
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
 file(GLOB LIBS_USBD           ../common/libs/USBD/*.*)
+file(GLOB LIBS_USBH           ../common/libs/USBH/*.*)
 file(GLOB SRC                       src/*.*)
 file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
                               ../common/Connector/Device/Transceiver_.h
@@ -89,6 +90,7 @@ file(GLOB VCP                 ../common/VCP/*.*)
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
 source_group(libs/USBD         FILES ${LIBS_USBD})
+source_group(libs/USBH         FILES ${LIBS_USBH})
 source_group(src               FILES ${SRC})
 source_group(Connector/Device  FILES ${CONNECTOR_DEVICE})
 source_group(Device            FILES ${DEVICE})
@@ -108,7 +110,10 @@ source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
 source_group(VCP               FILES ${VCP})
 
-set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
+set_source_files_properties(
+    ${HARDWARE_CMSIS}
+    ${LIBS_HAL}
+    ${LIBS_USBH}
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/usbd_cdc.c
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c
     ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c
@@ -118,6 +123,7 @@ set_source_files_properties(${HARDWARE_CMSIS} ${LIBS_HAL}
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
     ${LIBS_USBD}
+    ${LIBS_USBH}
     ${SRC}
     ${CONNECTOR_DEVICE}
     ${DEVICE}
