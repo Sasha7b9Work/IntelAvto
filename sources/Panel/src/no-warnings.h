@@ -20,7 +20,6 @@
     #pragma clang diagnostic ignored "-Winvalid-utf8"
     #pragma clang diagnostic ignored "-Wmissing-field-initializers"
     
-    #pragma clang diagnostic ignored "-Wshadow"
     #pragma clang diagnostic ignored "-Wunused-variable"
     #pragma clang diagnostic ignored "-Wunused-parameter"
 #endif
