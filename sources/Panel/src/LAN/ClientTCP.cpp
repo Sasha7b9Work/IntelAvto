@@ -130,7 +130,7 @@ void ClientTCP::Send(tcp_pcb *_tpcb, Client *_ss)
         else if (wr_err == ERR_MEM)
         {
             // we are low on memory, try later / harder, defer to poll
-            _ss->p_tx = ptr;
+            _ss->p_tx = ptr; //-V1048
         }
         else
         {
@@ -184,7 +184,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
     else if (err != ERR_OK)
     {
         // cleanup, for unkown reason
-        if (_p != nullptr)
+        if (_p != nullptr) //-V547
         {
             ss->p_tx = nullptr;
             pbuf_free(_p);
@@ -218,7 +218,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
             pbuf_chain(ptr, _p);
         }
 
-        err = ERR_OK;
+        err = ERR_OK; //-V1048
     }
     else if (ss->state == S_CLOSING)
     {
@@ -227,7 +227,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
         ss->p_tx = nullptr;
         pbuf_free(_p);
 
-        err = ERR_OK;
+        err = ERR_OK; //-V1048
 
         CloseConnection(_tpcb, ss);
     }
@@ -238,7 +238,7 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
         ss->p_tx = nullptr;
         pbuf_free(_p);
 
-        err = ERR_OK;
+        err = ERR_OK; //-V1048
     }
 
     return err;

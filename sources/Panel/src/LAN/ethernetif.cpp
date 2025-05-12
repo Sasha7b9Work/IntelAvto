@@ -349,7 +349,12 @@ dp83848_IOCtx_t  DP83848_IOCtx = {ETH_PHY_IO_Init,
   */
 static void low_level_init(struct netif *netif)
 {
-  uint8_t macaddress[6]= {gset.mac[0], gset.mac[1], gset.mac[2], gset.mac[3], gset.mac[4], gset.mac[5] };
+  static uint8_t macaddress[6]= {gset.mac[0], gset.mac[1], gset.mac[2], gset.mac[3], gset.mac[4], gset.mac[5] };
+
+  for (int i = 0; i < 6; i++)
+  {
+      macaddress[i] = gset.mac[i];
+    }
 
   EthHandle.Instance = ETH;
   EthHandle.Init.MACAddr = macaddress;
@@ -423,7 +428,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   uint32_t i = 0U;
   struct pbuf *q = nullptr;
   err_t errval = ERR_OK;
-  ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT];
+  static ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT];
 
   std::memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
 

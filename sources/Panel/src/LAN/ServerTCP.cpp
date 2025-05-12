@@ -146,7 +146,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
     else if (err != ERR_OK)
     {
         // cleanup, for unkown reason
-        if (p != nullptr)
+        if (p != nullptr) //-V547
         {
             ss->p_tx = nullptr;
             pbuf_free(p);
@@ -180,7 +180,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
             pbuf_chain(ptr, p);
         }
 
-        err = ERR_OK;
+        err = ERR_OK; //-V1048
     }
     else if (ss->state == S_CLOSING)
     {
@@ -189,7 +189,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
         ss->p_tx = nullptr;
         pbuf_free(p);
 
-        err = ERR_OK;
+        err = ERR_OK; //-V1048
 
         CloseConnection(tpcb, ss);
     }
@@ -200,7 +200,7 @@ err_t ServerTCP::CallbackRecv(void *arg, tcp_pcb *tpcb, pbuf *p, err_t err)
         ss->p_tx = nullptr;
         pbuf_free(p);
 
-        err = ERR_OK;
+        err = ERR_OK; //-V1048
     }
 
     return err;
@@ -244,7 +244,7 @@ void ServerTCP::Send(tcp_pcb *tpcb, Server *ss)
         else if (wr_err == ERR_MEM)
         {
             // we are low on memory, try later / harder, defer to poll
-            ss->p_tx = ptr;
+            ss->p_tx = ptr; //-V1048
         }
         else
         {

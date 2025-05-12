@@ -38,6 +38,16 @@ namespace PageMain
         FuncPress_Calibration
     );
 
+    static void FuncPress_FlashDrive()
+    {
+
+    }
+
+    DEF_BUTTON(bFlashDrive,
+        "Флешка",
+        FuncPress_FlashDrive
+    );
+
     static void FuncPress_Info()
     {
         Menu::SetOpenedPage(PageInfo::self);
@@ -63,6 +73,7 @@ namespace PageMain
     {
         &bTests,
         &bSettings,
+        &bFlashDrive,
         &bCalibration,
         &bInfo,
         &bDisplay,

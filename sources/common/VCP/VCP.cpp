@@ -63,7 +63,7 @@ void VCP::Flush()
 {
     if (sizeBuffer)
     {
-        USBD_CDC_HandleTypeDef *pCDC = (USBD_CDC_HandleTypeDef *)handleUSBD.pClassData;
+        volatile USBD_CDC_HandleTypeDef *pCDC = (USBD_CDC_HandleTypeDef *)handleUSBD.pClassData;
         while (pCDC->TxState == 1) {}
         USBD_CDC_SetTxBuffer(&handleUSBD, buffSend, (uint16)sizeBuffer);
         USBD_CDC_TransmitPacket(&handleUSBD);
@@ -78,7 +78,7 @@ void VCP::SendBufferSynch(const uint8 *buffer, int size)
 {
     if (isConnected)
     {
-        USBD_CDC_HandleTypeDef *pCDC = (USBD_CDC_HandleTypeDef *)handleUSBD.pClassData;
+        volatile USBD_CDC_HandleTypeDef *pCDC = (USBD_CDC_HandleTypeDef *)handleUSBD.pClassData;
     
         do 
         {
