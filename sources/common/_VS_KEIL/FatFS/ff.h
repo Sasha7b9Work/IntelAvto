@@ -22,7 +22,9 @@ typedef unsigned short WCHAR; //-V677
 #define	FA_OPEN_ALWAYS		0x10
 #define	FA_OPEN_APPEND		0x30
 
+#ifdef GUI
 typedef unsigned int DWORD;
+#endif
 typedef unsigned char BYTE;
 typedef unsigned short WORD;
 typedef unsigned int UINT;
