@@ -100,6 +100,8 @@ bool FDrive::IsConnected()
 
 void FDrive::Init()
 {
+#ifndef WIN32
+
     InitHardware();
 
     if (FATFS_LinkDriver(&USBH_Driver, USBDISKPath) == FR_OK)
@@ -112,6 +114,8 @@ void FDrive::Init()
     {
         LOG_ERROR("Can not %s", __FUNCTION__);
     }
+
+#endif
 }
 
 

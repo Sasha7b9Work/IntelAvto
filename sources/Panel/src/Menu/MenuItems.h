@@ -46,11 +46,23 @@ public:
         is_opened = false;
     }
 
+    void SetActive(bool active)
+    {
+        is_active = active;
+    }
+
+    bool IsActive() const
+    {
+        return is_active;
+    }
+
 protected:
 
     int DeltaTextt() const { return 3; }
 
     bool is_opened = false;
+
+    bool is_active = true;
 };
 
 

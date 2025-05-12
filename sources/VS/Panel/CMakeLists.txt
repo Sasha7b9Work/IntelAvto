@@ -2,7 +2,7 @@
 
 project (PanelGUI)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -14,6 +14,8 @@ include_directories(
     ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     ../../common/_VS_KEIL/CMSIS
     ../../common
+    ../../common/libs/FatFS
+    ../../common/libs/USBH
     ../../Panel/src
     ../../Panel/tests
     ../../Panel/src/Hardware/HAL
@@ -84,6 +86,7 @@ file(GLOB DISPLAY_FONT          ../../common/Display/Font/*.h
                                 ../../common/Display/Font/*.inc
                                 ../../common/Display/Font/*.xml)
 file(GLOB DISPLAY_PICTURES   ../../Panel/src/Display/Pictures/*.*)
+file(GLOB FLASH_DRIVE        ../../Panel/src/FlashDrive/*.h)
 file(GLOB GUI                            src/GUI/*)
 file(GLOB HARDWARE           ../../Panel/src/Hardware/*FPGA.*
                              ../../Panel/src/Hardware/FreqMeter.*
@@ -105,23 +108,24 @@ file(GLOB MENU_PAGES         ../../Panel/src/Menu/Pages/*.*)
 file(GLOB SETTINGS           ../../Panel/src/Settings/*.*)
 file(GLOB UTILS                 ../../common/Utils/*.*)
 
-source_group(_VS/HAL            FILES ${VS_HAL})
-source_group(src                FILES ${SRC})
-source_group(libs/miniz         FILES ${LIBS_MINIZ})
-source_group(Connector/Device   FILES ${CONNECTOR_DEVICE})
-source_group(Device             FILES ${DEVICE})
-source_group(Display            FILES ${DISPLAY})
-source_group(Display/Font       FILES ${DISPLAY_FONT})
-source_group(Display/Pictures   FILES ${DISPLAY_PICTURES})
-source_group(GUI                FILES ${GUI})
-source_group(Hardware           FILES ${HARDWARE})
-source_group(Hardware/HAL       FILES ${HARDWARE_HAL})
-source_group(Hardware/Keyboard  FILES ${HARDWARE_KEYBOARD})
-source_group(LAN                FILES ${LAN})
-source_group(Menu               FILES ${MENU})
-source_group(Menu/Pages         FILES ${MENU_PAGES})
-source_group(Settings           FILES ${SETTINGS})
-source_group(Utils              FILES ${UTILS})
+source_group(_VS/HAL               FILES ${VS_HAL})
+source_group(src                   FILES ${SRC})
+source_group(libs/miniz            FILES ${LIBS_MINIZ})
+source_group(Connector/Device      FILES ${CONNECTOR_DEVICE})
+source_group(Device                FILES ${DEVICE})
+source_group(Display               FILES ${DISPLAY})
+source_group(Display/Font          FILES ${DISPLAY_FONT})
+source_group(Display/Pictures      FILES ${DISPLAY_PICTURES})
+source_group(FlashDrive/FlashDrive FILES ${FLASH_DRIVE})
+source_group(GUI                   FILES ${GUI})
+source_group(Hardware              FILES ${HARDWARE})
+source_group(Hardware/HAL          FILES ${HARDWARE_HAL})
+source_group(Hardware/Keyboard     FILES ${HARDWARE_KEYBOARD})
+source_group(LAN                   FILES ${LAN})
+source_group(Menu                  FILES ${MENU})
+source_group(Menu/Pages            FILES ${MENU_PAGES})
+source_group(Settings              FILES ${SETTINGS})
+source_group(Utils                 FILES ${UTILS})
 
 set_source_files_properties(
     ../../Panel/src/Hardware/HAL/HAL.cpp
@@ -139,6 +143,7 @@ add_executable(${PROJECT_NAME}
     ${DISPLAY}
     ${DISPLAY_FONT}
     ${DISPLAY_PICTURES}
+    ${FLASH_DRIVE}
     ${HARDWARE}
     ${GUI}
     ${HARDWARE_HAL}

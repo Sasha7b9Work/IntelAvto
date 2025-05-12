@@ -225,6 +225,11 @@ void Button::Draw(int x, int y, int width, bool selected)
         Color::WHITE.SetAsCurrent();
     }
 
+    if (!is_active)
+    {
+        Color::BLACK.SetAsCurrent();
+    }
+
     Text(GetTitle()).Write(x, y + DeltaTextt(), width);
 }
 

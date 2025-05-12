@@ -4,6 +4,7 @@
 #include "Menu/Pages/Pages.h"
 #include "Menu/Menu.h"
 #include "Display/Display_.h"
+#include "FlashDrive/FlashDrive.h"
 
 
 namespace PageMain
@@ -79,6 +80,11 @@ namespace PageMain
         &bDisplay,
         nullptr
     };
+
+    static void OnDraw_Page()
+    {
+        bFlashDrive.SetActive(FDrive::IsConnected());
+    }
 
     static Page page(items, nullptr, nullptr);
 }
