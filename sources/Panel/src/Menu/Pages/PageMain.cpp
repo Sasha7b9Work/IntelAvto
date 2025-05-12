@@ -86,7 +86,7 @@ namespace PageMain
         bFlashDrive.SetActive(FDrive::IsConnected());
     }
 
-    static Page page(items, nullptr, nullptr);
+    static Page page(items, OnDraw_Page, nullptr);
 }
 
 

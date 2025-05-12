@@ -13,6 +13,8 @@ include_directories(
     ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
     ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     ../../common/_VS_KEIL/CMSIS
+    ../../common/_VS_KEIL/FatFS
+    ../../common/_VS_WIN/USBH
     ../../common
     ../../common/libs/FatFS
     ../../common/libs/USBH
@@ -86,7 +88,8 @@ file(GLOB DISPLAY_FONT          ../../common/Display/Font/*.h
                                 ../../common/Display/Font/*.inc
                                 ../../common/Display/Font/*.xml)
 file(GLOB DISPLAY_PICTURES   ../../Panel/src/Display/Pictures/*.*)
-file(GLOB FLASH_DRIVE        ../../Panel/src/FlashDrive/*.h)
+file(GLOB FLASH_DRIVE        ../../Panel/src/FlashDrive/*.h
+                                         src/FlashDrive/*.*)
 file(GLOB GUI                            src/GUI/*)
 file(GLOB HARDWARE           ../../Panel/src/Hardware/*FPGA.*
                              ../../Panel/src/Hardware/FreqMeter.*
@@ -116,7 +119,7 @@ source_group(Device                FILES ${DEVICE})
 source_group(Display               FILES ${DISPLAY})
 source_group(Display/Font          FILES ${DISPLAY_FONT})
 source_group(Display/Pictures      FILES ${DISPLAY_PICTURES})
-source_group(FlashDrive/FlashDrive FILES ${FLASH_DRIVE})
+source_group(FlashDrive            FILES ${FLASH_DRIVE})
 source_group(GUI                   FILES ${GUI})
 source_group(Hardware              FILES ${HARDWARE})
 source_group(Hardware/HAL          FILES ${HARDWARE_HAL})

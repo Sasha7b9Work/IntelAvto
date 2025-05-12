@@ -2,7 +2,7 @@
 #pragma once
 #include <ff.h>
 #include <stm32f4xx_hal.h>
-
+#include <usbh_def.h>
 
 
 struct StructForWrite
