@@ -25,7 +25,7 @@ namespace FDrive
 
     static FATFS USBDISKFatFs;
     static char USBDISKPath[4];
-    static bool gFlashDriveIsConnected = false;
+    static bool is_connected = false;
 
     // Устанавливает текущее время для файла nameFile
     static void SetTimeForFile(char *nameFile);
@@ -47,18 +47,6 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
     case HOST_USER_CLASS_ACTIVE:
         need_mount = true;
-        /*
-        if (f_mount(&USBDISKFatFs, (TCHAR const*)USBDISKPath, 1) != FR_OK)
-        {
-            display.ShowWarning(WrongFileSystem);
-        }
-        else
-        {
-            gFlashDriveIsConnected = true;
-            FM_Init();
-            Menu::ChangeStateFlashDrive();
-        }
-        */
         break;
 
     case HOST_USER_CLASS_SELECTED:
@@ -69,8 +57,7 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
         break;
 
     case HOST_USER_DISCONNECTION:
-        gFlashDriveIsConnected = false;
-//        Menu::ChangeStateFlashDrive();
+        is_connected = false;
         break;
 
     default:
@@ -83,7 +70,7 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 void FDrive::Mount()
 {
     FileManager::Init();
-//    Menu::ChangeStateFlashDrive();
+
     if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 0) != FR_OK)
     {
         LOG_ERROR("Не могу примонтировать диск");
@@ -93,7 +80,7 @@ void FDrive::Mount()
 
 bool FDrive::IsConnected()
 {
-    return gFlashDriveIsConnected;
+    return is_connected;
 }
 
 
@@ -127,23 +114,17 @@ void FDrive::Update()
         uint timeStart = TIME_MS;
         need_mount = false;
 
-//        Display::FuncOnWaitStart(DICT(DDetectFlashDrive), false);
-
         if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 1) != FR_OK)
         {
-//            Display::ShowWarning(WrongFileSystem);
         }
         else
         {
-            gFlashDriveIsConnected = true;
+            is_connected = true;
             FileManager::Init();
-//            Menu::ChangeStateFlashDrive();
         }
         while (TIME_MS - timeStart < 3000)
         {
         }
-
-//        Display::FuncOnWaitStop();
     }
     else
     {
