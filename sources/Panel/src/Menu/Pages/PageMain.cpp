@@ -31,7 +31,7 @@ namespace PageMain
 
     static void FuncPress_Calibration()
     {
-        Menu::SetOpenedPage(PageCalibration::self);
+//        Menu::SetOpenedPage(PageCalibration::self);
     }
 
 //    DEF_BUTTON(bCalibration,

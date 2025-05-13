@@ -1288,11 +1288,6 @@
               <FilePath>.\src\Menu\Pages\PageLAN.cpp</FilePath>
             </File>
             <File>
-              <FileName>PageCalibration.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalibration.cpp</FilePath>
-            </File>
-            <File>
               <FileName>InputField.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\InputField.cpp</FilePath>
@@ -5091,11 +5086,6 @@
               <FileName>PageLAN.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageLAN.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageCalibration.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageCalibration.cpp</FilePath>
             </File>
             <File>
               <FileName>InputField.cpp</FileName>

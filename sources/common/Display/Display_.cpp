@@ -378,8 +378,7 @@ void Display::DrawScreen()
         DrawSignal();
     }
     else if (Menu::OpenedPage() == PageInfo::self ||
-        Menu::OpenedPage()->ConsistOpenedItems() ||
-        Menu::OpenedPage() == PageCalibration::self)
+        Menu::OpenedPage()->ConsistOpenedItems())
     {
 
     }

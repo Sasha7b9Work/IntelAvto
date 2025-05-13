@@ -9,14 +9,6 @@ namespace PageMain
 }
 
 
-namespace PageCalibration
-{
-    extern Page *self;
-
-    void UpdateInput();
-}
-
-
 namespace PageLAN
 {
     extern Page *self;

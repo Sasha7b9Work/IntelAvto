@@ -43,14 +43,7 @@ void Menu::SetOpenedPage(Page *page)
 {
     openedPage = page;
 
-    if (openedPage == PageCalibration::self)
-    {
-        Menu::Input::SetFuncUpdate(PageCalibration::UpdateInput);
-    }
-    else
-    {
-        Menu::Input::SetFuncUpdate(Menu::Input::FuncUpdate);
-    }
+    Menu::Input::SetFuncUpdate(Menu::Input::FuncUpdate);
 }
 
 
