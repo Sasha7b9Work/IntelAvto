@@ -4,7 +4,6 @@
 #include "Menu/MenuItems.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
-#include "Menu/Pages/Pages.h"
 #include "Device/Device.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard/Keyboard_.h"
@@ -106,7 +105,7 @@ void Menu::Input::OnKey(Key::E key)
             {
                 if (OpenedPageIsSignal())
                 {
-                    SetOpenedPage(PageMain::self);
+//                    SetOpenedPage(PageMain::self);
                 }
                 else
                 {

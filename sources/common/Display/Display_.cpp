@@ -4,7 +4,6 @@
 #include "Menu/Menu.h"
 #include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
-#include "Menu/Pages/Pages.h"
 #include "Device/Device.h"
 #include "Display/Display_.h"
 #include "Display/Font/Font.h"
