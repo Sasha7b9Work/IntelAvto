@@ -806,16 +806,6 @@
               <FileType>5</FileType>
               <FilePath>..\common\Display\Text_.h</FilePath>
             </File>
-            <File>
-              <FileName>Painter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Painter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Painter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Painter.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -4435,16 +4425,6 @@
               <FileName>Text_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Display\Text_.h</FilePath>
-            </File>
-            <File>
-              <FileName>Painter.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Painter.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Painter.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Painter.h</FilePath>
             </File>
           </Files>
         </Group>

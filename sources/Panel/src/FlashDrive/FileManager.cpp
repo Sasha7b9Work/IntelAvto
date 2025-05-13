@@ -7,7 +7,6 @@
 #include "Hardware/Sound.h"
 #include "Utils/Math_.h"
 #include "Utils/StringUtils_.h"
-#include "Display/Painter.h"
 #include "Hardware/HAL/HAL.h"
 #include <cstring>
 
@@ -68,27 +67,27 @@ static void DrawLongString(int x, int y, char *string, bool hightlight)
     Color color = Color::FILL;
     if (hightlight)
     {
-        Painter::FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
+//        Painter::FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
         color = Color::BACK;
     }
 
     if (length <= WIDTH_COL)
     {
-        Painter::DrawText(x, y, string, color);
+//        Painter::DrawText(x, y, string, color);
     }
     else
     {
-        Painter::DrawTextWithLimitationC(x, y, string, color, x, y, WIDTH_COL, 10);
-        Painter::DrawText(x + WIDTH_COL + 3, y, "...");
+//        Painter::DrawTextWithLimitationC(x, y, string, color, x, y, WIDTH_COL, 10);
+//        Painter::DrawText(x + WIDTH_COL + 3, y, "...");
     }
 }
 
 
 static void DrawHat(int x, int y, pchar string, int num1, int num2)
 {
-    Painter::FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, Color::BACK);
-    Painter::DrawFormText(x + 60, y, Color::FILL, string, num1, num2);
-    Painter::DrawHLine(y + 10, x + 2, x + 140);
+//    Painter::FillRegion(x - 1, y, WIDTH_COL + 9, RECS_ON_PAGE * 9 + 11, Color::BACK);
+//    Painter::DrawFormText(x + 60, y, Color::FILL, string, num1, num2);
+//    Painter::DrawHLine(y + 10, x + 2, x + 140);
 }
 
 
@@ -138,7 +137,7 @@ void FileManager::DrawNameCurrentDir(int left, int top)
     int length = Font::GetLengthText(currentDir);
     if (length < 277)
     {
-        Painter::DrawText(left + 1, top + 1, currentDir);
+//        Painter::DrawText(left + 1, top + 1, currentDir);
     }
     else
     {
@@ -155,7 +154,7 @@ void FileManager::DrawNameCurrentDir(int left, int top)
             }
             length = Font::GetLengthText(++pointer);
         }
-        Painter::DrawText(left + 1, top + 1, pointer);
+//        Painter::DrawText(left + 1, top + 1, pointer);
     }
 }
 
@@ -176,12 +175,12 @@ void FileManager::Draw()
     {
         Display::BeginScene();
 //        Menu::Draw();
-        Painter::DrawRectangle(0, 0, width, 239, Color::FILL);
+//        Painter::DrawRectangle(0, 0, width, 239, Color::FILL);
 //        Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, Color::BACK);
         FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);
         DrawNameCurrentDir(left, top + 2);
 //        Painter::DrawVLine(left2col, top + 16, 239, Color::FILL);
-        Painter::DrawHLine(top + 15, 0, width);
+//        Painter::DrawHLine(top + 15, 0, width);
     }
 
     if (FM_NEED_REDRAW != FM_REDRAW_FILES)
