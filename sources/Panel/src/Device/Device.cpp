@@ -1,6 +1,7 @@
 // 2024/02/01 10:16:08 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Device/Device.h"
+#include "Menu/MenuItems.h"
 #include "Connector/Device/Messages_.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
@@ -44,16 +45,16 @@ bool Device::Start()
 {
     if (IsStopped())
     {
-//        if (Page::ForCurrentSignal()->StartTest())
-//        {
-//            state = State::Running;
-//
-//            return true;
-//        }
-//        else
-//        {
-//            return false;
-//        }
+        if (Page::ForCurrentSignal()->StartTest())
+        {
+            state = State::Running;
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     return true;
