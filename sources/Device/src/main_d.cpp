@@ -11,9 +11,9 @@
 
 
 #ifndef WIN32
-    #if __ARMCC_VERSION != 6210000
+    #if __ARMCC_VERSION != 6230001
         // На других версиях компиляторов не проверялось
-        #error "Requires ARM Compiler V6.21 from uVision 5.39"
+        #error "Requires ARM Compiler V6.23 from uVision 5.42"
     #endif
 #endif
 

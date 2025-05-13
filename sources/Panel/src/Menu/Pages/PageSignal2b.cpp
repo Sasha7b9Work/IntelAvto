@@ -6,7 +6,6 @@
 #include "Menu/MenuItemsDef.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"
-#include "LAN/ServerTCP.h"
 #include "Device/IT6523.h"
 #include "Device/Device.h"
 

@@ -6,17 +6,17 @@
 #include "Display/Display_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "FlashDrive/FlashDrive.h"
-#include "LAN/LAN.h"
 #include "Device/IT6523.h"
 #include "VCP/VCP.h"
 
 
 #ifndef WIN32
-    #if __ARMCC_VERSION != 6210000
+    #if __ARMCC_VERSION != 6230001
         // На других версиях компиляторов не проверялось
-        #error "Requires ARM Compiler V6.21 from uVision 5.39"
+        #error "Requires ARM Compiler V6.23 from uVision 5.42"
     #endif
 #endif
+
 
 
 
@@ -24,36 +24,36 @@ int main(void)
 {
     HAL::Init();
 
-    gset.Load();
-
-    LAN::Init();
-    
-    Display::Init();
-
-    Keyboard::Init();
-
-    Menu::Init();
-
-//    VCP::Init();
-
-    FDrive::Init();
-
-    while (1)
-    {
-        LAN::Update();
-        Menu::Input::Update();
-
-        LAN::Update();
-        Display::Update();
-
-        LAN::Update();
-        Timer::UpdateTasks();
-
-        LAN::Update();
-        IT6523::Update();
-
-        FDrive::Update();
-
-        gset.Save();
-    }
+//    gset.Load();
+//
+//    LAN::Init();
+//    
+//    Display::Init();
+//
+//    Keyboard::Init();
+//
+//    Menu::Init();
+//
+////    VCP::Init();
+//
+//    FDrive::Init();
+//
+//    while (1)
+//    {
+//        LAN::Update();
+//        Menu::Input::Update();
+//
+//        LAN::Update();
+//        Display::Update();
+//
+//        LAN::Update();
+//        Timer::UpdateTasks();
+//
+//        LAN::Update();
+//        IT6523::Update();
+//
+//        FDrive::Update();
+//
+//        gset.Save();
+//    }
 }

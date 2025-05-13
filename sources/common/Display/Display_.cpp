@@ -11,7 +11,6 @@
 #include "Display/Text_.h"
 #include "Display/Console_.h"
 #include "Display/Pictures/Picture.h"
-#include "LAN/LAN.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
 #include <cstdio>
@@ -295,7 +294,7 @@ void Display::Update()
 #else
     for (int i = 0; i < NUM_PARTS; i++)
     {
-        LAN::Update();
+//        LAN::Update();
         DrawPartScreen(i, true);
     }
 #endif
@@ -312,15 +311,15 @@ void Display::DrawPartScreen(int num, bool)
     {
         timeStart = TIME_MS;
     }
-    LAN::Update();
+//    LAN::Update();
 
     Display::BeginScene();
 
-    LAN::Update();
+//    LAN::Update();
 
     DrawScreen();
 
-    LAN::Update();
+//    LAN::Update();
 
     if (num == 0)
     {
@@ -347,7 +346,7 @@ void Display::DrawPartScreen(int num, bool)
         Text("%08X", crc_recv).Write(400, 240);
     }
 
-    LAN::Update();
+//    LAN::Update();
 
     if (!TypeSignal::IsExtern())
     {
@@ -356,7 +355,7 @@ void Display::DrawPartScreen(int num, bool)
     }
 
     Display::EndScene();
-    LAN::Update();
+//    LAN::Update();
 
     if (num == Display::NUM_PARTS)
     {

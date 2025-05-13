@@ -7,7 +7,7 @@
 #include "Display/Display_.h"
 #include "Display/Text_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
-#include "LAN/ServerTCP.h"
+//#include "LAN/ServerTCP.h"
 #include "Utils/Math_.h"
 #include "Menu/Menu.h"
 #include "Hardware/HAL/HAL.h"
@@ -484,11 +484,11 @@ void Page::DrawConnectionServer()
 
     x += 90;
 
-    if (ServerTCP::IsConnected())
-    {
-        Text("ондйкчвем").Write(x, y, Color::GREEN);
-    }
-    else
+//    if (ServerTCP::IsConnected())
+//    {
+//        Text("ондйкчвем").Write(x, y, Color::GREEN);
+//    }
+//    else
     {
         if ((TIME_MS / 500) % 2)
         {
