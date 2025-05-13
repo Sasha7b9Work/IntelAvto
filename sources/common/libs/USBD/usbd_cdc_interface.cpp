@@ -1,6 +1,5 @@
 // 2025/03/19 11:06:09 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "VCP/VCP.h"
 #include "Hardware/Timer.h"
 #include "SCPI/SCPI.h"
 #include <usbd_cdc.h>
@@ -39,14 +38,14 @@ USBD_CDC_ItfTypeDef USBD_CDC_fops = {
 
 static void SetAttributeConnected()
 {
-    VCP::cableIsConnected = true;
-    VCP::isConnected = false;
+//    VCP::cableIsConnected = true;
+//    VCP::isConnected = false;
 }
 
 
 static int8_t CDC_Itf_Init(void)
 {
-    USBD_CDC_SetRxBuffer(&VCP::handleUSBD, UserRxBuffer);
+//    USBD_CDC_SetRxBuffer(&VCP::handleUSBD, UserRxBuffer);
     Timer::SetDefferedOnceTask(TimerTask::USBD, 100, SetAttributeConnected);   // \todo Задержка введена для того, чтобы не было ложных срабатываний в
                                                                                // usbd_conf.c:HAL_PCD_SetupStageCallback при определении подключения хоста
     return USBD_OK;
@@ -55,8 +54,8 @@ static int8_t CDC_Itf_Init(void)
 // DeInitializes the CDC media low layer
 static int8_t CDC_Itf_DeInit(void)
 {
-    VCP::cableIsConnected = false;
-    VCP::isConnected = false;
+//    VCP::cableIsConnected = false;
+//    VCP::isConnected = false;
 
     return USBD_OK;
 }
@@ -125,7 +124,7 @@ static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length)
 {
     SCPI::AddNewData(buffer, *length);
 
-    USBD_CDC_ReceivePacket(&VCP::handleUSBD);
+//    USBD_CDC_ReceivePacket(&VCP::handleUSBD);
 
     return USBD_OK;
 }

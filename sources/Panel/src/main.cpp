@@ -7,7 +7,6 @@
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Device/IT6523.h"
-#include "VCP/VCP.h"
 
 
 #ifndef WIN32

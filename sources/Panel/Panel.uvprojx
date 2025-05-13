@@ -1219,21 +1219,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>VCP</GroupName>
-          <Files>
-            <File>
-              <FileName>VCP.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\VCP\VCP.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>VCP.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\VCP\VCP.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Utils</GroupName>
           <Files>
             <File>
@@ -3718,21 +3703,6 @@
               <FileName>SCPI.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\SCPI\SCPI.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>VCP</GroupName>
-          <Files>
-            <File>
-              <FileName>VCP.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\VCP\VCP.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>VCP.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\VCP\VCP.h</FilePath>
             </File>
           </Files>
         </Group>

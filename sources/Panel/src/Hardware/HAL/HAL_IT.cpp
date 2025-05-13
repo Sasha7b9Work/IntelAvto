@@ -3,7 +3,6 @@
 #include "Utils/Debug_.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Hardware/Sound.h"
-#include "VCP/VCP.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -79,7 +78,7 @@ void SysTick_Handler(void)
 
 void OTG_FS_IRQHandler()
 {
-    HAL_PCD_IRQHandler(&VCP::handlePCD);
+//    HAL_PCD_IRQHandler(&VCP::handlePCD);
 }
 
 
