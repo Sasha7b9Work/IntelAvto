@@ -96,10 +96,10 @@ namespace PageCalibration
         Menu::SetOpenedPage(PageMain::self);
     }
 
-    DEF_BUTTON(bBack,
-        "Назад",
-        FuncPress_Back
-    );
+//    DEF_BUTTON(bBack,
+//        "Назад",
+//        FuncPress_Back
+//    );
 
     DEF_CHOICE_4_FULL(chTypeSignal,
         "Импульс",
@@ -163,27 +163,27 @@ namespace PageCalibration
         }
     }
 
-    DEF_BUTTON(bCalibrate,
-        "Калибровать",
-        FuncPress_Calibrate
-    );
+//    DEF_BUTTON(bCalibrate,
+//        "Калибровать",
+//        FuncPress_Calibrate
+//    );
 
     static void FuncPress_Reset()
     {
         
     }
 
-    DEF_BUTTON(bReset,
-        "Сброс",
-        FuncPress_Reset
-    );
+//    DEF_BUTTON(bReset,
+//        "Сброс",
+//        FuncPress_Reset
+//    );
 
     static Item *items[] =
     {
-        &bBack,
+//        &bBack,
         &chTypeSignal,
         &chTypeAccum,
-        &bCalibrate,
+//        &bCalibrate,
 //        &bReset,
         nullptr
     };

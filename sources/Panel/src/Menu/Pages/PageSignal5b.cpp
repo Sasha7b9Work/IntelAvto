@@ -38,10 +38,10 @@ namespace PageSignal5b
         TypeSignal::Set(TypeSignal::_1);
     }
 
-    DEF_BUTTON(bSignal5b,
-        "Сигнал",
-        FuncPress_Signal
-    );
+//    DEF_BUTTON(bSignal5b,
+//        "Сигнал",
+//        FuncPress_Signal
+//    );
 
     DEF_CHOICE_2(chModeVoltage,
         "12В", "24В",
@@ -63,7 +63,7 @@ namespace PageSignal5b
 
     static Item *items[] =
     {
-        &bSignal5b,
+//        &bSignal5b,
         &chModeVoltage,
         &param_Us,
         &param_td,

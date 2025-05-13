@@ -13,14 +13,14 @@ namespace PageInfo
         Menu::SetOpenedPage(PageMain::self);
     }
 
-    DEF_BUTTON(bBack,
-        "Назад",
-        FuncPress_Back
-    );
+//    DEF_BUTTON(bBack,
+//        "Назад",
+//        FuncPress_Back
+//    );
 
     static Item *items[] =
     {
-        &bBack,
+//        &bBack,
         nullptr
     };
 

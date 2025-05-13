@@ -33,10 +33,10 @@ namespace PageSignal2a
         TypeSignal::Set(TypeSignal::_2b_SAEJ1113);
     }
 
-    DEF_BUTTON(bSignal2a,
-        "Сигнал",
-        FuncPress_Signal
-    );
+//    DEF_BUTTON(bSignal2a,
+//        "Сигнал",
+//        FuncPress_Signal
+//    );
 
     DEF_CHOICE_2(chModeVoltage,
         "12В", "24В",
@@ -55,7 +55,7 @@ namespace PageSignal2a
 
     static Item *items[] =
     {
-        &bSignal2a,
+//        &bSignal2a,
         &chModeVoltage,
         &param_Us,
         &param_t1,

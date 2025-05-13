@@ -14,50 +14,50 @@ namespace PageMain
         Menu::SetOpenedPage(PageSignal1::self);
     }
 
-    DEF_BUTTON(bTests,
-        "Тесты",
-        FuncPress_Tests
-    );
+//    DEF_BUTTON(bTests,
+//        "Тесты",
+//        FuncPress_Tests
+//    );
 
     static void FuncPress_Settings()
     {
 //        Menu::SetOpenedPage(PageSettings::self);
     }
 
-    DEF_BUTTON(bSettings,
-        "Настройки",
-        FuncPress_Settings
-    );
+//    DEF_BUTTON(bSettings,
+//        "Настройки",
+//        FuncPress_Settings
+//    );
 
     static void FuncPress_Calibration()
     {
         Menu::SetOpenedPage(PageCalibration::self);
     }
 
-    DEF_BUTTON(bCalibration,
-        "Калибровка",
-        FuncPress_Calibration
-    );
+//    DEF_BUTTON(bCalibration,
+//        "Калибровка",
+//        FuncPress_Calibration
+//    );
 
     static void FuncPress_FlashDrive()
     {
 
     }
 
-    DEF_BUTTON(bFlashDrive,
-        "Флешка",
-        FuncPress_FlashDrive
-    );
+//    DEF_BUTTON(bFlashDrive,
+//        "Флешка",
+//        FuncPress_FlashDrive
+//    );
 
     static void FuncPress_Info()
     {
         Menu::SetOpenedPage(PageInfo::self);
     }
 
-    DEF_BUTTON(bInfo,
-        "Информация",
-        FuncPress_Info
-    );
+//    DEF_BUTTON(bInfo,
+//        "Информация",
+//        FuncPress_Info
+//    );
 
     static void FuncPress_Display()
     {
@@ -65,25 +65,25 @@ namespace PageMain
     }
 
 
-    DEF_BUTTON(bDisplay,
-        "Дисплей",
-        FuncPress_Display
-    );
+//    DEF_BUTTON(bDisplay,
+//        "Дисплей",
+//        FuncPress_Display
+//    );
 
     static Item *items[] =
     {
-        &bTests,
-        &bSettings,
-        &bFlashDrive,
-        &bCalibration,
-        &bInfo,
-        &bDisplay,
+//        &bTests,
+//        &bSettings,
+//        &bFlashDrive,
+//        &bCalibration,
+//        &bInfo,
+//        &bDisplay,
         nullptr
     };
 
     static void OnDraw_Page()
     {
-        bFlashDrive.SetActive(FDrive::IsConnected());
+//        bFlashDrive.SetActive(FDrive::IsConnected());
     }
 
     static Page page(items, OnDraw_Page, nullptr);

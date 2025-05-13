@@ -7,29 +7,29 @@
 
 namespace PageLAN
 {
-    DEF_BUTTON(bBack,
-        "Назад",
-        []()
-        {
-//            Menu::SetOpenedPage(PageSettings::self);
-        }
-    );
+//    DEF_BUTTON(bBack,
+//        "Назад",
+//        []()
+//        {
+////            Menu::SetOpenedPage(PageSettings::self);
+//        }
+//    );
 
-    DEF_BUTTON(bIT6523,
-        "IT6523",
-        []()
-        {
-            Menu::SetOpenedPage(PageIT6523::self);
-        }
-    );
+//    DEF_BUTTON(bIT6523,
+//        "IT6523",
+//        []()
+//        {
+//            Menu::SetOpenedPage(PageIT6523::self);
+//        }
+//    );
 
-    DEF_BUTTON(bSCPI,
-        "SCPI",
-        []()
-        {
-            Menu::SetOpenedPage(PageSCPI::self);
-        }
-    );
+//    DEF_BUTTON(bSCPI,
+//        "SCPI",
+//        []()
+//        {
+//            Menu::SetOpenedPage(PageSCPI::self);
+//        }
+//    );
 
     FieldIP bNetmask{
         "Маска сети",
@@ -48,12 +48,12 @@ namespace PageLAN
 
     static Item *items[] =
     {
-        &bBack,
-        &bIT6523,
-        &bSCPI,
-        &bNetmask,
-        &bGateway,
-        &bMAC,
+//        &bBack,
+//        &bIT6523,
+//        &bSCPI,
+//        &bNetmask,
+//        &bGateway,
+//        &bMAC,
         nullptr
     };
 
@@ -64,13 +64,13 @@ namespace PageLAN
 
     namespace PageIT6523
     {
-        DEF_BUTTON(bBack,
-            "Назад",
-            []()
-            {
-                Menu::SetOpenedPage(PageLAN::self);
-            }
-        );
+//      DEF_BUTTON(bBack,
+//          "Назад",
+//          []()
+//          {
+//              Menu::SetOpenedPage(PageLAN::self);
+//          }
+//      );
 
         FieldIP bIP{
             "Адрес IP",
@@ -84,7 +84,7 @@ namespace PageLAN
 
         static Item *items[] =
         {
-            &bBack,
+//            &bBack,
             &bIP,
             &bPort,
             nullptr
@@ -98,13 +98,13 @@ namespace PageLAN
 
     namespace PageSCPI
     {
-        DEF_BUTTON(bBack,
-            "Назад",
-            []()
-            {
-                Menu::SetOpenedPage(PageLAN::self);
-            }
-        );
+//      DEF_BUTTON(bBack,
+//          "Назад",
+//          []()
+//          {
+//              Menu::SetOpenedPage(PageLAN::self);
+//          }
+//      );
 
         FieldIP bIP{
             "Адрес IP",
@@ -118,7 +118,7 @@ namespace PageLAN
 
         static Item *items[] =
         {
-            &bBack,
+//            &bBack,
             &bIP,
             &bPort,
             nullptr
