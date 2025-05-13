@@ -1238,41 +1238,6 @@
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
-              <FileName>PageSignal2a.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal2a.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal2b.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal2b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal3a.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal3a.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal3b.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal3b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal4.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal4.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal5a.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal5a.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal5b.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
-            </File>
-            <File>
               <FileName>InputField.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\InputField.cpp</FilePath>
@@ -5021,41 +4986,6 @@
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal2a.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal2a.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal2b.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal2b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal3a.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal3a.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal3b.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal3b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal4.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal4.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal5a.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal5a.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSignal5b.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
             </File>
             <File>
               <FileName>InputField.cpp</FileName>

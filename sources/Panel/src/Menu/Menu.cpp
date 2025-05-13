@@ -160,13 +160,5 @@ bool Menu::OpenedPageIsSignal()
 {
     Page *page = OpenedPage();
 
-    return
-//        page == PageSignal1::self ||
-        page == PageSignal2a::self ||
-        page == PageSignal2b::self ||
-        page == PageSignal3a::self ||
-        page == PageSignal3b::self ||
-        page == PageSignal4::self ||
-        page == PageSignal5a::self ||
-        page == PageSignal5b::self;
+    return false;
 }

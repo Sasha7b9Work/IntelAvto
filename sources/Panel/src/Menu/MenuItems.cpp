@@ -69,14 +69,15 @@ const Page *Page::ForCurrentSignal()
 {
     static const Page *pages[TypeSignal::Count] =
     {
+        nullptr
 //        PageSignal1::self,
-        PageSignal2a::self,
-        PageSignal2b::self,
-        PageSignal3a::self,
-        PageSignal3b::self,
-        PageSignal4::self,
-        PageSignal5a::self,
-        PageSignal5b::self
+//        PageSignal2a::self,
+//        PageSignal2b::self,
+//        PageSignal3a::self,
+//        PageSignal3b::self,
+//        PageSignal4::self,
+//        PageSignal5a::self,
+//        PageSignal5b::self
     };
 
     return pages[TypeSignal::Current()];
@@ -462,15 +463,7 @@ bool Page::StartTest() const
 
 bool Page::IsSignal(Page *page)
 {
-    return
-//        page == PageSignal1::self ||
-        page == PageSignal2a::self ||
-        page == PageSignal2b::self ||
-        page == PageSignal3a::self ||
-        page == PageSignal3b::self ||
-        page == PageSignal4::self ||
-        page == PageSignal5a::self ||
-        page == PageSignal5b::self;
+    return false;
 }
 
 
