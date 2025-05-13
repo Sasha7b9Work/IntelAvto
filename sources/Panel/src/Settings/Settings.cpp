@@ -2,7 +2,7 @@
 #include "defines.h"
 #include "Settings.h"
 #include "Hardware/HAL/HAL.h"
-#include "Menu/MenuItems.h"
+//#include "Menu/MenuItems.h"
 #include "Utils/StringUtils_.h"
 #include "Hardware/Timer.h"
 #include <cstdio>
@@ -308,18 +308,18 @@ pchar VoltageMode::TextValue()
 
 Duration::Duration(const Parameter &period, const Parameter &N)
 {
-    Value val_period = period.GetValue();
-    Value val_N = N.GetValue();
+//    Value val_period = period.GetValue();
+//    Value val_N = N.GetValue();
 
-    timeMS = (uint)(val_period.ToMU() * val_N.ToMU());
+//    timeMS = (uint)(val_period.ToMU() * val_N.ToMU());
 }
 
 
 Duration::Duration(float periodSec, const Parameter &N)
 {
-    Value val_N = N.GetValue();
+//    Value val_N = N.GetValue();
 
-    timeMS = (uint)(periodSec * 1000.f * (float)val_N.ToMU());
+//    timeMS = (uint)(periodSec * 1000.f * (float)val_N.ToMU());
 }
 
 

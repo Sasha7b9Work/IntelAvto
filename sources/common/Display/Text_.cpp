@@ -1,6 +1,5 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Menu/MenuItems.h"
 #include "Display/Primitives_.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"

@@ -1,7 +1,6 @@
 // 2023/09/08 20:52:34 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Display/Font/Font.h"
-#include "Menu/MenuItems.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "Device/Device.h"
@@ -23,12 +22,12 @@ namespace Menu
 
 void Menu::Draw()
 {
-    openedPage->Draw(0, 0, 0);
+//    openedPage->Draw(0, 0, 0);
 
-    if (Page::IsSignal(OpenedPage()))
-    {
-        labelMode.Draw();
-    }
+//    if (Page::IsSignal(OpenedPage()))
+//    {
+//        labelMode.Draw();
+//    }
 }
 
 
@@ -56,64 +55,64 @@ void Menu::Input::OnKey(Key::E key)
         }
     }
 
-    if (!openedPage->SelectedItem()->OnKey(key))                        // Сначала пытаемся обработать тенущий элемент меню
-    {
-        if (!openedPage->OnKey(key))                                    // Потом передаём событие странице
-        {
-            if (key == Key::Start)
-            {
-                if (OpenedPageIsSignal())
-                {
-                    Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
-
-                    if (Device::IsStopped())
-                    {
-                        if (Device::Start())
-                        {
-                            labelMode.SetState("ТЕСТ", Color::WHITE, Color::RED);
-                        }
-                    }
-                    else if (Device::IsRunning())
-                    {
-                        labelMode.SetState("ПАУЗА", Color::BLACK, Color::YELLOW);
-
-                        Device::Pause();
-                    }
-                    else if (Device::InPause())
-                    {
-                        labelMode.SetState("ТЕСТ", Color::WHITE, Color::RED);
-
-                        Device::Resume();
-                    }
-                }
-            }
-            else if (key == Key::Stop)
-            {
-                if (OpenedPageIsSignal())
-                {
-                    Device::Stop();
-
-                    labelMode.SetState("СТОП", Color::BLACK, Color::GREEN);
-
-                    Timer::SetDefferedOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
-                    {
-                        labelMode.SetState("СТОП", Color::BLACK, Color::GRAY);
-                    });
-                }
-            }
-            else if (key == Key::Esc)
-            {
-                if (OpenedPageIsSignal())
-                {
-//                    SetOpenedPage(PageMain::self);
-                }
-                else
-                {
-//                    SetOpenedPage(PageSignal1::self);
-                }
-            }
-        }
-    }
+//    if (!openedPage->SelectedItem()->OnKey(key))                        // Сначала пытаемся обработать тенущий элемент меню
+//    {
+//        if (!openedPage->OnKey(key))                                    // Потом передаём событие странице
+//        {
+//            if (key == Key::Start)
+//            {
+//                if (OpenedPageIsSignal())
+//                {
+//                    Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
+//
+//                    if (Device::IsStopped())
+//                    {
+//                        if (Device::Start())
+//                        {
+//                            labelMode.SetState("ТЕСТ", Color::WHITE, Color::RED);
+//                        }
+//                    }
+//                    else if (Device::IsRunning())
+//                    {
+//                        labelMode.SetState("ПАУЗА", Color::BLACK, Color::YELLOW);
+//
+//                        Device::Pause();
+//                    }
+//                    else if (Device::InPause())
+//                    {
+//                        labelMode.SetState("ТЕСТ", Color::WHITE, Color::RED);
+//
+//                        Device::Resume();
+//                    }
+//                }
+//            }
+//            else if (key == Key::Stop)
+//            {
+//                if (OpenedPageIsSignal())
+//                {
+//                    Device::Stop();
+//
+//                    labelMode.SetState("СТОП", Color::BLACK, Color::GREEN);
+//
+//                    Timer::SetDefferedOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
+//                    {
+//                        labelMode.SetState("СТОП", Color::BLACK, Color::GRAY);
+//                    });
+//                }
+//            }
+//            else if (key == Key::Esc)
+//            {
+//                if (OpenedPageIsSignal())
+//                {
+////                    SetOpenedPage(PageMain::self);
+//                }
+//                else
+//                {
+////                    SetOpenedPage(PageSignal1::self);
+//                }
+//            }
+//        }
+//    }
 }
 
 

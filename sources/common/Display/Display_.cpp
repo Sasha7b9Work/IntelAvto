@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include "Menu/Menu.h"
-#include "Menu/MenuItems.h"
 #include "Settings/Settings.h"
 #include "Device/Device.h"
 #include "Display/Display_.h"
@@ -376,10 +375,10 @@ void Display::DrawScreen()
 
         DrawSignal();
     }
-    else if (Menu::OpenedPage()->ConsistOpenedItems())
-    {
-
-    }
+//    else if (Menu::OpenedPage()->ConsistOpenedItems())
+//    {
+//
+//    }
     else
     {
         Font::Set(TypeFont::GOSTB28B);
@@ -523,7 +522,7 @@ void Display::DrawSignal()
 
     Picture::DrawPicure(150, 50, TypeSignal::Current());
 
-    Page::ForCurrentSignal()->DrawParameters();
+//    Page::ForCurrentSignal()->DrawParameters();
 }
 
 
