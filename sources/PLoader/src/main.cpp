@@ -4,6 +4,14 @@
 #include <stm32f4xx_hal.h>
 
 
+#ifndef WIN32
+    #if __ARMCC_VERSION != 6210000
+        // На других версиях компиляторов не проверялось
+        #error "Requires ARM Compiler V6.21 from uVision 5.39"
+    #endif
+#endif
+
+
 #ifdef WIN32
     #define __enable_irq()
     #define __disable_irq()
