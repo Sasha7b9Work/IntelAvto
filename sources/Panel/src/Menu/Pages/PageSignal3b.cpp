@@ -32,11 +32,11 @@ namespace PageSignal3b
 //        FuncPress_Signal
 //    );
 
-    DEF_CHOICE_2(chModeVoltage,
-        "12Â", "24Â",
-        gset.voltage_mode,
-        FuncVV
-    );
+//    DEF_CHOICE_2(chModeVoltage,
+//        "12Â", "24Â",
+//        gset.voltage_mode,
+//        FuncVV
+//    );
 
     static bool FuncStartTest()
     {
@@ -48,7 +48,7 @@ namespace PageSignal3b
     static Item *items[] =
     {
 //        &bSignal3b,
-        &chModeVoltage,
+//        &chModeVoltage,
         &param_Us,
         &param_N,
         nullptr
