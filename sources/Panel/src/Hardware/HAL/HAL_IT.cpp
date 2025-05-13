@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Debug_.h"
-#include "FlashDrive/FlashDrive.h"
 #include "Hardware/Sound.h"
 #include <stm32f4xx_hal.h>
 
@@ -84,7 +83,7 @@ void OTG_FS_IRQHandler()
 
 void OTG_HS_IRQHandler()
 {
-    HAL_HCD_IRQHandler((HCD_HandleTypeDef *)FDrive::handleHCD);
+//    HAL_HCD_IRQHandler((HCD_HandleTypeDef *)FDrive::handleHCD);
 }
 
 
