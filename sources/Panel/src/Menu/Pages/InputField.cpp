@@ -34,40 +34,6 @@ void InputField::Draw(int x, int y, bool visible)
 }
 
 
-void InputField::OnKey(Key::E key)
-{
-    if (key == Key::Esc)
-    {
-        Reset();
-    }
-    else
-    {
-        if (buffer[0] == 0 && key == Key::_0)
-        {
-            return;
-        }
-
-        if (std::strlen(buffer) < SIZE_BUFFER - 1)
-        {
-            char symbol = (char)(key - 1) + 0x30;
-
-            if (key == Key::Dot)
-            {
-                symbol = '.';
-            }
-
-            if (symbol == '.' && IsConsist('.'))
-            {
-            }
-            else
-            {
-                buffer[std::strlen(buffer)] = symbol;
-            }
-        }
-    }
-}
-
-
 void InputField::Reset()
 {
     std::memset(buffer, 0, SIZE_BUFFER);

@@ -4,7 +4,6 @@
 #include "Menu/Menu.h"
 #include "Menu/MenuItemsDef.h"
 #include "Display/Text_.h"
-#include "Hardware/Keyboard/Keyboard_.h"
 #include "Display/Display_.h"
 #include "Hardware/Timer.h"
 #include "Menu/Pages/InputField.h"
@@ -303,39 +302,6 @@ namespace PageCalibration
 
     void UpdateInput()
     {
-        while (!Keyboard::Empty())
-        {
-            const Key::E key = Keyboard::NextKey();
-
-            if (key == Key::Start || key == Key::Stop)
-            {
-            }
-            else if (FieldIsVisible() && ((key >= Key::_0 && key <= Key::_9) || key == Key::Dot || key == Key::Esc))
-            {
-                field.OnKey(key);
-            }
-            else if (state == State::ConfirmForSave)                        // ќжидание подтверждени€ калибровки
-            {
-                if (key == Key::OK)
-                {
-                    CalculateCalibrateFactors();
-                }
-                else if (key == Key::Esc)
-                {
-                    RefuseCalibrateFactors();
-                }
-            }
-            else if (state == State::FactorSave || state == State::RefuseCalibration)
-            {
-            }
-            else
-            {
-                if (state == State::Normal || key == Key::OK)
-                {
-                    Menu::Input::OnKey(key);
-                }
-            }
-        }
     }
 }
 

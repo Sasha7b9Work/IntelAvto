@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Device/IT6523.h"
 #include "Hardware/Timer.h"
-#include "Hardware/Keyboard/Keyboard_.h"
 #include "Device/Device.h"
 #include "Menu/Pages/Pages.h"
 #include "Utils/StringUtils_.h"
@@ -230,8 +229,6 @@ void IT6523::Stop()
     }
 
     SendCommand("SOURCE:OUTPut:STATE 0");
-
-    Keyboard::AddKey(Key::Stop);
 }
 
 

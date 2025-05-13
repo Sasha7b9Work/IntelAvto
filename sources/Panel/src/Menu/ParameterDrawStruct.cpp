@@ -1,7 +1,6 @@
 // 2025/02/13 10:50:04 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Menu/ParameterDrawStruct.h"
-#include "Hardware/Keyboard/Keyboard_.h"
 #include "Menu/MenuItems.h"
 #include "Display/Primitives_.h"
 #include "Display/Text_.h"
@@ -15,56 +14,6 @@ using namespace Primitives;
 
 void ParameterDrawStruct::PressKey(int _key)
 {
-    Key::E key = (Key::E)_key;
-
-    if (key == Key::Minus)
-    {
-        if (parameter->GetValue().IsVoltage() && p.index == 0)
-        {
-            p.SetSymbolToCurrentPos('-');
-        }
-    }
-    else if (key == Key::Left)
-    {
-        if (p.index > 0)
-        {
-            p.index--;
-        }
-    }
-    else if (key == Key::Right)
-    {
-        if (p.index < (int)std::strlen(p.symbols) - 1)
-        {
-            p.index++;
-        }
-    }
-    else if (key == Key::Esc)
-    {
-        p.symbols[0] = '\0';
-        p.index = 0;
-    }
-    else if ((key >= Key::_0 && key <= Key::_9) || key == Key::Dot)
-    {
-        if ((key == Key::_0 && p.index == 0) ||
-            (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))
-        {
-            // Ноль первым быть не может
-        }
-        else
-        {
-            static const char _keys[Key::Count] = { ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ','};
-
-            p.SetSymbolToCurrentPos(_keys[key]);
-        }
-    }
-    else if (key == Key::GovLeft)
-    {
-        DecreaseInPosition(p.index);
-    }
-    else if (key == Key::GovRight)
-    {
-        IncreaseInPosition(p.index);
-    }
 }
 
 

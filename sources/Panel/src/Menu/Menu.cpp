@@ -7,7 +7,6 @@
 #include "Menu/Pages/Pages.h"
 #include "Device/Device.h"
 #include "Hardware/Timer.h"
-#include "Hardware/Keyboard/Keyboard_.h"
 #include <cstring>
 
 
@@ -54,77 +53,6 @@ void Menu::SetOpenedPage(Page *page)
 }
 
 
-void Menu::Input::OnKey(Key::E key)
-{
-    if (!Device::IsStopped())                                           // Когда идёт тест,
-    {
-        if (key != Key::Start && key != Key::Stop)                      // то обрабатываем только СТАРТ и СТОП
-        {
-            return;
-        }
-    }
-
-    if (!openedPage->SelectedItem()->OnKey(key))                        // Сначала пытаемся обработать тенущий элемент меню
-    {
-        if (!openedPage->OnKey(key))                                    // Потом передаём событие странице
-        {
-            if (key == Key::Start)
-            {
-                if (OpenedPageIsSignal())
-                {
-                    Timer::DisableTask(TimerTask::ChangeColorOnLabelStop);
-
-                    if (Device::IsStopped())
-                    {
-                        if (Device::Start())
-                        {
-                            labelMode.SetState("ТЕСТ", Color::WHITE, Color::RED);
-                        }
-                    }
-                    else if (Device::IsRunning())
-                    {
-                        labelMode.SetState("ПАУЗА", Color::BLACK, Color::YELLOW);
-
-                        Device::Pause();
-                    }
-                    else if (Device::InPause())
-                    {
-                        labelMode.SetState("ТЕСТ", Color::WHITE, Color::RED);
-
-                        Device::Resume();
-                    }
-                }
-            }
-            else if (key == Key::Stop)
-            {
-                if (OpenedPageIsSignal())
-                {
-                    Device::Stop();
-
-                    labelMode.SetState("СТОП", Color::BLACK, Color::GREEN);
-
-                    Timer::SetDefferedOnceTask(TimerTask::ChangeColorOnLabelStop, 10000, []()
-                    {
-                        labelMode.SetState("СТОП", Color::BLACK, Color::GRAY);
-                    });
-                }
-            }
-            else if (key == Key::Esc)
-            {
-                if (OpenedPageIsSignal())
-                {
-                    SetOpenedPage(PageMain::self);
-                }
-                else
-                {
-                    SetOpenedPage(PageSignal1::self);
-                }
-            }
-        }
-    }
-}
-
-
 void Menu::Init()
 {
     Input::SetFuncUpdate(Input::FuncUpdate);
@@ -141,19 +69,11 @@ void Menu::Input::Update()
 
 void Menu::Input::FuncUpdate()
 {
-    while (!Keyboard::Empty())
-    {
-        OnKey(Keyboard::NextKey());
-    }
 }
 
 
 void Menu::Input::FuncEmptyUpdate()
 {
-    while (!Keyboard::Empty())
-    {
-        Keyboard::NextKey();
-    }
 }
 
 

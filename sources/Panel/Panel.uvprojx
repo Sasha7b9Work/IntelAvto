@@ -969,21 +969,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Hardware/Keyboard</GroupName>
-          <Files>
-            <File>
-              <FileName>Keyboard_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\Keyboard\Keyboard_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Keyboard_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\Keyboard\Keyboard_.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Menu</GroupName>
           <Files>
             <File>
@@ -2108,21 +2093,6 @@
               <FileName>HAL_RTC_.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\common\Hardware\HAL\HAL_RTC_.cpp</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Hardware/Keyboard</GroupName>
-          <Files>
-            <File>
-              <FileName>Keyboard_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Hardware\Keyboard\Keyboard_.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Keyboard_.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\common\Hardware\Keyboard\Keyboard_.h</FilePath>
             </File>
           </Files>
         </Group>
