@@ -1185,26 +1185,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Menu</GroupName>
-          <Files>
-            <File>
-              <FileName>Menu.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Menu.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Menu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.h</FilePath>
-            </File>
-            <File>
-              <FileName>MenuItemsDef.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>Menu/Pages</GroupName>
         </Group>
         <Group>
@@ -4889,26 +4869,6 @@
               <FileName>ServerTCP.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\LAN\ServerTCP.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu</GroupName>
-          <Files>
-            <File>
-              <FileName>Menu.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Menu.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Menu.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Menu.h</FilePath>
-            </File>
-            <File>
-              <FileName>MenuItemsDef.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
             </File>
           </Files>
         </Group>

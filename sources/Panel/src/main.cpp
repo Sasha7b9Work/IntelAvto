@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Menu/Menu.h"
 #include "Hardware/Timer.h"
 #include "Display/Display_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
@@ -32,7 +31,7 @@ int main(void)
 
     Keyboard::Init();
 
-    Menu::Init();
+//    Menu::Init();
 
 //    VCP::Init();
 
@@ -41,7 +40,7 @@ int main(void)
     while (1)
     {
         LAN::Update();
-        Menu::Input::Update();
+//        Menu::Input::Update();
 
         LAN::Update();
         Display::Update();

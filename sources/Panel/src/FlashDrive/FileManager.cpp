@@ -5,7 +5,6 @@
 #include "FlashDrive/FlashDrive.h"
 #include "Display/Display_.h"
 #include "Hardware/Sound.h"
-#include "Menu/Menu.h"
 #include "Utils/Math_.h"
 #include "Utils/StringUtils_.h"
 #include "Display/Painter.h"
@@ -176,7 +175,7 @@ void FileManager::Draw()
     if (FM_NEED_REDRAW == FM_REDRAW_FULL)
     {
         Display::BeginScene();
-        Menu::Draw();
+//        Menu::Draw();
         Painter::DrawRectangle(0, 0, width, 239, Color::FILL);
 //        Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, Color::BACK);
         FDrive::GetNumDirsAndFiles(currentDir, &numDirs, &numFiles);

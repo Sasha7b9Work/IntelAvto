@@ -1,7 +1,6 @@
 // 2023/09/08 20:56:57 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Menu/Menu.h"
 #include "Settings/Settings.h"
 #include "Device/Device.h"
 #include "Display/Display_.h"
@@ -12,6 +11,7 @@
 #include "LAN/LAN.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
+#include "Display/Primitives_.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -365,21 +365,21 @@ void Display::DrawPartScreen(int num, bool)
 
 void Display::DrawScreen()
 {
-    Menu::Draw();
+//    Menu::Draw();
 
-    if (Menu::OpenedPageIsSignal())
-    {
-        Text("Тип сигнала %s : %s",
-            TypeSignal::ToString(),
-            TypeSignal::Name()).Write(230, 6, Color::WHITE);
-
-        DrawSignal();
-    }
+//    if (Menu::OpenedPageIsSignal())
+//    {
+//        Text("Тип сигнала %s : %s",
+//            TypeSignal::ToString(),
+//            TypeSignal::Name()).Write(230, 6, Color::WHITE);
+//
+//        DrawSignal();
+//    }
 //    else if (Menu::OpenedPage()->ConsistOpenedItems())
 //    {
 //
 //    }
-    else
+//    else
     {
         Font::Set(TypeFont::GOSTB28B);
 
