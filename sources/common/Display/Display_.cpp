@@ -7,7 +7,6 @@
 #include "Display/Font/Font.h"
 #include "Display/Text_.h"
 #include "Display/Console_.h"
-#include "Display/Pictures/Picture.h"
 #include "LAN/LAN.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
@@ -520,7 +519,7 @@ void Display::DrawSignal()
 {
     Color::GRAY.SetAsCurrent();
 
-    Picture::DrawPicure(150, 50, TypeSignal::Current());
+//    Picture::DrawPicure(150, 50, TypeSignal::Current());
 
 //    Page::ForCurrentSignal()->DrawParameters();
 }

@@ -864,61 +864,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Display/Pictures</GroupName>
-          <Files>
-            <File>
-              <FileName>Picture.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Pictures\Picture.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Picture.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Picture.h</FilePath>
-            </File>
-            <File>
-              <FileName>Signal1.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal1.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal2a.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal2a.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal2b.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal2b.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal3a.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal3a.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal3b.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal3b.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal4.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal4.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal5a.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal5a.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal5b.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal5b.inc</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>FlashDrive</GroupName>
           <Files>
             <File>
@@ -1183,9 +1128,6 @@
               <FilePath>.\src\LAN\ServerTCP.h</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages</GroupName>
         </Group>
         <Group>
           <GroupName>Settings</GroupName>
@@ -4552,61 +4494,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Display/Pictures</GroupName>
-          <Files>
-            <File>
-              <FileName>Picture.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Display\Pictures\Picture.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>Picture.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Picture.h</FilePath>
-            </File>
-            <File>
-              <FileName>Signal1.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal1.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal2a.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal2a.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal2b.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal2b.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal3a.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal3a.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal3b.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal3b.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal4.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal4.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal5a.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal5a.inc</FilePath>
-            </File>
-            <File>
-              <FileName>Signal5b.inc</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Display\Pictures\Signal5b.inc</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
           <GroupName>FlashDrive</GroupName>
           <Files>
             <File>
@@ -4871,9 +4758,6 @@
               <FilePath>.\src\LAN\ServerTCP.h</FilePath>
             </File>
           </Files>
-        </Group>
-        <Group>
-          <GroupName>Menu/Pages</GroupName>
         </Group>
         <Group>
           <GroupName>Settings</GroupName>
