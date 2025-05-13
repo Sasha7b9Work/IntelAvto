@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Connector/Device/Interface_p.h"
-#include "Display/Text_.h"
+//#include "Display/Text_.h"
 #include "Utils/List_.h"
 
 
@@ -16,10 +16,10 @@ template                    ListElement<Task>::~ListElement();
 template Task              *ListElement<Task>::Get();
 template ListElement<Task> *ListElement<Task>::Next();
 
-template                    List<Text>::List();
-template void               List<Text>::Clear();
-template void               List<Text>::Append(Text *);
-template void               List<Text>::Remove(Text *);
+//template                    List<Text>::List();
+//template void               List<Text>::Clear();
+//template void               List<Text>::Append(Text *);
+//template void               List<Text>::Remove(Text *);
 
 
 

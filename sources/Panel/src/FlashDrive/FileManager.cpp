@@ -1,9 +1,9 @@
 // 2025/02/03 14:33:02 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "FileManager.h"
-#include "Display/Font/Font.h"
+//#include "Display/Font/Font.h"
 #include "FlashDrive/FlashDrive.h"
-#include "Display/Display_.h"
+//#include "Display/Display_.h"
 #include "Hardware/Sound.h"
 #include "Utils/Math_.h"
 #include "Utils/StringUtils_.h"
@@ -62,24 +62,24 @@ void FileManager::Init()
 
 static void DrawLongString(int x, int y, char *string, bool hightlight)
 {
-    int length = Font::GetLengthText(string);
-
-    Color color = Color::FILL;
-    if (hightlight)
-    {
-//        Painter::FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
-        color = Color::BACK;
-    }
-
-    if (length <= WIDTH_COL)
-    {
-//        Painter::DrawText(x, y, string, color);
-    }
-    else
-    {
-//        Painter::DrawTextWithLimitationC(x, y, string, color, x, y, WIDTH_COL, 10);
-//        Painter::DrawText(x + WIDTH_COL + 3, y, "...");
-    }
+////    int length = Font::GetLengthText(string);
+//
+//    Color color = Color::FILL;
+//    if (hightlight)
+//    {
+////        Painter::FillRegion(x - 1, y, WIDTH_COL + 9, 8, color);
+//        color = Color::BACK;
+//    }
+//
+//    if (length <= WIDTH_COL)
+//    {
+////        Painter::DrawText(x, y, string, color);
+//    }
+//    else
+//    {
+////        Painter::DrawTextWithLimitationC(x, y, string, color, x, y, WIDTH_COL, 10);
+////        Painter::DrawText(x + WIDTH_COL + 3, y, "...");
+//    }
 }
 
 
@@ -132,30 +132,30 @@ void FileManager::DrawFiles(int x, int y)
 
 void FileManager::DrawNameCurrentDir(int left, int top)
 {
-    Color::FILL.SetAsCurrent();
-
-    int length = Font::GetLengthText(currentDir);
-    if (length < 277)
-    {
+//  Color::FILL.SetAsCurrent();
+//
+//  int length = Font::GetLengthText(currentDir);
+//  if (length < 277)
+//  {
 //        Painter::DrawText(left + 1, top + 1, currentDir);
-    }
-    else
-    {
-        char *pointer = currentDir + 2;
-        while (length > 277)
-        {
-            while (*pointer != '\\' && pointer < currentDir + 255)
-            {
-                pointer++;
-            }
-            if (pointer >= currentDir + 255)
-            {
-                return;
-            }
-            length = Font::GetLengthText(++pointer);
-        }
+//  }
+//  else
+//  {
+//      char *pointer = currentDir + 2;
+//      while (length > 277)
+//      {
+//          while (*pointer != '\\' && pointer < currentDir + 255)
+//          {
+//              pointer++;
+//          }
+//          if (pointer >= currentDir + 255)
+//          {
+//              return;
+//          }
+//          length = Font::GetLengthText(++pointer);
+//      }
 //        Painter::DrawText(left + 1, top + 1, pointer);
-    }
+//  }
 }
 
 
@@ -173,7 +173,7 @@ void FileManager::Draw()
 
     if (FM_NEED_REDRAW == FM_REDRAW_FULL)
     {
-        Display::BeginScene();
+//        Display::BeginScene();
 //        Menu::Draw();
 //        Painter::DrawRectangle(0, 0, width, 239, Color::FILL);
 //        Painter::FillRegion(left, top, Grid::Width() - 2, Grid::FullHeight() - 2, Color::BACK);
@@ -193,7 +193,7 @@ void FileManager::Draw()
         DrawFiles(left2col + 3, top + 18);
     }
 
-    Display::EndScene();
+//    Display::EndScene();
 
     FM_NEED_REDRAW = 0;
 }

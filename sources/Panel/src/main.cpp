@@ -2,7 +2,6 @@
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
 #include "Hardware/Timer.h"
-#include "Display/Display_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "FlashDrive/FlashDrive.h"
 #include "LAN/LAN.h"
@@ -27,7 +26,7 @@ int main(void)
 
     LAN::Init();
     
-    Display::Init();
+//    Display::Init();
 
     Keyboard::Init();
 
@@ -43,7 +42,7 @@ int main(void)
 //        Menu::Input::Update();
 
         LAN::Update();
-        Display::Update();
+//        Display::Update();
 
         LAN::Update();
         Timer::UpdateTasks();

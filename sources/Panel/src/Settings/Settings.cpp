@@ -11,56 +11,9 @@
 
 TypeSignal::E TypeSignal::current = TypeSignal::_1;
 
-static ColorScheme def_colors[3] =
-{
-    {
-        Color::Make(248, 248, 248),     // FILL             0
-        Color::Make(0,   24,  0),       // BACK             1
-        Color::Make(24,  24,  24),      // BACK_UNSELECT    2
-        Color::Make(192, 192, 192),     // BACK_SELECT      3
-        Color::Make(248, 0,   0),       // RED              4
-        Color::Make(0,   248, 0),       // GREEN            5
-        Color::Make(0,   0,   248),     // BLUE             6
-        Color::Make(248, 248, 248),     // WHITE            7
-        Color::Make(0,   0,   0),       // EMPTY            8
-        Color::Make(127, 127, 127),     // GRAY             9
-        Color::Make(248, 248, 0)        // YELLOW          10
-    },
-    {
-        Color::Make(248, 248, 248),     // FILL             0
-        Color::Make(0,   0,   0),       // BACK             1
-        Color::Make(0,   56,  0),       // BACK_UNSELECT    2
-        Color::Make(240, 160, 48),      // BACK_SELECT      3
-        Color::Make(248, 0,   0),       // RED              4
-        Color::Make(0,   248, 0),       // GREEN            5
-        Color::Make(0,   0,   248),     // BLUE             6
-        Color::Make(248, 248, 248),     // WHITE            7
-        Color::Make(112, 8,   8),       // EMPTY            8
-        Color::Make(127, 127, 127),     // GRAY             9
-        Color::Make(248, 248, 0)        // YELLOW          10
-    },
-    {
-        Color::Make(248, 248, 248),     // FILL             0
-        Color::Make(0,   0,   88),      // BACK_1           1
-        Color::Make(24,  24,  24),      // BACK_UNSELECT    2
-        Color::Make(192, 192, 192),     // BACK_SELECT      3
-        Color::Make(248, 0,   0),       // RED              4
-        Color::Make(0,   248, 0),       // GREEN            5
-        Color::Make(0,   0,   248),     // BLUE             6
-        Color::Make(248, 248, 248),     // WHITE            7
-        Color::Make(0,   0,   0),       // EMPTY            8
-        Color::Make(127, 127, 127),     // GRAY             9
-        Color::Make(248, 248, 0)        // YELLOW          10
-    }
-};
-
-
 static Settings def_set =
 {
     0,                                  // size
-    {
-        def_colors[0], def_colors[1], def_colors[2]
-    },
     StyleGUI(StyleGUI::Modern),
     0,                                          // colorScheme
     TypeSignal::_1,
@@ -237,7 +190,7 @@ void Settings::Save()
 
 void Settings::Reset()
 {
-    gset.schemes[gset.colorScheme] = def_colors[gset.colorScheme];
+//    gset.schemes[gset.colorScheme] = def_colors[gset.colorScheme];
 }
 
 

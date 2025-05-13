@@ -1,7 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Display/Text_.h"
+//#include "Display/Text_.h"
 #include "Utils/Debug_.h"
 #include "Utils/Log_.h"
 
@@ -27,7 +27,7 @@ void Debug::StartProfilingMS()
 uint Debug::PointProfilingMS(pchar _file, int _line)
 {
     uint d = TIME_MS - timePrevMS;
-    LOG_WRITE("%s %d %d", _file, _line, d);
+//    LOG_WRITE("%s %d %d", _file, _line, d);
     timePrevMS = TIME_MS;
 
     return d;

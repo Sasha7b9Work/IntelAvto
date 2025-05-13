@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "Connector/Device/Value_.h"
-#include "Display/Colors_.h"
 
 
 class Parameter;
@@ -123,7 +122,7 @@ struct SettingsCal
 struct Settings
 {
     uint           size;
-    ColorScheme    schemes[ColorScheme::COUNT];
+//    ColorScheme    schemes[ColorScheme::COUNT];
     StyleGUI       styleGUI;
     uint8          colorScheme;
     TypeSignal::E  signal;

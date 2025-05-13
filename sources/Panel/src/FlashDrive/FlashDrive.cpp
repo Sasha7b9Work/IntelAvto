@@ -2,12 +2,12 @@
 #include "defines.h"
 #include "FlashDrive.h"
 #include "Utils/Log_.h"
-#include "Display/Display_.h"
+//#include "Display/Display_.h"
 #include "Hardware/Timer.h"
 #include "FileManager.h"
 #include "Utils/Dictionary.h"
 #include "usbh_diskio.h"
-#include "Display/Text_.h"
+//#include "Display/Text_.h"
 #include <ff_gen_drv.h>
 #include <cstring>
 
@@ -72,7 +72,7 @@ void FDrive::Mount()
 
     if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 0) != FR_OK)
     {
-        LOG_ERROR("Не могу примонтировать диск");
+//        LOG_ERROR("Не могу примонтировать диск");
     }
 }
 
@@ -98,7 +98,7 @@ void FDrive::Init()
     }
     else
     {
-        LOG_ERROR("Can not %s", __FUNCTION__);
+//        LOG_ERROR("Can not %s", __FUNCTION__);
     }
 
 #endif
