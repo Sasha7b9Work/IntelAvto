@@ -1237,16 +1237,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
-            <File>
-              <FileName>InputField.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\InputField.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputField.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\InputField.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -4986,16 +4976,6 @@
               <FileName>Pages.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
-            </File>
-            <File>
-              <FileName>InputField.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\InputField.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>InputField.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\Pages\InputField.h</FilePath>
             </File>
           </Files>
         </Group>
