@@ -12,7 +12,6 @@
 #include "Display/Primitives_.h"
 #include "Hardware/Timer.h"
 #include "Display/Display_.h"
-#include <miniz/miniz.h>
 #include <cstring>
 
 
@@ -45,32 +44,34 @@ namespace Picture
 
 bool Picture::Uncompress(TypeSignal::E type)
 {
-    if (type == prev_type)
-    {
-        return true;
-    }
+//    if (type == prev_type)
+//    {
+//        return true;
+//    }
+//
+//    prev_type = TypeSignal::Count;
+//
+//    mz_zip_archive zip_archive;
+//    std::memset(&zip_archive, 0, sizeof(zip_archive));
+//
+//    if (mz_zip_reader_init_mem(&zip_archive, archives[type], CalculateSize(type), 0))
+//    {
+//        mz_zip_archive_file_stat file_stat;
+//
+//        if (mz_zip_reader_file_stat(&zip_archive, 0, &file_stat))
+//        {
+//            if (mz_zip_reader_extract_file_to_mem(&zip_archive, file_stat.m_filename, buffer, (size_t)file_stat.m_uncomp_size, 0))
+//            {
+//                prev_type = type;
+//            }
+//        }
+//    }
+//
+//    mz_zip_reader_end(&zip_archive);
+//
+//    return (prev_type != TypeSignal::Count);
 
-    prev_type = TypeSignal::Count;
-
-    mz_zip_archive zip_archive;
-    std::memset(&zip_archive, 0, sizeof(zip_archive));
-
-    if (mz_zip_reader_init_mem(&zip_archive, archives[type], CalculateSize(type), 0))
-    {
-        mz_zip_archive_file_stat file_stat;
-
-        if (mz_zip_reader_file_stat(&zip_archive, 0, &file_stat))
-        {
-            if (mz_zip_reader_extract_file_to_mem(&zip_archive, file_stat.m_filename, buffer, (size_t)file_stat.m_uncomp_size, 0))
-            {
-                prev_type = type;
-            }
-        }
-    }
-
-    mz_zip_reader_end(&zip_archive);
-
-    return (prev_type != TypeSignal::Count);
+    return false;
 }
 
 
@@ -119,19 +120,19 @@ void Picture::DrawPicure(int x, int y, TypeSignal::E type)
 }
 
 
-unsigned long Picture::CalculateSize(TypeSignal::E type)
-{
-    static unsigned long sizes[TypeSignal::Count] =
-    {
-        sizeof(bmp_zip_Signal1),
-        sizeof(bmp_zip_Signal2a),
-        sizeof(bmp_zip_Signal2b),
-        sizeof(bmp_zip_Signal3a),
-        sizeof(bmp_zip_Signal3b),
-        sizeof(bmp_zip_Signal4),
-        sizeof(bmp_zip_Signal5a),
-        sizeof(bmp_zip_Signal5b)
-    };
-
-    return sizes[type];
-}
+//unsigned long Picture::CalculateSize(TypeSignal::E type)
+//{
+//    static unsigned long sizes[TypeSignal::Count] =
+//    {
+//        sizeof(bmp_zip_Signal1),
+//        sizeof(bmp_zip_Signal2a),
+//        sizeof(bmp_zip_Signal2b),
+//        sizeof(bmp_zip_Signal3a),
+//        sizeof(bmp_zip_Signal3b),
+//        sizeof(bmp_zip_Signal4),
+//        sizeof(bmp_zip_Signal5a),
+//        sizeof(bmp_zip_Signal5b)
+//    };
+//
+//    return sizes[type];
+//}
