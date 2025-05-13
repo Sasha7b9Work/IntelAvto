@@ -2,7 +2,6 @@
 #pragma once
 #include "defines.h"
 #include "Settings/Settings.h"
-#include "Menu/ParameterDrawStruct.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include <cstring>
 
@@ -250,8 +249,6 @@ private:
 
     int x = 0;
     int y = 0;
-
-    ParameterDrawStruct ds;
 };
 
 

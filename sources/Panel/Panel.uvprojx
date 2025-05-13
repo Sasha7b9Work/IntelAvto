@@ -1212,16 +1212,6 @@
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
             </File>
-            <File>
-              <FileName>ParameterDrawStruct.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\ParameterDrawStruct.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ParameterDrawStruct.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\ParameterDrawStruct.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
@@ -4939,16 +4929,6 @@
               <FileName>MenuItemsDef.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Menu\MenuItemsDef.h</FilePath>
-            </File>
-            <File>
-              <FileName>ParameterDrawStruct.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\ParameterDrawStruct.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>ParameterDrawStruct.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\src\Menu\ParameterDrawStruct.h</FilePath>
             </File>
           </Files>
         </Group>

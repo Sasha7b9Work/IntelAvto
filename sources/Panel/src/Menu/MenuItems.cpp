@@ -188,21 +188,21 @@ void Parameter::Draw() const
 
     if(IsNowEdited())
     {
-        ds.Draw(x, y);
+//        ds.Draw(x, y);
 
         Color color = Color::GetCurrent();
 
         Color::BACK.SetAsCurrent();
 
-        GetMin().Draw(x, y + 25);
+//        GetMin().Draw(x, y + 25);
 
-        GetMax().Draw(x, y - 25);
+//        GetMax().Draw(x, y - 25);
 
         color.SetAsCurrent();
     }
     else
     {
-        GetValue().Draw(x, y);
+//        GetValue().Draw(x, y);
     }
 
     if (IsNowSelected())
@@ -366,7 +366,7 @@ bool Parameter::OnKey(Key::E key)
 
             Value new_value(0);
 
-            ds.ToValue(&new_value);
+//            ds.ToValue(&new_value);
 
             if (new_value.ToMU() < GetMin().ToMU())
             {
@@ -385,7 +385,7 @@ bool Parameter::OnKey(Key::E key)
         {
             editable = this;
 
-            ds.Set(this);
+//            ds.Set(this);
         }
 
         return true;
@@ -393,7 +393,7 @@ bool Parameter::OnKey(Key::E key)
 
     if (IsNowEdited())
     {
-        ds.PressKey(key);
+//        ds.PressKey(key);
 
         return true;
     }

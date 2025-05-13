@@ -46,8 +46,6 @@ struct Value
         }
     }
 
-    void Draw(int x, int y) const;
-
     bool IsRaw() const
     {
         return GetType() == TypeValue::Raw;
