@@ -101,12 +101,12 @@ namespace PageCalibration
 //        FuncPress_Back
 //    );
 
-    DEF_CHOICE_4_FULL(chTypeSignal,
-        "Импульс",
-        "1", "2a", "3a", "3b",
-        type_signal,
-        FuncVV
-    );
+//    DEF_CHOICE_4_FULL(chTypeSignal,
+//        "Импульс",
+//        "1", "2a", "3a", "3b",
+//        type_signal,
+//        FuncVV
+//    );
 
 //    DEF_CHOICE_2_FULL(chTypeAccum,
 //        "Аккумулятор",
@@ -181,7 +181,7 @@ namespace PageCalibration
     static Item *items[] =
     {
 //        &bBack,
-        &chTypeSignal,
+//        &chTypeSignal,
 //        &chTypeAccum,
 //        &bCalibrate,
 //        &bReset,
