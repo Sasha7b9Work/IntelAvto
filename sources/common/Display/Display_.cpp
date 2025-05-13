@@ -10,7 +10,6 @@
 #include "Display/Font/Font.h"
 #include "Display/Text_.h"
 #include "Display/Console_.h"
-#include "Display/Pictures/Picture.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
 #include <cstdio>
@@ -522,8 +521,6 @@ bool Display::InDrawingPart(int y, int _height)
 void Display::DrawSignal()
 {
     Color::GRAY.SetAsCurrent();
-
-    Picture::DrawPicure(150, 50, TypeSignal::Current());
 
     Page::ForCurrentSignal()->DrawParameters();
 }
