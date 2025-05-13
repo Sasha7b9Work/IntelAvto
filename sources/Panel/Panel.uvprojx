@@ -1238,11 +1238,6 @@
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
-              <FileName>PageSignal1.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal1.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PageSignal2a.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal2a.cpp</FilePath>
@@ -1276,16 +1271,6 @@
               <FileName>PageSignal5b.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageInfo.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageInfo.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageLAN.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageLAN.cpp</FilePath>
             </File>
             <File>
               <FileName>InputField.cpp</FileName>
@@ -5038,11 +5023,6 @@
               <FilePath>.\src\Menu\Pages\Pages.h</FilePath>
             </File>
             <File>
-              <FileName>PageSignal1.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSignal1.cpp</FilePath>
-            </File>
-            <File>
               <FileName>PageSignal2a.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal2a.cpp</FilePath>
@@ -5076,16 +5056,6 @@
               <FileName>PageSignal5b.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageInfo.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageInfo.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageLAN.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageLAN.cpp</FilePath>
             </File>
             <File>
               <FileName>InputField.cpp</FileName>

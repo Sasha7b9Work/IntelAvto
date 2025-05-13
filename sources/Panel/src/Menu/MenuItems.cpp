@@ -69,7 +69,7 @@ const Page *Page::ForCurrentSignal()
 {
     static const Page *pages[TypeSignal::Count] =
     {
-        PageSignal1::self,
+//        PageSignal1::self,
         PageSignal2a::self,
         PageSignal2b::self,
         PageSignal3a::self,
@@ -463,7 +463,7 @@ bool Page::StartTest() const
 bool Page::IsSignal(Page *page)
 {
     return
-        page == PageSignal1::self ||
+//        page == PageSignal1::self ||
         page == PageSignal2a::self ||
         page == PageSignal2b::self ||
         page == PageSignal3a::self ||

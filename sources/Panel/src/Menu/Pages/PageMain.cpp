@@ -11,7 +11,7 @@ namespace PageMain
 {
     static void FuncPress_Tests()
     {
-        Menu::SetOpenedPage(PageSignal1::self);
+//        Menu::SetOpenedPage(PageSignal1::self);
     }
 
 //    DEF_BUTTON(bTests,
@@ -51,7 +51,7 @@ namespace PageMain
 
     static void FuncPress_Info()
     {
-        Menu::SetOpenedPage(PageInfo::self);
+//        Menu::SetOpenedPage(PageInfo::self);
     }
 
 //    DEF_BUTTON(bInfo,

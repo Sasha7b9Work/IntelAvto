@@ -14,7 +14,7 @@
 namespace Menu
 {
     // Текущая отображаемая страница меню
-    Page *openedPage = PageSignal1::self;
+    Page *openedPage = nullptr;
 
     void (*funcUpdate)() = nullptr;
 
@@ -110,7 +110,7 @@ void Menu::Input::OnKey(Key::E key)
                 }
                 else
                 {
-                    SetOpenedPage(PageSignal1::self);
+//                    SetOpenedPage(PageSignal1::self);
                 }
             }
         }
@@ -161,7 +161,7 @@ bool Menu::OpenedPageIsSignal()
     Page *page = OpenedPage();
 
     return
-        page == PageSignal1::self ||
+//        page == PageSignal1::self ||
         page == PageSignal2a::self ||
         page == PageSignal2b::self ||
         page == PageSignal3a::self ||
