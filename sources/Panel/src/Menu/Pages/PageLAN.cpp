@@ -11,7 +11,7 @@ namespace PageLAN
         "Назад",
         []()
         {
-            Menu::SetOpenedPage(PageSettings::self);
+//            Menu::SetOpenedPage(PageSettings::self);
         }
     );
 

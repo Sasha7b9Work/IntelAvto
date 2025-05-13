@@ -10,7 +10,7 @@
       <TargetName>Debug</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6210000::V6.21::ARMCLANG</pCCUsed>
+      <pCCUsed>6230000::V6.23::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -1276,11 +1276,6 @@
               <FileName>PageSignal5b.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSettings.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSettings.cpp</FilePath>
             </File>
             <File>
               <FileName>PageInfo.cpp</FileName>
@@ -3871,7 +3866,7 @@
       <TargetName>Release</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>6210000::V6.21::ARMCLANG</pCCUsed>
+      <pCCUsed>6230000::V6.23::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -5086,11 +5081,6 @@
               <FileName>PageSignal5b.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\src\Menu\Pages\PageSignal5b.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>PageSettings.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\src\Menu\Pages\PageSettings.cpp</FilePath>
             </File>
             <File>
               <FileName>PageInfo.cpp</FileName>

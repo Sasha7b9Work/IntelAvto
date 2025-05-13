@@ -9,12 +9,6 @@ namespace PageMain
 }
 
 
-namespace PageSettings
-{
-    extern Page *self;
-}
-
-
 namespace PageCalibration
 {
     extern Page *self;

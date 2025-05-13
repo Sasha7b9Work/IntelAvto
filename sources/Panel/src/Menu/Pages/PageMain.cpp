@@ -21,7 +21,7 @@ namespace PageMain
 
     static void FuncPress_Settings()
     {
-        Menu::SetOpenedPage(PageSettings::self);
+//        Menu::SetOpenedPage(PageSettings::self);
     }
 
     DEF_BUTTON(bSettings,
