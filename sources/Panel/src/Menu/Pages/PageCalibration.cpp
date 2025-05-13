@@ -108,12 +108,12 @@ namespace PageCalibration
         FuncVV
     );
 
-    DEF_CHOICE_2_FULL(chTypeAccum,
-        "Аккумулятор",
-        "12В", "24В",
-        type_accum,
-        FuncVV
-    );
+//    DEF_CHOICE_2_FULL(chTypeAccum,
+//        "Аккумулятор",
+//        "12В", "24В",
+//        type_accum,
+//        FuncVV
+//    );
 
     static void FuncPress_Calibrate()
     {
@@ -182,7 +182,7 @@ namespace PageCalibration
     {
 //        &bBack,
         &chTypeSignal,
-        &chTypeAccum,
+//        &chTypeAccum,
 //        &bCalibrate,
 //        &bReset,
         nullptr
