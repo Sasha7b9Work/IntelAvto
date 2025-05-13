@@ -18,7 +18,6 @@
 #endif
 
 
-
 int main()
 {
     HAL::Init();

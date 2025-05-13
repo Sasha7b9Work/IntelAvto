@@ -4,7 +4,7 @@
 #include "Hardware/HAL/HAL.h"
 #include "Connector/Device/Transceiver_.h"
 #include "Connector/Device/Messages_.h"
-//#include "Display/Display_.h"
+#include "Display/Display_.h"
 
 
 namespace Transceiver
@@ -45,19 +45,19 @@ void Transceiver::Transmit(BaseMessage *message)
 
         HAL_SPI1::CS(false);
 
-//        Display::num_sends = counter;
-//        Display::crc_trans = message->CalculateCRC();
-//        Display::crc_recv = recv_crc;
+        Display::num_sends = counter;
+        Display::crc_trans = message->CalculateCRC();
+        Display::crc_recv = recv_crc;
 
         if ((counter % 10) == 0)
         {
-//            Display::Update();
+            Display::Update();
         }
     }
 
-//    Display::num_sends = counter;
-//    Display::crc_trans = message->CalculateCRC();
-//    Display::crc_recv = recv_crc;
+    Display::num_sends = counter;
+    Display::crc_trans = message->CalculateCRC();
+    Display::crc_recv = recv_crc;
 
 #endif
 }

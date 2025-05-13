@@ -1,14 +1,14 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-//#include "Display/Console_.h"
-//#include "Display/Text_.h"
+#include "Display/Console_.h"
+#include "Display/Text_.h"
 #include "Utils/Log_.h"
 #include <cstdio>
 
 
 void Log::Message(pchar message)
 {
-//    Console::AddString(message);
+    Console::AddString(message);
 
 #ifdef WIN32
 
@@ -21,5 +21,5 @@ void Log::Message(pchar message)
 
 void Log::Message(pchar file, int line, pchar message)
 {
-//    Console::AddString(Text("%s %d %s", file, line, message).c_str());
+    Console::AddString(Text("%s %d %s", file, line, message).c_str());
 }

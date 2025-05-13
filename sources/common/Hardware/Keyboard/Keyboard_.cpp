@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
+#include "Menu/Menu.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Hardware/Timer.h"
 #include <stm32f4xx_hal.h>
@@ -419,13 +420,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) //-V2009 //-V2558
 
 void Keyboard::Lock()
 {
-//    Menu::Input::SetFuncUpdate(Menu::Input::FuncEmptyUpdate);
+    Menu::Input::SetFuncUpdate(Menu::Input::FuncEmptyUpdate);
 }
 
 
 void Keyboard::Unlock()
 {
-//    Menu::Input::SetFuncUpdate(Menu::Input::FuncUpdate);
+    Menu::Input::SetFuncUpdate(Menu::Input::FuncUpdate);
 }
 
 
