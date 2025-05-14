@@ -23,7 +23,7 @@ Text::Text(pchar format, ...)
 
     va_end(args);
 
-//    Create(buffer);
+    Create(buffer);
 }
 
 
