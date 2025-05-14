@@ -17,10 +17,8 @@
   */
   /* Includes ------------------------------------------------------------------*/
 #include "defines.h"
-#include "FlashDrive/FlashDrive.h"
-#include <stm32f4xx_hal.h>
-#include <usbh_core.h>
-
+#include "stm32f4xx_hal.h"
+#include "usbh_core.h"
 
 /*******************************************************************************
                        HCD BSP Routines
@@ -34,27 +32,108 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef *hhcd)
 {
     GPIO_InitTypeDef  GPIO_InitStruct;
 
-    /*Initialize the IO module*/
-  //  BSP_IO_Init ();
+    if (hhcd->Instance == USB_OTG_FS)
+    {
+        /* Configure USB FS GPIOs */
+        __HAL_RCC_GPIOA_CLK_ENABLE();
 
-    if (hhcd->Instance == USB_OTG_HS)
+        GPIO_InitStruct.Pin = (GPIO_PIN_11 | GPIO_PIN_12);
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+        GPIO_InitStruct.Pin = GPIO_PIN_10;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
+        GPIO_InitStruct.Pull = GPIO_PULLUP;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+        /* Configure POWER_SWITCH IO pin */
+        BSP_IO_ConfigPin(OTG_FS1_POWER_SWITCH_PIN, IO_MODE_OUTPUT);
+
+        /* Enable USB FS Clocks */
+        __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
+
+        /* Set USBFS Interrupt to the lowest priority */
+        HAL_NVIC_SetPriority(OTG_FS_IRQn, 5, 0);
+
+        /* Enable USBFS Interrupt */
+        HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
+    }
+
+    else if (hhcd->Instance == USB_OTG_HS)
     {
 #ifdef USE_USB_HS_IN_FS
 
-        //    /* Configure POWER_SWITCH IO pin */
-        //    BSP_IO_ConfigPin(OTG_FS2_POWER_SWITCH_PIN, IO_MODE_OUTPUT);
-        //    
-        //    __HAL_RCC_GPIOB_CLK_ENABLE();
-        //    
-        //    /*Configure GPIO for HS on FS mode*/
-        //    GPIO_InitStruct.Pin = GPIO_PIN_12  | GPIO_PIN_13  | GPIO_PIN_14 |GPIO_PIN_15;
-        //    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        //    GPIO_InitStruct.Pull = GPIO_NOPULL;
-        //    GPIO_InitStruct.Alternate = GPIO_AF12_OTG_HS_FS;
-        //    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+        /* Configure POWER_SWITCH IO pin */
+        BSP_IO_ConfigPin(OTG_FS2_POWER_SWITCH_PIN, IO_MODE_OUTPUT);
 
+        __HAL_RCC_GPIOB_CLK_ENABLE();
+
+        /*Configure GPIO for HS on FS mode*/
+        GPIO_InitStruct.Pin = GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Alternate = GPIO_AF12_OTG_HS_FS;
+        HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+#else
+        /* Configure USB FS GPIOs */
+        __HAL_RCC_GPIOA_CLK_ENABLE();
+        __HAL_RCC_GPIOB_CLK_ENABLE();
+        __HAL_RCC_GPIOC_CLK_ENABLE();
+        __HAL_RCC_GPIOH_CLK_ENABLE();
+        __HAL_RCC_GPIOI_CLK_ENABLE();
+
+        /* CLK */
+        GPIO_InitStruct.Pin = GPIO_PIN_5;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_HS;
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+        /* D0 */
+        GPIO_InitStruct.Pin = GPIO_PIN_3;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Speed = GPIO_SPEED_HIGH;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_HS;
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+        /* D1 D2 D3 D4 D5 D6 D7 */
+        GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_5 | \
+            GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_12 | GPIO_PIN_13;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_HS;
+        HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+        /* STP */
+        GPIO_InitStruct.Pin = GPIO_PIN_0;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_HS;
+        HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+        /* NXT */
+        GPIO_InitStruct.Pin = GPIO_PIN_4;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_HS;
+        HAL_GPIO_Init(GPIOH, &GPIO_InitStruct);
+
+        /* DIR */
+        GPIO_InitStruct.Pin = GPIO_PIN_11;
+        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        GPIO_InitStruct.Alternate = GPIO_AF10_OTG_HS;
+        HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
+        __HAL_RCC_USB_OTG_HS_ULPI_CLK_ENABLE();
 #endif   
-    /* Enable USB HS Clocks */
+        /* Enable USB HS Clocks */
         __HAL_RCC_USB_OTG_HS_CLK_ENABLE();
 
         /* Set USBHS Interrupt to the lowest priority */
@@ -97,7 +176,7 @@ void HAL_HCD_MspDeInit(HCD_HandleTypeDef *hhcd)
   */
 void HAL_HCD_SOF_Callback(HCD_HandleTypeDef *hhcd)
 {
-    USBH_LL_IncTimer((USBH_HandleTypeDef *)hhcd->pData);
+    USBH_LL_IncTimer(hhcd->pData);
 }
 
 /**
@@ -107,7 +186,7 @@ void HAL_HCD_SOF_Callback(HCD_HandleTypeDef *hhcd)
   */
 void HAL_HCD_Connect_Callback(HCD_HandleTypeDef *hhcd)
 {
-    USBH_LL_Connect((USBH_HandleTypeDef *)hhcd->pData);
+    USBH_LL_Connect(hhcd->pData);
 }
 
 /**
@@ -117,7 +196,7 @@ void HAL_HCD_Connect_Callback(HCD_HandleTypeDef *hhcd)
   */
 void HAL_HCD_Disconnect_Callback(HCD_HandleTypeDef *hhcd)
 {
-    USBH_LL_Disconnect((USBH_HandleTypeDef *)hhcd->pData);
+    USBH_LL_Disconnect(hhcd->pData);
 }
 
 /**
@@ -127,7 +206,7 @@ void HAL_HCD_Disconnect_Callback(HCD_HandleTypeDef *hhcd)
   */
 void HAL_HCD_PortEnabled_Callback(HCD_HandleTypeDef *hhcd)
 {
-    USBH_LL_PortEnabled((USBH_HandleTypeDef *)hhcd->pData);
+    USBH_LL_PortEnabled(hhcd->pData);
 }
 
 
@@ -138,7 +217,7 @@ void HAL_HCD_PortEnabled_Callback(HCD_HandleTypeDef *hhcd)
   */
 void HAL_HCD_PortDisabled_Callback(HCD_HandleTypeDef *hhcd)
 {
-    USBH_LL_PortDisabled((USBH_HandleTypeDef *)hhcd->pData);
+    USBH_LL_PortDisabled(hhcd->pData);
 }
 
 
@@ -165,46 +244,43 @@ void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *hhcd, uint8_t chnum,
   */
 USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
 {
-    HCD_HandleTypeDef *handleHCD = (HCD_HandleTypeDef *)FDrive::handleHCD;
-
 #ifdef USE_USB_FS  
-
     /* Set the LL driver parameters */
-    handleHCD->Instance = USB_OTG_FS;
-    handleHCD->Init.Host_channels = 11;
-    handleHCD->Init.dma_enable = 0;
-    handleHCD->Init.low_power_enable = 0;
-    handleHCD->Init.phy_itface = HCD_PHY_EMBEDDED;
-    handleHCD->Init.Sof_enable = 0;
-    handleHCD->Init.speed = HCD_SPEED_FULL;
+    hhcd.Instance = USB_OTG_FS;
+    hhcd.Init.Host_channels = 11;
+    hhcd.Init.dma_enable = 0;
+    hhcd.Init.low_power_enable = 0;
+    hhcd.Init.phy_itface = HCD_PHY_EMBEDDED;
+    hhcd.Init.Sof_enable = 0;
+    hhcd.Init.speed = HCD_SPEED_FULL;
     /* Link the driver to the stack */
-    handleHCD->pData = phost;
-    phost->pData = handleHCD;
+    hhcd.pData = phost;
+    phost->pData = &hhcd;
     /* Initialize the LL Driver */
-    HAL_HCD_Init(handleHCD);
+    HAL_HCD_Init(&hhcd);
 #endif 
 #ifdef USE_USB_HS  
     /* Set the LL driver parameters */
-    handleHCD->Instance = USB_OTG_HS;
-    handleHCD->Init.Host_channels = 11;
-    handleHCD->Init.dma_enable = 1;
-    handleHCD->Init.low_power_enable = 0;
+    hhcd.Instance = USB_OTG_HS;
+    hhcd.Init.Host_channels = 11;
+    hhcd.Init.dma_enable = 1;
+    hhcd.Init.low_power_enable = 0;
 #ifdef USE_USB_HS_IN_FS
-    handleHCD->Init.phy_itface = HCD_PHY_EMBEDDED;
+    hhcd.Init.phy_itface = HCD_PHY_EMBEDDED;
 #else  
     hhcd.Init.phy_itface = HCD_PHY_ULPI;
 #endif  
-    handleHCD->Init.Sof_enable = 0;
-    handleHCD->Init.speed = HCD_SPEED_HIGH;
-    handleHCD->Init.use_external_vbus = 1;
+    hhcd.Init.Sof_enable = 0;
+    hhcd.Init.speed = HCD_SPEED_HIGH;
+    hhcd.Init.use_external_vbus = 1;
     /* Link the driver to the stack */
-    handleHCD->pData = phost;
-    phost->pData = handleHCD;
+    hhcd.pData = phost;
+    phost->pData = &hhcd;
     /* Initialize the LL driver */
-    HAL_HCD_Init(handleHCD);
+    HAL_HCD_Init(&hhcd);
 
 #endif /*USE_USB_HS*/ 
-    USBH_LL_SetTimer(phost, HAL_HCD_GetCurrentFrame(handleHCD));
+    USBH_LL_SetTimer(phost, HAL_HCD_GetCurrentFrame(&hhcd));
 
     return USBH_OK;
 }
@@ -217,7 +293,7 @@ USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
   */
 USBH_StatusTypeDef USBH_LL_DeInit(USBH_HandleTypeDef *phost)
 {
-    HAL_HCD_DeInit((HCD_HandleTypeDef *)phost->pData);
+    HAL_HCD_DeInit(phost->pData);
     return USBH_OK;
 }
 
@@ -228,7 +304,7 @@ USBH_StatusTypeDef USBH_LL_DeInit(USBH_HandleTypeDef *phost)
   */
 USBH_StatusTypeDef USBH_LL_Start(USBH_HandleTypeDef *phost)
 {
-    HAL_HCD_Start((HCD_HandleTypeDef *)phost->pData);
+    HAL_HCD_Start(phost->pData);
     return USBH_OK;
 }
 
@@ -239,7 +315,7 @@ USBH_StatusTypeDef USBH_LL_Start(USBH_HandleTypeDef *phost)
   */
 USBH_StatusTypeDef USBH_LL_Stop(USBH_HandleTypeDef *phost)
 {
-    HAL_HCD_Stop((HCD_HandleTypeDef *)phost->pData);
+    HAL_HCD_Stop(phost->pData);
     return USBH_OK;
 }
 
@@ -252,7 +328,7 @@ USBH_SpeedTypeDef USBH_LL_GetSpeed(USBH_HandleTypeDef *phost)
 {
     USBH_SpeedTypeDef speed = USBH_SPEED_FULL;
 
-    switch (HAL_HCD_GetCurrentSpeed((HCD_HandleTypeDef *)phost->pData))
+    switch (HAL_HCD_GetCurrentSpeed(phost->pData))
     {
     case 0:
         speed = USBH_SPEED_HIGH;
@@ -280,7 +356,7 @@ USBH_SpeedTypeDef USBH_LL_GetSpeed(USBH_HandleTypeDef *phost)
   */
 USBH_StatusTypeDef USBH_LL_ResetPort(USBH_HandleTypeDef *phost)
 {
-    HAL_HCD_ResetPort((HCD_HandleTypeDef *)phost->pData);
+    HAL_HCD_ResetPort(phost->pData);
     return USBH_OK;
 }
 
@@ -292,7 +368,7 @@ USBH_StatusTypeDef USBH_LL_ResetPort(USBH_HandleTypeDef *phost)
   */
 uint32_t USBH_LL_GetLastXferSize(USBH_HandleTypeDef *phost, uint8_t pipe)
 {
-    return HAL_HCD_HC_GetXferCount((HCD_HandleTypeDef *)phost->pData, pipe);
+    return HAL_HCD_HC_GetXferCount(phost->pData, pipe);
 }
 
 /**
@@ -314,7 +390,7 @@ USBH_StatusTypeDef USBH_LL_OpenPipe(USBH_HandleTypeDef *phost,
     uint8_t ep_type,
     uint16_t mps)
 {
-    HAL_HCD_HC_Init((HCD_HandleTypeDef *)phost->pData,
+    HAL_HCD_HC_Init(phost->pData,
         pipe,
         epnum,
         dev_address,
@@ -332,7 +408,7 @@ USBH_StatusTypeDef USBH_LL_OpenPipe(USBH_HandleTypeDef *phost,
   */
 USBH_StatusTypeDef USBH_LL_ClosePipe(USBH_HandleTypeDef *phost, uint8_t pipe)
 {
-    HAL_HCD_HC_Halt((HCD_HandleTypeDef *)phost->pData, pipe);
+    HAL_HCD_HC_Halt(phost->pData, pipe);
     return USBH_OK;
 }
 
@@ -372,7 +448,7 @@ USBH_StatusTypeDef USBH_LL_SubmitURB(USBH_HandleTypeDef *phost,
     uint16_t length,
     uint8_t do_ping)
 {
-    HAL_HCD_HC_SubmitRequest((HCD_HandleTypeDef *)phost->pData,
+    HAL_HCD_HC_SubmitRequest(phost->pData,
         pipe,
         direction,
         ep_type,
@@ -399,7 +475,7 @@ USBH_StatusTypeDef USBH_LL_SubmitURB(USBH_HandleTypeDef *phost,
   */
 USBH_URBStateTypeDef USBH_LL_GetURBState(USBH_HandleTypeDef *phost, uint8_t pipe)
 {
-    return (USBH_URBStateTypeDef)HAL_HCD_HC_GetURBState((HCD_HandleTypeDef *)phost->pData, pipe);
+    return (USBH_URBStateTypeDef)HAL_HCD_HC_GetURBState(phost->pData, pipe);
 }
 
 /**
@@ -418,12 +494,12 @@ USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
     if (state == 0)
     {
         /* Configure Low Charge pump */
-    //    BSP_IO_WritePin(OTG_FS1_POWER_SWITCH_PIN, RESET);
+        BSP_IO_WritePin(OTG_FS1_POWER_SWITCH_PIN, RESET);
     }
     else
     {
         /* Drive High Charge pump */
-    //    BSP_IO_WritePin(OTG_FS1_POWER_SWITCH_PIN, SET);
+        BSP_IO_WritePin(OTG_FS1_POWER_SWITCH_PIN, SET);
     }
 
 #endif
@@ -432,12 +508,12 @@ USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
     if (state == 0)
     {
         /* Configure Low Charge pump */
-    //    BSP_IO_WritePin(OTG_FS2_POWER_SWITCH_PIN, RESET);
+        BSP_IO_WritePin(OTG_FS2_POWER_SWITCH_PIN, RESET);
     }
     else
     {
         /* Drive High Charge pump */
-    //    BSP_IO_WritePin(OTG_FS2_POWER_SWITCH_PIN, SET);
+        BSP_IO_WritePin(OTG_FS2_POWER_SWITCH_PIN, SET);
     }
 #endif  
     HAL_Delay(200);
@@ -453,15 +529,13 @@ USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
   */
 USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t toggle)
 {
-    HCD_HandleTypeDef *handleHCD = (HCD_HandleTypeDef *)FDrive::handleHCD;
-    
-    if (handleHCD->hc[pipe].ep_is_in)
+    if (hhcd.hc[pipe].ep_is_in)
     {
-        handleHCD->hc[pipe].toggle_in = toggle;
+        hhcd.hc[pipe].toggle_in = toggle;
     }
     else
     {
-        handleHCD->hc[pipe].toggle_out = toggle;
+        hhcd.hc[pipe].toggle_out = toggle;
     }
     return USBH_OK;
 }
@@ -474,17 +548,15 @@ USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *phost, uint8_t pipe, ui
   */
 uint8_t USBH_LL_GetToggle(USBH_HandleTypeDef *phost, uint8_t pipe)
 {
-    HCD_HandleTypeDef *handleHCD = (HCD_HandleTypeDef *)FDrive::handleHCD;
-
     uint8_t toggle = 0;
 
-    if (handleHCD->hc[pipe].ep_is_in)
+    if (hhcd.hc[pipe].ep_is_in)
     {
-        toggle = handleHCD->hc[pipe].toggle_in;
+        toggle = hhcd.hc[pipe].toggle_in;
     }
     else
     {
-        toggle = handleHCD->hc[pipe].toggle_out;
+        toggle = hhcd.hc[pipe].toggle_out;
     }
     return toggle;
 }
