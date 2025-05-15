@@ -393,7 +393,7 @@
         <LExpSel>0</LExpSel>
       </OPTXL>
       <OPTFL>
-        <tvExp>1</tvExp>
+        <tvExp>0</tvExp>
         <tvExpOptDlg>0</tvExpOptDlg>
         <IsCurrentTarget>1</IsCurrentTarget>
       </OPTFL>
@@ -472,34 +472,98 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>167</LineNumber>
+          <LineNumber>602</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134231910</Address>
+          <Address>134245040</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;4&gt;../Src/main.c</Filename>
+          <Filename>&lt;1&gt;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_core.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../Src/main.c\167</Expression>
+          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c\602</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>209</LineNumber>
+          <LineNumber>1170</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134246018</Address>
+          <Address>134235582</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>&lt;4&gt;../Src/main.c</Filename>
+          <Filename>&lt;1&gt;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_core.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../Src/main.c\209</Expression>
+          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c\1170</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>865</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134234042</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>&lt;1&gt;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c\865</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>860</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134234034</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>&lt;1&gt;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c\860</Expression>
+        </Bp>
+        <Bp>
+          <Number>4</Number>
+          <Type>0</Type>
+          <LineNumber>850</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134234014</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>&lt;1&gt;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c\850</Expression>
+        </Bp>
+        <Bp>
+          <Number>5</Number>
+          <Type>0</Type>
+          <LineNumber>845</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134234006</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>&lt;1&gt;..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\STM324x9I_EVAL_USBH_HS_IN_FS\../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_ctlreq.c\845</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>
@@ -700,7 +764,7 @@
 
   <Group>
     <GroupName>Middlewares/FatFs/Core</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -744,7 +808,7 @@
 
   <Group>
     <GroupName>Drivers/STM32F4xx_HAL_Drivers</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -888,7 +952,7 @@
 
   <Group>
     <GroupName>Drivers/CMSIS</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

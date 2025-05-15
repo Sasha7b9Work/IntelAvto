@@ -1,630 +1,0 @@
-Dependencies for Project 'Project', Target 'STM324x9I-EVAL_USBH-HS-IN-FS': (DO NOT MODIFY !)
-CompilerVersion: 6230000::V6.23::ARMCLANG
-F (../readme.txt)(0x66736F5E)()
-F (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_pipes.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_pipes.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ctlreq.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_ctlreq.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_core.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_core.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Src\usbh_ioreq.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_ioreq.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-F (../Src/usbh_conf.c)(0x6825B9B0)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_conf.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-F (../Src/main.c)(0x6825B9A0)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/main.o -MMD)
-I (..\inc\main.h)(0x6825B946)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\integer.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff.h)(0x6825C029)
-I (..\inc\ffconf.h)(0x66736F5E)
-I (..\inc\usbh_diskio_dma.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h)(0x6825C029)
-F (../Src/stm32f4xx_it.c)(0x66736F5E)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/stm32f4xx_it.o -MMD)
-I (..\inc\main.h)(0x6825B946)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\integer.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff.h)(0x6825C029)
-I (..\inc\ffconf.h)(0x66736F5E)
-I (..\inc\usbh_diskio_dma.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h)(0x6825C029)
-I (..\inc\stm32f4xx_it.h)(0x66736F5E)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/diskio.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\integer.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff.h)(0x6825C029)
-I (..\inc\ffconf.h)(0x66736F5E)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/ff.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\integer.h)(0x6825C029)
-I (..\inc\ffconf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.h)(0x6825C029)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff_gen_drv.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/ff_gen_drv.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\integer.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff.h)(0x6825C029)
-I (..\inc\ffconf.h)(0x66736F5E)
-F (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c)(0x6825C0C1)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/stm32f4xx_hal.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-F (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c)(0x6825C0C1)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/stm32f4xx_hal_gpio.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-F (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c)(0x6825C0C1)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/stm32f4xx_hal_cortex.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-F (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c)(0x6825C0C1)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/stm32f4xx_hal_rcc.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-F (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_hcd.c)(0x6825C0C1)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/stm32f4xx_hal_hcd.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-F (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_usb.c)(0x6825C0C1)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/stm32f4xx_ll_usb.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_msc.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h)(0x6825C029)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_bot.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_msc_bot.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h)(0x6825C029)
-F (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Src\usbh_msc_scsi.c)(0x6825C029)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_msc_scsi.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h)(0x6825C029)
-F (../Src/usbh_diskio_dma.c)(0x66736F5E)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/usbh_diskio_dma.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\diskio.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\integer.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\Third_Party\FatFs\src\ff.h)(0x6825C029)
-I (..\inc\ffconf.h)(0x66736F5E)
-I (..\inc\usbh_diskio_dma.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h)(0x6825C029)
-I (..\inc\usbh_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h)(0x6825C029)
-I (..\..\common\libs\STM32Cube_F4\Middlewares\ST\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h)(0x6825C029)
-F (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c)(0x6825C0C0)(-xc -std=c11 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -O0 -ffunction-sections -w -I ../inc -I ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc -I ../../common/libs/STM32Cube_F4/Drivers/BSP/STM324x9I_EVAL -I ../../common/libs/STM32Cube_F4/Drivers/BSP/Components/Common -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src -I ../../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/drivers-I./RTE/_STM324x9I-EVAL_USBH-HS-IN-FS-IC:/Users/Sasha/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Sasha/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.17.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-D__UVISION_VERSION="542" -DSTM32F429xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F429xx -DUSE_STM324x9I_EVAL -DUSE_USB_HS -DUSE_USB_HS_IN_FS-o stm324x9i-eval_usbh-hs-in-fs/exe/system_stm32f4xx.o -MMD)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f429xx.h)(0x6825C0C0)
-I (C:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm4.h)(0x664C1ED8)
-I (..\..\common\libs\STM32Cube_F4\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x6825C0C0)
-I (..\inc\stm32f4xx_hal_conf.h)(0x66736F5E)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x6825C0C0)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sdram.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fmc.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_i2c_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h)(0x6825C0C1)
-I (..\..\common\libs\STM32Cube_F4\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x6825C0C1)
-F (startup_stm32f429xx.s)(0x66736F5E)(--cpu Cortex-M4.fp.sp -g --pd "__MICROLIB SETA 1" --diag_suppress=A1950W-I.\RTE\_STM324x9I-EVAL_USBH-HS-IN-FS-IC:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include-IC:\Users\Sasha\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include--pd "__UVISION_VERSION SETA 542"--pd "STM32F429xx SETA 1"--pd "_RTE_ SETA 1"--list startup_stm32f429xx.lst--xref -o stm324x9i-eval_usbh-hs-in-fs\exe\startup_stm32f429xx.o--depend stm324x9i-eval_usbh-hs-in-fs\exe\startup_stm32f429xx.d)

@@ -35,6 +35,15 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef *hhcd)
 
     if (hhcd->Instance == USB_OTG_HS)
     {
+            __HAL_RCC_GPIOB_CLK_ENABLE();
+    
+    /*Configure GPIO for HS on FS mode*/
+    GPIO_InitStruct.Pin = GPIO_PIN_12  | GPIO_PIN_13  | GPIO_PIN_14 |GPIO_PIN_15;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    GPIO_InitStruct.Alternate = GPIO_AF12_OTG_HS_FS;
+    HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+        
         /* Enable USB HS Clocks */
         __HAL_RCC_USB_OTG_HS_CLK_ENABLE();
 

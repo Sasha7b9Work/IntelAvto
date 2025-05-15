@@ -19,6 +19,14 @@
     #endif
 #endif
 
+//__asm(".global __use_no_semihosting");
+//
+//
+//struct __FILE { int handle;} ;
+//
+//FILE __stdout;
+//FILE __stdin;
+//FILE __stderr;
 
 
 int main(void)
@@ -26,7 +34,7 @@ int main(void)
     HAL::Init();
 
     gset.Load();
-
+//
     LAN::Init();
     
     Display::Init();
