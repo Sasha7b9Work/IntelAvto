@@ -5,12 +5,11 @@
 
   <Header>### uVision Project, (C) Keil Software</Header>
 
-  <WorkspaceName>IntelAvto</WorkspaceName>
+  <WorkspaceName>D:\My\Prog\GitHub\Work\IntelAvto\sources\IntelAvto.uvmpw</WorkspaceName>
 
   <project>
     <PathAndName>.\Panel\Panel.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
@@ -23,7 +22,6 @@
 
   <project>
     <PathAndName>.\FatFs_USBDisk_F4.1.28.1\MDK-ARM\Project.uvprojx</PathAndName>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
 </ProjectWorkspace>

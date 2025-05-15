@@ -874,10 +874,11 @@ Command Line: --debug --xref --diag_suppress=9931,A1950W --cpu=Cortex-M4.fp.sp
 --depend=stm324x9i-eval_usbh-hs-in-fs\exe\startup_stm32f429xx.d -ostm324x9i-eva
 l_usbh-hs-in-fs\exe\startup_stm32f429xx.o -I.\RTE\_STM324x9I-EVAL_USBH-HS-IN-FS
  -IC:\Users\Sasha\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include -I
-C:\Users\Sasha\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.0\Drivers\CMSIS\
+C:\Users\Sasha\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\
 Device\ST\STM32F4xx\Include --predefine="__MICROLIB SETA 1" --predefine="__UVIS
-ION_VERSION SETA 542" --predefine="STM32F429xx SETA 1" --predefine="_RTE_ SETA 
-1" --list=startup_stm32f429xx.lst startup_stm32f429xx.s
+ION_VERSION SETA 539" --predefine="_RTE_ SETA 1" --predefine="STM32F429xx SETA 
+1" --predefine="_RTE_ SETA 1" --list=startup_stm32f429xx.lst startup_stm32f429x
+x.s
 
 
 

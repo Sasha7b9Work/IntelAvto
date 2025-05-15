@@ -16,8 +16,8 @@
     #pragma clang diagnostic ignored "-Wmissing-prototypes"
     #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
     #pragma clang diagnostic ignored "-Wshift-sign-overflow"
-//    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-//    #pragma clang diagnostic ignored "-Winvalid-utf8"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Winvalid-utf8"
     #pragma clang diagnostic ignored "-Wmissing-field-initializers"
     
     #pragma clang diagnostic ignored "-Wunused-variable"
