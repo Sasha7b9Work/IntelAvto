@@ -10,7 +10,6 @@
   <project>
     <PathAndName>.\Panel\Panel.uvprojx</PathAndName>
     <NodeIsActive>1</NodeIsActive>
-    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
   <project>
@@ -19,6 +18,11 @@
 
   <project>
     <PathAndName>.\Device\Device.uvprojx</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\FatFs_USBDisk_F4.1.28.1\MDK-ARM\Project.uvprojx</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
   </project>
 
 </ProjectWorkspace>
