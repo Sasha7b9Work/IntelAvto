@@ -94,13 +94,6 @@
   */ 
 
 /* Includes ------------------------------------------------------------------*/
-
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-    #pragma clang diagnostic ignored "-Wswitch-enum"
-    #pragma clang diagnostic ignored "-Wcovered-switch-default"
-#endif
-
 #include "stm32f4xx_hal.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver

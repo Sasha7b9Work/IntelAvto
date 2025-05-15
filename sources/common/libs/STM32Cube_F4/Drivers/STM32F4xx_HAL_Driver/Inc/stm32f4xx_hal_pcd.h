@@ -60,13 +60,13 @@ typedef enum
   LPM_L0 = 0x00, /* on */
   LPM_L1 = 0x01, /* LPM L1 sleep */
   LPM_L2 = 0x02, /* suspend */
-  LPM_L3 = 0x03  /* off */
+  LPM_L3 = 0x03, /* off */
 } PCD_LPM_StateTypeDef;
 
 typedef enum
 {
   PCD_LPM_L0_ACTIVE = 0x00, /* on */
-  PCD_LPM_L1_ACTIVE = 0x01 /* LPM L1 sleep */
+  PCD_LPM_L1_ACTIVE = 0x01, /* LPM L1 sleep */
 } PCD_LPM_MsgTypeDef;
 
 typedef enum
@@ -76,7 +76,7 @@ typedef enum
   PCD_BCD_STD_DOWNSTREAM_PORT       = 0xFD,
   PCD_BCD_CHARGING_DOWNSTREAM_PORT  = 0xFC,
   PCD_BCD_DEDICATED_CHARGING_PORT   = 0xFB,
-  PCD_BCD_DISCOVERY_COMPLETED       = 0x00
+  PCD_BCD_DISCOVERY_COMPLETED       = 0x00,
 
 } PCD_BCD_MsgTypeDef;
 
@@ -190,14 +190,14 @@ typedef struct
   *  @brief macros to handle interrupts and specific clock configurations
   * @{
   */
+#if defined (USB_OTG_FS) || defined (USB_OTG_HS)
 #define __HAL_PCD_ENABLE(__HANDLE__)                       (void)USB_EnableGlobalInt ((__HANDLE__)->Instance)
 #define __HAL_PCD_DISABLE(__HANDLE__)                      (void)USB_DisableGlobalInt ((__HANDLE__)->Instance)
 
 #define __HAL_PCD_GET_FLAG(__HANDLE__, __INTERRUPT__) \
   ((USB_ReadInterrupts((__HANDLE__)->Instance) & (__INTERRUPT__)) == (__INTERRUPT__))
 
-#if defined (USB_OTG_FS) || defined (USB_OTG_HS)
-#define __HAL_PCD_CLEAR_FLAG(__HANDLE__, __INTERRUPT__)    (((__HANDLE__)->Instance->GINTSTS) &= (__INTERRUPT__))
+#define __HAL_PCD_CLEAR_FLAG(__HANDLE__, __INTERRUPT__)    (((__HANDLE__)->Instance->GINTSTS) &=  (__INTERRUPT__))
 #define __HAL_PCD_IS_INVALID_INTERRUPT(__HANDLE__)         (USB_ReadInterrupts((__HANDLE__)->Instance) == 0U)
 
 #define __HAL_PCD_UNGATE_PHYCLOCK(__HANDLE__) \
@@ -368,11 +368,9 @@ HAL_StatusTypeDef HAL_PCD_EP_Flush(PCD_HandleTypeDef *hpcd, uint8_t ep_addr);
 HAL_StatusTypeDef HAL_PCD_EP_Abort(PCD_HandleTypeDef *hpcd, uint8_t ep_addr);
 HAL_StatusTypeDef HAL_PCD_ActivateRemoteWakeup(PCD_HandleTypeDef *hpcd);
 HAL_StatusTypeDef HAL_PCD_DeActivateRemoteWakeup(PCD_HandleTypeDef *hpcd);
-#if defined (USB_OTG_FS) || defined (USB_OTG_HS)
-HAL_StatusTypeDef HAL_PCD_SetTestMode(const PCD_HandleTypeDef *hpcd, uint8_t testmode);
-#endif /* defined (USB_OTG_FS) || defined (USB_OTG_HS) */
+HAL_StatusTypeDef HAL_PCD_SetTestMode(PCD_HandleTypeDef *hpcd, uint8_t testmode);
 
-uint32_t          HAL_PCD_EP_GetRxCount(PCD_HandleTypeDef const *hpcd, uint8_t ep_addr);
+uint32_t          HAL_PCD_EP_GetRxCount(PCD_HandleTypeDef *hpcd, uint8_t ep_addr);
 /**
   * @}
   */
@@ -381,7 +379,7 @@ uint32_t          HAL_PCD_EP_GetRxCount(PCD_HandleTypeDef const *hpcd, uint8_t e
 /** @addtogroup PCD_Exported_Functions_Group4 Peripheral State functions
   * @{
   */
-PCD_StateTypeDef HAL_PCD_GetState(PCD_HandleTypeDef const *hpcd);
+PCD_StateTypeDef HAL_PCD_GetState(PCD_HandleTypeDef *hpcd);
 /**
   * @}
   */

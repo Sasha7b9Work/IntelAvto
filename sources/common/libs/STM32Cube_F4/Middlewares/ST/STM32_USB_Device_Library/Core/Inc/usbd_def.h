@@ -27,12 +27,6 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include "usbd_conf.h"
 
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic push
-    #pragma clang diagnostic ignored "-Wold-style-cast"
-    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
-#endif
-
 /** @addtogroup STM32_USBD_DEVICE_LIBRARY
   * @{
   */
@@ -278,7 +272,7 @@ typedef enum
 {
   USBD_SPEED_HIGH  = 0U,
   USBD_SPEED_FULL  = 1U,
-  USBD_SPEED_LOW   = 2U
+  USBD_SPEED_LOW   = 2U,
 } USBD_SpeedTypeDef;
 
 /* Following USB Device status */
@@ -287,7 +281,7 @@ typedef enum
   USBD_OK = 0U,
   USBD_BUSY,
   USBD_EMEM,
-  USBD_FAIL
+  USBD_FAIL,
 } USBD_StatusTypeDef;
 
 /* USB Device descriptors structure */
@@ -409,7 +403,7 @@ typedef void (*USBD_DevStateCallbackTypeDef)(uint8_t dev_state, uint8_t cfgidx);
 typedef enum
 {
   OUT   = 0x00,
-  IN    = 0x80
+  IN    = 0x80,
 } USBD_EPDirectionTypeDef;
 
 typedef enum
@@ -421,11 +415,6 @@ typedef enum
 /**
   * @}
   */
-
-
-#ifdef WIN32
-    #define __STATIC_INLINE
-#endif
 
 
 
@@ -443,7 +432,7 @@ __STATIC_INLINE uint16_t SWAPBYTE(uint8_t *addr)
   _pbuff++;
   _Byte2 = *(uint8_t *)_pbuff;
 
-  _SwapVal = (uint16_t)((_Byte2 << 8) | _Byte1);
+  _SwapVal = (_Byte2 << 8) | _Byte1;
 
   return _SwapVal;
 }
@@ -521,12 +510,6 @@ __STATIC_INLINE uint16_t SWAPBYTE(uint8_t *addr)
 #ifdef __cplusplus
 }
 #endif
-
-
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic pop
-#endif
-
 
 #endif /* __USBD_DEF_H */
 
