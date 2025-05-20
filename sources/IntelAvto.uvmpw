@@ -21,8 +21,4 @@
     <PathAndName>.\Device\Device.uvprojx</PathAndName>
   </project>
 
-  <project>
-    <PathAndName>.\FatFs_USBDisk_F4.1.28.1\MDK-ARM\Project.uvprojx</PathAndName>
-  </project>
-
 </ProjectWorkspace>

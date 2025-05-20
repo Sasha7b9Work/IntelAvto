@@ -40,7 +40,7 @@ typedef int sys_prot_t;
 
 #define LWIP_PROVIDE_ERRNO
 
-#if defined (__GNUC__) & !defined (__CC_ARM) && !(defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
+#if defined (__GNUC__) && !defined (__CC_ARM) && !(defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050))
 
 #define LWIP_TIMEVAL_PRIVATE 0
 #include <sys/time.h>
@@ -65,7 +65,11 @@ typedef int sys_prot_t;
 
 #elif defined (__CC_ARM)
 
+#ifdef WIN32
+#define PACK_STRUCT_BEGIN
+#else
 #define PACK_STRUCT_BEGIN __packed
+#endif
 #define PACK_STRUCT_STRUCT
 #define PACK_STRUCT_END
 #define PACK_STRUCT_FIELD(x) x
@@ -79,8 +83,10 @@ typedef int sys_prot_t;
 
 #endif
 
-#define LWIP_PLATFORM_ASSERT(x) do {printf("Assertion \"%s\" failed at line %d in %s\n", \
-                                     x, __LINE__, __FILE__); } while(0)
+#define LWIP_PLATFORM_ASSERT(x)
+
+//#define LWIP_PLATFORM_ASSERT(x) do {printf("Assertion \"%s\" failed at line %d in %s\n", \
+//                                     x, __LINE__, __FILE__); } while(0)
 
 /* Define random number generator function */
 #define LWIP_RAND() ((u32_t)rand())

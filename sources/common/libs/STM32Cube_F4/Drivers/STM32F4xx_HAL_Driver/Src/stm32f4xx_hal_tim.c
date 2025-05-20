@@ -183,11 +183,12 @@ all interrupt callbacks are set to the corresponding weak functions:
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
 
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
     #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
 #endif
+
+#include "stm32f4xx_hal.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
@@ -6801,6 +6802,8 @@ void TIM_Base_SetConfig(TIM_TypeDef *TIMx, const TIM_Base_InitTypeDef *Structure
   /* Set the auto-reload preload */
   MODIFY_REG(tmpcr1, TIM_CR1_ARPE, Structure->AutoReloadPreload);
 
+  TIMx->CR1 = tmpcr1;
+
   /* Set the Autoreload value */
   TIMx->ARR = (uint32_t)Structure->Period ;
 
@@ -6813,15 +6816,16 @@ void TIM_Base_SetConfig(TIM_TypeDef *TIMx, const TIM_Base_InitTypeDef *Structure
     TIMx->RCR = Structure->RepetitionCounter;
   }
 
-  /* Disable Update Event (UEV) with Update Generation (UG)
-     by changing Update Request Source (URS) to avoid Update flag (UIF) */
-  SET_BIT(TIMx->CR1, TIM_CR1_URS);
-
   /* Generate an update event to reload the Prescaler
      and the repetition counter (only for advanced timer) value immediately */
   TIMx->EGR = TIM_EGR_UG;
 
-  TIMx->CR1 = tmpcr1;
+  /* Check if the update flag is set after the Update Generation, if so clear the UIF flag */
+  if (HAL_IS_BIT_SET(TIMx->SR, TIM_FLAG_UPDATE))
+  {
+    /* Clear the update flag */
+    CLEAR_BIT(TIMx->SR, TIM_FLAG_UPDATE);
+  }
 }
 
 /**
