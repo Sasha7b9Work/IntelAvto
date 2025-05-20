@@ -109,11 +109,6 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
     }
     else if (current == TypeSignal::_4_DIN40839)
     {
-        /*
-        IT6523::SendCommandF("carwave:startup:din40839:volt %dV", (gset.voltage_mode == VoltageMode::_12) ? 12 : 24);
-        IT6523::SendCommand("carwave:startup:din40839:state 1");
-        */
-
         IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommand("list:state 0");
         IT6523::SendCommand("sequence:edit");
