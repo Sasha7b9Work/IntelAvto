@@ -105,11 +105,18 @@ void ParameterDrawStruct::Params::Set(const Value &val)
 {
     value = val;
 
-    std::sprintf(symbols, "%d,", val.WholePart());
+    if (value.IsRaw())
+    {
+        std::sprintf(symbols, "%u", value.GetRaw());
+    }
+    else
+    {
+        std::sprintf(symbols, "%d,", value.WholePart());
 
-    char buffer[4];
+        char buffer[4];
 
-    std::strcat(symbols, val.FractPart(buffer));
+        std::strcat(symbols, value.FractPart(buffer));
+    }
 
     SetIndexInLastSignedSymbol();
 }
@@ -202,6 +209,10 @@ void ParameterDrawStruct::ToValue(Value *result) const
     else if (parameter->GetValue().GetType() == TypeValue::Voltage)
     {
         raw |= (1 << 29);
+    }
+    else
+    {
+        raw /= 1000;
     }
 
     *result = Value(raw);

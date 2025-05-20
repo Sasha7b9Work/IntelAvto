@@ -84,11 +84,13 @@ struct Value
         return (raw & (uint)(1 << 31)) ? -value : value;
     }
 
+    // Целая часть
     int WholePart() const
     {
         return ToMU() / 1000;
     }
 
+    // Дробная часть (количество миллиюнитов)
     int FractPart() const
     {
         return ToMU() - WholePart() * 1000;
