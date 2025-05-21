@@ -424,7 +424,9 @@ typedef enum
 
 
 #ifdef WIN32
-    #define __STATIC_INLINE
+    #ifndef __STATIC_INLINE
+        #define __STATIC_INLINE inline
+    #endif
 #endif
 
 

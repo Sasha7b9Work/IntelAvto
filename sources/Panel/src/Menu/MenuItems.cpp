@@ -12,6 +12,7 @@
 #include "Menu/Menu.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/StringUtils_.h"
+#include "Hardware/Sound.h"
 #include <cstring>
 #include <cstdlib>
 #include <cmath>
@@ -323,6 +324,8 @@ bool Button::OnKey(Key::E key)
         if (funcOnPress)
         {
             funcOnPress();
+
+            Sound::ButtonPress();
 
             return true;
         }
