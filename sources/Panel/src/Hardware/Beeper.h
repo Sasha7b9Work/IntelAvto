@@ -14,7 +14,7 @@ struct TypeWave
 };
 
 
-namespace Sound
+namespace Beeper
 {
     void Init();
 

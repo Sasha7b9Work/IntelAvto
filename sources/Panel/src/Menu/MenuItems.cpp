@@ -12,7 +12,7 @@
 #include "Menu/Menu.h"
 #include "Hardware/HAL/HAL.h"
 #include "Utils/StringUtils_.h"
-#include "Hardware/Sound.h"
+#include "Hardware/Beeper.h"
 #include <cstring>
 #include <cstdlib>
 #include <cmath>
@@ -325,7 +325,7 @@ bool Button::OnKey(Key::E key)
         {
             funcOnPress();
 
-            Sound::ButtonPress();
+            Beeper::ButtonPress();
 
             return true;
         }

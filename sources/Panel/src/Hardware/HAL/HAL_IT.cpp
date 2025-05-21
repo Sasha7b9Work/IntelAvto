@@ -2,8 +2,8 @@
 #include "Hardware/HAL/HAL.h"
 #include "Utils/Debug_.h"
 #include "FlashDrive/FlashDrive.h"
-#include "Hardware/Sound.h"
 #include "VCP/VCP.h"
+#include "Hardware/Beeper.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -91,7 +91,7 @@ void OTG_HS_IRQHandler()
 
 void DMA1_Stream5_IRQHandler()
 {
-    HAL_DMA_IRQHandler(((DAC_HandleTypeDef *)Sound::handle)->DMA_Handle1);
+    HAL_DMA_IRQHandler(((DAC_HandleTypeDef *)Beeper::handle)->DMA_Handle1);
 }
 
 #ifdef __cplusplus

@@ -1587,8 +1587,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Sound.cpp</PathWithFileName>
-      <FilenameWithoutPath>Sound.cpp</FilenameWithoutPath>
+      <PathWithFileName>.\src\Hardware\Beeper.cpp</PathWithFileName>
+      <FilenameWithoutPath>Beeper.cpp</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1599,8 +1599,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\src\Hardware\Sound.h</PathWithFileName>
-      <FilenameWithoutPath>Sound.h</FilenameWithoutPath>
+      <PathWithFileName>.\src\Hardware\Beeper.h</PathWithFileName>
+      <FilenameWithoutPath>Beeper.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -9,7 +9,7 @@
 #include "LAN/LAN.h"
 #include "Device/IT6523.h"
 #include "VCP/VCP.h"
-#include "Hardware/Sound.h"
+#include "Hardware/Beeper.h"
 
 
 #ifndef WIN32
@@ -40,7 +40,7 @@ int main(void)
 
     FDrive::Init();
 
-    Sound::Init();
+    Beeper::Init();
 
     while (1)
     {

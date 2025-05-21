@@ -4,7 +4,6 @@
 #include "Display/Font/Font.h"
 #include "FlashDrive/FlashDrive.h"
 #include "Display/Display_.h"
-#include "Hardware/Sound.h"
 #include "Menu/Menu.h"
 #include "Utils/Math_.h"
 #include "Utils/StringUtils_.h"

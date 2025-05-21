@@ -958,14 +958,14 @@
               <FilePath>.\src\Hardware\Timer.h</FilePath>
             </File>
             <File>
-              <FileName>Sound.cpp</FileName>
+              <FileName>Beeper.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Sound.cpp</FilePath>
+              <FilePath>.\src\Hardware\Beeper.cpp</FilePath>
             </File>
             <File>
-              <FileName>Sound.h</FileName>
+              <FileName>Beeper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Sound.h</FilePath>
+              <FilePath>.\src\Hardware\Beeper.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -4769,14 +4769,14 @@
               <FilePath>.\src\Hardware\Timer.h</FilePath>
             </File>
             <File>
-              <FileName>Sound.cpp</FileName>
+              <FileName>Beeper.cpp</FileName>
               <FileType>8</FileType>
-              <FilePath>.\src\Hardware\Sound.cpp</FilePath>
+              <FilePath>.\src\Hardware\Beeper.cpp</FilePath>
             </File>
             <File>
-              <FileName>Sound.h</FileName>
+              <FileName>Beeper.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\src\Hardware\Sound.h</FilePath>
+              <FilePath>.\src\Hardware\Beeper.h</FilePath>
             </File>
           </Files>
         </Group>

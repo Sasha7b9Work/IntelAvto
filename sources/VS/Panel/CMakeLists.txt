@@ -91,9 +91,11 @@ file(GLOB FLASH_DRIVE        ../../Panel/src/FlashDrive/*.h
 file(GLOB GUI                            src/GUI/*)
 file(GLOB HARDWARE           ../../Panel/src/Hardware/*FPGA.*
                              ../../Panel/src/Hardware/FreqMeter.*
+                             ../../Panel/src/Hardware/Beeper.h
                              ../../Panel/src/Hardware/VCP.h
                              ../../Panel/src/Hardware/Timer.*
-                                         src/Hardware/VCP_win.cpp)
+                                         src/Hardware/VCP_win.cpp
+                                         src/Hardware/Beeper_win.cpp)
 file(GLOB HARDWARE_HAL       ../../Panel/src/Hardware/HAL/HAL.*
                              ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
                              ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
