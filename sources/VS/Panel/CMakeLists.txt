@@ -2,7 +2,7 @@
 
 project (PanelGUI)
 
-set(CMAKE_UNITY_BUILD OFF)
+#set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -134,6 +134,7 @@ set_source_files_properties(
     ../../Panel/src/Hardware/HAL/HAL.cpp
     ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
     ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
+    src/FlashDrive/FlashDrive_win.cpp
     PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
 )
 

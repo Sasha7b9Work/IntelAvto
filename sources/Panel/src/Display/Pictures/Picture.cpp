@@ -76,6 +76,7 @@ bool Picture::Uncompress(TypeSignal::E type)
 
 void Picture::DrawPicure(int x, int y, TypeSignal::E type)
 {
+#pragma pack(push)
 #pragma pack(1)
     struct StructureBMP
     {
@@ -116,6 +117,7 @@ void Picture::DrawPicure(int x, int y, TypeSignal::E type)
             }
         }
     }
+#pragma pack(pop)
 }
 
 
