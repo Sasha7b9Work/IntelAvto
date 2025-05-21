@@ -1,9 +1,7 @@
 #include "defines.h"
+#include "VCP/VCP.h"
 #include "stm32f4xx_hal.h"
 #include "usbd_core.h"
-
-
-static PCD_HandleTypeDef handlePCD;
 
 
 void HAL_PCD_MspInit(PCD_HandleTypeDef *hpcd)
@@ -23,11 +21,11 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef *hpcd)
         GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-        /* Configure VBUS Pin */
-        GPIO_InitStruct.Pin = GPIO_PIN_9;
-        GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+//        /* Configure VBUS Pin */
+//        GPIO_InitStruct.Pin = GPIO_PIN_9;
+//        GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+//        GPIO_InitStruct.Pull = GPIO_NOPULL;
+//        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
         /* Enable USB FS Clocks */
         __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
@@ -215,59 +213,25 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
 
 #ifdef USE_USB_FS
     /* Set LL Driver parameters */
-    handlePCD.Instance = USB_OTG_FS;
-    handlePCD.Init.dev_endpoints = 4;
-    handlePCD.Init.use_dedicated_ep1 = 0;
-    handlePCD.Init.dma_enable = 0;
-    handlePCD.Init.low_power_enable = 0;
-    handlePCD.Init.phy_itface = PCD_PHY_EMBEDDED;
-    handlePCD.Init.Sof_enable = 0;
-    handlePCD.Init.speed = PCD_SPEED_FULL;
-    handlePCD.Init.vbus_sensing_enable = DISABLE;
+    VCP::handlePCD.Instance = USB_OTG_FS;
+    VCP::handlePCD.Init.dev_endpoints = 4;
+    VCP::handlePCD.Init.use_dedicated_ep1 = 0;
+    VCP::handlePCD.Init.dma_enable = 0;
+    VCP::handlePCD.Init.low_power_enable = 0;
+    VCP::handlePCD.Init.phy_itface = PCD_PHY_EMBEDDED;
+    VCP::handlePCD.Init.Sof_enable = 0;
+    VCP::handlePCD.Init.speed = PCD_SPEED_FULL;
+    VCP::handlePCD.Init.vbus_sensing_enable = DISABLE;
     /* Link The driver to the stack */
-    handlePCD.pData = pdev;
-    pdev->pData = &handlePCD;
+    VCP::handlePCD.pData = pdev;
+    pdev->pData = &VCP::handlePCD;
     /* Initialize LL Driver */
-    HAL_PCD_Init(&handlePCD);
+    HAL_PCD_Init(&VCP::handlePCD);
 
-    HAL_PCDEx_SetRxFiFo(&handlePCD, 0x80);
-    HAL_PCDEx_SetTxFiFo(&handlePCD, 0, 0x40);
-    HAL_PCDEx_SetTxFiFo(&handlePCD, 1, 0x80);
+    HAL_PCDEx_SetRxFiFo(&VCP::handlePCD, 0x80);
+    HAL_PCDEx_SetTxFiFo(&VCP::handlePCD, 0, 0x40);
+    HAL_PCDEx_SetTxFiFo(&VCP::handlePCD, 1, 0x80);
 
-
-#endif
-#ifdef USE_USB_HS
-    /* Set LL Driver parameters */
-    handlePCD.Instance = USB_OTG_HS;
-    handlePCD.Init.dev_endpoints = 6;
-    handlePCD.Init.use_dedicated_ep1 = 0;
-
-    /* Be aware that enabling USB-DMA mode will result in data being sent only by
-     * multiple of 4 packet sizes. This is due to the fact that USB DMA does not
-     * allow sending data from non word-aligned addresses. For this specific
-     * application, it is advised to not enable this option unless required. */
-    handlePCD.Init.dma_enable = 0;
-
-    handlePCD.Init.low_power_enable = 0;
-
-#ifdef USE_USB_HS_IN_FS
-    handlePCD.Init.phy_itface = PCD_PHY_EMBEDDED;
-    handlePCD.Init.speed = PCD_SPEED_HIGH_IN_FULL;
-#else
-    hpcd.Init.phy_itface = PCD_PHY_ULPI;
-    hpcd.Init.speed = PCD_SPEED_HIGH;
-#endif
-    handlePCD.Init.Sof_enable = 0;
-    handlePCD.Init.vbus_sensing_enable = DISABLE;
-    /* Link The driver to the stack */
-    handlePCD.pData = pdev;
-    pdev->pData = &handlePCD;
-    /* Initialize LL Driver */
-    HAL_PCD_Init(&handlePCD);
-
-    HAL_PCDEx_SetRxFiFo(&handlePCD, 0x200);
-    HAL_PCDEx_SetTxFiFo(&handlePCD, 0, 0x40);
-    HAL_PCDEx_SetTxFiFo(&handlePCD, 1, 0x100);
 
 #endif
     return USBD_OK;

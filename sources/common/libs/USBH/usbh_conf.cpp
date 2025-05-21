@@ -148,21 +148,6 @@ USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
 {
     HCD_HandleTypeDef *handleHCD = (HCD_HandleTypeDef *)FDrive::handleHCD;
     
-#ifdef USE_USB_FS  
-    /* Set the LL driver parameters */
-    hhcd.Instance = USB_OTG_FS;
-    hhcd.Init.Host_channels = 11;
-    hhcd.Init.dma_enable = 0;
-    hhcd.Init.low_power_enable = 1;
-    hhcd.Init.phy_itface = HCD_PHY_EMBEDDED;
-    hhcd.Init.Sof_enable = 0;
-    hhcd.Init.speed = HCD_SPEED_FULL;
-    /* Link the driver to the stack */
-    hhcd.pData = phost;
-    phost->pData = &hhcd;
-    /* Initialize the LL Driver */
-    HAL_HCD_Init(&hhcd);
-#endif 
 #ifdef USE_USB_HS  
     /* Set the LL driver parameters */
     handleHCD->Instance = USB_OTG_HS;
@@ -393,21 +378,6 @@ USBH_URBStateTypeDef USBH_LL_GetURBState(USBH_HandleTypeDef *phost, uint8_t pipe
   */
 USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
 {
-#ifdef USE_USB_FS   
-
-    if (state == 0)
-    {
-        /* Configure Low Charge pump */
-        BSP_IO_WritePin(OTG_FS1_POWER_SWITCH_PIN, RESET);
-    }
-    else
-    {
-        /* Drive High Charge pump */
-        BSP_IO_WritePin(OTG_FS1_POWER_SWITCH_PIN, SET);
-    }
-
-#endif
-
 #ifdef USE_USB_HS_IN_FS
     if (state == 0)
     {
