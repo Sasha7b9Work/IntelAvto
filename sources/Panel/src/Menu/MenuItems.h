@@ -17,6 +17,8 @@ class Item
 public:
     Item() = default;
 
+    virtual ~Item() { }
+
     static int Height();
 
     // Функция отрисовки
@@ -140,6 +142,8 @@ class FieldPort : public Button
 public:
     FieldPort(pchar title, uint16 *_port) :
         Button(title, []() {}), port(_port) { }
+
+    virtual ~FieldPort() { }
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
     virtual bool OnKey(Key::E) override;

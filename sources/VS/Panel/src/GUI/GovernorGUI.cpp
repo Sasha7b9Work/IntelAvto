@@ -10,7 +10,8 @@
 const float GovernorGUI::stepDegree = 60.0F;
 
 
-GovernorGUI::GovernorGUI(wxWindow *parent, const wxPoint &position) : wxPanel(parent, wxID_ANY, position), timer(this, 1)
+GovernorGUI::GovernorGUI(wxWindow *parent, const wxPoint &position) :
+    wxPanel(parent, wxID_ANY, position), timer(this, 1)
 {
     angleDiscrete = ((float)(std::rand() % 100) - 100.0F) * stepDegree;
 
