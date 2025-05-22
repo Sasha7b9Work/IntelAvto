@@ -17,7 +17,7 @@ namespace IT6523
     static uint time_connect = 0;
     static int pulses_remained = 0;                 // ќсталось импульсов
     static bool in_pause = false;
-    static uint period_heavy_impulses = 60 * 1000;  // ¬рем€ между "т€жЄлыми" импульсами - теми, которые выдел€ют много тепла (5а, 5б)
+    static uint period_heavy_impulses = 10 * 1000;  // ¬рем€ между "т€жЄлыми" импульсами - теми, которые выдел€ют много тепла (5а, 5б)
     static uint time_last_heavy_impulse = 0;        // ¬рем€ запуска последнего "т€жЄлого" импульса
 
     static TypeSignal::E current = TypeSignal::Count;
