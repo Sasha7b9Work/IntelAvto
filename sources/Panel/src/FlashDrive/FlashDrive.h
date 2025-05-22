@@ -30,7 +30,7 @@ namespace FDrive
 
     void Mount();
 
-    bool _IsConnected();
+    bool IsConnected();
 
     void GetNumDirsAndFiles(const char *fullPath, int *numDirs, int *numFiles);
 

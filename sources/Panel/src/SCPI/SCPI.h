@@ -4,5 +4,5 @@
 
 namespace SCPI
 {
-    inline void AddNewData(uint8 *, uint) {}
+    void AddNewData(uint8 *, uint);
 }

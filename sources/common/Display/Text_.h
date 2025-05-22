@@ -9,7 +9,8 @@ struct Color;
 class Text
 {
 public:
-    explicit Text(pchar format, ...) {};
+    explicit Text(pchar format, ...);
+    ~Text();
     int Write(int x, int y, const Color &);
     int Write(int x, int y);
     int Write(int x, int y, int width, const Color &);
@@ -17,7 +18,7 @@ public:
     int WriteScaled(int x, int y, int size);
     void WriteInCenterRect(int x, int y, int width, int height, const Color &);
     void WriteInCenterRect(int x, int y, int width, int height);
-    pchar c_str() const { return nullptr; };
+    pchar c_str() const;
     char *LastSymbol();
 private:
     char *text = nullptr;

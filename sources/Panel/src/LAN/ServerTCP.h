@@ -10,11 +10,11 @@ namespace ServerTCP
 {
     void Init(void (*callbackReceive)(pchar, uint));
 
-    void _SendString(pchar buffer);
+    void SendString(pchar buffer);
 
     void SendBuffer(pchar buffer, uint length);
 
-    bool _IsConnected();
+    bool IsConnected();
 
     // Вызывается постоянно из ETH, когда подключён шнур. Нужно, чтобы определить наличие подключения
     void CallbackOnRxETH();

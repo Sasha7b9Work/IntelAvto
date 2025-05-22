@@ -324,7 +324,7 @@ public:
     // Отображает значения параметров на изображении сигнала
     void DrawParameters() const;
 
-    static const Page *_ForCurrentSignal();
+    static const Page *ForCurrentSignal();
 
     // Запустить тест
     bool StartTest() const;

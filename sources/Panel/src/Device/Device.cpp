@@ -4,6 +4,7 @@
 #include "Menu/MenuItems.h"
 #include "Connector/Device/Messages_.h"
 #include "Hardware/Timer.h"
+#include "Device/IT6523.h"
 
 
 namespace Device
@@ -42,6 +43,20 @@ bool Device::InPause()
 
 bool Device::Start()
 {
+    if (IsStopped())
+    {
+        if (Page::ForCurrentSignal()->StartTest())
+        {
+            state = State::Running;
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     return true;
 }
 
@@ -56,7 +71,7 @@ void Device::Pause()
 
         RemainingTimeCounter::Pause();
 
-//        IT6523::Pause();
+        IT6523::Pause();
     }
 }
 
@@ -71,7 +86,7 @@ void Device::Resume()
 
         RemainingTimeCounter::Resume();
 
-//        IT6523::Resume();
+        IT6523::Resume();
     }
 }
 
@@ -86,6 +101,6 @@ void Device::Stop()
 
         RemainingTimeCounter::Stop();
 
-//        IT6523::Stop();
+        IT6523::Stop();
     }
 }
