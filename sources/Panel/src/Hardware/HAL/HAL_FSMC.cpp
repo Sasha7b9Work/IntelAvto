@@ -1,7 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Hardware/HAL/HAL.h"
-#include "Display/Colors_.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -222,24 +221,6 @@ void HAL_BUS_DISPLAY::WriteData(uint data)
 }
 
 
-static void WindowSet(int s_x, int e_x, int s_y, int e_y)
-{
-    HAL_BUS_DISPLAY::WriteCommand(0x2a);               //SET page address
-
-    HAL_BUS_DISPLAY::WriteData((uint)((s_x) >> 8));    //SET start page address=0
-    HAL_BUS_DISPLAY::WriteData((uint)s_x);
-    HAL_BUS_DISPLAY::WriteData((uint)(e_x) >> 8);      //SET end page address
-    HAL_BUS_DISPLAY::WriteData((uint)e_x);
-
-    HAL_BUS_DISPLAY::WriteCommand(0x2b);               //SET column address
-
-    HAL_BUS_DISPLAY::WriteData((uint)(s_y) >> 8);      //SET start column address=0
-    HAL_BUS_DISPLAY::WriteData((uint)s_y);
-    HAL_BUS_DISPLAY::WriteData((uint)(e_y) >> 8);      //SET end column address
-    HAL_BUS_DISPLAY::WriteData((uint)e_y);
-}
-
-
 #ifdef WIN32
     #define DELAY
 #else
@@ -252,58 +233,6 @@ static void WindowSet(int s_x, int e_x, int s_y, int e_y)
 
 void HAL_BUS_DISPLAY::SendBuffer(uint8 *buffer, int x, int y, int width, int height, int k)
 {
-    int top = x;
-    int right = x + width - 1;
-
-    int left = y;
-    int bottom = y + height - 1;
-
-    WindowSet(top, right, left, bottom);
-
-    HAL_BUS_DISPLAY::WriteCommand(0x2c);   // Write memory start
-
-    DataBus::InitWrite();
-
-    PORT_CS->BSRR = PIN_CS << 16;
-
-    PORT_D_C->BSRR = PIN_D_C;
-
-    uint *colors = ColorScheme::Current().colors;
-
-    uint color1 = colors[*buffer++];
-    uint color2 = colors[*buffer++];
-
-    int count = width * height / 2 / k;
-
-    for(int i = 0; i < count; i++)
-    {
-        PORT_WR->BSRR = PIN_WR << 16;
-        uint16 col3 = (uint16)color2;
-        uint16 value = (uint16)(color1 << 8);
-        DELAY;
-        PORT_DATA->ODR = (uint)(value | (uint16)(color1 >> 8));
-        PORT_WR->BSRR = PIN_WR;
-        DELAY;
-
-        value |= (uint8)(color2 >> 16);
-        DELAY;
-        PORT_WR->BSRR = PIN_WR << 16; //-V779
-        DELAY;
-        color1 = colors[*buffer++];
-        PORT_DATA->ODR = value;
-        DELAY;
-        PORT_WR->BSRR = PIN_WR;
-        DELAY;
-        color2 = colors[*buffer++];
-        DELAY;
-        PORT_WR->BSRR = PIN_WR << 16;
-        DELAY;
-        PORT_DATA->ODR = col3;
-        PORT_WR->BSRR = PIN_WR;
-        DELAY;
-    }
-
-    PORT_CS->BSRR = PIN_CS;
 }
 
 

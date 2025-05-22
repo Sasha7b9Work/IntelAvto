@@ -486,18 +486,6 @@ void Page::DrawConnectionServer()
     Text("IT6523C : ").Write(x, y, Color::WHITE);
 
     x += 90;
-
-    if (ServerTCP::IsConnected())
-    {
-        Text("ондйкчвем").Write(x, y, Color::GREEN);
-    }
-    else
-    {
-        if ((TIME_MS / 500) % 2)
-        {
-            Text("ме ондйкчвем").Write(x, y, Color::RED);
-        }
-    }
 }
 
 

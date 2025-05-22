@@ -21,11 +21,11 @@ void HAL_PCD_MspInit(PCD_HandleTypeDef *hpcd)
         GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
         HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-//        /* Configure VBUS Pin */
-//        GPIO_InitStruct.Pin = GPIO_PIN_9;
-//        GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-//        GPIO_InitStruct.Pull = GPIO_NOPULL;
-//        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+        /* Configure VBUS Pin */
+        GPIO_InitStruct.Pin = GPIO_PIN_9;
+        GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+        GPIO_InitStruct.Pull = GPIO_NOPULL;
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
         /* Enable USB FS Clocks */
         __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
@@ -211,7 +211,6 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
     /* Change Systick prioity */
     NVIC_SetPriority(SysTick_IRQn, 0);
 
-#ifdef USE_USB_FS
     /* Set LL Driver parameters */
     VCP::handlePCD.Instance = USB_OTG_FS;
     VCP::handlePCD.Init.dev_endpoints = 4;
@@ -230,10 +229,8 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
 
     HAL_PCDEx_SetRxFiFo(&VCP::handlePCD, 0x80);
     HAL_PCDEx_SetTxFiFo(&VCP::handlePCD, 0, 0x40);
-    HAL_PCDEx_SetTxFiFo(&VCP::handlePCD, 1, 0x80);
+    HAL_PCDEx_SetTxFiFo(&VCP::handlePCD, 1, 0x100);
 
-
-#endif
     return USBD_OK;
 }
 

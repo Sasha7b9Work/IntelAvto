@@ -83,12 +83,6 @@ void OTG_FS_IRQHandler()
 }
 
 
-void OTG_HS_IRQHandler()
-{
-    HAL_HCD_IRQHandler((HCD_HandleTypeDef *)FDrive::handleHCD);
-}
-
-
 void DMA1_Stream5_IRQHandler()
 {
     HAL_DMA_IRQHandler(((DAC_HandleTypeDef *)Beeper::handle)->DMA_Handle1);

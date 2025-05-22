@@ -6,5 +6,5 @@ namespace LAN
 {
     void Init();
 
-    void Update();
+    void _Update();
 }
