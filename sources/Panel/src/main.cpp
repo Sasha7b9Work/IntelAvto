@@ -57,7 +57,7 @@ int main(void)
         IT6523::Update();
 
         FDrive::Update();
-
+        
         gset.Save();
     }
 }

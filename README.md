@@ -2,5 +2,5 @@
 
 ** Tools
 
-- Keil uVision 5.39
+- Keil uVision 5.42a
 - ARM compiler 6.21
