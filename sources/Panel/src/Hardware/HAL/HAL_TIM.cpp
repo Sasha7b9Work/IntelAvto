@@ -3,6 +3,13 @@
 #include <stm32f4xx_hal.h>
 #include <ctime>
 
+#ifdef GUI
+    #pragma warning(push, 0)
+    #undef CRC
+    #include <wx/wx.h>
+    #pragma warning(pop)
+#endif
+
 
 void HAL_TIM::Init()
 {
@@ -46,7 +53,7 @@ static __inline uint32_t delta(uint32_t t0, uint32_t t1)
 void HAL_TIM::DelayUS(uint timeUS)
 {
 #ifdef GUI
-    timeUS = timeUS;
+    wxMicroSleep(timeUS);
 #else
     uint32_t t0 = DWT->CYCCNT;
     uint32_t us_count_tic = timeUS * (SystemCoreClock / 1000000);
