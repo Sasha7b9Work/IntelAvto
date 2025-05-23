@@ -7,6 +7,7 @@
 #include "Device/Device.h"
 #include "Menu/Pages/Pages.h"
 #include "Utils/StringUtils_.h"
+#include "LAN/LAN.h"
 #include <cstdarg>
 #include <cstdio>
 
@@ -67,6 +68,15 @@ void IT6523::Update()
 
 void IT6523::SendCommand(pchar message)
 {
+    static uint time_next = 0;
+    
+    while(TIME_MS < time_next)
+    {
+        LAN::Update();
+    }
+    
+    time_next = TIME_MS;
+    
     if (message[0] != '*')
     {
         ServerTCP::SendString(":");
