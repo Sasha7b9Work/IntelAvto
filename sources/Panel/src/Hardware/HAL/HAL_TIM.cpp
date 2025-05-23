@@ -18,12 +18,14 @@ void HAL_TIM::Init()
 #define    SCB_DEMCR     *(volatile unsigned long *)0xE000EDFC
 
 #ifndef GUI
+
     //разрешаем использовать счётчик
     SCB_DEMCR |= CoreDebug_DEMCR_TRCENA_Msk; //-V2523
     //обнуляем значение счётного регистра
     DWT_CYCCNT = 0; //-V2523
     //запускаем счётчик
     DWT_CONTROL |= DWT_CTRL_CYCCNTENA_Msk; //-V2523
+
 #endif
 }
 
@@ -31,9 +33,13 @@ void HAL_TIM::Init()
 uint HAL_TIM::TimeMS()
 {
 #ifdef WIN32
+
     return (uint)std::clock();
+
 #else
+
     return HAL_GetTick();
+
 #endif
 }
 
@@ -53,12 +59,16 @@ static __inline uint32_t delta(uint32_t t0, uint32_t t1)
 void HAL_TIM::DelayUS(uint timeUS)
 {
 #ifdef GUI
+
     wxMicroSleep(timeUS);
+
 #else
+
     uint32_t t0 = DWT->CYCCNT;
     uint32_t us_count_tic = timeUS * (SystemCoreClock / 1000000);
     while (delta(t0, DWT->CYCCNT) < us_count_tic) //-V712
     {
     }
+
 #endif
 }
