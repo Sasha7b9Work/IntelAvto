@@ -403,6 +403,21 @@
 }
 #endif
 
+#ifdef GUI
+
+    #ifdef __HAL_RCC_PWR_CLK_ENABLE
+        #undef __HAL_RCC_PWR_CLK_ENABLE
+        #define __HAL_RCC_PWR_CLK_ENABLE()
+    #endif
+
+    #ifdef __HAL_PWR_VOLTAGESCALING_CONFIG
+        #undef __HAL_PWR_VOLTAGESCALING_CONFIG
+        #define __HAL_PWR_VOLTAGESCALING_CONFIG(x)
+    #endif
+
+#endif
+
+
 #endif /* __STM32F4xx_HAL_CONF_H */
  
 
