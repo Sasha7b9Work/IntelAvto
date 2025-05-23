@@ -35,13 +35,7 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef *hhcd)
 
     if (hhcd->Instance == USB_OTG_HS)
     {
-        /* Enable USB HS Clocks */       
-        GPIO_InitStruct.Pin = GPIO_PIN_12  | GPIO_PIN_13  | GPIO_PIN_14 |GPIO_PIN_15;
-        GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-        GPIO_InitStruct.Pull = GPIO_NOPULL;
-        GPIO_InitStruct.Alternate = GPIO_AF12_OTG_HS_FS;
-        HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-        
+        /* Enable USB HS Clocks */
         __HAL_RCC_USB_OTG_HS_CLK_ENABLE();
 
         /* Set USBHS Interrupt to the lowest priority */
@@ -154,12 +148,17 @@ USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
 {
     HCD_HandleTypeDef *handleHCD = (HCD_HandleTypeDef *)FDrive::handleHCD;
     
+#ifdef USE_USB_HS  
     /* Set the LL driver parameters */
     handleHCD->Instance = USB_OTG_HS;
     handleHCD->Init.Host_channels = 11;
     handleHCD->Init.dma_enable = 0;
     handleHCD->Init.low_power_enable = 0;
+#ifdef USE_USB_HS_IN_FS
     handleHCD->Init.phy_itface = HCD_PHY_EMBEDDED;
+#else  
+    hhcd.Init.phy_itface = HCD_PHY_ULPI;
+#endif  
     handleHCD->Init.Sof_enable = 0;
     handleHCD->Init.speed = HCD_SPEED_HIGH;
     handleHCD->Init.use_external_vbus = 0;
@@ -169,6 +168,7 @@ USBH_StatusTypeDef USBH_LL_Init(USBH_HandleTypeDef *phost)
     /* Initialize the LL driver */
     HAL_HCD_Init(handleHCD);
 
+#endif /*USE_USB_HS*/ 
     USBH_LL_SetTimer(phost, HAL_HCD_GetCurrentFrame(handleHCD));
 
     return USBH_OK;
@@ -378,6 +378,18 @@ USBH_URBStateTypeDef USBH_LL_GetURBState(USBH_HandleTypeDef *phost, uint8_t pipe
   */
 USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
 {
+#ifdef USE_USB_HS_IN_FS
+    if (state == 0)
+    {
+        /* Configure Low Charge pump */
+//        BSP_IO_WritePin(OTG_FS2_POWER_SWITCH_PIN, RESET);
+    }
+    else
+    {
+        /* Drive High Charge pump */
+//        BSP_IO_WritePin(OTG_FS2_POWER_SWITCH_PIN, SET);
+    }
+#endif  
     HAL_Delay(200);
     return USBH_OK;
 }

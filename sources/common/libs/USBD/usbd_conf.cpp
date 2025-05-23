@@ -211,6 +211,7 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
     /* Change Systick prioity */
     NVIC_SetPriority(SysTick_IRQn, 0);
 
+#ifdef USE_USB_FS
     /* Set LL Driver parameters */
     VCP::handlePCD.Instance = USB_OTG_FS;
     VCP::handlePCD.Init.dev_endpoints = 4;
@@ -231,6 +232,8 @@ USBD_StatusTypeDef USBD_LL_Init(USBD_HandleTypeDef *pdev)
     HAL_PCDEx_SetTxFiFo(&VCP::handlePCD, 0, 0x40);
     HAL_PCDEx_SetTxFiFo(&VCP::handlePCD, 1, 0x80);
 
+
+#endif
     return USBD_OK;
 }
 
