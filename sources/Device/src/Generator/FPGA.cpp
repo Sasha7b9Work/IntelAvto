@@ -61,9 +61,9 @@ void FPGA::SetTypeSignal(TypeSignal::E type)
     {
         { true,  false, false },
         { false, true,  false },
-        { true,  true,  false },
-        { false, false, true },
-        { true,  false, true },
+        { true,  true,  false },    // 2a
+        { false, false, true },     // 3a
+        { true,  false, true },     // 3b
         { false, false, false }
     };
 
