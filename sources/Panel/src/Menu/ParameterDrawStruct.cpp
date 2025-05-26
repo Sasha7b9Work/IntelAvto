@@ -45,17 +45,9 @@ void ParameterDrawStruct::PressKey(int _key)
     }
     else if ((key >= Key::_0 && key <= Key::_9) || key == Key::Dot)
     {
-        if ((key == Key::_0 && p.index == 0) ||
-            (key == Key::_0 && p.index == 1 && p.symbols[0] == '-'))
-        {
-            // Ноль первым быть не может
-        }
-        else
-        {
-            static const char _keys[Key::Count] = { ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ','};
+        static const char _keys[Key::Count] = { ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', ',' };
 
-            p.SetSymbolToCurrentPos(_keys[key]);
-        }
+        p.SetSymbolToCurrentPos(_keys[key]);
     }
     else if (key == Key::GovLeft)
     {
@@ -181,21 +173,25 @@ void ParameterDrawStruct::ToValue(Value *result) const
 
     std::strcpy(buffer, p.symbols);
 
-    char *end = nullptr;
+    char *end1 = nullptr;
 
     int whole_value = 0;
 
-    SU::String2Int(buffer, &whole_value, &end);
+    SU::String2Int(buffer, &whole_value, &end1);
 
     int fract_value = 0;
 
-    SU::String2Int(end + 1, &fract_value, &end);
+    char *end2 = nullptr;
 
-    if (fract_value < 10)
+    SU::String2Int(end1 + 1, &fract_value, &end2);
+
+    const int diff_end = end2 - end1;   // Итоговое количество миллиюнитов зависит от того, сколько всего символов в дробной части
+
+    if (diff_end == 2)
     {
         fract_value *= 100;
     }
-    else if (fract_value < 100)
+    else if (diff_end == 3)
     {
         fract_value *= 10;
     }

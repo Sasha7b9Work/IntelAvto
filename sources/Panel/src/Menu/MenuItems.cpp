@@ -371,11 +371,13 @@ bool Parameter::OnKey(Key::E key)
 
             ds.ToValue(&new_value);
 
-            if (new_value.ToMU() < GetMin().ToMU())
+            const int milli_units = new_value.ToMU();
+
+            if (milli_units < GetMin().ToMU())
             {
                 GetValue() = Value(GetMin().GetRaw());
             }
-            else if (new_value.ToMU() > GetMax().ToMU())
+            else if (milli_units > GetMax().ToMU())
             {
                 GetValue() = Value(GetMax().GetRaw());
             }
