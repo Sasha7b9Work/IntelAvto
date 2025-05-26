@@ -136,15 +136,15 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
             char str_Us[32];
             SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Us.GetValue().ToMU(), str_Us);
             int duration_t7 = PageSignal4::param_t7.GetValue().ToMU();
-            IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms; load curr 1,3", str_Us, duration_t7);
+            IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms", str_Us, duration_t7);
 
             char str_Ua[32];
             SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Ua.GetValue().ToMU(), str_Ua);
-            IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms; load curr 2,3", str_Ua, duration_t9);
+            IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms", str_Ua, duration_t9);
 
             char str_Uakb[32];
             SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000, str_Uakb);
-            IT6523::SendCommandF("seq:volt 3,%s; curr 3,60; width 3,10 ms; slop 3,10 ms; load curr 3,3", str_Uakb);
+            IT6523::SendCommandF("seq:volt 3,%s; curr 3,60; width 3,10 ms; slop 3,10 ms", str_Uakb);
         }
         else
         {
@@ -153,17 +153,17 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
             char str_Us[32];
             SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Us.GetValue().ToMU(), str_Us);
             int duration_t7 = PageSignal4::param_t7.GetValue().ToMU();
-            IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms; load curr 1,4", str_Us, duration_t7);
+            IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms", str_Us, duration_t7);
 
             char str_Ua[32];
             SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Ua.GetValue().ToMU(), str_Ua);
-            IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms; load curr 2,4", str_Ua, 10000);
+            IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms", str_Ua, 10000);
 
-            IT6523::SendCommandF("seq:volt 3,%s; curr 3,60; width 3,%d ms; slop 3,10 ms; load curr 3,4", str_Ua, duration_t9 - 10000);
+            IT6523::SendCommandF("seq:volt 3,%s; curr 3,60; width 3,%d ms; slop 3,10 ms", str_Ua, duration_t9 - 10000);
 
             char str_Uakb[32];
             SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000, str_Uakb);
-            IT6523::SendCommandF("seq:volt 4,%s; curr 4,60; width 4,10 ms; slop 4,10 ms; load curr 4,4", str_Uakb);
+            IT6523::SendCommandF("seq:volt 4,%s; curr 4,60; width 4,10 ms; slop 4,10 ms", str_Uakb);
         }
 
         IT6523::SendCommand("sequence:save 1");
