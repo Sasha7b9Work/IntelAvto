@@ -122,7 +122,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
     {
         IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommand("list:state 0");
-        IT6523::SendCommand("sequence:edit");
+        IT6523::SendCommand("sequence:edit 1");
         IT6523::SendCommand("sequence:recall 1");
 
         const int duration_t9 = PageSignal4::param_t9.GetValue().ToMU();
@@ -171,7 +171,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommand("list:edit 1");
         IT6523::SendCommand("list:repeat 1");
         IT6523::SendCommand("list:sequence:count 1");
-        IT6523::SendCommand("list:sequence:select 1");
+        IT6523::SendCommand("list:sequence:select 1,1");
         IT6523::SendCommand("list save 1");
 
         IT6523::SendCommand("list:recall 1");
