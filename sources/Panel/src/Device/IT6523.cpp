@@ -114,7 +114,8 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
     {
         IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommandF("carwave:sae:2b:volt %dV", gset.voltage_mode.CurrentVolts());
-        IT6523::SendCommandF("carwave:sae:2b:TD %s", SU::MilliUnitsToUnits(PageSignal2b::param_td.GetValue().ToMU(), buffer));
+        char str_Uakb[32];
+        IT6523::SendCommandF("carwave:sae:2b:TD %s", SU::MilliUnitsToUnits(PageSignal2b::param_td.GetValue().ToMU(), str_Uakb));
         IT6523::SendCommand("carwave:sae:2b:state 1");
     }
     else if (current == TypeSignal::_4_DIN40839)
@@ -123,18 +124,47 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommand("list:state 0");
         IT6523::SendCommand("sequence:edit");
         IT6523::SendCommand("sequence:recall 1");
-        IT6523::SendCommand("sequence:step:count 3");
 
-        SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Us.GetValue().ToMU(), buffer);
-        int duration = PageSignal4::param_t7.GetValue().ToMU();
-        IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms; load curr 1,3", buffer, duration);
+        if (PageSignal4::param_t9.GetValue().ToMU() <= 10000)       // Не позволяет генератор в одной команде использовать длительность более 10 сек
+        {
+            IT6523::SendCommand("sequence:step:count 3");
 
-        SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Ua.GetValue().ToMU(), buffer);
-        duration = PageSignal4::param_t9.GetValue().ToMU();
-        IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms; load curr 2,3", buffer, duration);
+            char str_Us[32];
+            SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Us.GetValue().ToMU(), str_Us);
+            int duration = PageSignal4::param_t7.GetValue().ToMU();
+            IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms; load curr 1,3", str_Us, duration);
 
-        SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000, buffer);
-        IT6523::SendCommandF("seq:volt 3,%s; curr 3,60; width 2,%d ms; slop 3,10 ms; load curr 3,3", buffer, duration);
+            char str_Ua[32];
+            SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Ua.GetValue().ToMU(), str_Ua);
+            duration = PageSignal4::param_t9.GetValue().ToMU();
+            IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms; load curr 2,3", str_Ua, duration);
+
+            char str_Uakb[32];
+            SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000, str_Uakb);
+            IT6523::SendCommandF("seq:volt 3,%s; curr 3,60; width 3,%d ms; slop 3,10 ms; load curr 3,3", str_Uakb, duration);
+        }
+        else
+        {
+            IT6523::SendCommand("sequence:step:count 4");
+
+            char str_Us[32];
+            SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Us.GetValue().ToMU(), str_Us);
+            int duration = PageSignal4::param_t7.GetValue().ToMU();
+            IT6523::SendCommandF("seq:volt 1,%s; curr 1,60; width 1,%d ms; slop 1,10 ms; load curr 1,4", str_Us, duration);
+
+            char str_Ua[32];
+            SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000 - PageSignal4::param_Ua.GetValue().ToMU(), str_Ua);
+            duration = PageSignal4::param_t9.GetValue().ToMU();
+            IT6523::SendCommandF("seq:volt 2,%s; curr 2,60; width 2,%d ms; slop 2,10 ms; load curr 2,4", str_Ua, duration);
+
+            duration -= 10000;
+            IT6523::SendCommandF("seq:volt 3,%s; curr 3,60; width 3,%d ms; slop 3,10 ms; load curr 3,4", str_Ua, duration);
+
+            char str_Uakb[32];
+            SU::MilliUnitsToUnits(gset.voltage_mode.CurrentVolts() * 1000, str_Uakb);
+            IT6523::SendCommandF("seq:volt 4,%s; curr 4,60; width 4,%d ms; slop 4,10 ms; load curr 4,4", str_Uakb, duration);
+
+        }
 
         IT6523::SendCommand("sequence:save 1");
 
