@@ -14,7 +14,7 @@ namespace PageSignal5b
 {
     VParameter param_Us("Us",
         &gset.signals[TypeSignal::_5b_16750_2].values12[0], Voltage(79000), Voltage(101000),
-        &gset.signals[TypeSignal::_5b_16750_2].values24[0], Voltage(101000), Voltage(202000),
+        &gset.signals[TypeSignal::_5b_16750_2].values24[0], Voltage(151000), Voltage(202000),
         350, 100);
 
     TParameter param_td("td",
