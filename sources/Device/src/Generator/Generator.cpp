@@ -34,8 +34,6 @@ void Generator::Resume()
 
 void Generator::Start1_12V(const Value &Us, const Value &t1)
 {
-    Stop();
-
     FPGA::SetTypeSignal(TypeSignal::_1_12V); 
 
     FPGA::WritePeriod(TypeSignal::_1_12V, t1);
@@ -48,8 +46,6 @@ void Generator::Start1_12V(const Value &Us, const Value &t1)
 
 void Generator::Start1_24V(const Value &Us, const Value &t1)
 {
-    Stop();
-
     FPGA::SetTypeSignal(TypeSignal::_1_24V);
 
     FPGA::WritePeriod(TypeSignal::_1_24V, t1);
@@ -62,8 +58,6 @@ void Generator::Start1_24V(const Value &Us, const Value &t1)
 
 void Generator::Start2A(const Value &Us, const Value &t1)
 {
-    Stop();
-
     FPGA::SetTypeSignal(TypeSignal::_2a);
 
     FPGA::WritePeriod(TypeSignal::_2a, t1);
@@ -76,8 +70,6 @@ void Generator::Start2A(const Value &Us, const Value &t1)
 
 void Generator::Start3A(const Value &Us)
 {
-    Stop();
-
     FPGA::SetTypeSignal(TypeSignal::_3a);
 
     MCP4811::SetVoltage(Us);
@@ -88,8 +80,6 @@ void Generator::Start3A(const Value &Us)
 
 void Generator::Start3B(const Value &Us)
 {
-    Stop();
-
     FPGA::SetTypeSignal(TypeSignal::_3b);
 
     MCP4811::SetVoltage(Us);

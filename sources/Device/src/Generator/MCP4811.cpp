@@ -11,7 +11,7 @@
 
 namespace MCP4811
 {
-    static const uint DELAY_RELAYS = 10;        // Задержка на заряд/разряд
+    static const uint DELAY_RELAYS = 5000;      // Задержка на заряд/разряд
 
     struct Converter
     {
@@ -36,13 +36,17 @@ void MCP4811::SetVoltage(const Value &value)
     pin_K1_FOR.ToHi();
     pin_DAC_ENB_HV.ToHi();
 
-    TimeMeterMS().Delay(DELAY_RELAYS);
+    TimeMeterMS().Delay(100);
 }
 
 
 void MCP4811::Disable()
 {
     pin_DAC_ENB_HV.ToLow();
+
+    TimeMeterMS().Delay(DELAY_RELAYS);
+
+    FPGA::Start();
 
     TimeMeterMS().Delay(DELAY_RELAYS);
 
