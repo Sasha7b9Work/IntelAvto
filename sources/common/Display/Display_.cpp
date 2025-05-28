@@ -28,8 +28,6 @@ namespace Display
     Value value_out(0, TypeValue::Voltage);
 
     int num_sends = 0;
-    uint crc_trans = 0;
-    uint crc_recv = 0;
 
     static WarningMessage::E warn = WarningMessage::Count;
     static uint time_warn = 0;
@@ -329,9 +327,7 @@ void Display::DrawPartScreen(int num, bool)
 
     if (num_sends > 1)
     {
-        Text("%d", num_sends).Write(420, 180, Color::WHITE);
-        Text("%08X", crc_trans).Write(400, 210);
-        Text("%08X", crc_recv).Write(400, 240);
+        Text("%d", num_sends).Write(420, 240, Color::WHITE);
     }
 
     LAN::Update();

@@ -23,8 +23,6 @@ namespace Display
     extern Value value_out;
 
     extern int num_sends;
-    extern uint crc_trans;
-    extern uint crc_recv;
 
     const int PHYSICAL_WIDTH = 480;
     const int PHYSICAL_HEIGHT = 272;
