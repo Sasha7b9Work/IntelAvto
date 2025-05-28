@@ -280,25 +280,11 @@ void Display::SetTopRow(int i)
 
 void Display::Update()
 {
-#ifdef GUI
-    BeginScene();
-    DrawScreen();
-    Console::Draw();
-
-    if (!TypeSignal::IsExtern())
-    {
-        Text("%.2f", value_in.ToUnits()).Write(400, 5, Color::WHITE);
-        Text("%.2f", value_out.ToUnits()).Write(400, 30);
-    }
-
-    EndScene();
-#else
     for (int i = 0; i < NUM_PARTS; i++)
     {
         LAN::Update();
         DrawPartScreen(i, true);
     }
-#endif
 }
 
 
