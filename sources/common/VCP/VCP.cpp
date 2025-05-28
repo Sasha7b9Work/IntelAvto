@@ -105,7 +105,7 @@ void VCP::SendBufferSynch(const uint8 *buffer, int size)
 }
 
 
-void VCP::SendStringAsynch(char *format, ...)
+void VCP::SendStringAsynch0D0A(char *format, ...)
 {
     if (isConnected)
     {

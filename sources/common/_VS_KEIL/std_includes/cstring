@@ -11,5 +11,6 @@ namespace std
     void   *memset(void *dest, int ch, unsigned int count);
     char   *strcat(char *, char *);
     char   *strcat(char *destination, const char *source);
+    void   *memmove(void *dest, const void *src, unsigned int count);
     unsigned int  strlen(const char *);
 }

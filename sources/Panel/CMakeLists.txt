@@ -48,6 +48,7 @@ add_compile_options(
     /wd4626    # 'derived class' : assignment operator was implicitly defined as deleted because a base
                # class assignment operator is inaccessible or deleted
     /wd4668
+    /wd4710    # 'func': function not inlined
     /wd4774
     /wd4820    # 'N' bytes padding added after data member
     /wd4996    # This function or variable may be unsafe
