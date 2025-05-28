@@ -1,5 +1,6 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
+#include "Display/Text_.h"
 
 
 #define LOG_WRITE(...)          Log::Message(Text(__VA_ARGS__).c_str())

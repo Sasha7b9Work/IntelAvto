@@ -1,31 +1,29 @@
-// 2023/09/08 21:46:51 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
+// 2025/05/28 09:23:34 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Utils/Buffer_.h"
 #include <cstdlib>
-#include <cstring>
 
 
-
-Buffer::Buffer(int s)
+BufferHeap::BufferHeap(int s)
 {
     Malloc(s);
 }
 
 
-Buffer::~Buffer()
+BufferHeap::~BufferHeap()
 {
     Free();
 }
 
 
-void Buffer::Realloc(int _size)
+void BufferHeap::Realloc(int _size)
 {
     Free();
     Malloc(_size);
 }
 
 
-void Buffer::Fill(uint8 value)
+void BufferHeap::Fill(uint8 value)
 {
     if (size)
     {
@@ -34,7 +32,7 @@ void Buffer::Fill(uint8 value)
 }
 
 
-void Buffer::Free()
+void BufferHeap::Free()
 {
     std::free(data);
     data = nullptr;
@@ -42,16 +40,16 @@ void Buffer::Free()
 }
 
 
-void Buffer::Malloc(int s)
+void BufferHeap::Malloc(int s)
 {
     if (s > 0)
     {
         data = static_cast<uint8 *>(std::malloc(static_cast<uint>(s)));
         size = (data) ? s : 0;
 
-        if(!data)
+        if (!data)
         {
-//            LOG_ERROR("Нет памяти");
+            //            LOG_ERROR("Нет памяти");
         }
     }
     else
@@ -60,3 +58,4 @@ void Buffer::Malloc(int s)
         size = 0U;
     }
 }
+

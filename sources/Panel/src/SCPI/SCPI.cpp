@@ -7,3 +7,9 @@ void SCPI::AddNewData(uint8 *, uint)
 {
 
 }
+
+
+void SCPI::Update()
+{
+
+}

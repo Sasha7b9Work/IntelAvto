@@ -1454,11 +1454,6 @@
               <FilePath>..\common\Utils\Stack_.h</FilePath>
             </File>
             <File>
-              <FileName>Buffer_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Utils\Buffer_.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Buffer_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Buffer_.h</FilePath>
@@ -1482,6 +1477,11 @@
               <FileName>Log_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Log_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Buffer_.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Buffer_.cpp</FilePath>
             </File>
           </Files>
         </Group>
@@ -5265,11 +5265,6 @@
               <FilePath>..\common\Utils\Stack_.h</FilePath>
             </File>
             <File>
-              <FileName>Buffer_.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\common\Utils\Buffer_.cpp</FilePath>
-            </File>
-            <File>
               <FileName>Buffer_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Buffer_.h</FilePath>
@@ -5293,6 +5288,11 @@
               <FileName>Log_.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\common\Utils\Log_.h</FilePath>
+            </File>
+            <File>
+              <FileName>Buffer_.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\common\Utils\Buffer_.cpp</FilePath>
             </File>
           </Files>
         </Group>

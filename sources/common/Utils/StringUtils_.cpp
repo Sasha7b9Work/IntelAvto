@@ -386,7 +386,7 @@ bool SU::StringToDouble(double *value, pchar str)
 
 bool SU::String2Int(pchar buffer, int *value, char **end)
 {
-    Buffer string(static_cast<int>(std::strlen(buffer)) + 1);
+    BufferHeap string(static_cast<int>(std::strlen(buffer)) + 1);
 
     std::strcpy(string.DataChar(), buffer);
 

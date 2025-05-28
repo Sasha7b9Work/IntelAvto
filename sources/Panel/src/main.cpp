@@ -10,6 +10,7 @@
 #include "Device/IT6523.h"
 #include "VCP/VCP.h"
 #include "Hardware/Beeper.h"
+#include "SCPI/SCPI.h"
 
 
 #ifndef WIN32
@@ -56,8 +57,12 @@ int main(void)
         LAN::Update();
         IT6523::Update();
 
+        LAN::Update();
         FDrive::Update();
-        
+
+        LAN::Update();
+        SCPI::Update();
+
         gset.Save();
     }
 }
