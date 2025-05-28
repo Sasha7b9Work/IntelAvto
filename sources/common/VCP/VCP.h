@@ -21,7 +21,5 @@ namespace VCP
 
     extern PCD_HandleTypeDef handlePCD;
 
-    extern bool isConnected;
-
     extern bool cableIsConnected;
 };

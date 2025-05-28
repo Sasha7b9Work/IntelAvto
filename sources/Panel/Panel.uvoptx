@@ -154,7 +154,7 @@
           <Type>0</Type>
           <LineNumber>1784</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134255568</Address>
+          <Address>134254748</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -170,7 +170,7 @@
           <Type>0</Type>
           <LineNumber>1795</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134255696</Address>
+          <Address>134254876</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -186,7 +186,7 @@
           <Type>0</Type>
           <LineNumber>621</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134239644</Address>
+          <Address>134239928</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -200,18 +200,18 @@
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>82</LineNumber>
+          <LineNumber>95</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>0</Address>
+          <Address>134312072</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>0</BreakIfRCount>
-          <Filename>&lt;1&gt;.\src\Hardware\HAL\HAL_IT.cpp</Filename>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>&lt;1&gt;.\src\SCPI\SCPI.cpp</Filename>
           <ExecCommand></ExecCommand>
-          <Expression></Expression>
+          <Expression>\\Panel\src/SCPI/SCPI.cpp\95</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>
@@ -244,7 +244,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -2388,7 +2388,7 @@
 
   <Group>
     <GroupName>SCPI</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

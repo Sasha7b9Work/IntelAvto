@@ -6,6 +6,12 @@
 #include <usbd_cdc.h>
 
 
+namespace VCP
+{
+    extern bool isConnected;
+}
+
+
 USBD_CDC_LineCodingTypeDef LineCoding = {
   115200,                       // baud rate
   0x00,                         // stop bits-1
@@ -123,6 +129,8 @@ static int8_t CDC_Itf_Control(uint8_t cmd, uint8_t *pbuf, uint16_t)
 
 static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length)
 {
+    VCP::isConnected = true;
+
     SCPI::AddNewData(buffer, *length);
 
     USBD_CDC_ReceivePacket(&VCP::handleUSBD);
