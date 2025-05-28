@@ -69,8 +69,8 @@ file(GLOB DISPLAY             ../common/Display/*.*
                                     src/Display/*.*)
 file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
 file(GLOB DISPLAY_PICTURES          src/Display/Pictures/*.*)
-file(GLOB FLASHDRIVE          ../common/FlashDrive/*.*)
-file(GLOB FLASHDRIVE_USBH     ../common/FlashDrive/USBH/*.*)
+file(GLOB FLASHDRIVE          ../common/FlashDrive/*.*
+                              ../common/FlashDrive/USBH/*.*)
 file(GLOB HARDWARE                  src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
@@ -84,8 +84,8 @@ file(GLOB MENU_PAGES                src/Menu/Pages/*.*)
 file(GLOB SCPI                      src/SCPI/*.*)
 file(GLOB SETTINGS                  src/Settings/*.*)
 file(GLOB UTILS               ../common/Utils/*.*)
-file(GLOB VCP                 ../common/VCP/*.*)
-file(GLOB VCP_USBD            ../common/VCP/USBD/*.*)
+file(GLOB VCP                 ../common/VCP/*.*
+                              ../common/VCP/USBD/*.*)
 
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
@@ -96,7 +96,6 @@ source_group(Display           FILES ${DISPLAY})
 source_group(Display/Font      FILES ${DISPLAY_FONT})
 source_group(Display/Pictures  FILES ${DISPLAY_PICTURES})
 source_group(FlashDrive        FILES ${FLASHDRIVE})
-source_group(FlashDrive/USBH   FILES ${FLASHDRIVE_USBH})
 source_group(Hardware          FILES ${HARDWARE})
 source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
@@ -108,7 +107,6 @@ source_group(SCPI              FILES ${SCPI})
 source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
 source_group(VCP               FILES ${VCP})
-source_group(VCP/USBD          FILES ${VCP_USBD})
 
 
 set_source_files_properties(
@@ -130,7 +128,6 @@ add_library(${PROJECT_NAME}
     ${DISPLAY_FONT}
     ${DISPLAY_PICTURES}
     ${FLASHDRIVE}
-    ${FLASHDRIVE_USBH}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
@@ -142,5 +139,4 @@ add_library(${PROJECT_NAME}
     ${SETTINGS}
     ${UTILS}
     ${VCP}
-    ${VCP_USBD}
 )
