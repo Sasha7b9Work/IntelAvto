@@ -322,7 +322,7 @@ void Display::DrawPartScreen(int num, bool)
     {
         Font::SetSize(3);
 
-        Text("реярхпнбюмхе").Write(130, 100, Color::RED);
+        Text("реярхпнбюмхе").Write(130, 100, ((TIME_MS / 500) % 2) ? Color::RED : Color::WHITE);
 
         Font::SetSize(1);
     }
