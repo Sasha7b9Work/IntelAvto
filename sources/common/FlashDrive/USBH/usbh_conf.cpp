@@ -31,7 +31,7 @@
   */
 void HAL_HCD_MspInit(HCD_HandleTypeDef *hhcd)
 {
-    GPIO_InitTypeDef  GPIO_InitStruct;
+//    GPIO_InitTypeDef  GPIO_InitStruct;
 
     if (hhcd->Instance == USB_OTG_HS)
     {
@@ -132,6 +132,9 @@ void HAL_HCD_PortDisabled_Callback(HCD_HandleTypeDef *hhcd)
   */
 void HAL_HCD_HC_NotifyURBChange_Callback(HCD_HandleTypeDef *hhcd, uint8_t chnum, HCD_URBStateTypeDef urb_state)
 {
+    (void)hhcd;
+    (void)chnum;
+    (void)urb_state;
     /* To be used with OS to sync URB state with the global state machine */
 }
 
@@ -378,6 +381,8 @@ USBH_URBStateTypeDef USBH_LL_GetURBState(USBH_HandleTypeDef *phost, uint8_t pipe
   */
 USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
 {
+    (void)phost;
+
 #ifdef USE_USB_HS_IN_FS
     if (state == 0)
     {
@@ -403,6 +408,8 @@ USBH_StatusTypeDef USBH_LL_DriverVBUS(USBH_HandleTypeDef *phost, uint8_t state)
   */
 USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *phost, uint8_t pipe, uint8_t toggle)
 {
+    (void)phost;
+
     HCD_HandleTypeDef *handleHCD = (HCD_HandleTypeDef *)FDrive::handleHCD;
     
     if (handleHCD->hc[pipe].ep_is_in)
@@ -424,6 +431,8 @@ USBH_StatusTypeDef USBH_LL_SetToggle(USBH_HandleTypeDef *phost, uint8_t pipe, ui
   */
 uint8_t USBH_LL_GetToggle(USBH_HandleTypeDef *phost, uint8_t pipe)
 {
+    (void)phost;
+
     HCD_HandleTypeDef *handleHCD = (HCD_HandleTypeDef *)FDrive::handleHCD;
     
     uint8_t toggle = 0;

@@ -15,8 +15,8 @@ include_directories(
     tests
     ../common
     ../common/libs/FatFS
-    ../common/libs/USBD
-    ../common/libs/USBH
+    ../common/VCP/USBD
+    ../common/FlashDrive/USBH
     ../common/libs/LwIP
     ../common/_VS_KEIL/CMSIS
     ../common/_VS_KEIL/FatFS
@@ -59,8 +59,6 @@ add_compile_options(
 
 file(GLOB LIBS_HAL            ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/*.h
                               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/*.c)
-file(GLOB LIBS_USBD           ../common/libs/USBD/*.*)
-file(GLOB LIBS_USBH           ../common/libs/USBH/*.*)
 file(GLOB SRC                       src/*.*)
 file(GLOB CONNECTOR_DEVICE    ../common/Connector/Device/Messages_.*
                               ../common/Connector/Device/Transceiver_.h
@@ -71,7 +69,8 @@ file(GLOB DISPLAY             ../common/Display/*.*
                                     src/Display/*.*)
 file(GLOB DISPLAY_FONT        ../common/Display/Font/*.*)
 file(GLOB DISPLAY_PICTURES          src/Display/Pictures/*.*)
-file(GLOB FLASHDRIVE                src/FlashDrive/*.*)
+file(GLOB FLASHDRIVE          ../common/FlashDrive/*.*)
+file(GLOB FLASHDRIVE_USBH     ../common/FlashDrive/USBH/*.*)
 file(GLOB HARDWARE                  src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS            src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_HAL              src/Hardware/HAL/*.*
@@ -86,11 +85,10 @@ file(GLOB SCPI                      src/SCPI/*.*)
 file(GLOB SETTINGS                  src/Settings/*.*)
 file(GLOB UTILS               ../common/Utils/*.*)
 file(GLOB VCP                 ../common/VCP/*.*)
+file(GLOB VCP_USBD            ../common/VCP/USBD/*.*)
 
 
 source_group(libs/HAL          FILES ${LIBS_HAL})
-source_group(libs/USBD         FILES ${LIBS_USBD})
-source_group(libs/USBH         FILES ${LIBS_USBH})
 source_group(src               FILES ${SRC})
 source_group(Connector/Device  FILES ${CONNECTOR_DEVICE})
 source_group(Device            FILES ${DEVICE})
@@ -98,6 +96,7 @@ source_group(Display           FILES ${DISPLAY})
 source_group(Display/Font      FILES ${DISPLAY_FONT})
 source_group(Display/Pictures  FILES ${DISPLAY_PICTURES})
 source_group(FlashDrive        FILES ${FLASHDRIVE})
+source_group(FlashDrive/USBH   FILES ${FLASHDRIVE_USBH})
 source_group(Hardware          FILES ${HARDWARE})
 source_group(Hardware/CMSIS    FILES ${HARDWARE_CMSIS})
 source_group(Hardware/HAL      FILES ${HARDWARE_HAL})
@@ -109,6 +108,8 @@ source_group(SCPI              FILES ${SCPI})
 source_group(Settings          FILES ${SETTINGS})
 source_group(Utils             FILES ${UTILS})
 source_group(VCP               FILES ${VCP})
+source_group(VCP/USBD          FILES ${VCP_USBD})
+
 
 set_source_files_properties(
     ${HARDWARE_CMSIS}
@@ -122,8 +123,6 @@ set_source_files_properties(
 
 add_library(${PROJECT_NAME}
     ${LIBS_HAL}
-    ${LIBS_USBD}
-    ${LIBS_USBH}
     ${SRC}
     ${CONNECTOR_DEVICE}
     ${DEVICE}
@@ -131,6 +130,7 @@ add_library(${PROJECT_NAME}
     ${DISPLAY_FONT}
     ${DISPLAY_PICTURES}
     ${FLASHDRIVE}
+    ${FLASHDRIVE_USBH}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_HAL}
@@ -142,4 +142,5 @@ add_library(${PROJECT_NAME}
     ${SETTINGS}
     ${UTILS}
     ${VCP}
+    ${VCP_USBD}
 )

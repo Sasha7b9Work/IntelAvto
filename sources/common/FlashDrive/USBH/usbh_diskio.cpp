@@ -21,6 +21,7 @@
 #include "FlashDrive/FlashDrive.h"
 #include "ff_gen_drv.h"
 #include "usbh_diskio.h"
+#include <cstring>
 
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
     #pragma clang diagnostic ignored "-Wcast-qual"
@@ -70,6 +71,8 @@ const Diskio_drvTypeDef  USBH_Driver =
   */
 DSTATUS USBH_initialize(BYTE lun)
 {
+    (void)lun;
+
     /* CAUTION : USB Host library has to be initialized in the application */
 
     return RES_OK;
@@ -84,7 +87,7 @@ DSTATUS USBH_status(BYTE lun)
 {
     DRESULT res = RES_ERROR;
 
-    if (USBH_MSC_UnitIsReady(&FDrive::hUSB_Host, lun))
+    if (USBH_MSC_UnitIsReady(&FDrive::hUSB_Host, (uint8_t)lun))
     {
         res = RES_OK;
     }
@@ -113,11 +116,11 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
     {
         while ((count--) && (status == USBH_OK))
         {
-            status = USBH_MSC_Read(&FDrive::hUSB_Host, lun, sector + count, (uint8_t *)scratch, 1);
+            status = USBH_MSC_Read(&FDrive::hUSB_Host, (uint8_t)lun, sector + count, (uint8_t *)scratch, 1);
 
             if (status == USBH_OK)
             {
-                memcpy(&buff[count * _MAX_SS], scratch, _MAX_SS);
+                std::memcpy(&buff[count * _MAX_SS], scratch, _MAX_SS);
             }
             else
             {
@@ -127,7 +130,7 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
     }
     else
     {
-        status = USBH_MSC_Read(&FDrive::hUSB_Host, lun, sector, buff, count);
+        status = USBH_MSC_Read(&FDrive::hUSB_Host, (uint8_t)lun, sector, (uint8_t *)buff, count);
     }
 
     if (status == USBH_OK)
@@ -136,7 +139,7 @@ DRESULT USBH_read(BYTE lun, BYTE *buff, DWORD sector, UINT count)
     }
     else
     {
-        USBH_MSC_GetLUNInfo(&FDrive::hUSB_Host, lun, &info);
+        USBH_MSC_GetLUNInfo(&FDrive::hUSB_Host, (uint8_t)lun, &info);
 
         switch (info.sense.asc)
         {

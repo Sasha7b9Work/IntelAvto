@@ -17,7 +17,7 @@ include_directories(
     ../../common/_VS_WIN/USBH
     ../../common
     ../../common/libs/FatFS
-    ../../common/libs/USBH
+    ../../common/FlashDrive/USBH
     ../../Panel/src
     ../../Panel/tests
     ../../Panel/src/Hardware/HAL
