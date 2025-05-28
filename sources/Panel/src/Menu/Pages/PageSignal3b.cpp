@@ -12,7 +12,7 @@
 
 namespace PageSignal3b
 {
-    static const int period = 100;
+    static const int period_ms = 100;
 
     static VParameter param_Us("Us",
         &gset.signals[TypeSignal::_3b].values12[0], Voltage(75000),  Voltage(150000),
@@ -45,7 +45,7 @@ namespace PageSignal3b
     {
         Message::Start3B(param_Us.GetCalibrateValue(TypeSignal::_3b, VoltageMode::Current())).Transmit();
 
-        RemainingTimeCounter::Start(period, param_N);
+        RemainingTimeCounter::Start(period_ms, param_N);
 
         return true;
     }
@@ -63,7 +63,7 @@ namespace PageSignal3b
     {
         char buffer[128];
 
-        Text("%s     Ri: 50 ќм     ƒлит: %s", VoltageMode::TextValue(), Duration(period, param_N).ToStringValue(buffer)).Write(
+        Text("%s     Ri: 50 ќм     ƒлит: %s", VoltageMode::TextValue(), Duration((float)period_ms / 1e3f, param_N).ToStringValue(buffer)).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 
