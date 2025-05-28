@@ -105,7 +105,7 @@ int Text::WriteSymbols(char* start, int num, int x, int y) const
 
             if (symbol == ' ' && Font::Get() == TypeFont::GOSTB28B)
             {
-                x -= 20;
+                x -= 20 * Font::GetSize();
             }
         }
     }
@@ -330,8 +330,10 @@ void Text::GetWord(int numWord, char *(&start), int &num)
 
 int Text::WriteSymbol(int x, int y, uint8 chr) const
 {
-    int height = Font::GetHeight();
-    int width = Font::GetWidth(chr);
+    const int height = Font::GetHeight();
+    const int width = Font::GetWidth(chr);
+
+    const int size = Font::GetSize();
     
     for (int row = 0; row < height; row++)
     {
@@ -341,13 +343,20 @@ int Text::WriteSymbol(int x, int y, uint8 chr) const
             {
                 if (Font::BitIsExist(chr, row, col))
                 {
-                    Point().Draw(x + col, y + row);
+                    if (size == 1)
+                    {
+                        Point().Draw(x + col, y + row);
+                    }
+                    else
+                    {
+                        Rect(size, size).Fill(x + col * size, y + row * size);
+                    }
                 }
             }
         }
     }
 
-    return x + width;
+    return x + width * size;
 }
 
 

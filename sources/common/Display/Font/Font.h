@@ -33,4 +33,7 @@ namespace Font
     int GetSpacing();
     int GetLengthSymbols(pchar start, int num);
     int GetLengthText(pchar text);
+
+    void SetSize(int size);
+    int GetSize();
 };

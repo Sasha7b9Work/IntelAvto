@@ -89,9 +89,23 @@ struct HeaderFont
 
 namespace Font
 {
+    static int size = 1;                // Размер точки шрифта
+
     static int spacing = 1;
 
     static const unsigned char *font = nullptr;
+}
+
+
+void Font::SetSize(int s)
+{
+    size = s;
+}
+
+
+int Font::GetSize()
+{
+    return size;
 }
 
 

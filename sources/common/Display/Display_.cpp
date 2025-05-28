@@ -320,10 +320,11 @@ void Display::DrawPartScreen(int num, bool)
 
     if (Device::IsRunning())
     {
-        for (int i = 0; i < 5; i++)
-        {
-            Text("ÒÅÑÒÈÐÎÂÀÍÈÅ").Write(190, 80 + 20 * i, Color::WHITE);
-        }
+        Font::SetSize(3);
+
+        Text("ÒÅÑÒÈÐÎÂÀÍÈÅ").Write(130, 100, Color::RED);
+
+        Font::SetSize(1);
     }
 
     if (num_sends > 1)
