@@ -48,7 +48,7 @@ namespace PageSignal2a
     {
         Message::Start2A(param_Us.GetCalibrateValue(TypeSignal::_2a, VoltageMode::Current()), param_t1.GetValue()).Transmit();
 
-        RemainingTimeCounter::Start(param_t1, param_N);
+        RemainingTimeCounter::Start(param_t1.GetValue().ToMU(), param_N);
 
         return true;
     }

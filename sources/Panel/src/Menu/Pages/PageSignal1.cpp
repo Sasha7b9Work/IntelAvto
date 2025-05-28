@@ -59,7 +59,7 @@ namespace PageSignal1
             Message::Start1_24V(param_Us.GetCalibrateValue(TypeSignal::_1, VoltageMode::_24), param_t1.GetValue()).Transmit();
         }
 
-        RemainingTimeCounter::Start(param_t1, param_N);
+        RemainingTimeCounter::Start(param_t1.GetValue().ToMU(), param_N);
 
         return true;
     }

@@ -7,10 +7,13 @@
 #include "Connector/Device/Messages_.h"
 #include "Display/Text_.h"
 #include "Display/Display_.h"
+#include "Hardware/Timer.h"
 
 
 namespace PageSignal3a
 {
+    static const int period = 100;
+
     static VParameter param_Us("Us",
         &gset.signals[TypeSignal::_3a].values12[0], Voltage(112000), Voltage(220000),
         &gset.signals[TypeSignal::_3a].values24[0], Voltage(150000), Voltage(300000),
@@ -42,6 +45,8 @@ namespace PageSignal3a
     {
         Message::Start3A(param_Us.GetCalibrateValue(TypeSignal::_3a, VoltageMode::Current())).Transmit();
 
+        RemainingTimeCounter::Start(period, param_N);
+
         return true;
     }
 
@@ -58,7 +63,7 @@ namespace PageSignal3a
     {
         char buffer[128];
 
-        Text("%s     Ri: 50 ќм     ƒлит: %s", VoltageMode::TextValue(), Duration(1.0f, param_N).ToStringValue(buffer)).Write(
+        Text("%s     Ri: 50 ќм     ƒлит: %s", VoltageMode::TextValue(), Duration(period, param_N).ToStringValue(buffer)).Write(
             Display::xConstParameters, Display::yConstParameters, Color::WHITE
         );
 

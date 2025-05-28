@@ -65,7 +65,7 @@ private:
 namespace RemainingTimeCounter
 {
     // Запускает процесс отсчёта
-    void Start(const Parameter &period, const Parameter &N);
+    void Start(int period_ms, const Parameter &N);
 
     void Stop();
 
