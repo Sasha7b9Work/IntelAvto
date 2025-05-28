@@ -20,6 +20,4 @@ namespace VCP
     extern USBD_HandleTypeDef handleUSBD;
 
     extern PCD_HandleTypeDef handlePCD;
-
-    extern bool cableIsConnected;
 };

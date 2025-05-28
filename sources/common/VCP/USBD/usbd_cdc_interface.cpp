@@ -9,6 +9,7 @@
 namespace VCP
 {
     extern bool isConnected;
+    extern bool cableIsConnected;
 }
 
 
