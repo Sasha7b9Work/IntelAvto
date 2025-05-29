@@ -320,7 +320,16 @@ void Display::DrawPartScreen(int num, bool)
     {
         Font::SetSize(3);
 
-        Text("“≈—“»–Œ¬¿Õ»≈").Write(130, 95, ((TIME_MS / 500) % 2) ? Color::RED : Color::WHITE);
+        if (((TIME_MS / 1000) % 2))
+        {
+            int x = 130;
+            int y = 95;
+            int d = 5;
+
+            Rect(310 + 2 * d, 45 + 2 * d).Fill(x - d, y - d, Color::BACK);
+
+            Text("“≈—“»–Œ¬¿Õ»≈").Write(x, y, Color::RED);
+        }
 
         Font::SetSize(1);
     }
