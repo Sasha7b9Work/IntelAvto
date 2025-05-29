@@ -68,46 +68,48 @@ uint16 MCP4811::Converter::Resolve() const
 
     float voltage = std::fabsf(value.ToUnits());
 
+    const float k = 1.2f;
+
     if (TypeSignal::Is1_12V())
     {
-        if (voltage > 150.0f)
+        if (voltage > 150.0f * k)
         {
-            voltage = 150.0f;
+            voltage = 150.0f * k;
         }
     }
     else if (TypeSignal::Is1_24V())
     {
-        if (voltage > 600.0f)
+        if (voltage > 600.0f * k)
         {
-            voltage = 600.0f;
+            voltage = 600.0f * k;
         }
     }
     else if (TypeSignal::Is2a())
     {
-        if (voltage > 112.0f)
+        if (voltage > 112.0f * k)
         {
-            voltage = 112.0f;
+            voltage = 112.0f * k;
         }
     }
     else if (TypeSignal::Is3a())
     {
-        if (voltage > 300.0f)
+        if (voltage > 300.0f * k)
         {
-            voltage = 300.0f;
+            voltage = 300.0f * k;
         }
     }
     else if (TypeSignal::Is3b())
     {
-        if (voltage > 300.0f)
+        if (voltage > 300.0f * k)
         {
-            voltage = 300.0f;
+            voltage = 300.0f * k;
         }
     }
     else
     {
-        if (voltage > 150.0f)
+        if (voltage > 150.0f * k)
         {
-            voltage = 150.0f;
+            voltage = 150.0f * k;
         }
     }
 
