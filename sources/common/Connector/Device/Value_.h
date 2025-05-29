@@ -135,7 +135,7 @@ private:
 
 struct Voltage : public Value
 {
-    Voltage(int voltage) : Value(voltage, TypeValue::Voltage) { }
+    explicit Voltage(int voltage) : Value(voltage, TypeValue::Voltage) { }
 
     void Set(int mv)
     {

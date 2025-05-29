@@ -15,8 +15,8 @@ namespace PageSignal3b
     static const int period_ms = 100;
 
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_3b].values12[0], Voltage(75000),  Voltage(150000),
-        &gset.signals[TypeSignal::_3b].values24[0], Voltage(150000), Voltage(300000),
+        &gset.signals[TypeSignal::_3b].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
+        &gset.signals[TypeSignal::_3b].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         250, 110);
 
     static CParameter param_N("N",

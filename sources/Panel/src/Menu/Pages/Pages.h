@@ -47,12 +47,22 @@ namespace PageInfo
 
 namespace PageSignal1
 {
+    static const int us12_min = 75;
+    static const int us12_max = 150;
+    static const int us24_min = 300;
+    static const int us24_max = 600;
+
     extern Page *self;
 }
 
 
 namespace PageSignal2a
 {
+    static const int us12_min = 37;
+    static const int us12_max = 112;
+    static const int us24_min = 37;
+    static const int us24_max = 112;
+
     extern Page *self;
 }
 
@@ -67,12 +77,22 @@ namespace PageSignal2b
 
 namespace PageSignal3a
 {
+    static const int us12_min = 112;
+    static const int us12_max = 220;
+    static const int us24_min = 150;
+    static const int us24_max = 300;
+
     extern Page *self;
 }
 
 
 namespace PageSignal3b
 {
+    static const int us12_min = 75;
+    static const int us12_max = 150;
+    static const int us24_min = 150;
+    static const int us24_max = 300;
+
     extern Page *self;
 }
 

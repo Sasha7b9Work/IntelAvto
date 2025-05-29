@@ -13,8 +13,8 @@
 namespace PageSignal2a
 {
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_2a].values12[0], Voltage(37000), Voltage(112000),
-        &gset.signals[TypeSignal::_2a].values24[0], Voltage(37000), Voltage(112000),
+        &gset.signals[TypeSignal::_2a].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
+        &gset.signals[TypeSignal::_2a].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         350, 120);
 
     static TParameter param_t1("Период",

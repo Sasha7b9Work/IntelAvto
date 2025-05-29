@@ -64,8 +64,8 @@ namespace PageCalibration
     // Снять напряжение с выхода
     static void DisableOutput();
 
-    // Возвращает напряжение текущей точки
-    static Voltage GetVoltagePoint(int num_point);
+    // Возвращает напряжение текущей точки в вольтах
+    static int GetVoltagePoint(int num_point);
 
     // Отказаться от применения калибровочных факторов
     static void RefuseCalibrateFactors();
@@ -274,17 +274,7 @@ namespace PageCalibration
 
         if (output_en)
         {
-            Text buffer("%f", (double)GetVoltagePoint(current_point).ToUnits());
-
-            while (*buffer.LastSymbol() == '0')
-            {
-                *buffer.LastSymbol() = '\0';
-            }
-
-            if (*buffer.LastSymbol() == '.' || *buffer.LastSymbol() == ',')
-            {
-                *buffer.LastSymbol() = '\0';
-            }
+            Text buffer("%d", GetVoltagePoint(current_point));
 
             Text("%s B", buffer.c_str()).Write(45, 205, Color::WHITE);
         }
@@ -342,7 +332,7 @@ namespace PageCalibration
 
 void PageCalibration::EnableOutput()
 {
-    Voltage voltage = GetVoltagePoint(current_point);
+    Voltage voltage(GetVoltagePoint(current_point) * 1000);
     Time time(500);
 
     if (CurrentSignal() == TypeSignal::_1)
@@ -387,29 +377,29 @@ void PageCalibration::TimerFunction()
 }
 
 
-Voltage PageCalibration::GetVoltagePoint(int num_point)
+int PageCalibration::GetVoltagePoint(int num_point)
 {
     static const int voltages[NUM_SIGNALS][NUM_ACCUM][NUM_POINTS] =
     {
         {                                                                           // 1
-            { -75,  -150 },
-            { -300, -600 }
+            { PageSignal1::us12_min, PageSignal1::us12_max },
+            { PageSignal1::us24_min, PageSignal1::us24_max }
         },
         {                                                                           // 2a
-            { 37, 112 },
-            { 37, 112 }
+            { PageSignal2a::us12_min, PageSignal2a::us12_max },
+            { PageSignal2a::us24_min, PageSignal2a::us24_max }
         },
         {                                                                           // 3a
-            { INVALID_VOLTAGE, INVALID_VOLTAGE },
-            { INVALID_VOLTAGE, INVALID_VOLTAGE }
+            { PageSignal3a::us12_min, PageSignal3a::us12_max },
+            { PageSignal3a::us24_min, PageSignal3a::us24_max }
         },
         {                                                                           // 3b
-            { 75,  100 },
-            { 150, 200 }
+            { PageSignal3b::us12_min, PageSignal3b::us12_max },
+            { PageSignal3b::us24_min, PageSignal3b::us24_max }
         }
     };
 
-    return Voltage(voltages[type_signal][type_accum][num_point] * 1000);
+    return voltages[type_signal][type_accum][num_point];
 }
 
 
@@ -443,8 +433,8 @@ void PageCalibration::CalculateCalibrateFactors()
     float out1 = values[type_signal][type_accum][0].ToUnits();
     float out2 = values[type_signal][type_accum][1].ToUnits();
 
-    float in1 = std::fabsf(GetVoltagePoint(0).ToUnits());
-    float in2 = std::fabsf(GetVoltagePoint(1).ToUnits());
+    float in1 = std::fabsf((float)GetVoltagePoint(0));
+    float in2 = std::fabsf((float)GetVoltagePoint(1));
 
     float k = (out2 - out1) / (in2 - in1);
     float offset = out1 - in1 * k;
