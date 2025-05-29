@@ -33,17 +33,17 @@ typedef void(*pFunction)();
 
 int main()
 {
-    CPU::Init();
-
-    Timer::PauseOnTime(250);
-
-    FDrive::Init();
-
-    FDrive::AttemptUpdate();
-
-    Timer::Disable(kTemp);
-
-    CPU::DeInit();
+//    CPU::Init();
+//
+//    Timer::PauseOnTime(250);
+//
+//    FDrive::Init();
+//
+//    FDrive::AttemptUpdate();
+//
+//    Timer::Disable(kTemp);
+//
+//    CPU::DeInit();
 
     __disable_irq();
     // Теперь переходим на основную программу
