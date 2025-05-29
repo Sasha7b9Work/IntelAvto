@@ -53,6 +53,13 @@ struct ColorScheme
 };
 
 
+namespace ColorTimer
+{
+    void Reset();
+    bool IsMain();
+}
+
+
 #ifdef WIN32
 
     #define MAKE_COLOR(r, g, b)     ((uint)((b) | ((g) << 8) | ((r) << 16)))

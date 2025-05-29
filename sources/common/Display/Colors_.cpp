@@ -1,6 +1,7 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
 #include "Settings/Settings.h"
+#include "Hardware/Timer.h"
 
 
 Color Color::FILL(0);
@@ -14,6 +15,12 @@ Color Color::WHITE(7);
 Color Color::BLACK(8);
 Color Color::GRAY(9);
 Color Color::YELLOW(10);
+
+
+namespace ColorTimer
+{
+    static uint time_reset = 0;
+}
 
 
 uint &Color::Value() const
@@ -43,4 +50,16 @@ uint8 Color::GetGREEN() const
 uint8 Color::GetBLUE() const
 {
     return (uint8)(Value());
+}
+
+
+void ColorTimer::Reset()
+{
+    time_reset = TIME_MS;
+}
+
+
+bool ColorTimer::IsMain()
+{
+    return (((TIME_MS - time_reset) / 1000) % 2) == 0;
 }

@@ -320,7 +320,7 @@ void Display::DrawPartScreen(int num, bool)
     {
         Font::SetSize(3);
 
-        if (((TIME_MS / 1000) % 2))
+        if (ColorTimer::IsMain())
         {
             int x = 130;
             int y = 95;

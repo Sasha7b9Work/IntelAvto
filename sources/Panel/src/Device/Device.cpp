@@ -5,6 +5,7 @@
 #include "Connector/Device/Messages_.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
+#include "Display/Colors_.h"
 
 
 namespace Device
@@ -45,6 +46,8 @@ bool Device::Start()
 {
     if (IsStopped())
     {
+        ColorTimer::Reset();
+
         if (Page::ForCurrentSignal()->StartTest())
         {
             state = State::Running;
