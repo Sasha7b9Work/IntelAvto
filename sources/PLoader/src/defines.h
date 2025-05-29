@@ -21,8 +21,9 @@ typedef unsigned int           uint;
 typedef const char * const     pString;
 typedef const char *           pchar;
 
-typedef void(*pFuncVII)(int, int);
 
+typedef void(*pFuncVII)(int, int);
+typedef void  (*pFuncVV)();
 
 
 union BitSet16

@@ -1,6 +1,8 @@
 // (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #include "defines.h"
-#include "Hardware/HAL/HAL.h"
+#include "FlashDrive/FlashDrive.h"
+#include "Hardware/CPU.h"
+#include "Hardware/Timer.h"
 #include <stm32f4xx_hal.h>
 
 
@@ -31,15 +33,17 @@ typedef void(*pFunction)();
 
 int main()
 {
-//    HAL::Init();
-//
-//    Display::Init();
-//
-//    FDrive::Init();
-//
-//    FDrive::AttemptUpdate();
-//
-//    HAL::DeInit();
+    CPU::Init();
+
+    Timer::PauseOnTime(250);
+
+    FDrive::Init();
+
+    FDrive::AttemptUpdate();
+
+    Timer::Disable(kTemp);
+
+    CPU::DeInit();
 
     __disable_irq();
     // Теперь переходим на основную программу

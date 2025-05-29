@@ -1,23 +1,13 @@
-// 2022/1/16 18:10:46 (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #ifndef __STM32F4xx_HAL_CONF_H
-#define __STM32F4xx_HAL_CONF_H
+#define __STM32F4xx_HAL_CONF_H //-V2573
 
 
-#define __weak __attribute__((weak))
-#define __packed __attribute__((packed))
+#define __weak __attribute__((weak)) //-V2573
+#define __packed __attribute__((packed)) //-V2573
 
 #ifdef MSVC
-#define __attribute(x)
+#define __attribute(x) //-V2573
 #endif
-
-#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-    #pragma clang diagnostic ignored "-Wmissing-variable-declarations"
-    #pragma clang diagnostic ignored "-Wbad-function-cast"
-    #pragma clang diagnostic ignored "-Wpadded"
-    #pragma clang diagnostic ignored "-Wswitch-enum"
-    #pragma clang diagnostic ignored "-Wconditional-uninitialized"
-#endif
-
 
 #ifdef __cplusplus
  extern "C" {
@@ -33,11 +23,15 @@
 #define HAL_MODULE_ENABLED  
 #define HAL_DMA_MODULE_ENABLED
 #define HAL_FLASH_MODULE_ENABLED
+#define HAL_SRAM_MODULE_ENABLED
 #define HAL_GPIO_MODULE_ENABLED
 #define HAL_PWR_MODULE_ENABLED
 #define HAL_RCC_MODULE_ENABLED
+#define HAL_RTC_MODULE_ENABLED
+#define HAL_SPI_MODULE_ENABLED
 #define HAL_TIM_MODULE_ENABLED
 #define HAL_CORTEX_MODULE_ENABLED
+#define HAL_PCD_MODULE_ENABLED
 #define HAL_HCD_MODULE_ENABLED
 
 #define USE_HAL_SRAM_REGISTER_CALLBACKS 0

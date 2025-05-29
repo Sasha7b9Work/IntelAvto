@@ -7,7 +7,6 @@ project (PLoader)
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
 include_directories(
-    ../common
     ../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
     ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
     ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFS/src
@@ -19,7 +18,6 @@ include_directories(
              src/Hardware/FatFS
              src/Hardware/HAL
              src/Hardware/USBH
-    ../Panel/src
 )
 
 add_definitions(-DSTM32F429xx -DLOADER)
@@ -42,8 +40,7 @@ add_compile_options(
 )
 
 
-file(GLOB SRC               ../Panel/src/defines.h
-                                     src/*.*)
+file(GLOB SRC                        src/*.*)
 file(GLOB HAL               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.*
                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.*
                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.*
@@ -60,6 +57,7 @@ file(GLOB HAL               ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Dr
                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.*
                             ../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash*)
 file(GLOB DISPLAY                    src/Display/*.*)
+file(GLOB FLASHDRIVE                 src/FlashDrive/*.*)
 file(GLOB HARDWARE                   src/Hardware/*.*)
 file(GLOB HARDWARE_CMSIS             src/Hardware/CMSIS/*.*)
 file(GLOB HARDWARE_FATFS             src/Hardware/FatFS/*.*
@@ -68,10 +66,7 @@ file(GLOB HARDWARE_FATFS             src/Hardware/FatFS/*.*
                             ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/diskio.*
                             ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/unicode.*
                             ../common/libs/STM32Cube_F4/Middlewares/Third_Party/FatFs/src/option/syscall.*)
-file(GLOB HARDWARE_HAL      ../Panel/src/Hardware/HAL/HAL.*
-                            ../Panel/src/Hardware/HAL/HAL_EEPROM.cpp
-                            ../Panel/src/Hardware/HAL/HAL_TIM.cpp
-                                     src/Hardware/HAL/*.*)
+file(GLOB HARDWARE_HAL               src/Hardware/HAL/*.*)
 file(GLOB HARDWARE_USBH              src/Hardware/USBH/*.*
                             ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.*
                             ../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.*
@@ -92,6 +87,7 @@ file(GLOB SETTINGS          ../common/Settings/*.*)
 source_group(src            FILES ${SRC})
 source_group(HAL            FILES ${HAL})
 source_group(Display        FILES ${DISPLAY})
+source_group(FlashDrive     FILES ${FLASHDRIVE})
 source_group(Hardware       FILES ${HARDWARE})
 source_group(Hardware/CMSIS FILES ${HARDWARE_CMSIS})
 source_group(Hardware/FatFS FILES ${HARDWARE_FATFS})
@@ -106,6 +102,7 @@ add_library(${PROJECT_NAME}
     ${SRC}
     ${HAL}
     ${DISPLAY}
+    ${FLASHDRIVE}
     ${HARDWARE}
     ${HARDWARE_CMSIS}
     ${HARDWARE_FATFS}

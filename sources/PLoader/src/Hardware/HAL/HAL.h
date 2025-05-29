@@ -1,72 +1,57 @@
-// (c) Aleksandr Shevchenko e-mail : Sasha7b9@tut.by
 #pragma once
 #include "defines.h"
 
 
-#define _HAL_GPIO_Init(x, y)    _
+#define ERROR_HANDLER()                             ::HAL::ErrorHandler(__FILE__, __LINE__)
 
 
-struct Settings;
-
-
-#define TIME_MS   HAL_TIM::TimeMS()
+struct HAL_EEPROM
+{
+    static void EraseSector(uint startAddress);
+    static void WriteBytes(uint address, const uint8 *data, int size);
+};
 
 
 struct HAL
 {
     static void Init();
-    static void DeInit();
-    static void ERROR_HANDLER();
+
+    static void ErrorHandler(const char *, int);
 };
 
 
-struct HAL_EEPROM
-{
-    static const uint ADDR_SECTOR_0        = ((uint)0x08000000);  // 16k  Основная прошивка
-    static const uint ADDR_SECTOR_1        = ((uint)0x08004000);  // 16k
-    static const uint ADDR_SECTOR_2        = ((uint)0x08008000);  // 16k
-    static const uint ADDR_SECTOR_3        = ((uint)0x0800c000);  // 16k
-    static const uint ADDR_SECTOR_4        = ((uint)0x08010000);  // 64k
-    static const uint ADDR_SECTOR_FIRMWARE = ((uint)0x08020000);  // 128k  Сюда записываем прошивку
-    static const uint ADDR_SECTOR_UPGRADE  = ((uint)0x08040000);  // 128k  Здесь хранится считанная из флешки прошивка
-    static const uint ADDR_SECTOR_SETTINGS = ((uint)0x08060000);  // 128k
-    static const uint SIZE_SECTOR_SETTINGS = (128 * 1024);
-
-    static bool LoadSettings(Settings *settings);
-
-    static void SaveSettings(Settings *settings);
-
-    // Стирает сектор с начальным адресом startAddress
-    static void EraseSector(uint address);
-
-    // Записывает size байт из массива data по адресу address
-    static void WriteData(uint address, void *data, uint size);
-};
-
-
-struct HAL_BUS_DISPLAY
-{
-    static void Init();
-    static void Reset();
-    static void WriteCommand(uint16 command);
-    static void WriteCommand(uint16 command, uint data);
-    static void WriteCommand(uint16 command, uint data1, uint data2, uint data3);
-    static void WriteData(uint data);
-    static uint16 ReadData();
-
-    static void SendBuffer(uint8 *buffer, int x, int y, int width, int height, int k);
-    
-    static uint16 GetData(uint16 address);
-};
-
-
-struct HAL_TIM
+struct HAL_BUS
 {
     static void Init();
 
-    static uint TimeMS();
+    // Конфигурировать для работы по шине FSMC с альтерой и памятью
+    static void ConfigureToFSMC();
 
-    static void DelayMS(uint timeMS);
+    struct Panel
+    {
+        static void Send(uint8 byte);
+        static void Send(uint8 byte0, uint8 byte1);
+        static void Send(uint8 *data, uint size);
+        static bool Receive();
+        static bool InInteraction();
+    };
 
-    static void DelayUS(uint timeUS);
+    struct Mode
+    {
+        enum E
+        {
+            FSMC,
+            PanelRead,
+            PanelWrite
+        };
+    };
+
+    static Mode::E mode;
+
+private:
+
+    static void InitPanel();
+
+    // Настроить FSMC для работы с внешней RAM
+    static void InitRAM();
 };
