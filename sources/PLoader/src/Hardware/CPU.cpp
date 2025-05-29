@@ -15,14 +15,14 @@ void CPU::Init()
 
     EnablePeriphery();
 
-    InitHardware();
+//    InitHardware();
 
     // Таймер для мс
-    HAL_NVIC_SetPriority(TIM6_DAC_IRQn, 2, 0);
-    HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
-
-    HAL_PIO::Init(PIN_POWER, HMode::Output_PP, HPull::Up);
-    HAL_PIO::Set(PIN_POWER);
+//    HAL_NVIC_SetPriority(TIM6_DAC_IRQn, 2, 0);
+//    HAL_NVIC_EnableIRQ(TIM6_DAC_IRQn);
+//
+//    HAL_PIO::Init(PIN_POWER, HMode::Output_PP, HPull::Up);
+//    HAL_PIO::Set(PIN_POWER);
 }
 
 
@@ -54,7 +54,7 @@ void CPU::EnablePeriphery()
 
 void CPU::InitHardware()
 {
-   Timer::Init();
+//   Timer::Init();
 
    HAL::Init();
 }

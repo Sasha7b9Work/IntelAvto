@@ -28,12 +28,9 @@
 #define MAIN_PROGRAM_START_ADDRESS  0x8020000
 
 
-typedef void(*pFunction)();
-
-
 int main()
-{
-//    CPU::Init();
+{    
+    CPU::Init();
 //
 //    Timer::PauseOnTime(250);
 //
@@ -46,12 +43,19 @@ int main()
 //    CPU::DeInit();
 
     __disable_irq();
-    // Теперь переходим на основную программу
-    pFunction JumpToApplication;
-    JumpToApplication = reinterpret_cast<pFunction>(*reinterpret_cast<__IO uint *>(MAIN_PROGRAM_START_ADDRESS + 4)); //-V566
-    __set_MSP(*(__IO uint *)MAIN_PROGRAM_START_ADDRESS);
+
+    pFuncVV JumpToApplication;
+
+    JumpToApplication = (pFuncVV)(*(__IO uint *)(0x8020000 + 4)); //-V566
+
+    __set_MSP(*(__IO uint *)0x8020000);
+
     __enable_irq();
-    JumpToApplication();
+    
+    __DSB();
+    __ISB();
+
+    JumpToApplication();                                                            //jump to app
 
     return 0;
 }
