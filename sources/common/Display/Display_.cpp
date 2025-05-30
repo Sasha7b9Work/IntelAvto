@@ -377,9 +377,9 @@ void Display::SaveToFlashDrive()
     for (int i = 0; i < 16; i++)
     {
         uint color = Color((uint8)i).Value();
-        colorStruct.blue = (uint8)((float)BLUE_FROM_COLOR(color) / 31.0f * 255.0f);
-        colorStruct.green = (uint8)((float)GREEN_FROM_COLOR(color) / 63.0f * 255.0f);
-        colorStruct.red = (uint8)((float)RED_FROM_COLOR(color) / 31.0f * 255.0f);
+        colorStruct.blue = BLUE_FROM_COLOR(color);
+        colorStruct.green = GREEN_FROM_COLOR(color);
+        colorStruct.red = RED_FROM_COLOR(color);
         colorStruct.rgbReserved = 0;
         ((RGBQUAD *)(wr_buffer))[i] = colorStruct;
     }

@@ -60,7 +60,7 @@ namespace ColorTimer
 }
 
 
-#ifdef WIN32
+#ifdef GUI
 
     #define MAKE_COLOR(r, g, b)     ((uint)((b) | ((g) << 8) | ((r) << 16)))
 
