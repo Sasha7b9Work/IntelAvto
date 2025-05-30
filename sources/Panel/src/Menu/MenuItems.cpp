@@ -21,7 +21,6 @@
 using namespace Primitives;
 
 
-Parameter *Parameter::current = nullptr;
 Parameter *Parameter::editable = nullptr;
 
 
@@ -406,7 +405,7 @@ bool Page::OnKey(Key::E key)
         {
             Math::CircleIncrease<int>(&selectedItem, 0, NumItems() - 1);
 
-            Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
+            current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
 
             return true;
         }
@@ -417,7 +416,7 @@ bool Page::OnKey(Key::E key)
         {
             Math::CircleDecrease<int>(&selectedItem, 0, NumItems() - 1);
 
-            Parameter::current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
+            current = SelectedItem()->IsParameter() ? (Parameter *)SelectedItem() : nullptr;
 
             return true;
         }
@@ -442,6 +441,15 @@ const Value &Parameter::GetMin() const
 const Value &Parameter::GetMax() const
 {
     return VoltageMode::Is12() ? max12 : max24;
+}
+
+
+bool Parameter::IsNowSelected() const
+{
+    Page *p = Menu::OpenedPage();
+    Parameter *s = p->GetCurrentParameter();
+
+    return s == this;
 }
 
 

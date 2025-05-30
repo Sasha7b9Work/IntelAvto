@@ -223,14 +223,10 @@ public:
     virtual bool IsParameter() const override { return true; }
 
     // Сейчас выделен
-    bool IsNowSelected() const { return Parameter::current == this; }
+    bool IsNowSelected() const;
 
     // Сейчас редактируется
     bool IsNowEdited() const { return Parameter::editable == this; }
-
-    // "Текущий" параметр - тот, который сейчас выделен в меню. nullptr, если текущций элемент
-    // меню - не параметр
-    static Parameter *current;
 
     // Редактируемый в данный момент
     static Parameter *editable;
@@ -305,7 +301,7 @@ class Page : public Item
 public:
     Page(Item **_items, void (*_additionalDraw)(), bool (*_func_start_test)()) :
         Item(),
-        items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test), selectedItem(0)
+        items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test)
     {}
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
@@ -337,6 +333,11 @@ public:
 
     bool ConsistOpenedItems() const;
 
+    Parameter *GetCurrentParameter()
+    {
+        return current;
+    }
+
 protected:
 
     // Возвращает ширину элемента меню с номером num
@@ -352,7 +353,11 @@ protected:
 private:
 
     // Номер выбранного итема
-    int selectedItem;
+    int selectedItem = 0;
+
+    // "Текущий" параметр - тот, который сейчас выделен в меню. nullptr, если текущций элемент
+    // меню - не параметр
+    Parameter *current = nullptr;
 };
 
 

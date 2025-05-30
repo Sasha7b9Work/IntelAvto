@@ -111,13 +111,17 @@ void Menu::Input::OnKey(Key::E key)
             }
             else if (key == Key::Esc)
             {
+                static Page *signal_page = nullptr;
+
                 if (OpenedPageIsSignal())
                 {
+                    signal_page = Menu::OpenedPage();
+
                     SetOpenedPage(PageMain::self);
                 }
                 else
                 {
-                    SetOpenedPage(PageSignal1::self);
+                    SetOpenedPage(signal_page);
                 }
             }
         }
