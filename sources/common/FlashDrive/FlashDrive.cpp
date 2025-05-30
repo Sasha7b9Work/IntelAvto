@@ -116,11 +116,14 @@ void FDrive::Update()
 
         if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 1) != FR_OK)
         {
+            // \todo Ќе получилось по какой-то причине примонтировать
         }
         else
         {
             is_connected = true;
             FileManager::Init();
+
+            Display::SaveToFlashDrive();
         }
 
         Display::ShowFlashDriveMessage(false);

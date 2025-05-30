@@ -71,6 +71,9 @@ namespace Display
 
     void ShowFlashDriveMessage(bool);
 
+    // Сохранить картинку на флешку
+    void SaveToFlashDrive();
+
     // Структура для непосредсвенного рисования в дисплей
     namespace Sender
     {

@@ -67,5 +67,10 @@ namespace ColorTimer
     #define RED_FROM_COLOR(color)   ((uint8)(((color) >> 16) & 0xFF))
     #define GREEN_FROM_COLOR(color) ((uint8)(((color) >> 8) & 0xFF))
     #define BLUE_FROM_COLOR(color)  ((uint8)((color) & 0xFF))
+#else
+
+    #define RED_FROM_COLOR(color)   ((uint8)(((color) >> 16) & 0xFF))
+    #define GREEN_FROM_COLOR(color) ((uint8)(((color) >> 8) & 0xFF))
+    #define BLUE_FROM_COLOR(color)  ((uint8)((color) & 0xFF))
 
 #endif

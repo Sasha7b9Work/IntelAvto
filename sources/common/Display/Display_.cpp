@@ -11,6 +11,7 @@
 #include "Display/Text_.h"
 #include "Display/Console_.h"
 #include "Display/Pictures/Picture.h"
+#include "FlashDrive/FlashDrive.h"
 #include "LAN/LAN.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
@@ -288,6 +289,121 @@ void Display::Update()
         Device::TasksUpdate();
         DrawPartScreen(i, true);
     }
+}
+
+
+void Display::SaveToFlashDrive()
+{
+#pragma pack(1)
+    typedef struct
+    {
+        char    type0;      // 0
+        char    type1;      // 1
+        uint    size;       // 2
+        uint16  res1;       // 6
+        uint16  res2;       // 8
+        uint    offBits;    // 10
+    } BITMAPFILEHEADER;
+    // 14
+
+    typedef struct
+    {
+        uint    size;           // 14
+        int     width;          // 18
+        int     height;         // 22
+        uint16  planes;         // 26
+        uint16  bitCount;       // 28
+        uint    compression;    // 30
+        uint    sizeImage;      // 34
+        int     xPelsPerMeter;  // 38
+        int     yPelsPerMeter;  // 42
+        uint    clrUsed;        // 46
+        uint    clrImportant;   // 50
+        //uint    notUsed[15];
+    } BITMAPINFOHEADER;
+    // 54
+#pragma pack(4)
+
+    BITMAPFILEHEADER bmFH =
+    {
+        0x42,
+        0x4d,
+        14 + 40 + 1024 + 320 * 240 / 2,
+        0,
+        0,
+        14 + 40 + 1024
+    };
+
+    StructForWrite structForWrite;
+    char fileName[255];
+
+    std::sprintf(fileName, "%08X.bmp", TIME_MS);
+
+    FDrive::OpenNewFileForWrite(fileName, &structForWrite);
+
+    FDrive::WriteToFile((uint8 *)(&bmFH), 14, &structForWrite);
+
+    BITMAPINFOHEADER bmIH =
+    {
+        40, // size;
+        Display::PHYSICAL_WIDTH,// width;
+        Display::PHYSICAL_HEIGHT,// height;
+        1,  // planes;
+        8,  // bitCount;
+        0,  // compression;
+        0,  // sizeImage;
+        0,  // xPelsPerMeter;
+        0,  // yPelsPerMeter;
+        0,  // clrUsed;
+        0   // clrImportant;
+    };
+
+    FDrive::WriteToFile((uint8 *)(&bmIH), 40, &structForWrite);
+
+    uint8 buffer[Display::PHYSICAL_WIDTH * 4] = { 0 };
+
+    typedef struct tagRGBQUAD
+    {
+        uint8    blue;
+        uint8    green;
+        uint8    red;
+        uint8    rgbReserved;
+    } RGBQUAD;
+
+    RGBQUAD colorStruct;
+
+    for (int i = 0; i < 16; i++)
+    {
+        uint color = Color((uint8)i).Value();
+        colorStruct.blue = (uint8)((float)BLUE_FROM_COLOR(color) / 31.0f * 255.0f);
+        colorStruct.green = (uint8)((float)GREEN_FROM_COLOR(color) / 63.0f * 255.0f);
+        colorStruct.red = (uint8)((float)RED_FROM_COLOR(color) / 31.0f * 255.0f);
+        colorStruct.rgbReserved = 0;
+        ((RGBQUAD *)(buffer))[i] = colorStruct;
+    }
+
+    for (int i = 0; i < 4; i++)
+    {
+        FDrive::WriteToFile(buffer, 256, &structForWrite);
+    }
+
+    int num_color = 0;
+
+    for (int y = Display::PHYSICAL_HEIGHT - 1; y >= 0; y--)
+    {
+        for (int x = 0; x < Display::PHYSICAL_WIDTH; x++)
+        {
+            buffer[x] = (uint8)num_color++;
+            if (num_color == 16)
+            {
+                num_color = 0;
+            }
+        }
+
+        FDrive::WriteToFile(buffer, Display::PHYSICAL_WIDTH, &structForWrite);
+    }
+
+    FDrive::CloseFile(&structForWrite);
 }
 
 
