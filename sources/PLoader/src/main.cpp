@@ -19,6 +19,8 @@
     #define __enable_irq()
     #define __disable_irq()
     #define __set_MSP(x)
+    #define __DSB()
+    #define __ISB()
     #ifndef __IO
         #define __IO volatile
     #endif
@@ -51,7 +53,7 @@ int main()
     __set_MSP(*(__IO uint *)0x8020000);
 
     __enable_irq();
-    
+
     __DSB();
     __ISB();
 
