@@ -64,6 +64,10 @@ namespace Display
     void InitHardware();
 
     static void DisableWarningMessage();
+
+    static bool show_flash_drive_message = false;
+
+    static void WriteFlashDriveMessage();
 }
 
 void Display::Init()
@@ -347,6 +351,8 @@ void Display::DrawPartScreen(int num, bool)
         Text("%.2f", (double)value_out.ToUnits()).Write(400, 30);
     }
 
+    WriteFlashDriveMessage();
+
     Display::EndScene();
     LAN::Update();
 
@@ -535,4 +541,30 @@ void Display::ShowWarningMessage(WarningMessage::E _warn)
 void Display::DisableWarningMessage()
 {
     warn = WarningMessage::Count;
+}
+
+
+void Display::ShowFlashDriveMessage(bool show)
+{
+    show_flash_drive_message = show;
+}
+
+
+void Display::WriteFlashDriveMessage()
+{
+    if (show_flash_drive_message)
+    {
+        const int x = 75;
+        const int y = 100;
+
+        Rect(350, 70).FillRounded(x, y, 1, Color::BACK, Color::WHITE);
+
+        const int d = 15;
+
+        if (ColorTimer::IsMain())
+        {
+            Text("Обнаружено запоминающее устройство.").Write(x + d, y + d, Color::WHITE);
+            Text("Подключение.").Write(x + d, y + d + 30);
+        }
+    }
 }

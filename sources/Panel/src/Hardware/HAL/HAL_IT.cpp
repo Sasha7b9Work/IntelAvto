@@ -86,6 +86,8 @@ void OTG_FS_IRQHandler()
 void OTG_HS_IRQHandler()
 {
     HAL_HCD_IRQHandler((HCD_HandleTypeDef *)FDrive::handleHCD);
+    
+    FDrive::OnHandler_OTG_HS();
 }
 
 

@@ -52,6 +52,8 @@ namespace FDrive
 
     bool AppendStringToFile(const char *string);
 
+    void OnHandler_OTG_HS();
+
     extern USBH_HandleTypeDef hUSB_Host;
 
     extern void *handleHCD;     // HCD_HandleTypeDef

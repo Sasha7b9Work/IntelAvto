@@ -58,6 +58,7 @@ void FDrive::USBH_UserProcess(USBH_HandleTypeDef *, uint8 id)
 
     case HOST_USER_DISCONNECTION:
         is_connected = false;
+        Display::ShowFlashDriveMessage(false);
         break;
 
     default:
@@ -111,7 +112,6 @@ void FDrive::Update()
 {
     if (need_mount)      // Если обнаружено физическое подключение внешнего диска
     {
-        uint timeStart = TIME_MS;
         need_mount = false;
 
         if (f_mount(&USBDISKFatFs, (TCHAR const *)USBDISKPath, 1) != FR_OK)
@@ -122,9 +122,8 @@ void FDrive::Update()
             is_connected = true;
             FileManager::Init();
         }
-        while (TIME_MS - timeStart < 3000)
-        {
-        }
+
+        Display::ShowFlashDriveMessage(false);
     }
     else
     {
@@ -451,4 +450,13 @@ void FDrive::InitHardware()
 
     HAL_NVIC_SetPriority(OTG_HS_IRQn, 2, 0);
     HAL_NVIC_EnableIRQ(OTG_HS_IRQn);
+}
+
+
+void FDrive::OnHandler_OTG_HS()
+{
+    if (!IsConnected())
+    {
+        Display::ShowFlashDriveMessage(true);
+    }
 }

@@ -69,6 +69,8 @@ namespace Display
 
     void ShowWarningMessage(WarningMessage::E);
 
+    void ShowFlashDriveMessage(bool);
+
     // Структура для непосредсвенного рисования в дисплей
     namespace Sender
     {
