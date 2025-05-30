@@ -12,6 +12,9 @@ namespace PageMain
 namespace PageSettings
 {
     extern Page *self;
+
+    // Показывать засылаемое напряжение
+    extern uint8 show_debug_voltage;
 }
 
 

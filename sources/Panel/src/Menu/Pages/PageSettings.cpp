@@ -27,10 +27,20 @@ namespace PageSettings
         FuncPress_LAN
     );
 
+    uint8 show_debug_voltage = 0;
+
+    DEF_CHOICE_2_FULL(chDebugU,
+        "Напряжение",
+        "Нет", "Да",
+        show_debug_voltage,
+        FuncVV
+    );
+
     static Item *items[] =
     {
         &bBack,
         &bLAN,
+        &chDebugU,
         nullptr
     };
 

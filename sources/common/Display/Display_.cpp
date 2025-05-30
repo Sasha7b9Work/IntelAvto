@@ -341,7 +341,7 @@ void Display::DrawPartScreen(int num, bool)
 
     LAN::Update();
 
-    if (!TypeSignal::IsExtern())
+    if (!TypeSignal::IsExtern() && PageSettings::show_debug_voltage)
     {
         Text("%.2f", (double)value_in.ToUnits()).Write(400, 5, Color::WHITE);
         Text("%.2f", (double)value_out.ToUnits()).Write(400, 30);
