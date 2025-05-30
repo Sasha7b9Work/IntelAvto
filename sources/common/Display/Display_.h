@@ -22,6 +22,11 @@ namespace Display
     extern Value value_in;
     extern Value value_out;
 
+    // Число частей, на которые поделен дисплей для отрисовки
+    const int NUM_PARTS = 2;
+
+    extern uint8 buffer[272/Display::NUM_PARTS][480];
+
     extern int num_sends;
 
     const int PHYSICAL_WIDTH = 480;
@@ -29,9 +34,6 @@ namespace Display
 
     extern int width;
     extern int height;
-
-    // Число частей, на которые поделен дисплей для отрисовки
-    const int NUM_PARTS = 2;
 
     int Width();
 

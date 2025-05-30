@@ -294,6 +294,8 @@ void Display::Update()
 
 void Display::SaveToFlashDrive()
 {
+    show_flash_drive_message = false;
+
 #pragma pack(1)
     typedef struct
     {
@@ -337,7 +339,7 @@ void Display::SaveToFlashDrive()
     StructForWrite structForWrite;
     char fileName[255];
 
-    std::sprintf(fileName, "%08X.bmp", TIME_MS);
+    std::sprintf(fileName, "%09d.bmp", TIME_MS);
 
     FDrive::OpenNewFileForWrite(fileName, &structForWrite);
 
@@ -360,8 +362,6 @@ void Display::SaveToFlashDrive()
 
     FDrive::WriteToFile((uint8 *)(&bmIH), 40, &structForWrite);
 
-    uint8 buffer[Display::PHYSICAL_WIDTH * 4] = { 0 };
-
     typedef struct tagRGBQUAD
     {
         uint8    blue;
@@ -372,6 +372,8 @@ void Display::SaveToFlashDrive()
 
     RGBQUAD colorStruct;
 
+    uint8 wr_buffer[480];
+
     for (int i = 0; i < 16; i++)
     {
         uint color = Color((uint8)i).Value();
@@ -379,28 +381,22 @@ void Display::SaveToFlashDrive()
         colorStruct.green = (uint8)((float)GREEN_FROM_COLOR(color) / 63.0f * 255.0f);
         colorStruct.red = (uint8)((float)RED_FROM_COLOR(color) / 31.0f * 255.0f);
         colorStruct.rgbReserved = 0;
-        ((RGBQUAD *)(buffer))[i] = colorStruct;
+        ((RGBQUAD *)(wr_buffer))[i] = colorStruct;
     }
 
     for (int i = 0; i < 4; i++)
     {
-        FDrive::WriteToFile(buffer, 256, &structForWrite);
+        FDrive::WriteToFile(wr_buffer, 256, &structForWrite);
     }
 
-    int num_color = 0;
-
-    for (int y = Display::PHYSICAL_HEIGHT - 1; y >= 0; y--)
+    for (int part = NUM_PARTS - 1; part >= 0; part--)
     {
-        for (int x = 0; x < Display::PHYSICAL_WIDTH; x++)
-        {
-            buffer[x] = (uint8)num_color++;
-            if (num_color == 16)
-            {
-                num_color = 0;
-            }
-        }
+        DrawPartScreen(part, false);
 
-        FDrive::WriteToFile(buffer, Display::PHYSICAL_WIDTH, &structForWrite);
+        for (int y = Display::PHYSICAL_HEIGHT / 2 - 1; y >= 0; y--)
+        {
+            FDrive::WriteToFile(&buffer[y][0], Display::PHYSICAL_WIDTH, &structForWrite);
+        }
     }
 
     FDrive::CloseFile(&structForWrite);

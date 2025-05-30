@@ -31,7 +31,7 @@ namespace Display
     // В этом буфере будем рисовать. Ширина равна 480 / 2 потому, что в байте хранятся 2 пикселя с 1 из 16-ти возможных градация каждая.
 #define WIDTH_BUFFER    (480)
 #define HEIGHT_BUFFER   (272 / Display::NUM_PARTS)
-    static uint8 buffer[HEIGHT_BUFFER][WIDTH_BUFFER];
+    uint8 buffer[HEIGHT_BUFFER][WIDTH_BUFFER];
 
     static const uint8 *startBuffer = &buffer[0][0];
     static const uint8 *endBuffer = startBuffer + WIDTH_BUFFER * HEIGHT_BUFFER;
