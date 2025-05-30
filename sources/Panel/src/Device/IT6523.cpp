@@ -172,7 +172,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommand("list:repeat 1");
         IT6523::SendCommand("list:sequence:count 1");
         IT6523::SendCommand("list:sequence:select 1,1");
-        IT6523::SendCommand("list save 1");
+        IT6523::SendCommand("list:save 1");
 
         IT6523::SendCommand("list:recall 1");
         IT6523::SendCommand("list:state 1");
