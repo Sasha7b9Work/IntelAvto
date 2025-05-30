@@ -66,6 +66,7 @@ namespace Display
     static void DisableWarningMessage();
 
     static bool show_flash_drive_message = false;
+    static uint time_start_show_flash_drive = 0;
 
     static void WriteFlashDriveMessage();
 }
@@ -547,6 +548,18 @@ void Display::DisableWarningMessage()
 void Display::ShowFlashDriveMessage(bool show)
 {
     show_flash_drive_message = show;
+
+    if (show)
+    {
+        if (time_start_show_flash_drive == 0)
+        {
+            time_start_show_flash_drive = TIME_MS;
+        }
+    }
+    else
+    {
+        time_start_show_flash_drive = 0;
+    }
 }
 
 
@@ -564,7 +577,21 @@ void Display::WriteFlashDriveMessage()
         if (ColorTimer::IsMain())
         {
             Text("Обнаружено запоминающее устройство.").Write(x + d, y + d, Color::WHITE);
-            Text("Подключение.").Write(x + d, y + d + 30);
+
+            uint dT = TIME_MS - time_start_show_flash_drive;
+
+            uint time = 0;
+
+            if (dT < 30000)
+            {
+                time = (30000 - dT) / 1000;
+            }
+            else
+            {
+                time_start_show_flash_drive = TIME_MS;
+            }
+
+            Text("Подключение... Осталось %d сек...", time).Write(x + d, y + d + 30);
         }
     }
 }
