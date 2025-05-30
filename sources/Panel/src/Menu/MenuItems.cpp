@@ -149,15 +149,6 @@ int Page::NumItems() const
 }
 
 
-void Page::VerifySelectedItem()
-{
-    if (selectedItem >= NumItems())
-    {
-        selectedItem = NumItems() - 1;
-    }
-}
-
-
 void Parameter::Draw(int x0, int y0, int width, bool selected)
 {
     ColorDraw(selected).SetAsCurrent();

@@ -315,9 +315,6 @@ public:
     // Возвращает указатель на выделенный пункт меню
     Item *SelectedItem() { return items[selectedItem]; }
 
-    // Проверить на корректность номер выделенного итема. Если он больше, чем количество итемов - скорректировать
-    void VerifySelectedItem();
-
     // Возвращает true, если страница имеет дополнительную функцию отрисовки
     bool IsAddition() const { return additionalDraw != nullptr; }
 
