@@ -24,4 +24,6 @@ namespace Device
 
     // Тест не выполняется
     bool IsStopped();
+
+    void TasksUpdate();
 }

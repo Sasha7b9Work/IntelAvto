@@ -285,7 +285,7 @@ void Display::Update()
 {
     for (int i = 0; i < NUM_PARTS; i++)
     {
-        LAN::Update();
+        Device::TasksUpdate();
         DrawPartScreen(i, true);
     }
 }
@@ -301,15 +301,16 @@ void Display::DrawPartScreen(int num, bool)
     {
         timeStart = TIME_MS;
     }
-    LAN::Update();
+
+    Device::TasksUpdate();
 
     Display::BeginScene();
 
-    LAN::Update();
+    Device::TasksUpdate();
 
     DrawScreen();
 
-    LAN::Update();
+    Device::TasksUpdate();
 
     if (num == 0)
     {
@@ -344,7 +345,7 @@ void Display::DrawPartScreen(int num, bool)
         Text("%d", num_sends).Write(420, 240, Color::WHITE);
     }
 
-    LAN::Update();
+    Device::TasksUpdate();
 
     if (!TypeSignal::IsExtern() && PageSettings::show_debug_voltage)
     {
@@ -355,7 +356,7 @@ void Display::DrawPartScreen(int num, bool)
     WriteFlashDriveMessage();
 
     Display::EndScene();
-    LAN::Update();
+    Device::TasksUpdate();
 
     if (num == Display::NUM_PARTS)
     {

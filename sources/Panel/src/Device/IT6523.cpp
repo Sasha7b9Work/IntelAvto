@@ -72,7 +72,7 @@ void IT6523::SendCommand(pchar message)
     
     while(TIME_MS < time_next)
     {
-        LAN::Update();
+        Device::TasksUpdate();
     }
     
     time_next = TIME_MS;

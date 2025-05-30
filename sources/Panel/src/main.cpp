@@ -11,6 +11,7 @@
 #include "VCP/VCP.h"
 #include "Hardware/Beeper.h"
 #include "SCPI/SCPI.h"
+#include "Device/Device.h"
 
 
 #ifndef WIN32
@@ -45,22 +46,22 @@ int main(void)
 
     while (1)
     {
-        LAN::Update();
+        Device::TasksUpdate();
         Menu::Input::Update();
 
-        LAN::Update();
+        Device::TasksUpdate();
         Display::Update();
 
-        LAN::Update();
+        Device::TasksUpdate();
         Timer::UpdateTasks();
 
-        LAN::Update();
+        Device::TasksUpdate();
         IT6523::Update();
 
-        LAN::Update();
+        Device::TasksUpdate();
         FDrive::Update();
 
-        LAN::Update();
+        Device::TasksUpdate();
         SCPI::Update();
 
         gset.Save();

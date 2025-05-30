@@ -6,6 +6,8 @@
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
 #include "Display/Colors_.h"
+#include "FlashDrive/FlashDrive.h"
+#include "LAN/LAN.h"
 
 
 namespace Device
@@ -106,4 +108,11 @@ void Device::Stop()
 
         IT6523::Stop();
     }
+}
+
+
+void Device::TasksUpdate()
+{
+    LAN::Update();
+    FDrive::Update();
 }
