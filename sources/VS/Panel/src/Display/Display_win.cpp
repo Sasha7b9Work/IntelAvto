@@ -40,6 +40,8 @@ using namespace Primitives;
 
 namespace Display
 {
+    uint8 buffer[272 / Display::NUM_PARTS][480];
+
     void InitHardware();
 
     // Здесь хранятся указатели на кнопки
@@ -104,9 +106,9 @@ void Display::InitHardware()
 
     Font::SetSpacing(2);
 
-    static unsigned char buffer[Display::PHYSICAL_WIDTH * Display::PHYSICAL_HEIGHT * 3];
+    static unsigned char buf[Display::PHYSICAL_WIDTH * Display::PHYSICAL_HEIGHT * 3];
 
-    unsigned char *pointer = buffer;
+    unsigned char *pointer = buf;
 
     Color color1 = Color::BACK;
     Color color2 = Color::BACK;
@@ -128,7 +130,7 @@ void Display::InitHardware()
     }
 
     wxImage image;
-    image.Create(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT, buffer, true);
+    image.Create(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT, buf, true);
 
     static wxBitmap bmp(image);
 

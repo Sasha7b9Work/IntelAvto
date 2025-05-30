@@ -5,5 +5,36 @@
 
 bool FDrive::IsConnected()
 {
+    LOG_ERROR_NOT_IMPLEMENTED();
+
+    return false;
+}
+
+
+void FDrive::Update()
+{
+}
+
+
+bool FDrive::OpenNewFileForWrite(const char * /*fullPathToFile*/, StructForWrite * /*structForWrite*/)
+{
+    LOG_ERROR("Not implemented");
+
+    return false;
+}
+
+
+bool FDrive::WriteToFile(uint8 * /*data*/, int /*sizeData*/, StructForWrite * /*structForWrite*/)
+{
+    LOG_ERROR("Not implemented");
+
+    return false;
+}
+
+
+bool FDrive::CloseFile(StructForWrite * /*structForWrite*/)
+{
+    LOG_ERROR_NOT_IMPLEMENTED();
+
     return false;
 }
