@@ -652,6 +652,11 @@ char *SU::MilliUnitsToUnits(int ms, char out[32])
 
     SU::ReplaceSymbol(out, ',', '.');
 
+    if (out[std::strlen(out) - 1] == '.')
+    {
+        std::strcat(out, "0");
+    }
+
     return out;
 }
 
