@@ -200,11 +200,16 @@ void ParameterDrawStruct::ToValue(Value *result) const
 
     if (parameter->GetValue().GetType() == TypeValue::Time)
     {
+        raw |= (1 << 29);
         raw |= (1 << 30);
     }
     else if (parameter->GetValue().GetType() == TypeValue::Voltage)
     {
         raw |= (1 << 29);
+    }
+    else if (parameter->GetValue().GetType() == TypeValue::Current)
+    {
+        raw |= (1 << 30);
     }
     else
     {
