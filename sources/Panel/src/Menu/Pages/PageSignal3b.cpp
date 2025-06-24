@@ -19,6 +19,11 @@ namespace PageSignal3b
         &gset.signals[TypeSignal::_3b].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         250, 110);
 
+    static AParameter param_A("Imax",
+        &gset.signals[TypeSignal::_3b].values12[2], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypeSignal::_3b].values24[2], Current(Current::min * 1000), Current(Current::max * 1000),
+        Page::x_param, Item::Height() * 4 + Page::d_y);
+
     static CParameter param_N("N",
         &gset.signals[TypeSignal::_3b].values12[1], Counter(10000), Counter(100000),
         &gset.signals[TypeSignal::_3b].values24[1], Counter(10000), Counter(100000),
@@ -56,6 +61,7 @@ namespace PageSignal3b
         &chModeVoltage,
         &param_Us,
         &param_N,
+        &param_A,
         nullptr
     };
 

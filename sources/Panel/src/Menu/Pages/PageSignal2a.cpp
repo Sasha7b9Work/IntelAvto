@@ -18,8 +18,8 @@ namespace PageSignal2a
         350, 120);
 
     static AParameter param_A("Imax",
-        &gset.signals[TypeSignal::_1].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypeSignal::_1].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypeSignal::_2a].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypeSignal::_2a].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
         Page::x_param, Item::Height() * 5 + Page::d_y);
 
     static TParameter param_t1("Период",
