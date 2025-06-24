@@ -650,6 +650,8 @@ char *SU::MilliUnitsToUnits(int ms, char out[32])
         pointer--;
     }
 
+    SU::ReplaceSymbol(out, ',', '.');
+
     return out;
 }
 

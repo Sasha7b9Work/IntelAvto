@@ -5,7 +5,7 @@
 
 struct Word
 {
-    char   *address;
+    char *address;
     int8    numSymbols;
     uint8   notUsed0;
     uint8   notUsed1;
@@ -55,7 +55,7 @@ namespace SU
     bool StringToDouble(double *value, pchar buffer);
 
     bool String2Int(pchar buffer, int *value, char **end);
- 
+
     pchar Int2String(int n, char out[32]);
 
     // Оставляет в строке buffer размером size ровно digits цифр. Первые нули тоже учитываются
@@ -69,7 +69,7 @@ namespace SU
 
     // Возвращает true, если в строке существует символ symbol
     bool ExistSymbol(char *string, char symbol);
-    
+
     inline uint Hash(uint hash, char byte)
     {
         return (uint8)byte + (hash << 6) + (hash << 16) - hash;

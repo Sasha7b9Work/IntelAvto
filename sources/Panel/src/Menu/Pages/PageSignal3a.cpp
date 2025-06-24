@@ -53,7 +53,7 @@ namespace PageSignal3a
 
         RemainingTimeCounter::Start(period_ms, param_N);
 
-        IT6523::Start(TypeSignal::_3a, param_A.GetValue());
+        IT6523::Start(param_A.GetValue());
 
         return true;
     }

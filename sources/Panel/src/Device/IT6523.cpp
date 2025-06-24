@@ -100,28 +100,23 @@ void IT6523::SendCommandF(pchar format, ...)
 }
 
 
-bool IT6523::Start(TypeSignal::E type, const Value & /*cur*/)
+bool IT6523::Start(const Value &current)
 {
-    if (type == TypeSignal::_1)
+    if (!TypeSignal::IsExtern())
     {
+        SendCommandF("VOLT %d", gset.voltage_mode.CurrentVolts());
 
-    }
-    else if (type == TypeSignal::_2a)
-    {
+        char str_A[32];
+        SU::MilliUnitsToUnits(current.ToMU(), str_A);
 
-    }
-    else if (type == TypeSignal::_3a)
-    {
-
-    }
-    else if (type == TypeSignal::_3b)
-    {
-
+        SendCommandF("CURR %s", str_A);
     }
     else
     {
         return false;
     }
+
+    SendCommand("SOURCE:OUTPut:STATE 1");
 
     return true;
 }
@@ -289,7 +284,10 @@ void IT6523::_Stop()
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 0");
     }
 
-    SendCommand("SOURCE:OUTPut:STATE 0");
+    if (TypeSignal::IsExtern())
+    {
+        SendCommand("SOURCE:OUTPut:STATE 0");
+    }
 
     Keyboard::AddKey(Key::Stop);
 }

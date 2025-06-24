@@ -56,7 +56,7 @@ namespace PageSignal2a
 
         RemainingTimeCounter::Start(param_t1.GetValue().ToMU(), param_N);
 
-        IT6523::Start(TypeSignal::_2a, param_A.GetValue());
+        IT6523::Start(param_A.GetValue());
 
         return true;
     }
