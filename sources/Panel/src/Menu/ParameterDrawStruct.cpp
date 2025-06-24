@@ -435,7 +435,18 @@ void Value::Draw(int x, int y) const
 
     if (GetType() != TypeValue::Raw)
     {
-        std::strcat(string, (GetType() == TypeValue::Time) ? "ñ" : "Â");
+        if (GetType() == TypeValue::Time)
+        {
+            std::strcat(string, "ñ");
+        }
+        else if (GetType() == TypeValue::Voltage)
+        {
+            std::strcat(string, "Â");
+        }
+        else if (GetType() == TypeValue::Current)
+        {
+            std::strcat(string, "À");
+        }
     }
     Text(string).Write(x, y, Color::WHITE);
 }
