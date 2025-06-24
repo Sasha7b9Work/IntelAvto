@@ -66,30 +66,30 @@ static Settings def_set =
     TypeSignal::_1,
     { VoltageMode::_12 },
     {
-        {   {   Voltage(75000),                 // 1 : Us   12      Signal 1
-                Time(1100),                     // 1 : t1   12
-                Counter(10000),                 // 1 : N    12
-                ValueNull(),
+        {   {   Voltage(75000),                 // 1 : Us          12      Signal 1
+                Time(1100),                     // 1 : t1          12
+                Counter(10000),                 // 1 : N           12
+                Current(50000),                 // 1 : Ограничение 12
                 ValueNull()
             }
             ,
-            {   Voltage(300000),                // 1 : Us   24
-                Time(1100),                     // 1 : Us   24
-                Counter(10000),                 // 1 : N    24
-                ValueNull(),
+            {   Voltage(300000),                // 1 : Us          24
+                Time(1100),                     // 1 : Us          24
+                Counter(10000),                 // 1 : N           24
+                Current(50000),                 // 1 : Ограничение 24
                 ValueNull() }}
         ,
-        {   {   Voltage(55000),                 // 2a : Us  12      Signal 2a
-                Time(1000),                     // 2a : t1  12
-                Counter(10000),                 // 2a : N
-                ValueNull(),
+        {   {   Voltage(55000),                 // 2a : Us          12      Signal 2a
+                Time(1000),                     // 2a : t1          12
+                Counter(10000),                 // 2a : N           12
+                Current(50000),                 // 2a : Ограничение 12
                 ValueNull()
             }
             ,
-            {   Voltage(55000),                 // 2a : Us  24
-                Time(1000),                     // 2a : t1  24
-                Counter(10000),                 // 2a : N
-                ValueNull(),
+            {   Voltage(55000),                 // 2a : Us          24
+                Time(1000),                     // 2a : t1          24
+                Counter(10000),                 // 2a : N           24
+                Current(50000),                 // 2a : Ограничение 24
                 ValueNull() }}
         ,
         {   {   Time(500),                      // 2b : t1  12      Signal 2b
@@ -105,29 +105,29 @@ static Settings def_set =
                 ValueNull(),
                 ValueNull() }}
         ,
-        {   {   Voltage(112000),                // 3a : Us 12       Signal 3a
-                Counter(10000),                 // 3a : N  12
-                ValueNull(),
+        {   {   Voltage(112000),                // 3a : Us          12       Signal 3a
+                Counter(10000),                 // 3a : N           12
+                Current(50000),                 // 3a : Ограничение 12
                 ValueNull(),
                 ValueNull()
             }
             ,
-            {   Voltage(150000),                // 3a : Us 24
-                Counter(10000),                 // 3a : N  24
-                ValueNull(),
+            {   Voltage(150000),                // 3a : Us          24
+                Counter(10000),                 // 3a : N           24
+                Current(50000),                 // 3a : Ограничение 24
                 ValueNull(),
                 ValueNull() }}
         ,
-        {   {   Voltage(75000),                 // 3b : Us 12       Signal 3b
-                Counter(10000),                 // 3b : N  12
-                ValueNull(),
+        {   {   Voltage(75000),                 // 3b : Us          12       Signal 3b
+                Counter(10000),                 // 3b : N           12
+                Current(50000),                 // 3b : Ограничение 12
                 ValueNull(),
                 ValueNull()
             }
             ,
-            {   Voltage(150000),                // 3b : Us 24
-                Counter(10000),                 // 3b : N  24
-                ValueNull(),
+            {   Voltage(150000),                // 3b : Us          24
+                Counter(10000),                 // 3b : N           24
+                Current(50000),                 // 3b : Ограничение 24
                 ValueNull(),
                 ValueNull() }}
         ,

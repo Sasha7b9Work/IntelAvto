@@ -270,6 +270,19 @@ public:
 };
 
 
+class AParameter : public Parameter
+{
+public:
+    AParameter(pchar title_ru,
+        Value *value12, const Current &_min12, const Current &_max12,
+        Value *value24, const Current &_min24, const Current &_max24,
+        int _x, int _y) :
+        Parameter(title_ru, value12, _min12, _max12, value24, _min24, _max24, _x, _y)
+    {
+    }
+};
+
+
 class TParameter : public Parameter
 {
 public:
@@ -299,6 +312,10 @@ class Page : public Item
     friend struct Channel;
 
 public:
+
+    static const int x_param = 90;
+    static const int d_y = 10;
+
     Page(Item **_items, void (*_additionalDraw)(), bool (*_func_start_test)()) :
         Item(),
         items(_items), additionalDraw(_additionalDraw), func_start_test(_func_start_test)

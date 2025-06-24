@@ -18,6 +18,11 @@ namespace PageSignal1
         &gset.signals[TypeSignal::_1].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         280, 155);
 
+    static AParameter param_A("Imax",
+        &gset.signals[TypeSignal::_1].values12[3], Current(current_min * 1000), Current(current_max * 1000),
+        &gset.signals[TypeSignal::_1].values24[3], Current(current_min * 1000), Current(current_max * 1000),
+        Page::x_param, Item::Height() * 5 + Page::d_y);
+
     // Период повторения
     static TParameter param_t1("Период",
         &gset.signals[TypeSignal::_1].values12[1], Time(500), Time(5000),
@@ -28,7 +33,7 @@ namespace PageSignal1
     static CParameter param_N("N",
         &gset.signals[TypeSignal::_1].values12[2], Counter(5000), Counter(100000),
         &gset.signals[TypeSignal::_1].values24[2], Counter(5000), Counter(100000),
-        90, 130);
+        Page::x_param, Item::Height() * 4 + Page::d_y);
 
     static void FuncPress_Signal()
     {
@@ -72,6 +77,7 @@ namespace PageSignal1
         &param_Us,
         &param_t1,
         &param_N,
+        &param_A,
         nullptr
     };
 

@@ -100,6 +100,32 @@ void IT6523::SendCommandF(pchar format, ...)
 }
 
 
+bool IT6523::Start(TypeSignal::E type)
+{
+    if (type == TypeSignal::_1)
+    {
+
+    }
+    else if (type == TypeSignal::_2a)
+    {
+
+    }
+    else if (type == TypeSignal::_3a)
+    {
+
+    }
+    else if (type == TypeSignal::_3b)
+    {
+
+    }
+    else
+    {
+        return false;
+    }
+
+    return true;
+}
+
 bool IT6523::Start(TypeSignal::E type, int num_pulses)
 {
     current = type;

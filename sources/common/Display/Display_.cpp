@@ -296,6 +296,8 @@ void Display::SaveToFlashDrive()
 {
     show_flash_drive_message = false;
 
+#pragma pack(push)
+
 #pragma pack(1)
     typedef struct
     {
@@ -400,6 +402,8 @@ void Display::SaveToFlashDrive()
     }
 
     FDrive::CloseFile(&structForWrite);
+
+#pragma pack(pop)
 }
 
 

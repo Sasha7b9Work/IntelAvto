@@ -55,6 +55,9 @@ namespace PageSignal1
     static const int us24_min = 300;
     static const int us24_max = 600;
 
+    static const int current_min = 1;
+    static const int current_max = 50;
+
     extern Page *self;
 }
 

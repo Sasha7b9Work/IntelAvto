@@ -8,6 +8,7 @@ struct TypeValue
     enum E
     {
         Voltage,    // Вольты
+        Current,    // Амперы
         Time,       // Миллисекунды
         Raw         // Количество, без единиц измерения
     };
@@ -36,13 +37,18 @@ struct Value
         {
 
         }
-        else if (type == TypeValue::Time)       // 30-й бит установлен
+        else if (type == TypeValue::Time)
         {
             raw |= (1 << 30);
+            raw |= (1 << 29);
         }
-        else if (type == TypeValue::Voltage)    // 29-й бит установлен
+        else if (type == TypeValue::Voltage)
         {
             raw |= (1 << 29);
+        }
+        else if (type == TypeValue::Current)
+        {
+            raw |= (1 << 30);
         }
     }
 
@@ -60,7 +66,7 @@ struct Value
 
     TypeValue::E GetType() const
     {
-        if (raw & (1 << 30))
+        if ((raw & (1 << 30)) && (raw & (1 << 29)))
         {
             return TypeValue::Time;
         }
@@ -68,6 +74,11 @@ struct Value
         if (raw & (1 << 29))
         {
             return TypeValue::Voltage;
+        }
+
+        if (raw & (1 << 30))
+        {
+            return TypeValue::Current;
         }
 
         return TypeValue::Raw;
@@ -137,9 +148,20 @@ struct Voltage : public Value
 {
     explicit Voltage(int voltage) : Value(voltage, TypeValue::Voltage) { }
 
-    void Set(int mv)
+    void Set(int mV)
     {
-        Value::Set(mv, TypeValue::Voltage);
+        Value::Set(mV, TypeValue::Voltage);
+    }
+};
+
+
+struct Current : public Value
+{
+    explicit Current(int current) : Value(current, TypeValue::Current) { }
+
+    void Set(int mA)
+    {
+        Value::Set(mA, TypeValue::Current);
     }
 };
 
