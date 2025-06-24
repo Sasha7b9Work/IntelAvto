@@ -104,7 +104,14 @@ bool IT6523::Start(const Value &current)
 {
     if (!TypeSignal::IsExtern())
     {
-        SendCommandF("VOLT %d", gset.voltage_mode.CurrentVolts());
+        if (gset.voltage_mode.Is12())
+        {
+            SendCommandF("VOLT 13.5");
+        }
+        else
+        {
+            SendCommandF("VOLT 27");
+        }
 
         char str_A[32];
         SU::MilliUnitsToUnits(current.ToMU(), str_A);
