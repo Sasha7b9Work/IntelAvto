@@ -266,7 +266,7 @@ void IT6523::Resume()
 }
 
 
-void IT6523::_Stop()
+void IT6523::Stop()
 {
     Timer::DisableTask(TimerTask::IT6523);
 
@@ -284,10 +284,7 @@ void IT6523::_Stop()
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 0");
     }
 
-    if (TypeSignal::IsExtern())
-    {
-        SendCommand("SOURCE:OUTPut:STATE 0");
-    }
+    SendCommand("SOURCE:OUTPut:STATE 0");
 
     Keyboard::AddKey(Key::Stop);
 }

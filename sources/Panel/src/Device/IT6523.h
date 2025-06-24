@@ -21,7 +21,7 @@ namespace IT6523
     void Resume();
 
     // Остановить процесс формирования импульсов
-    void _Stop();
+    void Stop();
 
     // Само дополнит завершающими символами
     void SendCommand(pchar);

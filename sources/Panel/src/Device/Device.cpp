@@ -106,7 +106,7 @@ void Device::Stop()
 
         RemainingTimeCounter::Stop();
 
-        IT6523::_Stop();
+        IT6523::Stop();
     }
 }
 
