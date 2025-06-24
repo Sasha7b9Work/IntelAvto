@@ -8,6 +8,7 @@
 #include "Display/Text_.h"
 #include "Display/Display_.h"
 #include "Hardware/Timer.h"
+#include "Device/IT6523.h"
 
 
 namespace PageSignal1
@@ -63,6 +64,8 @@ namespace PageSignal1
         {
             Message::Start1_24V(param_Us.GetCalibrateValue(TypeSignal::_1, VoltageMode::_24), param_t1.GetValue()).Transmit();
         }
+
+        IT6523::Start(TypeSignal::_1, param_A.GetValue());
 
         RemainingTimeCounter::Start(param_t1.GetValue().ToMU(), param_N);
 

@@ -12,7 +12,7 @@ namespace IT6523
     bool Start(TypeSignal::E, int num_pulses);
 
     // Включает соотвествующее напряжение на внешнем генераторе
-    bool Start(TypeSignal::E);
+    bool Start(TypeSignal::E, const Value &current);
 
     // Приостановить процесс формирования импульсов
     void Pause();
@@ -21,7 +21,7 @@ namespace IT6523
     void Resume();
 
     // Остановить процесс формирования импульсов
-    void Stop();
+    void _Stop();
 
     // Само дополнит завершающими символами
     void SendCommand(pchar);

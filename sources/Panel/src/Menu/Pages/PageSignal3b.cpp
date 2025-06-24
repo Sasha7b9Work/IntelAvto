@@ -8,6 +8,7 @@
 #include "Display/Text_.h"
 #include "Display/Display_.h"
 #include "Hardware/Timer.h"
+#include "Device/IT6523.h"
 
 
 namespace PageSignal3b
@@ -51,6 +52,8 @@ namespace PageSignal3b
         Message::Start3B(param_Us.GetCalibrateValue(TypeSignal::_3b, VoltageMode::Current())).Transmit();
 
         RemainingTimeCounter::Start(period_ms, param_N);
+
+        IT6523::Start(TypeSignal::_3b, param_A.GetValue());
 
         return true;
     }
