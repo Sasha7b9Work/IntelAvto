@@ -409,8 +409,6 @@ void Display::SaveToFlashDrive()
 
 void Display::DrawPartScreen(int num, bool)
 {
-    static int counter = 0;
-
     SetTopRow(num);
 
     if (num == 0)
@@ -431,11 +429,6 @@ void Display::DrawPartScreen(int num, bool)
     if (num == 0)
     {
         Console::Draw();
-    }
-
-    if ((counter++) % 3)
-    {
-        Rect(5, 5).Fill(Display::PHYSICAL_WIDTH - 5, Display::PHYSICAL_HEIGHT - 5, Color::WHITE);
     }
 
     if (Device::IsRunning())

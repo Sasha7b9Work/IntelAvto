@@ -151,7 +151,7 @@ static Settings def_set =
             }
             ,
             {   Voltage(80000),                 // 5a : Us 24
-                Time(54),                       // 5a : td 24
+                Time(100),                      // 5a : td 24
                 Counter(10),                    // 5a : N  24
                 Counter(10),                    // 5a : Ri 10
                 ValueNull() }}
@@ -165,7 +165,7 @@ static Settings def_set =
             ,
             {   Voltage(101000),                // 5b : Us 24
                 Counter(10),                    // 5b : Ri 10
-                Time(54),                       // 5b : td 54
+                Time(100),                      // 5b : td 54
                 Counter(5),                     // 5b : N 5
                 ValueNull() }}
     },
