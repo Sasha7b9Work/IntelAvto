@@ -86,7 +86,7 @@ file(GLOB DISPLAY_FONT          ../../common/Display/Font/*.h
                                 ../../common/Display/Font/*.inc
                                 ../../common/Display/Font/*.xml)
 file(GLOB DISPLAY_PICTURES   ../../Panel/src/Display/Pictures/*.*)
-file(GLOB FLASH_DRIVE        ../../Panel/src/FlashDrive/*.h
+file(GLOB FLASH_DRIVE        ../../common/FlashDrive/*.h
                                          src/FlashDrive/*.*)
 file(GLOB GUI                            src/GUI/*)
 file(GLOB HARDWARE           ../../Panel/src/Hardware/*FPGA.*
@@ -135,6 +135,8 @@ set_source_files_properties(
     ../../Panel/src/Hardware/HAL/HAL_FSMC.cpp
     ../../Panel/src/Hardware/HAL/HAL_TIM.cpp
     src/FlashDrive/FlashDrive_win.cpp
+    ../../common/Display/Display_.cpp
+    ../../Panel/src/Menu/Menu.cpp
     PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON
 )
 

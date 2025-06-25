@@ -8,6 +8,8 @@
 #include "Device/Device.h"
 #include "Hardware/Timer.h"
 #include "Hardware/Keyboard/Keyboard_.h"
+#include "Display/Display_.h"
+#include "FlashDrive/FlashDrive.h"
 #include <cstring>
 
 
@@ -56,6 +58,13 @@ void Menu::SetOpenedPage(Page *page)
 
 void Menu::Input::OnKey(Key::E key)
 {
+    if (FDrive::IsConnected() && key == Key::GovButton)
+    {
+        Display::SaveToFlashDrive();
+
+        return;
+    }
+
     if (!Device::IsStopped())                                           // Когда идёт тест,
     {
         if (key != Key::Start && key != Key::Stop)                      // то обрабатываем только СТАРТ и СТОП

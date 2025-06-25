@@ -15,6 +15,7 @@
 #include "LAN/LAN.h"
 #include "Hardware/Timer.h"
 #include "Device/IT6523.h"
+#include "FlashDrive/FlashDrive.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
@@ -713,6 +714,11 @@ void Display::WriteFlashDriveMessage()
 
 void Display::DrawFlashDrive(int x, int y)
 {
+    if (!FDrive::IsConnected())
+    {
+        return;
+    }
+
     const int w = 50;
     const int h = 30;
 

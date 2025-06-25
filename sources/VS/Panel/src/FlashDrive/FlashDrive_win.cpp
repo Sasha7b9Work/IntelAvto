@@ -5,8 +5,6 @@
 
 bool FDrive::IsConnected()
 {
-    LOG_ERROR_NOT_IMPLEMENTED();
-
     return false;
 }
 

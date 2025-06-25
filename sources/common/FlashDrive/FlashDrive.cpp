@@ -122,8 +122,6 @@ void FDrive::Update()
         {
             is_connected = true;
             FileManager::Init();
-
-            Display::SaveToFlashDrive();
         }
 
         Display::ShowFlashDriveMessage(false);

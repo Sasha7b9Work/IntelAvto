@@ -160,7 +160,7 @@ struct Current : public Value
     static const int min = 1;
     static const int max = 50;
 
-    explicit Current(int current) : Value(current, TypeValue::Current) { }
+    explicit Current(int _current) : Value(_current, TypeValue::Current) { }
 
     void Set(int mA)
     {

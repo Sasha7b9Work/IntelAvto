@@ -74,7 +74,7 @@ namespace PageMain
     {
         &bTests,
         &bSettings,
-        &bFlashDrive,
+//        &bFlashDrive,
         &bCalibration,
         &bInfo,
         &bDisplay,
