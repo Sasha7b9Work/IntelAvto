@@ -70,6 +70,8 @@ namespace Display
     static uint time_start_show_flash_drive = 0;
 
     static void WriteFlashDriveMessage();
+
+    static void DrawFlashDrive(int x, int y);
 }
 
 void Display::Init()
@@ -431,6 +433,8 @@ void Display::DrawPartScreen(int num, bool)
         Console::Draw();
     }
 
+    DrawFlashDrive(PHYSICAL_WIDTH - 50, PHYSICAL_HEIGHT - 30);
+
     if (Device::IsRunning())
     {
         Font::SetSize(3);
@@ -704,4 +708,38 @@ void Display::WriteFlashDriveMessage()
             Text("Подключение... Осталось %d сек...", time).Write(x + d, y + d + 30);
         }
     }
+}
+
+
+void Display::DrawFlashDrive(int x, int y)
+{
+    const int w = 50;
+    const int h = 30;
+
+    Rect(w, h).Draw(x, y, Color::WHITE);
+
+    HLine(w - 10).Draw(x + 5, y + h / 2);
+
+    Rect(6, 6).FillRounded(x + w - 10, y + h / 2 - 3, 2, Color::WHITE, Color::WHITE);
+
+    const int d = 5;
+
+    for (int i = 1; i < d; i++)
+    {
+        Line().Draw(x + 5, y + h / 2, x + 5 + 7, y + h / 2 - d + i);
+        Line().Draw(x + 5, y + h / 2, x + 5 + 7, y + h / 2 + d - i);
+    }
+
+    Rect(5, 5).Fill(x + 15, y + 4);
+
+    HLine(10).Draw(x + 15, y + 6);
+
+    Line().Draw(x + 25, y + 6, x + 30, y + h / 2);
+
+    Rect(4, 4).FillRounded(x + 18, y + h - 9, 1, Color::WHITE, Color::WHITE);
+    Rect(3, 3).FillRounded(x + 18, y + h - 8, 1, Color::WHITE, Color::WHITE);
+
+    HLine(10).Draw(x + 23, y + h - 7);
+
+    Line().Draw(x + 33, y + h - 7, x + 38, y + h - 7 - 8);
 }
