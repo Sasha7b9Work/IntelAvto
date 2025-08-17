@@ -917,6 +917,16 @@
               <FileType>5</FileType>
               <FilePath>.\src\Display\Pictures\Signal5b.inc</FilePath>
             </File>
+            <File>
+              <FileName>Scheme1.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Scheme1.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Scheme2.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Scheme2.inc</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4757,6 +4767,16 @@
               <FileName>Signal5b.inc</FileName>
               <FileType>5</FileType>
               <FilePath>.\src\Display\Pictures\Signal5b.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Scheme1.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Scheme1.inc</FilePath>
+            </File>
+            <File>
+              <FileName>Scheme2.inc</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\src\Display\Pictures\Scheme2.inc</FilePath>
             </File>
           </Files>
         </Group>

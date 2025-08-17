@@ -56,6 +56,8 @@ struct TypePicture
         _4_DIN40839,    // Ext Программно формируемый сигнал командами LIST
         _5a_16750_1,    // Ext
         _5b_16750_2,    // Ext
+        Scheme1,
+        Scheme2,
         Count
     };
 

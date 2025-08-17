@@ -9,6 +9,8 @@
 #include "Display/Pictures/Signal4.inc"
 #include "Display/Pictures/Signal5a.inc"
 #include "Display/Pictures/Signal5b.inc"
+#include "Display/Pictures/Scheme1.inc"
+#include "Display/Pictures/Scheme2.inc"
 #include "Display/Primitives_.h"
 #include "Hardware/Timer.h"
 #include "Display/Display_.h"
@@ -30,7 +32,9 @@ namespace Picture
         bmp_zip_Signal3b,
         bmp_zip_Signal4,
         bmp_zip_Signal5a,
-        bmp_zip_Signal5b
+        bmp_zip_Signal5b,
+        bmp_zip_Scheme1,
+        bmp_zip_Scheme2
     };
 
     // \warn сюда нельз€ распаковать картинку больше 64 кЅ
@@ -132,7 +136,9 @@ unsigned long Picture::CalculateSize(TypePicture::E type)
         sizeof(bmp_zip_Signal3b),
         sizeof(bmp_zip_Signal4),
         sizeof(bmp_zip_Signal5a),
-        sizeof(bmp_zip_Signal5b)
+        sizeof(bmp_zip_Signal5b),
+        sizeof(bmp_zip_Scheme1),
+        sizeof(bmp_zip_Scheme2)
     };
 
     return sizes[type];

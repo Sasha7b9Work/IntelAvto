@@ -22,7 +22,7 @@ struct Value
         Set(value, type);
     }
 
-    Value (uint v) : raw(v) { }
+    Value (uint v = 0) : raw(v) { }
 
     void Set(int value, TypeValue::E type)
     {

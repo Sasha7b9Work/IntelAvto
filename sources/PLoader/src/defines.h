@@ -7,6 +7,7 @@
     #define __asm(x)
     #define WIN32_LEAN_AND_MEAN
     #define __attribute(x)
+    #define __attribute__(x)
 #endif
 
 
