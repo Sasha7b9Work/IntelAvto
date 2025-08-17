@@ -22,7 +22,7 @@ namespace PageCalibration
 
     static const int NUM_SIGNALS = 4;       //  алибруем только четыре из всех сигналов - те, которые формируем сами
     static uint8 type_signal = 0;           // ќдин из 
-    static TypeSignal::E CurrentSignal();
+    static TypePicture::E CurrentSignal();
 
     static const int NUM_ACCUM = 2;
     static uint8 type_accum = 0;
@@ -335,7 +335,7 @@ void PageCalibration::EnableOutput()
     Voltage voltage(GetVoltagePoint(current_point) * 1000);
     Time time(500);
 
-    if (CurrentSignal() == TypeSignal::_1)
+    if (CurrentSignal() == TypePicture::_1)
     {
         if (type_accum == 0)
         {
@@ -346,15 +346,15 @@ void PageCalibration::EnableOutput()
             Message::Start1_24V(voltage, time).Transmit();
         }
     }
-    else if (CurrentSignal() == TypeSignal::_2a)
+    else if (CurrentSignal() == TypePicture::_2a)
     {
         Message::Start2A(voltage, time).Transmit();
     }
-    else if (CurrentSignal() == TypeSignal::_3a)
+    else if (CurrentSignal() == TypePicture::_3a)
     {
         Message::Start3A(voltage).Transmit();
     }
-    else if (CurrentSignal() == TypeSignal::_3b)
+    else if (CurrentSignal() == TypePicture::_3b)
     {
         Message::Start3B(voltage).Transmit();
     }
@@ -456,14 +456,14 @@ void PageCalibration::RefuseCalibrateFactors()
 }
 
 
-TypeSignal::E PageCalibration::CurrentSignal()
+TypePicture::E PageCalibration::CurrentSignal()
 {
-    static TypeSignal::E signals[4] =
+    static TypePicture::E signals[4] =
     {
-        TypeSignal::_1,
-        TypeSignal::_2a,
-        TypeSignal::_3a,
-        TypeSignal::_3b
+        TypePicture::_1,
+        TypePicture::_2a,
+        TypePicture::_3a,
+        TypePicture::_3b
     };
 
     return signals[type_signal];

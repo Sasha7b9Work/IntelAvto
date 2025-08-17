@@ -6,7 +6,12 @@
 #define __packed __attribute__((packed)) //-V2573
 
 #ifdef MSVC
-#define __attribute(x) //-V2573
+    #define __attribute(x) //-V2573
+#endif
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push 
+    #pragma clang diagnostic ignored "-Wpadded"
 #endif
 
 #ifdef __cplusplus
@@ -394,6 +399,12 @@
 #ifdef __cplusplus
 }
 #endif
+
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
+#endif
+
 
 #endif /* __STM32F4xx_HAL_CONF_H */
  

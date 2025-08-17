@@ -14,20 +14,20 @@
 namespace PageSignal2b
 {
     TParameter param_td("td",
-        &gset.signals[TypeSignal::_2b_SAEJ1113].values12[0], Time(200), Time(2000),
-        &gset.signals[TypeSignal::_2b_SAEJ1113].values24[0], Time(200), Time(2000),
+        &gset.signals[TypePicture::_2b_SAEJ1113].values12[0], Time(200), Time(2000),
+        &gset.signals[TypePicture::_2b_SAEJ1113].values24[0], Time(200), Time(2000),
         250, 165);
 
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_2b_SAEJ1113].values12[1], Counter(1), Counter(10),
-        &gset.signals[TypeSignal::_2b_SAEJ1113].values24[1], Counter(1), Counter(10),
+        &gset.signals[TypePicture::_2b_SAEJ1113].values12[1], Counter(1), Counter(10),
+        &gset.signals[TypePicture::_2b_SAEJ1113].values24[1], Counter(1), Counter(10),
         90, 100
     );
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal3a::self);
-        TypeSignal::Set(TypeSignal::_3a);
+        TypePicture::Set(TypePicture::_3a);
     }
 
     DEF_BUTTON(bSignal2b,
@@ -43,7 +43,7 @@ namespace PageSignal2b
 
     static bool FuncStartTest()
     {
-        IT6523::Start(TypeSignal::_2b_SAEJ1113, param_N.GetValue().ToMU());
+        IT6523::Start(TypePicture::_2b_SAEJ1113, param_N.GetValue().ToMU());
 
         return true;
     }

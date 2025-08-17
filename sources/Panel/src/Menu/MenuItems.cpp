@@ -67,7 +67,7 @@ void Page::Draw(int x, int y, int, bool)
 
 const Page *Page::ForCurrentSignal()
 {
-    static const Page *pages[TypeSignal::Count] =
+    static const Page *pages[TypePicture::Count] =
     {
         PageSignal1::self,
         PageSignal2a::self,
@@ -79,7 +79,7 @@ const Page *Page::ForCurrentSignal()
         PageSignal5b::self
     };
 
-    return pages[TypeSignal::Current()];
+    return pages[TypePicture::Current()];
 }
 
 
@@ -291,7 +291,7 @@ pchar Parameter::Title() const
 }
 
 
-Value VParameter::GetCalibrateValue(TypeSignal::E type, VoltageMode::E mode)
+Value VParameter::GetCalibrateValue(TypePicture::E type, VoltageMode::E mode)
 {
     Display::value_in = GetValue();
 

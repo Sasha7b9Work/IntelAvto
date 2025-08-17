@@ -461,7 +461,7 @@ void Display::DrawPartScreen(int num, bool)
 
     Device::TasksUpdate();
 
-    if (!TypeSignal::IsExtern() && PageSettings::show_debug_voltage)
+    if (!TypePicture::IsExtern() && PageSettings::show_debug_voltage)
     {
         Text("%.2f", (double)value_in.ToUnits()).Write(400, 5, Color::WHITE);
         Text("%.2f", (double)value_out.ToUnits()).Write(400, 30);
@@ -486,8 +486,8 @@ void Display::DrawScreen()
     if (Menu::OpenedPageIsSignal())
     {
         Text("Тип сигнала %s : %s",
-            TypeSignal::ToString(),
-            TypeSignal::Name()).Write(230, 6, Color::WHITE);
+            TypePicture::ToString(),
+            TypePicture::Name()).Write(230, 6, Color::WHITE);
 
         DrawSignal();
     }
@@ -638,7 +638,7 @@ void Display::DrawSignal()
 {
     Color::GRAY.SetAsCurrent();
 
-    Picture::DrawPicure(150, 50, TypeSignal::Current());
+    Picture::DrawPicure(150, 50, TypePicture::Current());
 
     Page::ForCurrentSignal()->DrawParameters();
 }

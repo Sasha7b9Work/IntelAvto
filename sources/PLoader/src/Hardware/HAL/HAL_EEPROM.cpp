@@ -10,7 +10,7 @@
                             FLASH_FLAG_WRPERR |  /* write protected error flag         */   \
                             FLASH_FLAG_PGAERR |  /* programming alignment error flag   */   \
                             FLASH_FLAG_PGPERR |  /* programming parallelism error flag */   \
-                            FLASH_FLAG_PGSERR);  /* programming sequence error flag    */
+                            FLASH_FLAG_PGSERR)   /* programming sequence error flag    */
 
 
 

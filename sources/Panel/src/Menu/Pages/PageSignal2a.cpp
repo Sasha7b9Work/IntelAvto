@@ -14,29 +14,29 @@
 namespace PageSignal2a
 {
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_2a].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
-        &gset.signals[TypeSignal::_2a].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
+        &gset.signals[TypePicture::_2a].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
+        &gset.signals[TypePicture::_2a].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         350, 120);
 
     static AParameter param_A("Imax",
-        &gset.signals[TypeSignal::_2a].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypeSignal::_2a].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_2a].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_2a].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
         Page::x_param, Item::Height() * 5 + Page::d_y);
 
     static TParameter param_t1("Период",
-        &gset.signals[TypeSignal::_2a].values12[1], Time(200), Time(5000),
-        &gset.signals[TypeSignal::_2a].values24[1], Time(200), Time(5000),
+        &gset.signals[TypePicture::_2a].values12[1], Time(200), Time(5000),
+        &gset.signals[TypePicture::_2a].values24[1], Time(200), Time(5000),
         250, 70);
 
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_2a].values12[2], Counter(5000), Counter(100000),
-        &gset.signals[TypeSignal::_2a].values24[2], Counter(5000), Counter(100000),
+        &gset.signals[TypePicture::_2a].values12[2], Counter(5000), Counter(100000),
+        &gset.signals[TypePicture::_2a].values24[2], Counter(5000), Counter(100000),
         Page::x_param, Item::Height() * 4 + Page::d_y);
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal2b::self);
-        TypeSignal::Set(TypeSignal::_2b_SAEJ1113);
+        TypePicture::Set(TypePicture::_2b_SAEJ1113);
     }
 
     DEF_BUTTON(bSignal2a,
@@ -52,7 +52,7 @@ namespace PageSignal2a
 
     bool Start()
     {
-        Message::Start2A(param_Us.GetCalibrateValue(TypeSignal::_2a, VoltageMode::Current()), param_t1.GetValue()).Transmit();
+        Message::Start2A(param_Us.GetCalibrateValue(TypePicture::_2a, VoltageMode::Current()), param_t1.GetValue()).Transmit();
 
         RemainingTimeCounter::Start(param_t1.GetValue().ToMU(), param_N);
 

@@ -13,29 +13,29 @@
 namespace PageSignal5a
 {
     VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_5a_16750_1].values12[0], Voltage(79000), Voltage(101000),
-        &gset.signals[TypeSignal::_5a_16750_1].values24[0], Voltage(151000), Voltage(202000),
+        &gset.signals[TypePicture::_5a_16750_1].values12[0], Voltage(79000), Voltage(101000),
+        &gset.signals[TypePicture::_5a_16750_1].values24[0], Voltage(151000), Voltage(202000),
         350, 100);
 
     TParameter param_td("td",
-        &gset.signals[TypeSignal::_5a_16750_1].values12[1], Time(40), Time(400),
-        &gset.signals[TypeSignal::_5a_16750_1].values24[1], Time(100), Time(350),
+        &gset.signals[TypePicture::_5a_16750_1].values12[1], Time(40), Time(400),
+        &gset.signals[TypePicture::_5a_16750_1].values24[1], Time(100), Time(350),
         230, 160);
 
     CParameter param_Ri("Ri",
-        &gset.signals[TypeSignal::_5b_16750_2].values12[3], Counter(1), Counter(10),
-        &gset.signals[TypeSignal::_5b_16750_2].values24[3], Counter(1), Counter(10),
+        &gset.signals[TypePicture::_5b_16750_2].values12[3], Counter(1), Counter(10),
+        &gset.signals[TypePicture::_5b_16750_2].values24[3], Counter(1), Counter(10),
         90, Parameter::CalculateY(4));
 
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_5a_16750_1].values12[2], Counter(1), Counter(1000),
-        &gset.signals[TypeSignal::_5a_16750_1].values24[2], Counter(1), Counter(1000),
+        &gset.signals[TypePicture::_5a_16750_1].values12[2], Counter(1), Counter(1000),
+        &gset.signals[TypePicture::_5a_16750_1].values24[2], Counter(1), Counter(1000),
         90, Parameter::CalculateY(5));
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal5b::self);
-        TypeSignal::Set(TypeSignal::_5b_16750_2);
+        TypePicture::Set(TypePicture::_5b_16750_2);
     }
 
     DEF_BUTTON(bSignal5a,
@@ -51,7 +51,7 @@ namespace PageSignal5a
 
     static bool FuncStartTest()
     {
-        if (!IT6523::Start(TypeSignal::_5a_16750_1, param_N.GetValue().ToMU()))
+        if (!IT6523::Start(TypePicture::_5a_16750_1, param_N.GetValue().ToMU()))
         {
             Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse);
             return false;

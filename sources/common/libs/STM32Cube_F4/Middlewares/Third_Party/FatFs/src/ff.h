@@ -21,6 +21,18 @@
 #ifndef _FATFS
 #define _FATFS	68300	/* Revision ID */
 
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Wbad-function-cast"
+    #pragma clang diagnostic ignored "-Wswitch-enum"
+    #pragma clang diagnostic ignored "-Wcovered-switch-default"
+#endif
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -357,5 +369,11 @@ int ff_del_syncobj (_SYNC_t sobj);				/* Delete a sync object */
 #ifdef __cplusplus
 }
 #endif
+
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
+#endif
+
 
 #endif /* _FATFS */

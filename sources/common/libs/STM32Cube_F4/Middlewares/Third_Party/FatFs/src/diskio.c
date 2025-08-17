@@ -14,6 +14,17 @@
 #include "diskio.h"
 #include "ff_gen_drv.h"
 
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Wbad-function-cast"
+    #pragma clang diagnostic ignored "-Wswitch-enum"
+    #pragma clang diagnostic ignored "-Wcovered-switch-default"
+#endif
+
+
 #if defined ( __GNUC__ )
 #ifndef __weak
 #define __weak __attribute__((weak))

@@ -20,6 +20,16 @@
 #ifndef  USBH_DEF_H
 #define  USBH_DEF_H
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Wbad-function-cast"
+    #pragma clang diagnostic ignored "-Wswitch-enum"
+    #pragma clang diagnostic ignored "-Wcovered-switch-default"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -316,7 +326,7 @@ typedef enum
   USBH_FAIL,
   USBH_NOT_SUPPORTED,
   USBH_UNRECOVERED_ERROR,
-  USBH_ERROR_SPEED_UNKNOWN,
+  USBH_ERROR_SPEED_UNKNOWN
 } USBH_StatusTypeDef;
 
 
@@ -328,7 +338,7 @@ typedef enum
 {
   USBH_SPEED_HIGH  = 0U,
   USBH_SPEED_FULL  = 1U,
-  USBH_SPEED_LOW   = 2U,
+  USBH_SPEED_LOW   = 2U
 
 } USBH_SpeedTypeDef;
 
@@ -348,7 +358,7 @@ typedef enum
   HOST_CHECK_CLASS,
   HOST_CLASS,
   HOST_SUSPENDED,
-  HOST_ABORT_STATE,
+  HOST_ABORT_STATE
 } HOST_StateTypeDef;
 
 /* Following states are used for EnumerationState */
@@ -361,7 +371,7 @@ typedef enum
   ENUM_GET_FULL_CFG_DESC,
   ENUM_GET_MFC_STRING_DESC,
   ENUM_GET_PRODUCT_STRING_DESC,
-  ENUM_GET_SERIALNUM_STRING_DESC,
+  ENUM_GET_SERIALNUM_STRING_DESC
 } ENUM_StateTypeDef;
 
 /* Following states are used for CtrlXferStateMachine */
@@ -408,7 +418,7 @@ typedef enum
   USBH_URB_EVENT,
   USBH_CONTROL_EVENT,
   USBH_CLASS_EVENT,
-  USBH_STATE_CHANGED_EVENT,
+  USBH_STATE_CHANGED_EVENT
 }
 USBH_OSEventTypeDef;
 
@@ -504,6 +514,12 @@ typedef struct _USBH_HandleTypeDef
 #ifdef __cplusplus
 }
 #endif
+
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
+#endif
+
 
 #endif /* USBH_DEF_H */
 

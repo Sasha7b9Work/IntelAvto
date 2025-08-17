@@ -21,7 +21,7 @@ using namespace Primitives;
 
 namespace Picture
 {
-    static const unsigned char *archives[TypeSignal::Count] =
+    static const unsigned char *archives[TypePicture::Count] =
     {
         bmp_zip_Signal1,
         bmp_zip_Signal2a,
@@ -35,22 +35,22 @@ namespace Picture
 
     // \warn сюда нельз€ распаковать картинку больше 64 кЅ
     static uint8 buffer[1024 * 64] __attribute__ ((section("CCM_DATA")));
-    static TypeSignal::E prev_type = TypeSignal::Count;
+    static TypePicture::E prev_type = TypePicture::Count;
 
-    static bool Uncompress(TypeSignal::E);
+    static bool Uncompress(TypePicture::E);
 
-    static unsigned long CalculateSize(TypeSignal::E);
+    static unsigned long CalculateSize(TypePicture::E);
 }
 
 
-bool Picture::Uncompress(TypeSignal::E type)
+bool Picture::Uncompress(TypePicture::E type)
 {
     if (type == prev_type)
     {
         return true;
     }
 
-    prev_type = TypeSignal::Count;
+    prev_type = TypePicture::Count;
 
     mz_zip_archive zip_archive;
     std::memset(&zip_archive, 0, sizeof(zip_archive));
@@ -70,11 +70,11 @@ bool Picture::Uncompress(TypeSignal::E type)
 
     mz_zip_reader_end(&zip_archive);
 
-    return (prev_type != TypeSignal::Count);
+    return (prev_type != TypePicture::Count);
 }
 
 
-void Picture::DrawPicure(int x, int y, TypeSignal::E type)
+void Picture::DrawPicure(int x, int y, TypePicture::E type)
 {
 #pragma pack(push)
 #pragma pack(1)
@@ -121,9 +121,9 @@ void Picture::DrawPicure(int x, int y, TypeSignal::E type)
 }
 
 
-unsigned long Picture::CalculateSize(TypeSignal::E type)
+unsigned long Picture::CalculateSize(TypePicture::E type)
 {
-    static unsigned long sizes[TypeSignal::Count] =
+    static unsigned long sizes[TypePicture::Count] =
     {
         sizeof(bmp_zip_Signal1),
         sizeof(bmp_zip_Signal2a),

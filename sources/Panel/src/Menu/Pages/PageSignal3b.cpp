@@ -16,24 +16,24 @@ namespace PageSignal3b
     static const int period_ms = 100;
 
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_3b].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
-        &gset.signals[TypeSignal::_3b].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
+        &gset.signals[TypePicture::_3b].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
+        &gset.signals[TypePicture::_3b].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         250, 110);
 
     static AParameter param_A("Imax",
-        &gset.signals[TypeSignal::_3b].values12[2], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypeSignal::_3b].values24[2], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_3b].values12[2], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_3b].values24[2], Current(Current::min * 1000), Current(Current::max * 1000),
         Page::x_param, Item::Height() * 4 + Page::d_y);
 
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_3b].values12[1], Counter(10000), Counter(100000),
-        &gset.signals[TypeSignal::_3b].values24[1], Counter(10000), Counter(100000),
+        &gset.signals[TypePicture::_3b].values12[1], Counter(10000), Counter(100000),
+        &gset.signals[TypePicture::_3b].values24[1], Counter(10000), Counter(100000),
         90, 100);
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal4::self);
-        TypeSignal::Set(TypeSignal::_4_DIN40839);
+        TypePicture::Set(TypePicture::_4_DIN40839);
     }
 
     DEF_BUTTON(bSignal3b,
@@ -49,7 +49,7 @@ namespace PageSignal3b
 
     static bool FuncStartTest()
     {
-        Message::Start3B(param_Us.GetCalibrateValue(TypeSignal::_3b, VoltageMode::Current())).Transmit();
+        Message::Start3B(param_Us.GetCalibrateValue(TypePicture::_3b, VoltageMode::Current())).Transmit();
 
         RemainingTimeCounter::Start(period_ms, param_N);
 

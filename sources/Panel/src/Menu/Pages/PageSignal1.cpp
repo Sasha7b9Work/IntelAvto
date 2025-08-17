@@ -15,32 +15,32 @@ namespace PageSignal1
 {
     // Амплитуда
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_1].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
-        &gset.signals[TypeSignal::_1].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
+        &gset.signals[TypePicture::_1].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
+        &gset.signals[TypePicture::_1].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         280, 155);
 
     static AParameter param_A("Imax",
-        &gset.signals[TypeSignal::_1].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypeSignal::_1].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_1].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_1].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
         Page::x_param, Item::Height() * 5 + Page::d_y);
 
     // Период повторения
     static TParameter param_t1("Период",
-        &gset.signals[TypeSignal::_1].values12[1], Time(500), Time(5000),
-        &gset.signals[TypeSignal::_1].values24[1], Time(500), Time(5000),
+        &gset.signals[TypePicture::_1].values12[1], Time(500), Time(5000),
+        &gset.signals[TypePicture::_1].values24[1], Time(500), Time(5000),
         230, 60);
 
     // Количество импульсов
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_1].values12[2], Counter(5000), Counter(100000),
-        &gset.signals[TypeSignal::_1].values24[2], Counter(5000), Counter(100000),
+        &gset.signals[TypePicture::_1].values12[2], Counter(5000), Counter(100000),
+        &gset.signals[TypePicture::_1].values24[2], Counter(5000), Counter(100000),
         Page::x_param, Item::Height() * 4 + Page::d_y);
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal2a::self);
 
-        TypeSignal::Set(TypeSignal::_2a);
+        TypePicture::Set(TypePicture::_2a);
     }
 
     DEF_BUTTON(bSignal1,
@@ -58,11 +58,11 @@ namespace PageSignal1
     {
         if (VoltageMode::Is12())
         {
-            Message::Start1_12V(param_Us.GetCalibrateValue(TypeSignal::_1, VoltageMode::_12), param_t1.GetValue()).Transmit();
+            Message::Start1_12V(param_Us.GetCalibrateValue(TypePicture::_1, VoltageMode::_12), param_t1.GetValue()).Transmit();
         }
         else
         {
-            Message::Start1_24V(param_Us.GetCalibrateValue(TypeSignal::_1, VoltageMode::_24), param_t1.GetValue()).Transmit();
+            Message::Start1_24V(param_Us.GetCalibrateValue(TypePicture::_1, VoltageMode::_24), param_t1.GetValue()).Transmit();
         }
 
         IT6523::Start(param_A.GetValue());

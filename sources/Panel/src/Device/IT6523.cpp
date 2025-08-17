@@ -21,7 +21,7 @@ namespace IT6523
     static uint period_heavy_impulses = 10 * 1000;  // Время между "тяжёлыми" импульсами - теми, которые выделяют много тепла (5а, 5б)
     static uint time_last_heavy_impulse = 0;        // Время запуска последнего "тяжёлого" импульса
 
-    static TypeSignal::E actual = TypeSignal::Count;
+    static TypePicture::E actual = TypePicture::Count;
 
     int RemainedPulses()
     {
@@ -102,7 +102,7 @@ void IT6523::SendCommandF(pchar format, ...)
 
 bool IT6523::Start(const Value &current)
 {
-    if (!TypeSignal::IsExtern())
+    if (!TypePicture::IsExtern())
     {
         if (gset.voltage_mode.Is12())
         {
@@ -128,7 +128,7 @@ bool IT6523::Start(const Value &current)
     return true;
 }
 
-bool IT6523::Start(TypeSignal::E type, int num_pulses)
+bool IT6523::Start(TypePicture::E type, int num_pulses)
 {
     actual = type;
 
@@ -138,7 +138,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
 
     char buffer[32];
 
-    if (actual == TypeSignal::_2b_SAEJ1113)
+    if (actual == TypePicture::_2b_SAEJ1113)
     {
         IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommandF("carwave:sae:2b:volt %dV", gset.voltage_mode.CurrentVolts());
@@ -146,7 +146,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommandF("carwave:sae:2b:TD %s", SU::MilliUnitsToUnits(PageSignal2b::param_td.GetValue().ToMU(), str_Uakb));
         IT6523::SendCommand("carwave:sae:2b:state 1");
     }
-    else if (actual == TypeSignal::_4_DIN40839)
+    else if (actual == TypePicture::_4_DIN40839)
     {
         IT6523::SendCommandF("RES 0.01");
         IT6523::SendCommand("list:state 0");
@@ -155,7 +155,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
 
         const int duration_t9 = PageSignal4::param_t9.GetValue().ToMU();
 
-        period += duration_t9;
+        period += (uint)duration_t9;
 
         if (duration_t9 <= 10000)       // Не позволяет генератор в одной команде использовать длительность более 10 сек
         {
@@ -205,7 +205,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommand("list:recall 1");
         IT6523::SendCommand("list:state 1");
     }
-    else if (actual == TypeSignal::_5a_16750_1)
+    else if (actual == TypePicture::_5a_16750_1)
     {
         if (time_last_heavy_impulse != 0 && TIME_MS < time_last_heavy_impulse + period_heavy_impulses)
         {
@@ -221,7 +221,7 @@ bool IT6523::Start(TypeSignal::E type, int num_pulses)
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 1");
         time_last_heavy_impulse = TIME_MS;
     }
-    else if (actual == TypeSignal::_5b_16750_2)
+    else if (actual == TypePicture::_5b_16750_2)
     {
         if (time_last_heavy_impulse != 0 && TIME_MS < time_last_heavy_impulse + period_heavy_impulses)
         {
@@ -277,16 +277,16 @@ void IT6523::Stop()
 {
     Timer::DisableTask(TimerTask::IT6523);
 
-    if (actual == TypeSignal::_2b_SAEJ1113)
+    if (actual == TypePicture::_2b_SAEJ1113)
     {
         IT6523::SendCommand("carwave:sae:2b:state 0");
     }
-    else if (actual == TypeSignal::_4_DIN40839)
+    else if (actual == TypePicture::_4_DIN40839)
     {
         IT6523::SendCommand("carwave:startup:din40839:state 0");
     }
-    else if (actual == TypeSignal::_5a_16750_1 ||
-        actual == TypeSignal::_5b_16750_2)
+    else if (actual == TypePicture::_5a_16750_1 ||
+        actual == TypePicture::_5b_16750_2)
     {
         IT6523::SendCommandF("carwave:iso16750:load:dump:state 0");
     }

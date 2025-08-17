@@ -9,7 +9,7 @@
 #include <cstring>
 
 
-TypeSignal::E TypeSignal::current = TypeSignal::_1;
+TypePicture::E TypePicture::current = TypePicture::_1;
 
 static ColorScheme def_colors[3] =
 {
@@ -63,7 +63,7 @@ static Settings def_set =
     },
     StyleGUI(StyleGUI::Modern),
     0,                                          // colorScheme
-    TypeSignal::_1,
+    TypePicture::_1,
     { VoltageMode::_12 },
     {
         {   {   Voltage(75000),                 // 1 : Us          12      Signal 1
@@ -241,7 +241,7 @@ void Settings::Reset()
 }
 
 
-pchar TypeSignal::ToString()
+pchar TypePicture::ToString()
 {
     static const pchar values[Count] =
     {
@@ -259,7 +259,7 @@ pchar TypeSignal::ToString()
 }
 
 
-bool TypeSignal::IsExtern()
+bool TypePicture::IsExtern()
 {
     E s = Current();
 
@@ -271,7 +271,7 @@ bool TypeSignal::IsExtern()
 }
 
 
-pchar TypeSignal::Name()
+pchar TypePicture::Name()
 {
     static const pchar names[Count] =
     {

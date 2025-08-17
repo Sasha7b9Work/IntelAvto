@@ -9,7 +9,7 @@ namespace IT6523
 
     // Запускает процесс формирования периодических импульсов, формируемых внешним генератором
     // Возвращает false, если запуск не может быть произведён - не прошло достаточно времени
-    bool Start(TypeSignal::E, int num_pulses);
+    bool Start(TypePicture::E, int num_pulses);
 
     // Включает соотвествующее напряжение на внешнем генераторе
     bool Start(const Value &current);

@@ -44,7 +44,7 @@ struct VoltageMode
 };
 
 
-struct TypeSignal
+struct TypePicture
 {
     enum E
     {
@@ -116,7 +116,7 @@ struct SettingsCal
     // 8 типов сигналов
     // 2 - 12/24В
     // 4 - четыре отрезка для калибровки. Пока используем один
-    StructCal cal[TypeSignal::Count][VoltageMode::Count][4];
+    StructCal cal[TypePicture::Count][VoltageMode::Count][4];
 };
 
 
@@ -126,9 +126,9 @@ struct Settings
     ColorScheme    schemes[ColorScheme::COUNT];
     StyleGUI       styleGUI;
     uint8          colorScheme;
-    TypeSignal::E  signal;
+    TypePicture::E signal;
     VoltageMode    voltage_mode;
-    SettingsSignal signals[TypeSignal::Count];
+    SettingsSignal signals[TypePicture::Count];
     uint16         portSCPI;                            // По этому порту подключается внешний клиент для команд SCPI
     uint16         portIT6523;                          // По этому порту подключаемся к IT6523
     uint8          ipIT6523[4];

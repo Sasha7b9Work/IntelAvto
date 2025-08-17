@@ -16,24 +16,24 @@ namespace PageSignal3a
     static const int period_ms = 100;
 
     static VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_3a].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
-        &gset.signals[TypeSignal::_3a].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
+        &gset.signals[TypePicture::_3a].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
+        &gset.signals[TypePicture::_3a].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         275, 125);
 
     static AParameter param_A("Imax",
-        &gset.signals[TypeSignal::_3a].values12[2], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypeSignal::_3a].values24[2], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_3a].values12[2], Current(Current::min * 1000), Current(Current::max * 1000),
+        &gset.signals[TypePicture::_3a].values24[2], Current(Current::min * 1000), Current(Current::max * 1000),
         Page::x_param, Item::Height() * 4 + Page::d_y);
 
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_3a].values12[1], Counter(10000), Counter(100000),
-        &gset.signals[TypeSignal::_3a].values24[1], Counter(10000), Counter(100000),
+        &gset.signals[TypePicture::_3a].values12[1], Counter(10000), Counter(100000),
+        &gset.signals[TypePicture::_3a].values24[1], Counter(10000), Counter(100000),
         Page::x_param, Item::Height() * 3 + Page::d_y);
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal3b::self);
-        TypeSignal::Set(TypeSignal::_3b);
+        TypePicture::Set(TypePicture::_3b);
     }
 
     DEF_BUTTON(bSignal3a,
@@ -49,7 +49,7 @@ namespace PageSignal3a
 
     static bool FuncStartTest()
     {
-        Message::Start3A(param_Us.GetCalibrateValue(TypeSignal::_3a, VoltageMode::Current())).Transmit();
+        Message::Start3A(param_Us.GetCalibrateValue(TypePicture::_3a, VoltageMode::Current())).Transmit();
 
         RemainingTimeCounter::Start(period_ms, param_N);
 

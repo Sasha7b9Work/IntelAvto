@@ -2,6 +2,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Wbad-function-cast"
+    #pragma clang diagnostic ignored "-Wswitch-enum"
+    #pragma clang diagnostic ignored "-Wcovered-switch-default"
+    #pragma clang diagnostic ignored "-Wc++98-compat-pedantic"
+#endif
+
+
 #define USBH_MAX_NUM_ENDPOINTS                2
 #define USBH_MAX_NUM_INTERFACES               2
 #define USBH_MAX_NUM_CONFIGURATION            1
@@ -33,4 +46,9 @@
 #define USBH_UsrLog(...) {}
 #define USBH_ErrLog(...) {}
 #define USBH_DbgLog(...) {}
+#endif
+
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
 #endif

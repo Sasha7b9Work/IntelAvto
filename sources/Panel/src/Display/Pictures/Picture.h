@@ -6,5 +6,5 @@
 namespace Picture
 {
     // Нарисовать картинку. buffer - место для её хранения без распковки
-    void DrawPicure(int x, int y, TypeSignal::E);
+    void DrawPicure(int x, int y, TypePicture::E);
 }

@@ -20,6 +20,18 @@
 #ifndef __FF_GEN_DRV_H
 #define __FF_GEN_DRV_H
 
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push
+    #pragma clang diagnostic ignored "-Wpadded"
+    #pragma clang diagnostic ignored "-Wextra-semi-stmt"
+    #pragma clang diagnostic ignored "-Wunsafe-buffer-usage"
+    #pragma clang diagnostic ignored "-Wbad-function-cast"
+    #pragma clang diagnostic ignored "-Wswitch-enum"
+    #pragma clang diagnostic ignored "-Wcovered-switch-default"
+#endif
+
+
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -73,6 +85,12 @@ uint8_t FATFS_GetAttachedDriversNbr(void);
 #ifdef __cplusplus
 }
 #endif
+
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
+#endif
+
 
 #endif /* __FF_GEN_DRV_H */
 

@@ -13,34 +13,34 @@
 namespace PageSignal4
 {
     static CParameter param_N("N",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[0], Counter(1), Counter(10),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[0], Counter(1), Counter(10),
+        &gset.signals[TypePicture::_4_DIN40839].values12[0], Counter(1), Counter(10),
+        &gset.signals[TypePicture::_4_DIN40839].values24[0], Counter(1), Counter(10),
         90, 70);
 
     VParameter param_Us("Us",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[1], Voltage(6000), Voltage(7500),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[1], Voltage(12000), Voltage(16000),
+        &gset.signals[TypePicture::_4_DIN40839].values12[1], Voltage(6000), Voltage(7500),
+        &gset.signals[TypePicture::_4_DIN40839].values24[1], Voltage(12000), Voltage(16000),
         200, 110);
 
     VParameter param_Ua("Ua",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[2], Voltage(2500), Voltage(6000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[2], Voltage(5000), Voltage(12000),
+        &gset.signals[TypePicture::_4_DIN40839].values12[2], Voltage(2500), Voltage(6000),
+        &gset.signals[TypePicture::_4_DIN40839].values24[2], Voltage(5000), Voltage(12000),
         360, 90);
 
     TParameter param_t7("t7",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[3], Time(15), Time(40),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[3], Time(50), Time(100),
+        &gset.signals[TypePicture::_4_DIN40839].values12[3], Time(15), Time(40),
+        &gset.signals[TypePicture::_4_DIN40839].values24[3], Time(50), Time(100),
         230, 150);
 
     TParameter param_t9("t9",
-        &gset.signals[TypeSignal::_4_DIN40839].values12[4], Time(500), Time(20000),
-        &gset.signals[TypeSignal::_4_DIN40839].values24[4], Time(500), Time(20000),
+        &gset.signals[TypePicture::_4_DIN40839].values12[4], Time(500), Time(20000),
+        &gset.signals[TypePicture::_4_DIN40839].values24[4], Time(500), Time(20000),
         345, 135);
 
     static void FuncPress_Signal()
     {
         Menu::SetOpenedPage(PageSignal5a::self);
-        TypeSignal::Set(TypeSignal::_5a_16750_1);
+        TypePicture::Set(TypePicture::_5a_16750_1);
     }
 
     DEF_BUTTON(bSignal5a,
@@ -56,7 +56,7 @@ namespace PageSignal4
 
     static bool FuncStartTest()
     {
-        IT6523::Start(TypeSignal::_4_DIN40839, param_N.GetValue().ToMU());
+        IT6523::Start(TypePicture::_4_DIN40839, param_N.GetValue().ToMU());
 
         return true;
     }

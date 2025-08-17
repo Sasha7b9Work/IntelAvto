@@ -231,7 +231,7 @@ void Timer::PauseOnTicks(uint numTicks)
     uint startTicks = TIME_TICKS; //-V2571
     while (TIME_TICKS - startTicks < numTicks) //-V2571
     {
-    };
+    }
 }
 
 

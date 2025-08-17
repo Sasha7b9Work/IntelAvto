@@ -20,6 +20,11 @@
 #ifndef STM32F4xx_LL_USB_H
 #define STM32F4xx_LL_USB_H
 
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic push 
+    #pragma clang diagnostic ignored "-Wpadded"
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -573,6 +578,11 @@ HAL_StatusTypeDef USB_DeActivateRemoteWakeup(const USB_OTG_GlobalTypeDef *USBx);
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
+
+
+#if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
+    #pragma clang diagnostic pop
+#endif
 
 
 #endif /* STM32F4xx_LL_USB_H */
