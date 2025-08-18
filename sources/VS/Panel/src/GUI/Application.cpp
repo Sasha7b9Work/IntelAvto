@@ -192,7 +192,7 @@ void Frame::OnConvertToArray(wxCommandEvent &)
         {
             wxFileName name(dialog.GetPath());
             wxFile ofile;
-            ofile.Open(dialog.GetPath() + ".cpp", wxFile::write);
+            ofile.Open(dialog.GetPath() + ".inc", wxFile::write);
 
             ofile.Write(wxString::Format("static const unsigned char bmp_zip_%s[] =\n{\n", name.GetName()));
 

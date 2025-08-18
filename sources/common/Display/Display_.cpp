@@ -638,7 +638,7 @@ void Display::DrawSignal()
 {
     Color::GRAY.SetAsCurrent();
 
-    Picture::DrawPicure(150, 50, TypePicture::Current());
+    Picture::DrawPicure(150, 50, TypePicture::Scheme1);
 
     Page::ForCurrentSignal()->DrawParameters();
 }
