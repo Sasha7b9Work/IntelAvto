@@ -21,7 +21,7 @@ namespace IT6523
     static uint period_heavy_impulses = 10 * 1000;  // ¬рем€ между "т€жЄлыми" импульсами - теми, которые выдел€ют много тепла (5а, 5б)
     static uint time_last_heavy_impulse = 0;        // ¬рем€ запуска последнего "т€жЄлого" импульса
 
-    static TypePicture::E actual = TypePicture::Count;
+    static TypePicture::E actual = TypePicture::_Count;
 
     int RemainedPulses()
     {

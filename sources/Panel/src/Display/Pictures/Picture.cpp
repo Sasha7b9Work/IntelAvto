@@ -23,7 +23,7 @@ using namespace Primitives;
 
 namespace Picture
 {
-    static const unsigned char *archives[TypePicture::Count] =
+    static const unsigned char *archives[TypePicture::_Count] =
     {
         bmp_zip_Signal1,
         bmp_zip_Signal2a,
@@ -39,7 +39,7 @@ namespace Picture
 
     // \warn сюда нельзя распаковать картинку больше 64 кБ
     static uint8 buffer[1024 * 64] __attribute__ ((section("CCM_DATA")));
-    static TypePicture::E prev_type = TypePicture::Count;
+    static TypePicture::E prev_type = TypePicture::_Count;
 
     static bool Uncompress(TypePicture::E);
 
@@ -54,7 +54,7 @@ bool Picture::Uncompress(TypePicture::E type)
         return true;
     }
 
-    prev_type = TypePicture::Count;
+    prev_type = TypePicture::_Count;
 
     mz_zip_archive zip_archive;
     std::memset(&zip_archive, 0, sizeof(zip_archive));
@@ -74,7 +74,7 @@ bool Picture::Uncompress(TypePicture::E type)
 
     mz_zip_reader_end(&zip_archive);
 
-    return (prev_type != TypePicture::Count);
+    return (prev_type != TypePicture::_Count);
 }
 
 
@@ -108,13 +108,17 @@ void Picture::DrawPicure(int x, int y, TypePicture::E type)
     {
         StructureBMP *head = (StructureBMP *)buffer; //-V641
 
+        uint *colors = (uint *)((uint8 *)buffer + 14 + head->header_size);          // Находим таблицу цветов
+
         uint8 *pixel = ((uint8 *)buffer) + head->bmp_offset;
 
         for (int j = y + head->height; j > y; j--)
         {
             for (int i = x; i < x + head->width; i++)
             {
-                if (*pixel++ > 1)
+                uint color = colors[*pixel++];                                      // Находим цвет
+
+                if ((color & 0xFFFFFF00) != 0xFFFFFF00)                             // И ставим точку, если цвет - не белый
                 {
                     Point().Draw(i, j, Color::WHITE);
                 }
@@ -127,7 +131,7 @@ void Picture::DrawPicure(int x, int y, TypePicture::E type)
 
 unsigned long Picture::CalculateSize(TypePicture::E type)
 {
-    static unsigned long sizes[TypePicture::Count] =
+    static unsigned long sizes[TypePicture::_Count] =
     {
         sizeof(bmp_zip_Signal1),
         sizeof(bmp_zip_Signal2a),

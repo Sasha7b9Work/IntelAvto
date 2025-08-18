@@ -243,7 +243,7 @@ void Settings::Reset()
 
 pchar TypePicture::ToString()
 {
-    static const pchar values[Count] =
+    static const pchar values[_Count] =
     {
         "1",
         "2a",
@@ -252,7 +252,9 @@ pchar TypePicture::ToString()
         "3b",
         "4",
         "5a",
-        "5b"
+        "5b",
+        "",
+        ""
     };
 
     return values[current];
@@ -273,7 +275,7 @@ bool TypePicture::IsExtern()
 
 pchar TypePicture::Name()
 {
-    static const pchar names[Count] =
+    static const pchar names[_Count] =
     {
         "1",
         "2a",
@@ -282,7 +284,9 @@ pchar TypePicture::Name()
         "3b",
         "DIN40839",
         "16750-1",
-        "16750-2"
+        "16750-2",
+        "",
+        ""
     };
 
     return names[current];

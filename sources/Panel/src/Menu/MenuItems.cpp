@@ -67,7 +67,7 @@ void Page::Draw(int x, int y, int, bool)
 
 const Page *Page::ForCurrentSignal()
 {
-    static const Page *pages[TypePicture::Count] =
+    static const Page *pages[TypePicture::_Count] =
     {
         PageSignal1::self,
         PageSignal2a::self,
@@ -76,7 +76,9 @@ const Page *Page::ForCurrentSignal()
         PageSignal3b::self,
         PageSignal4::self,
         PageSignal5a::self,
-        PageSignal5b::self
+        PageSignal5b::self,
+        nullptr,
+        nullptr
     };
 
     return pages[TypePicture::Current()];
