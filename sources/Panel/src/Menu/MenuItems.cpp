@@ -353,29 +353,35 @@ bool Choice::OnKey(Key::E key)
 bool Parameter::OnKey(Key::E key)
 {
     if (key == Key::OK ||
-        key == Key::GovButton)
+        key == Key::GovButton ||
+        (key >= Key::_0 && key <= Key::_9))
     {
         if (IsNowEdited())
         {
-            editable = nullptr;
-
-            Value new_value(0);
-
-            ds.ToValue(&new_value);
-
-            const int milli_units = new_value.ToMU();
-
-            if (milli_units < GetMin().ToMU())
+            if (key == Key::OK || key == Key::GovButton)
             {
-                GetValue() = Value(GetMin().GetRaw());
-            }
-            else if (milli_units > GetMax().ToMU())
-            {
-                GetValue() = Value(GetMax().GetRaw());
-            }
-            else
-            {
-                GetValue() = new_value;
+                editable = nullptr;
+
+                Value new_value(0);
+
+                ds.ToValue(&new_value);
+
+                const int milli_units = new_value.ToMU();
+
+                if (milli_units < GetMin().ToMU())
+                {
+                    GetValue() = Value(GetMin().GetRaw());
+                }
+                else if (milli_units > GetMax().ToMU())
+                {
+                    GetValue() = Value(GetMax().GetRaw());
+                }
+                else
+                {
+                    GetValue() = new_value;
+                }
+
+                return true;
             }
         }
         else
@@ -383,9 +389,15 @@ bool Parameter::OnKey(Key::E key)
             editable = this;
 
             ds.Set(this);
-        }
 
-        return true;
+            if (key >= Key::_0 && key <= Key::_9)
+            {
+                ds.PressKey(Key::Esc);
+                ds.PressKey(key);
+            }
+
+            return true;
+        }
     }
 
     if (IsNowEdited())
