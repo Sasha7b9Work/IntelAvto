@@ -275,6 +275,13 @@ void ConsoleSCPI::AddText(const wxString &str)
 }
 
 
+void ConsoleSCPI::AddTextPromt(const wxString &str)
+{
+    AddText(DIRECT_PROMT);
+    AddText(str);
+}
+
+
 void ConsoleSCPI::SwitchVisibility()
 {
     Self()->Show(!Self()->IsShown());

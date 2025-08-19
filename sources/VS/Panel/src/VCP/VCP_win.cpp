@@ -13,7 +13,7 @@ void VCP::SendStringAsynch0D0A(char *format, ...)
     vsprintf(buffer, format, args);
     va_end(args);
     std::strcat(buffer, "\r\n");
-    ConsoleSCPI::Self()->AddText(buffer);
+    ConsoleSCPI::Self()->AddTextPromt(buffer);
 }
 
 
@@ -24,5 +24,5 @@ void VCP::SendStringAsynchRAW(char *format, ...)
     va_start(args, format);
     vsprintf(buffer, format, args);
     va_end(args);
-    ConsoleSCPI::Self()->AddText(buffer);
+    ConsoleSCPI::Self()->AddTextPromt(buffer);
 }

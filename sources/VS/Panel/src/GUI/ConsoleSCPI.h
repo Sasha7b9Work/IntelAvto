@@ -18,8 +18,9 @@ public:
 
     void SwitchVisibility();
 
-    void AddLine(const wxString &line);
-    void AddText(const wxString &text);
+    void AddLine(const wxString &);
+    void AddText(const wxString &);
+    void AddTextPromt(const wxString &);
 
     void StartTest();
     void StopTest();
