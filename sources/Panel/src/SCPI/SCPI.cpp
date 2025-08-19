@@ -16,6 +16,20 @@ namespace SCPI
     static RingBuffer ring_buffer;      // Сюда ложим принятые данные прямо в прерывании
 
     static InBuffer in_buffer;          // А сюда перекладываем из ring_buffer в функции SCPI::Update()
+
+    static void SignalSet(pchar);
+
+    struct StructCommand
+    {
+        pchar message;
+        void (*func)(pchar);
+    };
+
+    static const StructCommand commands[] =
+    {
+        { ":SIGNAL:SET ", SignalSet },
+        { nullptr, nullptr }
+    };
 }
 
 
@@ -95,6 +109,26 @@ SCPI::Command *SCPI::InBuffer::ParseCommand(pchar symbols)
         return new CommandIDN();
     }
 
+    if (std::strcmp(data, ":SIGNAL:GET?") == 0)
+    {
+        return new CommandSignalGet();
+    }
+
+    const StructCommand *command = &commands[0];
+
+    while (command->message)
+    {
+        uint num_symbols = std::strlen(command->message);
+
+        if (std::memcmp(symbols, command->message, num_symbols) == 0)
+        {
+            command->func(symbols + num_symbols);
+            return new CommandNull();
+        }
+
+        command++;
+    }
+
     SCPI::Error(symbols);
 
     return new CommandNull();
@@ -111,4 +145,10 @@ void SCPI::Error(pchar text)
 {
     VCP::SendStringAsynchRAW((char *)"ERROR !!! Unknown sequence : ");
     VCP::SendStringAsynch0D0A((char *)text);
+}
+
+
+void SCPI::SignalSet(pchar)
+{
+    int i = 0;
 }

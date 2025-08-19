@@ -11,7 +11,7 @@ namespace SCPI
     class InBuffer : public Buffer2048
     {
     public:
-        InBuffer() { }
+        InBuffer() = default;
         void Update();
     private:
         Command *ParseCommand(pchar);

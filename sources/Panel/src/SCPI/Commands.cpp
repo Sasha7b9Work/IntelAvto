@@ -22,7 +22,14 @@ bool SCPI::CommandWithParameters::Execute()
 bool SCPI::CommandIDN::Execute()
 {
     String<> message("OAO MNIPI, KPTS, v1.0.1");
+    Send(message.c_str());
+    return true;
+}
 
+
+bool SCPI::CommandSignalGet::Execute()
+{
+    String<> message("SIGNAL 1");
     Send(message.c_str());
     return true;
 }
