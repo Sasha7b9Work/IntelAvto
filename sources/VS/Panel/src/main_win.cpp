@@ -5,6 +5,7 @@
 #include "Display/Display_.h"
 #include "Hardware/Keyboard/Keyboard_.h"
 #include "Hardware/Timer.h"
+#include "SCPI/SCPI.h"
 
 
 void init()
@@ -21,4 +22,5 @@ void update()
     Menu::Input::Update();
     Display::Update();
     Timer::UpdateTasks();
+    SCPI::Update();
 }

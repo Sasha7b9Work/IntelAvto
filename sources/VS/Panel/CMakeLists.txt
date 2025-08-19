@@ -12,12 +12,14 @@ include_directories(
     ../../common/libs
     ../../common/libs/STM32Cube_F4/Drivers/STM32F4xx_HAL_Driver/Inc
     ../../common/libs/STM32Cube_F4/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+    ../../common/libs/STM32Cube_F4/Middlewares/ST/STM32_USB_Device_Library/Core/Inc
     ../../common/_VS_KEIL/CMSIS
     ../../common/_VS_KEIL/FatFS
     ../../common/_VS_WIN/USBH
     ../../common
     ../../common/libs/FatFS
     ../../common/FlashDrive/USBH
+    ../../common/VCP/USBD
     ../../Panel/src
     ../../Panel/tests
     ../../Panel/src/Hardware/HAL
@@ -38,6 +40,7 @@ add_compile_options(
     /wd4623     # 'xxx': default constructor was implicitly defined as deleted
     /wd4625     # 'xxx': copy constructor was implicitly defined as deleted
     /wd4626     # 'xxx': assignment operator was implicitly defined as deleted
+    /wd4710     # function not inlined
     /wd4774
     /wd4820     # 'xxx': 'y' bytes padding added after data member 'zzz'
     /wd4996     # 'xxx': This function or variable may be unsafe. Consider using yyy instead. To disable
@@ -108,7 +111,9 @@ file(GLOB LAN                ../../Panel/src/LAN/LAN.h
                                          src/LAN/*.*)
 file(GLOB MENU               ../../Panel/src/Menu/*.*)
 file(GLOB MENU_PAGES         ../../Panel/src/Menu/Pages/*.*)
+file(GLOB SCPI               ../../Panel/src/SCPI/*.*)
 file(GLOB SETTINGS           ../../Panel/src/Settings/*.*)
+file(GLOB VCP                            src/VCP/*.*)
 file(GLOB UTILS                 ../../common/Utils/*.*)
 
 source_group(_VS/HAL               FILES ${VS_HAL})
@@ -127,7 +132,9 @@ source_group(Hardware/Keyboard     FILES ${HARDWARE_KEYBOARD})
 source_group(LAN                   FILES ${LAN})
 source_group(Menu                  FILES ${MENU})
 source_group(Menu/Pages            FILES ${MENU_PAGES})
+source_group(SCPI                  FILES ${SCPI})
 source_group(Settings              FILES ${SETTINGS})
+source_group(VCP                   FILES ${VCP})
 source_group(Utils                 FILES ${UTILS})
 
 set_source_files_properties(
@@ -157,7 +164,9 @@ add_executable(${PROJECT_NAME}
     ${LAN}
     ${MENU}
     ${MENU_PAGES}
+    ${SCPI}
     ${SETTINGS}
+    ${VCP}
     ${UTILS}
 )
 

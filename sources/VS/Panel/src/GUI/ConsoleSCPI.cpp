@@ -3,6 +3,7 @@
 #include "GUI/ConsoleSCPI.h"
 #include "GUI/ComPort.h"
 #include "Display/Text_.h"
+#include "SCPI/SCPI.h"
 
 #pragma warning(push, 0)
 #include <wx/wx.h>
@@ -146,7 +147,7 @@ void ConsoleSCPI::OnTextEnter(wxCommandEvent &)
 {
     history.Add(line->GetLineText(0));
 
-    AddText(DIRECT_PROMT);
+    AddText(REVERSE_PROMT);
 
     AddLine(line->GetLineText(0));
 
@@ -213,7 +214,8 @@ void ConsoleSCPI::SendToSCPI(const char *txt)
     }
     else
     {
-
+        SCPI::AddNewData((uint8 *)txt, std::strlen(txt));
+        SCPI::AddNewData((uint8 *)"\x0d", 1);
     }
 }
 
