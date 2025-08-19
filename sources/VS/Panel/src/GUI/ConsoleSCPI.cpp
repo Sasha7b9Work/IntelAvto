@@ -206,16 +206,15 @@ void ConsoleSCPI::OnTimerTest(wxTimerEvent &)
 
 void ConsoleSCPI::SendToSCPI(const char *txt)
 {
+    Text message("%s\x0d", txt);
+
     if (ComPort::IsOpened())
     {
-        Text message("%s\x0d", txt);
-
         ComPort::Send(message.c_str());
     }
     else
     {
-        SCPI::AddNewData((uint8 *)txt, std::strlen(txt));
-        SCPI::AddNewData((uint8 *)"\x0d", 1);
+        SCPI::AddNewData((uint8 *)message.c_str(), std::strlen(message.c_str()));
     }
 }
 
