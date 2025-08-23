@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 361
+#define VERSION_BUILD 362
 
-#define DATE_BUILD "2025-08-19 12:37:14"
+#define DATE_BUILD "2025-08-23 07:51:39"
 
 #include <stdint.h>
 
@@ -74,6 +74,7 @@ union BitSet16
 #define _SET_BIT(value, bit) ((value) |= (1 << (bit)))
 
 
+#define STR_BACK        "Выйти"
 #define STR_NUM_VERSION "Cherem V1.2"
 #define MODEL_RU        "Частотомер электронно-счетный Ч3-96/2"
 #define MODEL_EN        "Electronic counting frequency meter Ch3-96/2"

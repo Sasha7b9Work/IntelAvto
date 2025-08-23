@@ -97,7 +97,7 @@ namespace PageCalibration
     }
 
     DEF_BUTTON(bBack,
-        "Назад",
+        STR_BACK,
         FuncPress_Back
     );
 

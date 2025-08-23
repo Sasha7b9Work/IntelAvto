@@ -120,7 +120,7 @@ SCPI::Command *SCPI::InBuffer::ParseCommand(pchar symbols)
     {
         uint num_symbols = std::strlen(command->message);
 
-        if (std::memcmp(symbols, command->message, num_symbols) == 0)
+        if (std::memcmp((void *)symbols, (void *)command->message, num_symbols) == 0)
         {
             command->func(symbols + num_symbols);
             return new CommandNull();
@@ -150,5 +150,5 @@ void SCPI::Error(pchar text)
 
 void SCPI::SignalSet(pchar)
 {
-    int i = 0;
+
 }

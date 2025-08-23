@@ -8,7 +8,7 @@
 namespace PageLAN
 {
     DEF_BUTTON(bBack,
-        "Назад",
+        STR_BACK,
         []()
         {
             Menu::SetOpenedPage(PageSettings::self);
@@ -65,7 +65,7 @@ namespace PageLAN
     namespace PageIT6523
     {
         DEF_BUTTON(bBack,
-            "Назад",
+            STR_BACK,
             []()
             {
                 Menu::SetOpenedPage(PageLAN::self);
@@ -99,7 +99,7 @@ namespace PageLAN
     namespace PageSCPI
     {
         DEF_BUTTON(bBack,
-            "Назад",
+            STR_BACK,
             []()
             {
                 Menu::SetOpenedPage(PageLAN::self);

@@ -77,7 +77,7 @@ namespace PageMain
 //        &bFlashDrive,
         &bCalibration,
         &bInfo,
-        &bDisplay,
+//        &bDisplay,
         nullptr
     };
 

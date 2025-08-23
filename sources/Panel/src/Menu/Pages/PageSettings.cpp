@@ -13,7 +13,7 @@ namespace PageSettings
     }
 
     DEF_BUTTON(bBack,
-        "Назад",
+        STR_BACK,
         FuncPress_Back
     );
 
@@ -40,7 +40,7 @@ namespace PageSettings
     {
         &bBack,
         &bLAN,
-        &chDebugU,
+//        &chDebugU,
         nullptr
     };
 
