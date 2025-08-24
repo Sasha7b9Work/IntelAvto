@@ -406,6 +406,8 @@ void Display::SaveToFlashDrive()
 
     FDrive::CloseFile(&structForWrite);
 
+    Display::ShowWarningMessage(WarningMessage::PictureSaved, 1000);
+
 #pragma pack(pop)
 }
 
@@ -523,7 +525,7 @@ void Display::DrawScreen()
 
     if (warn != WarningMessage::Count)
     {
-        if (IT6523::TimeLeftToHeavyImpulse() == 0)
+        if (IT6523::TimeLeftToHeavyImpulse() == 0 && warn == WarningMessage::LittleTimeHeavyImpulse)
         {
             DisableWarningMessage();
         }
@@ -537,12 +539,24 @@ void Display::DrawScreen()
 
             int d = 10;
 
-            Rect(w, h).FillRounded(x, y, 2, Color::BACK, Color::WHITE);
-
-            if ((((TIME_MS - time_warn) / 500) % 2) == 0)
+            if (warn == WarningMessage::LittleTimeHeavyImpulse)
             {
-                Text("Импульс можно включить через %d секунд", IT6523::TimeLeftToHeavyImpulse()).
-                    Write(x + d, y + d, Color::WHITE);
+                Rect(w, h).FillRounded(x, y, 2, Color::BACK, Color::WHITE);
+
+                if ((((TIME_MS - time_warn) / 500) % 2) == 0)
+                {
+                    Text("Импульс можно включить через %d секунд", IT6523::TimeLeftToHeavyImpulse()).
+                        Write(x + d, y + d, Color::WHITE);
+                }
+            }
+            else if (warn == WarningMessage::PictureSaved)
+            {
+                w = 220;
+                x = 170;
+
+                Rect(w, h).FillRounded(x, y, 2, Color::BACK, Color::WHITE);
+
+                Text("Изображение сохранено").Write(x + d, y + d, Color::WHITE);
             }
         }
     }
@@ -638,19 +652,19 @@ void Display::DrawSignal()
 {
     Color::GRAY.SetAsCurrent();
 
-    Picture::DrawPicure(150, 50, TypePicture::Current());
+    Picture::DrawPicure(150, 50, TypePicture::Scheme1);
 
     Page::ForCurrentSignal()->DrawParameters();
 }
 
 
-void Display::ShowWarningMessage(WarningMessage::E _warn)
+void Display::ShowWarningMessage(WarningMessage::E _warn, uint time)
 {
     warn = _warn;
 
     time_warn = TIME_MS;
 
-    Timer::SetDefferedOnceTask(TimerTask::DisplayWarningMessage, 4500, DisableWarningMessage);
+    Timer::SetDefferedOnceTask(TimerTask::DisplayWarningMessage, time, DisableWarningMessage);
 }
 
 

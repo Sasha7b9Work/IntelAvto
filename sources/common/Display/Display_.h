@@ -12,6 +12,7 @@ struct WarningMessage
     enum E
     {
         LittleTimeHeavyImpulse,
+        PictureSaved,               // Изображение сохранено на флешку
         Count
     };
 };
@@ -69,7 +70,7 @@ namespace Display
     // Отрисовка времени отсчёта времени измерения
     extern ProgressBarTimeMeasureZone *zoneProgressBarTimeMeasure;
 
-    void ShowWarningMessage(WarningMessage::E);
+    void ShowWarningMessage(WarningMessage::E, uint time);
 
     void ShowFlashDriveMessage(bool);
 

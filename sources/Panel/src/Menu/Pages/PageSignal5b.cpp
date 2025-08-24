@@ -53,7 +53,7 @@ namespace PageSignal5b
     {
         if (!IT6523::Start(TypePicture::_5b_16750_2, param_N.GetValue().ToMU()))
         {
-            Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse);
+            Display::ShowWarningMessage(WarningMessage::LittleTimeHeavyImpulse, 4500);
 
             return false;
         }

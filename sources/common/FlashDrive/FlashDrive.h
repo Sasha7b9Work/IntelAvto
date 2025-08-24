@@ -58,6 +58,3 @@ namespace FDrive
 
     extern void *handleHCD;     // HCD_HandleTypeDef
 };
-
-
-#define FDRIVE_IS_CONNECTED (FDrive::IsConnected())
