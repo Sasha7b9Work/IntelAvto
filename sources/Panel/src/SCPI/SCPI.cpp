@@ -4,6 +4,9 @@
 #include "SCPI/RingBuffer.h"
 #include "SCPI/Commands.h"
 #include "VCP/VCP.h"
+#include "Menu/MenuItems.h"
+#include "Menu/Pages/Pages.h"
+#include "Utils/StringUtils_.h"
 #include <cctype>
 
 
@@ -148,7 +151,39 @@ void SCPI::Error(pchar text)
 }
 
 
-void SCPI::SignalSet(pchar)
+void SCPI::SignalSet(pchar params)
 {
+    struct StructSet
+    {
+        pchar name;
+        Page *page;
+    };
 
+    static const StructSet channels[] =
+    {
+        { "1",  PageSignal1::self },
+        { "2A", PageSignal2a::self },
+        { "2B", PageSignal2b::self },
+        { "3A", PageSignal3a::self },
+        { "3B", PageSignal3b::self },
+        { "4",  PageSignal4::self },
+        { "5A", PageSignal5a::self },
+        { "5B", PageSignal5b::self },
+        { "",   nullptr }
+    };
+
+    const StructSet *chan = &channels[0];
+
+    while (chan->page)
+    {
+        if (SU::EqualsZeroStrings(chan->name, params))
+        {
+            PageMain::SetPage(chan->page);
+            return;
+        }
+
+        chan++;
+    }
+
+    SCPI::Error(params);
 }

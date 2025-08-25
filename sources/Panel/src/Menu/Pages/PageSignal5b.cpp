@@ -32,10 +32,9 @@ namespace PageSignal5b
         &gset.signals[TypePicture::_5b_16750_2].values24[3], Counter(1), Counter(1000),
         90, Parameter::CalculateY(5));
 
-    static void FuncPress_Signal()
+    void FuncPress_Signal()
     {
-        Menu::SetOpenedPage(PageSignal1::self);
-        TypePicture::Set(TypePicture::_1);
+        PageMain::SetPage(PageSignal1::self);
     }
 
     DEF_BUTTON(bSignal5b,

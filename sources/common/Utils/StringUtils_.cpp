@@ -176,7 +176,7 @@ bool SU::WordEqualZeroString(Word *word, pchar string)
 }
 
 
-bool SU::EqualsZeroStrings(char *str1, char *str2)
+bool SU::EqualsZeroStrings(pchar str1, pchar str2)
 {
     while ((*str1) == (*str2))
     {

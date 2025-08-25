@@ -34,8 +34,7 @@ namespace PageSignal5a
 
     static void FuncPress_Signal()
     {
-        Menu::SetOpenedPage(PageSignal5b::self);
-        TypePicture::Set(TypePicture::_5b_16750_2);
+        PageMain::SetPage(PageSignal5b::self);
     }
 
     DEF_BUTTON(bSignal5a,

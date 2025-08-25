@@ -34,7 +34,7 @@ namespace SU
 
     bool EqualsStrings(uint8 *str1, pchar  const str2, int size);
 
-    bool EqualsZeroStrings(char *str1, char *str2);
+    bool EqualsZeroStrings(pchar str1, pchar str2);
 
     // Возвращает позицию первого символа, который не является цифрой либо точкой
     int FirstNotNumeral(char *buffer);

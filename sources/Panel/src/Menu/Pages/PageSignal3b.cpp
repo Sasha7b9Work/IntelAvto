@@ -32,8 +32,7 @@ namespace PageSignal3b
 
     static void FuncPress_Signal()
     {
-        Menu::SetOpenedPage(PageSignal4::self);
-        TypePicture::Set(TypePicture::_4_DIN40839);
+        PageMain::SetPage(PageSignal4::self);
     }
 
     DEF_BUTTON(bSignal3b,

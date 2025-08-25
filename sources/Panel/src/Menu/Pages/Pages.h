@@ -6,6 +6,8 @@
 namespace PageMain
 {
     extern Page *self;
+
+    void SetPage(Page *);
 }
 
 
@@ -72,9 +74,9 @@ namespace PageSignal2a
 
 namespace PageSignal2b
 {
-    extern Page *self;
-
     extern TParameter param_td;
+
+    extern Page *self;
 }
 
 
@@ -102,24 +104,19 @@ namespace PageSignal3b
 
 namespace PageSignal4
 {
-    extern Page *self;
-
     extern VParameter param_Us;
-
     extern VParameter param_Ua;
-
     extern TParameter param_t7;
-
     extern TParameter param_t9;
+
+    extern Page *self;
 }
 
 
 namespace PageSignal5a
 {
     extern VParameter param_Us;
-
     extern TParameter param_td;
-
     extern CParameter param_Ri;
 
     extern Page *self;
@@ -128,11 +125,9 @@ namespace PageSignal5a
 
 namespace PageSignal5b
 {
-    extern Page *self;
-
     extern VParameter param_Us;
-
     extern TParameter param_td;
-
     extern CParameter param_Ri;
+
+    extern Page *self;
 }

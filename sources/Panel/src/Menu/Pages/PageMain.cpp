@@ -9,6 +9,42 @@
 
 namespace PageMain
 {
+    void SetPage(Page *p)
+    {
+        struct StructPage
+        {
+            Page          *page;
+            TypePicture::E picture;
+        };
+
+        static const StructPage pages[] =
+        {
+            { PageSignal1::self,  TypePicture::_1 },
+            { PageSignal2a::self, TypePicture::_2a },
+            { PageSignal2b::self, TypePicture::_2b_SAEJ1113 },
+            { PageSignal3a::self, TypePicture::_3a },
+            { PageSignal3b::self, TypePicture::_3b },
+            { PageSignal4::self,  TypePicture::_4_DIN40839 },
+            { PageSignal5a::self, TypePicture::_5a_16750_1 },
+            { PageSignal5b::self, TypePicture::_5b_16750_2 },
+            { nullptr,            TypePicture::_Count }
+        };
+
+        const StructPage *page = &pages[0];
+
+        while (page->page)
+        {
+            if (page->page == p)
+            {
+                Menu::SetOpenedPage(page->page);
+                TypePicture::Set(page->picture);
+                break;
+            }
+
+            page++;
+        }
+    }
+
     static void FuncPress_Tests()
     {
         Menu::SetOpenedPage(PageSignal1::self);
