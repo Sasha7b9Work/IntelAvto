@@ -27,6 +27,13 @@ namespace PageSettings
         FuncPress_LAN
     );
 
+    DEF_CHOICE_2_FULL(chTypePicture,
+        "Изображение",
+        "Сигнал", "Схема",
+        gset.type_picture,
+        FuncVV
+    );
+
     uint8 show_debug_voltage = 0;
 
     DEF_CHOICE_2_FULL(chDebugU,
@@ -40,6 +47,7 @@ namespace PageSettings
     {
         &bBack,
         &bLAN,
+        &chTypePicture,
 //        &chDebugU,
         nullptr
     };

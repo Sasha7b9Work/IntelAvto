@@ -139,6 +139,7 @@ struct Settings
     uint8          gw[4];
     uint8          netmask[4];
     SettingsCal    cal;
+    uint8          type_picture;                        // Что показывать на экране. 0 - сигнал, 1 - схема
 
     void Save();
     void Load();

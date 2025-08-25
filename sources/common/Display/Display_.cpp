@@ -652,7 +652,24 @@ void Display::DrawSignal()
 {
     Color::GRAY.SetAsCurrent();
 
-    Picture::DrawPicure(150, 50, TypePicture::Current());
+    TypePicture::E type = TypePicture::Current();
+
+    if (gset.type_picture)
+    {
+        if (type == TypePicture::_1 ||
+            type == TypePicture::_2a ||
+            type == TypePicture::_3a ||
+            type == TypePicture::_3b)
+        {
+            type = TypePicture::Scheme1;
+        }
+        else
+        {
+            type = TypePicture::Scheme2;
+        }
+    }
+
+    Picture::DrawPicure(150, 50, type);
 
     Page::ForCurrentSignal()->DrawParameters();
 }
