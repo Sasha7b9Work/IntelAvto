@@ -7,6 +7,7 @@
 #include "Menu/MenuItems.h"
 #include "Menu/Pages/Pages.h"
 #include "Utils/StringUtils_.h"
+#include "Menu/Menu.h"
 #include <cctype>
 
 
@@ -21,6 +22,7 @@ namespace SCPI
     static InBuffer in_buffer;          // А сюда перекладываем из ring_buffer в функции SCPI::Update()
 
     static void SignalSet(pchar);
+    static void SignalGet(pchar);
 
     struct StructCommand
     {
@@ -31,7 +33,27 @@ namespace SCPI
     static const StructCommand commands[] =
     {
         { ":SIGNAL:SET ", SignalSet },
+        { ":SIGNAL:GET?", SignalGet },
         { nullptr, nullptr }
+    };
+
+    struct StructPageSignal
+    {
+        pchar name;
+        Page *page;
+    };
+
+    static const StructPageSignal pages[] =
+    {
+        { "1",  PageSignal1::self },
+        { "2A", PageSignal2a::self },
+        { "2B", PageSignal2b::self },
+        { "3A", PageSignal3a::self },
+        { "3B", PageSignal3b::self },
+        { "4",  PageSignal4::self },
+        { "5A", PageSignal5a::self },
+        { "5B", PageSignal5b::self },
+        { "",   nullptr }
     };
 }
 
@@ -112,11 +134,6 @@ SCPI::Command *SCPI::InBuffer::ParseCommand(pchar symbols)
         return new CommandIDN();
     }
 
-    if (std::strcmp(data, ":SIGNAL:GET?") == 0)
-    {
-        return new CommandSignalGet();
-    }
-
     const StructCommand *command = &commands[0];
 
     while (command->message)
@@ -153,26 +170,7 @@ void SCPI::Error(pchar text)
 
 void SCPI::SignalSet(pchar params)
 {
-    struct StructSet
-    {
-        pchar name;
-        Page *page;
-    };
-
-    static const StructSet channels[] =
-    {
-        { "1",  PageSignal1::self },
-        { "2A", PageSignal2a::self },
-        { "2B", PageSignal2b::self },
-        { "3A", PageSignal3a::self },
-        { "3B", PageSignal3b::self },
-        { "4",  PageSignal4::self },
-        { "5A", PageSignal5a::self },
-        { "5B", PageSignal5b::self },
-        { "",   nullptr }
-    };
-
-    const StructSet *chan = &channels[0];
+    const StructPageSignal *chan = &pages[0];
 
     while (chan->page)
     {
@@ -186,4 +184,21 @@ void SCPI::SignalSet(pchar params)
     }
 
     SCPI::Error(params);
+}
+
+
+void SCPI::SignalGet(pchar)
+{
+    const StructPageSignal *chan = &pages[0];
+
+    while (chan->page)
+    {
+        if (chan->page == Menu::OpenedPage())
+        {
+            SCPI::Send(chan->name);
+            return;
+        }
+
+        chan++;
+    }
 }

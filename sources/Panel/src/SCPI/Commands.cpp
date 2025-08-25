@@ -25,11 +25,3 @@ bool SCPI::CommandIDN::Execute()
     Send(message.c_str());
     return true;
 }
-
-
-bool SCPI::CommandSignalGet::Execute()
-{
-    String<> message("SIGNAL 1");
-    Send(message.c_str());
-    return true;
-}

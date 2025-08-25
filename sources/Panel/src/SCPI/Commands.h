@@ -32,10 +32,4 @@ namespace SCPI
     {
         virtual bool Execute() override;
     };
-
-
-    struct CommandSignalGet : public Command
-    {
-        virtual bool Execute() override;
-    };
 }
