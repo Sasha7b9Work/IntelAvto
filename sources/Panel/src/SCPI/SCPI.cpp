@@ -33,7 +33,7 @@ namespace SCPI
 }
 
 
-void SCPI::AddNewData(uint8 *buffer, uint size)
+void SCPI::AppendNewData(uint8 *buffer, uint size)
 {
     for (uint i = 0; i < size; i++)
     {

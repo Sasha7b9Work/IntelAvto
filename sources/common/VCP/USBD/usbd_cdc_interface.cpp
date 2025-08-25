@@ -132,7 +132,7 @@ static int8_t CDC_Itf_Receive(uint8 *buffer, uint *length)
 {
     VCP::isConnected = true;
 
-    SCPI::AddNewData(buffer, *length);
+    SCPI::AppendNewData(buffer, *length);
 
     USBD_CDC_ReceivePacket(&VCP::handleUSBD);
 

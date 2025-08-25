@@ -214,7 +214,7 @@ void ConsoleSCPI::SendToSCPI(const char *txt)
     }
     else
     {
-        SCPI::AddNewData((uint8 *)message.c_str(), std::strlen(message.c_str()));
+        SCPI::AppendNewData((uint8 *)message.c_str(), std::strlen(message.c_str()));
     }
 }
 
