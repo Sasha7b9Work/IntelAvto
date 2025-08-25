@@ -7,8 +7,8 @@
 +   *IDN?
 +   :SIGNAL:SET <1, 2a, 2b, 3a, 3b, 4, 5a, 5b>
 +   :SIGNAL:GET?
-    :MODE:SET <12V, 24>
-    :MODE:GET?
++   :MODE:SET <12V, 24>
++   :MODE:GET?
                          1 2a 2b 3a 3b 4 5a 5b
     :PARAM:Us:SET        + +     +  +  + +  +
     :PARAM:td:SET             +          +  +
