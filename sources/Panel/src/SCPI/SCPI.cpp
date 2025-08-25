@@ -8,6 +8,7 @@
 #include "Menu/Pages/Pages.h"
 #include "Utils/StringUtils_.h"
 #include "Menu/Menu.h"
+#include "Settings/Settings.h"
 #include <cctype>
 
 
@@ -23,6 +24,8 @@ namespace SCPI
 
     static void SignalSet(pchar);
     static void SignalGet(pchar);
+    static void ModeSet(pchar);
+    static void ModeGet(pchar);
 
     struct StructCommand
     {
@@ -34,6 +37,8 @@ namespace SCPI
     {
         { ":SIGNAL:SET ", SignalSet },
         { ":SIGNAL:GET?", SignalGet },
+        { ":MODE:SET ",   ModeSet },
+        { ":MODE:GET?",   ModeGet },
         { nullptr, nullptr }
     };
 
@@ -200,5 +205,35 @@ void SCPI::SignalGet(pchar)
         }
 
         chan++;
+    }
+}
+
+
+void SCPI::ModeSet(pchar params)
+{
+    if (SU::EqualsZeroStrings(params, "12V"))
+    {
+        gset.voltage_mode.current = VoltageMode::_12;
+    }
+    else if (SU::EqualsZeroStrings(params, "24V"))
+    {
+        gset.voltage_mode.current = VoltageMode::_24;
+    }
+    else
+    {
+        Error(params);
+    }
+}
+
+
+void SCPI::ModeGet(pchar params)
+{
+    if (params[0])
+    {
+        Error(params);
+    }
+    else
+    {
+        SCPI::Send(VoltageMode::Is12() ? "12V" : "24V");
     }
 }
