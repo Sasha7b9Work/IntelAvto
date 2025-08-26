@@ -261,7 +261,7 @@ void Circle::Fill(int x, int y, const Color &color)
 {
     color.SetAsCurrent();
 
-    x -= radius;
+    x -= radius - 1;
     y -= radius - 1;
 
     for (int i = 0; i < radius; i++)

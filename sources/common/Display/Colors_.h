@@ -16,6 +16,7 @@ struct Color
     static Color BLACK;             // Чёрный фон
     static Color GRAY;
     static Color YELLOW;
+    static Color GRAY_75;
 
     static const int COUNT = 255;
 

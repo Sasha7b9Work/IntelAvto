@@ -650,8 +650,6 @@ bool Display::InDrawingPart(int y, int _height)
 
 void Display::DrawSignal()
 {
-    Color::GRAY.SetAsCurrent();
-
     TypePicture::E type = TypePicture::Current();
 
     if (gset.type_picture)

@@ -43,7 +43,7 @@ int main(void)
     FDrive::Init();
 
     Beeper::Init();
-
+    
     while (1)
     {
         Device::TasksUpdate();

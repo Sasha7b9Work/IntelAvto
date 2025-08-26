@@ -15,6 +15,7 @@ Color Color::WHITE(7);
 Color Color::BLACK(8);
 Color Color::GRAY(9);
 Color Color::YELLOW(10);
+Color Color::GRAY_75(11);
 
 
 namespace ColorTimer

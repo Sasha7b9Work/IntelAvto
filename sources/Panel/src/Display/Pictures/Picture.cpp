@@ -234,6 +234,8 @@ void Picture::DrawScheme(TypePicture::E type)
         DrawArrow(xx1, y0 + height, 3);
         DrawArrow(xx2, y0 + height, 3);
 
+        Color::GRAY_75.SetAsCurrent();
+
         Text("IT6523").WriteInCenterRect(x1, y1, width, height);
         Text("йоря").WriteInCenterRect(x2, y1, width, height);
         Text("DUT").WriteInCenterRect(x2, y2, width, height);
@@ -248,6 +250,8 @@ void Picture::DrawScheme(TypePicture::E type)
         HLine(x2 - xx1).Draw(xx1, yy1);
         DrawArrow(xx1, yy1, 2);
         DrawArrow(x2, yy1, 0);
+
+        Color::GRAY_75.SetAsCurrent();
 
         Text("йоря").WriteInCenterRect(x1, y1, width, height);
         Text("IT6523").WriteInCenterRect(x2, y1, width, height);
