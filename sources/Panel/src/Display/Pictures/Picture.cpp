@@ -188,6 +188,7 @@ void Picture::DrawScheme(TypePicture::E type)
 
     int dx = 10;
     int dy = 20;
+    int dt = 25;        // Äëÿ òåêñòà
 
     {
         int xx1 = x0 + width - dx;
@@ -205,6 +206,10 @@ void Picture::DrawScheme(TypePicture::E type)
         DrawVerLine(xx1 + ddx, yy1, yy2 - yy1);
         DrawArrow(xx1 + ddx, (yy1 + yy2) / 2, 1);
     }
+
+    TypeFont::E font = Font::Get();
+
+    Font::Set(TypeFont::GOSTAU16BOLD);
 
     if (type == TypePicture::Scheme1)
     {
@@ -230,6 +235,13 @@ void Picture::DrawScheme(TypePicture::E type)
 
         DrawArrow(xx1, y0 + height, 3);
         DrawArrow(xx2, y0 + height, 3);
+
+        Text("IT6523").Write(x0 + 30, y0 + dt);
+        Text("ÊÏÒÑ").Write(x0 + x2 + 30, y0 + dt);
+        Text("DUT").Write(x0 + x2 + 50, y0 + y2 + dt);
+
+        Text("LAN").Write(x0 + 53, y0 + height - 19);
+        Text("LAN").Write(x0 + x2 + 30, y0 + height - 19);
     }
     else if (type == TypePicture::Scheme2)
     {
@@ -240,7 +252,13 @@ void Picture::DrawScheme(TypePicture::E type)
         HLine(xx2 - xx1).Draw(xx1, yy1);
         DrawArrow(xx1, yy1, 2);
         DrawArrow(xx2, yy1, 0);
+
+        Text("ÊÏÒÑ").Write(x0 + 30, y0 + dt);
+        Text("IT6523").Write(x0 + x2 + 30, y0 + dt);
+        Text("DUT").Write(x0 + x2 + 50, y0 + y2 + dt);
     }
+
+    Font::Set(font);
 }
 
 
