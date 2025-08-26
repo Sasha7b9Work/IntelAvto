@@ -165,7 +165,7 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 
 int Parameter::X() const
 {
-    if (x)
+    if (x && (gset.type_picture == 0))
     {
         return x;
     }
@@ -176,7 +176,7 @@ int Parameter::X() const
 
 int Parameter::Y(int num_item) const
 {
-    if (y)
+    if (y && (gset.type_picture == 0))
     {
         return y;
     }
