@@ -21,8 +21,7 @@ namespace PageSignal1
 
     static AParameter param_A("Imax",
         &gset.signals[TypePicture::_1].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypePicture::_1].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
-        Page::x_param, Item::Height() * 5 + Page::d_y);
+        &gset.signals[TypePicture::_1].values24[3], Current(Current::min * 1000), Current(Current::max * 1000));
 
     // Период повторения
     static TParameter param_t1("Период",

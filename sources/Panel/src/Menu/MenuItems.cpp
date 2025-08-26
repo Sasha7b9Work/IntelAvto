@@ -110,7 +110,7 @@ void Page::DrawParameters() const
 
             if (param->IsNowEdited())
             {
-                param->Draw();
+                param->Draw(i);
 
                 return;
             }
@@ -123,7 +123,7 @@ void Page::DrawParameters() const
         {
             Parameter *param = (Parameter *)items[i];
 
-            param->Draw();
+            param->Draw(i);
         }
     }
 }
@@ -163,7 +163,29 @@ void Parameter::Draw(int x0, int y0, int width, bool selected)
 }
 
 
-void Parameter::Draw() const
+int Parameter::X() const
+{
+    if (x)
+    {
+        return x;
+    }
+
+    return Page::x_param;
+}
+
+
+int Parameter::Y(int num_item) const
+{
+    if (y)
+    {
+        return y;
+    }
+
+    return Item::Height() * num_item + Page::d_y;
+}
+
+
+void Parameter::Draw(int num_item) const
 {
     const int width = 125;
     const int height = 21;
@@ -172,7 +194,7 @@ void Parameter::Draw() const
     {
         Color color = Color::GetCurrent();
 
-        Rect(width - 2, height - 2).Fill(x - 2, y - 2, Color::BACK);
+        Rect(width - 2, height - 2).Fill(X() - 2, Y(num_item) - 2, Color::BACK);
 
         color.SetAsCurrent();
     }
@@ -181,28 +203,28 @@ void Parameter::Draw() const
 
     if(IsNowEdited())
     {
-        ds.Draw(x, y);
+        ds.Draw(X(), Y(num_item));
 
         Color color = Color::GetCurrent();
 
         Color::BACK.SetAsCurrent();
 
-        GetMin().Draw(x, y + 25);
+        GetMin().Draw(X(), Y(num_item) + 25);
 
-        GetMax().Draw(x, y - 25);
+        GetMax().Draw(X(), Y(num_item) - 25);
 
         color.SetAsCurrent();
     }
     else
     {
-        GetValue().Draw(x, y);
+        GetValue().Draw(X(), Y(num_item));
     }
 
     if (IsNowSelected())
     {
         Color color = Color::GetCurrent();
 
-        Rect(width, height).Draw(x - 3, y - 3, Color::WHITE);
+        Rect(width, height).Draw(X() - 3, Y(num_item) - 3, Color::WHITE);
 
         color.SetAsCurrent();
     }

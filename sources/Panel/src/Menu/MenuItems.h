@@ -206,7 +206,7 @@ public:
 
     virtual void Draw(int x, int y, int width, bool selected = false) override;
 
-    void Draw() const;
+    void Draw(int num_item) const;
 
     virtual bool OnKey(Key::E) override;
 
@@ -217,8 +217,8 @@ public:
     const Value &GetMin() const;
     const Value &GetMax() const;
 
-    int GetX() const { return x; }
-    int GetY() const { return y; }
+    int X() const;
+    int Y(int num_item) const;
 
     virtual bool IsParameter() const override { return true; }
 
@@ -276,7 +276,7 @@ public:
     AParameter(pchar title_ru,
         Value *value12, const Current &_min12, const Current &_max12,
         Value *value24, const Current &_min24, const Current &_max24,
-        int _x, int _y) :
+        int _x = 0, int _y = 0) :
         Parameter(title_ru, value12, _min12, _max12, value24, _min24, _max24, _x, _y)
     {
     }
