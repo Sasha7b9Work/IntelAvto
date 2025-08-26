@@ -4,6 +4,7 @@
 #include "Settings/Settings.h"
 #include "Display/Primitives_.h"
 #include "Display/Text_.h"
+#include <cmath>
 
 
 using namespace Primitives;
@@ -100,6 +101,17 @@ void Rect::Draw(int x, int y)
     HLine(width).Draw(x, y + height - 1);
     VLine(height).Draw(x, y);
     VLine(height).Draw(x + width - 1, y);
+}
+
+
+void Rect::Draw(int x, int y, int tickness)
+{
+    Draw(x, y);
+
+    for (int i = 0; i < tickness; i++)
+    {
+        Rect(width - 2 * i, height - 2 * i).Draw(x + i, y + i);
+    }
 }
 
 
@@ -237,4 +249,33 @@ void Point::MoveTo(int x, int y)
 void Point::MoveOn(int dx, int dy)
 {
     MoveTo(m_x + dx, m_y + dy);
+}
+
+
+Circle::Circle(int r) : radius(r)
+{
+}
+
+
+void Circle::Fill(int x, int y, const Color &color)
+{
+    color.SetAsCurrent();
+
+    x -= radius;
+    y -= radius - 1;
+
+    for (int i = 0; i < radius; i++)
+    {
+        float angle = std::asinf((float)i * (1.0F / (float)radius));
+        float length = std::cosf(angle) * (float)radius;
+        Draw2HLinesRelCenter(x + radius, y + i + radius - 1, static_cast<int>(length + 0.5F));
+        Draw2HLinesRelCenter(x + radius, y - i + radius - 1, static_cast<int>(length + 0.5F));
+    }
+}
+
+
+void Circle::Draw2HLinesRelCenter(int center, int y, int width)
+{
+    HLine(width).Draw(center, y);
+    HLine(width).Draw(center - width, y);
 }

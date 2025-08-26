@@ -28,6 +28,7 @@ namespace Primitives
     public:
         Rect(int _width, int _height) : width(_width), height(_height) {}
         void Draw(int x, int y);
+        void Draw(int x, int y, int tickness);
         void Draw(int x, int y, const Color &);
         void DrawRounded(int x, int y, int round, const Color &);
         void Fill(int x, int y);
@@ -53,6 +54,19 @@ namespace Primitives
         static int m_x;
         static int m_y;
     };
+
+
+    class Circle
+    {
+    public:
+        Circle(int radius);
+        void Fill(int x, int y, const Color &color);
+    private:
+        int radius;
+        // Нарисовать линии вправо и влево отностиельно центра с длиной width
+        static void Draw2HLinesRelCenter(int center, int y, int width);
+    };
+
 
 
     class HLine

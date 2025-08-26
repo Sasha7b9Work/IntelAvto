@@ -211,7 +211,7 @@ static Settings def_set =
             }
         }
     },
-    0
+    1
 };
 
 

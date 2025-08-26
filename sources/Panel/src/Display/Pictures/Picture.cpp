@@ -44,6 +44,15 @@ namespace Picture
     static bool Uncompress(TypePicture::E);
 
     static unsigned long CalculateSize(TypePicture::E);
+
+    static void DrawScheme(TypePicture::E);
+
+    static void DrawHorLine(int x, int y, int width);
+    static void DrawVerLine(int x, int y, int height);
+
+    // dir:
+    // 0 - вправо, 1 - вниз, 2 - влево, 3 - вверх
+    static void DrawArrow(int x, int y, int dir);
 }
 
 
@@ -82,6 +91,7 @@ void Picture::DrawPicure(int x, int y, TypePicture::E type)
 {
 #pragma pack(push)
 #pragma pack(1)
+
     struct StructureBMP
     {
         uint8   magic[2];
@@ -104,27 +114,35 @@ void Picture::DrawPicure(int x, int y, TypePicture::E type)
         uint    num_important_colors;
     };
 
-    if (Uncompress(type))
+    if (type >= TypePicture::Scheme1)
     {
-        StructureBMP *head = (StructureBMP *)buffer; //-V641
-
-        uint *colors = (uint *)((uint8 *)buffer + 14 + head->header_size);          // Находим таблицу цветов
-
-        uint8 *pixel = ((uint8 *)buffer) + head->bmp_offset;
-
-        for (int j = y + head->height; j > y; j--)
+        DrawScheme(type);
+    }
+    else
+    {
+        if (Uncompress(type))
         {
-            for (int i = x; i < x + head->width; i++)
-            {
-                uint color = colors[*pixel++];                                      // Находим цвет
+            StructureBMP *head = (StructureBMP *)buffer; //-V641
 
-                if ((color & 0xFFFFFF00) != 0xFFFFFF00)                             // И ставим точку, если цвет - не белый
+            uint *colors = (uint *)((uint8 *)buffer + 14 + head->header_size);          // Находим таблицу цветов
+
+            uint8 *pixel = ((uint8 *)buffer) + head->bmp_offset;
+
+            for (int j = y + head->height; j > y; j--)
+            {
+                for (int i = x; i < x + head->width; i++)
                 {
-                    Point().Draw(i, j, Color::WHITE);
+                    uint color = colors[*pixel++];                                      // Находим цвет
+
+                    if ((color & 0xFFFFFF00) != 0xFFFFFF00)                             // И ставим точку, если цвет - не белый
+                    {
+                        Point().Draw(i, j, Color::WHITE);
+                    }
                 }
             }
         }
     }
+
 #pragma pack(pop)
 }
 
@@ -146,4 +164,130 @@ unsigned long Picture::CalculateSize(TypePicture::E type)
     };
 
     return sizes[type];
+}
+
+
+void Picture::DrawScheme(TypePicture::E type)
+{
+    Color::FILL.SetAsCurrent();
+
+    const int width = 130;
+    const int height = 70;
+
+    Rect rect(width, height);
+
+    int x0 = 150;
+    int y0 = 50;
+
+    int x1 = 0;
+    int x2 = 180;
+    int y1 = 0;
+    int y2 = 110;
+
+    rect.Draw(x0 + x1, y0 + y1, 2);
+    rect.Draw(x0 + x2, y0 + y1, 2);
+    rect.Draw(x0 + x2, y0 + y2, 2);
+
+    int dx = 10;
+    int dy = 20;
+
+    {
+        int xx1 = x0 + width - dx;
+        int yy1 = y0 + y1 + dy;
+        int yy2 = y0 + y1 + height - dy;
+
+        int ddx = yy2 - yy1;
+
+        xx1 = x0 + x2 + width * 2 / 3;
+        yy1 = y0 + y1 + height - dx;
+        yy2 = y0 + y2 + dx;
+
+        DrawVerLine(xx1, yy1, yy2 - yy1);
+        DrawArrow(xx1, (yy1 + yy2) / 2, 1);
+        DrawVerLine(xx1 + ddx, yy1, yy2 - yy1);
+        DrawArrow(xx1 + ddx, (yy1 + yy2) / 2, 1);
+    }
+
+    if (type == TypePicture::Scheme1)
+    {
+        Circle circle(3);
+
+        int xx1 = x0 + width - dx;
+        int xx2 = x0 + x2 + dx;
+        int yy1 = y0 + y1 + dy;
+        int yy2 = y0 + y1 + height - dy;
+
+        DrawHorLine(xx1, yy1, xx2 - xx1);
+        DrawArrow((xx1 + xx2) / 2, yy1, 0);
+        DrawHorLine(xx1, yy2, xx2 - xx1);
+        DrawArrow((xx1 + xx2) / 2, yy2, 0);
+
+        xx1 = (x0 + x1 + x0 + width) / 2;
+        yy1 = y0 + (height + y2) / 2;
+        xx2 = x0 + x2 + width / 3;
+
+        HLine(xx2 - xx1).Draw(xx1, yy1);
+        VLine(yy1 - y0 - height).Draw(xx1, y0 + height);
+        VLine(yy1 - y0 - height).Draw(xx2, y0 + height);
+
+        DrawArrow(xx1, y0 + height, 3);
+        DrawArrow(xx2, y0 + height, 3);
+    }
+    else if (type == TypePicture::Scheme2)
+    {
+        int xx1 = x0 + width;
+        int xx2 = x0 + x2;
+        int yy1 = y0 + height / 2;
+
+        HLine(xx2 - xx1).Draw(xx1, yy1);
+        DrawArrow(xx1, yy1, 2);
+        DrawArrow(xx2, yy1, 0);
+    }
+}
+
+
+void Picture::DrawHorLine(int x, int y, int width)
+{
+    Circle circle(3);
+
+    circle.Fill(x, y, Color::FILL);
+    circle.Fill(x + width, y, Color::FILL);
+    HLine(width).Draw(x, y);
+}
+
+
+void Picture::DrawVerLine(int x, int y, int height)
+{
+    Circle circle(3);
+
+    circle.Fill(x, y, Color::FILL);
+    circle.Fill(x, y + height, Color::FILL);
+    VLine(height).Draw(x, y);
+}
+
+
+void Picture::DrawArrow(int x, int y, int dir)
+{
+    static const int dl = 5;
+
+    if (dir == 0)                                   // право
+    {
+        Line().Draw(x - dl, y - dl, x, y);
+        Line().Draw(x - dl, y + dl, x, y);
+    }
+    else if (dir == 1)                              // вниз
+    {
+        Line().Draw(x - dl, y - dl, x, y);
+        Line().Draw(x + dl, y - dl, x, y);
+    }
+    else if (dir == 2)                              // влево
+    {
+        Line().Draw(x, y, x + dl, y - dl);
+        Line().Draw(x, y, x + dl, y + dl);
+    }
+    else if (dir == 3)                              // вверх
+    {
+        Line().Draw(x - dl, y + dl, x, y);
+        Line().Draw(x + dl, y + dl, x, y);
+    }
 }
