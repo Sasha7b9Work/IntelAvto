@@ -242,6 +242,21 @@ void Picture::DrawScheme(TypePicture::E type)
         HLine(xx2 - xx1).Draw(xx1, yy1);
         DrawArrow(xx1, yy1, 2);
         DrawArrow(xx2, yy1, 0);
+
+        dx = 35;
+
+        xx1 = x0 + dx;
+        xx2 = x0 + width - dx;
+        yy1 = y0 + (height + y2) / 2;
+
+        int l = yy1 - y0 - height;
+
+        VLine line(l);
+        line.Draw(xx1, y0 + height);
+        line.Draw(xx2, y0 + height);
+
+        DrawArrow(xx1, yy1, 1);
+        DrawArrow(xx2, y0 + height, 3);
     }
 }
 
