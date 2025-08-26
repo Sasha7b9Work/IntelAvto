@@ -169,18 +169,18 @@ void Picture::DrawScheme(TypePicture::E type)
 {
     Color::FILL.SetAsCurrent();
 
-    const int width = 130;
-    const int height = 70;
+    const int width = 120;
+    const int height = 60;
 
     Rect rect(width, height);
 
-    int x0 = 150;
+    int x0 = 160;
     int y0 = 50;
 
     int x1 = x0;
     int x2 = x0 + 180;
     int y1 = y0;
-    int y2 = y0 + 110;
+    int y2 = y0 + 100;
 
     rect.Draw(x1, y1, 2);
     rect.Draw(x2, y1, 2);
@@ -238,7 +238,7 @@ void Picture::DrawScheme(TypePicture::E type)
         Text("йоря").WriteInCenterRect(x2, y1, width, height);
         Text("DUT").WriteInCenterRect(x2, y2, width, height);
 
-        Text("LAN").Write(x1 + 140, y1 + height + 4);
+        Text("LAN").Write(x1 + 135, y1 + height + 4);
     }
     else if (type == TypePicture::Scheme2)
     {
@@ -253,7 +253,7 @@ void Picture::DrawScheme(TypePicture::E type)
         Text("IT6523").WriteInCenterRect(x2, y1, width, height);
         Text("DUT").WriteInCenterRect(x2, y2, width, height);
 
-        Text("LAN").Write(xx1 + 12, yy1 - 16);
+        Text("LAN").Write(xx1 + 17, yy1 - 16);
     }
 
     Font::Set(font);
