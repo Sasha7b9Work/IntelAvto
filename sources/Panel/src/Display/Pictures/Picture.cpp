@@ -177,29 +177,27 @@ void Picture::DrawScheme(TypePicture::E type)
     int x0 = 150;
     int y0 = 50;
 
-    int x1 = 0;
-    int x2 = 180;
-    int y1 = 0;
-    int y2 = 110;
+    int x1 = x0;
+    int x2 = x0 + 180;
+    int y1 = y0;
+    int y2 = y0 + 110;
 
-    rect.Draw(x0 + x1, y0 + y1, 2);
-    rect.Draw(x0 + x2, y0 + y1, 2);
-    rect.Draw(x0 + x2, y0 + y2, 2);
+    rect.Draw(x1, y1, 2);
+    rect.Draw(x2, y1, 2);
+    rect.Draw(x2, y2, 2);
 
     int dx = 10;
     int dy = 20;
-    int dt = 25;        // ƒÎˇ ÚÂÍÒÚ‡
 
     {
-        int xx1 = x0 + width - dx;
-        int yy1 = y0 + y1 + dy;
-        int yy2 = y0 + y1 + height - dy;
+        int xx1 = x2 + width * 2 / 3;
+        int yy1 = y1 + dy;
+        int yy2 = y1 + height - dy;
 
         int ddx = yy2 - yy1;
 
-        xx1 = x0 + x2 + width * 2 / 3;
-        yy1 = y0 + y1 + height - dx;
-        yy2 = y0 + y2 + dx;
+        yy1 = y1 + height - dx;
+        yy2 = y2 + dx;
 
         DrawVerLine(xx1, yy1, yy2 - yy1);
         DrawArrow(xx1, (yy1 + yy2) / 2, 1);
@@ -215,19 +213,19 @@ void Picture::DrawScheme(TypePicture::E type)
     {
         Circle circle(3);
 
-        int xx1 = x0 + width - dx;
-        int xx2 = x0 + x2 + dx;
-        int yy1 = y0 + y1 + dy;
-        int yy2 = y0 + y1 + height - dy;
+        int xx1 = x1 + width - dx;
+        int xx2 = x2 + dx;
+        int yy1 = y1 + dy;
+        int yy2 = y1 + height - dy;
 
         DrawHorLine(xx1, yy1, xx2 - xx1);
         DrawArrow((xx1 + xx2) / 2, yy1, 0);
         DrawHorLine(xx1, yy2, xx2 - xx1);
         DrawArrow((xx1 + xx2) / 2, yy2, 0);
 
-        xx1 = (x0 + x1 + x0 + width) / 2;
-        yy1 = y0 + (height + y2) / 2;
-        xx2 = x0 + x2 + width / 3;
+        xx1 = x1 + width / 2;
+        yy1 = (y1 + height + y2) / 2;
+        xx2 = x2 + width / 3;
 
         HLine(xx2 - xx1).Draw(xx1, yy1);
         VLine(yy1 - y0 - height).Draw(xx1, y0 + height);
@@ -236,26 +234,26 @@ void Picture::DrawScheme(TypePicture::E type)
         DrawArrow(xx1, y0 + height, 3);
         DrawArrow(xx2, y0 + height, 3);
 
-        Text("IT6523").Write(x0 + 30, y0 + dt);
-        Text(" œ“—").Write(x0 + x2 + 30, y0 + dt);
-        Text("DUT").Write(x0 + x2 + 50, y0 + y2 + dt);
+        Text("IT6523").WriteInCenterRect(x1, y1, width, height);
+        Text(" œ“—").WriteInCenterRect(x2, y1, width, height);
+        Text("DUT").WriteInCenterRect(x2, y2, width, height);
 
-        Text("LAN").Write(x0 + 53, y0 + height - 19);
-        Text("LAN").Write(x0 + x2 + 30, y0 + height - 19);
+        Text("LAN").Write(x1 + 140, y1 + height + 4);
     }
     else if (type == TypePicture::Scheme2)
     {
-        int xx1 = x0 + width;
-        int xx2 = x0 + x2;
+        int xx1 = x1 + width;
         int yy1 = y0 + height / 2;
 
-        HLine(xx2 - xx1).Draw(xx1, yy1);
+        HLine(x2 - xx1).Draw(xx1, yy1);
         DrawArrow(xx1, yy1, 2);
-        DrawArrow(xx2, yy1, 0);
+        DrawArrow(x2, yy1, 0);
 
-        Text(" œ“—").Write(x0 + 30, y0 + dt);
-        Text("IT6523").Write(x0 + x2 + 30, y0 + dt);
-        Text("DUT").Write(x0 + x2 + 50, y0 + y2 + dt);
+        Text(" œ“—").WriteInCenterRect(x1, y1, width, height);
+        Text("IT6523").WriteInCenterRect(x2, y1, width, height);
+        Text("DUT").WriteInCenterRect(x2, y2, width, height);
+
+        Text("LAN").Write(xx1 + 12, yy1 - 16);
     }
 
     Font::Set(font);
