@@ -14,8 +14,7 @@ namespace PageSignal4
 {
     static CParameter param_N("N",
         &gset.signals[TypePicture::_4_DIN40839].values12[0], Counter(1), Counter(10),
-        &gset.signals[TypePicture::_4_DIN40839].values24[0], Counter(1), Counter(10),
-        90, 70);
+        &gset.signals[TypePicture::_4_DIN40839].values24[0], Counter(1), Counter(10));
 
     VParameter param_Us("Us",
         &gset.signals[TypePicture::_4_DIN40839].values12[1], Voltage(6000), Voltage(7500),

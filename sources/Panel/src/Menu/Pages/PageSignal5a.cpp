@@ -24,13 +24,11 @@ namespace PageSignal5a
 
     CParameter param_Ri("Ri",
         &gset.signals[TypePicture::_5b_16750_2].values12[3], Counter(1), Counter(10),
-        &gset.signals[TypePicture::_5b_16750_2].values24[3], Counter(1), Counter(10),
-        90, Parameter::CalculateY(4));
+        &gset.signals[TypePicture::_5b_16750_2].values24[3], Counter(1), Counter(10));
 
     static CParameter param_N("N",
         &gset.signals[TypePicture::_5a_16750_1].values12[2], Counter(1), Counter(1000),
-        &gset.signals[TypePicture::_5a_16750_1].values24[2], Counter(1), Counter(1000),
-        90, Parameter::CalculateY(5));
+        &gset.signals[TypePicture::_5a_16750_1].values24[2], Counter(1), Counter(1000));
 
     static void FuncPress_Signal()
     {

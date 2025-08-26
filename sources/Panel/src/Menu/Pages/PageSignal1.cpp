@@ -32,8 +32,7 @@ namespace PageSignal1
     // Количество импульсов
     static CParameter param_N("N",
         &gset.signals[TypePicture::_1].values12[2], Counter(5000), Counter(100000),
-        &gset.signals[TypePicture::_1].values24[2], Counter(5000), Counter(100000),
-        Page::x_param, Item::Height() * 4 + Page::d_y);
+        &gset.signals[TypePicture::_1].values24[2], Counter(5000), Counter(100000));
 
     static void FuncPress_Signal()
     {

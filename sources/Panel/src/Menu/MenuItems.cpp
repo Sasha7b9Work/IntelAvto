@@ -170,7 +170,7 @@ int Parameter::X() const
         return x;
     }
 
-    return Page::x_param;
+    return 90;
 }
 
 
@@ -181,7 +181,7 @@ int Parameter::Y(int num_item) const
         return y;
     }
 
-    return Item::Height() * num_item + Page::d_y;
+    return Item::Height() * num_item + 10;
 }
 
 

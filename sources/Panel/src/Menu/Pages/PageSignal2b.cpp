@@ -20,9 +20,7 @@ namespace PageSignal2b
 
     static CParameter param_N("N",
         &gset.signals[TypePicture::_2b_SAEJ1113].values12[1], Counter(1), Counter(10),
-        &gset.signals[TypePicture::_2b_SAEJ1113].values24[1], Counter(1), Counter(10),
-        90, 100
-    );
+        &gset.signals[TypePicture::_2b_SAEJ1113].values24[1], Counter(1), Counter(10));
 
     static void FuncPress_Signal()
     {

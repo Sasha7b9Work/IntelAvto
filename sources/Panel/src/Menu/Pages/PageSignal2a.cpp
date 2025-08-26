@@ -20,8 +20,7 @@ namespace PageSignal2a
 
     static AParameter param_A("Imax",
         &gset.signals[TypePicture::_2a].values12[3], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypePicture::_2a].values24[3], Current(Current::min * 1000), Current(Current::max * 1000),
-        Page::x_param, Item::Height() * 5 + Page::d_y);
+        &gset.signals[TypePicture::_2a].values24[3], Current(Current::min * 1000), Current(Current::max * 1000));
 
     static TParameter param_t1("Период",
         &gset.signals[TypePicture::_2a].values12[1], Time(200), Time(5000),
@@ -30,8 +29,7 @@ namespace PageSignal2a
 
     static CParameter param_N("N",
         &gset.signals[TypePicture::_2a].values12[2], Counter(5000), Counter(100000),
-        &gset.signals[TypePicture::_2a].values24[2], Counter(5000), Counter(100000),
-        Page::x_param, Item::Height() * 4 + Page::d_y);
+        &gset.signals[TypePicture::_2a].values24[2], Counter(5000), Counter(100000));
 
     static void FuncPress_Signal()
     {

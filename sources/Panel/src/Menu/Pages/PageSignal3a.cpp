@@ -22,13 +22,11 @@ namespace PageSignal3a
 
     static AParameter param_A("Imax",
         &gset.signals[TypePicture::_3a].values12[2], Current(Current::min * 1000), Current(Current::max * 1000),
-        &gset.signals[TypePicture::_3a].values24[2], Current(Current::min * 1000), Current(Current::max * 1000),
-        Page::x_param, Item::Height() * 4 + Page::d_y);
+        &gset.signals[TypePicture::_3a].values24[2], Current(Current::min * 1000), Current(Current::max * 1000));
 
     static CParameter param_N("N",
         &gset.signals[TypePicture::_3a].values12[1], Counter(10000), Counter(100000),
-        &gset.signals[TypePicture::_3a].values24[1], Counter(10000), Counter(100000),
-        Page::x_param, Item::Height() * 3 + Page::d_y);
+        &gset.signals[TypePicture::_3a].values24[1], Counter(10000), Counter(100000));
 
     static void FuncPress_Signal()
     {

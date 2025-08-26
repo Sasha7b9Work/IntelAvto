@@ -231,11 +231,6 @@ public:
     // Редактируемый в данный момент
     static Parameter *editable;
 
-    static int CalculateY(int num)
-    {
-        return num * 32;
-    }
-
 private:
 
     pchar title;
@@ -301,7 +296,7 @@ public:
     CParameter(pchar title_ru,
         Value *value12, const Counter &_min12, const Counter &_max12,
         Value *value24, const Counter &_min24, const Counter &_max24,
-        int _x, int _y) :
+        int _x = 0, int _y = 0) :
         Parameter(title_ru, value12, _min12, _max12, value24, _min24, _max24, _x, _y)
     {
     }
@@ -312,9 +307,6 @@ class Page : public Item
     friend struct Channel;
 
 public:
-
-    static const int x_param = 90;
-    static const int d_y = 10;
 
     Page(Item **_items, void (*_additionalDraw)(), bool (*_func_start_test)()) :
         Item(),
