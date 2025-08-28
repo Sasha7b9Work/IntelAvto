@@ -27,7 +27,8 @@ namespace LAN
 
     static void FuncReceiverServer(pchar buffer, uint length)
     {
-        ServerTCP::SendBuffer(buffer, length);
+        buffer = buffer;
+        length = length;
     }
 }
 

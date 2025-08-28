@@ -3,6 +3,7 @@
 #include "LAN/ServerTCP.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
+#include "Device/IT6523.h"
 #include <lwip/tcp.h>
 #include <cstring>
 
@@ -356,6 +357,17 @@ bool ServerTCP::IsConnected()
     if (TIME_MS - time_last_callback_ETH > 5000)
     {
         CloseConnection(pcbServer, server);
+    }
+
+    static uint time_send = 0;
+
+    if (TIME_MS - time_last_callback_ETH > 3000)
+    {
+        if (TIME_MS - time_send > 100)
+        {
+            time_send = TIME_MS;
+            IT6523::SendCommand("SYSTEM:ERROR?");
+        }
     }
 
     return pcbServer != nullptr;

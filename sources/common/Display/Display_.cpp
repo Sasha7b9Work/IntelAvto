@@ -471,6 +471,9 @@ void Display::DrawPartScreen(int num, bool)
 
     WriteFlashDriveMessage();
 
+    int w = 2;
+    Rect(w, w).Fill(Display::PHYSICAL_WIDTH - w - 1, Display::PHYSICAL_HEIGHT - w - 1, ((TIME_MS / 1000) % 2) ? Color::WHITE : Color::BACK);
+
     Display::EndScene();
     Device::TasksUpdate();
 
