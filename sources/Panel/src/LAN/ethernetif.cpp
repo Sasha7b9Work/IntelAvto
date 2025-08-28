@@ -347,23 +347,6 @@ dp83848_IOCtx_t  DP83848_IOCtx = {ETH_PHY_IO_Init,
   * @param netif the already initialized lwip network interface structure
   *        for this ethernetif
   */
-
-
-bool ethernet_check_link_status()
-{
-    uint32_t phyreg = 0;
-
-    // Чтение регистра статуса PHY (обычно BSR - Basic Status Register)
-    if (HAL_ETH_ReadPHYRegister(&EthHandle, DP83848.DevAddr, PHY_BSR, &phyreg) == HAL_OK)
-    {
-        if (phyreg & PHY_LINKED_STATUS) // Проверка бита связи
-        {
-            return true; // Сеть подключена
-        }
-    }
-    return false; // Сеть отключена
-}
-
 static void low_level_init(struct netif *netif)
 {
   static uint8_t macaddress[6]= {gset.mac[0], gset.mac[1], gset.mac[2], gset.mac[3], gset.mac[4], gset.mac[5] };
@@ -886,6 +869,8 @@ void HAL_ETH_RxLinkCallback(void **pStart, void **pEnd, uint8_t *buff, uint16_t 
   {
     p->tot_len += Length;
   }
+
+  ServerTCP::CallbackOnRxETH();
 }
 
 void HAL_ETH_TxFreeCallback(uint32_t * buff)
