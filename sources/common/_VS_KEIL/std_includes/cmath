@@ -3,6 +3,8 @@
 namespace std
 {
     float fabsf(float);
+    float asinf(float);
+    float cosf(float);
 
     template <class T> class numeric_limits
     {

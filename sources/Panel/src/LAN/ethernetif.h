@@ -27,4 +27,7 @@
 err_t ethernetif_init(struct netif *netif);
 void ethernetif_input(struct netif *netif);
 void ethernet_link_check_state(struct netif *netif);
+
+// true, если сзв€ь установлена
+bool ethernet_check_link_status();
 #endif

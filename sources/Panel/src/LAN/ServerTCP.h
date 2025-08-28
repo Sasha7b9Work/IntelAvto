@@ -15,7 +15,4 @@ namespace ServerTCP
     void SendBuffer(pchar buffer, uint length);
 
     bool IsConnected();
-
-    // Вызывается постоянно из ETH, когда подключён шнур. Нужно, чтобы определить наличие подключения
-    void CallbackOnRxETH();
 }

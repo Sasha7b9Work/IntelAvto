@@ -3,6 +3,7 @@
 #include "LAN/ServerTCP.h"
 #include "Settings/Settings.h"
 #include "Hardware/Timer.h"
+#include "LAN/ethernetif.h"
 #include <lwip/tcp.h>
 #include <cstring>
 
@@ -37,8 +38,6 @@ namespace ServerTCP
     static err_t CallbackPoll(void *, tcp_pcb *);
     static err_t CallbackSent(void *, tcp_pcb *, uint16);
     static void CallbackError(void *, err_t);
-
-    static uint time_last_callback_ETH = 0;
 }
 
 
@@ -353,12 +352,7 @@ void ServerTCP::SendString(pchar buffer)
 
 bool ServerTCP::IsConnected()
 {
-    if (TIME_MS - time_last_callback_ETH > 5000)
-    {
-        CloseConnection(pcbServer, server);
-    }
-
-    return pcbServer != nullptr;
+    return (pcbServer != nullptr) && ethernet_check_link_status();
 }
 
 
@@ -367,10 +361,4 @@ void ServerTCP::CallbackError(void *arg, err_t)
     Server *ss = (Server *)arg;
 
     CloseConnection(pcbServer, ss);
-}
-
-
-void ServerTCP::CallbackOnRxETH()
-{
-    time_last_callback_ETH = TIME_MS;
 }
