@@ -200,7 +200,10 @@ err_t ClientTCP::CallbackRecv(void *_arg, tcp_pcb *_tpcb, pbuf *_p, err_t err)
             //ss->p = _p;
             tcp_sent(_tpcb, CallbackSent);
             //Send(_tpcb, ss);
-            SocketFuncReciever((char*)_p->payload, _p->len);
+            if (SocketFuncReciever)
+            {
+                SocketFuncReciever((char *)_p->payload, _p->len);
+            }
 
             u8_t freed = 0;
             do
