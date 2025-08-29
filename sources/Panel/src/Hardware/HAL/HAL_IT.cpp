@@ -19,8 +19,8 @@ void NMI_Handler(void)
 
 __attribute((noreturn)) void HardFault_Handler(void)
 {
-    pchar file = Debug::file[0];
-    int line = Debug::line[0];
+    static volatile pchar file = Debug::file[0];
+    static volatile int line = Debug::line[0];
     
     (void)file;
     (void)line;
