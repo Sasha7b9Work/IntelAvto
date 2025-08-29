@@ -25,11 +25,8 @@ namespace LAN
         ClientTCP::SendBuffer(buffer, length);
     }
 
-    static void FuncReceiverServer(pchar buffer, uint length)
+    static void FuncReceiverServer(pchar /*buffer*/, uint /*length*/)
     {
-        buffer = buffer;
-        length = length;
-
         ServerTCP::CallbackOnRxETH();
     }
 }
