@@ -29,6 +29,8 @@ namespace LAN
     {
         buffer = buffer;
         length = length;
+
+        ServerTCP::CallbackOnRxETH();
     }
 }
 

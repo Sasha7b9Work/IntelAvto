@@ -46,24 +46,35 @@ int main(void)
     
     while (1)
     {
+        DEBUG_POINT_0
+
         Device::TasksUpdate();
+        DEBUG_POINT_0
         Menu::Input::Update();
+        DEBUG_POINT_0
 
         Device::TasksUpdate();
+        DEBUG_POINT_0;
         Display::Update();
-
+        DEBUG_POINT_0;
         Device::TasksUpdate();
+        DEBUG_POINT_0;
         Timer::UpdateTasks();
+        DEBUG_POINT_0;
 
         Device::TasksUpdate();
+        DEBUG_POINT_0;
         IT6523::Update();
-
+        DEBUG_POINT_0;
         Device::TasksUpdate();
+        DEBUG_POINT_0;
         FDrive::Update();
-
+        DEBUG_POINT_0;
         Device::TasksUpdate();
+        DEBUG_POINT_0;
         SCPI::Update();
-
+        DEBUG_POINT_0;
         gset.Save();
+        DEBUG_POINT_0;
     }
 }

@@ -2,9 +2,9 @@
 #pragma once
 #include "no-warnings.h"
 
-#define VERSION_BUILD 387
+#define VERSION_BUILD 388
 
-#define DATE_BUILD "2025-08-28 15:06:41"
+#define DATE_BUILD "2025-08-29 07:55:03"
 
 #include <stdint.h>
 
@@ -90,3 +90,4 @@ struct Coord
 
 
 #include "Utils/Log_.h"
+#include "Utils/Debug_.h"
