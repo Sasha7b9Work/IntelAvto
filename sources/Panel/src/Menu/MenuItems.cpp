@@ -199,6 +199,11 @@ void Parameter::Draw(int num_item) const
         color.SetAsCurrent();
     }
 
+    if (IsNowSelected())
+    {
+        Rect(width - 2, height - 2).Fill(X() - 2, Y(num_item) - 2, Color::BACK);
+    }
+
     // Нарисовать редактируемое значение на экране
 
     if(IsNowEdited())
