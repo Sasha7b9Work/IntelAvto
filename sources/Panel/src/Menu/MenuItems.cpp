@@ -190,18 +190,13 @@ void Parameter::Draw(int num_item) const
     const int width = 82;
     const int height = 21;
 
-    if (IsNowEdited())
+    if (IsNowEdited() || IsNowSelected())
     {
         Color color = Color::GetCurrent();
 
         Rect(width - 2, height - 2).Fill(X() - 2, Y(num_item) - 2, Color::BACK);
 
         color.SetAsCurrent();
-    }
-
-    if (IsNowSelected())
-    {
-        Rect(width - 2, height - 2).Fill(X() - 2, Y(num_item) - 2, Color::BACK);
     }
 
     // Нарисовать редактируемое значение на экране
