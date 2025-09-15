@@ -187,7 +187,7 @@ int Parameter::Y(int num_item) const
 
 void Parameter::Draw(int num_item) const
 {
-    const int width = 125;
+    const int width = 82;
     const int height = 21;
 
     if (IsNowEdited())
