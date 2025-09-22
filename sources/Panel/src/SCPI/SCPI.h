@@ -5,10 +5,10 @@
 
 /*
 +   *IDN?
-+   :SIGNAL:SET <1, 2a, 2b, 3a, 3b, 4, 5a, 5b>
-+   :SIGNAL:GET?
-+   :MODE:SET <12V, 24>
-+   :MODE:GET?
++   :SIGNAL <1, 2a, 2b, 3a, 3b, 4, 5a, 5b>
++   :SIGNAL?
++   :MODE <12V, 24>
++   :MODE?
                          1 2a 2b 3a 3b 4 5a 5b
     :PARAM:Us            + +     +  +  + +  +
     :PARAM:td                 +          +  +

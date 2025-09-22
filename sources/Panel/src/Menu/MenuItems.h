@@ -262,6 +262,9 @@ public:
     }
 
     Value GetCalibrateValue(TypePicture::E, VoltageMode::E);
+
+    // Параметр Us для текущего сигнала
+    static VParameter *CurrentUs();
 };
 
 

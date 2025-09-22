@@ -52,6 +52,8 @@ namespace PageInfo
 
 namespace PageSignal1
 {
+    extern VParameter param_Us;
+
     static const int us12_min = 75;
     static const int us12_max = 150;
     static const int us24_min = 300;
@@ -63,6 +65,8 @@ namespace PageSignal1
 
 namespace PageSignal2a
 {
+    extern VParameter param_Us;
+
     static const int us12_min = 37;
     static const int us12_max = 112;
     static const int us24_min = 37;
@@ -82,6 +86,8 @@ namespace PageSignal2b
 
 namespace PageSignal3a
 {
+    extern VParameter param_Us;
+
     static const int us12_min = 112;
     static const int us12_max = 220;
     static const int us24_min = 150;

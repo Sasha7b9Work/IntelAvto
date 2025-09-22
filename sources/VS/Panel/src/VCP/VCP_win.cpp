@@ -5,7 +5,7 @@
 #include <cstdarg>
 
 
-void VCP::SendStringAsynch0D0A(char *format, ...)
+void VCP::SendStringAsynch0D0A(pchar format, ...)
 {
     char buffer[200];
     va_list args;
@@ -17,7 +17,7 @@ void VCP::SendStringAsynch0D0A(char *format, ...)
 }
 
 
-void VCP::SendStringAsynchRAW(char *format, ...)
+void VCP::SendStringAsynchRAW(pchar format, ...)
 {
     char buffer[200];
     va_list args;

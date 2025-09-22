@@ -15,7 +15,7 @@ namespace PageSignal3a
 {
     static const int period_ms = 100;
 
-    static VParameter param_Us("Us",
+    VParameter param_Us("Us",
         &gset.signals[TypePicture::_3a].values12[0], Voltage(us12_min * 1000), Voltage(us12_max * 1000),
         &gset.signals[TypePicture::_3a].values24[0], Voltage(us24_min * 1000), Voltage(us24_max * 1000),
         275, 125);

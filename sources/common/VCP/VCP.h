@@ -10,10 +10,10 @@ namespace VCP
     void SendBufferSynch(const uint8 *data, int size);
 
     // Эта строка передаётся с завершающими символами \\r\\n
-    void SendStringAsynch0D0A(char *format, ...);
+    void SendStringAsynch0D0A(pchar format, ...);
 
     // Строка передаётся "как есть"
-    void SendStringAsynchRAW(char *format, ...);
+    void SendStringAsynchRAW(pchar format, ...);
 
     void Flush();
 

@@ -914,3 +914,16 @@ void FieldPort::Close()
 {
     Button::Close();
 }
+
+
+VParameter *VParameter::CurrentUs()
+{
+    Page *p = Menu::OpenedPage();
+
+    if (p == PageSignal1::self)
+    {
+        return &PageSignal1::param_Us;
+    }
+
+    return nullptr;
+}

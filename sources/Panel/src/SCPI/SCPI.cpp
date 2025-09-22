@@ -38,12 +38,12 @@ namespace SCPI
 
     static const StructCommand commands[] =
     {
-        { ":SIGNAL:SET ",   SignalSet },
-        { ":SIGNAL:GET?",   SignalGet },
-        { ":MODE:SET ",     ModeSet },
-        { ":MODE:GET?",     ModeGet },
-        { ":PARAM:US ",     ParamUs },
-        { nullptr, nullptr }
+        { ":SIGNAL ",   SignalSet },
+        { ":SIGNAL?",   SignalGet },
+        { ":MODE ",     ModeSet },
+        { ":MODE?",     ModeGet },
+        { ":PARAM:US ", ParamUs },
+        { nullptr,      nullptr }
     };
 
     struct StructPageSignal
@@ -253,28 +253,6 @@ void SCPI::ModeGet(pchar params)
 }
 
 
-void SCPI::ParamUs(pchar params)
-{
-    float value = 0.0f;
-
-    if (!SU::StringToFloat(params, &value))
-    {
-        Error(params);
-    }
-    else
-    {
-        if (Menu::OpenedPage() == PageSignal2b::self)
-        {
-            ErrorBabSignal();
-        }
-        else
-        {
-
-        }
-    }
-}
-
-
 Page *SCPI::ExtractPageSignal(pchar params)
 {
     const StructPageSignal *page = &pages[0];
@@ -306,4 +284,28 @@ pchar SCPI::ExtractNamePage(Page *p)
     }
 
     return "";
+}
+
+
+void SCPI::ParamUs(pchar params)
+{
+    float value = 0.0f;
+
+    if (!SU::StringToFloat(params, &value))
+    {
+        Error(params);
+    }
+    else
+    {
+        VParameter *Us = VParameter::CurrentUs();
+
+        if (Us == nullptr)
+        {
+            ErrorBabSignal();
+        }
+        else
+        {
+
+        }
+    }
 }
