@@ -261,7 +261,10 @@ bool SU::StringToFloat(pchar string, float *value)
         char symbol = *string;
         if (symbol < 0x30 || symbol > 0x39)
         {
-            result = false;
+            if (symbol != '.' && symbol != ',')
+            {
+                result = false;
+            }
             break;
         }
         stack.Push(symbol & 0x0f);
