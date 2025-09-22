@@ -40,7 +40,7 @@ namespace SU
     int FirstNotNumeral(char *buffer);
 
     // Преобразует строку в float. Обрабатываются символы до первого нецифрового символа
-    float StringToFloat(pchar string);
+    bool StringToFloat(pchar string, float *);
 
     char *ToUpper(char *str, int size);
 

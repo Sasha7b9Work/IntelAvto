@@ -15,8 +15,10 @@
 namespace SCPI
 {
     void Send(pchar);
-    
+
     void Error(pchar);
+    // Выдаётся, когда параметр не может быть установлен на данном сигнале
+    static void ErrorBabSignal();
 
     static RingBuffer ring_buffer;      // Сюда ложим принятые данные прямо в прерывании
 
@@ -26,6 +28,7 @@ namespace SCPI
     static void SignalGet(pchar);
     static void ModeSet(pchar);
     static void ModeGet(pchar);
+    static void ParamUs(pchar);
 
     struct StructCommand
     {
@@ -35,10 +38,11 @@ namespace SCPI
 
     static const StructCommand commands[] =
     {
-        { ":SIGNAL:SET ", SignalSet },
-        { ":SIGNAL:GET?", SignalGet },
-        { ":MODE:SET ",   ModeSet },
-        { ":MODE:GET?",   ModeGet },
+        { ":SIGNAL:SET ",   SignalSet },
+        { ":SIGNAL:GET?",   SignalGet },
+        { ":MODE:SET ",     ModeSet },
+        { ":MODE:GET?",     ModeGet },
+        { ":PARAM:US ",     ParamUs },
         { nullptr, nullptr }
     };
 
@@ -60,6 +64,10 @@ namespace SCPI
         { "5B", PageSignal5b::self },
         { "",   nullptr }
     };
+
+    Page *ExtractPageSignal(pchar);
+
+    static pchar ExtractNamePage(Page *);
 }
 
 
@@ -173,6 +181,12 @@ void SCPI::Error(pchar text)
 }
 
 
+void SCPI::ErrorBabSignal()
+{
+    VCP::SendStringAsynch0D0A("ERROR !!! Not exist parameter for signal %s", ExtractNamePage(Menu::OpenedPage()));
+}
+
+
 void SCPI::SignalSet(pchar params)
 {
     const StructPageSignal *chan = &pages[0];
@@ -236,4 +250,60 @@ void SCPI::ModeGet(pchar params)
     {
         SCPI::Send(VoltageMode::Is12() ? "12V" : "24V");
     }
+}
+
+
+void SCPI::ParamUs(pchar params)
+{
+    float value = 0.0f;
+
+    if (!SU::StringToFloat(params, &value))
+    {
+        Error(params);
+    }
+    else
+    {
+        if (Menu::OpenedPage() == PageSignal2b::self)
+        {
+            ErrorBabSignal();
+        }
+        else
+        {
+
+        }
+    }
+}
+
+
+Page *SCPI::ExtractPageSignal(pchar params)
+{
+    const StructPageSignal *page = &pages[0];
+
+    while (page->page)
+    {
+        if (std::strcmp(params, page->name) == 0)
+        {
+            return page->page;
+        }
+        page++;
+    }
+
+    return nullptr;
+}
+
+
+pchar SCPI::ExtractNamePage(Page *p)
+{
+    const StructPageSignal *page = &pages[0];
+
+    while (page->page)
+    {
+        if (page->page == p)
+        {
+            return page->name;
+        }
+        page++;
+    }
+
+    return "";
 }

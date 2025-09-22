@@ -248,9 +248,11 @@ int SU::FirstNotNumeral(char *buffer)
 }
 
 
-float SU::StringToFloat(pchar string)
+bool SU::StringToFloat(pchar string, float *value)
 {
-    float result = 0.0F;
+    *value = 0.0f;
+
+    bool result = true;
 
     Stack<int8> stack(20);
 
@@ -259,6 +261,7 @@ float SU::StringToFloat(pchar string)
         char symbol = *string;
         if (symbol < 0x30 || symbol > 0x39)
         {
+            result = false;
             break;
         }
         stack.Push(symbol & 0x0f);
@@ -270,7 +273,7 @@ float SU::StringToFloat(pchar string)
 
         while (stack.Size() > 0)
         {
-            result += static_cast<float>(pow) * (float)stack.Pop();
+            (*value) += static_cast<float>(pow) * (float)stack.Pop();
             pow *= 10;
         }
     }
@@ -288,14 +291,14 @@ float SU::StringToFloat(pchar string)
             char symbol = *string;
             if (symbol < 0x30 || symbol > 0x39)
             {
+                result = false;
                 break;
             }
-            result += pow * (float)(symbol & 0x0f);
+            (*value) += pow * (float)(symbol & 0x0f);
             pow /= 10.0F;
             string++;
         }
     }
-
 
     return result;
 }
