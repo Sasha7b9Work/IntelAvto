@@ -17,7 +17,7 @@ using namespace Primitives;
 
 namespace PageCalibration
 {
-    static const int INVALID_VOLTAGE = 999999999;
+//    static const int INVALID_VOLTAGE = 999999999;
     static const uint TIME_TIMER = 5000;
 
     static const int NUM_SIGNALS = 4;       // Калибруем только четыре из всех сигналов - те, которые формируем сами

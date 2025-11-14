@@ -2,7 +2,7 @@
 
 project (PanelGUI)
 
-#set(CMAKE_UNITY_BUILD OFF)
+set(CMAKE_UNITY_BUILD OFF)
 
 message("------------------------------------------------------------------------ ${PROJECT_NAME}")
 
@@ -25,12 +25,12 @@ include_directories(
     ../../Panel/src/Hardware/HAL
     ../../Panel/src/Hardware
     ../ThirdParty/wxWidgets/include
-    ../../generated/ThirdParty/lib/vc_dll/mswud
+    ../../generated/ThirdParty/lib/vc_lib/mswu
 )
 
-link_directories(../../generated/ThirdParty/lib/vc_dll)
+link_directories(../../generated/ThirdParty/lib/vc_lib)
 
-add_definitions(-DSTM32F429xx -DWXUSINGDLL -DGUI)
+add_definitions(-DSTM32F429xx -DGUI)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -MP -Wall")
 
@@ -170,14 +170,11 @@ add_executable(${PROJECT_NAME}
     ${UTILS}
 )
 
-target_link_libraries(${PROJECT_NAME} wxbase32ud)
-target_link_libraries(${PROJECT_NAME} wxmsw32ud_core)
-
-target_link_libraries(${PROJECT_NAME} WinMM.lib)
-target_link_libraries(${PROJECT_NAME} version.lib)
-target_link_libraries(${PROJECT_NAME} Imm32.Lib)
-target_link_libraries(${PROJECT_NAME} Setupapi.lib)
-
-
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxbase32ud_vc_custom.dll $(OutputPath) /Y)
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND copy ..\\..\\ThirdParty\\lib\\vc_dll\\wxmsw32ud_core_vc_custom.dll $(OutputPath) /Y)
+target_link_libraries(${PROJECT_NAME}
+    wxbase33u
+    wxmsw33u_core
+    wxzlib
+    wxpng
+    Comctl32
+    Rpcrt4
+)

@@ -15,7 +15,7 @@ cd ../..
 rmdir generated\GUI /s /q
 cd scripts/vs_win
 @echo on
-cmake ../../VS/CMakeLists.txt -B../../generated/GUI  -G "Visual Studio 17 2022" -A Win32 -DBUILD_USE_STATIC_RUNTIME=ON -DCMAKE_BUILD_TYPE=Release
+cmake ../../VS/CMakeLists.txt -B../../generated/GUI  -G "Visual Studio 17 2022" -A Win32 -DCMAKE_BUILD_TYPE=Release
 @echo off
 
 :BUILDING
