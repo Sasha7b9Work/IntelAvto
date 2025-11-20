@@ -23,6 +23,10 @@
 #endif
 
 
+// На эту строку stm32f4xx_hal_eth.c : 1148 должно заходить при подключении
+// HAL_ETH_RxLinkCallback(&heth->RxDescList.pRxStart, &heth->RxDescList.pRxEnd,
+
+
 
 int main(void)
 {
