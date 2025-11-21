@@ -1,2 +1,2 @@
 @echo on
-start ..\..\generated\Keil\IntelAvto.sln
+start ..\..\generated\Keil\IntelAvto.slnx

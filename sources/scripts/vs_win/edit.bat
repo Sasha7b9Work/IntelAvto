@@ -1,1 +1,1 @@
-start ..\..\generated\GUI\IntelAvto-GUI.sln
+start ..\..\generated\GUI\IntelAvto-GUI.slnx

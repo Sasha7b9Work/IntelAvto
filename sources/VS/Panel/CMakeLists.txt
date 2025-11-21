@@ -43,6 +43,7 @@ add_compile_options(
     /wd4710     # function not inlined
     /wd4774
     /wd4820     # 'xxx': 'y' bytes padding added after data member 'zzz'
+    /wd4865
     /wd4996     # 'xxx': This function or variable may be unsafe. Consider using yyy instead. To disable
                 # deprecation, use _CRT_SECURE_NO_WARNINGS
     /wd5026     # 'xxx': move constructor was implicitly defined as deleted
