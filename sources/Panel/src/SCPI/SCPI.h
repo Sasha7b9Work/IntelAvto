@@ -22,6 +22,16 @@
 */
 
 
+struct DirectionSCPI
+{
+    enum E
+    {
+        USB,
+        LAN
+    };
+};
+
+
 namespace SCPI
 {
     struct Command;
@@ -29,15 +39,16 @@ namespace SCPI
     class InBuffer : public Buffer2048
     {
     public:
-        InBuffer() = default;
+        InBuffer(DirectionSCPI::E _dir) : dir(_dir) { }
         void Update();
     private:
         Command *ParseCommand(pchar);
         String<> FirstWord(pchar);
         Command *ExtractCommand();
+        DirectionSCPI::E dir;
     };
 
-    void AppendNewData(uint8 *, uint);
+    void AppendNewData(DirectionSCPI::E, uint8 *, uint);
 
     void Update();
 }

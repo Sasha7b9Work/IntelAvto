@@ -9,31 +9,34 @@
 #include "Utils/StringUtils_.h"
 #include "Menu/Menu.h"
 #include "Settings/Settings.h"
+#include "LAN/ClientTCP.h"
 #include <cctype>
 
 
 namespace SCPI
 {
-    void Send(pchar);
+    void Send(DirectionSCPI::E, pchar);
 
-    void Error(pchar);
+    void Error(DirectionSCPI::E, pchar);
     // Выдаётся, когда параметр не может быть установлен на данном сигнале
     static void ErrorBabSignal();
 
-    static RingBuffer ring_buffer;      // Сюда ложим принятые данные прямо в прерывании
+    static RingBuffer ring_bufferUSB;   // Сюда ложим принятые данные прямо в прерывании
+    static RingBuffer ring_bufferLAN;
 
-    static InBuffer in_buffer;          // А сюда перекладываем из ring_buffer в функции SCPI::Update()
+    static InBuffer in_bufferUSB(DirectionSCPI::USB);       // А сюда перекладываем из ring_buffer в функции SCPI::Update()
+    static InBuffer in_bufferLAN(DirectionSCPI::LAN);
 
-    static void SignalSet(pchar);
-    static void SignalGet(pchar);
-    static void ModeSet(pchar);
-    static void ModeGet(pchar);
-    static void ParamUs(pchar);
+    static void SignalSet(DirectionSCPI::E, pchar);
+    static void SignalGet(DirectionSCPI::E, pchar);
+    static void ModeSet(DirectionSCPI::E, pchar);
+    static void ModeGet(DirectionSCPI::E, pchar);
+    static void ParamUs(DirectionSCPI::E, pchar);
 
     struct StructCommand
     {
         pchar message;
-        void (*func)(pchar);
+        void (*func)(DirectionSCPI::E, pchar);
     };
 
     static const StructCommand commands[] =
@@ -71,22 +74,39 @@ namespace SCPI
 }
 
 
-void SCPI::AppendNewData(uint8 *buffer, uint size)
+void SCPI::AppendNewData(DirectionSCPI::E dir, uint8 *buffer, uint size)
 {
-    for (uint i = 0; i < size; i++)
+    if (dir == DirectionSCPI::USB)
     {
-        char symbol = (char)*buffer;
-        buffer++;
+        for (uint i = 0; i < size; i++)
+        {
+            char symbol = (char)*buffer;
+            buffer++;
 
-        ring_buffer.Append((uint8)std::toupper(symbol));
+            ring_bufferUSB.Append((uint8)std::toupper(symbol));
+        }
+    }
+
+    if (dir == DirectionSCPI::LAN)
+    {
+        for (uint i = 0; i < size; i++)
+        {
+            char symbol = (char)*buffer;
+            buffer++;
+
+            ring_bufferLAN.Append((uint8)std::toupper(symbol));
+        }
     }
 }
 
 
 void SCPI::Update()
 {
-    ring_buffer.GetData(in_buffer);
-    in_buffer.Update();
+    ring_bufferUSB.GetData(in_bufferUSB);
+    in_bufferUSB.Update();
+
+    ring_bufferLAN.GetData(in_bufferLAN);
+    in_bufferLAN.Update();
 }
 
 
@@ -98,7 +118,7 @@ void SCPI::InBuffer::Update()
     {
         Command *command = ExtractCommand();
 
-        run = command->Execute();
+        run = command->Execute(dir);
 
         delete command;
     }
@@ -155,29 +175,46 @@ SCPI::Command *SCPI::InBuffer::ParseCommand(pchar symbols)
 
         if (std::memcmp((void *)symbols, (void *)command->message, num_symbols) == 0)
         {
-            command->func(symbols + num_symbols);
+            command->func(dir, symbols + num_symbols);
             return new CommandNull();
         }
 
         command++;
     }
 
-    SCPI::Error(symbols);
+    SCPI::Error(dir, symbols);
 
     return new CommandNull();
 }
 
 
-void SCPI::Send(pchar message)
+void SCPI::Send(DirectionSCPI::E dir, pchar message)
 {
-    VCP::SendStringAsynch0D0A((char *)message);
+    if (dir == DirectionSCPI::USB)
+    {
+        VCP::SendStringAsynch0D0A((char *)message);
+    }
+
+    if (dir == DirectionSCPI::LAN)
+    {
+        ClientTCP::SendString((char *)message);
+    }
 }
 
 
-void SCPI::Error(pchar text)
+void SCPI::Error(DirectionSCPI::E dir, pchar text)
 {
-    VCP::SendStringAsynchRAW((char *)"ERROR !!! Unknown sequence : ");
-    VCP::SendStringAsynch0D0A((char *)text);
+    if (dir == DirectionSCPI::USB)
+    {
+        VCP::SendStringAsynchRAW((char *)"ERROR !!! Unknown sequence : ");
+        VCP::SendStringAsynch0D0A((char *)text);
+    }
+
+    if (dir == DirectionSCPI::LAN)
+    {
+        ClientTCP::SendStringRAW((char *)"ERROR !!! Unknown sequence : ");
+        ClientTCP::SendString((char *)text);
+    }
 }
 
 
@@ -187,7 +224,7 @@ void SCPI::ErrorBabSignal()
 }
 
 
-void SCPI::SignalSet(pchar params)
+void SCPI::SignalSet(DirectionSCPI::E dir, pchar params)
 {
     const StructPageSignal *chan = &pages[0];
 
@@ -202,11 +239,11 @@ void SCPI::SignalSet(pchar params)
         chan++;
     }
 
-    SCPI::Error(params);
+    SCPI::Error(dir, params);
 }
 
 
-void SCPI::SignalGet(pchar)
+void SCPI::SignalGet(DirectionSCPI::E dir, pchar)
 {
     const StructPageSignal *chan = &pages[0];
 
@@ -214,7 +251,7 @@ void SCPI::SignalGet(pchar)
     {
         if (chan->page == Menu::OpenedPage())
         {
-            SCPI::Send(chan->name);
+            SCPI::Send(dir, chan->name);
             return;
         }
 
@@ -223,7 +260,7 @@ void SCPI::SignalGet(pchar)
 }
 
 
-void SCPI::ModeSet(pchar params)
+void SCPI::ModeSet(DirectionSCPI::E dir, pchar params)
 {
     if (SU::EqualsZeroStrings(params, "12V"))
     {
@@ -235,20 +272,20 @@ void SCPI::ModeSet(pchar params)
     }
     else
     {
-        Error(params);
+        Error(dir, params);
     }
 }
 
 
-void SCPI::ModeGet(pchar params)
+void SCPI::ModeGet(DirectionSCPI::E dir, pchar params)
 {
     if (params[0])
     {
-        Error(params);
+        Error(dir, params);
     }
     else
     {
-        SCPI::Send(VoltageMode::Is12() ? "12V" : "24V");
+        SCPI::Send(dir, VoltageMode::Is12() ? "12V" : "24V");
     }
 }
 
@@ -287,13 +324,13 @@ pchar SCPI::ExtractNamePage(Page *p)
 }
 
 
-void SCPI::ParamUs(pchar params)
+void SCPI::ParamUs(DirectionSCPI::E dir, pchar params)
 {
     float value = 0.0f;
 
     if (!SU::StringToFloat(params, &value))
     {
-        Error(params);
+        Error(dir, params);
     }
     else
     {

@@ -7,21 +7,21 @@
 
 namespace SCPI
 {
-    void Send(pchar);
+    void Send(DirectionSCPI::E, pchar);
 
-    void Error(pchar);
+    void Error(DirectionSCPI::E, pchar);
 }
 
 
-bool SCPI::CommandWithParameters::Execute()
+bool SCPI::CommandWithParameters::Execute(DirectionSCPI::E)
 {
     return false;
 }
 
 
-bool SCPI::CommandIDN::Execute()
+bool SCPI::CommandIDN::Execute(DirectionSCPI::E dir)
 {
     String<> message("OAO MNIPI, KPTS, v1.0.1");
-    Send(message.c_str());
+    Send(dir, message.c_str());
     return true;
 }

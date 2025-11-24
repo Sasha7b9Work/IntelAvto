@@ -7,7 +7,7 @@
 #include "LAN/ethernetif.h"
 #include "LAN/app_ethernet.h"
 #include "Settings/Settings.h"
-#include "Device/IT6523.h"
+#include "SCPI/SCPI.h"
 #include <lwip/init.h>
 #include <lwip/netif.h>
 #include <lwip/timeouts.h>
@@ -20,9 +20,10 @@ namespace LAN
 
     struct netif gnetif;
 
+    // Функция приёма SCPI
     static void FuncReceiverClient(pchar buffer, uint length)
     {
-        ClientTCP::SendBuffer(buffer, length);
+        SCPI::AppendNewData(DirectionSCPI::LAN, (uint8 *)buffer, length);
     }
 
     static void FuncReceiverServer(pchar /*buffer*/, uint /*length*/)
