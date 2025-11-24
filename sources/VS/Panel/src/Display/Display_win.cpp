@@ -56,7 +56,7 @@ namespace Display
     static Key::E pressedKey = Key::None;
 
     // Контекст рисования
-    wxMemoryDC memDC;
+    wxMemoryDC *memDC = nullptr;
 
     static wxBitmap bitmap(Display::PHYSICAL_WIDTH, Display::PHYSICAL_HEIGHT);
 
@@ -100,6 +100,8 @@ namespace Display
 
 void Display::InitHardware()
 {
+    memDC = new wxMemoryDC();
+
     CreateFrame();
 
     Font::Set(TypeFont::GOSTAU16BOLD);
@@ -140,17 +142,17 @@ void Display::InitHardware()
 
 void Display::BeginScene(int, int)
 {
-    memDC.SelectObject(bitmap);
+    memDC->SelectObject(bitmap);
     wxBrush brush({ 0, 0, 0 }, wxTRANSPARENT);
-    memDC.SetBrush(brush);
+    memDC->SetBrush(brush);
 
-    memDC.DrawBitmap(*backgroundBMP, 0, 0);
+    memDC->DrawBitmap(*backgroundBMP, 0, 0);
 }
 
 
 void Display::EndScene()
 {
-    memDC.SelectObject(wxNullBitmap);
+    memDC->SelectObject(wxNullBitmap);
     screen->Refresh();
 }
 

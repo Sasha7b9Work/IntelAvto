@@ -13,7 +13,7 @@ using namespace Primitives;
 
 namespace Display
 {
-    extern wxMemoryDC memDC;
+    extern wxMemoryDC *memDC;
 }
 
 
@@ -35,7 +35,7 @@ int HLine::Draw(const Coord &coord, const Color &color)
 
 int HLine::Draw(int x, int y)
 {
-    Display::memDC.DrawLine({ x, y }, { x + length, y });
+    Display::memDC->DrawLine({ x, y }, { x + length, y });
 
     return x + length;
 }
@@ -57,7 +57,7 @@ int VLine::Draw(int x, int y, const Color &color)
 
 int VLine::Draw(int x, int y)
 {
-    Display::memDC.DrawLine({ x, y }, { x, y + length });
+    Display::memDC->DrawLine({ x, y }, { x, y + length });
 
     return y + length;
 }
@@ -71,7 +71,7 @@ int VLine::Draw(const Coord &coord)
 
 Coord Line::Draw(int x1, int y1, int x2, int y2)
 {
-    Display::memDC.DrawLine({ x1, y1 }, { x2, y2 });
+    Display::memDC->DrawLine({ x1, y1 }, { x2, y2 });
 
     return { x2, y2 };
 }
@@ -96,6 +96,6 @@ void Point::Draw(int x, int y)
     m_x = x;
     m_y = y;
 
-    Display::memDC.DrawPoint({ x, y });
+    Display::memDC->DrawPoint({ x, y });
 }
 
