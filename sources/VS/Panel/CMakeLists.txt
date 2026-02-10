@@ -108,7 +108,9 @@ file(GLOB HARDWARE_KEYBOARD     ../../common/Hardware/Keyboard/Keyboard_.h
                                          src/Keyboard/Keyboard_win.cpp)
 file(GLOB LAN                ../../Panel/src/LAN/LAN.h
                              ../../Panel/src/LAN/ServerTCP.h
+                             ../../Panel/src/LAN/ClientTCP.h
                                          src/LAN/ServerTCP_win.*
+                                         src/LAN/ClientTCP_win.*
                                          src/LAN/*.*)
 file(GLOB MENU               ../../Panel/src/Menu/*.*)
 file(GLOB MENU_PAGES         ../../Panel/src/Menu/Pages/*.*)

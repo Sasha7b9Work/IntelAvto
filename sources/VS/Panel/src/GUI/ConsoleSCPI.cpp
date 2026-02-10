@@ -214,7 +214,7 @@ void ConsoleSCPI::SendToSCPI(const char *txt)
     }
     else
     {
-        SCPI::AppendNewData((uint8 *)message.c_str(), std::strlen(message.c_str()));
+        SCPI::AppendNewData(DirectionSCPI::USB, (uint8 *)message.c_str(), std::strlen(message.c_str()));
     }
 }
 
